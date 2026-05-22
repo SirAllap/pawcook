@@ -126,6 +126,26 @@
     "commercialBalancers": "Equilibradores comerciales recomendados",
     "dose": "Dosis"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Alimenta bien a tu perro.",
+      "subtitle": "Herramientas de código abierto para dueños que cocinan en casa — tiempos de cocción seguros, planes nutricionales diarios, guías de seguridad alimentaria y consejos sobre suplementos.",
+      "cta": "Empezar",
+      "learnMore": "Más información"
+    },
+    "features": {
+      "heading": "Todo lo que necesitas",
+      "cooking": "Tiempos y temperaturas de cocción seguros para 12 tipos de carne con sous-vide, horno, cocina o olla lenta.",
+      "nutrition": "Calculadora de porciones diarias según el peso, edad, actividad y dieta de tu perro.",
+      "foodSafety": "Base de datos de alimentos tóxicos, carnes, verduras y frutas seguras.",
+      "supplements": "Guía de calcio, omega-3 y micronutrientes para dietas caseras."
+    },
+    "openTool": "Abrir herramienta",
+    "open": {
+      "title": "Gratis y de código abierto",
+      "text": "Licencia MIT. Creado por dueños de perros para dueños de perros."
+    }
+  },
   "about": {
     "title": "Acerca de PawCook",
     "subtitle": "Calculadora de cocción de alimentos para perros de código abierto, creada para dueños que cocinan en casa.",
