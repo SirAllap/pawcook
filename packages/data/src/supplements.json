@@ -1,0 +1,35 @@
+[
+  {
+    "id": "calcium",
+    "label": "Calcium",
+    "target": "~500 mg per 454g (1 lb) of meat, OR 9–15 mg per kcal",
+    "sources": [
+      { "id": "eggshell", "label": "Ground eggshell", "dose": "½ tsp per 1 lb meat (1 large eggshell ≈ 2000 mg Ca)" },
+      { "id": "bone_meal", "label": "Bone meal (food grade)", "dose": "½ tsp per 1 lb meat (verify lead-free)" },
+      { "id": "seaweed_calcium", "label": "Seaweed calcium", "dose": "Per product label" },
+      { "id": "mcha", "label": "MCHA (Microcrystalline Hydroxyapatite)", "dose": "Per label (watch Vit D)" }
+    ]
+  },
+  {
+    "id": "omega3",
+    "label": "Omega-3 (EPA + DHA)",
+    "target": "~300 mg combined EPA+DHA per 9–13 kg body weight on non-fish days",
+    "sources": [
+      { "id": "fish_oil", "label": "Fish oil", "dose": "Varies by concentration — store refrigerated, replace every 2 months once opened" },
+      { "id": "sardines", "label": "Sardines (whole, in water)", "dose": "1 sardine per 10 lb body weight, 2–3× weekly" },
+      { "id": "cod_liver_oil", "label": "Cod liver oil", "dose": "Contains Vit A & D too — don't double-dose" }
+    ]
+  },
+  {
+    "id": "vitamin_e",
+    "label": "Vitamin E",
+    "target": "Protects polyunsaturated fats",
+    "sources": [{ "id": "wheat_germ_oil", "label": "Wheat germ oil or supplement", "dose": "Per label" }]
+  },
+  {
+    "id": "vitamin_d",
+    "label": "Vitamin D",
+    "target": "500–3000 IU/kg dry matter (AAFCO)",
+    "sources": [{ "id": "cod_liver_oil_d", "label": "Cod liver oil or supplement", "dose": "Per label — do not exceed 3000 IU/kg DM" }]
+  }
+]

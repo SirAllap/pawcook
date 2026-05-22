@@ -1,0 +1,10 @@
+[
+  { "id": "blueberries", "label": "Blueberries", "notes": "Antioxidants, low cal" },
+  { "id": "apple", "label": "Apple (no seeds/core)", "notes": "Fiber, Vit C — seeds contain cyanide" },
+  { "id": "banana", "label": "Banana", "notes": "High sugar, moderate" },
+  { "id": "watermelon", "label": "Watermelon (no seeds/rind)", "notes": "92% water, summer hydration" },
+  { "id": "strawberries", "label": "Strawberries", "notes": "Vit C, moderate" },
+  { "id": "pear", "label": "Pear (no seeds/core)", "notes": "Fiber" },
+  { "id": "cantaloupe", "label": "Cantaloupe (no rind)", "notes": "Vitamins" },
+  { "id": "mango", "label": "Mango (no pit/skin)", "notes": "Vitamins" }
+]

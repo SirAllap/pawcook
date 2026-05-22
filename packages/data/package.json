@@ -1,0 +1,12 @@
+{
+  "name": "@pawcook/data",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./meats": "./src/meats.json",
+    "./vegetables": "./src/vegetables.json",
+    "./fruits": "./src/fruits.json",
+    "./toxic": "./src/toxic.json",
+    "./supplements": "./src/supplements.json"
+  }
+}

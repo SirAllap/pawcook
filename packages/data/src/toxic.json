@@ -1,0 +1,19 @@
+[
+  { "id": "onions_garlic", "label": "Onions, Garlic, Leeks, Chives, Scallions", "toxicCompound": "Thiosulfates (allium family)", "effect": "Destroys red blood cells → hemolytic anemia" },
+  { "id": "grapes_raisins", "label": "Grapes & Raisins", "toxicCompound": "Unknown (tartaric acid suspected)", "effect": "Acute kidney failure" },
+  { "id": "chocolate", "label": "Chocolate", "toxicCompound": "Theobromine", "effect": "Cardiac, neurological, fatal" },
+  { "id": "xylitol", "label": "Xylitol / Birch Sugar", "toxicCompound": "Xylitol", "effect": "Rapid hypoglycemia, liver failure" },
+  { "id": "macadamia", "label": "Macadamia Nuts", "toxicCompound": "Unknown", "effect": "Weakness, tremors, hyperthermia" },
+  { "id": "avocado", "label": "Avocado", "toxicCompound": "Persin", "effect": "Vomiting, diarrhea; pit is choking + obstruction risk" },
+  { "id": "green_tomatoes", "label": "Tomatoes (green/leaves)", "toxicCompound": "Solanine", "effect": "Tremors, GI issues — ripe red flesh usually OK" },
+  { "id": "raw_bread_dough", "label": "Raw Bread Dough", "toxicCompound": "Yeast + ethanol", "effect": "Bloat, alcohol poisoning" },
+  { "id": "alcohol", "label": "Alcohol", "toxicCompound": "Ethanol", "effect": "Same as humans but much smaller dose lethal" },
+  { "id": "caffeine", "label": "Caffeine", "toxicCompound": "Methylxanthines", "effect": "Like chocolate — cardiac, neurological" },
+  { "id": "wild_mushrooms", "label": "Wild Mushrooms", "toxicCompound": "Various", "effect": "Unknown without ID — assume toxic" },
+  { "id": "cooked_bones", "label": "Cooked Bones (all)", "toxicCompound": "Splinter risk", "effect": "Choking, GI perforation, internal bleeding" },
+  { "id": "nutmeg", "label": "Nutmeg", "toxicCompound": "Myristicin", "effect": "Tremors, seizures" },
+  { "id": "raw_potato_green", "label": "Raw Potato (green)", "toxicCompound": "Solanine", "effect": "GI issues" },
+  { "id": "rhubarb_leaves", "label": "Rhubarb Leaves", "toxicCompound": "Oxalates", "effect": "Kidney damage" },
+  { "id": "cherry_pits", "label": "Cherry Pits", "toxicCompound": "Cyanide", "effect": "Toxic" },
+  { "id": "walnuts", "label": "Walnuts (especially moldy/black)", "toxicCompound": "Tremorgenic mycotoxins", "effect": "Seizures" }
+]

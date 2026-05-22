@@ -1,0 +1,18 @@
+[
+  { "id": "carrots", "label": "Carrots", "benefit": "Beta-carotene, fiber", "notes": "Raw or cooked, aids dental" },
+  { "id": "pumpkin", "label": "Pumpkin (plain)", "benefit": "Fiber, digestion aid", "notes": "No sugar/spice — never pumpkin pie filling" },
+  { "id": "sweet_potato", "label": "Sweet Potato", "benefit": "Complex carbs, Vit A", "notes": "Always cooked" },
+  { "id": "broccoli", "label": "Broccoli", "benefit": "Vit C, K", "notes": "Max 10% of meal (isothiocyanates)" },
+  { "id": "spinach", "label": "Spinach", "benefit": "Iron, antioxidants", "notes": "Moderate (oxalates)" },
+  { "id": "green_beans", "label": "Green Beans", "benefit": "Low cal, fiber", "notes": "Unlimited within reason" },
+  { "id": "zucchini", "label": "Zucchini", "benefit": "Hydration, low cal", "notes": "Great filler" },
+  { "id": "peas", "label": "Peas", "benefit": "Protein, fiber", "notes": "Fresh or frozen, not canned" },
+  { "id": "kale", "label": "Kale", "benefit": "Calcium, antioxidants", "notes": "Sparingly (oxalates, thiocyanates)" },
+  { "id": "parsnips", "label": "Parsnips", "benefit": "Vit C, fiber", "notes": "Cook first" },
+  { "id": "beets", "label": "Beets", "benefit": "Iron, folate", "notes": "Cook, expect colored stool" },
+  { "id": "butternut_squash", "label": "Butternut Squash", "benefit": "Vit A, potassium", "notes": "Cook first" },
+  { "id": "cucumber", "label": "Cucumber", "benefit": "Hydration", "notes": "Raw, safe" },
+  { "id": "celery", "label": "Celery", "benefit": "Low cal, freshens breath", "notes": "Chop to prevent choking" },
+  { "id": "asparagus", "label": "Asparagus", "benefit": "Vitamins", "notes": "Cook to soften" },
+  { "id": "brussels_sprouts", "label": "Brussels Sprouts", "benefit": "Vit K", "notes": "Moderate (gas)" }
+]
