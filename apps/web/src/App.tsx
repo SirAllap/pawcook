@@ -2,6 +2,7 @@ import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from './i18n';
+import Landing from './pages/Landing';
 import CookingCalculator from './pages/CookingCalculator';
 import NutritionCalculator from './pages/NutritionCalculator';
 import FoodSafety from './pages/FoodSafety';
@@ -118,7 +119,7 @@ function BottomNav() {
   const location = useLocation();
 
   const tabs = [
-    { to: '/',            label: t('nav.cooking'),     icon: '🍖' },
+    { to: '/cooking',     label: t('nav.cooking'),     icon: '🍖' },
     { to: '/nutrition',   label: t('nav.nutrition'),   icon: '🐕' },
     { to: '/food-safety', label: t('nav.foodSafety'),  icon: '⚠️' },
     { to: '/supplements', label: t('nav.supplements'), icon: '💊' },
@@ -132,7 +133,7 @@ function BottomNav() {
     >
       <div className="flex">
         {tabs.map(({ to, label, icon }) => {
-          const isActive = to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
+          const isActive = location.pathname === to || location.pathname.startsWith(to + '/');
           return (
             <NavLink
               key={to}
@@ -159,7 +160,7 @@ export default function App() {
   const { t } = useTranslation();
 
   const navItems = [
-    { to: '/',            label: t('nav.cooking') },
+    { to: '/cooking',     label: t('nav.cooking') },
     { to: '/nutrition',   label: t('nav.nutrition') },
     { to: '/food-safety', label: t('nav.foodSafety') },
     { to: '/supplements', label: t('nav.supplements') },
@@ -198,7 +199,8 @@ export default function App() {
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 pb-28 lg:pb-8">
         <Routes>
-          <Route path="/"            element={<CookingCalculator />} />
+          <Route path="/"            element={<Landing />} />
+          <Route path="/cooking"     element={<CookingCalculator />} />
           <Route path="/nutrition"   element={<NutritionCalculator />} />
           <Route path="/food-safety" element={<FoodSafety />} />
           <Route path="/supplements" element={<SupplementGuide />} />
