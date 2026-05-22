@@ -126,6 +126,26 @@
     "commercialBalancers": "Zalecane komercyjne suplementy kompleksowe",
     "dose": "Dawka"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Żyw swojego psa właściwie.",
+      "subtitle": "Narzędzia open source dla właścicieli gotujących w domu — bezpieczne czasy gotowania, codzienne plany żywieniowe, przewodniki bezpieczeństwa żywności i porady dotyczące suplementów.",
+      "cta": "Zacznij",
+      "learnMore": "Dowiedz się więcej"
+    },
+    "features": {
+      "heading": "Wszystko, czego potrzebujesz",
+      "cooking": "Bezpieczne czasy i temperatury gotowania dla 12 rodzajów mięsa: sous-vide, piekarnik, kuchenka lub wolnowar.",
+      "nutrition": "Kalkulator dziennych porcji oparty na wadze, wieku, aktywności i diecie twojego psa.",
+      "foodSafety": "Przeszukiwalna baza toksycznych pokarmów, bezpiecznych mięs, warzyw i owoców.",
+      "supplements": "Przewodnik po wapniu, kwasach omega-3 i mikroelementach dla domowych diet."
+    },
+    "openTool": "Otwórz narzędzie",
+    "open": {
+      "title": "Bezpłatny i open source",
+      "text": "Licencja MIT. Stworzony przez właścicieli psów dla właścicieli psów."
+    }
+  },
   "about": {
     "title": "O PawCook",
     "subtitle": "Kalkulator gotowania jedzenia dla psów open source, stworzony dla właścicieli gotujących w domu.",
