@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Koken",
+    "nutrition": "Voeding",
+    "foodSafety": "Voedselveiligheid",
+    "supplements": "Supplementen",
+    "about": "Over ons"
+  },
+  "common": {
+    "calculate": "Berekenen",
+    "print": "Receptkaart afdrukken",
+    "safe": "Veilig",
+    "toxic": "GIFTIG",
+    "disclaimer": "Geen veterinair advies. Raadpleeg een ACVN-diplomaat voor langdurige huisvoeding.",
+    "openSource": "Open source",
+    "target": "Doelwaarde"
+  },
+  "cooking": {
+    "title": "Kookcalculator",
+    "subtitle": "Bereken de veilige kooktijd en -temperatuur voor het voer van uw hond.",
+    "meatType": "Soort vlees",
+    "form": "Vorm",
+    "weightPerBag": "Gewicht per zak (kg)",
+    "numberOfBags": "Aantal zakken",
+    "thickness": "Zakdikte (cm)",
+    "method": "Kookmethode",
+    "fatContent": "Vetgehalte",
+    "tempUnit": "Temperatuureenheid",
+    "recipeCard": "Receptkaart",
+    "safeTemp": "Veilige temperatuur",
+    "cookingTime": "Kooktijd",
+    "minutes": "minuten",
+    "storage": "Bewaring",
+    "warnings": "Waarschuwingen",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Oven (laag)",
+      "stovetop_low": "Fornuis op laag vuur",
+      "slow_cooker": "Slowcooker"
+    },
+    "forms": {
+      "minced": "Gehakt",
+      "cubed": "In blokjes",
+      "whole_cut": "Heel stuk",
+      "fillet": "Filet"
+    },
+    "fat": {
+      "lean": "Mager",
+      "medium": "Gemiddeld",
+      "fatty": "Vet"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Voedingscalculator",
+    "subtitle": "Bereken dagelijkse porties op basis van het profiel van uw hond.",
+    "weight": "Hondengewicht (kg)",
+    "age": "Leeftijdsgroep",
+    "activity": "Activiteitsniveau",
+    "bodyCondition": "Lichaamsconditie",
+    "reproStatus": "Reproductieve status",
+    "mealsPerDay": "Maaltijden per dag",
+    "dietApproach": "Dieetaanpak",
+    "dailyPlan": "Dagelijks voedingsplan",
+    "dailyFood": "Dagelijks voer",
+    "perMeal": "Per maaltijd",
+    "protein": "Eiwit",
+    "vegetables": "Groenten",
+    "calciumNeeded": "Benodigde calcium",
+    "omega3Target": "Omega-3 doelwaarde",
+    "notes": "Opmerkingen",
+    "ages": {
+      "puppy": "Pup (<1 jaar)",
+      "adult": "Volwassen (1–7 jaar)",
+      "senior": "Senior (7+ jaar)"
+    },
+    "activities": {
+      "sedentary": "Sedentair",
+      "moderate": "Matig",
+      "active": "Actief",
+      "working": "Werkend"
+    },
+    "conditions": {
+      "underweight": "Ondergewicht",
+      "ideal": "Ideaal",
+      "overweight": "Overgewicht"
+    },
+    "reproStatuses": {
+      "neutered": "Gesteriliseerd",
+      "intact": "Intact",
+      "pregnant": "Drachtig",
+      "lactating": "Lacterend"
+    },
+    "diets": {
+      "balanced_cooked": "Gekookt gebalanceerd (aanbevolen door dierenarts) — 40% eiwit / 50% groenten / 10% zetmeel",
+      "high_protein": "Eiwitrijk gekookt — 50% eiwit / 30% groenten / 15% zetmeel",
+      "pmr": "PMR 80-10-10 (gevorderd)"
+    },
+    "vetDisclaimer": "Dit hulpmiddel biedt alleen algemene richtlijnen. Raadpleeg een gecertificeerde veterinaire voedingsdeskundige (ACVN) voor langdurige huisvoeding."
+  },
+  "foodSafety": {
+    "title": "Voedselveiligheidsreferentie",
+    "subtitle": "Zoek veilige en giftige voedingsmiddelen voor honden.",
+    "search": "Zoek voedingsmiddelen…",
+    "tabs": {
+      "toxic": "Giftig",
+      "meats": "Vlees",
+      "vegetables": "Groenten",
+      "fruits": "Fruit"
+    },
+    "raw": "Rauw",
+    "cooked": "Gekookt",
+    "ok": "OK",
+    "risky": "Riskant",
+    "compound": "Verbinding",
+    "effect": "Effect",
+    "benefit": "Voordeel"
+  },
+  "supplements": {
+    "title": "Supplementengids",
+    "subtitle": "Een thuisdieet zonder botten vereist calciumsuppletie — de grootste tekortkoming bij zelfgemaakt hondenvoer.",
+    "caRatio": "Ca:P-verhouding doel: 1,2:1 tot 1,4:1 (AAFCO aanvaardbaar bereik 1:1 tot 2,1:1). Vlees alleen is ~1:20 — sterk fosforgericht. Suppletie is verplicht.",
+    "commercialBalancers": "Aanbevolen commerciële balancers",
+    "dose": "Dosis"
+  },
+  "about": {
+    "title": "Over PawCook",
+    "subtitle": "Open-source kookcalculator voor hondenvoer, gebouwd voor eigenaren die thuis koken.",
+    "disclaimers": "Disclaimers",
+    "notVetAdvice": "Dit hulpmiddel is geen veterinair advies. Het biedt algemene richtlijnen op basis van gepubliceerde veterinaire voedingsnormen (AAFCO, NRC, FEDIAF). Elke hond is uniek. Raadpleeg voor langdurige huisvoeding een gecertificeerde veterinaire voedingsdeskundige (ACVN-diplomaat).",
+    "noBones": "Gekookte botten zijn nooit veilig. Dit hulpmiddel zal nooit gekookte botten in een recept aanbevelen.",
+    "pathogen": "Pathogeen veiligheid: Kook op aanbevolen interne temperaturen geverifieerd met een vleesthermometer. Koel gekookt voer snel af.",
+    "methodology": "Methodologie & bronnen",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook is MIT-gelicentieerd. Bijdragen, correcties en functieverzoeken zijn welkom op",
+    "github": "GitHub"
+  }
+}
