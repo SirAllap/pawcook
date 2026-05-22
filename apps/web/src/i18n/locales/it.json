@@ -126,6 +126,26 @@
     "commercialBalancers": "Integratori commerciali consigliati",
     "dose": "Dose"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Nutri bene il tuo cane.",
+      "subtitle": "Strumenti open source per i proprietari che cucinano in casa — tempi di cottura sicuri, piani nutrizionali giornalieri, guide sulla sicurezza alimentare e consigli sugli integratori.",
+      "cta": "Inizia",
+      "learnMore": "Scopri di più"
+    },
+    "features": {
+      "heading": "Tutto quello che ti serve",
+      "cooking": "Tempi e temperature di cottura sicuri per 12 tipi di carne tramite sous-vide, forno, fornello o slow cooker.",
+      "nutrition": "Calcolatore di porzioni giornaliere basato su peso, età, attività e dieta del tuo cane.",
+      "foodSafety": "Database di alimenti tossici, carni, verdure e frutta sicure.",
+      "supplements": "Guida a calcio, omega-3 e micronutrienti per diete fatte in casa."
+    },
+    "openTool": "Apri strumento",
+    "open": {
+      "title": "Gratuito e open source",
+      "text": "Licenza MIT. Creato da proprietari di cani per proprietari di cani."
+    }
+  },
   "about": {
     "title": "Chi siamo — PawCook",
     "subtitle": "Calcolatore di cottura per cibo per cani open source, creato per i proprietari che cucinano in casa.",
