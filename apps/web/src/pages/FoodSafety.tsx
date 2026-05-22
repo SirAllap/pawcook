@@ -40,6 +40,16 @@ const vegetables = vegetablesData as Vegetable[];
 const fruits = fruitsData as Fruit[];
 const toxic = toxicData as ToxicItem[];
 
+function EmptyState({ query }: { query: string }) {
+  return (
+    <div className="text-center py-14 animate-fade-in">
+      <div className="text-5xl mb-3">🔍</div>
+      <p className="text-gray-400 font-medium">No results for "<span className="text-amber-400">{query}</span>"</p>
+      <p className="text-gray-600 text-sm mt-1">Try a different search term</p>
+    </div>
+  );
+}
+
 export default function FoodSafety() {
   const { t } = useTranslation();
   const [tab, setTab] = useState<TabId>('toxic');
@@ -53,6 +63,11 @@ export default function FoodSafety() {
     { id: 'vegetables', label: t('foodSafety.tabs.vegetables'), icon: '🥕', count: vegetables.length },
     { id: 'fruits', label: t('foodSafety.tabs.fruits'), icon: '🍎', count: fruits.length },
   ];
+
+  const filteredToxic = toxic.filter(item => !q || item.label.toLowerCase().includes(q) || item.effect.toLowerCase().includes(q));
+  const filteredMeats = meats.filter(item => !q || item.label.toLowerCase().includes(q));
+  const filteredVegetables = vegetables.filter(item => !q || item.label.toLowerCase().includes(q));
+  const filteredFruits = fruits.filter(item => !q || item.label.toLowerCase().includes(q));
 
   return (
     <div>
@@ -98,74 +113,90 @@ export default function FoodSafety() {
       </div>
 
       {tab === 'toxic' && (
-        <div className="space-y-3">
-          {toxic.filter(item => !q || item.label.toLowerCase().includes(q) || item.effect.toLowerCase().includes(q)).map(item => (
-            <div key={item.id} className="bg-red-950/80 border border-red-800/60 rounded-2xl p-4 shadow-lg">
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-bold text-red-200 text-base">{item.label}</h3>
-                <span className="text-xs bg-red-600 text-white px-2.5 py-0.5 rounded-full font-semibold shrink-0">{t('common.toxic')}</span>
+        filteredToxic.length === 0 ? (
+          <EmptyState query={search} />
+        ) : (
+          <div className="space-y-3">
+            {filteredToxic.map(item => (
+              <div key={item.id} className="bg-red-950/80 border border-red-800/60 rounded-2xl p-4 shadow-lg">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-bold text-red-200 text-base">{item.label}</h3>
+                  <span className="text-xs bg-red-600 text-white px-2.5 py-0.5 rounded-full font-semibold shrink-0">{t('common.toxic')}</span>
+                </div>
+                <p className="text-sm text-red-300 mb-1">
+                  <span className="text-red-400 font-semibold">{t('foodSafety.compound')}:</span> {item.toxicCompound}
+                </p>
+                <p className="text-sm text-red-300">
+                  <span className="text-red-400 font-semibold">{t('foodSafety.effect')}:</span> {item.effect}
+                </p>
               </div>
-              <p className="text-sm text-red-300 mb-1">
-                <span className="text-red-400 font-semibold">{t('foodSafety.compound')}:</span> {item.toxicCompound}
-              </p>
-              <p className="text-sm text-red-300">
-                <span className="text-red-400 font-semibold">{t('foodSafety.effect')}:</span> {item.effect}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
       )}
 
       {tab === 'meats' && (
-        <div className="space-y-3">
-          {meats.filter(item => !q || item.label.toLowerCase().includes(q)).map(item => (
-            <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
-              <div className="flex items-start gap-3">
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-base mb-0.5">{item.label}</h3>
-                  <p className="text-sm text-gray-400">{item.notes}</p>
-                </div>
-                <div className="flex flex-col gap-1.5 shrink-0">
-                  <span className={`text-xs px-2.5 py-1 rounded-lg font-medium text-center ${item.rawSafe ? 'bg-green-900/60 text-green-300 border border-green-800/50' : 'bg-yellow-900/60 text-yellow-300 border border-yellow-800/50'}`}>
-                    {t('foodSafety.raw')}: {item.rawSafe ? t('foodSafety.ok') : t('foodSafety.risky')}
-                  </span>
-                  <span className={`text-xs px-2.5 py-1 rounded-lg font-medium text-center ${item.cookedSafe ? 'bg-green-900/60 text-green-300 border border-green-800/50' : 'bg-red-900/60 text-red-300 border border-red-800/50'}`}>
-                    {t('foodSafety.cooked')}: {item.cookedSafe ? t('common.safe') : 'No'}
-                  </span>
+        filteredMeats.length === 0 ? (
+          <EmptyState query={search} />
+        ) : (
+          <div className="space-y-3">
+            {filteredMeats.map(item => (
+              <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
+                <div className="flex items-start gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-base mb-0.5">{item.label}</h3>
+                    <p className="text-sm text-gray-400">{item.notes}</p>
+                  </div>
+                  <div className="flex flex-col gap-1.5 shrink-0">
+                    <span className={`text-xs px-2.5 py-1 rounded-lg font-medium text-center ${item.rawSafe ? 'bg-green-900/60 text-green-300 border border-green-800/50' : 'bg-yellow-900/60 text-yellow-300 border border-yellow-800/50'}`}>
+                      {t('foodSafety.raw')}: {item.rawSafe ? t('foodSafety.ok') : t('foodSafety.risky')}
+                    </span>
+                    <span className={`text-xs px-2.5 py-1 rounded-lg font-medium text-center ${item.cookedSafe ? 'bg-green-900/60 text-green-300 border border-green-800/50' : 'bg-red-900/60 text-red-300 border border-red-800/50'}`}>
+                      {t('foodSafety.cooked')}: {item.cookedSafe ? t('common.safe') : 'No'}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
       )}
 
       {tab === 'vegetables' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {vegetables.filter(item => !q || item.label.toLowerCase().includes(q)).map(item => (
-            <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
-              <div className="flex items-center gap-2 mb-1.5">
-                <h3 className="font-bold text-base">{item.label}</h3>
-                <span className="text-xs bg-green-900/60 text-green-300 border border-green-800/50 px-2 py-0.5 rounded-full">{t('common.safe')}</span>
+        filteredVegetables.length === 0 ? (
+          <EmptyState query={search} />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {filteredVegetables.map(item => (
+              <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h3 className="font-bold text-base">{item.label}</h3>
+                  <span className="text-xs bg-green-900/60 text-green-300 border border-green-800/50 px-2 py-0.5 rounded-full">{t('common.safe')}</span>
+                </div>
+                <p className="text-sm text-amber-400 mb-1">{item.benefit}</p>
+                <p className="text-xs text-gray-400">{item.notes}</p>
               </div>
-              <p className="text-sm text-amber-400 mb-1">{item.benefit}</p>
-              <p className="text-xs text-gray-400">{item.notes}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
       )}
 
       {tab === 'fruits' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {fruits.filter(item => !q || item.label.toLowerCase().includes(q)).map(item => (
-            <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
-              <div className="flex items-center gap-2 mb-1.5">
-                <h3 className="font-bold text-base">{item.label}</h3>
-                <span className="text-xs bg-green-900/60 text-green-300 border border-green-800/50 px-2 py-0.5 rounded-full">{t('common.safe')}</span>
+        filteredFruits.length === 0 ? (
+          <EmptyState query={search} />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {filteredFruits.map(item => (
+              <div key={item.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h3 className="font-bold text-base">{item.label}</h3>
+                  <span className="text-xs bg-green-900/60 text-green-300 border border-green-800/50 px-2 py-0.5 rounded-full">{t('common.safe')}</span>
+                </div>
+                <p className="text-xs text-gray-400">{item.notes}</p>
               </div>
-              <p className="text-xs text-gray-400">{item.notes}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
       )}
     </div>
   );
