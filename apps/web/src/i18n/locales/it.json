@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Cottura",
+    "nutrition": "Nutrizione",
+    "foodSafety": "Sicurezza alimentare",
+    "supplements": "Integratori",
+    "about": "Chi siamo"
+  },
+  "common": {
+    "calculate": "Calcola",
+    "print": "Stampa scheda ricetta",
+    "safe": "Sicuro",
+    "toxic": "TOSSICO",
+    "disclaimer": "Non è un consiglio veterinario. Consultare un diplomato ACVN per l'alimentazione casalinga a lungo termine.",
+    "openSource": "Open source",
+    "target": "Obiettivo"
+  },
+  "cooking": {
+    "title": "Calcolatore di cottura",
+    "subtitle": "Calcola il tempo e la temperatura di cottura sicuri per il cibo del tuo cane.",
+    "meatType": "Tipo di carne",
+    "form": "Forma",
+    "weightPerBag": "Peso per sacchetto (kg)",
+    "numberOfBags": "Numero di sacchetti",
+    "thickness": "Spessore del sacchetto (cm)",
+    "method": "Metodo di cottura",
+    "fatContent": "Contenuto di grassi",
+    "tempUnit": "Unità di temperatura",
+    "recipeCard": "Scheda ricetta",
+    "safeTemp": "Temperatura sicura",
+    "cookingTime": "Tempo di cottura",
+    "minutes": "minuti",
+    "storage": "Conservazione",
+    "warnings": "Avvertenze",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Forno (basso)",
+      "stovetop_low": "Fornello a fuoco basso",
+      "slow_cooker": "Slow cooker"
+    },
+    "forms": {
+      "minced": "Macinato",
+      "cubed": "A cubetti",
+      "whole_cut": "Taglio intero",
+      "fillet": "Filetto"
+    },
+    "fat": {
+      "lean": "Magro",
+      "medium": "Medio",
+      "fatty": "Grasso"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Calcolatore nutrizionale",
+    "subtitle": "Calcola le porzioni giornaliere in base al profilo del tuo cane.",
+    "weight": "Peso del cane (kg)",
+    "age": "Fascia d'età",
+    "activity": "Livello di attività",
+    "bodyCondition": "Condizione corporea",
+    "reproStatus": "Stato riproduttivo",
+    "mealsPerDay": "Pasti al giorno",
+    "dietApproach": "Approccio dietetico",
+    "dailyPlan": "Piano nutrizionale quotidiano",
+    "dailyFood": "Cibo quotidiano",
+    "perMeal": "Per pasto",
+    "protein": "Proteine",
+    "vegetables": "Verdure",
+    "calciumNeeded": "Calcio necessario",
+    "omega3Target": "Obiettivo Omega-3",
+    "notes": "Note",
+    "ages": {
+      "puppy": "Cucciolo (<1 anno)",
+      "adult": "Adulto (1–7 anni)",
+      "senior": "Senior (7+ anni)"
+    },
+    "activities": {
+      "sedentary": "Sedentario",
+      "moderate": "Moderato",
+      "active": "Attivo",
+      "working": "Lavoro"
+    },
+    "conditions": {
+      "underweight": "Sottopeso",
+      "ideal": "Ideale",
+      "overweight": "Sovrappeso"
+    },
+    "reproStatuses": {
+      "neutered": "Sterilizzato",
+      "intact": "Intatto",
+      "pregnant": "Gravida",
+      "lactating": "In allattamento"
+    },
+    "diets": {
+      "balanced_cooked": "Cotto bilanciato (raccomandato dai veterinari) — 40% proteine / 50% verdure / 10% amidi",
+      "high_protein": "Cotto ad alto contenuto proteico — 50% proteine / 30% verdure / 15% amidi",
+      "pmr": "PMR 80-10-10 (avanzato)"
+    },
+    "vetDisclaimer": "Questo strumento fornisce solo indicazioni generali. Consultare un nutrizionista veterinario certificato (ACVN) per l'alimentazione casalinga a lungo termine."
+  },
+  "foodSafety": {
+    "title": "Riferimento sicurezza alimentare",
+    "subtitle": "Cerca alimenti sicuri e tossici per cani.",
+    "search": "Cerca alimenti…",
+    "tabs": {
+      "toxic": "Tossici",
+      "meats": "Carni",
+      "vegetables": "Verdure",
+      "fruits": "Frutta"
+    },
+    "raw": "Crudo",
+    "cooked": "Cotto",
+    "ok": "OK",
+    "risky": "Rischioso",
+    "compound": "Composto",
+    "effect": "Effetto",
+    "benefit": "Beneficio"
+  },
+  "supplements": {
+    "title": "Guida agli integratori",
+    "subtitle": "Una dieta casalinga senza ossa richiede la supplementazione di calcio — la carenza n. 1 nel cibo casalingo per cani.",
+    "caRatio": "Obiettivo del rapporto Ca:P: 1,2:1 a 1,4:1 (intervallo accettabile AAFCO 1:1 a 2,1:1). La carne da sola è ~1:20 — fortemente sbilanciata verso il fosforo. La supplementazione è obbligatoria.",
+    "commercialBalancers": "Integratori commerciali consigliati",
+    "dose": "Dose"
+  },
+  "about": {
+    "title": "Chi siamo — PawCook",
+    "subtitle": "Calcolatore di cottura per cibo per cani open source, creato per i proprietari che cucinano in casa.",
+    "disclaimers": "Avvertenze legali",
+    "notVetAdvice": "Questo strumento non è un consiglio veterinario. Fornisce linee guida generali basate sugli standard nutrizionali veterinari pubblicati (AAFCO, NRC, FEDIAF). Ogni cane è individuale. Per l'alimentazione casalinga a lungo termine, consultare un nutrizionista veterinario certificato (diplomato ACVN).",
+    "noBones": "Le ossa cotte non sono mai sicure. Questo strumento non raccomanderà mai ossa cotte in nessuna ricetta.",
+    "pathogen": "Sicurezza dai patogeni: Cuocere alle temperature interne raccomandate verificate con un termometro per carne. Raffreddare rapidamente il cibo cotto.",
+    "methodology": "Metodologia e fonti",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook è sotto licenza MIT. Contributi, correzioni e richieste di funzionalità sono benvenuti su",
+    "github": "GitHub"
+  }
+}
