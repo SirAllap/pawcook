@@ -19,10 +19,11 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText('Cooking')).toBeInTheDocument();
-    expect(screen.getByText('Nutrition')).toBeInTheDocument();
-    expect(screen.getByText('Food Safety')).toBeInTheDocument();
-    expect(screen.getByText('Supplements')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
+    // Nav labels appear in both desktop nav and mobile bottom nav
+    expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Supplements').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('About').length).toBeGreaterThan(0);
   });
 });
