@@ -126,6 +126,26 @@
     "commercialBalancers": "Balanceadores comerciais recomendados",
     "dose": "Dose"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Alimente bem o seu cão.",
+      "subtitle": "Ferramentas open source para donos que cozinham em casa — tempos de cozedura seguros, planos nutricionais diários, guias de segurança alimentar e conselhos sobre suplementos.",
+      "cta": "Começar",
+      "learnMore": "Saber mais"
+    },
+    "features": {
+      "heading": "Tudo o que precisa",
+      "cooking": "Tempos e temperaturas de cozedura seguras para 12 tipos de carne via sous-vide, forno, fogão ou panela elétrica.",
+      "nutrition": "Calculadora de porções diárias com base no peso, idade, atividade e dieta do seu cão.",
+      "foodSafety": "Base de dados de alimentos tóxicos, carnes, legumes e frutas seguras.",
+      "supplements": "Guia de cálcio, ómega-3 e micronutrientes para dietas caseiras."
+    },
+    "openTool": "Abrir ferramenta",
+    "open": {
+      "title": "Gratuito e open source",
+      "text": "Licença MIT. Criado por donos de cães para donos de cães."
+    }
+  },
   "about": {
     "title": "Sobre o PawCook",
     "subtitle": "Calculadora de culinária para cães de código aberto, criada para donos que cozinham em casa.",
