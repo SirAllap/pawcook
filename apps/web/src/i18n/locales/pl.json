@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Gotowanie",
+    "nutrition": "Żywienie",
+    "foodSafety": "Bezpieczeństwo żywności",
+    "supplements": "Suplementy",
+    "about": "O aplikacji"
+  },
+  "common": {
+    "calculate": "Oblicz",
+    "print": "Drukuj kartę przepisu",
+    "safe": "Bezpieczny",
+    "toxic": "TOKSYCZNY",
+    "disclaimer": "Nie jest to porada weterynaryjna. Skonsultuj się z dyplomowanym lekarzem ACVN w sprawie długotrwałego karmienia domowego.",
+    "openSource": "Open source",
+    "target": "Cel"
+  },
+  "cooking": {
+    "title": "Kalkulator gotowania",
+    "subtitle": "Oblicz bezpieczny czas i temperaturę gotowania dla jedzenia Twojego psa.",
+    "meatType": "Rodzaj mięsa",
+    "form": "Forma",
+    "weightPerBag": "Waga na worek (kg)",
+    "numberOfBags": "Liczba worków",
+    "thickness": "Grubość worka (cm)",
+    "method": "Metoda gotowania",
+    "fatContent": "Zawartość tłuszczu",
+    "tempUnit": "Jednostka temperatury",
+    "recipeCard": "Karta przepisu",
+    "safeTemp": "Bezpieczna temperatura",
+    "cookingTime": "Czas gotowania",
+    "minutes": "minut",
+    "storage": "Przechowywanie",
+    "warnings": "Ostrzeżenia",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Piekarnik (niski)",
+      "stovetop_low": "Kuchenka na małym ogniu",
+      "slow_cooker": "Wolnowar"
+    },
+    "forms": {
+      "minced": "Mielone",
+      "cubed": "W kostkę",
+      "whole_cut": "Cały kawałek",
+      "fillet": "Filet"
+    },
+    "fat": {
+      "lean": "Chude",
+      "medium": "Średnie",
+      "fatty": "Tłuste"
+    },
+    "units": {
+      "celsius": "Celsjusz",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Kalkulator żywienia",
+    "subtitle": "Oblicz dzienne porcje na podstawie profilu Twojego psa.",
+    "weight": "Waga psa (kg)",
+    "age": "Grupa wiekowa",
+    "activity": "Poziom aktywności",
+    "bodyCondition": "Kondycja ciała",
+    "reproStatus": "Status reprodukcyjny",
+    "mealsPerDay": "Posiłki dziennie",
+    "dietApproach": "Podejście dietetyczne",
+    "dailyPlan": "Dzienny plan żywienia",
+    "dailyFood": "Dzienne jedzenie",
+    "perMeal": "Na posiłek",
+    "protein": "Białko",
+    "vegetables": "Warzywa",
+    "calciumNeeded": "Potrzebny wapń",
+    "omega3Target": "Cel Omega-3",
+    "notes": "Uwagi",
+    "ages": {
+      "puppy": "Szczenię (<1 roku)",
+      "adult": "Dorosły (1–7 lat)",
+      "senior": "Senior (7+ lat)"
+    },
+    "activities": {
+      "sedentary": "Siedzący tryb życia",
+      "moderate": "Umiarkowany",
+      "active": "Aktywny",
+      "working": "Pracujący"
+    },
+    "conditions": {
+      "underweight": "Niedowaga",
+      "ideal": "Idealna",
+      "overweight": "Nadwaga"
+    },
+    "reproStatuses": {
+      "neutered": "Wykastrowany",
+      "intact": "Niekastrowany",
+      "pregnant": "W ciąży",
+      "lactating": "Karmiący"
+    },
+    "diets": {
+      "balanced_cooked": "Gotowane zrównoważone (zalecane przez weterynarza) — 40% białko / 50% warzywa / 10% skrobia",
+      "high_protein": "Gotowane wysokobiałkowe — 50% białko / 30% warzywa / 15% skrobia",
+      "pmr": "PMR 80-10-10 (zaawansowane)"
+    },
+    "vetDisclaimer": "To narzędzie dostarcza jedynie ogólnych wskazówek. Skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (ACVN) w sprawie długotrwałego karmienia domowego."
+  },
+  "foodSafety": {
+    "title": "Informacje o bezpieczeństwie żywności",
+    "subtitle": "Wyszukaj bezpieczne i toksyczne pokarmy dla psów.",
+    "search": "Szukaj pokarmów…",
+    "tabs": {
+      "toxic": "Toksyczne",
+      "meats": "Mięsa",
+      "vegetables": "Warzywa",
+      "fruits": "Owoce"
+    },
+    "raw": "Surowe",
+    "cooked": "Gotowane",
+    "ok": "OK",
+    "risky": "Ryzykowne",
+    "compound": "Związek",
+    "effect": "Efekt",
+    "benefit": "Korzyść"
+  },
+  "supplements": {
+    "title": "Przewodnik po suplementach",
+    "subtitle": "Domowa dieta bez kości wymaga suplementacji wapniem — niedobór nr 1 w domowej karmie dla psów.",
+    "caRatio": "Cel stosunku Ca:P: 1,2:1 do 1,4:1 (akceptowalny zakres AAFCO 1:1 do 2,1:1). Samo mięso to ~1:20 — silnie nakierowane na fosfor. Suplementacja jest obowiązkowa.",
+    "commercialBalancers": "Zalecane komercyjne suplementy kompleksowe",
+    "dose": "Dawka"
+  },
+  "about": {
+    "title": "O PawCook",
+    "subtitle": "Kalkulator gotowania jedzenia dla psów open source, stworzony dla właścicieli gotujących w domu.",
+    "disclaimers": "Zastrzeżenia",
+    "notVetAdvice": "To narzędzie nie jest poradą weterynaryjną. Dostarcza ogólnych wskazówek opartych na opublikowanych weterynaryjnych standardach żywieniowych (AAFCO, NRC, FEDIAF). Każdy pies jest indywidualny. W przypadku długotrwałego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomowanym ACVN).",
+    "noBones": "Gotowane kości nigdy nie są bezpieczne. To narzędzie nigdy nie zaleci gotowanych kości w żadnym przepisie.",
+    "pathogen": "Bezpieczeństwo patogenów: Gotuj w zalecanych temperaturach wewnętrznych weryfikowanych termometrem do mięsa. Szybko schładzaj ugotowane jedzenie.",
+    "methodology": "Metodologia i źródła",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook jest na licencji MIT. Wkład, poprawki i prośby o nowe funkcje mile widziane na",
+    "github": "GitHub"
+  }
+}
