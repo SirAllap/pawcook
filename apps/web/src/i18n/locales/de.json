@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Kochen",
+    "nutrition": "Ernährung",
+    "foodSafety": "Lebensmittelsicherheit",
+    "supplements": "Nahrungsergänzung",
+    "about": "Über uns"
+  },
+  "common": {
+    "calculate": "Berechnen",
+    "print": "Rezeptkarte drucken",
+    "safe": "Sicher",
+    "toxic": "GIFTIG",
+    "disclaimer": "Kein Tierärztlicher Rat. Wenden Sie sich für die langfristige Heimfütterung an einen ACVN-Diplomaten.",
+    "openSource": "Open Source",
+    "target": "Zielwert"
+  },
+  "cooking": {
+    "title": "Kochrechner",
+    "subtitle": "Berechnen Sie die sichere Garzeit und -temperatur für das Futter Ihres Hundes.",
+    "meatType": "Fleischart",
+    "form": "Form",
+    "weightPerBag": "Gewicht pro Beutel (kg)",
+    "numberOfBags": "Anzahl der Beutel",
+    "thickness": "Beuteldicke (cm)",
+    "method": "Garmethode",
+    "fatContent": "Fettgehalt",
+    "tempUnit": "Temperatureinheit",
+    "recipeCard": "Rezeptkarte",
+    "safeTemp": "Sichere Temperatur",
+    "cookingTime": "Garzeit",
+    "minutes": "Minuten",
+    "storage": "Lagerung",
+    "warnings": "Warnungen",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Backofen (niedrig)",
+      "stovetop_low": "Herd bei niedriger Hitze",
+      "slow_cooker": "Schongarer"
+    },
+    "forms": {
+      "minced": "Gehackt",
+      "cubed": "Gewürfelt",
+      "whole_cut": "Ganzes Stück",
+      "fillet": "Filet"
+    },
+    "fat": {
+      "lean": "Mager",
+      "medium": "Mittel",
+      "fatty": "Fettig"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Ernährungsrechner",
+    "subtitle": "Berechnen Sie die täglichen Portionen basierend auf dem Profil Ihres Hundes.",
+    "weight": "Hundegewicht (kg)",
+    "age": "Altersgruppe",
+    "activity": "Aktivitätsniveau",
+    "bodyCondition": "Körperkondition",
+    "reproStatus": "Reproduktionsstatus",
+    "mealsPerDay": "Mahlzeiten pro Tag",
+    "dietApproach": "Ernährungsansatz",
+    "dailyPlan": "Täglicher Ernährungsplan",
+    "dailyFood": "Tägliches Futter",
+    "perMeal": "Pro Mahlzeit",
+    "protein": "Protein",
+    "vegetables": "Gemüse",
+    "calciumNeeded": "Benötigtes Kalzium",
+    "omega3Target": "Omega-3-Zielwert",
+    "notes": "Hinweise",
+    "ages": {
+      "puppy": "Welpe (<1 Jahr)",
+      "adult": "Erwachsen (1–7 Jahre)",
+      "senior": "Senior (7+ Jahre)"
+    },
+    "activities": {
+      "sedentary": "Sitzend",
+      "moderate": "Moderat",
+      "active": "Aktiv",
+      "working": "Arbeitend"
+    },
+    "conditions": {
+      "underweight": "Untergewicht",
+      "ideal": "Ideal",
+      "overweight": "Übergewicht"
+    },
+    "reproStatuses": {
+      "neutered": "Kastriert",
+      "intact": "Intakt",
+      "pregnant": "Trächtig",
+      "lactating": "Laktierend"
+    },
+    "diets": {
+      "balanced_cooked": "Ausgewogen gekocht (tierärztlich empfohlen) — 40% Protein / 50% Gemüse / 10% Stärke",
+      "high_protein": "Proteinreich gekocht — 50% Protein / 30% Gemüse / 15% Stärke",
+      "pmr": "PMR 80-10-10 (fortgeschritten)"
+    },
+    "vetDisclaimer": "Dieses Tool gibt nur allgemeine Hinweise. Konsultieren Sie für eine langfristige Heimfütterung einen zertifizierten Tierernährungsberater (ACVN)."
+  },
+  "foodSafety": {
+    "title": "Lebensmittelsicherheits-Referenz",
+    "subtitle": "Suchen Sie nach sicheren und giftigen Lebensmitteln für Hunde.",
+    "search": "Lebensmittel suchen…",
+    "tabs": {
+      "toxic": "Giftig",
+      "meats": "Fleisch",
+      "vegetables": "Gemüse",
+      "fruits": "Obst"
+    },
+    "raw": "Roh",
+    "cooked": "Gekocht",
+    "ok": "OK",
+    "risky": "Riskant",
+    "compound": "Verbindung",
+    "effect": "Wirkung",
+    "benefit": "Nutzen"
+  },
+  "supplements": {
+    "title": "Nahrungsergänzungs-Leitfaden",
+    "subtitle": "Eine Heimernährung ohne Knochen erfordert Kalzium-Supplementierung — der häufigste Mangel bei selbst zubereiteten Hundefutter.",
+    "caRatio": "Ca:P-Verhältnisziel: 1,2:1 bis 1,4:1 (AAFCO-Toleranzbereich 1:1 bis 2,1:1). Fleisch allein liegt bei ~1:20 — stark phosphorlastig. Supplementierung ist obligatorisch.",
+    "commercialBalancers": "Empfohlene kommerzielle Zusätze",
+    "dose": "Dosis"
+  },
+  "about": {
+    "title": "Über PawCook",
+    "subtitle": "Open-Source-Kochrechner für Hundefutter, entwickelt für Hundebesitzer, die zu Hause kochen.",
+    "disclaimers": "Haftungsausschlüsse",
+    "notVetAdvice": "Dieses Tool ist kein Tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten veterinärmedizinischen Ernährungsstandards (AAFCO, NRC, FEDIAF). Jeder Hund ist individuell. Für eine langfristige Heimfütterung wenden Sie sich an einen zertifizierten Tierernährungsberater (ACVN-Diplomat).",
+    "noBones": "Gekochte Knochen sind niemals sicher. Dieses Tool wird niemals gekochte Knochen in einem Rezept empfehlen.",
+    "pathogen": "Sicherheit bei Krankheitserregern: Kochen Sie auf die empfohlenen Innentemperaturen, die mit einem Fleischthermometer überprüft werden. Kühlen Sie gekochtes Futter schnell ab.",
+    "methodology": "Methodik & Quellen",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook ist MIT-lizenziert. Beiträge, Korrekturen und Feature-Anfragen sind willkommen auf",
+    "github": "GitHub"
+  }
+}
