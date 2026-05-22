@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Cooking",
+    "nutrition": "Nutrition",
+    "foodSafety": "Food Safety",
+    "supplements": "Supplements",
+    "about": "About"
+  },
+  "common": {
+    "calculate": "Calculate",
+    "print": "Print recipe card",
+    "safe": "Safe",
+    "toxic": "TOXIC",
+    "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
+    "openSource": "Open source",
+    "target": "Target"
+  },
+  "cooking": {
+    "title": "Cooking Calculator",
+    "subtitle": "Calculate safe cooking time and temperature for your dog's food.",
+    "meatType": "Meat type",
+    "form": "Form",
+    "weightPerBag": "Weight per bag (kg)",
+    "numberOfBags": "Number of bags",
+    "thickness": "Bag thickness (cm)",
+    "method": "Cooking method",
+    "fatContent": "Fat content",
+    "tempUnit": "Temperature unit",
+    "recipeCard": "Recipe Card",
+    "safeTemp": "Safe temp",
+    "cookingTime": "Cooking time",
+    "minutes": "minutes",
+    "storage": "Storage",
+    "warnings": "Warnings",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Oven (low)",
+      "stovetop_low": "Stovetop low",
+      "slow_cooker": "Slow cooker"
+    },
+    "forms": {
+      "minced": "Minced",
+      "cubed": "Cubed",
+      "whole_cut": "Whole cut",
+      "fillet": "Fillet"
+    },
+    "fat": {
+      "lean": "Lean",
+      "medium": "Medium",
+      "fatty": "Fatty"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Nutrition Calculator",
+    "subtitle": "Calculate daily portions based on your dog's profile.",
+    "weight": "Dog weight (kg)",
+    "age": "Age group",
+    "activity": "Activity level",
+    "bodyCondition": "Body condition",
+    "reproStatus": "Reproductive status",
+    "mealsPerDay": "Meals per day",
+    "dietApproach": "Diet approach",
+    "dailyPlan": "Daily Nutrition Plan",
+    "dailyFood": "Daily food",
+    "perMeal": "Per meal",
+    "protein": "Protein",
+    "vegetables": "Vegetables",
+    "calciumNeeded": "Calcium needed",
+    "omega3Target": "Omega-3 target",
+    "notes": "Notes",
+    "ages": {
+      "puppy": "Puppy (<1 yr)",
+      "adult": "Adult (1–7 yr)",
+      "senior": "Senior (7+ yr)"
+    },
+    "activities": {
+      "sedentary": "Sedentary",
+      "moderate": "Moderate",
+      "active": "Active",
+      "working": "Working"
+    },
+    "conditions": {
+      "underweight": "Underweight",
+      "ideal": "Ideal",
+      "overweight": "Overweight"
+    },
+    "reproStatuses": {
+      "neutered": "Neutered",
+      "intact": "Intact",
+      "pregnant": "Pregnant",
+      "lactating": "Lactating"
+    },
+    "diets": {
+      "balanced_cooked": "Balanced cooked (vet-recommended) — 40% protein / 50% veg / 10% starch",
+      "high_protein": "High-protein cooked — 50% protein / 30% veg / 15% starch",
+      "pmr": "PMR 80-10-10 (advanced)"
+    },
+    "vetDisclaimer": "This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding."
+  },
+  "foodSafety": {
+    "title": "Food Safety Reference",
+    "subtitle": "Search safe and toxic foods for dogs.",
+    "search": "Search foods…",
+    "tabs": {
+      "toxic": "Toxic",
+      "meats": "Meats",
+      "vegetables": "Vegetables",
+      "fruits": "Fruits"
+    },
+    "raw": "Raw",
+    "cooked": "Cooked",
+    "ok": "OK",
+    "risky": "Risky",
+    "compound": "Compound",
+    "effect": "Effect",
+    "benefit": "Benefit"
+  },
+  "supplements": {
+    "title": "Supplement Guide",
+    "subtitle": "A homemade diet without bones requires calcium supplementation — the #1 deficiency in DIY dog food.",
+    "caRatio": "Ca:P ratio target: 1.2:1 to 1.4:1 (AAFCO acceptable range 1:1 to 2.1:1). Meat alone is ~1:20 — heavily phosphorus-skewed. Supplementation is mandatory.",
+    "commercialBalancers": "Recommended Commercial Balancers",
+    "dose": "Dose"
+  },
+  "about": {
+    "title": "About PawCook",
+    "subtitle": "Open-source dog food cooking calculator built for home-cooking dog owners.",
+    "disclaimers": "Disclaimers",
+    "notVetAdvice": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Every dog is individual. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate).",
+    "noBones": "Cooked bones are never safe. This tool will never recommend cooked bones in any recipe.",
+    "pathogen": "Pathogen safety: Cook to recommended internal temperatures verified with a meat thermometer. Cool cooked food promptly.",
+    "methodology": "Methodology & Sources",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook is MIT licensed. Contributions, corrections, and feature requests welcome on",
+    "github": "GitHub"
+  }
+}
