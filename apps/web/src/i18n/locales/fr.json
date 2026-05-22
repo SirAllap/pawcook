@@ -126,6 +126,26 @@
     "commercialBalancers": "Compléments commerciaux recommandés",
     "dose": "Dose"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Nourrissez bien votre chien.",
+      "subtitle": "Outils open source pour les propriétaires qui cuisinent à la maison — temps de cuisson sûrs, plans nutritionnels quotidiens, guides de sécurité alimentaire et conseils en suppléments.",
+      "cta": "Commencer",
+      "learnMore": "En savoir plus"
+    },
+    "features": {
+      "heading": "Tout ce dont vous avez besoin",
+      "cooking": "Temps et températures de cuisson sûrs pour 12 types de viande via sous-vide, four, plaque ou mijoteuse.",
+      "nutrition": "Calculateur de portions quotidiennes selon le poids, l'âge, l'activité et le régime de votre chien.",
+      "foodSafety": "Base de données des aliments toxiques, viandes, légumes et fruits sûrs.",
+      "supplements": "Guide calcium, oméga-3 et micronutriments pour les régimes maison."
+    },
+    "openTool": "Ouvrir l'outil",
+    "open": {
+      "title": "Gratuit et open source",
+      "text": "Licence MIT. Créé par des propriétaires de chiens pour des propriétaires de chiens."
+    }
+  },
   "about": {
     "title": "À propos de PawCook",
     "subtitle": "Calculateur de cuisson pour chiens en open source, conçu pour les propriétaires qui cuisinent à la maison.",
