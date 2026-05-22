@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Cuisson",
+    "nutrition": "Nutrition",
+    "foodSafety": "Sécurité alimentaire",
+    "supplements": "Suppléments",
+    "about": "À propos"
+  },
+  "common": {
+    "calculate": "Calculer",
+    "print": "Imprimer la fiche recette",
+    "safe": "Sans danger",
+    "toxic": "TOXIQUE",
+    "disclaimer": "Pas un conseil vétérinaire. Consultez un diplomate ACVN pour une alimentation maison à long terme.",
+    "openSource": "Open source",
+    "target": "Objectif"
+  },
+  "cooking": {
+    "title": "Calculateur de cuisson",
+    "subtitle": "Calculez le temps et la température de cuisson sûrs pour la nourriture de votre chien.",
+    "meatType": "Type de viande",
+    "form": "Forme",
+    "weightPerBag": "Poids par sachet (kg)",
+    "numberOfBags": "Nombre de sachets",
+    "thickness": "Épaisseur du sachet (cm)",
+    "method": "Méthode de cuisson",
+    "fatContent": "Teneur en matières grasses",
+    "tempUnit": "Unité de température",
+    "recipeCard": "Fiche recette",
+    "safeTemp": "Température sûre",
+    "cookingTime": "Temps de cuisson",
+    "minutes": "minutes",
+    "storage": "Conservation",
+    "warnings": "Avertissements",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Four (doux)",
+      "stovetop_low": "Cuisinière à feu doux",
+      "slow_cooker": "Mijoteuse"
+    },
+    "forms": {
+      "minced": "Haché",
+      "cubed": "En cubes",
+      "whole_cut": "Pièce entière",
+      "fillet": "Filet"
+    },
+    "fat": {
+      "lean": "Maigre",
+      "medium": "Moyen",
+      "fatty": "Gras"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Calculateur nutritionnel",
+    "subtitle": "Calculez les portions quotidiennes selon le profil de votre chien.",
+    "weight": "Poids du chien (kg)",
+    "age": "Tranche d'âge",
+    "activity": "Niveau d'activité",
+    "bodyCondition": "Condition corporelle",
+    "reproStatus": "Statut reproducteur",
+    "mealsPerDay": "Repas par jour",
+    "dietApproach": "Approche alimentaire",
+    "dailyPlan": "Plan nutritionnel quotidien",
+    "dailyFood": "Nourriture quotidienne",
+    "perMeal": "Par repas",
+    "protein": "Protéines",
+    "vegetables": "Légumes",
+    "calciumNeeded": "Calcium nécessaire",
+    "omega3Target": "Objectif Oméga-3",
+    "notes": "Remarques",
+    "ages": {
+      "puppy": "Chiot (<1 an)",
+      "adult": "Adulte (1–7 ans)",
+      "senior": "Senior (7+ ans)"
+    },
+    "activities": {
+      "sedentary": "Sédentaire",
+      "moderate": "Modéré",
+      "active": "Actif",
+      "working": "Travail"
+    },
+    "conditions": {
+      "underweight": "Sous-poids",
+      "ideal": "Idéal",
+      "overweight": "Surpoids"
+    },
+    "reproStatuses": {
+      "neutered": "Stérilisé",
+      "intact": "Intact",
+      "pregnant": "Gestante",
+      "lactating": "En lactation"
+    },
+    "diets": {
+      "balanced_cooked": "Cuit équilibré (recommandé par les vétérinaires) — 40% protéines / 50% légumes / 10% féculents",
+      "high_protein": "Cuit riche en protéines — 50% protéines / 30% légumes / 15% féculents",
+      "pmr": "PMR 80-10-10 (avancé)"
+    },
+    "vetDisclaimer": "Cet outil fournit des conseils généraux uniquement. Consultez un nutritionniste vétérinaire certifié (ACVN) pour une alimentation maison à long terme."
+  },
+  "foodSafety": {
+    "title": "Référence sécurité alimentaire",
+    "subtitle": "Recherchez les aliments sûrs et toxiques pour les chiens.",
+    "search": "Rechercher des aliments…",
+    "tabs": {
+      "toxic": "Toxiques",
+      "meats": "Viandes",
+      "vegetables": "Légumes",
+      "fruits": "Fruits"
+    },
+    "raw": "Cru",
+    "cooked": "Cuit",
+    "ok": "OK",
+    "risky": "Risqué",
+    "compound": "Composé",
+    "effect": "Effet",
+    "benefit": "Bénéfice"
+  },
+  "supplements": {
+    "title": "Guide des suppléments",
+    "subtitle": "Une alimentation maison sans os nécessite une supplémentation en calcium — la carence n°1 dans la nourriture maison pour chiens.",
+    "caRatio": "Objectif du rapport Ca:P : 1,2:1 à 1,4:1 (plage acceptable AAFCO 1:1 à 2,1:1). La viande seule est ~1:20 — fortement biaisée vers le phosphore. La supplémentation est obligatoire.",
+    "commercialBalancers": "Compléments commerciaux recommandés",
+    "dose": "Dose"
+  },
+  "about": {
+    "title": "À propos de PawCook",
+    "subtitle": "Calculateur de cuisson pour chiens en open source, conçu pour les propriétaires qui cuisinent à la maison.",
+    "disclaimers": "Avertissements",
+    "notVetAdvice": "Cet outil n'est pas un conseil vétérinaire. Il fournit des directives générales basées sur les normes nutritionnelles vétérinaires publiées (AAFCO, NRC, FEDIAF). Chaque chien est unique. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplomate ACVN).",
+    "noBones": "Les os cuits ne sont jamais sûrs. Cet outil ne recommandera jamais d'os cuits dans une recette.",
+    "pathogen": "Sécurité pathogène : Cuisez aux températures internes recommandées vérifiées avec un thermomètre à viande. Refroidissez rapidement la nourriture cuite.",
+    "methodology": "Méthodologie et sources",
+    "openSource": "Open Source",
+    "openSourceText": "PawCook est sous licence MIT. Contributions, corrections et demandes de fonctionnalités bienvenues sur",
+    "github": "GitHub"
+  }
+}
