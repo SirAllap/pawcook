@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NutritionInputSchema, type NutritionInput, calculateNutrition, type NutritionResult } from '@pawcook/shared';
 
 const STORAGE_KEY = 'pawcook_nutrition_input';
@@ -24,6 +25,7 @@ function loadSavedValues(): NutritionInput {
 }
 
 export default function NutritionCalculator() {
+  const { t } = useTranslation();
   const [result, setResult] = useState<NutritionResult | null>(null);
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<NutritionInput>({
@@ -40,114 +42,128 @@ export default function NutritionCalculator() {
     setResult(calculateNutrition(data));
   }
 
-  const inputClass = 'w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500';
-  const labelClass = 'block text-xs font-medium text-gray-400 mb-1';
+  const inputClass = 'w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all';
+  const labelClass = 'block text-sm font-medium text-gray-300 mb-1.5';
+  const fieldClass = 'space-y-0';
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-amber-400 mb-1">Nutrition Calculator</h1>
-      <p className="text-gray-400 text-sm mb-6">Calculate daily portions and macronutrient ratios based on your dog's profile.</p>
+      <h1 className="text-2xl font-bold text-amber-400 mb-1">{t('nutrition.title')}</h1>
+      <p className="text-gray-400 text-sm mb-6">{t('nutrition.subtitle')}</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-gray-900 rounded-xl p-5 border border-gray-800">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>Dog weight (kg)</label>
-              <input type="number" step="0.1" {...register('weightKg', { valueAsNumber: true })} className={inputClass} />
-              {errors.weightKg && <p className="text-red-400 text-xs mt-1">{errors.weightKg.message}</p>}
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 rounded-2xl border border-gray-800 shadow-lg overflow-hidden">
+          <div className="p-5 space-y-4">
+            <div className="grid grid-cols-2 gap-3">
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.weight')}</label>
+                <input type="number" step="0.1" {...register('weightKg', { valueAsNumber: true })} className={inputClass} />
+                {errors.weightKg && <p className="text-red-400 text-xs mt-1">{errors.weightKg.message}</p>}
+              </div>
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.age')}</label>
+                <select {...register('age')} className={inputClass}>
+                  <option value="puppy">{t('nutrition.ages.puppy')}</option>
+                  <option value="adult">{t('nutrition.ages.adult')}</option>
+                  <option value="senior">{t('nutrition.ages.senior')}</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label className={labelClass}>Age group</label>
-              <select {...register('age')} className={inputClass}>
-                <option value="puppy">Puppy (&lt;1 yr)</option>
-                <option value="adult">Adult (1–7 yr)</option>
-                <option value="senior">Senior (7+ yr)</option>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.activity')}</label>
+                <select {...register('activityLevel')} className={inputClass}>
+                  <option value="sedentary">{t('nutrition.activities.sedentary')}</option>
+                  <option value="moderate">{t('nutrition.activities.moderate')}</option>
+                  <option value="active">{t('nutrition.activities.active')}</option>
+                  <option value="working">{t('nutrition.activities.working')}</option>
+                </select>
+              </div>
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.bodyCondition')}</label>
+                <select {...register('bodyCondition')} className={inputClass}>
+                  <option value="underweight">{t('nutrition.conditions.underweight')}</option>
+                  <option value="ideal">{t('nutrition.conditions.ideal')}</option>
+                  <option value="overweight">{t('nutrition.conditions.overweight')}</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.reproStatus')}</label>
+                <select {...register('reproductiveStatus')} className={inputClass}>
+                  <option value="neutered">{t('nutrition.reproStatuses.neutered')}</option>
+                  <option value="intact">{t('nutrition.reproStatuses.intact')}</option>
+                  <option value="pregnant">{t('nutrition.reproStatuses.pregnant')}</option>
+                  <option value="lactating">{t('nutrition.reproStatuses.lactating')}</option>
+                </select>
+              </div>
+              <div className={fieldClass}>
+                <label className={labelClass}>{t('nutrition.mealsPerDay')}</label>
+                <input type="number" min="1" max="4" {...register('mealsPerDay', { valueAsNumber: true })} className={inputClass} />
+              </div>
+            </div>
+
+            <div className={fieldClass}>
+              <label className={labelClass}>{t('nutrition.dietApproach')}</label>
+              <select {...register('macroProfile')} className={inputClass}>
+                <option value="balanced_cooked">{t('nutrition.diets.balanced_cooked')}</option>
+                <option value="high_protein">{t('nutrition.diets.high_protein')}</option>
+                <option value="pmr">{t('nutrition.diets.pmr')}</option>
               </select>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>Activity level</label>
-              <select {...register('activityLevel')} className={inputClass}>
-                <option value="sedentary">Sedentary</option>
-                <option value="moderate">Moderate</option>
-                <option value="active">Active</option>
-                <option value="working">Working</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelClass}>Body condition</label>
-              <select {...register('bodyCondition')} className={inputClass}>
-                <option value="underweight">Underweight</option>
-                <option value="ideal">Ideal</option>
-                <option value="overweight">Overweight</option>
-              </select>
-            </div>
+          <div className="px-5 pb-5">
+            <button
+              type="submit"
+              className="w-full bg-amber-500 hover:bg-amber-400 active:scale-95 text-gray-900 font-bold py-4 rounded-xl text-base transition-all shadow-lg shadow-amber-500/20"
+            >
+              {t('common.calculate')}
+            </button>
           </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>Reproductive status</label>
-              <select {...register('reproductiveStatus')} className={inputClass}>
-                <option value="neutered">Neutered</option>
-                <option value="intact">Intact</option>
-                <option value="pregnant">Pregnant</option>
-                <option value="lactating">Lactating</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelClass}>Meals per day</label>
-              <input type="number" min="1" max="4" {...register('mealsPerDay', { valueAsNumber: true })} className={inputClass} />
-            </div>
-          </div>
-
-          <div>
-            <label className={labelClass}>Diet approach</label>
-            <select {...register('macroProfile')} className={inputClass}>
-              <option value="balanced_cooked">Balanced cooked (vet-recommended) — 40% protein / 50% veg / 10% starch</option>
-              <option value="high_protein">High-protein cooked — 50% protein / 30% veg / 15% starch</option>
-              <option value="pmr">PMR 80-10-10 (advanced)</option>
-            </select>
-          </div>
-
-          <button type="submit" className="w-full bg-amber-500 hover:bg-amber-400 text-gray-900 font-semibold py-2.5 rounded-lg transition-colors">
-            Calculate
-          </button>
         </form>
 
         {result && (
-          <div className="print-card bg-gray-900 rounded-xl p-5 border border-gray-800 space-y-4">
-            <h2 className="font-bold text-lg text-amber-300">Daily Nutrition Plan</h2>
-
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { label: 'Daily food', value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
-                { label: 'Per meal', value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
-                { label: 'Protein', value: `~${result.macros.proteinG} g/day` },
-                { label: 'Vegetables', value: `~${result.macros.vegG} g/day` },
-                { label: 'Calcium needed', value: `~${result.calciumMg} mg/day` },
-                { label: 'Omega-3 target', value: `~${result.omega3Mg} mg EPA+DHA` },
-              ].map(({ label, value }) => (
-                <div key={label} className="bg-gray-800 rounded-lg p-3">
-                  <p className="text-xs text-gray-400">{label}</p>
-                  <p className="text-base font-semibold text-amber-300">{value}</p>
-                </div>
-              ))}
+          <div className="print-card bg-gray-900 rounded-2xl border border-gray-800 shadow-lg overflow-hidden">
+            <div className="px-5 pt-5 pb-4 border-b border-gray-800">
+              <h2 className="font-bold text-lg text-amber-300">{t('nutrition.dailyPlan')}</h2>
             </div>
 
-            <div>
-              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Notes</h3>
-              <ul className="space-y-1">
-                {result.notes.map((n, i) => (
-                  <li key={i} className="text-sm text-gray-300 flex gap-2"><span className="text-amber-500">•</span>{n}</li>
+            <div className="p-5">
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                {[
+                  { key: 'nutrition.dailyFood', value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
+                  { key: 'nutrition.perMeal', value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
+                  { key: 'nutrition.protein', value: `~${result.macros.proteinG} g/day` },
+                  { key: 'nutrition.vegetables', value: `~${result.macros.vegG} g/day` },
+                  { key: 'nutrition.calciumNeeded', value: `~${result.calciumMg} mg/day` },
+                  { key: 'nutrition.omega3Target', value: `~${result.omega3Mg} mg` },
+                ].map(({ key, value }) => (
+                  <div key={key} className="bg-gray-800 rounded-xl p-3.5 text-center">
+                    <p className="text-xs text-gray-400 mb-1">{t(key)}</p>
+                    <p className="text-lg font-bold text-amber-300">{value}</p>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
 
-            <p className="text-xs text-gray-500 border-t border-gray-800 pt-3">
-              ⚠️ This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding or any dog with a medical condition.
-            </p>
+              <div className="mb-4">
+                <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">{t('nutrition.notes')}</h3>
+                <div className="bg-gray-800 rounded-xl p-3.5 space-y-1.5">
+                  {result.notes.map((n, i) => (
+                    <p key={i} className="text-sm text-gray-300 flex gap-2">
+                      <span className="text-amber-500 shrink-0">•</span>{n}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 border-t border-gray-800 pt-3">
+                ⚠️ {t('nutrition.vetDisclaimer')}
+              </p>
+            </div>
           </div>
         )}
       </div>
