@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
+  color-scheme: dark light;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-gray-950 text-gray-100 font-sans antialiased;
+    background-image: radial-gradient(ellipse at 20% 0%, rgba(251,191,36,0.03) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 100%, rgba(251,191,36,0.02) 0%, transparent 60%);
   }
 
   * {
@@ -15,20 +21,47 @@
 
   input[type="number"],
   input[type="search"],
-  select {
-    @apply text-base;
-    font-size: 16px; /* prevents iOS zoom on focus */
+  input[type="text"],
+  select,
+  textarea {
+    font-size: 16px; /* prevents iOS zoom */
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-500 ring-offset-2 ring-offset-gray-950;
   }
 }
 
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.25s ease-out both;
 }
 
 @media print {
