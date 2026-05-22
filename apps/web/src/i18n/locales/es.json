@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cooking": "Cocción",
+    "nutrition": "Nutrición",
+    "foodSafety": "Seguridad alimentaria",
+    "supplements": "Suplementos",
+    "about": "Acerca de"
+  },
+  "common": {
+    "calculate": "Calcular",
+    "print": "Imprimir ficha de receta",
+    "safe": "Seguro",
+    "toxic": "TÓXICO",
+    "disclaimer": "No es asesoramiento veterinario. Consulta a un diplomado ACVN para alimentación casera a largo plazo.",
+    "openSource": "Código abierto",
+    "target": "Objetivo"
+  },
+  "cooking": {
+    "title": "Calculadora de cocción",
+    "subtitle": "Calcula el tiempo y la temperatura de cocción seguros para la comida de tu perro.",
+    "meatType": "Tipo de carne",
+    "form": "Forma",
+    "weightPerBag": "Peso por bolsa (kg)",
+    "numberOfBags": "Número de bolsas",
+    "thickness": "Grosor de la bolsa (cm)",
+    "method": "Método de cocción",
+    "fatContent": "Contenido graso",
+    "tempUnit": "Unidad de temperatura",
+    "recipeCard": "Ficha de receta",
+    "safeTemp": "Temperatura segura",
+    "cookingTime": "Tiempo de cocción",
+    "minutes": "minutos",
+    "storage": "Almacenamiento",
+    "warnings": "Advertencias",
+    "methods": {
+      "sous_vide": "Sous-vide",
+      "oven": "Horno (bajo)",
+      "stovetop_low": "Cocina a fuego lento",
+      "slow_cooker": "Olla de cocción lenta"
+    },
+    "forms": {
+      "minced": "Picado",
+      "cubed": "En cubos",
+      "whole_cut": "Corte entero",
+      "fillet": "Filete"
+    },
+    "fat": {
+      "lean": "Magro",
+      "medium": "Medio",
+      "fatty": "Graso"
+    },
+    "units": {
+      "celsius": "Celsius",
+      "fahrenheit": "Fahrenheit"
+    }
+  },
+  "nutrition": {
+    "title": "Calculadora de nutrición",
+    "subtitle": "Calcula las porciones diarias según el perfil de tu perro.",
+    "weight": "Peso del perro (kg)",
+    "age": "Grupo de edad",
+    "activity": "Nivel de actividad",
+    "bodyCondition": "Condición corporal",
+    "reproStatus": "Estado reproductivo",
+    "mealsPerDay": "Comidas al día",
+    "dietApproach": "Enfoque dietético",
+    "dailyPlan": "Plan de nutrición diario",
+    "dailyFood": "Alimento diario",
+    "perMeal": "Por comida",
+    "protein": "Proteína",
+    "vegetables": "Verduras",
+    "calciumNeeded": "Calcio necesario",
+    "omega3Target": "Objetivo de Omega-3",
+    "notes": "Notas",
+    "ages": {
+      "puppy": "Cachorro (<1 año)",
+      "adult": "Adulto (1–7 años)",
+      "senior": "Senior (7+ años)"
+    },
+    "activities": {
+      "sedentary": "Sedentario",
+      "moderate": "Moderado",
+      "active": "Activo",
+      "working": "De trabajo"
+    },
+    "conditions": {
+      "underweight": "Bajo peso",
+      "ideal": "Ideal",
+      "overweight": "Sobrepeso"
+    },
+    "reproStatuses": {
+      "neutered": "Esterilizado",
+      "intact": "Intacto",
+      "pregnant": "Preñada",
+      "lactating": "En lactancia"
+    },
+    "diets": {
+      "balanced_cooked": "Cocido equilibrado (recomendado por veterinarios) — 40% proteína / 50% veg / 10% almidón",
+      "high_protein": "Cocido alto en proteína — 50% proteína / 30% veg / 15% almidón",
+      "pmr": "PMR 80-10-10 (avanzado)"
+    },
+    "vetDisclaimer": "Esta herramienta proporciona orientación general únicamente. Consulta a un nutricionista veterinario certificado (ACVN) para alimentación casera a largo plazo."
+  },
+  "foodSafety": {
+    "title": "Referencia de seguridad alimentaria",
+    "subtitle": "Busca alimentos seguros y tóxicos para perros.",
+    "search": "Buscar alimentos…",
+    "tabs": {
+      "toxic": "Tóxicos",
+      "meats": "Carnes",
+      "vegetables": "Verduras",
+      "fruits": "Frutas"
+    },
+    "raw": "Crudo",
+    "cooked": "Cocido",
+    "ok": "OK",
+    "risky": "Riesgoso",
+    "compound": "Compuesto",
+    "effect": "Efecto",
+    "benefit": "Beneficio"
+  },
+  "supplements": {
+    "title": "Guía de suplementos",
+    "subtitle": "Una dieta casera sin huesos requiere suplementación de calcio — la deficiencia n.º 1 en la comida casera para perros.",
+    "caRatio": "Objetivo de la relación Ca:P: 1,2:1 a 1,4:1 (rango aceptable AAFCO 1:1 a 2,1:1). La carne sola es ~1:20 — fuertemente sesgada hacia el fósforo. La suplementación es obligatoria.",
+    "commercialBalancers": "Equilibradores comerciales recomendados",
+    "dose": "Dosis"
+  },
+  "about": {
+    "title": "Acerca de PawCook",
+    "subtitle": "Calculadora de cocción de alimentos para perros de código abierto, creada para dueños que cocinan en casa.",
+    "disclaimers": "Descargos de responsabilidad",
+    "notVetAdvice": "Esta herramienta no es asesoramiento veterinario. Proporciona pautas generales basadas en estándares nutricionales veterinarios publicados (AAFCO, NRC, FEDIAF). Cada perro es individual. Para una alimentación casera a largo plazo, consulta a un nutricionista veterinario certificado (diplomado ACVN).",
+    "noBones": "Los huesos cocidos nunca son seguros. Esta herramienta nunca recomendará huesos cocidos en ninguna receta.",
+    "pathogen": "Seguridad patogénica: Cocine a las temperaturas internas recomendadas verificadas con un termómetro de carne. Enfríe la comida cocida rápidamente.",
+    "methodology": "Metodología y fuentes",
+    "openSource": "Código abierto",
+    "openSourceText": "PawCook tiene licencia MIT. Contribuciones, correcciones y solicitudes de funciones son bienvenidas en",
+    "github": "GitHub"
+  }
+}
