@@ -147,7 +147,7 @@ function BottomNav() {
                 <span className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-amber-400 rounded-full" />
               )}
               <span className="text-xl leading-tight">{icon}</span>
-              <span className="text-[11px] leading-tight font-medium">{label}</span>
+              <span className="text-[10px] leading-tight font-medium w-full text-center truncate px-0.5">{label}</span>
             </NavLink>
           );
         })}
