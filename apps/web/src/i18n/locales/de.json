@@ -126,6 +126,26 @@
     "commercialBalancers": "Empfohlene kommerzielle Zusätze",
     "dose": "Dosis"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Ernähre deinen Hund richtig.",
+      "subtitle": "Open-Source-Tools für Hundebesitzer, die zu Hause kochen — sichere Garzeiten, tägliche Ernährungspläne, Lebensmittelsicherheitsführer und Nahrungsergänzungsberatung.",
+      "cta": "Loslegen",
+      "learnMore": "Mehr erfahren"
+    },
+    "features": {
+      "heading": "Alles, was du brauchst",
+      "cooking": "Sichere Garzeiten und -temperaturen für 12 Fleischsorten via Sous-vide, Ofen, Herd oder Schongarer.",
+      "nutrition": "Tagesportions-Rechner basierend auf Gewicht, Alter, Aktivität und Ernährung deines Hundes.",
+      "foodSafety": "Durchsuchbare Datenbank toxischer Lebensmittel, sicherer Fleischsorten, Gemüse und Früchte.",
+      "supplements": "Kalzium-, Omega-3- und Mikronährstoffleitfaden für selbstgekochte Ernährung."
+    },
+    "openTool": "Tool öffnen",
+    "open": {
+      "title": "Kostenlos & Open Source",
+      "text": "MIT-Lizenz. Von Hundebesitzern für Hundebesitzer erstellt."
+    }
+  },
   "about": {
     "title": "Über PawCook",
     "subtitle": "Open-Source-Kochrechner für Hundefutter, entwickelt für Hundebesitzer, die zu Hause kochen.",
