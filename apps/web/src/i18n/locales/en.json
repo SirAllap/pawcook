@@ -126,6 +126,26 @@
     "commercialBalancers": "Recommended Commercial Balancers",
     "dose": "Dose"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Feed your dog right.",
+      "subtitle": "Open-source tools for home-cooking dog owners — safe cooking times, daily nutrition plans, food safety guides, and supplement advice.",
+      "cta": "Start cooking",
+      "learnMore": "Learn more"
+    },
+    "features": {
+      "heading": "Everything you need",
+      "cooking": "Safe cooking times & temperatures for 12 meat types via sous-vide, oven, stovetop, or slow cooker.",
+      "nutrition": "Daily portion calculator based on your dog's weight, age, activity level, and diet.",
+      "foodSafety": "Searchable database of toxic foods, safe meats, vegetables, and fruits.",
+      "supplements": "Calcium, omega-3, and micronutrient guide for homemade diets."
+    },
+    "openTool": "Open tool",
+    "open": {
+      "title": "Free & open source",
+      "text": "MIT licensed. Built by dog owners for dog owners."
+    }
+  },
   "about": {
     "title": "About PawCook",
     "subtitle": "Open-source dog food cooking calculator built for home-cooking dog owners.",
