@@ -126,6 +126,26 @@
     "commercialBalancers": "Aanbevolen commerciële balancers",
     "dose": "Dosis"
   },
+  "landing": {
+    "hero": {
+      "tagline": "Voed je hond goed.",
+      "subtitle": "Open-source tools voor hondeneigenaren die thuis koken — veilige kooktijden, dagelijkse voedingsplannen, voedselveiligheidsgidsen en supplementadvies.",
+      "cta": "Aan de slag",
+      "learnMore": "Meer info"
+    },
+    "features": {
+      "heading": "Alles wat je nodig hebt",
+      "cooking": "Veilige kooktijden en -temperaturen voor 12 vleessoorten via sous-vide, oven, kookplaat of slowcooker.",
+      "nutrition": "Dagelijkse portiecalculator op basis van gewicht, leeftijd, activiteit en dieet van je hond.",
+      "foodSafety": "Doorzoekbare database met giftige voedingsmiddelen, veilig vlees, groenten en fruit.",
+      "supplements": "Gids voor calcium, omega-3 en micronutriënten voor zelfgemaakte diëten."
+    },
+    "openTool": "Tool openen",
+    "open": {
+      "title": "Gratis en open source",
+      "text": "MIT-licentie. Gemaakt door hondeneigenaren voor hondeneigenaren."
+    }
+  },
   "about": {
     "title": "Over PawCook",
     "subtitle": "Open-source kookcalculator voor hondenvoer, gebouwd voor eigenaren die thuis koken.",
