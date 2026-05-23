@@ -17,34 +17,41 @@ export function Hero() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden">
-      {/* Ambient glows
-         The decorative wrapper is masked with a soft radial fade so any blob
-         that gets clipped by overflow-hidden ends in transparent — no hard
-         box edge where the colored gradient meets the page background. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_45%,black_55%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_70%_70%_at_50%_45%,black_55%,transparent_100%)]"
-      >
+    // No `overflow-hidden` here — we WANT the radial glows below to bleed
+    // past the section bounds so their natural blur halo blends into the
+    // surrounding page background. Only the grain texture (which has a
+    // visible dotted pattern boundary) gets a clipped wrapper below.
+    <section className="relative isolate">
+      {/* Ambient glows — render OUTSIDE any overflow-hidden so the blur
+         halo can extend naturally beyond the section's edges. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 h-[640px] w-[640px] rounded-full blur-[160px] opacity-60"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--primary) / 0.45), transparent 70%)' }}
+          className="absolute -top-24 left-1/2 -translate-x-1/2 h-[640px] w-[640px] rounded-full blur-[140px] opacity-60"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--primary) / 0.55), transparent)' }}
           animate={reduced ? undefined : { x: ['-50%', '-46%', '-54%', '-50%'], y: [0, -8, 6, 0] }}
           transition={reduced ? undefined : { duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-32 -right-24 h-[420px] w-[420px] rounded-full blur-[140px] opacity-40"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-b) / 0.55), transparent 70%)' }}
+          className="absolute top-24 -right-32 h-[460px] w-[460px] rounded-full blur-[130px] opacity-45"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-b) / 0.65), transparent)' }}
           animate={reduced ? undefined : { x: [0, -12, 8, 0], y: [0, 14, -6, 0] }}
           transition={reduced ? undefined : { duration: 16, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute -bottom-32 -left-24 h-[480px] w-[480px] rounded-full blur-[150px] opacity-30"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-c) / 0.55), transparent 70%)' }}
+          className="absolute -bottom-40 -left-32 h-[520px] w-[520px] rounded-full blur-[140px] opacity-35"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-c) / 0.6), transparent)' }}
           animate={reduced ? undefined : { x: [0, 10, -8, 0], y: [0, -10, 4, 0] }}
           transition={reduced ? undefined : { duration: 18, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="absolute inset-0 bg-grain opacity-40" />
+      </div>
+
+      {/* Grain texture — clipped to the section so its dotted pattern
+         doesn't show a visible square boundary outside the hero area. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-grain opacity-50" />
       </div>
 
       <div className="relative mx-auto max-w-5xl pt-12 sm:pt-20 pb-12 sm:pb-20 text-center">
