@@ -6,7 +6,8 @@
     "nutrition": "Ernährung",
     "foodSafety": "Sicherheit",
     "supplements": "Ergänzung",
-    "about": "Über uns"
+    "about": "Über uns",
+    "primary": "Hauptnavigation"
   },
   "common": {
     "calculate": "Berechnen",
@@ -31,7 +32,14 @@
     "preferences": "Einstellungen",
     "brandHome": "PawCook Startseite",
     "catFoodCalc": "Katzenfutter-Rechner",
-    "allYourPets": "Alle deine Tiere"
+    "allYourPets": "Alle deine Tiere",
+    "disclaimerLabel": "Hinweis",
+    "skipToContent": "Zum Inhalt springen",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "switchToDark": "Zum dunklen Modus wechseln",
+    "unsavedChanges": "Es gibt ungespeicherte Änderungen. Wirklich verlassen?",
+    "calcFailed": "Berechnung fehlgeschlagen — bitte Eingaben prüfen.",
+    "cancel": "Abbrechen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -115,18 +123,39 @@
     "conditions": {
       "label": "Chronische Beschwerden",
       "help": "Lenken die Empfehlungen (z. B. wenig Phosphor bei Nierenleiden). Keine Diagnosehilfe.",
-      "allergy":      { "label": "Futterallergien",     "help": "Allergene werden aus Plänen entfernt." },
-      "kidney":       { "label": "Nierenerkrankung",    "help": "Weniger Phosphor, organreiche Tage meiden." },
-      "pancreatitis": { "label": "Pankreatitis",        "help": "Nur magere Proteine, keine fetten Stücke." },
-      "diabetes":     { "label": "Diabetes",            "help": "Kohlenhydratarme Pläne, Stärke beachten." },
-      "joint":        { "label": "Gelenkprobleme",      "help": "Omega-3-reiche Proteine bevorzugen." },
-      "gi_sensitive": { "label": "Empfindlicher Magen", "help": "Milde, leicht verdauliche Optionen." },
-      "obese":        { "label": "Übergewicht",         "help": "Kalorienreduziertes Zielgewicht." }
+      "allergy": {
+        "label": "Futterallergien",
+        "help": "Allergene werden aus Plänen entfernt."
+      },
+      "kidney": {
+        "label": "Nierenerkrankung",
+        "help": "Weniger Phosphor, organreiche Tage meiden."
+      },
+      "pancreatitis": {
+        "label": "Pankreatitis",
+        "help": "Nur magere Proteine, keine fetten Stücke."
+      },
+      "diabetes": {
+        "label": "Diabetes",
+        "help": "Kohlenhydratarme Pläne, Stärke beachten."
+      },
+      "joint": {
+        "label": "Gelenkprobleme",
+        "help": "Omega-3-reiche Proteine bevorzugen."
+      },
+      "gi_sensitive": {
+        "label": "Empfindlicher Magen",
+        "help": "Milde, leicht verdauliche Optionen."
+      },
+      "obese": {
+        "label": "Übergewicht",
+        "help": "Kalorienreduziertes Zielgewicht."
+      }
     },
     "conditionsLabel": "Beschwerden",
     "confirmDelete": "{{name}} löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
-      "added":   "{{name}} hinzugefügt.",
+      "added": "{{name}} hinzugefügt.",
       "updated": "{{name}} aktualisiert.",
       "removed": "{{name}} entfernt."
     }
@@ -154,7 +183,7 @@
       "petsHelp": "Wähle ein oder mehrere. Gemischte Pläne teilen eine Einkaufsliste.",
       "duration": "Dauer",
       "days": "Tage",
-      "duration_7":  "Wöchentlich",
+      "duration_7": "Wöchentlich",
       "duration_14": "Zweiwöchentlich",
       "duration_30": "Monatlich",
       "nameLabel": "Planname",
@@ -171,19 +200,19 @@
       "varietyHelp": "Wie viel Proteinrotation pro Woche.",
       "variety": {
         "standard": "Standard",
-        "diverse":  "Vielfältig",
-        "novel":    "Nur Novel"
+        "diverse": "Vielfältig",
+        "novel": "Nur Novel"
       },
       "accessLabel": "Wo du einkaufst",
       "accessHelp": "Wähle, was in deinen üblichen Läden realistisch ist.",
       "access": {
-        "easy":      "Supermarkt-freundlich",
+        "easy": "Supermarkt-freundlich",
         "specialty": "Metzger / Spezialgeschäft OK"
       },
       "prefsLabel": "Beschaffungspräferenzen",
-      "preferWildFish":  "Wildfang-Fisch bevorzugt",
-      "preferGrassFed":  "Weidehaltung bevorzugt",
-      "preferOrganic":   "Bio-Gemüse bevorzugt"
+      "preferWildFish": "Wildfang-Fisch bevorzugt",
+      "preferGrassFed": "Weidehaltung bevorzugt",
+      "preferOrganic": "Bio-Gemüse bevorzugt"
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -210,26 +239,26 @@
       "empty": "Nichts zu kaufen — deine Vorräte decken diesen Plan ab.",
       "exportFooter": "PawCook Einkaufsliste — kein tierärztlicher Rat.",
       "section": {
-        "butcher":      "Metzger",
+        "butcher": "Metzger",
         "fish-counter": "Fischtheke",
-        "produce":      "Gemüse",
-        "pantry":       "Vorrat & Konserven",
-        "pet-store":    "Tierhandlung",
-        "supplements":  "Ergänzungen",
-        "online":       "Online-Bestellung",
-        "other":        "Sonstiges"
+        "produce": "Gemüse",
+        "pantry": "Vorrat & Konserven",
+        "pet-store": "Tierhandlung",
+        "supplements": "Ergänzungen",
+        "online": "Online-Bestellung",
+        "other": "Sonstiges"
       }
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
-      "saved":   "„{{name}}\" gespeichert.",
+      "saved": "„{{name}}\" gespeichert.",
       "deleted": "„{{name}}\" gelöscht."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Nierenleiden: Phosphor im unteren Bereich halten.",
-      "avoidOrgans":   "Nierenleiden: organreiche Tage meiden; Leber wenn möglich rotieren."
+      "avoidOrgans": "Nierenleiden: organreiche Tage meiden; Leber wenn möglich rotieren."
     },
     "pancreatitis": {
       "leanOnly": "Pankreatitis: nur magere Proteine — keine Ente, Lamm oder fette Stücke."

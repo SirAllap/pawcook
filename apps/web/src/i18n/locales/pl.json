@@ -6,7 +6,8 @@
     "nutrition": "Żywienie",
     "foodSafety": "Żywność",
     "supplements": "Suplementy",
-    "about": "O aplikacji"
+    "about": "O aplikacji",
+    "primary": "Nawigacja główna"
   },
   "common": {
     "calculate": "Oblicz",
@@ -31,7 +32,14 @@
     "preferences": "Preferencje",
     "brandHome": "Strona główna PawCook",
     "catFoodCalc": "Kalkulator karmy dla kota",
-    "allYourPets": "Wszystkie Twoje zwierzęta"
+    "allYourPets": "Wszystkie Twoje zwierzęta",
+    "disclaimerLabel": "Uwaga",
+    "skipToContent": "Przejdź do treści",
+    "switchToLight": "Przełącz na tryb jasny",
+    "switchToDark": "Przełącz na tryb ciemny",
+    "unsavedChanges": "Masz niezapisane zmiany. Na pewno chcesz wyjść?",
+    "calcFailed": "Nie można obliczyć — sprawdź dane.",
+    "cancel": "Anuluj"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -115,18 +123,39 @@
     "conditions": {
       "label": "Choroby przewlekłe",
       "help": "Sterują rekomendacjami (np. mniej fosforu przy chorobach nerek). To nie narzędzie diagnostyczne.",
-      "allergy":      { "label": "Alergie pokarmowe",   "help": "Wykluczymy alergeny z planów." },
-      "kidney":       { "label": "Choroba nerek",       "help": "Mniej fosforu, unikać dni z dużą ilością podrobów." },
-      "pancreatitis": { "label": "Zapalenie trzustki",  "help": "Tylko chude białka, bez tłustych kawałków." },
-      "diabetes":     { "label": "Cukrzyca",            "help": "Plany niskowęglowodanowe, uważaj na skrobie." },
-      "joint":        { "label": "Problemy ze stawami", "help": "Priorytet dla białek bogatych w omega-3." },
-      "gi_sensitive": { "label": "Wrażliwy żołądek",    "help": "Łagodne, łatwo strawne opcje." },
-      "obese":        { "label": "Nadwaga / otyłość",   "help": "Cel wagowy z restrykcją kalorii." }
+      "allergy": {
+        "label": "Alergie pokarmowe",
+        "help": "Wykluczymy alergeny z planów."
+      },
+      "kidney": {
+        "label": "Choroba nerek",
+        "help": "Mniej fosforu, unikać dni z dużą ilością podrobów."
+      },
+      "pancreatitis": {
+        "label": "Zapalenie trzustki",
+        "help": "Tylko chude białka, bez tłustych kawałków."
+      },
+      "diabetes": {
+        "label": "Cukrzyca",
+        "help": "Plany niskowęglowodanowe, uważaj na skrobie."
+      },
+      "joint": {
+        "label": "Problemy ze stawami",
+        "help": "Priorytet dla białek bogatych w omega-3."
+      },
+      "gi_sensitive": {
+        "label": "Wrażliwy żołądek",
+        "help": "Łagodne, łatwo strawne opcje."
+      },
+      "obese": {
+        "label": "Nadwaga / otyłość",
+        "help": "Cel wagowy z restrykcją kalorii."
+      }
     },
     "conditionsLabel": "Dolegliwości",
     "confirmDelete": "Usunąć {{name}}? Tego nie da się cofnąć.",
     "toast": {
-      "added":   "Dodano {{name}}.",
+      "added": "Dodano {{name}}.",
       "updated": "Zaktualizowano {{name}}.",
       "removed": "Usunięto {{name}}."
     }
@@ -154,7 +183,7 @@
       "petsHelp": "Wybierz jedno lub więcej. Plany mieszane mają wspólną listę zakupów.",
       "duration": "Czas trwania",
       "days": "dni",
-      "duration_7":  "Tygodniowy",
+      "duration_7": "Tygodniowy",
       "duration_14": "Dwutygodniowy",
       "duration_30": "Miesięczny",
       "nameLabel": "Nazwa planu",
@@ -171,19 +200,19 @@
       "varietyHelp": "Ile rotacji białek w tygodniu.",
       "variety": {
         "standard": "Standard",
-        "diverse":  "Zróżnicowany",
-        "novel":    "Tylko nowe"
+        "diverse": "Zróżnicowany",
+        "novel": "Tylko nowe"
       },
       "accessLabel": "Gdzie kupujesz",
       "accessHelp": "Wybierz to, co realne w Twoich sklepach.",
       "access": {
-        "easy":      "Supermarket",
+        "easy": "Supermarket",
         "specialty": "Rzeźnik / sklepy specjalistyczne OK"
       },
       "prefsLabel": "Preferencje pochodzenia",
-      "preferWildFish":  "Preferuj dziką rybę",
-      "preferGrassFed":  "Preferuj karmione trawą",
-      "preferOrganic":   "Preferuj warzywa bio"
+      "preferWildFish": "Preferuj dziką rybę",
+      "preferGrassFed": "Preferuj karmione trawą",
+      "preferOrganic": "Preferuj warzywa bio"
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -210,26 +239,26 @@
       "empty": "Nic do kupienia — Twoja spiżarnia już pokrywa ten plan.",
       "exportFooter": "Lista zakupów PawCook — to nie porada weterynaryjna.",
       "section": {
-        "butcher":      "Rzeźnik",
+        "butcher": "Rzeźnik",
         "fish-counter": "Stoisko rybne",
-        "produce":      "Warzywa i owoce",
-        "pantry":       "Spiżarnia & konserwy",
-        "pet-store":    "Sklep zoologiczny",
-        "supplements":  "Suplementy",
-        "online":       "Zamówienie online",
-        "other":        "Inne"
+        "produce": "Warzywa i owoce",
+        "pantry": "Spiżarnia & konserwy",
+        "pet-store": "Sklep zoologiczny",
+        "supplements": "Suplementy",
+        "online": "Zamówienie online",
+        "other": "Inne"
       }
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
-      "saved":   "Zapisano „{{name}}\".",
+      "saved": "Zapisano „{{name}}\".",
       "deleted": "Usunięto „{{name}}\"."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Choroba nerek: utrzymuj fosfor w dolnej części planu.",
-      "avoidOrgans":   "Choroba nerek: unikaj dni z dużą ilością podrobów; rotuj wątrobę poza planem."
+      "avoidOrgans": "Choroba nerek: unikaj dni z dużą ilością podrobów; rotuj wątrobę poza planem."
     },
     "pancreatitis": {
       "leanOnly": "Zapalenie trzustki: tylko chude białka — bez kaczki, jagnięciny i tłustych kawałków."

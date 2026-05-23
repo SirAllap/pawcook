@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import type { ReactNode } from 'react';
 import {
-  Dog, Flame, ShieldAlert, Pill, Sparkles, Languages, ArrowUpRight,
+  Dog, Flame, ShieldAlert, Pill, Sparkles, PawPrint, ClipboardList, ArrowUpRight,
   type LucideIcon,
 } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
@@ -80,25 +80,6 @@ function ThermometerFeature() {
   );
 }
 
-function FlagsFeature() {
-  const flags = ['🇬🇧', '🇪🇸', '🇫🇷', '🇧🇷', '🇩🇪', '🇮🇹', '🇵🇱', '🇳🇱'];
-  return (
-    <div className="absolute right-3 bottom-3 grid grid-cols-4 gap-1">
-      {flags.map((f, i) => (
-        <motion.span
-          key={f}
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.05 }}
-          className="h-7 w-7 rounded-md bg-surface border border-border flex items-center justify-center text-sm"
-        >
-          {f}
-        </motion.span>
-      ))}
-    </div>
-  );
-}
 
 function SearchFeature() {
   const { t } = useTranslation();
@@ -127,6 +108,16 @@ export function BentoGrid() {
       feature: <MacroBarsFeature />,
     },
     {
+      to: '/pets',
+      titleKey: 'landing.bento.petsTitle',
+      titleDefault: 'Pet profiles',
+      descKey: 'landing.bento.petsDesc',
+      descDefault: 'Save dogs and cats with allergies and conditions.',
+      Icon: PawPrint,
+      accent: 'info',
+      className: 'sm:col-span-2 min-h-[200px]',
+    },
+    {
       to: '/cooking',
       titleKey: 'nav.cooking',
       titleDefault: 'Cooking',
@@ -136,6 +127,16 @@ export function BentoGrid() {
       accent: 'warning',
       className: 'sm:col-span-2 min-h-[200px]',
       feature: <ThermometerFeature />,
+    },
+    {
+      to: '/meal-plan',
+      titleKey: 'landing.bento.planTitle',
+      titleDefault: 'Meal plans',
+      descKey: 'landing.bento.planDesc',
+      descDefault: '7, 14, or 30-day plans with a shopping list.',
+      Icon: ClipboardList,
+      accent: 'accent',
+      className: 'sm:col-span-2 min-h-[200px]',
     },
     {
       to: '/food-safety',
@@ -166,18 +167,7 @@ export function BentoGrid() {
       descDefault: 'Balanced cooked · BARF · PMR · High protein · Ancestral.',
       Icon: Sparkles,
       accent: 'accent',
-      className: 'sm:col-span-1 min-h-[180px]',
-    },
-    {
-      to: '/about',
-      titleKey: 'landing.bento.langTitle',
-      titleDefault: '8 languages',
-      descKey: 'landing.bento.langDesc',
-      descDefault: 'Fully translated, anywhere you cook.',
-      Icon: Languages,
-      accent: 'info',
-      className: 'sm:col-span-1 min-h-[180px]',
-      feature: <FlagsFeature />,
+      className: 'sm:col-span-2 min-h-[180px]',
     },
   ];
 
@@ -191,7 +181,7 @@ export function BentoGrid() {
           {t('landing.bento.heading', { defaultValue: 'One toolkit. Every meal.' })}
         </h2>
         <p className="mt-3 text-muted-fg">
-          {t('landing.bento.sub', { defaultValue: 'Six tools that turn home cooking from guesswork into a routine you trust.' })}
+          {t('landing.bento.sub', { defaultValue: 'Tools that turn home cooking from guesswork into a routine you trust.' })}
         </p>
       </div>
 

@@ -14,6 +14,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
 ) {
   const autoId = useId();
   const selectId = id ?? autoId;
+  const errorId = error ? `${selectId}-err` : undefined;
+  const helperId = helper && !error ? `${selectId}-help` : undefined;
+  const describedBy =
+    [errorId, helperId, (rest as { 'aria-describedby'?: string })['aria-describedby']]
+      .filter(Boolean)
+      .join(' ') || undefined;
+
   return (
     <div className="space-y-1.5">
       {label && (
@@ -29,6 +36,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           ref={ref}
           id={selectId}
           aria-invalid={!!error || undefined}
+          aria-describedby={describedBy}
           className={cn(
             'w-full appearance-none cursor-pointer rounded-xl border border-input bg-surface',
             'pl-4 pr-10 py-3 text-base text-foreground outline-none',
@@ -41,12 +49,19 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
         >
           {children}
         </select>
-        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-fg" />
+        <ChevronDown
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-fg"
+          aria-hidden
+        />
       </div>
       {error ? (
-        <p className="text-xs text-danger font-medium">{error}</p>
+        <p id={errorId} className="text-xs text-danger font-medium">
+          {error}
+        </p>
       ) : helper ? (
-        <p className="text-xs text-muted-fg">{helper}</p>
+        <p id={helperId} className="text-xs text-muted-fg">
+          {helper}
+        </p>
       ) : null}
     </div>
   );

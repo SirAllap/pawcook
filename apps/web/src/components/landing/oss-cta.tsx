@@ -52,12 +52,12 @@ export function OssCta() {
           <div className="flex flex-col gap-3">
             <Button asChild size="lg" variant="primary">
               <a href="https://github.com/SirAllap/pawcook" target="_blank" rel="noopener noreferrer">
-                <GithubIcon className="h-4 w-4" />
+                <GithubIcon className="h-4 w-4" aria-hidden />
                 GitHub
               </a>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link to="/about">{t('landing.hero.learnMore')}</Link>
+              <Link to="/about">{t('landing.hero.learnMore', { defaultValue: 'Learn more' })}</Link>
             </Button>
           </div>
         </div>

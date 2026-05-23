@@ -1,7 +1,8 @@
-import { forwardRef, type ButtonHTMLAttributes } from 'react';
+import { forwardRef, type ButtonHTMLAttributes, type ReactElement, type Ref } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Loader2 } from 'lucide-react';
 import { cn } from '../../lib/cn';
+import { Slot } from '../../lib/slot';
 
 const button = cva(
   [
@@ -57,27 +58,63 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof button> {
   loading?: boolean;
-  /** Render only the styled child element. Useful for wrapping a <Link>. */
+  /**
+   * When true, render the styled element as the single child instead of a
+   * native <button>. Use this to apply button styling to a <Link> or <a>
+   * without producing illegal nested interactive elements.
+   */
   asChild?: boolean;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { className, variant, size, block, loading, disabled, asChild, children, ...rest },
+export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
+  {
+    className,
+    variant,
+    size,
+    block,
+    loading,
+    disabled,
+    asChild,
+    type,
+    children,
+    ...rest
+  },
   ref
 ) {
-  // asChild support: don't render a <button>, but propagate styling to caller.
-  // Callers wrap a single styled element (e.g. <Link className=...>).
-  void asChild;
+  const cls = cn(button({ variant, size, block }), className);
+  const content = (
+    <>
+      {loading ? (
+        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+      ) : null}
+      {children}
+    </>
+  );
+
+  if (asChild) {
+    // Strip button-only props that don't apply to an arbitrary element.
+    return (
+      <Slot
+        ref={ref as Ref<unknown>}
+        className={cls}
+        aria-disabled={disabled || loading || undefined}
+        data-loading={loading || undefined}
+        {...(rest as Record<string, unknown>)}
+      >
+        {content as unknown as ReactElement}
+      </Slot>
+    );
+  }
 
   return (
     <button
-      ref={ref}
+      ref={ref as Ref<HTMLButtonElement>}
+      type={type ?? 'button'}
       disabled={disabled || loading}
-      className={cn(button({ variant, size, block }), className)}
+      className={cls}
       {...rest}
     >
-      {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-      {children}
+      {content}
     </button>
   );
 });

@@ -19,11 +19,13 @@ const iconSize: Record<Size, string> = {
 export function PetAvatar({
   photo,
   species,
+  name,
   size = 'md',
   className,
 }: {
   photo?: string;
   species: Species;
+  name?: string;
   size?: Size;
   className?: string;
 }) {
@@ -37,11 +39,15 @@ export function PetAvatar({
       )}
     >
       {photo ? (
-        <img src={photo} alt="" className="h-full w-full object-cover" />
+        <img
+          src={photo}
+          alt={name ?? ''}
+          className="h-full w-full object-cover"
+        />
       ) : species === 'cat' ? (
-        <CatIcon className={iconSize[size]} />
+        <CatIcon className={iconSize[size]} aria-hidden />
       ) : (
-        <DogIcon className={iconSize[size]} />
+        <DogIcon className={iconSize[size]} aria-hidden />
       )}
     </div>
   );

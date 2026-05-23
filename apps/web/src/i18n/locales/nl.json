@@ -6,7 +6,8 @@
     "nutrition": "Voeding",
     "foodSafety": "Veiligheid",
     "supplements": "Supplementen",
-    "about": "Over ons"
+    "about": "Over ons",
+    "primary": "Hoofdnavigatie"
   },
   "common": {
     "calculate": "Berekenen",
@@ -31,7 +32,14 @@
     "preferences": "Voorkeuren",
     "brandHome": "PawCook startpagina",
     "catFoodCalc": "Kattenvoer calculator",
-    "allYourPets": "Al je huisdieren"
+    "allYourPets": "Al je huisdieren",
+    "disclaimerLabel": "Opmerking",
+    "skipToContent": "Sla naar inhoud",
+    "switchToLight": "Wissel naar lichte modus",
+    "switchToDark": "Wissel naar donkere modus",
+    "unsavedChanges": "Er zijn niet-opgeslagen wijzigingen. Weet je zeker dat je wilt vertrekken?",
+    "calcFailed": "Kon niet berekenen — controleer de waarden.",
+    "cancel": "Annuleren"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -115,18 +123,39 @@
     "conditions": {
       "label": "Chronische aandoeningen",
       "help": "Sturen de aanbevelingen (bijv. weinig fosfor bij nierproblemen). Geen diagnosetool.",
-      "allergy":      { "label": "Voedselallergieën",  "help": "We laten allergenen uit plannen." },
-      "kidney":       { "label": "Nierziekte",         "help": "Minder fosfor, vermijd dagen vol orgaanvlees." },
-      "pancreatitis": { "label": "Alvleesontsteking",  "help": "Alleen magere eiwitten, geen vette stukken." },
-      "diabetes":     { "label": "Diabetes",           "help": "Koolhydraatarme plannen, let op zetmeel." },
-      "joint":        { "label": "Gewrichtsproblemen", "help": "Voorkeur voor omega-3 rijke eiwitten." },
-      "gi_sensitive": { "label": "Gevoelige maag",     "help": "Milde, makkelijk verteerbare opties." },
-      "obese":        { "label": "Overgewicht",        "help": "Calorie-beperkt streefgewicht." }
+      "allergy": {
+        "label": "Voedselallergieën",
+        "help": "We laten allergenen uit plannen."
+      },
+      "kidney": {
+        "label": "Nierziekte",
+        "help": "Minder fosfor, vermijd dagen vol orgaanvlees."
+      },
+      "pancreatitis": {
+        "label": "Alvleesontsteking",
+        "help": "Alleen magere eiwitten, geen vette stukken."
+      },
+      "diabetes": {
+        "label": "Diabetes",
+        "help": "Koolhydraatarme plannen, let op zetmeel."
+      },
+      "joint": {
+        "label": "Gewrichtsproblemen",
+        "help": "Voorkeur voor omega-3 rijke eiwitten."
+      },
+      "gi_sensitive": {
+        "label": "Gevoelige maag",
+        "help": "Milde, makkelijk verteerbare opties."
+      },
+      "obese": {
+        "label": "Overgewicht",
+        "help": "Calorie-beperkt streefgewicht."
+      }
     },
     "conditionsLabel": "Aandoeningen",
     "confirmDelete": "{{name}} verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
-      "added":   "{{name}} toegevoegd.",
+      "added": "{{name}} toegevoegd.",
       "updated": "{{name}} bijgewerkt.",
       "removed": "{{name}} verwijderd."
     }
@@ -154,7 +183,7 @@
       "petsHelp": "Kies één of meer. Gemengde plannen delen één boodschappenlijst.",
       "duration": "Duur",
       "days": "dagen",
-      "duration_7":  "Wekelijks",
+      "duration_7": "Wekelijks",
       "duration_14": "Tweewekelijks",
       "duration_30": "Maandelijks",
       "nameLabel": "Plannaam",
@@ -171,19 +200,19 @@
       "varietyHelp": "Hoeveel eiwitrotatie per week.",
       "variety": {
         "standard": "Standaard",
-        "diverse":  "Gevarieerd",
-        "novel":    "Alleen novel"
+        "diverse": "Gevarieerd",
+        "novel": "Alleen novel"
       },
       "accessLabel": "Waar je winkelt",
       "accessHelp": "Kies wat realistisch is in je gebruikelijke winkels.",
       "access": {
-        "easy":      "Supermarkt-vriendelijk",
+        "easy": "Supermarkt-vriendelijk",
         "specialty": "Slager / speciaalzaak OK"
       },
       "prefsLabel": "Herkomstvoorkeuren",
-      "preferWildFish":  "Wilde vis bij voorkeur",
-      "preferGrassFed":  "Graskoe bij voorkeur",
-      "preferOrganic":   "Biologische groente bij voorkeur"
+      "preferWildFish": "Wilde vis bij voorkeur",
+      "preferGrassFed": "Graskoe bij voorkeur",
+      "preferOrganic": "Biologische groente bij voorkeur"
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -210,26 +239,26 @@
       "empty": "Niks te kopen — je voorraadkast dekt dit plan al.",
       "exportFooter": "PawCook boodschappenlijst — geen veterinair advies.",
       "section": {
-        "butcher":      "Slager",
+        "butcher": "Slager",
         "fish-counter": "Visafdeling",
-        "produce":      "Groente & fruit",
-        "pantry":       "Voorraadkast & blik",
-        "pet-store":    "Dierenwinkel",
-        "supplements":  "Supplementen",
-        "online":       "Online bestelling",
-        "other":        "Overig"
+        "produce": "Groente & fruit",
+        "pantry": "Voorraadkast & blik",
+        "pet-store": "Dierenwinkel",
+        "supplements": "Supplementen",
+        "online": "Online bestelling",
+        "other": "Overig"
       }
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
-      "saved":   "\"{{name}}\" opgeslagen.",
+      "saved": "\"{{name}}\" opgeslagen.",
       "deleted": "\"{{name}}\" verwijderd."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Nierprobleem: houd fosfor aan de lage kant van het plan.",
-      "avoidOrgans":   "Nierprobleem: vermijd orgaanrijke dagen; roteer lever weg waar mogelijk."
+      "avoidOrgans": "Nierprobleem: vermijd orgaanrijke dagen; roteer lever weg waar mogelijk."
     },
     "pancreatitis": {
       "leanOnly": "Pancreatitis: alleen magere eiwitten — geen eend, lam of vette stukken."

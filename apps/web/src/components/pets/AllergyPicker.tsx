@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { X, Plus } from 'lucide-react';
 import { useState } from 'react';
-import { INGREDIENTS, getIngredient } from '@pawcook/shared';
+import { INGREDIENTS } from '@pawcook/shared';
 import { SectionLabel } from '../ui/section-label';
+import { useTranslateIngredient } from '../../lib/translate-ingredient';
 import { cn } from '../../lib/cn';
 
 const COMMON_ALLERGENS = ['beef', 'chicken', 'pork', 'lamb', 'salmon', 'whitefish'];
@@ -15,14 +16,17 @@ export function AllergyPicker({
   onChange: (next: string[]) => void;
 }) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const [adding, setAdding] = useState(false);
 
   function toggle(id: string) {
     onChange(value.includes(id) ? value.filter((v) => v !== id) : [...value, id]);
   }
 
-  const chosen = value.map((id) => ({ id, label: getIngredient(id)?.label ?? id }));
-  const otherCandidates = INGREDIENTS.filter((i) => !value.includes(i.id) && !COMMON_ALLERGENS.includes(i.id));
+  const otherCandidates = INGREDIENTS.filter(
+    (i) => !value.includes(i.id) && !COMMON_ALLERGENS.includes(i.id),
+  );
+  const customSelected = value.filter((id) => !COMMON_ALLERGENS.includes(id));
 
   return (
     <div className="space-y-3">
@@ -37,36 +41,41 @@ export function AllergyPicker({
               key={id}
               type="button"
               onClick={() => toggle(id)}
+              aria-pressed={active}
               className={cn(
                 'inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold',
-                'border transition-colors',
+                'min-h-[36px] border transition-colors',
                 active
                   ? 'bg-danger/15 border-danger/40 text-danger'
                   : 'bg-surface-2 border-border text-muted-fg hover:text-foreground',
               )}
             >
-              {active && <X className="h-3 w-3" />}
-              {getIngredient(id)?.label ?? id}
+              {active
+                ? <X className="h-3 w-3" aria-hidden />
+                : <Plus className="h-3 w-3" aria-hidden />}
+              {translateIngredient(id)}
             </button>
           );
         })}
       </div>
 
-      {chosen.filter((c) => !COMMON_ALLERGENS.includes(c.id)).length > 0 && (
+      {customSelected.length > 0 && (
         <div className="flex flex-wrap gap-2">
-          {chosen
-            .filter((c) => !COMMON_ALLERGENS.includes(c.id))
-            .map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => toggle(c.id)}
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-danger/15 border border-danger/40 text-danger"
-              >
-                <X className="h-3 w-3" />
-                {c.label}
-              </button>
-            ))}
+          {customSelected.map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => toggle(id)}
+              aria-label={t('pets.allergies.removeOne', {
+                defaultValue: 'Remove {{name}}',
+                name: translateIngredient(id),
+              })}
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-danger/15 border border-danger/40 text-danger min-h-[36px]"
+            >
+              <X className="h-3 w-3" aria-hidden />
+              {translateIngredient(id)}
+            </button>
+          ))}
         </div>
       )}
 
@@ -75,9 +84,9 @@ export function AllergyPicker({
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-surface-2 border border-dashed border-border text-muted-fg hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-surface-2 border border-dashed border-border text-muted-fg hover:text-foreground transition-colors min-h-[36px]"
           >
-            <Plus className="h-3 w-3" />
+            <Plus className="h-3 w-3" aria-hidden />
             {t('pets.allergies.addOther')}
           </button>
         )
@@ -92,9 +101,9 @@ export function AllergyPicker({
                 key={i.id}
                 type="button"
                 onClick={() => { toggle(i.id); setAdding(false); }}
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-surface border border-border text-foreground hover:bg-surface-3 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold bg-surface border border-border text-foreground hover:bg-surface-3 transition-colors min-h-[36px]"
               >
-                {i.label}
+                {translateIngredient(i.id)}
               </button>
             ))}
           </div>

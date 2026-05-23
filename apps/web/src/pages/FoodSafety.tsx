@@ -77,9 +77,11 @@ export default function FoodSafety() {
               <button
                 type="button"
                 onClick={() => setSearch('')}
+                aria-label={t('foodSafety.clearSearch', { defaultValue: 'Clear search' })}
+                title={t('foodSafety.clearSearch', { defaultValue: 'Clear search' })}
                 className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-surface-3 text-muted-fg hover:text-foreground transition-colors"
               >
-                <X className="h-3.5 w-3.5" />
+                <X className="h-3.5 w-3.5" aria-hidden />
               </button>
             ) : null
           }
@@ -90,13 +92,21 @@ export default function FoodSafety() {
         <div className="overflow-x-auto no-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0">
           <TabsList className="inline-flex w-auto">
             {tabs.map(({ id, label, Icon, count }) => (
-              <TabsTrigger key={id} value={id} className="gap-2">
-                <Icon className="h-4 w-4" />
+              <TabsTrigger
+                key={id}
+                value={id}
+                aria-label={`${label} (${count})`}
+                className="gap-2"
+              >
+                <Icon className="h-4 w-4" aria-hidden />
                 <span>{label}</span>
-                <span className={cn(
-                  'inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 rounded-full text-[10px] font-black tabular-nums',
-                  tab === id ? 'bg-primary/15 text-primary' : 'bg-surface-3 text-muted-fg'
-                )}>
+                <span
+                  aria-hidden
+                  className={cn(
+                    'inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 rounded-full text-[10px] font-black tabular-nums',
+                    tab === id ? 'bg-primary/15 text-primary' : 'bg-surface-3 text-muted-fg',
+                  )}
+                >
                   {count}
                 </span>
               </TabsTrigger>
