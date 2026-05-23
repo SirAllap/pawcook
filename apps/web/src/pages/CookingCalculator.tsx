@@ -7,8 +7,10 @@ import { CookingInputSchema, type CookingInput, calculateCookingTime, type Cooki
 const STORAGE_KEY = 'pawcook_cooking_input';
 
 const DEFAULT_VALUES: CookingInput = {
-  meatType: 'beef', form: 'minced', weightKg: 1, numberOfBags: 1,
-  thicknessCm: 5, cookingMethod: 'sous_vide', fatContent: 'medium', temperatureUnit: 'celsius',
+  meatType: 'beef', form: 'minced', cookingMethod: 'sous_vide', fatContent: 'medium',
+  temperatureUnit: 'celsius',
+  weightKg: 1, numberOfBags: 1, thicknessCm: 5,
+  totalWeightKg: 1,
 };
 
 const MEAT_KEYS = ['beef','chicken','turkey','lamb','pork','duck','rabbit','venison','salmon','mackerel','sardines','whitefish'] as const;
@@ -34,6 +36,13 @@ function SectionHead({ children }: { children: React.ReactNode }) {
   );
 }
 
+const METHOD_VESSEL: Record<string, string> = {
+  sous_vide: '🛁',
+  oven: '🍲',
+  stovetop_low: '🫕',
+  slow_cooker: '🥘',
+};
+
 export default function CookingCalculator() {
   const { t } = useTranslation();
   const [result, setResult] = useState<CookingResult | null>(null);
@@ -50,7 +59,10 @@ export default function CookingCalculator() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch {}
   }, [values]);
 
-  const totalKg = (values.weightKg || 0) * (values.numberOfBags || 0);
+  const isSousVide = values.cookingMethod === 'sous_vide';
+  const totalKg = isSousVide
+    ? (values.weightKg || 0) * (values.numberOfBags || 0)
+    : (values.totalWeightKg || 0);
 
   function onSubmit(data: CookingInput) {
     setCalculating(true);
@@ -95,18 +107,47 @@ export default function CookingCalculator() {
           </div>
 
           <SectionHead>{t('cooking.method')}</SectionHead>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className={labelCls}>{t('cooking.weightPerBag')}</label>
-              <input type="number" step="0.1" inputMode="decimal" {...register('weightKg', { valueAsNumber: true })} className={inputCls} />
-              {errors.weightKg && <p className={errCls}>{errors.weightKg.message}</p>}
-            </div>
-            <div>
-              <label className={labelCls}>{t('cooking.numberOfBags')}</label>
-              <input type="number" inputMode="numeric" {...register('numberOfBags', { valueAsNumber: true })} className={inputCls} />
-              {errors.numberOfBags && <p className={errCls}>{errors.numberOfBags.message}</p>}
-            </div>
+          <div>
+            <label className={labelCls}>{t('cooking.method')}</label>
+            <select {...register('cookingMethod')} className={inputCls}>
+              <option value="sous_vide">{METHOD_VESSEL.sous_vide} {t('cooking.methods.sous_vide')}</option>
+              <option value="oven">{METHOD_VESSEL.oven} {t('cooking.methods.oven')}</option>
+              <option value="stovetop_low">{METHOD_VESSEL.stovetop_low} {t('cooking.methods.stovetop_low')}</option>
+              <option value="slow_cooker">{METHOD_VESSEL.slow_cooker} {t('cooking.methods.slow_cooker')}</option>
+            </select>
           </div>
+
+          {/* Sous-vide: per-bag inputs */}
+          {isSousVide && (
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className={labelCls}>{t('cooking.weightPerBag')}</label>
+                  <input type="number" step="0.1" inputMode="decimal" {...register('weightKg', { valueAsNumber: true })} className={inputCls} />
+                  {errors.weightKg && <p className={errCls}>{errors.weightKg.message}</p>}
+                </div>
+                <div>
+                  <label className={labelCls}>{t('cooking.numberOfBags')}</label>
+                  <input type="number" inputMode="numeric" {...register('numberOfBags', { valueAsNumber: true })} className={inputCls} />
+                  {errors.numberOfBags && <p className={errCls}>{errors.numberOfBags.message}</p>}
+                </div>
+              </div>
+              <div>
+                <label className={labelCls}>{t('cooking.thickness')}</label>
+                <input type="number" step="0.5" inputMode="decimal" {...register('thicknessCm', { valueAsNumber: true })} className={inputCls} />
+                {errors.thicknessCm && <p className={errCls}>{errors.thicknessCm.message}</p>}
+              </div>
+            </div>
+          )}
+
+          {/* Oven / stovetop / slow cooker: total batch weight */}
+          {!isSousVide && (
+            <div>
+              <label className={labelCls}>{t('cooking.totalWeight')}</label>
+              <input type="number" step="0.1" inputMode="decimal" {...register('totalWeightKg', { valueAsNumber: true })} className={inputCls} />
+              {errors.totalWeightKg && <p className={errCls}>{errors.totalWeightKg.message}</p>}
+            </div>
+          )}
 
           {totalKg > 0 && (
             <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-2.5">
@@ -117,23 +158,6 @@ export default function CookingCalculator() {
               </span>
             </div>
           )}
-
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className={labelCls}>{t('cooking.thickness')}</label>
-              <input type="number" step="0.5" inputMode="decimal" {...register('thicknessCm', { valueAsNumber: true })} className={inputCls} />
-              {errors.thicknessCm && <p className={errCls}>{errors.thicknessCm.message}</p>}
-            </div>
-            <div>
-              <label className={labelCls}>{t('cooking.method')}</label>
-              <select {...register('cookingMethod')} className={inputCls}>
-                <option value="sous_vide">{t('cooking.methods.sous_vide')}</option>
-                <option value="oven">{t('cooking.methods.oven')}</option>
-                <option value="stovetop_low">{t('cooking.methods.stovetop_low')}</option>
-                <option value="slow_cooker">{t('cooking.methods.slow_cooker')}</option>
-              </select>
-            </div>
-          </div>
 
           <SectionHead>{t('cooking.optionsSection')}</SectionHead>
           <div className="grid grid-cols-2 gap-3">
