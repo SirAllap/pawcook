@@ -412,6 +412,16 @@
       "bake": "Bake",
       "blanch": "Blanch",
       "raw": "Raw"
+    },
+    "prefilledContext": "{{pets}} pet(s) · {{days}} days of feeding",
+    "bagStrategy": {
+      "title": "Bag strategy",
+      "daysPerBag": "Days each cooked bag covers",
+      "daysAria": "{{n}} days per bag",
+      "day": "day",
+      "days": "days",
+      "result": "Split",
+      "help": "Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving."
     }
   },
   "nutrition": {

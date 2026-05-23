@@ -412,6 +412,16 @@
       "bake": "Horno",
       "blanch": "Blanquear",
       "raw": "Crudo"
+    },
+    "prefilledContext": "{{pets}} mascota(s) · {{days}} días de comida",
+    "bagStrategy": {
+      "title": "Estrategia de bolsas",
+      "daysPerBag": "Días que cubre cada bolsa cocinada",
+      "daysAria": "{{n}} días por bolsa",
+      "day": "día",
+      "days": "días",
+      "result": "División",
+      "help": "Alimenta a {{pets}} mascota(s) durante {{days}} días en total. Tras cocinar, guarda 1 bolsa en la nevera (consúmela en {{fridge}} días) y congela las {{frozen}} restantes. Descongela una bolsa la noche anterior."
     }
   },
   "nutrition": {

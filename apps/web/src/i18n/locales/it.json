@@ -412,6 +412,16 @@
       "bake": "Forno",
       "blanch": "Sbianchire",
       "raw": "Crudo"
+    },
+    "prefilledContext": "{{pets}} animale(i) · {{days}} giorni di alimentazione",
+    "bagStrategy": {
+      "title": "Strategia delle buste",
+      "daysPerBag": "Giorni coperti da ogni busta cotta",
+      "daysAria": "{{n}} giorni per busta",
+      "day": "giorno",
+      "days": "giorni",
+      "result": "Divisione",
+      "help": "Alimenta {{pets}} animale(i) per {{days}} giorni totali. Dopo la cottura, conserva 1 busta in frigo (consuma entro {{fridge}} giorni) e congela le altre {{frozen}}. Scongela una busta la sera prima."
     }
   },
   "nutrition": {

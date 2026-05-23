@@ -412,6 +412,16 @@
       "bake": "Four",
       "blanch": "Blanchir",
       "raw": "Cru"
+    },
+    "prefilledContext": "{{pets}} animal(aux) · {{days}} jours de repas",
+    "bagStrategy": {
+      "title": "Stratégie de sachets",
+      "daysPerBag": "Jours couverts par un sachet cuit",
+      "daysAria": "{{n}} jours par sachet",
+      "day": "jour",
+      "days": "jours",
+      "result": "Répartition",
+      "help": "Nourrit {{pets}} animal(aux) pendant {{days}} jours. Après cuisson, gardez 1 sachet au frigo (à consommer sous {{fridge}} jours) et congelez les {{frozen}} autres. Décongelez un sachet la veille."
     }
   },
   "nutrition": {

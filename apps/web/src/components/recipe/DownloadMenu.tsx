@@ -35,7 +35,7 @@ export function DownloadMenu({ onDownloadPdf, onDownloadImage, onPrint, busy, di
           ) : (
             <Download className="h-4 w-4" />
           )}
-          <span className="hidden sm:inline">
+          <span>
             {isBusy ? t('common.downloading') : t('common.download')}
           </span>
         </button>
