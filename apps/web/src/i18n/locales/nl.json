@@ -19,6 +19,7 @@
     "downloadFailed": "Bestand kon niet worden gegenereerd. Probeer opnieuw.",
     "exportFooter": "PawCook — pawcook.app — geen veterinair advies.",
     "safe": "Veilig",
+    "no": "Nee",
     "toxic": "GIFTIG",
     "disclaimer": "Geen veterinair advies. Raadpleeg een ACVN-diplomaat voor langdurige huisvoeding.",
     "openSource": "Open source",
@@ -64,6 +65,8 @@
       "species": "Soort",
       "speciesLocked": "Soort kan na aanmaken niet meer worden gewijzigd.",
       "name": "Naam",
+      "namePlaceholderDog": "Boris",
+      "namePlaceholderCat": "Mies",
       "weight": "Gewicht (kg)",
       "lifestyleSection": "Leefstijl",
       "age": "Levensfase",
@@ -129,6 +132,29 @@
       "added":   "{{name}} toegevoegd.",
       "updated": "{{name}} bijgewerkt.",
       "removed": "{{name}} verwijderd."
+    }
+  },
+  "data": {
+    "title": "Back-up & herstel",
+    "help": "Je huisdieren en plannen staan alleen op dit apparaat. Exporteer een back-upbestand om te laden op een andere telefoon of na het wissen van opslag.",
+    "export": "Back-up exporteren",
+    "nothingToExport": "Nog niets te exporteren — voeg eerst een huisdier of plan toe.",
+    "exportSuccess": "Back-up opgeslagen met {{pets}} huisdier(en) en {{plans}} plan(nen).",
+    "importPartial": "{{pets}} huisdier(en) en {{plans}} plan(nen) geïmporteerd. {{skipped}} item(s) overgeslagen (ongeldig).",
+    "importSuccess": "{{pets}} huisdier(en) en {{plans}} plan(nen) geïmporteerd.",
+    "importConfirm": {
+      "replaceOrMerge": "Huidige huisdieren en plannen vervangen door de back-up?\n\nOK = alles vervangen.\nAnnuleren = samenvoegen (beide behouden, items met dezelfde naam bijwerken)."
+    },
+    "import": {
+      "cta": "Back-up importeren",
+      "error": {
+        "generic": "Bestand kon niet worden gelezen.",
+        "fileTooLarge": "Back-up is te groot. Gebruik een bestand kleiner dan 5 MB.",
+        "readFailed": "Bestand kon niet worden gelezen. Probeer opnieuw.",
+        "notJson": "Bestand is geen geldige JSON.",
+        "notPawcookBackup": "Dit lijkt geen PawCook back-up.",
+        "unsupportedVersion": "Back-up komt uit een nieuwere versie. Update de app eerst."
+      }
     }
   },
   "mealPlan": {

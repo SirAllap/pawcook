@@ -5,6 +5,7 @@ import { PageHeader } from '../../components/ui/page-header';
 import { Button } from '../../components/ui/button';
 import { EmptyState } from '../../components/ui/empty-state';
 import { PetCard } from '../../components/pets/PetCard';
+import { DataPortability } from '../../components/pets/DataPortability';
 import { usePets } from '../../contexts/PetProfilesContext';
 
 export default function PetsList() {
@@ -42,6 +43,8 @@ export default function PetsList() {
           ))}
         </div>
       )}
+
+      <DataPortability />
     </div>
   );
 }
