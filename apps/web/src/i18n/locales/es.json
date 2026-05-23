@@ -715,7 +715,11 @@
         "safeCore": "Núcleo seguro"
       },
       "nutrition_cat": "Macros diarias, calorías y los guardarraíles específicos para gatos (taurina, AA, arginina, vit. A) ajustados a tu gato.",
-      "cooking_cat": "Tiempo y temperatura seguros para cada carne — más los recordatorios de suplementos posteriores que los gatos necesitan."
+      "cooking_cat": "Tiempo y temperatura seguros para cada carne — más los recordatorios de suplementos posteriores que los gatos necesitan.",
+      "petsTitle": "Perfiles de mascotas",
+      "petsDesc": "Guarda perros y gatos con alergias y condiciones.",
+      "planTitle": "Planes de comidas",
+      "planDesc": "Planes de 7, 14 o 30 días con su lista de la compra."
     },
     "how": {
       "eyebrow": "Cómo funciona",

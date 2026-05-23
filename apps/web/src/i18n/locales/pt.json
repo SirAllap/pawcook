@@ -715,7 +715,11 @@
         "safeCore": "Núcleo seguro"
       },
       "nutrition_cat": "Macros diários, calorias e as proteções específicas para gatos (taurina, AA, arginina, vit. A) ajustadas ao seu gato.",
-      "cooking_cat": "Tempo e temperatura seguros para cada carne — mais os lembretes de suplementos pós-cozimento que os gatos precisam."
+      "cooking_cat": "Tempo e temperatura seguros para cada carne — mais os lembretes de suplementos pós-cozimento que os gatos precisam.",
+      "petsTitle": "Perfis de pets",
+      "petsDesc": "Salve cães e gatos com alergias e condições.",
+      "planTitle": "Planos de refeições",
+      "planDesc": "Planos de 7, 14 ou 30 dias com lista de compras."
     },
     "how": {
       "eyebrow": "Como funciona",

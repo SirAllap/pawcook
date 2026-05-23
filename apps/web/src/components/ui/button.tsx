@@ -82,17 +82,14 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
   ref
 ) {
   const cls = cn(button({ variant, size, block }), className);
-  const content = (
-    <>
-      {loading ? (
-        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-      ) : null}
-      {children}
-    </>
-  );
 
   if (asChild) {
-    // Strip button-only props that don't apply to an arbitrary element.
+    // In asChild mode, `children` must be a single styleable element (a
+    // <Link>, <a>, etc.). We hand it straight to Slot so the button styles
+    // land on that element — wrapping in a Fragment first would break Slot
+    // because Fragments don't accept className. The loading spinner is
+    // intentionally not auto-inserted for asChild; callers that need one
+    // should drop asChild and use a real <button>.
     return (
       <Slot
         ref={ref as Ref<unknown>}
@@ -101,7 +98,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
         data-loading={loading || undefined}
         {...(rest as Record<string, unknown>)}
       >
-        {content as unknown as ReactElement}
+        {children as ReactElement}
       </Slot>
     );
   }
@@ -114,7 +111,10 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
       className={cls}
       {...rest}
     >
-      {content}
+      {loading ? (
+        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+      ) : null}
+      {children}
     </button>
   );
 });

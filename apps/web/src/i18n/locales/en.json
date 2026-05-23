@@ -715,7 +715,11 @@
         "safeCore": "Safe core"
       },
       "nutrition_cat": "Daily macros, calories and the cat-specific guardrails (taurine, AA, arginine, vit A) tuned to your cat.",
-      "cooking_cat": "Safe time & temperature for every meat — plus the post-cooking supplement reminders cats need."
+      "cooking_cat": "Safe time & temperature for every meat — plus the post-cooking supplement reminders cats need.",
+      "petsTitle": "Pet profiles",
+      "petsDesc": "Save dogs and cats with allergies and conditions.",
+      "planTitle": "Meal plans",
+      "planDesc": "7, 14, or 30-day plans with a shopping list."
     },
     "how": {
       "eyebrow": "How it works",

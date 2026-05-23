@@ -715,7 +715,11 @@
         "safeCore": "Sicherer Kern"
       },
       "nutrition_cat": "Tägliche Makros, Kalorien und die katzenspezifischen Leitplanken (Taurin, AA, Arginin, Vit. A), abgestimmt auf Ihre Katze.",
-      "cooking_cat": "Sichere Zeit & Temperatur für jedes Fleisch — plus die Erinnerungen an Supplemente nach dem Kochen, die Katzen brauchen."
+      "cooking_cat": "Sichere Zeit & Temperatur für jedes Fleisch — plus die Erinnerungen an Supplemente nach dem Kochen, die Katzen brauchen.",
+      "petsTitle": "Tierprofile",
+      "petsDesc": "Hunde und Katzen mit Allergien und Erkrankungen speichern.",
+      "planTitle": "Ernährungspläne",
+      "planDesc": "7-, 14- oder 30-Tage-Pläne mit Einkaufsliste."
     },
     "how": {
       "eyebrow": "So funktioniert es",

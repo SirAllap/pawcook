@@ -715,7 +715,11 @@
         "safeCore": "Centro sicuro"
       },
       "nutrition_cat": "Macro giornalieri, calorie e i guardrail specifici per gatti (taurina, AA, arginina, vit. A) tarati sul tuo gatto.",
-      "cooking_cat": "Tempo e temperatura sicuri per ogni carne — più i promemoria degli integratori post-cottura di cui i gatti hanno bisogno."
+      "cooking_cat": "Tempo e temperatura sicuri per ogni carne — più i promemoria degli integratori post-cottura di cui i gatti hanno bisogno.",
+      "petsTitle": "Profili animali",
+      "petsDesc": "Salva cani e gatti con allergie e patologie.",
+      "planTitle": "Piani pasti",
+      "planDesc": "Piani da 7, 14 o 30 giorni con lista della spesa."
     },
     "how": {
       "eyebrow": "Come funziona",
