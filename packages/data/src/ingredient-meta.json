@@ -1,0 +1,299 @@
+{
+  "$comment": "Planner-side metadata that joins by `id` with meats/vegetables/fruits/supplements. Keep this in sync when new items are added.",
+  "ingredients": [
+    {
+      "id": "beef",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["red-meat"]
+    },
+    {
+      "id": "chicken",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["white-meat", "lean", "gi-friendly"]
+    },
+    {
+      "id": "turkey",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["white-meat", "lean", "gi-friendly"]
+    },
+    {
+      "id": "lamb",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["red-meat", "fatty"],
+      "avoidForConditions": ["pancreatitis"]
+    },
+    {
+      "id": "pork",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["red-meat"]
+    },
+    {
+      "id": "duck",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["fatty", "novel"],
+      "avoidForConditions": ["pancreatitis"]
+    },
+    {
+      "id": "rabbit",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "novel",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["lean", "novel", "hypoallergenic"]
+    },
+    {
+      "id": "venison",
+      "componentRoles": ["protein", "muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "novel",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["lean", "novel", "hypoallergenic"]
+    },
+    {
+      "id": "salmon",
+      "componentRoles": ["seafood", "protein"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "fish-counter",
+      "tags": ["omega-3", "wild-available"],
+      "rotation": { "everyDays": 3 }
+    },
+    {
+      "id": "mackerel",
+      "componentRoles": ["seafood"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "fish-counter",
+      "tags": ["omega-3", "high-pufa"],
+      "catMaxPctDaily": 0.10,
+      "rotation": { "everyDays": 3 }
+    },
+    {
+      "id": "sardines",
+      "componentRoles": ["seafood"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "pantry",
+      "tags": ["omega-3", "whole-fish", "low-mercury"],
+      "rotation": { "everyDays": 3 },
+      "avoidForConditions": ["kidney"]
+    },
+    {
+      "id": "whitefish",
+      "componentRoles": ["seafood"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "fish-counter",
+      "tags": ["lean", "mild"]
+    },
+    {
+      "id": "chicken_liver",
+      "label": "Chicken liver",
+      "componentRoles": ["liver"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["organ", "vit-a"],
+      "catMaxPctDaily": 0.10,
+      "dogMaxPctDaily": 0.10,
+      "avoidForConditions": ["kidney"]
+    },
+    {
+      "id": "beef_liver",
+      "label": "Beef liver",
+      "componentRoles": ["liver"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["organ", "vit-a"],
+      "catMaxPctDaily": 0.10,
+      "dogMaxPctDaily": 0.10,
+      "avoidForConditions": ["kidney"]
+    },
+    {
+      "id": "beef_kidney",
+      "label": "Beef kidney",
+      "componentRoles": ["organ"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["organ"],
+      "avoidForConditions": ["kidney"]
+    },
+    {
+      "id": "beef_spleen",
+      "label": "Beef spleen",
+      "componentRoles": ["organ"],
+      "species": ["dog", "cat"],
+      "varietyTier": "diverse",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["organ", "iron"]
+    },
+    {
+      "id": "chicken_hearts",
+      "label": "Chicken hearts",
+      "componentRoles": ["muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["taurine", "heart"]
+    },
+    {
+      "id": "beef_hearts",
+      "label": "Beef hearts",
+      "componentRoles": ["muscle"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "specialty",
+      "storeSection": "butcher",
+      "tags": ["taurine", "heart"]
+    },
+    {
+      "id": "raw_meaty_bones",
+      "label": "Raw meaty bones (chicken necks, wings)",
+      "componentRoles": ["bone"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "butcher",
+      "tags": ["raw-only", "calcium"]
+    },
+    {
+      "id": "carrots",
+      "componentRoles": ["veg"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["beta-carotene"]
+    },
+    {
+      "id": "pumpkin",
+      "componentRoles": ["veg"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["fiber", "gi-friendly"]
+    },
+    {
+      "id": "sweet_potato",
+      "componentRoles": ["starch"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["complex-carb"],
+      "avoidForConditions": ["diabetes"]
+    },
+    {
+      "id": "broccoli",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["cruciferous"],
+      "dogMaxPctDaily": 0.10
+    },
+    {
+      "id": "spinach",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["iron", "oxalates"],
+      "avoidForConditions": ["kidney"]
+    },
+    {
+      "id": "green_beans",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["low-cal", "fiber"]
+    },
+    {
+      "id": "zucchini",
+      "componentRoles": ["veg"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["hydration", "low-cal"]
+    },
+    {
+      "id": "peas",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["protein", "fiber"]
+    },
+    {
+      "id": "blueberries",
+      "componentRoles": ["fruit"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["antioxidant"]
+    },
+    {
+      "id": "apple",
+      "componentRoles": ["fruit"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["fiber"]
+    }
+  ],
+  "storeSections": [
+    { "id": "butcher",      "order": 1, "label": "Butcher / meat" },
+    { "id": "fish-counter", "order": 2, "label": "Fish counter" },
+    { "id": "produce",      "order": 3, "label": "Produce" },
+    { "id": "pantry",       "order": 4, "label": "Pantry & canned" },
+    { "id": "pet-store",    "order": 5, "label": "Pet store" },
+    { "id": "supplements",  "order": 6, "label": "Supplements" },
+    { "id": "online",       "order": 7, "label": "Online order" }
+  ]
+}

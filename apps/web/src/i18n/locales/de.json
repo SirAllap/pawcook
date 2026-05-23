@@ -1,5 +1,7 @@
 {
   "nav": {
+    "pets": "Tiere",
+    "plan": "Plan",
     "cooking": "Kochen",
     "nutrition": "Ernährung",
     "foodSafety": "Sicherheit",
@@ -9,6 +11,13 @@
   "common": {
     "calculate": "Berechnen",
     "print": "Rezeptkarte drucken",
+    "download": "Herunterladen",
+    "downloadPdf": "PDF herunterladen",
+    "downloadImage": "Bild herunterladen",
+    "downloading": "Vorbereitung…",
+    "downloadSuccess": "In deinen Downloads gespeichert.",
+    "downloadFailed": "Datei konnte nicht erstellt werden. Bitte erneut versuchen.",
+    "exportFooter": "PawCook — pawcook.app — kein tierärztlicher Rat.",
     "safe": "Sicher",
     "toxic": "GIFTIG",
     "disclaimer": "Kein Tierärztlicher Rat. Wenden Sie sich für die langfristige Heimfütterung an einen ACVN-Diplomaten.",
@@ -21,7 +30,225 @@
     "changeLanguage": "Sprache wählen",
     "preferences": "Einstellungen",
     "brandHome": "PawCook Startseite",
-    "catFoodCalc": "Katzenfutter-Rechner"
+    "catFoodCalc": "Katzenfutter-Rechner",
+    "allYourPets": "Alle deine Tiere"
+  },
+  "pets": {
+    "eyebrow": "Tiere",
+    "list": {
+      "title": "Deine Tiere",
+      "subtitle": "Lege für jedes Tier ein Profil an, damit Pläne zu Art, Alter und Bedingungen passen.",
+      "addPet": "Tier hinzufügen",
+      "emptyTitle": "Noch keine Tiere",
+      "emptyDescription": "Füge dein erstes Tier hinzu, um maßgeschneiderte Pläne und Einkaufslisten freizuschalten."
+    },
+    "new": {
+      "title": "Tier hinzufügen",
+      "subtitle": "Erzähl uns davon. Du kannst alles später ändern."
+    },
+    "edit": {
+      "title": "{{name}} bearbeiten",
+      "subtitle": "Körper, Lebensstil oder Gesundheitsdaten aktualisieren."
+    },
+    "detail": {
+      "back": "Zurück zu den Tieren",
+      "edit": "Bearbeiten",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Tägliches Nährstoffziel",
+      "findings": "Worauf zu achten ist",
+      "plansTitle": "Mahlzeitenpläne",
+      "newPlan": "Neuer Plan",
+      "noPlans": "Noch in keinem Plan. Erstelle einen, um loszukochen."
+    },
+    "form": {
+      "species": "Art",
+      "speciesLocked": "Die Art lässt sich nach dem Anlegen nicht mehr ändern.",
+      "name": "Name",
+      "weight": "Gewicht (kg)",
+      "lifestyleSection": "Lebensstil",
+      "age": "Lebensphase",
+      "activity": "Aktivitätsniveau",
+      "bodyCondition": "Körperkondition",
+      "reproStatus": "Fortpflanzungsstatus",
+      "mealsPerDay": "Mahlzeiten pro Tag",
+      "dietSection": "Ernährungsansatz",
+      "notes": "Notizen (optional)",
+      "notesPlaceholder": "Was sonst noch wichtig ist über dieses Tier.",
+      "create": "Tier anlegen",
+      "saveChanges": "Änderungen speichern",
+      "delete": "Tier löschen"
+    },
+    "species": {
+      "dog": "Hund",
+      "cat": "Katze"
+    },
+    "age": {
+      "puppy": "Welpe",
+      "kitten": "Kätzchen",
+      "adult": "Erwachsen",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Wenig aktiv",
+      "moderate": "Moderat",
+      "active": "Aktiv",
+      "working": "Arbeitstier"
+    },
+    "bodyCondition": {
+      "underweight": "Untergewicht",
+      "ideal": "Ideal",
+      "overweight": "Übergewicht"
+    },
+    "reproStatus": {
+      "neutered": "Kastriert",
+      "intact": "Intakt",
+      "pregnant": "Trächtig",
+      "lactating": "Säugend"
+    },
+    "allergies": {
+      "label": "Bekannte Futterallergien",
+      "help": "Tippe Proteine oder Zutaten an, auf die dein Tier reagiert. Der Planer schließt sie aus.",
+      "addOther": "Weitere hinzufügen",
+      "pickOther": "Zutat wählen",
+      "done": "Fertig"
+    },
+    "conditions": {
+      "label": "Chronische Beschwerden",
+      "help": "Lenken die Empfehlungen (z. B. wenig Phosphor bei Nierenleiden). Keine Diagnosehilfe.",
+      "allergy":      { "label": "Futterallergien",     "help": "Allergene werden aus Plänen entfernt." },
+      "kidney":       { "label": "Nierenerkrankung",    "help": "Weniger Phosphor, organreiche Tage meiden." },
+      "pancreatitis": { "label": "Pankreatitis",        "help": "Nur magere Proteine, keine fetten Stücke." },
+      "diabetes":     { "label": "Diabetes",            "help": "Kohlenhydratarme Pläne, Stärke beachten." },
+      "joint":        { "label": "Gelenkprobleme",      "help": "Omega-3-reiche Proteine bevorzugen." },
+      "gi_sensitive": { "label": "Empfindlicher Magen", "help": "Milde, leicht verdauliche Optionen." },
+      "obese":        { "label": "Übergewicht",         "help": "Kalorienreduziertes Zielgewicht." }
+    },
+    "conditionsLabel": "Beschwerden",
+    "confirmDelete": "{{name}} löschen? Das lässt sich nicht rückgängig machen.",
+    "toast": {
+      "added":   "{{name}} hinzugefügt.",
+      "updated": "{{name}} aktualisiert.",
+      "removed": "{{name}} entfernt."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Mahlzeitenplan",
+    "landing": {
+      "title": "Mahlzeitenpläne",
+      "subtitle": "Erstelle einen Wochen-, Zweiwochen- oder Monatsplan mit der Einkaufsliste fürs Geschäft.",
+      "create": "Plan erstellen",
+      "emptyTitle": "Noch keine Pläne",
+      "emptyDescription": "Erstelle deinen ersten Plan, um Menüs und Einkaufslisten aus deinen Tieren zu erzeugen."
+    },
+    "new": {
+      "title": "Neuer Plan",
+      "subtitle": "Wähle deine Tiere und die Tage. Wir kümmern uns um den Rest."
+    },
+    "needPet": {
+      "title": "Zuerst ein Tier hinzufügen",
+      "description": "Pläne nutzen das Profil jedes Tieres zur Menüberechnung. Lege eines an, um zu beginnen.",
+      "cta": "Tier hinzufügen"
+    },
+    "wizard": {
+      "pets": "Tiere im Plan",
+      "petsHelp": "Wähle ein oder mehrere. Gemischte Pläne teilen eine Einkaufsliste.",
+      "duration": "Dauer",
+      "days": "Tage",
+      "duration_7":  "Wöchentlich",
+      "duration_14": "Zweiwöchentlich",
+      "duration_30": "Monatlich",
+      "nameLabel": "Planname",
+      "generate": "Vorschau erzeugen",
+      "regenerate": "Neu mischen",
+      "save": "Plan speichern",
+      "previewEyebrow": "Vorschau",
+      "previewSubtitle": "{{days}} Tage · bereit zum Speichern",
+      "defaultName": "{{names}} · {{days}} Tage",
+      "defaultNameEmpty": "Unbenannter Plan"
+    },
+    "sourcing": {
+      "varietyLabel": "Vielfalt",
+      "varietyHelp": "Wie viel Proteinrotation pro Woche.",
+      "variety": {
+        "standard": "Standard",
+        "diverse":  "Vielfältig",
+        "novel":    "Nur Novel"
+      },
+      "accessLabel": "Wo du einkaufst",
+      "accessHelp": "Wähle, was in deinen üblichen Läden realistisch ist.",
+      "access": {
+        "easy":      "Supermarkt-freundlich",
+        "specialty": "Metzger / Spezialgeschäft OK"
+      },
+      "prefsLabel": "Beschaffungspräferenzen",
+      "preferWildFish":  "Wildfang-Fisch bevorzugt",
+      "preferGrassFed":  "Weidehaltung bevorzugt",
+      "preferOrganic":   "Bio-Gemüse bevorzugt"
+    },
+    "coverage": {
+      "passed": "Sieht ausgewogen aus",
+      "passedHelp": "Keine Ernährungshinweise für die Tiere in diesem Plan.",
+      "flagged": "Worauf zu achten ist"
+    },
+    "day": "Tag",
+    "slot": {
+      "meal": "Mahlzeit",
+      "breakfast": "Frühstück",
+      "lunch": "Mittag",
+      "dinner": "Abend"
+    },
+    "view": {
+      "back": "Zurück zu den Plänen",
+      "delete": "Plan löschen",
+      "subtitle": "{{days}} Tage · ab {{startDate}}",
+      "tabMeals": "Mahlzeiten",
+      "tabShopping": "Einkauf"
+    },
+    "shopping": {
+      "total": "Einkauf gesamt",
+      "totalSummary": "{{items}} Artikel · {{grams}} g in allen Bereichen",
+      "empty": "Nichts zu kaufen — deine Vorräte decken diesen Plan ab.",
+      "exportFooter": "PawCook Einkaufsliste — kein tierärztlicher Rat.",
+      "section": {
+        "butcher":      "Metzger",
+        "fish-counter": "Fischtheke",
+        "produce":      "Gemüse",
+        "pantry":       "Vorrat & Konserven",
+        "pet-store":    "Tierhandlung",
+        "supplements":  "Ergänzungen",
+        "online":       "Online-Bestellung",
+        "other":        "Sonstiges"
+      }
+    },
+    "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
+    "toast": {
+      "saved":   "„{{name}}\" gespeichert.",
+      "deleted": "„{{name}}\" gelöscht."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Nierenleiden: Phosphor im unteren Bereich halten.",
+      "avoidOrgans":   "Nierenleiden: organreiche Tage meiden; Leber wenn möglich rotieren."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pankreatitis: nur magere Proteine — keine Ente, Lamm oder fette Stücke."
+    },
+    "diabetes": {
+      "lowCarb": "Diabetes: Stärke und Obst niedrig halten; Proteine und faserreiches Gemüse bevorzugen."
+    },
+    "joint": {
+      "omega3": "Gelenkunterstützung: Omega-3-Quellen priorisieren (Sardinen, Makrele, Lachs)."
+    },
+    "gi": {
+      "bland": "Empfindlicher Magen: magere weiße Proteine (Huhn, Pute, Kaninchen) sind leichter verdaulich."
+    },
+    "obese": {
+      "kcalReduce": "Übergewicht: Kalorienziel reduziert — Körperkondition wöchentlich prüfen."
+    },
+    "allergy": {
+      "respectList": "Allergene aus dem Profil dieses Tieres werden im Plan ausgeschlossen."
+    }
   },
   "cooking": {
     "title": "Kochrechner",

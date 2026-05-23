@@ -205,7 +205,6 @@ export function BentoGrid() {
 }
 
 function BentoTile({ tile, index }: { tile: Tile; index: number }) {
-  const { t } = useTranslation();
   const tS = useSpeciesT();
   return (
     <motion.div

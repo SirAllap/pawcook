@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from './lib/theme';
 import { SpeciesProvider } from './lib/species';
+import { PetProfilesProvider } from './contexts/PetProfilesContext';
 import App from './App';
 
 function setup() {
@@ -13,9 +14,11 @@ function setup() {
   return render(
     <ThemeProvider>
       <SpeciesProvider>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
+        <PetProfilesProvider>
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
+        </PetProfilesProvider>
       </SpeciesProvider>
     </ThemeProvider>
   );
@@ -33,6 +36,7 @@ describe('App', () => {
   it('renders the navigation links', async () => {
     setup();
     await waitFor(() => {
+      expect(screen.getAllByText('Pets').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);

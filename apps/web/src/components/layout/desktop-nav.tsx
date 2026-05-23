@@ -8,6 +8,8 @@ export function DesktopNav() {
   const location = useLocation();
 
   const items = [
+    { to: '/pets',        label: t('nav.pets') },
+    { to: '/meal-plan',   label: t('nav.plan') },
     { to: '/cooking',     label: t('nav.cooking') },
     { to: '/nutrition',   label: t('nav.nutrition') },
     { to: '/food-safety', label: t('nav.foodSafety') },

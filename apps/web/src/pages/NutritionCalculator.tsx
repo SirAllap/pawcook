@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner';
-import { Sparkles, Printer, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet } from 'lucide-react';
+import { Sparkles, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet } from 'lucide-react';
 import {
   NutritionInputSchema, calculateNutrition,
   type NutritionInput, type NutritionResult,
@@ -24,7 +24,8 @@ import { StatTile } from '../components/calculators/stat-tile';
 import { MacroBar } from '../components/calculators/macro-bar';
 import { CaPGauge } from '../components/calculators/ca-p-gauge';
 import { EmptyState } from '../components/ui/empty-state';
-import { Tooltip } from '../components/ui/tooltip';
+import { DownloadMenu } from '../components/recipe/DownloadMenu';
+import { useRecipeExport } from '../hooks/useRecipeExport';
 import { cn } from '../lib/cn';
 
 // Keys are tied to per-species storage so dog inputs and cat inputs
@@ -103,6 +104,17 @@ export default function NutritionCalculator() {
   const [result, setResult] = useState<NutritionResult | null>(null);
   const [calculating, setCalculating] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
+  const { setTarget, downloadPdf, downloadImage, busy } = useRecipeExport();
+
+  const exportConfig = result
+    ? {
+        prefix: species === 'cat' ? 'pawcook-cat-nutrition' : 'pawcook-dog-nutrition',
+        parts: [result.dietProfile, `${result.dailyFoodGrams.min}-${result.dailyFoodGrams.max}g`],
+        footer: t('nutrition.exportFooter', {
+          defaultValue: 'PawCook — not veterinary advice. Consult your veterinarian before major diet changes.',
+        }),
+      }
+    : null;
 
   const { register, handleSubmit, watch, control, reset, formState: { errors } } = useForm<NutritionInput>({
     resolver: zodResolver(NutritionInputSchema),
@@ -294,7 +306,7 @@ export default function NutritionCalculator() {
             transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
             className="scroll-mt-20"
           >
-            <Card padding="none" variant="elevated" className="overflow-hidden print-card">
+            <Card padding="none" variant="elevated" className="overflow-hidden print-card" ref={setTarget}>
               <header className="flex items-start justify-between gap-3 p-5 border-b border-border">
                 <div>
                   <h2 className="font-black text-lg tracking-tight">{t('nutrition.dailyPlan')}</h2>
@@ -306,15 +318,14 @@ export default function NutritionCalculator() {
                 </div>
                 <div className="flex items-center gap-2">
                   <AafcoBadge status={result.aafcoStatus} />
-                  <Tooltip content={t('common.print', { defaultValue: 'Print' })}>
-                    <button
-                      type="button"
-                      onClick={() => window.print()}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-2 hover:bg-surface-3 transition-colors no-print"
-                    >
-                      <Printer className="h-4 w-4" />
-                    </button>
-                  </Tooltip>
+                  {exportConfig && (
+                    <DownloadMenu
+                      busy={busy}
+                      onDownloadPdf={() => downloadPdf(exportConfig)}
+                      onDownloadImage={() => downloadImage(exportConfig)}
+                      onPrint={() => window.print()}
+                    />
+                  )}
                 </div>
               </header>
 
