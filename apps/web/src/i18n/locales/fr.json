@@ -134,6 +134,29 @@
       "removed": "{{name}} supprimé."
     }
   },
+  "data": {
+    "title": "Sauvegarde et restauration",
+    "help": "Vos animaux et plans ne sont stockés que sur cet appareil. Exportez un fichier de sauvegarde à charger sur un autre téléphone ou après vidage du stockage.",
+    "export": "Exporter la sauvegarde",
+    "nothingToExport": "Rien à exporter encore — ajoutez d'abord un animal ou un plan.",
+    "exportSuccess": "Sauvegarde enregistrée avec {{pets}} animal(/animaux) et {{plans}} plan(s).",
+    "importPartial": "Importé {{pets}} animal(/animaux) et {{plans}} plan(s). {{skipped}} entrée(s) ignorée(s) (invalides).",
+    "importSuccess": "Importé {{pets}} animal(/animaux) et {{plans}} plan(s).",
+    "importConfirm": {
+      "replaceOrMerge": "Remplacer vos animaux et plans actuels par la sauvegarde ?\n\nOK = tout remplacer.\nAnnuler = fusionner (garder les deux, mettre à jour ceux du même nom)."
+    },
+    "import": {
+      "cta": "Importer une sauvegarde",
+      "error": {
+        "generic": "Impossible de lire ce fichier.",
+        "fileTooLarge": "La sauvegarde est trop volumineuse. Utilisez un fichier < 5 Mo.",
+        "readFailed": "Impossible de lire le fichier. Réessayez.",
+        "notJson": "Ce fichier n'est pas un JSON valide.",
+        "notPawcookBackup": "Cela ne ressemble pas à une sauvegarde PawCook.",
+        "unsupportedVersion": "Sauvegarde issue d'une version plus récente. Mettez l'application à jour d'abord."
+      }
+    }
+  },
   "mealPlan": {
     "eyebrow": "Plan de repas",
     "landing": {

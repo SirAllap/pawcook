@@ -134,6 +134,29 @@
       "removed": "{{name}} rimosso."
     }
   },
+  "data": {
+    "title": "Backup e ripristino",
+    "help": "I tuoi animali e piani sono salvati solo su questo dispositivo. Esporta un file di backup da caricare su un altro telefono o dopo aver svuotato la memoria.",
+    "export": "Esporta backup",
+    "nothingToExport": "Nulla da esportare — aggiungi prima un animale o un piano.",
+    "exportSuccess": "Backup salvato con {{pets}} animale/i e {{plans}} piano/i.",
+    "importPartial": "Importati {{pets}} animale/i e {{plans}} piano/i. {{skipped}} voce/i ignorata/e (non valide).",
+    "importSuccess": "Importati {{pets}} animale/i e {{plans}} piano/i.",
+    "importConfirm": {
+      "replaceOrMerge": "Sostituire gli animali e i piani attuali con il backup?\n\nOK = sostituisci tutto.\nAnnulla = unisci (mantieni entrambi, aggiorna quelli con lo stesso nome)."
+    },
+    "import": {
+      "cta": "Importa backup",
+      "error": {
+        "generic": "Impossibile leggere il file.",
+        "fileTooLarge": "Il backup è troppo grande. Usa un file inferiore a 5 MB.",
+        "readFailed": "Impossibile leggere il file. Riprova.",
+        "notJson": "Il file non è JSON valido.",
+        "notPawcookBackup": "Non sembra un backup di PawCook.",
+        "unsupportedVersion": "Il backup proviene da una versione più recente. Aggiorna l'app prima."
+      }
+    }
+  },
   "mealPlan": {
     "eyebrow": "Piano pasti",
     "landing": {

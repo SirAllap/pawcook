@@ -134,6 +134,29 @@
       "removed": "{{name}} removed."
     }
   },
+  "data": {
+    "title": "Backup & restore",
+    "help": "Your pets and meal plans live only on this device. Export a backup file you can load on another phone or after clearing storage.",
+    "export": "Export backup",
+    "nothingToExport": "Nothing to export yet — add a pet or a plan first.",
+    "exportSuccess": "Saved backup with {{pets}} pet(s) and {{plans}} plan(s).",
+    "importPartial": "Imported {{pets}} pet(s) and {{plans}} plan(s). {{skipped}} entry(ies) skipped (invalid).",
+    "importSuccess": "Imported {{pets}} pet(s) and {{plans}} plan(s).",
+    "importConfirm": {
+      "replaceOrMerge": "Replace your current pets and plans with the backup?\n\nOK = replace everything.\nCancel = merge (keep both, same-name items updated)."
+    },
+    "import": {
+      "cta": "Import backup",
+      "error": {
+        "generic": "Couldn't read that file.",
+        "fileTooLarge": "Backup is unexpectedly large. Use a file under 5 MB.",
+        "readFailed": "Couldn't read the file. Try again.",
+        "notJson": "That file isn't valid JSON.",
+        "notPawcookBackup": "That doesn't look like a PawCook backup.",
+        "unsupportedVersion": "Backup is from a newer version of PawCook. Update the app first."
+      }
+    }
+  },
   "mealPlan": {
     "eyebrow": "Meal plan",
     "landing": {

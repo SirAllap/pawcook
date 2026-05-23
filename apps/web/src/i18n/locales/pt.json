@@ -134,6 +134,29 @@
       "removed": "{{name}} removido."
     }
   },
+  "data": {
+    "title": "Cópia & restauro",
+    "help": "Os teus animais e planos só ficam neste dispositivo. Exporta uma cópia de segurança para carregar noutro telemóvel ou após limpar o armazenamento.",
+    "export": "Exportar cópia",
+    "nothingToExport": "Ainda nada para exportar — adiciona primeiro um animal ou plano.",
+    "exportSuccess": "Cópia guardada com {{pets}} animal(is) e {{plans}} plano(s).",
+    "importPartial": "Importados {{pets}} animal(is) e {{plans}} plano(s). {{skipped}} entrada(s) ignorada(s) (inválida(s)).",
+    "importSuccess": "Importados {{pets}} animal(is) e {{plans}} plano(s).",
+    "importConfirm": {
+      "replaceOrMerge": "Substituir os animais e planos atuais pela cópia?\n\nOK = substituir tudo.\nCancelar = fundir (manter ambos, atualizar os do mesmo nome)."
+    },
+    "import": {
+      "cta": "Importar cópia",
+      "error": {
+        "generic": "Não foi possível ler o ficheiro.",
+        "fileTooLarge": "A cópia é demasiado grande. Usa um ficheiro inferior a 5 MB.",
+        "readFailed": "Não foi possível ler o ficheiro. Tenta novamente.",
+        "notJson": "O ficheiro não é JSON válido.",
+        "notPawcookBackup": "Isso não parece uma cópia do PawCook.",
+        "unsupportedVersion": "A cópia é de uma versão mais recente. Atualiza primeiro a app."
+      }
+    }
+  },
   "mealPlan": {
     "eyebrow": "Plano de refeições",
     "landing": {
