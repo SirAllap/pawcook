@@ -18,6 +18,18 @@ export const SourcingPrefsSchema = z.object({
   dislikedIngredientIds: z.array(z.string()).default([]),
   mustIncludeIngredientIds: z.array(z.string()).default([]),
   pantryIngredientIds: z.array(z.string()).default([]),
+  /**
+   * Explicit whitelist of meat-side ingredient ids the user wants in the
+   * plan (proteins, organs, fish). Empty = any meat allowed by the
+   * variety/accessibility tiers. Non-empty narrows the protein pool to
+   * exactly these ids before tier filtering is applied.
+   */
+  meatIds: z.array(z.string()).default([]),
+  /**
+   * Same idea as meatIds, but for produce-side components (veg, fiber).
+   * Empty = any veg allowed.
+   */
+  vegIds: z.array(z.string()).default([]),
 });
 export type SourcingPrefs = z.infer<typeof SourcingPrefsSchema>;
 

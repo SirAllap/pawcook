@@ -117,6 +117,45 @@ export function findIngredientsForComponent(
   });
 }
 
+// Component keys we treat as "meat-side" (proteins, organs, fish) vs
+// "veg-side" (vegetables and fibrous starches). Used by the planner UI to
+// surface meaningful pickers and by the generator to apply a user's
+// explicit whitelist only to the relevant components.
+export const MEAT_COMPONENT_KEYS = ['protein', 'muscle', 'bone', 'liver', 'organ', 'seafood'] as const;
+export const VEG_COMPONENT_KEYS  = ['veg', 'fiber', 'starch', 'fruit'] as const;
+
+export type MeatComponentKey = typeof MEAT_COMPONENT_KEYS[number];
+export type VegComponentKey  = typeof VEG_COMPONENT_KEYS[number];
+
+export function isMeatComponent(key: ComponentKey): boolean {
+  return (MEAT_COMPONENT_KEYS as readonly string[]).includes(key);
+}
+export function isVegComponent(key: ComponentKey): boolean {
+  return (VEG_COMPONENT_KEYS as readonly string[]).includes(key);
+}
+
+/**
+ * All ingredients that can fill at least one meat-side component for the
+ * given species. Used to populate the planner's "meats to include" picker.
+ */
+export function getMeatIngredients(species: Species): Ingredient[] {
+  return INGREDIENTS.filter(
+    (i) => i.species.includes(species)
+      && i.componentRoles.some((r) => isMeatComponent(r)),
+  );
+}
+
+/**
+ * All ingredients that can fill at least one veg-side component for the
+ * given species. Used to populate the planner's "veggies to include" picker.
+ */
+export function getVegIngredients(species: Species): Ingredient[] {
+  return INGREDIENTS.filter(
+    (i) => i.species.includes(species)
+      && i.componentRoles.some((r) => isVegComponent(r)),
+  );
+}
+
 /**
  * Narrow a candidate pool by sourcing preferences. Variety tier acts as a
  * floor: 'standard' allows everything, 'diverse' adds diverse+novel,

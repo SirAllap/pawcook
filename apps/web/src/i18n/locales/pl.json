@@ -40,7 +40,8 @@
     "switchToDark": "Przełącz na tryb ciemny",
     "unsavedChanges": "Masz niezapisane zmiany. Na pewno chcesz wyjść?",
     "calcFailed": "Nie można obliczyć — sprawdź dane.",
-    "cancel": "Anuluj"
+    "cancel": "Anuluj",
+    "dismiss": "Zamknij"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -238,7 +239,13 @@
       "prefsLabel": "Preferencje pochodzenia",
       "preferWildFish": "Preferuj dziką rybę",
       "preferGrassFed": "Preferuj karmione trawą",
-      "preferOrganic": "Preferuj warzywa bio"
+      "preferOrganic": "Preferuj warzywa bio",
+      "meatsLabel": "Mięsa do uwzględnienia",
+      "meatsHelp": "Wybierz białka — puste = planer wybiera.",
+      "veggiesLabel": "Warzywa do uwzględnienia",
+      "veggiesHelp": "Wybierz warzywa — puste = planer wybiera.",
+      "anyMeats": "Dowolne · planer wybiera",
+      "anyVeggies": "Dowolne · planer wybiera"
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -273,7 +280,8 @@
         "supplements": "Suplementy",
         "online": "Zamówienie online",
         "other": "Inne"
-      }
+      },
+      "cookWith": "Gotuj {{name}} ({{qty}})"
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz.",
     "catSupplementsTitle": "Suplementy dla kota po gotowaniu",
     "catSupplementsBody": "Ciepło niszczy taurynę, witaminy B (tiamina, niacyna) i część witaminy E. Dodaj zestaw dla kota — tauryna 250–500 mg, kompleks B, witamina E — po ostygnięciu posiłku.",
-    "subtitle_cat": "Bezpieczny czas i temperatura gotowania jedzenia dla Twojego kota. Pamiętaj, aby dodać taurynę + kompleks B po ugotowaniu."
+    "subtitle_cat": "Bezpieczny czas i temperatura gotowania jedzenia dla Twojego kota. Pamiętaj, aby dodać taurynę + kompleks B po ugotowaniu.",
+    "prefilledFromPlan": "Wstępnie wypełnione z planu",
+    "prefilledHelp": "Przenieśliśmy mięso i całkowitą wagę z „{{plan}}”. Dostosuj przed obliczeniem.",
+    "prefilledPlanFallback": "twojego planu",
+    "veggieGuideTitle": "Przewodnik gotowania warzyw",
+    "veggieGuideHelp": "Szybka ściąga dla części warzywnej — al dente, nigdy rozgotowane.",
+    "vegMethod": {
+      "steam": "Para",
+      "bake": "Piekarnik",
+      "blanch": "Blanszuj",
+      "raw": "Surowe"
+    }
   },
   "nutrition": {
     "title": "Kalkulator żywienia",

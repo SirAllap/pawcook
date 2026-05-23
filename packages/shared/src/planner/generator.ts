@@ -4,6 +4,8 @@ import type { PetProfile } from '../pets.js';
 import {
   filterBySourcing,
   findIngredientsForComponent,
+  isMeatComponent,
+  isVegComponent,
   type Ingredient,
 } from './catalog.js';
 import {
@@ -107,11 +109,26 @@ function pickIngredientForComponent(
     pet.conditions,
   );
 
-  let pool = filterBySourcing(candidates, sourcing.variety, sourcing.accessibility);
+  // If the user picked an explicit set of meats/veggies, restrict the pool
+  // to those for the matching component family before tier filtering. We
+  // gracefully fall back to the full candidate pool if the intersection
+  // ends up empty so the slot never goes unfilled.
+  let scoped = candidates;
+  if (sourcing.meatIds.length > 0 && isMeatComponent(component.key)) {
+    const allowed = new Set(sourcing.meatIds);
+    const intersect = candidates.filter((i) => allowed.has(i.id));
+    if (intersect.length > 0) scoped = intersect;
+  } else if (sourcing.vegIds.length > 0 && isVegComponent(component.key)) {
+    const allowed = new Set(sourcing.vegIds);
+    const intersect = candidates.filter((i) => allowed.has(i.id));
+    if (intersect.length > 0) scoped = intersect;
+  }
+
+  let pool = filterBySourcing(scoped, sourcing.variety, sourcing.accessibility);
 
   // If sourcing filter empties the pool, fall back to species+component candidates
   // so the plan never produces an empty slot. Generator surfaces a warning later.
-  if (pool.length === 0) pool = candidates;
+  if (pool.length === 0) pool = scoped.length > 0 ? scoped : candidates;
 
   // Must-include ingredients win the slot whenever they're a valid candidate.
   const mustInclude = sourcing.mustIncludeIngredientIds

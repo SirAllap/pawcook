@@ -5,6 +5,7 @@
   "exports": {
     "./meats": "./src/meats.json",
     "./vegetables": "./src/vegetables.json",
+    "./vegetable-cooking": "./src/vegetable-cooking.json",
     "./fruits": "./src/fruits.json",
     "./toxic": "./src/toxic.json",
     "./supplements": "./src/supplements.json",

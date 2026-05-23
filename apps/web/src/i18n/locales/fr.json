@@ -40,7 +40,8 @@
     "switchToDark": "Passer en mode sombre",
     "unsavedChanges": "Modifications non enregistrées. Voulez-vous vraiment quitter ?",
     "calcFailed": "Calcul impossible : vérifiez les valeurs.",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "dismiss": "Fermer"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -238,7 +239,13 @@
       "prefsLabel": "Préférences d'approvisionnement",
       "preferWildFish": "Poisson sauvage préféré",
       "preferGrassFed": "Élevé à l'herbe préféré",
-      "preferOrganic": "Légumes bio préférés"
+      "preferOrganic": "Légumes bio préférés",
+      "meatsLabel": "Viandes à inclure",
+      "meatsHelp": "Choisissez les protéines voulues — laissez vide pour laisser le planificateur choisir.",
+      "veggiesLabel": "Légumes à inclure",
+      "veggiesHelp": "Choisissez les légumes voulus — laissez vide pour laisser le planificateur choisir.",
+      "anyMeats": "N'importe lesquels",
+      "anyVeggies": "N'importe lesquels"
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -273,7 +280,8 @@
         "supplements": "Compléments",
         "online": "Commande en ligne",
         "other": "Autres"
-      }
+      },
+      "cookWith": "Cuire {{name}} ({{qty}})"
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer.",
     "catSupplementsTitle": "Suppléments félins après cuisson",
     "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi.",
-    "subtitle_cat": "Temps et température de cuisson sûrs pour la nourriture de votre chat. Pensez à ajouter taurine + complexe B après cuisson."
+    "subtitle_cat": "Temps et température de cuisson sûrs pour la nourriture de votre chat. Pensez à ajouter taurine + complexe B après cuisson.",
+    "prefilledFromPlan": "Pré-rempli depuis votre plan",
+    "prefilledHelp": "Nous avons repris la viande et le poids total de « {{plan}} ». Ajustez avant de calculer.",
+    "prefilledPlanFallback": "votre plan",
+    "veggieGuideTitle": "Guide de cuisson des légumes",
+    "veggieGuideHelp": "Référence rapide pour cuire la partie végétale — tendre, jamais en bouillie.",
+    "vegMethod": {
+      "steam": "Vapeur",
+      "bake": "Four",
+      "blanch": "Blanchir",
+      "raw": "Cru"
+    }
   },
   "nutrition": {
     "title": "Calculateur nutritionnel",

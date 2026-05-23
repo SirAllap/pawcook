@@ -1,0 +1,18 @@
+[
+  { "id": "carrots",          "method": "steam",  "tempC": 100, "minutes": { "min": 8,  "max": 12 }, "notes": "Slice 1 cm thick. Steam until fork-tender; retains beta-carotene better than boiling." },
+  { "id": "pumpkin",          "method": "bake",   "tempC": 180, "minutes": { "min": 30, "max": 40 }, "notes": "Cube 2–3 cm. Roast plain — no sugar, no spice. Mash before serving." },
+  { "id": "sweet_potato",     "method": "bake",   "tempC": 200, "minutes": { "min": 35, "max": 45 }, "notes": "Always cooked — raw sweet potato is hard to digest. Cube or bake whole and mash." },
+  { "id": "broccoli",         "method": "steam",  "tempC": 100, "minutes": { "min": 5,  "max": 7  }, "notes": "Florets only, no thick stems. Keep al dente — overcooking destroys vitamin C." },
+  { "id": "spinach",          "method": "blanch", "tempC": 100, "minutes": { "min": 1,  "max": 2  }, "notes": "Wilt briefly in boiling water, drain, chop. Reduces oxalates slightly." },
+  { "id": "green_beans",      "method": "steam",  "tempC": 100, "minutes": { "min": 4,  "max": 6  }, "notes": "Trim ends. Steam until bright green and tender-crisp. Can be served raw too." },
+  { "id": "zucchini",         "method": "steam",  "tempC": 100, "minutes": { "min": 4,  "max": 6  }, "notes": "Slice or cube. Safe raw — cooking only softens for picky eaters." },
+  { "id": "peas",             "method": "steam",  "tempC": 100, "minutes": { "min": 2,  "max": 4  }, "notes": "Fresh or frozen (thaw first). Never use canned (added sodium)." },
+  { "id": "kale",             "method": "steam",  "tempC": 100, "minutes": { "min": 3,  "max": 5  }, "notes": "Strip leaves from tough stems, chop fine. Sparingly — oxalates + thiocyanates." },
+  { "id": "parsnips",         "method": "steam",  "tempC": 100, "minutes": { "min": 10, "max": 14 }, "notes": "Peel and cube 2 cm. Cook fully — raw parsnips are very fibrous." },
+  { "id": "beets",            "method": "steam",  "tempC": 100, "minutes": { "min": 25, "max": 35 }, "notes": "Trim greens, scrub. Cook whole then peel; expect colored stool — harmless." },
+  { "id": "butternut_squash", "method": "bake",   "tempC": 200, "minutes": { "min": 35, "max": 45 }, "notes": "Halve, scoop seeds. Roast cut-side down on parchment. Mash flesh." },
+  { "id": "cucumber",         "method": "raw",    "tempC": 0,   "minutes": { "min": 0,  "max": 0  }, "notes": "Serve raw — high water content. Slice into sticks; cooking ruins texture." },
+  { "id": "celery",           "method": "raw",    "tempC": 0,   "minutes": { "min": 0,  "max": 0  }, "notes": "Chop finely into 5 mm pieces to prevent choking. Strings are hard to digest." },
+  { "id": "asparagus",        "method": "steam",  "tempC": 100, "minutes": { "min": 4,  "max": 6  }, "notes": "Trim woody ends. Steam until tender. Slice into bite-size pieces before serving." },
+  { "id": "brussels_sprouts", "method": "steam",  "tempC": 100, "minutes": { "min": 6,  "max": 8  }, "notes": "Halve sprouts, steam until tender. Limit portion size — known to cause gas." }
+]

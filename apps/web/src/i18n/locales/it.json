@@ -40,7 +40,8 @@
     "switchToDark": "Passa alla modalità scura",
     "unsavedChanges": "Hai modifiche non salvate. Vuoi davvero uscire?",
     "calcFailed": "Impossibile calcolare — controlla i valori.",
-    "cancel": "Annulla"
+    "cancel": "Annulla",
+    "dismiss": "Chiudi"
   },
   "pets": {
     "eyebrow": "Animali",
@@ -238,7 +239,13 @@
       "prefsLabel": "Preferenze di origine",
       "preferWildFish": "Preferisci pesce selvaggio",
       "preferGrassFed": "Preferisci allevamento al pascolo",
-      "preferOrganic": "Preferisci verdure bio"
+      "preferOrganic": "Preferisci verdure bio",
+      "meatsLabel": "Carni da includere",
+      "meatsHelp": "Scegli le proteine — lascia vuoto per far decidere al planner.",
+      "veggiesLabel": "Verdure da includere",
+      "veggiesHelp": "Scegli le verdure — lascia vuoto per far decidere al planner.",
+      "anyMeats": "Qualsiasi · sceglie il planner",
+      "anyVeggies": "Qualsiasi · sceglie il planner"
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -273,7 +280,8 @@
         "supplements": "Integratori",
         "online": "Ordine online",
         "other": "Altro"
-      }
+      },
+      "cookWith": "Cuoci {{name}} ({{qty}})"
     },
     "confirmDelete": "Eliminare il piano «{{name}}»? L'azione è irreversibile.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola.",
     "catSupplementsTitle": "Integratori per gatto dopo la cottura",
     "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto.",
-    "subtitle_cat": "Tempo e temperatura di cottura sicuri per il cibo del tuo gatto. Ricorda di aggiungere taurina + complesso B dopo la cottura."
+    "subtitle_cat": "Tempo e temperatura di cottura sicuri per il cibo del tuo gatto. Ricorda di aggiungere taurina + complesso B dopo la cottura.",
+    "prefilledFromPlan": "Precompilato dal tuo piano",
+    "prefilledHelp": "Abbiamo riportato carne e peso totale da «{{plan}}». Modifica prima di calcolare.",
+    "prefilledPlanFallback": "il tuo piano",
+    "veggieGuideTitle": "Guida cottura verdure",
+    "veggieGuideHelp": "Riferimento rapido per cuocere le verdure — tenere, mai mollicce.",
+    "vegMethod": {
+      "steam": "Vapore",
+      "bake": "Forno",
+      "blanch": "Sbianchire",
+      "raw": "Crudo"
+    }
   },
   "nutrition": {
     "title": "Calcolatore nutrizionale",
