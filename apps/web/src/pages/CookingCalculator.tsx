@@ -152,19 +152,26 @@ export default function CookingCalculator() {
       }
     : null;
 
-  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<CookingInput>({
+  const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
     mode: 'onBlur',
     defaultValues: applyPrefill(loadSaved(), prefill),
   });
 
-  // Clear the router state once we've consumed the prefill so a refresh
-  // doesn't re-apply stale values, but keep the dismissible banner in view.
+  // Re-apply the prefill on every navigation that carries a new one.
+  // useForm only consumes defaultValues at mount, so if the user is already
+  // on /cooking and taps another "Cook" button (different meat / weight)
+  // we'd otherwise keep showing the previous meat. location.key changes on
+  // every navigate() call, so we use it as the dependency.
   useEffect(() => {
     if (!prefill) return;
+    reset(applyPrefill(loadSaved(), prefill));
+    setPrefillBanner(prefill);
+    setResult(null);
+    setSubmittedData(null);
     navigate(location.pathname, { replace: true, state: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location.key]);
 
   const values = watch();
   useDebouncedEffect(() => {
