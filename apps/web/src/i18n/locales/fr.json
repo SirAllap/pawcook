@@ -16,7 +16,11 @@
     "target": "Objectif",
     "calculating": "Calcul en cours…",
     "dogFoodCalc": "Calculateur d'alimentation",
-    "privacy": "Confidentialité"
+    "privacy": "Confidentialité",
+    "loading": "Chargement",
+    "changeLanguage": "Choisir la langue",
+    "preferences": "Préférences",
+    "brandHome": "Accueil PawCook"
   },
   "cooking": {
     "title": "Calculateur de cuisson",
@@ -99,7 +103,10 @@
       "oven": "Certaines vitamines B sont perdues dans le jus de rôtissage — incorporez tous les jus de cuisson dans le repas.",
       "stovetop_low": "Les vitamines B migrent dans l'eau de cuisson — incorporez toujours le bouillon dans le repas.",
       "slow_cooker": "La cuisson lente et douce conserve la plupart des nutriments dans le liquide — servez le bouillon avec la viande."
-    }
+    },
+    "eyebrow": "Cuisine",
+    "toastReady": "Recette prête.",
+    "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer."
   },
   "nutrition": {
     "title": "Calculateur nutritionnel",
@@ -206,7 +213,12 @@
       "caPHigh": "Le ratio Ca:P est de {{ratio}}:1 — au-dessus du maximum AAFCO (2:1). Réduisez l'os ou équilibrez avec une protéine pauvre en calcium.",
       "puppyCaP": "Les chiots en croissance sont sensibles à un Ca:P élevé — gardez-le sous 1.6:1 pour éviter les maladies osseuses.",
       "cookedCaDeficient": "Les régimes cuits sont déficients en calcium par défaut. Ajoutez ~{{calcium}} mg de Ca (≈½ c.à.c. de coquille d'œuf moulue par ~454 g de viande, ou utilisez un équilibrant)."
-    }
+    },
+    "eyebrow": "Nutrition",
+    "placeholderHint": "Saisissez le profil de votre chien et appuyez sur Calculer.",
+    "toastPass": "Plan quotidien prêt — conforme à l'AAFCO.",
+    "toastCaution": "Plan prêt — consultez les avertissements.",
+    "toastFail": "Le plan doit être ajusté pour atteindre les objectifs AAFCO."
   },
   "foodSafety": {
     "title": "Référence sécurité alimentaire",
@@ -226,7 +238,8 @@
     "effect": "Effet",
     "benefit": "Bénéfice",
     "noResults": "Aucun résultat pour",
-    "noResultsHint": "Essayez un autre terme de recherche"
+    "noResultsHint": "Essayez un autre terme de recherche",
+    "eyebrow": "Sécurité alimentaire"
   },
   "supplements": {
     "title": "Guide des suppléments",
@@ -305,14 +318,18 @@
         "2": "Si la diarrhée persiste plus de 48 h, revenez au ratio précédent et consultez un vétérinaire.",
         "3": "Les chiens âgés ou à digestion sensible peuvent nécessiter une transition de 10 à 14 jours au lieu de 7."
       }
-    }
+    },
+    "eyebrow": "Compléments"
   },
   "landing": {
     "hero": {
       "tagline": "Nourrissez bien votre chien.",
       "subtitle": "Outils open source pour les propriétaires qui cuisinent à la maison — temps de cuisson sûrs, plans nutritionnels quotidiens, guides de sécurité alimentaire et conseils en suppléments.",
       "cta": "Commencer",
-      "learnMore": "En savoir plus"
+      "learnMore": "En savoir plus",
+      "badge": "Méthodologie validée par des vétérinaires",
+      "headlineA": "Une vraie alimentation.",
+      "headlineB": "Pour votre vrai chien."
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
@@ -324,7 +341,57 @@
     "openTool": "Ouvrir l'outil",
     "open": {
       "title": "Gratuit et open source",
-      "text": "Licence MIT. Créé par des propriétaires de chiens pour des propriétaires de chiens."
+      "text": "Licence MIT. Créé par des propriétaires de chiens pour des propriétaires de chiens.",
+      "eyebrow": "100% open source",
+      "starUs": "Mettre une étoile sur GitHub",
+      "fork": "Forker"
+    },
+    "trustedBy": "Méthodologie fondée sur",
+    "stats": {
+      "languages": "Langues",
+      "diets": "Profils de régime",
+      "foods": "Aliments sûrs",
+      "openSource": "Open source"
+    },
+    "bento": {
+      "eyebrow": "Tout ce dont vous avez besoin",
+      "heading": "Une boîte à outils. Tous les repas.",
+      "sub": "Six outils pour transformer la cuisine maison du tâtonnement en une routine de confiance.",
+      "nutrition": "Macros quotidiens, calories et équilibre Ca:P, adaptés à votre chien.",
+      "cooking": "Temps et température sûrs pour chaque viande.",
+      "foodSafety": "Aliments toxiques, viandes sûres, légumes, fruits.",
+      "supplements": "Objectifs AAFCO, équilibrants et transition sur 7 jours.",
+      "dietsTitle": "5 profils de régime",
+      "dietsDesc": "Cuit équilibré · BARF · PMR · Riche en protéines · Ancestral.",
+      "langTitle": "8 langues",
+      "langDesc": "Entièrement traduit, où que vous cuisiniez.",
+      "preview": {
+        "protein": "Protéines",
+        "fat": "Lipides",
+        "veg": "Légumes",
+        "safeCore": "Cœur sûr"
+      }
+    },
+    "how": {
+      "eyebrow": "Comment ça marche",
+      "heading": "Du chien au repas en trois étapes",
+      "step1": {
+        "title": "Parlez-nous de votre chien",
+        "desc": "Poids, âge, activité, condition physique — les éléments que votre vétérinaire demanderait."
+      },
+      "step2": {
+        "title": "Choisissez une alimentation de confiance",
+        "desc": "Cuit équilibré, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO."
+      },
+      "step3": {
+        "title": "Cuisinez en toute confiance",
+        "desc": "Obtenez les grammes exacts, les températures sûres et une fiche recette imprimable pour la semaine."
+      }
+    },
+    "diets": {
+      "eyebrow": "Profils de régime",
+      "heading": "Cinq approches éprouvées",
+      "sub": "Chaque profil de macronutriments correspond aux cibles AAFCO et à l'étape de vie de votre chien."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Ouvrez les paramètres de données de site de votre navigateur et effacez tout. PawCook reviendra aux valeurs par défaut au prochain chargement.",
     "privacyHostTitle": "À propos de l'hébergeur",
     "privacyHostBody": "PawCook est hébergé sur GitHub Pages. Pour servir la page, l'infrastructure de GitHub voit nécessairement votre adresse IP. Nous n'avons pas accès à ces journaux ni aucune autre relation avec vous.",
-    "privacyHostLink": "Politique de confidentialité de GitHub"
+    "privacyHostLink": "Politique de confidentialité de GitHub",
+    "eyebrow": "À propos"
   },
   "meatData": {
     "beef": {

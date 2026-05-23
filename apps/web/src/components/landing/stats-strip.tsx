@@ -22,9 +22,7 @@ export function StatsStrip() {
                 <span className="text-primary">{s.suffix}</span>
               </div>
               <p className="mt-1 text-xs sm:text-sm font-semibold text-muted-fg">
-                {t(s.labelKey, {
-                  defaultValue: { languages: 'Languages', diets: 'Diet profiles', foods: 'Safe foods', openSource: 'Open source' }[s.labelKey.split('.').pop()!],
-                })}
+                {t(s.labelKey)}
               </p>
             </div>
           ))}

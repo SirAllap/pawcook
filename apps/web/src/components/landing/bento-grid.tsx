@@ -31,14 +31,15 @@ const ACCENT_BG: Record<Tile['accent'], string> = {
 };
 
 function MacroBarsFeature() {
+  const { t } = useTranslation();
   return (
     <div className="absolute right-4 bottom-4 w-32 sm:w-44 space-y-1.5">
       {[
-        { label: 'Protein', pct: 45, color: 'bg-primary' },
-        { label: 'Fat',     pct: 30, color: 'bg-warning' },
-        { label: 'Veg',     pct: 25, color: 'bg-success' },
+        { key: 'protein', label: t('landing.bento.preview.protein'), pct: 45, color: 'bg-primary' },
+        { key: 'fat',     label: t('landing.bento.preview.fat'),     pct: 30, color: 'bg-warning' },
+        { key: 'veg',     label: t('landing.bento.preview.veg'),     pct: 25, color: 'bg-success' },
       ].map((m, i) => (
-        <div key={m.label}>
+        <div key={m.key}>
           <div className="flex justify-between text-[9px] font-bold text-muted-fg mb-0.5">
             <span>{m.label}</span><span>{m.pct}%</span>
           </div>
@@ -58,6 +59,7 @@ function MacroBarsFeature() {
 }
 
 function ThermometerFeature() {
+  const { t } = useTranslation();
   return (
     <div className="absolute right-5 bottom-5 inline-flex items-end gap-2">
       <div className="h-20 w-3 rounded-full bg-surface-3 overflow-hidden flex items-end">
@@ -71,7 +73,7 @@ function ThermometerFeature() {
       </div>
       <div>
         <p className="text-2xl font-black font-mono text-warning leading-none">74°C</p>
-        <p className="text-[10px] font-bold text-muted-fg uppercase tracking-wider">safe core</p>
+        <p className="text-[10px] font-bold text-muted-fg uppercase tracking-wider">{t('landing.bento.preview.safeCore')}</p>
       </div>
     </div>
   );
@@ -98,11 +100,12 @@ function FlagsFeature() {
 }
 
 function SearchFeature() {
+  const { t } = useTranslation();
   return (
     <div className="absolute right-4 bottom-4 left-4 sm:left-auto sm:w-56 rounded-xl bg-surface border border-border px-3 py-2 flex items-center gap-2 shadow-sm">
       <ShieldAlert className="h-4 w-4 text-danger" />
-      <span className="text-xs font-mono text-foreground">chocolate</span>
-      <span className="ml-auto text-[10px] font-black px-1.5 py-0.5 rounded-md bg-danger/15 text-danger">TOXIC</span>
+      <span className="text-xs font-mono text-foreground lowercase">{t('toxicData.chocolate.label')}</span>
+      <span className="ml-auto text-[10px] font-black px-1.5 py-0.5 rounded-md bg-danger/15 text-danger">{t('common.toxic')}</span>
     </div>
   );
 }

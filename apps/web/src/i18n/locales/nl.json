@@ -16,7 +16,11 @@
     "target": "Doelwaarde",
     "calculating": "Berekening…",
     "dogFoodCalc": "Hondenvoer-calculator",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "loading": "Laden",
+    "changeLanguage": "Taal kiezen",
+    "preferences": "Voorkeuren",
+    "brandHome": "PawCook startpagina"
   },
   "cooking": {
     "title": "Kookcalculator",
@@ -99,7 +103,10 @@
       "oven": "Sommige B-vitamines gaan verloren in het braadvocht — voeg alle braadsappen toe aan de maaltijd.",
       "stovetop_low": "B-vitamines logen uit in het kookwater — voeg altijd de bouillon toe aan de maaltijd.",
       "slow_cooker": "Langzaam, zacht garen houdt de meeste voedingsstoffen in de vloeistof — serveer de bouillon naast het vlees."
-    }
+    },
+    "eyebrow": "Koken",
+    "toastReady": "Recept klaar.",
+    "placeholderHint": "Kies een vlees en methode, tik dan op Bereken."
   },
   "nutrition": {
     "title": "Voedingscalculator",
@@ -206,7 +213,12 @@
       "caPHigh": "De Ca:P-verhouding is {{ratio}}:1 — boven het AAFCO-maximum van 2:1. Verminder bot of balanceer met eiwit met weinig calcium.",
       "puppyCaP": "Groeiende pups zijn gevoelig voor hoge Ca:P — houd onder 1.6:1 om botziekten te voorkomen.",
       "cookedCaDeficient": "Gekookte diëten zijn standaard calciumarm. Voeg ~{{calcium}} mg Ca toe (≈½ tl gemalen eierschaal per ~454 g vlees, of gebruik een balancer)."
-    }
+    },
+    "eyebrow": "Voeding",
+    "placeholderHint": "Voer het profiel van je hond in en tik op Bereken.",
+    "toastPass": "Dagplan klaar — voldoet aan AAFCO.",
+    "toastCaution": "Plan klaar — bekijk de waarschuwingen.",
+    "toastFail": "Plan moet worden aangepast om aan AAFCO-doelen te voldoen."
   },
   "foodSafety": {
     "title": "Voedselveiligheidsreferentie",
@@ -226,7 +238,8 @@
     "effect": "Effect",
     "benefit": "Voordeel",
     "noResults": "Geen resultaten voor",
-    "noResultsHint": "Probeer een andere zoekterm"
+    "noResultsHint": "Probeer een andere zoekterm",
+    "eyebrow": "Voedselveiligheid"
   },
   "supplements": {
     "title": "Supplementengids",
@@ -305,14 +318,18 @@
         "2": "Als diarree langer dan 48 uur aanhoudt, ga terug naar de vorige verhouding en raadpleeg een dierenarts.",
         "3": "Oudere honden of honden met een gevoelig maag-darmstelsel hebben mogelijk een overgang van 10–14 dagen nodig in plaats van 7."
       }
-    }
+    },
+    "eyebrow": "Supplementen"
   },
   "landing": {
     "hero": {
       "tagline": "Voed je hond goed.",
       "subtitle": "Open-source tools voor hondeneigenaren die thuis koken — veilige kooktijden, dagelijkse voedingsplannen, voedselveiligheidsgidsen en supplementadvies.",
       "cta": "Aan de slag",
-      "learnMore": "Meer info"
+      "learnMore": "Meer info",
+      "badge": "Door dierenartsen onderschreven methodiek",
+      "headlineA": "Echt eten.",
+      "headlineB": "Voor je echte hond."
     },
     "features": {
       "heading": "Alles wat je nodig hebt",
@@ -324,7 +341,57 @@
     "openTool": "Tool openen",
     "open": {
       "title": "Gratis en open source",
-      "text": "MIT-licentie. Gemaakt door hondeneigenaren voor hondeneigenaren."
+      "text": "MIT-licentie. Gemaakt door hondeneigenaren voor hondeneigenaren.",
+      "eyebrow": "100% open source",
+      "starUs": "Geef een ster op GitHub",
+      "fork": "Forken"
+    },
+    "trustedBy": "Methodologie gebaseerd op",
+    "stats": {
+      "languages": "Talen",
+      "diets": "Dieetprofielen",
+      "foods": "Veilige voeding",
+      "openSource": "Open source"
+    },
+    "bento": {
+      "eyebrow": "Alles wat je nodig hebt",
+      "heading": "Eén toolkit. Elke maaltijd.",
+      "sub": "Zes tools die thuiskoken van gokken in een vertrouwde routine veranderen.",
+      "nutrition": "Dagelijkse macro's, calorieën en Ca:P-balans, afgestemd op je hond.",
+      "cooking": "Veilige tijd & temperatuur voor elk vlees.",
+      "foodSafety": "Giftige voeding, veilig vlees, groenten, fruit.",
+      "supplements": "AAFCO-doelen, balancers en een 7-daagse overgang.",
+      "dietsTitle": "5 dieetprofielen",
+      "dietsDesc": "Gebalanceerd gekookt · BARF · PMR · Eiwitrijk · Ancestral.",
+      "langTitle": "8 talen",
+      "langDesc": "Volledig vertaald, waar je ook kookt.",
+      "preview": {
+        "protein": "Eiwit",
+        "fat": "Vet",
+        "veg": "Groente",
+        "safeCore": "Veilige kern"
+      }
+    },
+    "how": {
+      "eyebrow": "Hoe het werkt",
+      "heading": "Van hond tot maaltijd in drie stappen",
+      "step1": {
+        "title": "Vertel ons over je hond",
+        "desc": "Gewicht, leeftijd, activiteit, lichaamsconditie — wat je dierenarts zou vragen."
+      },
+      "step2": {
+        "title": "Kies een dieet dat je vertrouwt",
+        "desc": "Gebalanceerd gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen."
+      },
+      "step3": {
+        "title": "Kook met vertrouwen",
+        "desc": "Krijg exacte grammen, veilige temperaturen en een afdrukbare receptkaart voor de week."
+      }
+    },
+    "diets": {
+      "eyebrow": "Dieetprofielen",
+      "heading": "Vijf vertrouwde benaderingen",
+      "sub": "Elk macronutriëntenprofiel sluit aan op AAFCO-doelen en de levensfase van je hond."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Open in je browser de site-data-instellingen en wis alles. PawCook valt bij de volgende keer laden terug op standaardwaarden.",
     "privacyHostTitle": "Over de host",
     "privacyHostBody": "PawCook wordt gehost op GitHub Pages. Om de pagina te serveren ziet de infrastructuur van GitHub noodzakelijkerwijs je IP-adres. Wij hebben geen toegang tot die logs en geen andere relatie met jou.",
-    "privacyHostLink": "Privacyverklaring van GitHub"
+    "privacyHostLink": "Privacyverklaring van GitHub",
+    "eyebrow": "Over"
   },
   "meatData": {
     "beef": {

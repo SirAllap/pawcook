@@ -16,7 +16,11 @@
     "target": "Cel",
     "calculating": "Obliczanie…",
     "dogFoodCalc": "Kalkulator żywienia",
-    "privacy": "Prywatność"
+    "privacy": "Prywatność",
+    "loading": "Ładowanie",
+    "changeLanguage": "Wybierz język",
+    "preferences": "Preferencje",
+    "brandHome": "Strona główna PawCook"
   },
   "cooking": {
     "title": "Kalkulator gotowania",
@@ -99,7 +103,10 @@
       "oven": "Niektóre witaminy z grupy B przechodzą do soków — dodaj wszystkie soki z pieczenia do posiłku.",
       "stovetop_low": "Witaminy B przenikają do wody gotowania — zawsze dodaj wywar do posiłku.",
       "slow_cooker": "Wolne, delikatne gotowanie zachowuje większość składników odżywczych w płynie — podaj wywar razem z mięsem."
-    }
+    },
+    "eyebrow": "Gotowanie",
+    "toastReady": "Przepis gotowy.",
+    "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz."
   },
   "nutrition": {
     "title": "Kalkulator żywienia",
@@ -206,7 +213,12 @@
       "caPHigh": "Stosunek Ca:P wynosi {{ratio}}:1 — powyżej bezpiecznego maksimum AAFCO 2:1. Zmniejsz ilość kości lub zrównoważ białkiem o niskiej zawartości wapnia.",
       "puppyCaP": "Rosnące szczenięta są wrażliwe na wysokie Ca:P — utrzymuj poniżej 1.6:1, aby uniknąć chorób układu kostnego.",
       "cookedCaDeficient": "Diety gotowane są domyślnie ubogie w wapń. Dodaj ~{{calcium}} mg Ca (≈½ łyżeczki zmielonej skorupki jajka na ~454 g mięsa lub użyj balansera)."
-    }
+    },
+    "eyebrow": "Żywienie",
+    "placeholderHint": "Wprowadź profil swojego psa i naciśnij Oblicz.",
+    "toastPass": "Plan dzienny gotowy — zgodny z AAFCO.",
+    "toastCaution": "Plan gotowy — sprawdź ostrzeżenia.",
+    "toastFail": "Plan wymaga korekty, aby spełnić cele AAFCO."
   },
   "foodSafety": {
     "title": "Informacje o bezpieczeństwie żywności",
@@ -226,7 +238,8 @@
     "effect": "Efekt",
     "benefit": "Korzyść",
     "noResults": "Brak wyników dla",
-    "noResultsHint": "Spróbuj innego terminu wyszukiwania"
+    "noResultsHint": "Spróbuj innego terminu wyszukiwania",
+    "eyebrow": "Bezpieczeństwo żywności"
   },
   "supplements": {
     "title": "Przewodnik po suplementach",
@@ -305,14 +318,18 @@
         "2": "Jeśli biegunka utrzymuje się dłużej niż 48 godzin, wróć do poprzedniego stosunku i skonsultuj się z weterynarzem.",
         "3": "Starsze psy lub psy z wrażliwym układem trawiennym mogą potrzebować przejścia trwającego 10–14 dni zamiast 7."
       }
-    }
+    },
+    "eyebrow": "Suplementy"
   },
   "landing": {
     "hero": {
       "tagline": "Żyw swojego psa właściwie.",
       "subtitle": "Narzędzia open source dla właścicieli gotujących w domu — bezpieczne czasy gotowania, codzienne plany żywieniowe, przewodniki bezpieczeństwa żywności i porady dotyczące suplementów.",
       "cta": "Zacznij",
-      "learnMore": "Dowiedz się więcej"
+      "learnMore": "Dowiedz się więcej",
+      "badge": "Metodologia zgodna z weterynarią",
+      "headlineA": "Prawdziwe jedzenie.",
+      "headlineB": "Dla Twojego prawdziwego psa."
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
@@ -324,7 +341,57 @@
     "openTool": "Otwórz narzędzie",
     "open": {
       "title": "Bezpłatny i open source",
-      "text": "Licencja MIT. Stworzony przez właścicieli psów dla właścicieli psów."
+      "text": "Licencja MIT. Stworzony przez właścicieli psów dla właścicieli psów.",
+      "eyebrow": "100% open source",
+      "starUs": "Dodaj gwiazdkę na GitHubie",
+      "fork": "Forkuj"
+    },
+    "trustedBy": "Metodologia oparta na",
+    "stats": {
+      "languages": "Języki",
+      "diets": "Profile diet",
+      "foods": "Bezpieczne produkty",
+      "openSource": "Open source"
+    },
+    "bento": {
+      "eyebrow": "Wszystko, czego potrzebujesz",
+      "heading": "Jeden zestaw narzędzi. Każdy posiłek.",
+      "sub": "Sześć narzędzi, które zamieniają domowe gotowanie z zgadywania w zaufaną rutynę.",
+      "nutrition": "Dzienne makro, kalorie i bilans Ca:P dostosowane do Twojego psa.",
+      "cooking": "Bezpieczny czas i temperatura dla każdego mięsa.",
+      "foodSafety": "Toksyczne pokarmy, bezpieczne mięsa, warzywa, owoce.",
+      "supplements": "Cele AAFCO, suplementy bilansujące i 7-dniowa zmiana diety.",
+      "dietsTitle": "5 profili diet",
+      "dietsDesc": "Gotowana zbilansowana · BARF · PMR · Wysokobiałkowa · Ancestralna.",
+      "langTitle": "8 języków",
+      "langDesc": "Pełne tłumaczenie, gdziekolwiek gotujesz.",
+      "preview": {
+        "protein": "Białko",
+        "fat": "Tłuszcz",
+        "veg": "Warzywa",
+        "safeCore": "Bezpieczny rdzeń"
+      }
+    },
+    "how": {
+      "eyebrow": "Jak to działa",
+      "heading": "Od psa do posiłku w trzech krokach",
+      "step1": {
+        "title": "Opowiedz nam o swoim psie",
+        "desc": "Waga, wiek, aktywność, kondycja — dane, o które zapyta weterynarz."
+      },
+      "step2": {
+        "title": "Wybierz dietę, której ufasz",
+        "desc": "Gotowana zbilansowana, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO."
+      },
+      "step3": {
+        "title": "Gotuj z pewnością",
+        "desc": "Otrzymaj dokładne gramy, bezpieczne temperatury i przepis do druku na cały tydzień."
+      }
+    },
+    "diets": {
+      "eyebrow": "Profile diet",
+      "heading": "Pięć sprawdzonych podejść",
+      "sub": "Każdy profil makroskładników odpowiada celom AAFCO i etapowi życia Twojego psa."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Otwórz w przeglądarce ustawienia danych witryny i wyczyść wszystko. PawCook wróci do wartości domyślnych przy następnym wczytaniu.",
     "privacyHostTitle": "O hostingu",
     "privacyHostBody": "PawCook jest hostowany na GitHub Pages. Aby udostępnić stronę, infrastruktura GitHub musi widzieć Twój adres IP. Nie mamy dostępu do tych logów ani żadnej innej relacji z Tobą.",
-    "privacyHostLink": "Polityka prywatności GitHuba"
+    "privacyHostLink": "Polityka prywatności GitHuba",
+    "eyebrow": "O nas"
   },
   "meatData": {
     "beef": {

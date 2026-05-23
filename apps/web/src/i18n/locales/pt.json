@@ -16,7 +16,11 @@
     "target": "Meta",
     "calculating": "Calculando…",
     "dogFoodCalc": "Calculadora alimentar",
-    "privacy": "Privacidade"
+    "privacy": "Privacidade",
+    "loading": "Carregando",
+    "changeLanguage": "Escolher idioma",
+    "preferences": "Preferências",
+    "brandHome": "Início do PawCook"
   },
   "cooking": {
     "title": "Calculadora de culinária",
@@ -99,7 +103,10 @@
       "oven": "Algumas vitaminas B perdem-se nos sucos do assado — inclua todos os sucos da assadeira na refeição.",
       "stovetop_low": "As vitaminas B migram para a água de cozedura — inclua sempre o caldo na refeição.",
       "slow_cooker": "A cozedura lenta e suave retém a maioria dos nutrientes no líquido — sirva o caldo juntamente com a carne."
-    }
+    },
+    "eyebrow": "Cozinha",
+    "toastReady": "Receita pronta.",
+    "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular."
   },
   "nutrition": {
     "title": "Calculadora de nutrição",
@@ -206,7 +213,12 @@
       "caPHigh": "O rácio Ca:P é de {{ratio}}:1 — acima do máximo seguro AAFCO (2:1). Reduza o osso ou equilibre com proteína pobre em cálcio.",
       "puppyCaP": "Cachorros em crescimento são sensíveis ao Ca:P alto — mantenha abaixo de 1.6:1 para evitar doenças ósseas.",
       "cookedCaDeficient": "Dietas cozidas são deficientes em cálcio por defeito. Adicione ~{{calcium}} mg de Ca (≈½ c.chá de casca de ovo moída por ~454 g de carne, ou use um balanceador)."
-    }
+    },
+    "eyebrow": "Nutrição",
+    "placeholderHint": "Insira o perfil do seu cão e toque em Calcular.",
+    "toastPass": "Plano diário pronto — em conformidade com AAFCO.",
+    "toastCaution": "Plano pronto — verifique os alertas.",
+    "toastFail": "O plano precisa de ajustes para atender às metas AAFCO."
   },
   "foodSafety": {
     "title": "Referência de segurança alimentar",
@@ -226,7 +238,8 @@
     "effect": "Efeito",
     "benefit": "Benefício",
     "noResults": "Sem resultados para",
-    "noResultsHint": "Tente outro termo de pesquisa"
+    "noResultsHint": "Tente outro termo de pesquisa",
+    "eyebrow": "Segurança alimentar"
   },
   "supplements": {
     "title": "Guia de suplementos",
@@ -305,14 +318,18 @@
         "2": "Se a diarreia persistir mais de 48 horas, volte ao rácio do dia anterior e consulte um veterinário.",
         "3": "Cães séniores ou com aparelho digestivo sensível podem precisar de 10–14 dias em vez de 7."
       }
-    }
+    },
+    "eyebrow": "Suplementos"
   },
   "landing": {
     "hero": {
       "tagline": "Alimente bem o seu cão.",
       "subtitle": "Ferramentas open source para donos que cozinham em casa — tempos de cozedura seguros, planos nutricionais diários, guias de segurança alimentar e conselhos sobre suplementos.",
       "cta": "Começar",
-      "learnMore": "Saber mais"
+      "learnMore": "Saber mais",
+      "badge": "Metodologia validada por veterinários",
+      "headlineA": "Comida de verdade.",
+      "headlineB": "Para o seu cão de verdade."
     },
     "features": {
       "heading": "Tudo o que precisa",
@@ -324,7 +341,57 @@
     "openTool": "Abrir ferramenta",
     "open": {
       "title": "Gratuito e open source",
-      "text": "Licença MIT. Criado por donos de cães para donos de cães."
+      "text": "Licença MIT. Criado por donos de cães para donos de cães.",
+      "eyebrow": "100% código aberto",
+      "starUs": "Dar estrela no GitHub",
+      "fork": "Fazer fork"
+    },
+    "trustedBy": "Metodologia baseada em",
+    "stats": {
+      "languages": "Idiomas",
+      "diets": "Perfis de dieta",
+      "foods": "Alimentos seguros",
+      "openSource": "Código aberto"
+    },
+    "bento": {
+      "eyebrow": "Tudo o que você precisa",
+      "heading": "Uma caixa de ferramentas. Todas as refeições.",
+      "sub": "Seis ferramentas que transformam cozinhar em casa de adivinhação em rotina de confiança.",
+      "nutrition": "Macros diários, calorias e equilíbrio Ca:P, ajustados ao seu cão.",
+      "cooking": "Tempo e temperatura seguros para cada carne.",
+      "foodSafety": "Alimentos tóxicos, carnes seguras, vegetais, frutas.",
+      "supplements": "Metas AAFCO, balanceadores e transição de 7 dias.",
+      "dietsTitle": "5 perfis de dieta",
+      "dietsDesc": "Cozinhado balanceado · BARF · PMR · Alto em proteína · Ancestral.",
+      "langTitle": "8 idiomas",
+      "langDesc": "Totalmente traduzido, em qualquer lugar onde cozinhe.",
+      "preview": {
+        "protein": "Proteína",
+        "fat": "Gordura",
+        "veg": "Vegetal",
+        "safeCore": "Núcleo seguro"
+      }
+    },
+    "how": {
+      "eyebrow": "Como funciona",
+      "heading": "Do cão ao jantar em três passos",
+      "step1": {
+        "title": "Conte-nos sobre o seu cão",
+        "desc": "Peso, idade, atividade, condição corporal — os dados que o seu veterinário pediria."
+      },
+      "step2": {
+        "title": "Escolha uma dieta confiável",
+        "desc": "Cozinhado balanceado, BARF, PMR, alto em proteína ou ancestral — todos baseados nas metas AAFCO."
+      },
+      "step3": {
+        "title": "Cozinhe com confiança",
+        "desc": "Obtenha gramas exatos, temperaturas seguras e uma ficha de receita imprimível para a semana."
+      }
+    },
+    "diets": {
+      "eyebrow": "Perfis de dieta",
+      "heading": "Cinco abordagens confiáveis",
+      "sub": "Cada perfil de macronutrientes corresponde às metas AAFCO e à fase de vida do seu cão."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Abra as configurações de dados do site no seu navegador e limpe tudo. O PawCook voltará aos padrões na próxima carga.",
     "privacyHostTitle": "Sobre a hospedagem",
     "privacyHostBody": "O PawCook é hospedado no GitHub Pages. Para servir a página, a infraestrutura do GitHub necessariamente vê seu endereço IP. Não temos acesso a esses logs nem qualquer outra relação com você.",
-    "privacyHostLink": "Política de privacidade do GitHub"
+    "privacyHostLink": "Política de privacidade do GitHub",
+    "eyebrow": "Sobre"
   },
   "meatData": {
     "beef": {

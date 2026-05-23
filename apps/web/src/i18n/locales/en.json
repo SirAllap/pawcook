@@ -16,7 +16,11 @@
     "openSource": "Open source",
     "target": "Target",
     "dogFoodCalc": "Dog Food Calculator",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "loading": "Loading",
+    "changeLanguage": "Choose language",
+    "preferences": "Preferences",
+    "brandHome": "PawCook home"
   },
   "cooking": {
     "title": "Cooking Calculator",
@@ -99,7 +103,10 @@
       "oven": "Some B vitamins are lost to pan drippings — include all pan juices in the meal for full nutritional value.",
       "stovetop_low": "B vitamins leach into the cooking water — always include the broth in the meal.",
       "slow_cooker": "Long, gentle cooking retains most nutrients in the liquid — serve the broth alongside the meat."
-    }
+    },
+    "eyebrow": "Cooking",
+    "toastReady": "Recipe ready.",
+    "placeholderHint": "Choose a meat and method, then tap Calculate."
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -206,7 +213,12 @@
       "caPHigh": "Ca:P ratio is {{ratio}}:1 — above the AAFCO safe maximum of 2:1. Reduce bone content or balance with low-calcium protein.",
       "puppyCaP": "Growing puppies are sensitive to high Ca:P — keep under 1.6:1 to avoid skeletal disease.",
       "cookedCaDeficient": "Cooked diets are calcium-deficient by default. Add ~{{calcium}} mg Ca (≈½ tsp ground eggshell per ~454 g meat, or use a balancer)."
-    }
+    },
+    "eyebrow": "Nutrition",
+    "placeholderHint": "Enter your dog's profile and tap Calculate.",
+    "toastPass": "Daily plan ready — AAFCO compliant.",
+    "toastCaution": "Plan ready — review caution notes.",
+    "toastFail": "Plan needs adjustment to meet AAFCO targets."
   },
   "foodSafety": {
     "title": "Food Safety Reference",
@@ -226,7 +238,8 @@
     "effect": "Effect",
     "benefit": "Benefit",
     "noResults": "No results for",
-    "noResultsHint": "Try a different search term"
+    "noResultsHint": "Try a different search term",
+    "eyebrow": "Food safety"
   },
   "supplements": {
     "title": "Supplement Guide",
@@ -305,14 +318,18 @@
         "2": "If diarrhea persists more than 48 hours, return to the previous day's ratio and consult a vet.",
         "3": "Senior dogs and dogs with sensitive GI tracts may need a 10–14 day transition instead of 7."
       }
-    }
+    },
+    "eyebrow": "Supplements"
   },
   "landing": {
     "hero": {
       "tagline": "Feed your dog right.",
       "subtitle": "Open-source tools for home-cooking dog owners — safe cooking times, daily nutrition plans, food safety guides, and supplement advice.",
       "cta": "Start cooking",
-      "learnMore": "Learn more"
+      "learnMore": "Learn more",
+      "badge": "Vet-aligned methodology",
+      "headlineA": "Real food.",
+      "headlineB": "For your real dog."
     },
     "features": {
       "heading": "Everything you need",
@@ -324,7 +341,57 @@
     "openTool": "Open tool",
     "open": {
       "title": "Free & open source",
-      "text": "MIT licensed. Built by dog owners for dog owners."
+      "text": "MIT licensed. Built by dog owners for dog owners.",
+      "eyebrow": "100% open source",
+      "starUs": "Star on GitHub",
+      "fork": "Fork"
+    },
+    "trustedBy": "Methodology grounded in",
+    "stats": {
+      "languages": "Languages",
+      "diets": "Diet profiles",
+      "foods": "Safe foods",
+      "openSource": "Open source"
+    },
+    "bento": {
+      "eyebrow": "Everything you need",
+      "heading": "One toolkit. Every meal.",
+      "sub": "Six tools that turn home cooking from guesswork into a routine you trust.",
+      "nutrition": "Daily macros, calories and Ca:P balance, tuned to your dog.",
+      "cooking": "Safe time & temperature for every meat.",
+      "foodSafety": "Toxic foods, safe meats, vegetables, fruits.",
+      "supplements": "AAFCO targets, balancers and a 7-day transition.",
+      "dietsTitle": "5 diet profiles",
+      "dietsDesc": "Balanced cooked · BARF · PMR · High protein · Ancestral.",
+      "langTitle": "8 languages",
+      "langDesc": "Fully translated, anywhere you cook.",
+      "preview": {
+        "protein": "Protein",
+        "fat": "Fat",
+        "veg": "Veg",
+        "safeCore": "Safe core"
+      }
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "heading": "From dog to dinner in three steps",
+      "step1": {
+        "title": "Tell us about your dog",
+        "desc": "Weight, age, activity, body condition — the inputs your vet would ask for."
+      },
+      "step2": {
+        "title": "Pick a diet you trust",
+        "desc": "Balanced cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets."
+      },
+      "step3": {
+        "title": "Cook with confidence",
+        "desc": "Get exact grams, safe temperatures and a printable recipe card for the week."
+      }
+    },
+    "diets": {
+      "eyebrow": "Diet profiles",
+      "heading": "Five trusted approaches",
+      "sub": "Every macronutrient profile maps to AAFCO targets and your dog's life stage."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Open your browser's site-data settings for this site and clear everything. PawCook will reset to defaults the next time you load it.",
     "privacyHostTitle": "About the host",
     "privacyHostBody": "PawCook is hosted on GitHub Pages. To serve the page, GitHub's infrastructure necessarily sees your IP address. We have no access to those logs and no other relationship with you.",
-    "privacyHostLink": "GitHub privacy statement"
+    "privacyHostLink": "GitHub privacy statement",
+    "eyebrow": "About"
   },
   "meatData": {
     "beef": {

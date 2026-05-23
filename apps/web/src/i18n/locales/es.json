@@ -16,7 +16,11 @@
     "target": "Objetivo",
     "calculating": "Calculando…",
     "dogFoodCalc": "Calculadora alimentaria",
-    "privacy": "Privacidad"
+    "privacy": "Privacidad",
+    "loading": "Cargando",
+    "changeLanguage": "Elegir idioma",
+    "preferences": "Preferencias",
+    "brandHome": "Inicio de PawCook"
   },
   "cooking": {
     "title": "Calculadora de cocción",
@@ -99,7 +103,10 @@
       "oven": "Algunas vitaminas B se pierden en los jugos del asado — incluye todos los jugos de la bandeja en la comida.",
       "stovetop_low": "Las vitaminas B se filtran al agua de cocción — incluye siempre el caldo en la comida.",
       "slow_cooker": "La cocción lenta y suave retiene la mayoría de los nutrientes en el líquido — sirve el caldo junto a la carne."
-    }
+    },
+    "eyebrow": "Cocina",
+    "toastReady": "¡Receta lista!",
+    "placeholderHint": "Elige una carne y un método, luego pulsa Calcular."
   },
   "nutrition": {
     "title": "Calculadora de nutrición",
@@ -206,7 +213,12 @@
       "caPHigh": "La relación Ca:P es de {{ratio}}:1 — por encima del máximo seguro AAFCO (2:1). Reduce el hueso o equilibra con proteína baja en calcio.",
       "puppyCaP": "Los cachorros en crecimiento son sensibles al Ca:P alto — mantenlo por debajo de 1.6:1 para evitar enfermedades óseas.",
       "cookedCaDeficient": "Las dietas cocinadas son deficientes en calcio por defecto. Añade ~{{calcium}} mg de Ca (≈½ cdta de cáscara de huevo molida por ~454 g de carne, o usa un balanceador)."
-    }
+    },
+    "eyebrow": "Nutrición",
+    "placeholderHint": "Introduce el perfil de tu perro y pulsa Calcular.",
+    "toastPass": "Plan diario listo — cumple con AAFCO.",
+    "toastCaution": "Plan listo — revisa las advertencias.",
+    "toastFail": "El plan necesita ajustes para cumplir los objetivos AAFCO."
   },
   "foodSafety": {
     "title": "Referencia de seguridad alimentaria",
@@ -226,7 +238,8 @@
     "effect": "Efecto",
     "benefit": "Beneficio",
     "noResults": "Sin resultados para",
-    "noResultsHint": "Prueba con otro término de búsqueda"
+    "noResultsHint": "Prueba con otro término de búsqueda",
+    "eyebrow": "Seguridad alimentaria"
   },
   "supplements": {
     "title": "Guía de suplementos",
@@ -305,14 +318,18 @@
         "2": "Si la diarrea persiste más de 48 horas, vuelve al ratio anterior y consulta a un veterinario.",
         "3": "Los perros mayores o con sistemas digestivos sensibles pueden necesitar una transición de 10–14 días en vez de 7."
       }
-    }
+    },
+    "eyebrow": "Suplementos"
   },
   "landing": {
     "hero": {
       "tagline": "Alimenta bien a tu perro.",
       "subtitle": "Herramientas de código abierto para dueños que cocinan en casa — tiempos de cocción seguros, planes nutricionales diarios, guías de seguridad alimentaria y consejos sobre suplementos.",
       "cta": "Empezar",
-      "learnMore": "Más información"
+      "learnMore": "Más información",
+      "badge": "Metodología veterinaria validada",
+      "headlineA": "Comida real.",
+      "headlineB": "Para tu perro de verdad."
     },
     "features": {
       "heading": "Todo lo que necesitas",
@@ -324,7 +341,57 @@
     "openTool": "Abrir herramienta",
     "open": {
       "title": "Gratis y de código abierto",
-      "text": "Licencia MIT. Creado por dueños de perros para dueños de perros."
+      "text": "Licencia MIT. Creado por dueños de perros para dueños de perros.",
+      "eyebrow": "100% código abierto",
+      "starUs": "Marca con estrella en GitHub",
+      "fork": "Bifurcar"
+    },
+    "trustedBy": "Metodología basada en",
+    "stats": {
+      "languages": "Idiomas",
+      "diets": "Perfiles de dieta",
+      "foods": "Alimentos seguros",
+      "openSource": "Código abierto"
+    },
+    "bento": {
+      "eyebrow": "Todo lo que necesitas",
+      "heading": "Una caja de herramientas. Cada comida.",
+      "sub": "Seis herramientas que convierten cocinar en casa, dejando de adivinar, en una rutina de confianza.",
+      "nutrition": "Macros diarias, calorías y balance Ca:P, ajustados a tu perro.",
+      "cooking": "Tiempo y temperatura seguros para cada carne.",
+      "foodSafety": "Alimentos tóxicos, carnes seguras, verduras, frutas.",
+      "supplements": "Objetivos AAFCO, balanceadores y una transición de 7 días.",
+      "dietsTitle": "5 perfiles de dieta",
+      "dietsDesc": "Cocinado equilibrado · BARF · PMR · Alta en proteína · Ancestral.",
+      "langTitle": "8 idiomas",
+      "langDesc": "Totalmente traducido, dondequiera que cocines.",
+      "preview": {
+        "protein": "Proteína",
+        "fat": "Grasa",
+        "veg": "Verdura",
+        "safeCore": "Núcleo seguro"
+      }
+    },
+    "how": {
+      "eyebrow": "Cómo funciona",
+      "heading": "De tu perro a la cena en tres pasos",
+      "step1": {
+        "title": "Cuéntanos sobre tu perro",
+        "desc": "Peso, edad, actividad, condición corporal — los datos que pediría tu veterinario."
+      },
+      "step2": {
+        "title": "Elige una dieta de confianza",
+        "desc": "Cocinado equilibrado, BARF, PMR, alto en proteína o ancestral — todos basados en los objetivos AAFCO."
+      },
+      "step3": {
+        "title": "Cocina con confianza",
+        "desc": "Obtén gramos exactos, temperaturas seguras y una receta imprimible para la semana."
+      }
+    },
+    "diets": {
+      "eyebrow": "Perfiles de dieta",
+      "heading": "Cinco enfoques de confianza",
+      "sub": "Cada perfil de macronutrientes se alinea con los objetivos AAFCO y la etapa vital de tu perro."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Abre la configuración de datos del sitio en tu navegador y bórralo todo. PawCook volverá a los valores por defecto la próxima vez que lo cargues.",
     "privacyHostTitle": "Sobre el alojamiento",
     "privacyHostBody": "PawCook está alojado en GitHub Pages. Para servir la página, la infraestructura de GitHub ve necesariamente tu dirección IP. No tenemos acceso a esos registros ni ninguna otra relación contigo.",
-    "privacyHostLink": "Política de privacidad de GitHub"
+    "privacyHostLink": "Política de privacidad de GitHub",
+    "eyebrow": "Acerca de"
   },
   "meatData": {
     "beef": {

@@ -16,7 +16,11 @@
     "target": "Zielwert",
     "calculating": "Berechnung…",
     "dogFoodCalc": "Hundefutter-Rechner",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "loading": "Lädt",
+    "changeLanguage": "Sprache wählen",
+    "preferences": "Einstellungen",
+    "brandHome": "PawCook Startseite"
   },
   "cooking": {
     "title": "Kochrechner",
@@ -99,7 +103,10 @@
       "oven": "Einige B-Vitamine gehen in den Bratensaft über — alle Bratensäfte für den vollen Nährwert in die Mahlzeit einbeziehen.",
       "stovetop_low": "B-Vitamine gehen ins Kochwasser über — Brühe immer in die Mahlzeit einbeziehen.",
       "slow_cooker": "Langsames, schonendes Garen erhält die meisten Nährstoffe in der Flüssigkeit — Brühe zusammen mit dem Fleisch servieren."
-    }
+    },
+    "eyebrow": "Kochen",
+    "toastReady": "Rezept fertig.",
+    "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen."
   },
   "nutrition": {
     "title": "Ernährungsrechner",
@@ -206,7 +213,12 @@
       "caPHigh": "Ca:P-Verhältnis ist {{ratio}}:1 — über dem AAFCO-Sicherheitsmaximum von 2:1. Knochenanteil reduzieren oder mit kalziumarmem Protein ausgleichen.",
       "puppyCaP": "Wachsende Welpen sind empfindlich gegenüber hohem Ca:P — unter 1.6:1 halten, um Skeletterkrankungen zu vermeiden.",
       "cookedCaDeficient": "Gekochte Diäten sind standardmäßig kalziumarm. Geben Sie ~{{calcium}} mg Ca (≈½ TL gemahlene Eierschale pro ~454 g Fleisch oder einen Ausgleicher)."
-    }
+    },
+    "eyebrow": "Ernährung",
+    "placeholderHint": "Geben Sie das Profil Ihres Hundes ein und tippen Sie auf Berechnen.",
+    "toastPass": "Tagesplan fertig — AAFCO-konform.",
+    "toastCaution": "Plan fertig — prüfen Sie die Warnhinweise.",
+    "toastFail": "Der Plan muss angepasst werden, um die AAFCO-Vorgaben zu erfüllen."
   },
   "foodSafety": {
     "title": "Lebensmittelsicherheits-Referenz",
@@ -226,7 +238,8 @@
     "effect": "Wirkung",
     "benefit": "Nutzen",
     "noResults": "Keine Ergebnisse für",
-    "noResultsHint": "Anderen Suchbegriff versuchen"
+    "noResultsHint": "Anderen Suchbegriff versuchen",
+    "eyebrow": "Lebensmittelsicherheit"
   },
   "supplements": {
     "title": "Nahrungsergänzungs-Leitfaden",
@@ -305,14 +318,18 @@
         "2": "Wenn der Durchfall länger als 48 Stunden anhält, zum vorherigen Verhältnis zurückkehren und einen Tierarzt konsultieren.",
         "3": "Ältere Hunde oder solche mit empfindlichem Verdauungstrakt benötigen ggf. eine 10- bis 14-tägige Umstellung statt 7 Tage."
       }
-    }
+    },
+    "eyebrow": "Ergänzungen"
   },
   "landing": {
     "hero": {
       "tagline": "Ernähre deinen Hund richtig.",
       "subtitle": "Open-Source-Tools für Hundebesitzer, die zu Hause kochen — sichere Garzeiten, tägliche Ernährungspläne, Lebensmittelsicherheitsführer und Nahrungsergänzungsberatung.",
       "cta": "Loslegen",
-      "learnMore": "Mehr erfahren"
+      "learnMore": "Mehr erfahren",
+      "badge": "Tierärztlich validierte Methodik",
+      "headlineA": "Echtes Futter.",
+      "headlineB": "Für Ihren echten Hund."
     },
     "features": {
       "heading": "Alles, was du brauchst",
@@ -324,7 +341,57 @@
     "openTool": "Tool öffnen",
     "open": {
       "title": "Kostenlos & Open Source",
-      "text": "MIT-Lizenz. Von Hundebesitzern für Hundebesitzer erstellt."
+      "text": "MIT-Lizenz. Von Hundebesitzern für Hundebesitzer erstellt.",
+      "eyebrow": "100% Open Source",
+      "starUs": "Auf GitHub mit Stern markieren",
+      "fork": "Forken"
+    },
+    "trustedBy": "Methodik basiert auf",
+    "stats": {
+      "languages": "Sprachen",
+      "diets": "Ernährungsprofile",
+      "foods": "Sichere Lebensmittel",
+      "openSource": "Open Source"
+    },
+    "bento": {
+      "eyebrow": "Alles, was Sie brauchen",
+      "heading": "Ein Werkzeugkasten. Jede Mahlzeit.",
+      "sub": "Sechs Tools, die Heimkochen vom Rätselraten in eine verlässliche Routine verwandeln.",
+      "nutrition": "Tägliche Makros, Kalorien und Ca:P-Verhältnis, abgestimmt auf Ihren Hund.",
+      "cooking": "Sichere Zeit & Temperatur für jedes Fleisch.",
+      "foodSafety": "Giftige Lebensmittel, sichere Fleisch-, Gemüse- und Obstsorten.",
+      "supplements": "AAFCO-Ziele, Balancer und ein 7-Tage-Übergang.",
+      "dietsTitle": "5 Ernährungsprofile",
+      "dietsDesc": "Ausgewogen gekocht · BARF · PMR · Proteinreich · Ancestral.",
+      "langTitle": "8 Sprachen",
+      "langDesc": "Vollständig übersetzt, egal wo Sie kochen.",
+      "preview": {
+        "protein": "Eiweiß",
+        "fat": "Fett",
+        "veg": "Gemüse",
+        "safeCore": "Sicherer Kern"
+      }
+    },
+    "how": {
+      "eyebrow": "So funktioniert es",
+      "heading": "Vom Hund zum Abendessen in drei Schritten",
+      "step1": {
+        "title": "Erzählen Sie uns von Ihrem Hund",
+        "desc": "Gewicht, Alter, Aktivität, Körperzustand — die Angaben, die Ihr Tierarzt verlangen würde."
+      },
+      "step2": {
+        "title": "Wählen Sie eine vertrauenswürdige Diät",
+        "desc": "Ausgewogen gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben."
+      },
+      "step3": {
+        "title": "Mit Sicherheit kochen",
+        "desc": "Erhalten Sie exakte Gramm, sichere Temperaturen und eine druckbare Rezeptkarte für die Woche."
+      }
+    },
+    "diets": {
+      "eyebrow": "Ernährungsprofile",
+      "heading": "Fünf bewährte Ansätze",
+      "sub": "Jedes Makronährstoffprofil ist auf die AAFCO-Ziele und die Lebensphase Ihres Hundes abgestimmt."
     }
   },
   "about": {
@@ -349,7 +416,8 @@
     "privacyClearBody": "Öffnen Sie in Ihrem Browser die Website-Daten-Einstellungen und löschen Sie alles. PawCook wird beim nächsten Laden auf Standardwerte zurückgesetzt.",
     "privacyHostTitle": "Über den Hoster",
     "privacyHostBody": "PawCook wird auf GitHub Pages gehostet. Zum Ausliefern der Seite sieht die GitHub-Infrastruktur zwangsläufig Ihre IP-Adresse. Wir haben keinen Zugriff auf diese Logs und keine weitere Beziehung zu Ihnen.",
-    "privacyHostLink": "Datenschutzerklärung von GitHub"
+    "privacyHostLink": "Datenschutzerklärung von GitHub",
+    "eyebrow": "Über"
   },
   "meatData": {
     "beef": {

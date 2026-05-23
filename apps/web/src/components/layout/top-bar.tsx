@@ -39,7 +39,7 @@ export function TopBar() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex h-14 sm:h-16 items-center justify-between gap-3">
-          <NavLink to="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="PawCook home">
+          <NavLink to="/" className="flex items-center gap-2.5 shrink-0 group" aria-label={t('common.brandHome')}>
             <PawMark className="h-7 w-7" />
             <div className="flex flex-col leading-none">
               <Wordmark />

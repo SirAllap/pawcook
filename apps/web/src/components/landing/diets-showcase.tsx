@@ -8,18 +8,16 @@ import { cn } from '../../lib/cn';
 type Diet = {
   key: string;
   emoji: string;
-  title: string;
-  sub: string;
   macros: { p: number; f: number; v: number };
   glow: string;
 };
 
 const DIETS: Diet[] = [
-  { key: 'balanced_cooked', emoji: '⚖️', title: 'Balanced cooked', sub: '40 / 30 / 30',  macros: { p: 40, f: 30, v: 30 }, glow: 'from-primary/30' },
-  { key: 'high_protein',    emoji: '💪', title: 'High protein',    sub: '55 / 25 / 20',  macros: { p: 55, f: 25, v: 20 }, glow: 'from-danger/25' },
-  { key: 'pmr',             emoji: '🦴', title: 'PMR 80/10/10',    sub: 'Raw, ancestral', macros: { p: 80, f: 10, v: 10 }, glow: 'from-warning/30' },
-  { key: 'barf',            emoji: '🌿', title: 'BARF',            sub: 'Raw + veg + seeds', macros: { p: 60, f: 15, v: 25 }, glow: 'from-success/30' },
-  { key: 'real_ancestral',  emoji: '🐺', title: 'Real ancestral',  sub: 'Raw + seafood',  macros: { p: 70, f: 15, v: 15 }, glow: 'from-info/25' },
+  { key: 'balanced_cooked', emoji: '⚖️', macros: { p: 40, f: 30, v: 30 }, glow: 'from-primary/30' },
+  { key: 'high_protein',    emoji: '💪', macros: { p: 55, f: 25, v: 20 }, glow: 'from-danger/25' },
+  { key: 'pmr',             emoji: '🦴', macros: { p: 80, f: 10, v: 10 }, glow: 'from-warning/30' },
+  { key: 'barf',            emoji: '🌿', macros: { p: 60, f: 15, v: 25 }, glow: 'from-success/30' },
+  { key: 'real_ancestral',  emoji: '🐺', macros: { p: 70, f: 15, v: 15 }, glow: 'from-info/25' },
 ];
 
 export function DietsShowcase() {
@@ -66,8 +64,8 @@ export function DietsShowcase() {
                 <span className="text-3xl">{diet.emoji}</span>
                 <ArrowRight className="h-4 w-4 text-muted-fg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
               </div>
-              <h3 className="mt-4 text-base font-bold tracking-tight">{diet.title}</h3>
-              <p className="text-xs text-muted-fg mt-0.5">{diet.sub}</p>
+              <h3 className="mt-4 text-base font-bold tracking-tight">{t(`nutrition.dietShort.${diet.key}`)}</h3>
+              <p className="text-xs text-muted-fg mt-0.5">{t(`nutrition.dietSub.${diet.key}`)}</p>
 
               {/* Macro ring */}
               <div className="mt-5">
