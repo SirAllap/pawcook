@@ -55,7 +55,10 @@
       "edit": "Editar",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Objetivo nutricional diário",
-      "findings": "A ter em atenção"
+      "findings": "A ter em atenção",
+      "plansTitle": "Planos de refeições",
+      "newPlan": "Novo plano",
+      "noPlans": "Ainda sem plano. Cria um para começar a cozinhar."
     },
     "form": {
       "species": "Espécie",

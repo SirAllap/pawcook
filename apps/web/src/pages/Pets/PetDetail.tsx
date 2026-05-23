@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
-import { Pencil, ArrowLeft, AlertTriangle, Info } from 'lucide-react';
+import { Pencil, ArrowLeft, AlertTriangle, Info, ClipboardList, ChevronRight, Plus } from 'lucide-react';
 import { calculateNutrition, recommendForPet } from '@pawcook/shared';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
@@ -10,6 +10,7 @@ import { Badge } from '../../components/ui/badge';
 import { StatTile } from '../../components/calculators/stat-tile';
 import { PetAvatar } from '../../components/pets/PetAvatar';
 import { usePets } from '../../contexts/PetProfilesContext';
+import { useMealPlans } from '../../contexts/MealPlansContext';
 
 export default function PetDetail() {
   const { t } = useTranslation();
@@ -20,8 +21,13 @@ export default function PetDetail() {
   const pet = id ? getPet(id) : undefined;
   const nutrition = useMemo(() => (pet ? calculateNutrition(pet.nutrition) : null), [pet]);
   const findings = useMemo(() => (pet ? recommendForPet(pet) : []), [pet]);
+  const { plans, ready: plansReady } = useMealPlans();
+  const petPlans = useMemo(
+    () => (pet ? plans.filter((p) => p.petIds.includes(pet.id)) : []),
+    [plans, pet],
+  );
 
-  if (!ready) return null;
+  if (!ready || !plansReady) return null;
   if (!pet || !nutrition) return <Navigate to="/pets" replace />;
 
   const speciesLabel = pet.nutrition.species === 'cat' ? t('pets.species.cat') : t('pets.species.dog');
@@ -116,6 +122,45 @@ export default function PetDetail() {
           </ul>
         </Card>
       )}
+
+      <Card padding="none" className="overflow-hidden">
+        <header className="flex items-center justify-between gap-3 p-4 border-b border-border">
+          <div className="flex items-center gap-2">
+            <ClipboardList className="h-4 w-4 text-primary" />
+            <h3 className="font-black text-sm tracking-tight">{t('pets.detail.plansTitle')}</h3>
+          </div>
+          <Link to="/meal-plan/new">
+            <Button variant="ghost" size="sm">
+              <Plus className="h-3.5 w-3.5" />
+              {t('pets.detail.newPlan')}
+            </Button>
+          </Link>
+        </header>
+        {petPlans.length === 0 ? (
+          <p className="p-5 text-sm text-muted-fg">
+            {t('pets.detail.noPlans')}
+          </p>
+        ) : (
+          <ul className="divide-y divide-border/50">
+            {petPlans.map((plan) => (
+              <li key={plan.id}>
+                <Link
+                  to={`/meal-plan/${plan.id}`}
+                  className="flex items-center gap-3 p-4 hover:bg-surface-2 transition-colors"
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold truncate">{plan.name}</p>
+                    <p className="text-[11px] text-muted-fg mt-0.5">
+                      {plan.durationDays} {t('mealPlan.wizard.days')}
+                    </p>
+                  </div>
+                  <ChevronRight className="h-4 w-4 text-muted-fg shrink-0" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Card>
 
       <Card padding="md" className="bg-info/5 border-info/30">
         <p className="text-[10px] font-black uppercase tracking-wider text-info mb-1 flex items-center gap-1.5">

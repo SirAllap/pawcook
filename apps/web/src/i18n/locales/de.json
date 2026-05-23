@@ -55,7 +55,10 @@
       "edit": "Bearbeiten",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Tägliches Nährstoffziel",
-      "findings": "Worauf zu achten ist"
+      "findings": "Worauf zu achten ist",
+      "plansTitle": "Mahlzeitenpläne",
+      "newPlan": "Neuer Plan",
+      "noPlans": "Noch in keinem Plan. Erstelle einen, um loszukochen."
     },
     "form": {
       "species": "Art",

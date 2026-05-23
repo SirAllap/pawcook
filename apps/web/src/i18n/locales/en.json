@@ -55,7 +55,10 @@
       "edit": "Edit",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Daily nutrition target",
-      "findings": "Things to watch"
+      "findings": "Things to watch",
+      "plansTitle": "Meal plans",
+      "newPlan": "New plan",
+      "noPlans": "Not in any plan yet. Create one to start cooking."
     },
     "form": {
       "species": "Species",

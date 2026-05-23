@@ -55,7 +55,10 @@
       "edit": "Bewerken",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Dagelijks voedingsdoel",
-      "findings": "Aandachtspunten"
+      "findings": "Aandachtspunten",
+      "plansTitle": "Maaltijdplannen",
+      "newPlan": "Nieuw plan",
+      "noPlans": "Nog niet in een plan. Maak er een om te starten."
     },
     "form": {
       "species": "Soort",

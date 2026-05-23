@@ -55,7 +55,10 @@
       "edit": "Edytuj",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Dzienne zapotrzebowanie",
-      "findings": "Na co zwrócić uwagę"
+      "findings": "Na co zwrócić uwagę",
+      "plansTitle": "Plany posiłków",
+      "newPlan": "Nowy plan",
+      "noPlans": "Nie ma jeszcze planu. Utwórz go, aby zacząć."
     },
     "form": {
       "species": "Gatunek",

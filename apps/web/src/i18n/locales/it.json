@@ -55,7 +55,10 @@
       "edit": "Modifica",
       "subtitle": "{{age}} · {{weight}} kg",
       "dailyPlan": "Obiettivo nutrizionale giornaliero",
-      "findings": "Cose da tenere d'occhio"
+      "findings": "Cose da tenere d'occhio",
+      "plansTitle": "Piani pasti",
+      "newPlan": "Nuovo piano",
+      "noPlans": "Non ancora in un piano. Creane uno per iniziare."
     },
     "form": {
       "species": "Specie",
