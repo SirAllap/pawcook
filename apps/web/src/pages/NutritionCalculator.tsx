@@ -30,11 +30,12 @@ function SectionHead({ children }: { children: React.ReactNode }) {
   );
 }
 
-const DIET_OPTIONS = [
-  { value: 'balanced_cooked', emoji: '⚖️', short: 'Balanced',     sub: '40% protein / 50% veg' },
-  { value: 'high_protein',    emoji: '💪', short: 'High Protein',  sub: '50% protein / 30% veg' },
-  { value: 'pmr',             emoji: '🦴', short: 'PMR 80/10/10',  sub: 'Advanced users only' },
-] as const;
+const DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr'] as const;
+const DIET_EMOJIS: Record<string, string> = {
+  balanced_cooked: '⚖️',
+  high_protein: '💪',
+  pmr: '🦴',
+};
 
 export default function NutritionCalculator() {
   const { t } = useTranslation();
@@ -76,7 +77,7 @@ export default function NutritionCalculator() {
       <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl overflow-hidden">
         <div className="p-5 space-y-5">
 
-          <SectionHead>Dog Profile</SectionHead>
+          <SectionHead>{t('nutrition.profileSection')}</SectionHead>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={labelCls}>{t('nutrition.weight')}</label>
@@ -135,27 +136,26 @@ export default function NutritionCalculator() {
             name="macroProfile"
             render={({ field }) => (
               <div className="grid grid-cols-3 gap-2">
-                {DIET_OPTIONS.map(opt => (
+                {DIET_KEYS.map(key => (
                   <button
-                    key={opt.value}
+                    key={key}
                     type="button"
-                    onClick={() => field.onChange(opt.value)}
+                    onClick={() => field.onChange(key)}
                     className={`flex flex-col items-center gap-1 p-3 rounded-xl border transition-all active:scale-95 text-center ${
-                      field.value === opt.value
+                      field.value === key
                         ? 'bg-amber-500/15 border-amber-500/50 text-amber-300'
                         : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-600'
                     }`}
                   >
-                    <span className="text-2xl">{opt.emoji}</span>
-                    <span className="text-xs font-bold leading-tight">{opt.short}</span>
-                    <span className="text-[10px] text-gray-500 leading-tight">{opt.sub}</span>
+                    <span className="text-2xl">{DIET_EMOJIS[key]}</span>
+                    <span className="text-xs font-bold leading-tight">{t(`nutrition.dietShort.${key}`)}</span>
+                    <span className="text-[10px] text-gray-500 leading-tight">{t(`nutrition.dietSub.${key}`)}</span>
                   </button>
                 ))}
               </div>
             )}
           />
 
-          {/* Macro preview bar */}
           <div className="space-y-1.5">
             <div className="flex gap-0.5 h-2 rounded-full overflow-hidden">
               <div className="bg-amber-500 transition-all duration-500 rounded-l-full" style={{ width: `${proteinPct}%` }} />
@@ -163,9 +163,9 @@ export default function NutritionCalculator() {
               <div className="bg-blue-500 transition-all duration-500 rounded-r-full" style={{ width: `${starchPct}%` }} />
             </div>
             <div className="flex justify-between text-[10px] text-gray-500">
-              <span className="text-amber-400">🥩 {proteinPct}% protein</span>
-              <span className="text-green-400">🥕 {vegPct}% veg</span>
-              <span className="text-blue-400">🌾 {starchPct}% starch</span>
+              <span className="text-amber-400">🥩 {proteinPct}% {t('nutrition.macroProtein')}</span>
+              <span className="text-green-400">🥕 {vegPct}% {t('nutrition.macroVeg')}</span>
+              <span className="text-blue-400">🌾 {starchPct}% {t('nutrition.macroStarch')}</span>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function NutritionCalculator() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                 </svg>
-                <span>Calculating…</span>
+                <span>{t('common.calculating')}</span>
               </>
             ) : <span>🐕 {t('common.calculate')}</span>}
           </button>
@@ -194,12 +194,12 @@ export default function NutritionCalculator() {
 
           <div className="p-4 grid grid-cols-2 gap-3">
             {[
-              { emoji: '🍽️', label: t('nutrition.dailyFood'), value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g`, color: 'amber' },
-              { emoji: '🥣', label: t('nutrition.perMeal'),   value: `${result.perMealGrams.min}–${result.perMealGrams.max} g`,   color: 'amber' },
-              { emoji: '🥩', label: t('nutrition.protein'),   value: `~${result.macros.proteinG} g`,                              color: 'orange' },
-              { emoji: '🥕', label: t('nutrition.vegetables'),value: `~${result.macros.vegG} g`,                                  color: 'green'  },
-              { emoji: '🦴', label: t('nutrition.calciumNeeded'), value: `~${result.calciumMg} mg`,                              color: 'blue'   },
-              { emoji: '🐟', label: t('nutrition.omega3Target'),  value: `~${result.omega3Mg} mg`,                               color: 'teal'   },
+              { emoji: '🍽️', label: t('nutrition.dailyFood'), value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
+              { emoji: '🥣', label: t('nutrition.perMeal'),   value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
+              { emoji: '🥩', label: t('nutrition.protein'),   value: `~${result.macros.proteinG} g` },
+              { emoji: '🥕', label: t('nutrition.vegetables'),value: `~${result.macros.vegG} g` },
+              { emoji: '🦴', label: t('nutrition.calciumNeeded'), value: `~${result.calciumMg} mg` },
+              { emoji: '🐟', label: t('nutrition.omega3Target'),  value: `~${result.omega3Mg} mg` },
             ].map(({ emoji, label, value }) => (
               <div key={label} className="bg-gray-800 rounded-xl p-3.5 text-center">
                 <div className="text-xl mb-1">{emoji}</div>
@@ -230,7 +230,7 @@ export default function NutritionCalculator() {
       {!result && (
         <div className="text-center py-10 text-gray-600 animate-fade-in">
           <div className="text-5xl mb-3">🐕</div>
-          <p className="text-sm">Fill in your dog's profile and tap <strong className="text-gray-500">Calculate</strong></p>
+          <p className="text-sm">{t('nutrition.placeholder')} <strong className="text-gray-500">{t('common.calculate')}</strong></p>
         </div>
       )}
     </div>
