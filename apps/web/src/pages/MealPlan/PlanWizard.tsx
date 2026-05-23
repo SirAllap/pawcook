@@ -41,6 +41,16 @@ export default function PlanWizard() {
     [pets, selectedPetIds],
   );
 
+  // Scope the ingredient picker to whatever species is selected. If only cats
+  // are picked, only show cat-safe meats/veggies; otherwise default to dog
+  // (which has the broader ingredient catalog).
+  const sourcingSpecies = useMemo(() => {
+    if (selectedPets.length > 0 && selectedPets.every((p) => p.nutrition.species === 'cat')) {
+      return 'cat' as const;
+    }
+    return 'dog' as const;
+  }, [selectedPets]);
+
   function togglePet(id: string) {
     setSelectedPetIds((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
@@ -191,7 +201,7 @@ export default function PlanWizard() {
 
       {/* Step 3 — Sourcing */}
       <Card padding="md">
-        <SourcingPicker value={sourcing} onChange={setSourcing} />
+        <SourcingPicker value={sourcing} onChange={setSourcing} species={sourcingSpecies} />
       </Card>
 
       {/* Step 4 — Name */}

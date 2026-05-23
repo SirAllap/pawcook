@@ -40,7 +40,8 @@
     "switchToDark": "Wissel naar donkere modus",
     "unsavedChanges": "Er zijn niet-opgeslagen wijzigingen. Weet je zeker dat je wilt vertrekken?",
     "calcFailed": "Kon niet berekenen — controleer de waarden.",
-    "cancel": "Annuleren"
+    "cancel": "Annuleren",
+    "dismiss": "Sluiten"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -238,7 +239,13 @@
       "prefsLabel": "Herkomstvoorkeuren",
       "preferWildFish": "Wilde vis bij voorkeur",
       "preferGrassFed": "Graskoe bij voorkeur",
-      "preferOrganic": "Biologische groente bij voorkeur"
+      "preferOrganic": "Biologische groente bij voorkeur",
+      "meatsLabel": "Vlees om mee te nemen",
+      "meatsHelp": "Kies de gewenste eiwitten — leeg = planner kiest.",
+      "veggiesLabel": "Groenten om mee te nemen",
+      "veggiesHelp": "Kies de gewenste groenten — leeg = planner kiest.",
+      "anyMeats": "Elke · planner kiest",
+      "anyVeggies": "Elke · planner kiest"
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -273,7 +280,8 @@
         "supplements": "Supplementen",
         "online": "Online bestelling",
         "other": "Overig"
-      }
+      },
+      "cookWith": "Kook {{name}} ({{qty}})"
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Kies een vlees en methode, tik dan op Bereken.",
     "catSupplementsTitle": "Kat-supplementen na het koken",
     "catSupplementsBody": "Warmte vernietigt taurine, B-vitamines (thiamine, niacine) en een deel van vitamine E. Voeg de kattenstapel toe — taurine 250–500 mg, B-complex, vitamine E — nadat het gerecht is afgekoeld.",
-    "subtitle_cat": "Veilige bereidingstijd en -temperatuur voor het eten van je kat. Vergeet niet om taurine + B-complex na het koken toe te voegen."
+    "subtitle_cat": "Veilige bereidingstijd en -temperatuur voor het eten van je kat. Vergeet niet om taurine + B-complex na het koken toe te voegen.",
+    "prefilledFromPlan": "Vooraf ingevuld vanuit je plan",
+    "prefilledHelp": "We namen het vlees en totaalgewicht over uit “{{plan}}”. Pas aan voor berekening.",
+    "prefilledPlanFallback": "je plan",
+    "veggieGuideTitle": "Kookgids voor groenten",
+    "veggieGuideHelp": "Snelle referentie voor de groente-kant — beetgaar, nooit papperig.",
+    "vegMethod": {
+      "steam": "Stoom",
+      "bake": "Oven",
+      "blanch": "Blancheren",
+      "raw": "Rauw"
+    }
   },
   "nutrition": {
     "title": "Voedingscalculator",

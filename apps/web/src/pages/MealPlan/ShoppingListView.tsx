@@ -1,7 +1,11 @@
 import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, ShoppingBag } from 'lucide-react';
-import { getStoreSection, type MealPlan, type PetProfile, type ShoppingItem } from '@pawcook/shared';
+import { Check, ChefHat, ShoppingBag } from 'lucide-react';
+import {
+  getStoreSection, MeatTypeSchema,
+  type MealPlan, type PetProfile, type ShoppingItem,
+} from '@pawcook/shared';
 import { Card } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
 import { EmptyState } from '../../components/ui/empty-state';
@@ -11,13 +15,25 @@ import { useRecipeExport } from '../../hooks/useRecipeExport';
 import { useShoppingChecks } from '../../contexts/ShoppingChecksContext';
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
 import { cn } from '../../lib/cn';
+import type { CookingPrefill } from '../CookingCalculator';
 
 export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProfile[] }) {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const { getChecks, toggle } = useShoppingChecks();
   const checked = getChecks(plan.id);
   const { setTarget, downloadPdf, downloadImage, busy } = useRecipeExport();
   const translateIngredient = useTranslateIngredient();
+
+  function openCookingFor(item: ShoppingItem) {
+    const meat = MeatTypeSchema.safeParse(item.ingredientId);
+    const prefill: CookingPrefill = {
+      meatType: meat.success ? meat.data : undefined,
+      totalWeightKg: Math.max(0.1, Math.min(30, item.totalGrams / 1000)),
+      planName: plan.name,
+    };
+    navigate('/cooking', { state: { prefill } });
+  }
 
   const exportConfig = useMemo(() => ({
     prefix: 'pawcook-shopping',
@@ -80,6 +96,7 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
                 {section.items.map((item) => {
                   const key = `${section.sectionId}:${item.ingredientId}`;
                   const isChecked = checked.has(key);
+                  const isMeat = MeatTypeSchema.safeParse(item.ingredientId).success;
                   return (
                     <ShoppingRow
                       key={item.ingredientId}
@@ -89,6 +106,7 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
                       pets={pets}
                       checked={isChecked}
                       onToggle={() => toggle(plan.id, key)}
+                      onCook={isMeat ? () => openCookingFor(item) : undefined}
                     />
                   );
                 })}
@@ -102,7 +120,7 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
 }
 
 function ShoppingRow({
-  item, label, lang, pets, checked, onToggle,
+  item, label, lang, pets, checked, onToggle, onCook,
 }: {
   item: ShoppingItem;
   label: string;
@@ -110,19 +128,21 @@ function ShoppingRow({
   pets: PetProfile[];
   checked: boolean;
   onToggle: () => void;
+  onCook?: () => void;
 }) {
+  const { t } = useTranslation();
   const itemPets = pets.filter((p) => item.forPetIds.includes(p.id));
   const allPets = item.forPetIds.length === pets.length;
 
   return (
-    <li>
+    <li className="flex items-stretch">
       <button
         type="button"
         onClick={onToggle}
         aria-pressed={checked}
         aria-label={`${label} — ${formatQuantity(item.totalGrams, lang)}`}
         className={cn(
-          'w-full flex items-center gap-3 p-3 text-left transition-colors',
+          'flex-1 min-w-0 flex items-center gap-3 p-3 text-left transition-colors',
           'min-h-[44px] hover:bg-surface-2 active:bg-surface-3',
           checked && 'opacity-60',
         )}
@@ -155,6 +175,25 @@ function ShoppingRow({
           {formatQuantity(item.totalGrams, lang)}
         </span>
       </button>
+      {onCook && (
+        <button
+          type="button"
+          onClick={onCook}
+          aria-label={t('mealPlan.shopping.cookWith', {
+            defaultValue: 'Cook {{name}} ({{qty}})',
+            name: label,
+            qty: formatQuantity(item.totalGrams, lang),
+          })}
+          title={t('mealPlan.shopping.cookWith', {
+            defaultValue: 'Cook {{name}} ({{qty}})',
+            name: label,
+            qty: formatQuantity(item.totalGrams, lang),
+          })}
+          className="shrink-0 flex items-center justify-center w-12 border-l border-border/60 text-muted-fg hover:text-primary hover:bg-primary/5 transition-colors"
+        >
+          <ChefHat className="h-4 w-4" aria-hidden />
+        </button>
+      )}
     </li>
   );
 }

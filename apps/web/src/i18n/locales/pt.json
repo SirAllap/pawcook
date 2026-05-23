@@ -40,7 +40,8 @@
     "switchToDark": "Mudar para o modo escuro",
     "unsavedChanges": "Há alterações não salvas. Tem certeza de que quer sair?",
     "calcFailed": "Não foi possível calcular — verifique os valores.",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "dismiss": "Dispensar"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -238,7 +239,13 @@
       "prefsLabel": "Preferências de origem",
       "preferWildFish": "Peixe selvagem preferido",
       "preferGrassFed": "Pastagem preferida",
-      "preferOrganic": "Vegetais bio preferidos"
+      "preferOrganic": "Vegetais bio preferidos",
+      "meatsLabel": "Carnes para incluir",
+      "meatsHelp": "Escolha as proteínas — deixe vazio para o planejador escolher.",
+      "veggiesLabel": "Legumes para incluir",
+      "veggiesHelp": "Escolha os legumes — deixe vazio para o planejador escolher.",
+      "anyMeats": "Qualquer · planejador escolhe",
+      "anyVeggies": "Qualquer · planejador escolhe"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -273,7 +280,8 @@
         "supplements": "Suplementos",
         "online": "Encomenda online",
         "other": "Outros"
-      }
+      },
+      "cookWith": "Cozinhar {{name}} ({{qty}})"
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular.",
     "catSupplementsTitle": "Suplementos para gato após cozinhar",
     "catSupplementsBody": "O calor destrói a taurina, vitaminas B (tiamina, niacina) e parte da vitamina E. Adicione o stack felino — taurina 250–500 mg, complexo B, vitamina E — depois do prato esfriar.",
-    "subtitle_cat": "Tempo e temperatura de cozimento seguros para a comida do seu gato. Lembre-se de adicionar taurina + complexo B após cozinhar."
+    "subtitle_cat": "Tempo e temperatura de cozimento seguros para a comida do seu gato. Lembre-se de adicionar taurina + complexo B após cozinhar.",
+    "prefilledFromPlan": "Pré-preenchido a partir do seu plano",
+    "prefilledHelp": "Trouxemos a carne e o peso total de “{{plan}}”. Ajuste antes de calcular.",
+    "prefilledPlanFallback": "seu plano",
+    "veggieGuideTitle": "Guia de cozimento de vegetais",
+    "veggieGuideHelp": "Referência rápida para cozinhar os vegetais — macios, nunca em mingau.",
+    "vegMethod": {
+      "steam": "Vapor",
+      "bake": "Forno",
+      "blanch": "Branquear",
+      "raw": "Cru"
+    }
   },
   "nutrition": {
     "title": "Calculadora de nutrição",

@@ -40,7 +40,8 @@
     "changeLanguage": "Choose language",
     "preferences": "Preferences",
     "brandHome": "PawCook home",
-    "catFoodCalc": "Cat Food Calculator"
+    "catFoodCalc": "Cat Food Calculator",
+    "dismiss": "Dismiss"
   },
   "pets": {
     "eyebrow": "Pets",
@@ -126,18 +127,39 @@
     "conditions": {
       "label": "Chronic conditions",
       "help": "These guide planner recommendations (e.g. low-phosphorus for kidney conditions). Not a diagnosis tool.",
-      "allergy":      { "label": "Food allergies",      "help": "We'll exclude allergens from plans." },
-      "kidney":       { "label": "Kidney disease",      "help": "Lower phosphorus, avoid organ-heavy days." },
-      "pancreatitis": { "label": "Pancreatitis",        "help": "Lean proteins only, no fatty cuts." },
-      "diabetes":     { "label": "Diabetes",            "help": "Lower-carb plans, watch starches." },
-      "joint":        { "label": "Joint issues",        "help": "Prioritise omega-3 rich proteins." },
-      "gi_sensitive": { "label": "Sensitive stomach",   "help": "Favour bland, easily digested options." },
-      "obese":        { "label": "Overweight / obese",  "help": "Calorie-restricted target weight." }
+      "allergy": {
+        "label": "Food allergies",
+        "help": "We'll exclude allergens from plans."
+      },
+      "kidney": {
+        "label": "Kidney disease",
+        "help": "Lower phosphorus, avoid organ-heavy days."
+      },
+      "pancreatitis": {
+        "label": "Pancreatitis",
+        "help": "Lean proteins only, no fatty cuts."
+      },
+      "diabetes": {
+        "label": "Diabetes",
+        "help": "Lower-carb plans, watch starches."
+      },
+      "joint": {
+        "label": "Joint issues",
+        "help": "Prioritise omega-3 rich proteins."
+      },
+      "gi_sensitive": {
+        "label": "Sensitive stomach",
+        "help": "Favour bland, easily digested options."
+      },
+      "obese": {
+        "label": "Overweight / obese",
+        "help": "Calorie-restricted target weight."
+      }
     },
     "conditionsLabel": "Conditions",
     "confirmDelete": "Delete {{name}}? This can't be undone.",
     "toast": {
-      "added":   "{{name}} added.",
+      "added": "{{name}} added.",
       "updated": "{{name}} updated.",
       "removed": "{{name}} removed."
     }
@@ -188,7 +210,7 @@
       "petsHelp": "Pick one or more. Mixed-species plans share a single shopping list.",
       "duration": "Duration",
       "days": "days",
-      "duration_7":  "Weekly",
+      "duration_7": "Weekly",
       "duration_14": "Biweekly",
       "duration_30": "Monthly",
       "nameLabel": "Plan name",
@@ -205,19 +227,25 @@
       "varietyHelp": "How much rotation across proteins each week.",
       "variety": {
         "standard": "Standard",
-        "diverse":  "Diverse",
-        "novel":    "Novel only"
+        "diverse": "Diverse",
+        "novel": "Novel only"
       },
       "accessLabel": "Where you shop",
       "accessHelp": "Pick what's realistic for your usual stores.",
       "access": {
-        "easy":      "Supermarket-friendly",
+        "easy": "Supermarket-friendly",
         "specialty": "Butcher / specialty OK"
       },
       "prefsLabel": "Sourcing preferences",
-      "preferWildFish":  "Prefer wild-caught fish",
-      "preferGrassFed":  "Prefer grass-fed proteins",
-      "preferOrganic":   "Prefer organic vegetables"
+      "preferWildFish": "Prefer wild-caught fish",
+      "preferGrassFed": "Prefer grass-fed proteins",
+      "preferOrganic": "Prefer organic vegetables",
+      "meatsLabel": "Meats to include",
+      "meatsHelp": "Pick the proteins you want — leave empty to let the planner choose any.",
+      "veggiesLabel": "Veggies to include",
+      "veggiesHelp": "Pick the produce you want — leave empty to let the planner choose any.",
+      "anyMeats": "Any · planner picks",
+      "anyVeggies": "Any · planner picks"
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -244,26 +272,27 @@
       "empty": "No items to buy — your pantry already covers this plan.",
       "exportFooter": "PawCook shopping list — not veterinary advice.",
       "section": {
-        "butcher":      "Butcher / meat",
+        "butcher": "Butcher / meat",
         "fish-counter": "Fish counter",
-        "produce":      "Produce",
-        "pantry":       "Pantry & canned",
-        "pet-store":    "Pet store",
-        "supplements":  "Supplements",
-        "online":       "Online order",
-        "other":        "Other"
-      }
+        "produce": "Produce",
+        "pantry": "Pantry & canned",
+        "pet-store": "Pet store",
+        "supplements": "Supplements",
+        "online": "Online order",
+        "other": "Other"
+      },
+      "cookWith": "Cook {{name}} ({{qty}})"
     },
     "confirmDelete": "Delete plan \"{{name}}\"? This can't be undone.",
     "toast": {
-      "saved":   "Saved \"{{name}}\".",
+      "saved": "Saved \"{{name}}\".",
       "deleted": "Deleted \"{{name}}\"."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Kidney condition: keep phosphorus on the lower end of the plan.",
-      "avoidOrgans":   "Kidney condition: avoid organ-heavy days; rotate liver out when possible."
+      "avoidOrgans": "Kidney condition: avoid organ-heavy days; rotate liver out when possible."
     },
     "pancreatitis": {
       "leanOnly": "Pancreatitis: lean proteins only — no duck, lamb, or fatty cuts."
@@ -372,7 +401,18 @@
     "placeholderHint": "Choose a meat and method, then tap Calculate.",
     "catSupplementsTitle": "Cat supplements after cooking",
     "catSupplementsBody": "Heat destroys taurine, B-vitamins (thiamine, niacin) and some vitamin E. Add a feline supplement stack — taurine 250–500 mg, B-complex, vitamin E — after the meal cools.",
-    "subtitle_cat": "Safe cooking time and temperature for your cat's food. Remember to add taurine + B-complex after cooking."
+    "subtitle_cat": "Safe cooking time and temperature for your cat's food. Remember to add taurine + B-complex after cooking.",
+    "prefilledFromPlan": "Pre-filled from your plan",
+    "prefilledHelp": "We carried over the meat and total weight from “{{plan}}”. Tweak anything before calculating.",
+    "prefilledPlanFallback": "your plan",
+    "veggieGuideTitle": "Vegetable cooking guide",
+    "veggieGuideHelp": "Quick reference for cooking the produce side of the meal — slightly tender, never mushy.",
+    "vegMethod": {
+      "steam": "Steam",
+      "bake": "Bake",
+      "blanch": "Blanch",
+      "raw": "Raw"
+    }
   },
   "nutrition": {
     "title": "Nutrition Calculator",

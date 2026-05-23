@@ -118,6 +118,49 @@ describe('generateMealPlan', () => {
     }
   });
 
+  it('explicit meatIds whitelist restricts proteins to the user picks', () => {
+    const sourcing = SourcingPrefsSchema.parse({
+      meatIds: ['turkey', 'rabbit'],
+    });
+    const plan = generateMealPlan({
+      name: 'Turkey + rabbit only', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01', sourcing,
+    });
+    // Collect meat-side ingredients used (proteins, organs, fish — i.e. anything
+    // in the butcher / fish-counter / pantry sections in the shopping list).
+    const meatSections = new Set(['butcher', 'fish-counter', 'pantry']);
+    const meatsUsed = new Set<string>();
+    for (const section of plan.shoppingList.sections) {
+      if (!meatSections.has(section.sectionId)) continue;
+      for (const item of section.items) meatsUsed.add(item.ingredientId);
+    }
+    expect(meatsUsed.size).toBeGreaterThan(0);
+    for (const id of meatsUsed) {
+      expect(['turkey', 'rabbit']).toContain(id);
+    }
+  });
+
+  it('explicit vegIds whitelist scopes the veg component slot to the user picks', () => {
+    const sourcing = SourcingPrefsSchema.parse({
+      vegIds: ['carrots'],
+    });
+    const plan = generateMealPlan({
+      name: 'Carrots only', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01', sourcing,
+    });
+    // For every component slot that carrots is eligible to fill (key='veg'),
+    // the planner must use carrots — never another vegetable.
+    for (const day of plan.days) {
+      for (const pp of day.petPlans) {
+        for (const meal of pp.meals) {
+          for (const c of meal.components) {
+            if (c.componentKey === 'veg') expect(c.ingredientId).toBe('carrots');
+          }
+        }
+      }
+    }
+  });
+
   it('shopping list aggregates grams across days', () => {
     const plan = generateMealPlan({
       name: 'Two week', pets: [dog], durationDays: 14,

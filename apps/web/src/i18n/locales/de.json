@@ -40,7 +40,8 @@
     "switchToDark": "Zum dunklen Modus wechseln",
     "unsavedChanges": "Es gibt ungespeicherte Änderungen. Wirklich verlassen?",
     "calcFailed": "Berechnung fehlgeschlagen — bitte Eingaben prüfen.",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "dismiss": "Schließen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -238,7 +239,13 @@
       "prefsLabel": "Beschaffungspräferenzen",
       "preferWildFish": "Wildfang-Fisch bevorzugt",
       "preferGrassFed": "Weidehaltung bevorzugt",
-      "preferOrganic": "Bio-Gemüse bevorzugt"
+      "preferOrganic": "Bio-Gemüse bevorzugt",
+      "meatsLabel": "Fleisch einbeziehen",
+      "meatsHelp": "Wähle die gewünschten Proteine — leer = Planer entscheidet.",
+      "veggiesLabel": "Gemüse einbeziehen",
+      "veggiesHelp": "Wähle das gewünschte Gemüse — leer = Planer entscheidet.",
+      "anyMeats": "Beliebig · Planer wählt",
+      "anyVeggies": "Beliebig · Planer wählt"
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -273,7 +280,8 @@
         "supplements": "Ergänzungen",
         "online": "Online-Bestellung",
         "other": "Sonstiges"
-      }
+      },
+      "cookWith": "{{name}} kochen ({{qty}})"
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
@@ -393,7 +401,18 @@
     "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen.",
     "catSupplementsTitle": "Katzen-Supplemente nach dem Kochen",
     "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist.",
-    "subtitle_cat": "Sichere Garzeit und -temperatur für das Futter Ihrer Katze. Vergessen Sie nicht, Taurin + B-Komplex nach dem Kochen hinzuzufügen."
+    "subtitle_cat": "Sichere Garzeit und -temperatur für das Futter Ihrer Katze. Vergessen Sie nicht, Taurin + B-Komplex nach dem Kochen hinzuzufügen.",
+    "prefilledFromPlan": "Aus deinem Plan vorausgefüllt",
+    "prefilledHelp": "Wir haben Fleisch und Gesamtgewicht aus „{{plan}}“ übernommen. Vor dem Berechnen anpassen.",
+    "prefilledPlanFallback": "deinem Plan",
+    "veggieGuideTitle": "Anleitung Gemüse kochen",
+    "veggieGuideHelp": "Kurzreferenz für die Gemüseseite — bissfest, nie matschig.",
+    "vegMethod": {
+      "steam": "Dampf",
+      "bake": "Backofen",
+      "blanch": "Blanchieren",
+      "raw": "Roh"
+    }
   },
   "nutrition": {
     "title": "Ernährungsrechner",
