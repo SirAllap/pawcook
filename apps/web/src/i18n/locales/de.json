@@ -412,6 +412,16 @@
       "bake": "Backofen",
       "blanch": "Blanchieren",
       "raw": "Roh"
+    },
+    "prefilledContext": "{{pets}} Tier(e) · {{days}} Tage Fütterung",
+    "bagStrategy": {
+      "title": "Beutel-Strategie",
+      "daysPerBag": "Tage pro gegartem Beutel",
+      "daysAria": "{{n}} Tage pro Beutel",
+      "day": "Tag",
+      "days": "Tage",
+      "result": "Aufteilung",
+      "help": "Reicht für {{pets}} Tier(e) über {{days}} Tage. Nach dem Garen 1 Beutel kühl lagern (innerhalb {{fridge}} Tagen verbrauchen) und die restlichen {{frozen}} einfrieren. Beutel über Nacht auftauen."
     }
   },
   "nutrition": {

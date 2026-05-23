@@ -86,7 +86,7 @@ export default function PlanView() {
         </div>
       )}
 
-      <Tabs value={tab} onValueChange={setTab}>
+      <Tabs value={tab} onValueChange={setTab} className="space-y-5">
         <TabsList>
           <TabsTrigger
             value="meals"
@@ -116,7 +116,7 @@ export default function PlanView() {
         </TabsContent>
       </Tabs>
 
-      <Card padding="md" className="bg-info/5 border-info/30">
+      <Card padding="md" className="bg-info/5 border-info/30 mt-8 sm:mt-10">
         <p className="text-[10px] font-black uppercase tracking-wider text-info mb-2 flex items-center gap-1.5">
           <Info className="h-3 w-3" aria-hidden />
           {t('common.disclaimerLabel', { defaultValue: 'Note' })}

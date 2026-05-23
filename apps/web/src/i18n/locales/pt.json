@@ -412,6 +412,16 @@
       "bake": "Forno",
       "blanch": "Branquear",
       "raw": "Cru"
+    },
+    "prefilledContext": "{{pets}} pet(s) · {{days}} dias de alimentação",
+    "bagStrategy": {
+      "title": "Estratégia de sacos",
+      "daysPerBag": "Dias que cada saco cozido cobre",
+      "daysAria": "{{n}} dias por saco",
+      "day": "dia",
+      "days": "dias",
+      "result": "Divisão",
+      "help": "Alimenta {{pets}} pet(s) por {{days}} dias no total. Após cozinhar, mantenha 1 saco na geladeira (consuma em {{fridge}} dias) e congele os outros {{frozen}}. Descongele um saco na noite anterior."
     }
   },
   "nutrition": {

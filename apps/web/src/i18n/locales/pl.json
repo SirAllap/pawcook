@@ -412,6 +412,16 @@
       "bake": "Piekarnik",
       "blanch": "Blanszuj",
       "raw": "Surowe"
+    },
+    "prefilledContext": "{{pets}} zwierz(ąt) · {{days}} dni karmienia",
+    "bagStrategy": {
+      "title": "Strategia woreczków",
+      "daysPerBag": "Ile dni pokrywa jeden gotowany woreczek",
+      "daysAria": "{{n}} dni na woreczek",
+      "day": "dzień",
+      "days": "dni",
+      "result": "Podział",
+      "help": "Wyżywi {{pets}} zwierz(ąt) przez {{days}} dni. Po ugotowaniu trzymaj 1 woreczek w lodówce (zużyj w ciągu {{fridge}} dni), a {{frozen}} zamroź. Rozmroź woreczek noc wcześniej."
     }
   },
   "nutrition": {

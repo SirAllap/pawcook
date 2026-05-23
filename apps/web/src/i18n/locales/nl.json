@@ -412,6 +412,16 @@
       "bake": "Oven",
       "blanch": "Blancheren",
       "raw": "Rauw"
+    },
+    "prefilledContext": "{{pets}} huisdier(en) · {{days}} dagen voeding",
+    "bagStrategy": {
+      "title": "Zak-strategie",
+      "daysPerBag": "Dagen dat één gekookte zak dekt",
+      "daysAria": "{{n}} dagen per zak",
+      "day": "dag",
+      "days": "dagen",
+      "result": "Verdeling",
+      "help": "Voert {{pets}} huisdier(en) gedurende {{days}} dagen totaal. Na koken 1 zak in de koelkast bewaren (binnen {{fridge}} dagen gebruiken) en de andere {{frozen}} invriezen. Ontdooi een zak de avond ervoor."
     }
   },
   "nutrition": {

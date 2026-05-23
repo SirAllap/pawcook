@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
@@ -53,13 +53,23 @@ function loadSaved(): CookingInput {
 /**
  * Payload accepted via router state when the user taps "Cook this" from a
  * meal plan. Only fields that make sense to carry over are picked — we
- * never overwrite the user's preferred temperature unit or cooking method.
+ * never overwrite the user's preferred temperature unit. The caller can
+ * also tell us how many pets share the batch and how many days the plan
+ * covers; we use those to surface a bag-splitting strategy for sous-vide.
  */
 export type CookingPrefill = {
   meatType?: CookingInput['meatType'];
   totalWeightKg?: number;
   planName?: string;
+  petCount?: number;
+  feedingDays?: number;
 };
+
+// Default refrigerator life of a cooked, sealed bag. Three days is the
+// FDA-safe ceiling for cooked meats stored at ≤4 °C; we surface "use within
+// 2 days" copy because users open and re-seal the bag.
+const FRIDGE_SAFE_DAYS = 3;
+const DEFAULT_DAYS_PER_BAG = 2;
 
 function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInput {
   if (!prefill) return base;
@@ -69,9 +79,15 @@ function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInpu
   if (typeof prefill.totalWeightKg === 'number' && Number.isFinite(prefill.totalWeightKg)) {
     // Cap to the schema max so router payloads can't bypass validation.
     merged.totalWeightKg = Math.min(30, Math.max(0.1, prefill.totalWeightKg));
-    // If they're coming from a plan, batch methods are the natural fit; flip
-    // sous-vide to oven so the totalWeight field is the visible one.
-    if (merged.cookingMethod === 'sous_vide') merged.cookingMethod = 'oven';
+    // Seed sous-vide bag fields too so switching methods doesn't lose the
+    // prefilled total. We assume DEFAULT_DAYS_PER_BAG; the user can tune
+    // it via the bag-strategy panel.
+    if (prefill.feedingDays && prefill.feedingDays > 0) {
+      const bagCount = Math.max(1, Math.ceil(prefill.feedingDays / DEFAULT_DAYS_PER_BAG));
+      const weightPerBag = Math.min(5, Math.max(0.1, merged.totalWeightKg / bagCount));
+      merged.numberOfBags = Math.min(20, bagCount);
+      merged.weightKg = Math.round(weightPerBag * 100) / 100;
+    }
   }
   return merged;
 }
@@ -133,7 +149,7 @@ export default function CookingCalculator() {
       }
     : null;
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<CookingInput>({
+  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
     mode: 'onBlur',
     defaultValues: applyPrefill(loadSaved(), prefill),
@@ -213,6 +229,15 @@ export default function CookingCalculator() {
                 plan: prefillBanner.planName ?? t('cooking.prefilledPlanFallback', { defaultValue: 'your plan' }),
               })}
             </p>
+            {prefillBanner.feedingDays && prefillBanner.petCount ? (
+              <p className="text-xs text-muted-fg mt-1.5">
+                {t('cooking.prefilledContext', {
+                  defaultValue: '{{pets}} pet(s) · {{days}} days of feeding',
+                  pets: prefillBanner.petCount,
+                  days: prefillBanner.feedingDays,
+                })}
+              </p>
+            ) : null}
           </div>
           <button
             type="button"
@@ -261,6 +286,17 @@ export default function CookingCalculator() {
                 transition={{ duration: 0.25 }}
                 className="space-y-4"
               >
+                {prefillBanner?.feedingDays && prefillBanner.totalWeightKg ? (
+                  <BagStrategyPanel
+                    totalWeightKg={prefillBanner.totalWeightKg}
+                    feedingDays={prefillBanner.feedingDays}
+                    petCount={prefillBanner.petCount ?? 1}
+                    onApply={({ bagSizeKg, bagCount }) => {
+                      setValue('weightKg',     bagSizeKg, { shouldDirty: true });
+                      setValue('numberOfBags', bagCount,  { shouldDirty: true });
+                    }}
+                  />
+                ) : null}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label={t('cooking.weightPerBag')}
@@ -459,6 +495,109 @@ export default function CookingCalculator() {
 
       <VegCookingGuide unit={values.temperatureUnit} />
     </div>
+  );
+}
+
+/**
+ * Helper for sous-vide users coming from a meal plan. The plan tells us
+ * how much meat we're cooking and how many days it needs to last; we use
+ * those to suggest a batch split (cook once, fridge one bag, freeze the
+ * rest). The user picks `daysPerBag` and we round both values to safe
+ * schema bounds before pushing them into the form.
+ */
+function BagStrategyPanel({
+  totalWeightKg, feedingDays, petCount, onApply,
+}: {
+  totalWeightKg: number;
+  feedingDays: number;
+  petCount: number;
+  onApply: (next: { bagSizeKg: number; bagCount: number }) => void;
+}) {
+  const { t, i18n } = useTranslation();
+  const [daysPerBag, setDaysPerBag] = useState<number>(
+    Math.min(DEFAULT_DAYS_PER_BAG, Math.max(1, feedingDays)),
+  );
+
+  // The form values that drop out of "I want X days per bag" — rounded to
+  // values the schema will accept (numberOfBags 1-20, weightKg 0.1-5).
+  const { bagCount, bagSizeKg } = useMemo(() => {
+    const safeDays = Math.max(1, Math.min(feedingDays, daysPerBag));
+    const rawBagCount = Math.max(1, Math.ceil(feedingDays / safeDays));
+    const count = Math.min(20, rawBagCount);
+    const size = Math.min(5, Math.max(0.1, totalWeightKg / count));
+    return { bagCount: count, bagSizeKg: Math.round(size * 100) / 100 };
+  }, [feedingDays, daysPerBag, totalWeightKg]);
+
+  // Whenever the user nudges daysPerBag, push the computed values back into
+  // the parent form so the standard inputs stay in sync.
+  useEffect(() => {
+    onApply({ bagSizeKg, bagCount });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bagSizeKg, bagCount]);
+
+  const fmt = (n: number) => n.toLocaleString(i18n.language);
+  const maxDays = Math.min(FRIDGE_SAFE_DAYS, feedingDays);
+
+  return (
+    <Card padding="md" variant="muted" className="space-y-3 border-primary/30 bg-primary/5">
+      <div className="flex items-center gap-2">
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary">
+          <Snowflake className="h-3.5 w-3.5" aria-hidden />
+        </span>
+        <p className="text-[11px] font-black uppercase tracking-wider text-primary">
+          {t('cooking.bagStrategy.title', { defaultValue: 'Bag strategy' })}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 items-end">
+        <div>
+          <label htmlFor="bag-days" className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em] mb-1.5">
+            {t('cooking.bagStrategy.daysPerBag', { defaultValue: 'Days each cooked bag covers' })}
+          </label>
+          <input
+            id="bag-days"
+            type="range"
+            min={1}
+            max={maxDays}
+            step={1}
+            value={daysPerBag}
+            onChange={(e) => setDaysPerBag(Math.max(1, Math.min(maxDays, Number(e.target.value))))}
+            className="w-full accent-primary"
+            aria-valuetext={t('cooking.bagStrategy.daysAria', {
+              defaultValue: '{{n}} days per bag',
+              n: daysPerBag,
+            })}
+          />
+          <div className="flex justify-between text-[10px] font-mono text-muted-fg mt-1">
+            <span>1 {t('cooking.bagStrategy.day', { defaultValue: 'day' })}</span>
+            <span className="font-bold text-foreground">
+              {daysPerBag} {daysPerBag === 1
+                ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
+                : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
+            </span>
+            <span>{maxDays} {t('cooking.bagStrategy.days', { defaultValue: 'days' })}</span>
+          </div>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-xs text-muted-fg">
+            {t('cooking.bagStrategy.result', { defaultValue: 'Split' })}
+          </p>
+          <p className="font-mono text-lg font-black text-foreground tabular-nums">
+            {fmt(bagCount)} × {fmt(bagSizeKg)} kg
+          </p>
+        </div>
+      </div>
+
+      <p className="text-xs text-foreground/90 leading-relaxed">
+        {t('cooking.bagStrategy.help', {
+          defaultValue: 'Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.',
+          pets: petCount,
+          days: feedingDays,
+          fridge: FRIDGE_SAFE_DAYS,
+          frozen: Math.max(0, bagCount - 1),
+        })}
+      </p>
+    </Card>
   );
 }
 

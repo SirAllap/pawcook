@@ -31,6 +31,10 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       meatType: meat.success ? meat.data : undefined,
       totalWeightKg: Math.max(0.1, Math.min(30, item.totalGrams / 1000)),
       planName: plan.name,
+      // The bag-strategy panel needs both to be useful: how many pets share
+      // this batch, and how many days of feeding the total covers.
+      petCount: item.forPetIds.length,
+      feedingDays: plan.durationDays,
     };
     navigate('/cooking', { state: { prefill } });
   }
