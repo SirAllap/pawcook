@@ -164,7 +164,49 @@
     "macroProtein": "protein",
     "macroVeg": "veg",
     "macroStarch": "starch",
-    "placeholder": "Fill in your dog's profile and tap"
+    "placeholder": "Fill in your dog's profile and tap",
+    "components": {
+      "protein": "Protein",
+      "muscle": "Muscle meat",
+      "bone": "Raw bone",
+      "liver": "Liver",
+      "organ": "Organs",
+      "seafood": "Seafood",
+      "fiber": "Animal fiber",
+      "veg": "Vegetables",
+      "seeds": "Seeds & nuts",
+      "fruit": "Fruits",
+      "starch": "Starch"
+    },
+    "result": {
+      "breakdown": "Diet breakdown",
+      "perDay": "per day",
+      "derEnergy": "DER (energy)",
+      "vetPdf": "Vet PDF",
+      "calcium": "Calcium",
+      "phosphorus": "Phosphorus",
+      "omegaTarget": "Ω-3 target",
+      "safetyGuardrails": "Safety guardrails",
+      "caP": "Ca : P ratio",
+      "safe": "safe"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (resting): {{kcal}} kcal/day",
+      "der": "DER (daily energy): {{kcal}} kcal/day (×{{multiplier}} multiplier)",
+      "rawDiet": "Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.",
+      "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury."
+    },
+    "warnings": {
+      "caPLow": "Ca:P ratio is {{ratio}}:1 — below the AAFCO safe minimum of 1:1. Add ~{{calcium}} mg supplemental calcium daily.",
+      "caPHigh": "Ca:P ratio is {{ratio}}:1 — above the AAFCO safe maximum of 2:1. Reduce bone content or balance with low-calcium protein.",
+      "puppyCaP": "Growing puppies are sensitive to high Ca:P — keep under 1.6:1 to avoid skeletal disease.",
+      "cookedCaDeficient": "Cooked diets are calcium-deficient by default. Add ~{{calcium}} mg Ca (≈½ tsp ground eggshell per ~454 g meat, or use a balancer)."
+    }
   },
   "foodSafety": {
     "title": "Food Safety Reference",
@@ -197,6 +239,60 @@
       "wysong": "For all-meat diets",
       "animalEssentials": "Broad spectrum",
       "volhard": "Full premix approach"
+    },
+    "aafcoTable": {
+      "title": "AAFCO Nutrient Profile",
+      "source": "AAFCO Dog Food Nutrient Profiles (dry-matter basis)",
+      "nutrient": "Nutrient",
+      "unit": "Unit",
+      "adultMin": "Adult min",
+      "growthMin": "Growth min",
+      "safeMax": "Safe max",
+      "nutrients": {
+        "crude_protein": "Crude Protein",
+        "crude_fat": "Crude Fat",
+        "linoleic_acid": "Linoleic Acid",
+        "ala": "Alpha-Linolenic Acid",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Calcium",
+        "phosphorus": "Phosphorus",
+        "iron": "Iron",
+        "copper": "Copper",
+        "zinc": "Zinc",
+        "iodine": "Iodine",
+        "selenium": "Selenium",
+        "vit_a": "Vitamin A",
+        "vit_d": "Vitamin D",
+        "vit_e": "Vitamin E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Calcium : Phosphorus",
+          "note": "Critical for skeletal health; growing puppies should stay below 1.6:1"
+        },
+        "omega": {
+          "label": "Omega-6 : Omega-3",
+          "note": "Lower ratios (5:1 to 10:1) reduce systemic inflammation"
+        }
+      }
+    },
+    "transition": {
+      "title": "7-day transition from kibble to fresh food",
+      "summary": "Gradual transition prevents osmotic diarrhea and gastric upset. Use a single highly digestible protein (chicken or turkey) for the entire transition.",
+      "tipsTitle": "Tips",
+      "oldFresh": "{{old}}% old · {{new}}% fresh",
+      "days": {
+        "0": { "label": "Day 1–2", "note": "Watch stool — looser stool is normal, but firm should be the baseline by day 2." },
+        "1": { "label": "Day 3–4", "note": "If digestive issues appear, hold this ratio an extra day before advancing." },
+        "2": { "label": "Day 5–6", "note": "Begin tapering off any commercial food." },
+        "3": { "label": "Day 7+",  "note": "Full fresh diet. Introduce protein rotation only after 14–21 days of stable digestion." }
+      },
+      "tips": {
+        "0": "Add a teaspoon of plain canned pumpkin for the first 3 days to support digestion.",
+        "1": "Hold off on supplements (calcium, fish oil) for the first 48 hours, then introduce one at a time.",
+        "2": "If diarrhea persists more than 48 hours, return to the previous day's ratio and consult a vet.",
+        "3": "Senior dogs and dogs with sensitive GI tracts may need a 10–14 day transition instead of 7."
+      }
     }
   },
   "landing": {
@@ -482,6 +578,41 @@
       "label": "Walnuts (especially moldy/black)",
       "compound": "Tremorgenic mycotoxins",
       "effect": "Seizures"
+    },
+    "salt_excess": {
+      "label": "Salt (excess)",
+      "compound": "Sodium",
+      "effect": "Sodium ion poisoning — vomiting, tremors, seizures"
+    },
+    "dairy_milk": {
+      "label": "Milk & Lactose Dairy",
+      "compound": "Lactose",
+      "effect": "Most adult dogs are lactose intolerant — diarrhea, gas"
+    },
+    "raw_egg_whites": {
+      "label": "Raw Egg Whites (regular feeding)",
+      "compound": "Avidin",
+      "effect": "Long-term feeding binds biotin → skin/coat issues. Whole raw eggs OK occasionally."
+    },
+    "hops": {
+      "label": "Hops (brewing)",
+      "compound": "Unknown",
+      "effect": "Malignant hyperthermia, fatal in some breeds"
+    },
+    "stone_fruit_pits": {
+      "label": "Peach, Plum, Apricot Pits",
+      "compound": "Cyanide + obstruction",
+      "effect": "Choking, intestinal blockage, cyanide poisoning"
+    },
+    "raw_yeast_dough": {
+      "label": "Yeast Dough (rising)",
+      "compound": "Ethanol + CO₂",
+      "effect": "Bloat (GDV risk), alcohol poisoning"
+    },
+    "currants": {
+      "label": "Currants",
+      "compound": "Same as grapes",
+      "effect": "Acute kidney failure"
     }
   },
   "suppData": {

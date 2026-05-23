@@ -150,17 +150,63 @@
     "dietShort": {
       "balanced_cooked": "Ausgewogen",
       "high_protein": "Proteinreich",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Ursprüngliche Diät"
     },
     "dietSub": {
       "balanced_cooked": "40% Protein / 50% Gemüse",
-      "high_protein": "50% Protein / 30% Gemüse",
-      "pmr": "Nur für Fortgeschrittene"
+      "high_protein": "55% Protein / 30% Gemüse",
+      "pmr": "Roh 80-10-10",
+      "barf": "Roh + Gemüse + Saaten",
+      "real_ancestral": "Roh + Fisch + Faser"
     },
     "macroProtein": "Protein",
     "macroVeg": "Gemüse",
     "macroStarch": "Stärke",
-    "placeholder": "Hundeprofil ausfüllen und auf"
+    "placeholder": "Hundeprofil ausfüllen und auf",
+    "components": {
+      "protein": "Protein",
+      "muscle": "Muskelfleisch",
+      "bone": "Roher Knochen",
+      "liver": "Leber",
+      "organ": "Innereien",
+      "seafood": "Ganzer Fisch",
+      "fiber": "Tierische Faser",
+      "veg": "Gemüse",
+      "seeds": "Samen & Nüsse",
+      "fruit": "Obst",
+      "starch": "Stärke"
+    },
+    "result": {
+      "breakdown": "Zusammensetzung der Diät",
+      "perDay": "pro Tag",
+      "derEnergy": "DER (Energie)",
+      "vetPdf": "Tierarzt-PDF",
+      "calcium": "Kalzium",
+      "phosphorus": "Phosphor",
+      "omegaTarget": "Ω-3-Ziel",
+      "safetyGuardrails": "Sicherheitshinweise",
+      "caP": "Ca : P-Verhältnis",
+      "safe": "sicher"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (Ruhe): {{kcal}} kcal/Tag",
+      "der": "DER (Tagesenergie): {{kcal}} kcal/Tag (×{{multiplier}} Multiplikator)",
+      "rawDiet": "Fortgeschrittene Rohfütterung — der Knochen liefert natürliches Kalzium; niemals durch gekochten Knochen ersetzen.",
+      "realAncestralOmega": "Ganzer Fisch (Sardinen, Makrele) gleicht das Omega-3:6-Verhältnis aus. Kleine Wildfische verwenden, um Quecksilber zu begrenzen."
+    },
+    "warnings": {
+      "caPLow": "Ca:P-Verhältnis ist {{ratio}}:1 — unter dem AAFCO-Sicherheitsminimum von 1:1. Geben Sie ~{{calcium}} mg zusätzliches Kalzium pro Tag.",
+      "caPHigh": "Ca:P-Verhältnis ist {{ratio}}:1 — über dem AAFCO-Sicherheitsmaximum von 2:1. Knochenanteil reduzieren oder mit kalziumarmem Protein ausgleichen.",
+      "puppyCaP": "Wachsende Welpen sind empfindlich gegenüber hohem Ca:P — unter 1.6:1 halten, um Skeletterkrankungen zu vermeiden.",
+      "cookedCaDeficient": "Gekochte Diäten sind standardmäßig kalziumarm. Geben Sie ~{{calcium}} mg Ca (≈½ TL gemahlene Eierschale pro ~454 g Fleisch oder einen Ausgleicher)."
+    }
   },
   "foodSafety": {
     "title": "Lebensmittelsicherheits-Referenz",
@@ -193,6 +239,60 @@
       "wysong": "Für reine Fleischdiäten",
       "animalEssentials": "Breitspektrum",
       "volhard": "Kompletter Premix-Ansatz"
+    },
+    "aafcoTable": {
+      "title": "AAFCO-Nährstoffprofil",
+      "source": "AAFCO-Nährstoffprofil für Hunde (Trockenmasse)",
+      "nutrient": "Nährstoff",
+      "unit": "Einheit",
+      "adultMin": "Min. Erwachsen",
+      "growthMin": "Min. Wachstum",
+      "safeMax": "Max. sicher",
+      "nutrients": {
+        "crude_protein": "Rohprotein",
+        "crude_fat": "Rohfett",
+        "linoleic_acid": "Linolsäure",
+        "ala": "Alpha-Linolensäure",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Kalzium",
+        "phosphorus": "Phosphor",
+        "iron": "Eisen",
+        "copper": "Kupfer",
+        "zinc": "Zink",
+        "iodine": "Jod",
+        "selenium": "Selen",
+        "vit_a": "Vitamin A",
+        "vit_d": "Vitamin D",
+        "vit_e": "Vitamin E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Kalzium : Phosphor",
+          "note": "Kritisch für die Skelettgesundheit; wachsende Welpen sollten unter 1.6:1 bleiben"
+        },
+        "omega": {
+          "label": "Omega-6 : Omega-3",
+          "note": "Niedrigere Verhältnisse (5:1 bis 10:1) reduzieren systemische Entzündungen"
+        }
+      }
+    },
+    "transition": {
+      "title": "7-Tage-Umstellung von Trockenfutter auf Frischfutter",
+      "summary": "Eine schrittweise Umstellung verhindert osmotischen Durchfall und Magenbeschwerden. Verwenden Sie während der gesamten Umstellung ein einziges, leicht verdauliches Protein (Huhn oder Pute).",
+      "tipsTitle": "Tipps",
+      "oldFresh": "{{old}}% alt · {{new}}% frisch",
+      "days": {
+        "0": { "label": "Tag 1–2", "note": "Stuhl beobachten — etwas weicher Stuhl ist normal, sollte aber am Tag 2 wieder fest sein." },
+        "1": { "label": "Tag 3–4", "note": "Bei Verdauungsproblemen dieses Verhältnis einen Tag länger halten, bevor Sie weitergehen." },
+        "2": { "label": "Tag 5–6", "note": "Beginnen Sie, jegliches Fertigfutter auslaufen zu lassen." },
+        "3": { "label": "Tag 7+",  "note": "Komplette Frischfütterung. Proteinwechsel erst nach 14–21 Tagen stabiler Verdauung einführen." }
+      },
+      "tips": {
+        "0": "In den ersten 3 Tagen einen Teelöffel ungewürzten Kürbis (Konserve) zur Unterstützung der Verdauung beifügen.",
+        "1": "48 h warten, bevor Sie Zusatzstoffe (Kalzium, Fischöl) einführen, dann einen nach dem anderen.",
+        "2": "Wenn der Durchfall länger als 48 Stunden anhält, zum vorherigen Verhältnis zurückkehren und einen Tierarzt konsultieren.",
+        "3": "Ältere Hunde oder solche mit empfindlichem Verdauungstrakt benötigen ggf. eine 10- bis 14-tägige Umstellung statt 7 Tage."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Walnüsse (besonders schimmelig/schwarz)",
       "compound": "Tremorgene Mykotoxine",
       "effect": "Krämpfe"
+    },
+    "salt_excess": {
+      "label": "Salz (im Übermaß)",
+      "compound": "Natrium",
+      "effect": "Natriumionen-Vergiftung — Erbrechen, Zittern, Krämpfe"
+    },
+    "dairy_milk": {
+      "label": "Milch & laktosehaltige Milchprodukte",
+      "compound": "Laktose",
+      "effect": "Die meisten erwachsenen Hunde sind laktoseintolerant — Durchfall, Blähungen"
+    },
+    "raw_egg_whites": {
+      "label": "Rohes Eiweiß (regelmäßige Fütterung)",
+      "compound": "Avidin",
+      "effect": "Langfristige Fütterung bindet Biotin → Haut-/Fellprobleme. Ganze rohe Eier gelegentlich OK."
+    },
+    "hops": {
+      "label": "Hopfen (Brauerei)",
+      "compound": "Unbekannt",
+      "effect": "Maligne Hyperthermie, bei einigen Rassen tödlich"
+    },
+    "stone_fruit_pits": {
+      "label": "Pfirsich-, Pflaumen-, Aprikosenkerne",
+      "compound": "Zyanid + Obstruktion",
+      "effect": "Ersticken, Darmverschluss, Zyanidvergiftung"
+    },
+    "raw_yeast_dough": {
+      "label": "Hefeteig (im Gehen)",
+      "compound": "Ethanol + CO₂",
+      "effect": "Aufblähung (Magendrehungsrisiko), Alkoholvergiftung"
+    },
+    "currants": {
+      "label": "Johannisbeeren / Korinthen",
+      "compound": "Wie Trauben",
+      "effect": "Akutes Nierenversagen"
     }
   },
   "suppData": {

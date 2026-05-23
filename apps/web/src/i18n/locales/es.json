@@ -149,18 +149,64 @@
     "profileSection": "Perfil del perro",
     "dietShort": {
       "balanced_cooked": "Equilibrado",
-      "high_protein": "Alto proteína",
-      "pmr": "PMR 80/10/10"
+      "high_protein": "Alto en proteína",
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Ancestral Real"
     },
     "dietSub": {
       "balanced_cooked": "40% proteína / 50% veg",
-      "high_protein": "50% proteína / 30% veg",
-      "pmr": "Solo usuarios avanzados"
+      "high_protein": "55% proteína / 30% veg",
+      "pmr": "Crudo 80-10-10",
+      "barf": "Crudo + verduras + semillas",
+      "real_ancestral": "Crudo + pescado + fibra"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
     "macroStarch": "almidón",
-    "placeholder": "Rellena el perfil de tu perro y pulsa"
+    "placeholder": "Rellena el perfil de tu perro y pulsa",
+    "components": {
+      "protein": "Proteína",
+      "muscle": "Carne muscular",
+      "bone": "Hueso crudo",
+      "liver": "Hígado",
+      "organ": "Órganos",
+      "seafood": "Pescado entero",
+      "fiber": "Fibra animal",
+      "veg": "Verduras",
+      "seeds": "Semillas y frutos secos",
+      "fruit": "Frutas",
+      "starch": "Almidón"
+    },
+    "result": {
+      "breakdown": "Desglose de la dieta",
+      "perDay": "al día",
+      "derEnergy": "DER (energía)",
+      "vetPdf": "PDF veterinario",
+      "calcium": "Calcio",
+      "phosphorus": "Fósforo",
+      "omegaTarget": "Objetivo Ω-3",
+      "safetyGuardrails": "Alertas de seguridad",
+      "caP": "Relación Ca : P",
+      "safe": "seguro"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (en reposo): {{kcal}} kcal/día",
+      "der": "DER (energía diaria): {{kcal}} kcal/día (×{{multiplier}} multiplicador)",
+      "rawDiet": "Dieta cruda avanzada — el hueso aporta calcio natural; nunca sustituyas por hueso cocinado.",
+      "realAncestralOmega": "El pescado entero (sardinas, caballa) equilibra el ratio omega-3:6. Usa pescados pequeños salvajes para limitar el mercurio."
+    },
+    "warnings": {
+      "caPLow": "La relación Ca:P es de {{ratio}}:1 — por debajo del mínimo seguro AAFCO (1:1). Añade ~{{calcium}} mg de calcio suplementario al día.",
+      "caPHigh": "La relación Ca:P es de {{ratio}}:1 — por encima del máximo seguro AAFCO (2:1). Reduce el hueso o equilibra con proteína baja en calcio.",
+      "puppyCaP": "Los cachorros en crecimiento son sensibles al Ca:P alto — mantenlo por debajo de 1.6:1 para evitar enfermedades óseas.",
+      "cookedCaDeficient": "Las dietas cocinadas son deficientes en calcio por defecto. Añade ~{{calcium}} mg de Ca (≈½ cdta de cáscara de huevo molida por ~454 g de carne, o usa un balanceador)."
+    }
   },
   "foodSafety": {
     "title": "Referencia de seguridad alimentaria",
@@ -193,6 +239,60 @@
       "wysong": "Para dietas solo con carne",
       "animalEssentials": "Espectro amplio",
       "volhard": "Enfoque de premezcla completa"
+    },
+    "aafcoTable": {
+      "title": "Perfil de nutrientes AAFCO",
+      "source": "Perfil de nutrientes AAFCO para perros (base materia seca)",
+      "nutrient": "Nutriente",
+      "unit": "Unidad",
+      "adultMin": "Mín. adulto",
+      "growthMin": "Mín. crecimiento",
+      "safeMax": "Máx. seguro",
+      "nutrients": {
+        "crude_protein": "Proteína bruta",
+        "crude_fat": "Grasa bruta",
+        "linoleic_acid": "Ácido linoleico",
+        "ala": "Ácido alfa-linolénico",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Calcio",
+        "phosphorus": "Fósforo",
+        "iron": "Hierro",
+        "copper": "Cobre",
+        "zinc": "Zinc",
+        "iodine": "Yodo",
+        "selenium": "Selenio",
+        "vit_a": "Vitamina A",
+        "vit_d": "Vitamina D",
+        "vit_e": "Vitamina E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Calcio : Fósforo",
+          "note": "Crítico para la salud ósea; los cachorros en crecimiento deben mantenerse por debajo de 1.6:1"
+        },
+        "omega": {
+          "label": "Omega-6 : Omega-3",
+          "note": "Ratios más bajos (5:1 a 10:1) reducen la inflamación sistémica"
+        }
+      }
+    },
+    "transition": {
+      "title": "Transición de 7 días de pienso a comida fresca",
+      "summary": "La transición gradual evita la diarrea osmótica y los problemas gástricos. Usa una sola proteína altamente digestible (pollo o pavo) durante toda la transición.",
+      "tipsTitle": "Consejos",
+      "oldFresh": "{{old}}% antiguo · {{new}}% fresco",
+      "days": {
+        "0": { "label": "Día 1–2", "note": "Vigila las heces — son normales las heces algo blandas, pero deberían firmarse en el día 2." },
+        "1": { "label": "Día 3–4", "note": "Si aparecen problemas digestivos, mantén este ratio un día más antes de avanzar." },
+        "2": { "label": "Día 5–6", "note": "Comienza a eliminar cualquier comida comercial." },
+        "3": { "label": "Día 7+",  "note": "Dieta fresca completa. Introduce la rotación de proteínas solo tras 14–21 días de digestión estable." }
+      },
+      "tips": {
+        "0": "Añade una cucharadita de calabaza enlatada simple los primeros 3 días para favorecer la digestión.",
+        "1": "Espera 48 h antes de añadir suplementos (calcio, aceite de pescado) y luego incorpóralos uno a uno.",
+        "2": "Si la diarrea persiste más de 48 horas, vuelve al ratio anterior y consulta a un veterinario.",
+        "3": "Los perros mayores o con sistemas digestivos sensibles pueden necesitar una transición de 10–14 días en vez de 7."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Nueces (especialmente mohosas/negras)",
       "compound": "Micotoxinas tremorgénicas",
       "effect": "Convulsiones"
+    },
+    "salt_excess": {
+      "label": "Sal (en exceso)",
+      "compound": "Sodio",
+      "effect": "Intoxicación por iones de sodio — vómitos, temblores, convulsiones"
+    },
+    "dairy_milk": {
+      "label": "Leche y lácteos con lactosa",
+      "compound": "Lactosa",
+      "effect": "La mayoría de los perros adultos son intolerantes a la lactosa — diarrea, gases"
+    },
+    "raw_egg_whites": {
+      "label": "Claras de huevo crudas (consumo habitual)",
+      "compound": "Avidina",
+      "effect": "El consumo prolongado bloquea la biotina → problemas de piel y pelo. El huevo entero crudo ocasional es seguro."
+    },
+    "hops": {
+      "label": "Lúpulo (cervecería)",
+      "compound": "Desconocido",
+      "effect": "Hipertermia maligna, mortal en algunas razas"
+    },
+    "stone_fruit_pits": {
+      "label": "Huesos de melocotón, ciruela y albaricoque",
+      "compound": "Cianuro + obstrucción",
+      "effect": "Atragantamiento, obstrucción intestinal, envenenamiento por cianuro"
+    },
+    "raw_yeast_dough": {
+      "label": "Masa con levadura (fermentando)",
+      "compound": "Etanol + CO₂",
+      "effect": "Hinchazón (riesgo de torsión), envenenamiento por alcohol"
+    },
+    "currants": {
+      "label": "Grosellas / pasas de Corinto",
+      "compound": "Igual que las uvas",
+      "effect": "Insuficiencia renal aguda"
     }
   },
   "suppData": {

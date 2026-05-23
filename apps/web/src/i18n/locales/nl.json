@@ -150,17 +150,63 @@
     "dietShort": {
       "balanced_cooked": "Gebalanceerd",
       "high_protein": "Eiwitrijk",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Echte Voorouderlijke"
     },
     "dietSub": {
       "balanced_cooked": "40% eiwit / 50% groenten",
-      "high_protein": "50% eiwit / 30% groenten",
-      "pmr": "Alleen gevorderden"
+      "high_protein": "55% eiwit / 30% groenten",
+      "pmr": "Rauw 80-10-10",
+      "barf": "Rauw + groenten + zaden",
+      "real_ancestral": "Rauw + vis + vezel"
     },
     "macroProtein": "eiwit",
     "macroVeg": "groenten",
     "macroStarch": "zetmeel",
-    "placeholder": "Vul het profiel in en tik op"
+    "placeholder": "Vul het profiel in en tik op",
+    "components": {
+      "protein": "Eiwit",
+      "muscle": "Spiervlees",
+      "bone": "Rauw bot",
+      "liver": "Lever",
+      "organ": "Organen",
+      "seafood": "Hele vis",
+      "fiber": "Dierlijke vezel",
+      "veg": "Groenten",
+      "seeds": "Zaden & noten",
+      "fruit": "Fruit",
+      "starch": "Zetmeel"
+    },
+    "result": {
+      "breakdown": "Dieetsamenstelling",
+      "perDay": "per dag",
+      "derEnergy": "DER (energie)",
+      "vetPdf": "Dierenarts-PDF",
+      "calcium": "Calcium",
+      "phosphorus": "Fosfor",
+      "omegaTarget": "Ω-3-doel",
+      "safetyGuardrails": "Veiligheidswaarschuwingen",
+      "caP": "Ca : P-verhouding",
+      "safe": "veilig"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (rust): {{kcal}} kcal/dag",
+      "der": "DER (dagelijkse energie): {{kcal}} kcal/dag (×{{multiplier}} vermenigvuldiger)",
+      "rawDiet": "Geavanceerd rauwvoerdieet — bot levert natuurlijk calcium; vervang nooit door gekookt bot.",
+      "realAncestralOmega": "Hele vis (sardines, makreel) balanceert de omega-3:6-verhouding. Gebruik kleine wildvang om kwik te beperken."
+    },
+    "warnings": {
+      "caPLow": "De Ca:P-verhouding is {{ratio}}:1 — onder het AAFCO-minimum van 1:1. Voeg ~{{calcium}} mg extra calcium per dag toe.",
+      "caPHigh": "De Ca:P-verhouding is {{ratio}}:1 — boven het AAFCO-maximum van 2:1. Verminder bot of balanceer met eiwit met weinig calcium.",
+      "puppyCaP": "Groeiende pups zijn gevoelig voor hoge Ca:P — houd onder 1.6:1 om botziekten te voorkomen.",
+      "cookedCaDeficient": "Gekookte diëten zijn standaard calciumarm. Voeg ~{{calcium}} mg Ca toe (≈½ tl gemalen eierschaal per ~454 g vlees, of gebruik een balancer)."
+    }
   },
   "foodSafety": {
     "title": "Voedselveiligheidsreferentie",
@@ -193,6 +239,60 @@
       "wysong": "Voor volledig vleesdiëten",
       "animalEssentials": "Breed spectrum",
       "volhard": "Volledige premix-aanpak"
+    },
+    "aafcoTable": {
+      "title": "AAFCO-voedingsprofiel",
+      "source": "AAFCO-voedingsprofiel voor honden (drogestofbasis)",
+      "nutrient": "Voedingsstof",
+      "unit": "Eenheid",
+      "adultMin": "Min. volwassen",
+      "growthMin": "Min. groei",
+      "safeMax": "Veilig max.",
+      "nutrients": {
+        "crude_protein": "Ruw eiwit",
+        "crude_fat": "Ruw vet",
+        "linoleic_acid": "Linolzuur",
+        "ala": "Alfa-linoleenzuur",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Calcium",
+        "phosphorus": "Fosfor",
+        "iron": "IJzer",
+        "copper": "Koper",
+        "zinc": "Zink",
+        "iodine": "Jodium",
+        "selenium": "Selenium",
+        "vit_a": "Vitamine A",
+        "vit_d": "Vitamine D",
+        "vit_e": "Vitamine E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Calcium : Fosfor",
+          "note": "Essentieel voor de skeletgezondheid; groeiende pups moeten onder 1.6:1 blijven"
+        },
+        "omega": {
+          "label": "Omega-6 : Omega-3",
+          "note": "Lagere verhoudingen (5:1 tot 10:1) verminderen systemische ontsteking"
+        }
+      }
+    },
+    "transition": {
+      "title": "7-daagse overgang van brokken naar vers voer",
+      "summary": "Een geleidelijke overgang voorkomt osmotische diarree en maagklachten. Gebruik tijdens de hele overgang één enkel goed verteerbaar eiwit (kip of kalkoen).",
+      "tipsTitle": "Tips",
+      "oldFresh": "{{old}}% oud · {{new}}% vers",
+      "days": {
+        "0": { "label": "Dag 1–2", "note": "Let op de ontlasting — iets zachtere ontlasting is normaal, maar moet op dag 2 weer stevig zijn." },
+        "1": { "label": "Dag 3–4", "note": "Bij spijsverteringsproblemen, houd deze verhouding nog een dag aan voordat je verder gaat." },
+        "2": { "label": "Dag 5–6", "note": "Begin met het uitfaseren van commerciële voeding." },
+        "3": { "label": "Dag 7+",  "note": "Volledig vers dieet. Introduceer eiwitrotatie pas na 14–21 dagen stabiele spijsvertering." }
+      },
+      "tips": {
+        "0": "Voeg de eerste 3 dagen een theelepel pure pompoen uit blik toe om de spijsvertering te ondersteunen.",
+        "1": "Wacht 48 uur voordat je supplementen toevoegt (calcium, visolie) en introduceer ze één voor één.",
+        "2": "Als diarree langer dan 48 uur aanhoudt, ga terug naar de vorige verhouding en raadpleeg een dierenarts.",
+        "3": "Oudere honden of honden met een gevoelig maag-darmstelsel hebben mogelijk een overgang van 10–14 dagen nodig in plaats van 7."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Walnoten (vooral schimmelig/zwart)",
       "compound": "Tremorgeenachtige mycotoxinen",
       "effect": "Stuipen"
+    },
+    "salt_excess": {
+      "label": "Zout (overmatig)",
+      "compound": "Natrium",
+      "effect": "Natriumionen-vergiftiging — braken, trillen, stuipen"
+    },
+    "dairy_milk": {
+      "label": "Melk en lactose-zuivel",
+      "compound": "Lactose",
+      "effect": "De meeste volwassen honden zijn lactose-intolerant — diarree, gas"
+    },
+    "raw_egg_whites": {
+      "label": "Rauw eiwit (regelmatig voeren)",
+      "compound": "Avidine",
+      "effect": "Langdurig voeren bindt biotine → huid-/vachtproblemen. Hele rauwe eieren occasioneel zijn OK."
+    },
+    "hops": {
+      "label": "Hop (brouwerij)",
+      "compound": "Onbekend",
+      "effect": "Maligne hyperthermie, dodelijk bij sommige rassen"
+    },
+    "stone_fruit_pits": {
+      "label": "Perzik-, pruim-, abrikozenpitten",
+      "compound": "Cyanide + obstructie",
+      "effect": "Verstikking, darmobstructie, cyanidevergiftiging"
+    },
+    "raw_yeast_dough": {
+      "label": "Gistdeeg (rijzend)",
+      "compound": "Ethanol + CO₂",
+      "effect": "Opzwelling (maagdraaiingsrisico), alcoholvergiftiging"
+    },
+    "currants": {
+      "label": "Bessen / krenten",
+      "compound": "Net als druiven",
+      "effect": "Acuut nierfalen"
     }
   },
   "suppData": {

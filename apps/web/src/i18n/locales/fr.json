@@ -150,17 +150,63 @@
     "dietShort": {
       "balanced_cooked": "Équilibré",
       "high_protein": "Riche en protéines",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Ancestral Réel"
     },
     "dietSub": {
       "balanced_cooked": "40% protéines / 50% légumes",
-      "high_protein": "50% protéines / 30% légumes",
-      "pmr": "Utilisateurs avancés"
+      "high_protein": "55% protéines / 30% légumes",
+      "pmr": "Cru 80-10-10",
+      "barf": "Cru + légumes + graines",
+      "real_ancestral": "Cru + poisson + fibres"
     },
     "macroProtein": "protéines",
     "macroVeg": "légumes",
     "macroStarch": "féculents",
-    "placeholder": "Remplissez le profil de votre chien et appuyez sur"
+    "placeholder": "Remplissez le profil de votre chien et appuyez sur",
+    "components": {
+      "protein": "Protéine",
+      "muscle": "Viande musculaire",
+      "bone": "Os cru",
+      "liver": "Foie",
+      "organ": "Abats",
+      "seafood": "Poisson entier",
+      "fiber": "Fibre animale",
+      "veg": "Légumes",
+      "seeds": "Graines et noix",
+      "fruit": "Fruits",
+      "starch": "Féculents"
+    },
+    "result": {
+      "breakdown": "Composition du régime",
+      "perDay": "par jour",
+      "derEnergy": "DER (énergie)",
+      "vetPdf": "PDF vétérinaire",
+      "calcium": "Calcium",
+      "phosphorus": "Phosphore",
+      "omegaTarget": "Cible Ω-3",
+      "safetyGuardrails": "Alertes de sécurité",
+      "caP": "Ratio Ca : P",
+      "safe": "sûr"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (au repos) : {{kcal}} kcal/jour",
+      "der": "DER (énergie quotidienne) : {{kcal}} kcal/jour (×{{multiplier}} multiplicateur)",
+      "rawDiet": "Régime cru avancé — l'os apporte le calcium naturel ; ne jamais remplacer par de l'os cuit.",
+      "realAncestralOmega": "Le poisson entier (sardines, maquereau) équilibre le rapport oméga-3:6. Utilisez de petits poissons sauvages pour limiter le mercure."
+    },
+    "warnings": {
+      "caPLow": "Le ratio Ca:P est de {{ratio}}:1 — sous le minimum AAFCO (1:1). Ajoutez ~{{calcium}} mg de calcium supplémentaire par jour.",
+      "caPHigh": "Le ratio Ca:P est de {{ratio}}:1 — au-dessus du maximum AAFCO (2:1). Réduisez l'os ou équilibrez avec une protéine pauvre en calcium.",
+      "puppyCaP": "Les chiots en croissance sont sensibles à un Ca:P élevé — gardez-le sous 1.6:1 pour éviter les maladies osseuses.",
+      "cookedCaDeficient": "Les régimes cuits sont déficients en calcium par défaut. Ajoutez ~{{calcium}} mg de Ca (≈½ c.à.c. de coquille d'œuf moulue par ~454 g de viande, ou utilisez un équilibrant)."
+    }
   },
   "foodSafety": {
     "title": "Référence sécurité alimentaire",
@@ -193,6 +239,60 @@
       "wysong": "Pour les régimes tout-viande",
       "animalEssentials": "Large spectre",
       "volhard": "Approche prémix complet"
+    },
+    "aafcoTable": {
+      "title": "Profil nutritionnel AAFCO",
+      "source": "Profil des nutriments AAFCO pour chiens (base matière sèche)",
+      "nutrient": "Nutriment",
+      "unit": "Unité",
+      "adultMin": "Min. adulte",
+      "growthMin": "Min. croissance",
+      "safeMax": "Max. sûr",
+      "nutrients": {
+        "crude_protein": "Protéines brutes",
+        "crude_fat": "Matières grasses brutes",
+        "linoleic_acid": "Acide linoléique",
+        "ala": "Acide alpha-linolénique",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Calcium",
+        "phosphorus": "Phosphore",
+        "iron": "Fer",
+        "copper": "Cuivre",
+        "zinc": "Zinc",
+        "iodine": "Iode",
+        "selenium": "Sélénium",
+        "vit_a": "Vitamine A",
+        "vit_d": "Vitamine D",
+        "vit_e": "Vitamine E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Calcium : Phosphore",
+          "note": "Crucial pour la santé osseuse ; les chiots en croissance doivent rester sous 1.6:1"
+        },
+        "omega": {
+          "label": "Oméga-6 : Oméga-3",
+          "note": "Des ratios plus bas (5:1 à 10:1) réduisent l'inflammation systémique"
+        }
+      }
+    },
+    "transition": {
+      "title": "Transition 7 jours des croquettes vers le frais",
+      "summary": "Une transition progressive prévient la diarrhée osmotique et les troubles digestifs. Utilisez une seule protéine très digestible (poulet ou dinde) pendant toute la transition.",
+      "tipsTitle": "Conseils",
+      "oldFresh": "{{old}}% ancien · {{new}}% frais",
+      "days": {
+        "0": { "label": "Jour 1–2", "note": "Surveillez les selles — un peu molles est normal, mais elles doivent se fermer au jour 2." },
+        "1": { "label": "Jour 3–4", "note": "En cas de troubles digestifs, maintenez ce ratio un jour de plus avant d'avancer." },
+        "2": { "label": "Jour 5–6", "note": "Commencez à éliminer toute alimentation commerciale." },
+        "3": { "label": "Jour 7+",  "note": "Régime frais complet. Introduisez la rotation des protéines seulement après 14–21 jours de digestion stable." }
+      },
+      "tips": {
+        "0": "Ajoutez une cuillère à café de purée de citrouille nature les 3 premiers jours pour soutenir la digestion.",
+        "1": "Attendez 48 h avant d'ajouter des suppléments (calcium, huile de poisson), puis introduisez-les un par un.",
+        "2": "Si la diarrhée persiste plus de 48 h, revenez au ratio précédent et consultez un vétérinaire.",
+        "3": "Les chiens âgés ou à digestion sensible peuvent nécessiter une transition de 10 à 14 jours au lieu de 7."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Noix (surtout moisies/noires)",
       "compound": "Mycotoxines trémorgènes",
       "effect": "Convulsions"
+    },
+    "salt_excess": {
+      "label": "Sel (excès)",
+      "compound": "Sodium",
+      "effect": "Intoxication aux ions sodium — vomissements, tremblements, convulsions"
+    },
+    "dairy_milk": {
+      "label": "Lait et produits laitiers (lactose)",
+      "compound": "Lactose",
+      "effect": "La plupart des chiens adultes sont intolérants au lactose — diarrhée, gaz"
+    },
+    "raw_egg_whites": {
+      "label": "Blancs d'œufs crus (alimentation régulière)",
+      "compound": "Avidine",
+      "effect": "L'alimentation prolongée bloque la biotine → problèmes de peau/poil. Œufs entiers crus OK occasionnellement."
+    },
+    "hops": {
+      "label": "Houblon (brassage)",
+      "compound": "Inconnu",
+      "effect": "Hyperthermie maligne, mortelle chez certaines races"
+    },
+    "stone_fruit_pits": {
+      "label": "Noyaux de pêche, prune, abricot",
+      "compound": "Cyanure + obstruction",
+      "effect": "Étouffement, occlusion intestinale, empoisonnement au cyanure"
+    },
+    "raw_yeast_dough": {
+      "label": "Pâte à levure (en fermentation)",
+      "compound": "Éthanol + CO₂",
+      "effect": "Ballonnement (risque de torsion), intoxication alcoolique"
+    },
+    "currants": {
+      "label": "Groseilles / raisins de Corinthe",
+      "compound": "Comme les raisins",
+      "effect": "Insuffisance rénale aiguë"
     }
   },
   "suppData": {

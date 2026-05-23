@@ -56,24 +56,26 @@ export default function SupplementGuide() {
       {/* AAFCO/FEDIAF reference table */}
       <div className="glass-card rounded-3xl overflow-hidden animate-fade-in-up delay-150">
         <div className="px-5 py-4 border-b border-white/[0.06]">
-          <h2 className="font-black text-base text-white flex items-center gap-2">📋 AAFCO Nutrient Profile</h2>
-          <p className="text-xs text-gray-500 mt-1">{aafco.source}</p>
+          <h2 className="font-black text-base text-white flex items-center gap-2">📋 {t('supplements.aafcoTable.title')}</h2>
+          <p className="text-xs text-gray-500 mt-1">{t('supplements.aafcoTable.source')}</p>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-[12px]">
             <thead>
               <tr className="border-b border-white/[0.05] text-gray-400">
-                <th className="text-left font-bold px-4 py-2.5">Nutrient</th>
-                <th className="text-right font-bold px-3 py-2.5">Unit</th>
-                <th className="text-right font-bold px-3 py-2.5">Adult min</th>
-                <th className="text-right font-bold px-3 py-2.5">Growth min</th>
-                <th className="text-right font-bold px-4 py-2.5">Safe max</th>
+                <th className="text-left font-bold px-4 py-2.5">{t('supplements.aafcoTable.nutrient')}</th>
+                <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.unit')}</th>
+                <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.adultMin')}</th>
+                <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.growthMin')}</th>
+                <th className="text-right font-bold px-4 py-2.5">{t('supplements.aafcoTable.safeMax')}</th>
               </tr>
             </thead>
             <tbody>
               {aafco.nutrients.map((n, i) => (
                 <tr key={n.id} className={`border-b border-white/[0.03] ${i % 2 ? 'bg-white/[0.01]' : ''}`}>
-                  <td className="px-4 py-2 font-semibold text-gray-200">{n.label}</td>
+                  <td className="px-4 py-2 font-semibold text-gray-200">
+                    {t(`supplements.aafcoTable.nutrients.${n.id}`, { defaultValue: n.label })}
+                  </td>
                   <td className="px-3 py-2 text-right text-gray-500">{n.unit}</td>
                   <td className="px-3 py-2 text-right text-amber-300/90 font-semibold">{fmt(n.adultMin)}</td>
                   <td className="px-3 py-2 text-right text-amber-300/90 font-semibold">{fmt(n.growthMin)}</td>
@@ -86,9 +88,9 @@ export default function SupplementGuide() {
         <div className="px-5 py-4 border-t border-white/[0.05] space-y-2">
           {aafco.ratios.map(r => (
             <div key={r.id} className="text-sm">
-              <span className="font-bold text-white">{r.label}:</span>{' '}
+              <span className="font-bold text-white">{t(`supplements.aafcoTable.ratios.${r.id}.label`, { defaultValue: r.label })}:</span>{' '}
               <span className="text-green-300 font-semibold">{r.min} – {r.max}</span>
-              <p className="text-xs text-gray-500 mt-0.5">{r.note}</p>
+              <p className="text-xs text-gray-500 mt-0.5">{t(`supplements.aafcoTable.ratios.${r.id}.note`, { defaultValue: r.note })}</p>
             </div>
           ))}
         </div>
@@ -97,31 +99,32 @@ export default function SupplementGuide() {
       {/* 7-day transition protocol */}
       <div className="glass-card rounded-3xl overflow-hidden animate-fade-in-up delay-200">
         <div className="px-5 py-4 border-b border-white/[0.06]">
-          <h2 className="font-black text-base text-white flex items-center gap-2">🔄 {transition.title}</h2>
-          <p className="text-xs text-gray-400 mt-1 leading-relaxed">{transition.summary}</p>
+          <h2 className="font-black text-base text-white flex items-center gap-2">🔄 {t('supplements.transition.title')}</h2>
+          <p className="text-xs text-gray-400 mt-1 leading-relaxed">{t('supplements.transition.summary')}</p>
         </div>
         <div className="p-4 space-y-2.5">
           {transition.days.map((d, i) => (
             <div key={i} className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-3.5">
               <div className="flex items-center justify-between gap-3 mb-2">
-                <span className="text-sm font-black text-amber-300">{d.days}</span>
+                <span className="text-sm font-black text-amber-300">{t(`supplements.transition.days.${i}.label`, { defaultValue: d.days })}</span>
                 <span className="text-[11px] font-bold text-gray-500">
-                  {d.oldPct}% old · {d.newPct}% fresh
+                  {t('supplements.transition.oldFresh', { old: d.oldPct, new: d.newPct })}
                 </span>
               </div>
               <div className="flex h-2 rounded-full overflow-hidden bg-white/[0.05]">
                 <div className="bg-gray-600 transition-all" style={{ width: `${d.oldPct}%` }} />
                 <div className="bg-gradient-to-r from-amber-600 to-amber-400 transition-all" style={{ width: `${d.newPct}%` }} />
               </div>
-              <p className="text-xs text-gray-400 mt-2 leading-relaxed">{d.note}</p>
+              <p className="text-xs text-gray-400 mt-2 leading-relaxed">{t(`supplements.transition.days.${i}.note`, { defaultValue: d.note })}</p>
             </div>
           ))}
         </div>
         <div className="px-5 py-4 border-t border-white/[0.05] space-y-1.5">
-          <p className="text-[11px] font-black text-gray-400 uppercase tracking-wider mb-1">Tips</p>
+          <p className="text-[11px] font-black text-gray-400 uppercase tracking-wider mb-1">{t('supplements.transition.tipsTitle')}</p>
           {transition.tips.map((tip, i) => (
             <p key={i} className="text-xs text-gray-400 leading-relaxed flex gap-2">
-              <span className="text-amber-500 shrink-0 font-black">•</span>{tip}
+              <span className="text-amber-500 shrink-0 font-black">•</span>
+              {t(`supplements.transition.tips.${i}`, { defaultValue: tip })}
             </p>
           ))}
         </div>
