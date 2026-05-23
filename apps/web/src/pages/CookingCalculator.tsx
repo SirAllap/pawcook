@@ -11,11 +11,7 @@ const DEFAULT_VALUES: CookingInput = {
   thicknessCm: 5, cookingMethod: 'sous_vide', fatContent: 'medium', temperatureUnit: 'celsius',
 };
 
-const MEAT_LABELS: Record<string, string> = {
-  beef: 'Beef', chicken: 'Chicken', turkey: 'Turkey', lamb: 'Lamb', pork: 'Pork',
-  duck: 'Duck', rabbit: 'Rabbit', venison: 'Venison', salmon: 'Salmon',
-  mackerel: 'Mackerel', sardines: 'Sardines', whitefish: 'Whitefish',
-};
+const MEAT_KEYS = ['beef','chicken','turkey','lamb','pork','duck','rabbit','venison','salmon','mackerel','sardines','whitefish'] as const;
 
 function loadSavedValues(): CookingInput {
   try {
@@ -69,13 +65,11 @@ export default function CookingCalculator() {
 
   return (
     <div className="space-y-6">
-      {/* Hero */}
       <div>
         <h1 className="text-2xl font-bold text-white mb-1">{t('cooking.title')}</h1>
         <p className="text-gray-400 text-sm">{t('cooking.subtitle')}</p>
       </div>
 
-      {/* Form card */}
       <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl overflow-hidden">
         <div className="p-5 space-y-5">
 
@@ -84,8 +78,8 @@ export default function CookingCalculator() {
             <div>
               <label className={labelCls}>{t('cooking.meatType')}</label>
               <select {...register('meatType')} className={inputCls}>
-                {Object.entries(MEAT_LABELS).map(([val, label]) => (
-                  <option key={val} value={val}>{label}</option>
+                {MEAT_KEYS.map(key => (
+                  <option key={key} value={key}>{t(`cooking.meats.${key}`)}</option>
                 ))}
               </select>
             </div>
@@ -118,8 +112,8 @@ export default function CookingCalculator() {
             <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-2.5">
               <span className="text-amber-400 text-lg">⚖️</span>
               <span className="text-sm text-amber-200 font-medium">
-                Total: <strong>{totalKg.toFixed(1)} kg</strong>
-                &nbsp;· Yield ≈ <strong>{(totalKg * 0.9).toFixed(1)} kg</strong> cooked
+                {t('cooking.total')}: <strong>{totalKg.toFixed(1)} kg</strong>
+                &nbsp;· {t('cooking.yield')} ≈ <strong>{(totalKg * 0.9).toFixed(1)} kg</strong> {t('cooking.cooked')}
               </span>
             </div>
           )}
@@ -141,7 +135,7 @@ export default function CookingCalculator() {
             </div>
           </div>
 
-          <SectionHead>Options</SectionHead>
+          <SectionHead>{t('cooking.optionsSection')}</SectionHead>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={labelCls}>{t('cooking.fatContent')}</label>
@@ -173,7 +167,7 @@ export default function CookingCalculator() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                 </svg>
-                <span>Calculating…</span>
+                <span>{t('common.calculating')}</span>
               </>
             ) : (
               <span>🌡️ {t('common.calculate')}</span>
@@ -182,7 +176,6 @@ export default function CookingCalculator() {
         </div>
       </form>
 
-      {/* Results */}
       {result && (
         <div ref={resultRef} className="animate-fade-in-up print-card bg-gray-900 rounded-2xl border border-gray-800 shadow-xl overflow-hidden scroll-mt-20">
           <div className="px-5 pt-5 pb-4 border-b border-gray-800 flex items-center justify-between">
@@ -193,7 +186,6 @@ export default function CookingCalculator() {
             </button>
           </div>
 
-          {/* Key stats */}
           <div className="p-4 grid grid-cols-2 gap-3">
             <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 text-center">
               <p className="text-xs text-amber-400/80 font-semibold uppercase tracking-wide mb-1">{t('cooking.safeTemp')}</p>
@@ -207,15 +199,13 @@ export default function CookingCalculator() {
             </div>
           </div>
 
-          {/* Instructions */}
           <div className="px-5 pb-4">
             <div className="bg-gray-800 rounded-xl p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">📋 Instructions</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">📋 {t('cooking.instructionsSection')}</p>
               <p className="text-sm text-gray-300 leading-relaxed">{result.methodInstructions}</p>
             </div>
           </div>
 
-          {/* Storage */}
           <div className="px-5 pb-4">
             <div className="bg-green-950/60 border border-green-800/50 rounded-xl p-4 space-y-1.5">
               <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">🧊 {t('cooking.storage')}</p>
@@ -227,7 +217,6 @@ export default function CookingCalculator() {
             </div>
           </div>
 
-          {/* Warnings */}
           <div className="px-5 pb-5">
             <div className="bg-red-950/60 border border-red-800/50 rounded-xl p-4 space-y-1.5">
               <p className="text-xs font-semibold text-red-400 uppercase tracking-wide mb-2">⚠️ {t('cooking.warnings')}</p>
@@ -244,7 +233,7 @@ export default function CookingCalculator() {
       {!result && (
         <div className="text-center py-10 text-gray-600 animate-fade-in">
           <div className="text-5xl mb-3">🍖</div>
-          <p className="text-sm">Fill in the form above and tap <strong className="text-gray-500">Calculate</strong></p>
+          <p className="text-sm">{t('cooking.placeholder')} <strong className="text-gray-500">{t('common.calculate')}</strong></p>
         </div>
       )}
     </div>
