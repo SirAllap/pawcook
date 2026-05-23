@@ -9,6 +9,13 @@
   "common": {
     "calculate": "Calcola",
     "print": "Stampa scheda ricetta",
+    "download": "Scarica",
+    "downloadPdf": "Scarica PDF",
+    "downloadImage": "Scarica immagine",
+    "downloading": "Preparazione…",
+    "downloadSuccess": "Salvato nei download.",
+    "downloadFailed": "Impossibile generare il file. Riprova.",
+    "exportFooter": "PawCook — pawcook.app — non è un consiglio veterinario.",
     "safe": "Sicuro",
     "toxic": "TOSSICO",
     "disclaimer": "Non è un consiglio veterinario. Consultare un diplomato ACVN per l'alimentazione casalinga a lungo termine.",

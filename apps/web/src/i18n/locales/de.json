@@ -9,6 +9,13 @@
   "common": {
     "calculate": "Berechnen",
     "print": "Rezeptkarte drucken",
+    "download": "Herunterladen",
+    "downloadPdf": "PDF herunterladen",
+    "downloadImage": "Bild herunterladen",
+    "downloading": "Vorbereitung…",
+    "downloadSuccess": "In deinen Downloads gespeichert.",
+    "downloadFailed": "Datei konnte nicht erstellt werden. Bitte erneut versuchen.",
+    "exportFooter": "PawCook — pawcook.app — kein tierärztlicher Rat.",
     "safe": "Sicher",
     "toxic": "GIFTIG",
     "disclaimer": "Kein Tierärztlicher Rat. Wenden Sie sich für die langfristige Heimfütterung an einen ACVN-Diplomaten.",

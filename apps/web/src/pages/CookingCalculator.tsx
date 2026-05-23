@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner';
-import { Flame, Printer, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles } from 'lucide-react';
+import { Flame, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles } from 'lucide-react';
 import { CookingInputSchema, type CookingInput, calculateCookingTime, type CookingResult } from '@pawcook/shared';
 import { useSpecies } from '../lib/species';
 import { useSpeciesT } from '../lib/use-species-t';
@@ -14,8 +14,9 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select } from '../components/ui/select';
 import { SectionLabel } from '../components/ui/section-label';
-import { Tooltip } from '../components/ui/tooltip';
 import { EmptyState } from '../components/ui/empty-state';
+import { DownloadMenu } from '../components/recipe/DownloadMenu';
+import { useRecipeExport } from '../hooks/useRecipeExport';
 import { cn } from '../lib/cn';
 
 const STORAGE_KEY = 'pawcook_cooking_input';
@@ -76,6 +77,17 @@ export default function CookingCalculator() {
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
   const [calculating, setCalculating] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
+  const { setTarget, downloadPdf, downloadImage, busy } = useRecipeExport();
+
+  const exportConfig = submittedData
+    ? {
+        prefix: 'pawcook-cooking',
+        parts: [submittedData.meatType, submittedData.cookingMethod],
+        footer: t('cooking.exportFooter', {
+          defaultValue: 'PawCook — not veterinary advice. Use a meat thermometer to verify safe internal temperature.',
+        }),
+      }
+    : null;
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
@@ -229,21 +241,20 @@ export default function CookingCalculator() {
             transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
             className="scroll-mt-20"
           >
-            <Card padding="none" variant="elevated" className="overflow-hidden print-card">
+            <Card padding="none" variant="elevated" className="overflow-hidden print-card" ref={setTarget}>
               <header className="flex items-center justify-between gap-3 p-5 border-b border-border">
                 <h2 className="font-black text-lg tracking-tight flex items-center gap-2">
                   <ChefHat className="h-5 w-5 text-primary" />
                   {t('cooking.recipeCard')}
                 </h2>
-                <Tooltip content={t('common.print')}>
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-2 hover:bg-surface-3 transition-colors no-print"
-                  >
-                    <Printer className="h-4 w-4" />
-                  </button>
-                </Tooltip>
+                {exportConfig && (
+                  <DownloadMenu
+                    busy={busy}
+                    onDownloadPdf={() => downloadPdf(exportConfig)}
+                    onDownloadImage={() => downloadImage(exportConfig)}
+                    onPrint={() => window.print()}
+                  />
+                )}
               </header>
 
               <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 items-center p-6 border-b border-border">

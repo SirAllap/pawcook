@@ -180,3 +180,16 @@
   .print-card { break-inside: avoid; }
   body { background: white !important; color: black !important; }
 }
+
+/* ------------------------------------------------------------
+   Export mode — applied to a node while html2canvas captures it.
+   Locks light-theme colors so dark-mode users still get a
+   readable PDF/PNG. Hides interactive chrome.
+   ------------------------------------------------------------ */
+.export-mode {
+  background: #ffffff !important;
+  color: #111111 !important;
+  box-shadow: none !important;
+}
+.export-mode .no-print { display: none !important; }
+

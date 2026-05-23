@@ -9,6 +9,13 @@
   "common": {
     "calculate": "Berekenen",
     "print": "Receptkaart afdrukken",
+    "download": "Downloaden",
+    "downloadPdf": "PDF downloaden",
+    "downloadImage": "Afbeelding downloaden",
+    "downloading": "Voorbereiden…",
+    "downloadSuccess": "Opgeslagen bij je downloads.",
+    "downloadFailed": "Bestand kon niet worden gegenereerd. Probeer opnieuw.",
+    "exportFooter": "PawCook — pawcook.app — geen veterinair advies.",
     "safe": "Veilig",
     "toxic": "GIFTIG",
     "disclaimer": "Geen veterinair advies. Raadpleeg een ACVN-diplomaat voor langdurige huisvoeding.",

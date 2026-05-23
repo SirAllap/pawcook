@@ -9,6 +9,13 @@
   "common": {
     "calculate": "Oblicz",
     "print": "Drukuj kartę przepisu",
+    "download": "Pobierz",
+    "downloadPdf": "Pobierz PDF",
+    "downloadImage": "Pobierz obraz",
+    "downloading": "Przygotowywanie…",
+    "downloadSuccess": "Zapisano w pobranych.",
+    "downloadFailed": "Nie udało się wygenerować pliku. Spróbuj ponownie.",
+    "exportFooter": "PawCook — pawcook.app — to nie porada weterynaryjna.",
     "safe": "Bezpieczny",
     "toxic": "TOKSYCZNY",
     "disclaimer": "Nie jest to porada weterynaryjna. Skonsultuj się z dyplomowanym lekarzem ACVN w sprawie długotrwałego karmienia domowego.",
