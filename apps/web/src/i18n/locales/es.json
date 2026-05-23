@@ -13,7 +13,9 @@
     "toxic": "TÓXICO",
     "disclaimer": "No es asesoramiento veterinario. Consulta a un diplomado ACVN para alimentación casera a largo plazo.",
     "openSource": "Código abierto",
-    "target": "Objetivo"
+    "target": "Objetivo",
+    "calculating": "Calculando…",
+    "dogFoodCalc": "Calculadora alimentaria"
   },
   "cooking": {
     "title": "Calculadora de cocción",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Ternera",
+      "chicken": "Pollo",
+      "turkey": "Pavo",
+      "lamb": "Cordero",
+      "pork": "Cerdo",
+      "duck": "Pato",
+      "rabbit": "Conejo",
+      "venison": "Venado",
+      "salmon": "Salmón",
+      "mackerel": "Caballa",
+      "sardines": "Sardinas",
+      "whitefish": "Pescado blanco"
+    },
+    "total": "Total",
+    "yield": "Rendimiento",
+    "cooked": "cocido",
+    "instructionsSection": "Instrucciones",
+    "optionsSection": "Opciones",
+    "placeholder": "Rellena el formulario y pulsa"
   },
   "nutrition": {
     "title": "Calculadora de nutrición",
@@ -99,7 +121,22 @@
       "high_protein": "Cocido alto en proteína — 50% proteína / 30% veg / 15% almidón",
       "pmr": "PMR 80-10-10 (avanzado)"
     },
-    "vetDisclaimer": "Esta herramienta proporciona orientación general únicamente. Consulta a un nutricionista veterinario certificado (ACVN) para alimentación casera a largo plazo."
+    "vetDisclaimer": "Esta herramienta proporciona orientación general únicamente. Consulta a un nutricionista veterinario certificado (ACVN) para alimentación casera a largo plazo.",
+    "profileSection": "Perfil del perro",
+    "dietShort": {
+      "balanced_cooked": "Equilibrado",
+      "high_protein": "Alto proteína",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% proteína / 50% veg",
+      "high_protein": "50% proteína / 30% veg",
+      "pmr": "Solo usuarios avanzados"
+    },
+    "macroProtein": "proteína",
+    "macroVeg": "veg",
+    "macroStarch": "almidón",
+    "placeholder": "Rellena el perfil de tu perro y pulsa"
   },
   "foodSafety": {
     "title": "Referencia de seguridad alimentaria",
