@@ -67,7 +67,10 @@ export default function FoodSafety() {
 
       <div className="sticky top-14 sm:top-16 z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 bg-background/85 backdrop-blur-xl border-b border-border">
         <Input
-          type="search"
+          type="text"
+          inputMode="search"
+          autoComplete="off"
+          enterKeyHint="search"
           placeholder={t('foodSafety.search')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -88,13 +91,13 @@ export default function FoodSafety() {
 
       <Tabs value={tab} onValueChange={(v) => setTab(v as TabId)} className="space-y-6">
         <div className="overflow-x-auto no-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0">
-          <TabsList className="inline-flex w-auto">
+          <TabsList className="inline-flex w-auto gap-0.5">
             {tabs.map(({ id, label, Icon, count }) => (
-              <TabsTrigger key={id} value={id} className="gap-2">
-                <Icon className="h-4 w-4" />
-                <span>{label}</span>
+              <TabsTrigger key={id} value={id} className="gap-1 px-2 sm:px-3.5">
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="truncate">{label}</span>
                 <span className={cn(
-                  'inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 rounded-full text-[10px] font-black tabular-nums',
+                  'inline-flex items-center justify-center min-w-[1.25rem] h-4 px-1 rounded-full text-[10px] font-black tabular-nums',
                   tab === id ? 'bg-primary/15 text-primary' : 'bg-surface-3 text-muted-fg'
                 )}>
                   {count}
@@ -159,7 +162,7 @@ export default function FoodSafety() {
                           {t('foodSafety.raw')}: {x.rawSafe ? t('foodSafety.ok') : t('foodSafety.risky')}
                         </Badge>
                         <Badge variant={x.cookedSafe ? 'success' : 'danger'} className="justify-center">
-                          {t('foodSafety.cooked')}: {x.cookedSafe ? t('common.safe') : 'No'}
+                          {t('foodSafety.cooked')}: {x.cookedSafe ? t('common.safe') : t('common.no')}
                         </Badge>
                       </div>
                     </div>

@@ -145,7 +145,7 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
             label={t('pets.form.name')}
-            placeholder={species === 'cat' ? 'Whiskers' : 'Rex'}
+            placeholder={t(species === 'cat' ? 'pets.form.namePlaceholderCat' : 'pets.form.namePlaceholderDog')}
             {...register('name')}
             error={errors.name?.message}
           />
