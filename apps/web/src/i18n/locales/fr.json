@@ -74,6 +74,7 @@
     "cooked": "cuit",
     "instructionsSection": "Instructions",
     "optionsSection": "Options",
+    "totalWeight": "Poids total (kg)",
     "placeholder": "Remplissez le formulaire et appuyez sur"
   },
   "nutrition": {
