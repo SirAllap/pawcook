@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Pets",
+    "plan": "Plan",
     "cooking": "Cooking",
     "nutrition": "Nutrition",
     "foodSafety": "Food Safety",
@@ -125,6 +126,125 @@
       "added":   "{{name}} added.",
       "updated": "{{name}} updated.",
       "removed": "{{name}} removed."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Meal plan",
+    "landing": {
+      "title": "Meal plans",
+      "subtitle": "Generate a weekly, biweekly, or monthly plan and the shopping list you can take to the store.",
+      "create": "Create plan",
+      "emptyTitle": "No plans yet",
+      "emptyDescription": "Create your first plan to generate menus and shopping lists from your pets."
+    },
+    "new": {
+      "title": "New plan",
+      "subtitle": "Pick your pets and how many days you're planning for. We'll handle the rest."
+    },
+    "needPet": {
+      "title": "Add a pet first",
+      "description": "Plans use each pet's profile to calculate menus. Add one to get started.",
+      "cta": "Add a pet"
+    },
+    "wizard": {
+      "pets": "Pets in this plan",
+      "petsHelp": "Pick one or more. Mixed-species plans share a single shopping list.",
+      "duration": "Duration",
+      "days": "days",
+      "duration_7":  "Weekly",
+      "duration_14": "Biweekly",
+      "duration_30": "Monthly",
+      "nameLabel": "Plan name",
+      "generate": "Generate preview",
+      "regenerate": "Shuffle again",
+      "save": "Save plan",
+      "previewEyebrow": "Preview",
+      "previewSubtitle": "{{days}} days · ready to save",
+      "defaultName": "{{names}} · {{days}} days",
+      "defaultNameEmpty": "Untitled plan"
+    },
+    "sourcing": {
+      "varietyLabel": "Variety",
+      "varietyHelp": "How much rotation across proteins each week.",
+      "variety": {
+        "standard": "Standard",
+        "diverse":  "Diverse",
+        "novel":    "Novel only"
+      },
+      "accessLabel": "Where you shop",
+      "accessHelp": "Pick what's realistic for your usual stores.",
+      "access": {
+        "easy":      "Supermarket-friendly",
+        "specialty": "Butcher / specialty OK"
+      },
+      "prefsLabel": "Sourcing preferences",
+      "preferWildFish":  "Prefer wild-caught fish",
+      "preferGrassFed":  "Prefer grass-fed proteins",
+      "preferOrganic":   "Prefer organic vegetables"
+    },
+    "coverage": {
+      "passed": "Looks balanced",
+      "passedHelp": "No nutrition flags surfaced for the pets in this plan.",
+      "flagged": "Things to watch"
+    },
+    "day": "Day",
+    "slot": {
+      "meal": "Meal",
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "view": {
+      "back": "Back to plans",
+      "delete": "Delete plan",
+      "subtitle": "{{days}} days · starts {{startDate}}",
+      "tabMeals": "Meals",
+      "tabShopping": "Shopping"
+    },
+    "shopping": {
+      "total": "Shopping total",
+      "totalSummary": "{{items}} items · {{grams}} g across all sections",
+      "empty": "No items to buy — your pantry already covers this plan.",
+      "exportFooter": "PawCook shopping list — not veterinary advice.",
+      "section": {
+        "butcher":      "Butcher / meat",
+        "fish-counter": "Fish counter",
+        "produce":      "Produce",
+        "pantry":       "Pantry & canned",
+        "pet-store":    "Pet store",
+        "supplements":  "Supplements",
+        "online":       "Online order",
+        "other":        "Other"
+      }
+    },
+    "confirmDelete": "Delete plan \"{{name}}\"? This can't be undone.",
+    "toast": {
+      "saved":   "Saved \"{{name}}\".",
+      "deleted": "Deleted \"{{name}}\"."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Kidney condition: keep phosphorus on the lower end of the plan.",
+      "avoidOrgans":   "Kidney condition: avoid organ-heavy days; rotate liver out when possible."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancreatitis: lean proteins only — no duck, lamb, or fatty cuts."
+    },
+    "diabetes": {
+      "lowCarb": "Diabetes: keep starches and fruits low; favour proteins and fibrous veg."
+    },
+    "joint": {
+      "omega3": "Joint support: prioritise omega-3 sources (sardines, mackerel, salmon)."
+    },
+    "gi": {
+      "bland": "Sensitive stomach: lean white proteins (chicken, turkey, rabbit) digest more easily."
+    },
+    "obese": {
+      "kcalReduce": "Overweight: calorie target is reduced — track body condition weekly."
+    },
+    "allergy": {
+      "respectList": "Allergens listed on this pet's profile are excluded from the plan."
     }
   },
   "cooking": {

@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Flame, Dog, ShieldAlert, Pill, Info, PawPrint } from 'lucide-react';
+import { Flame, Dog, ShieldAlert, Pill, Info, PawPrint, ClipboardList } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 import { cn } from '../../lib/cn';
 
@@ -13,6 +13,7 @@ export function BottomNav() {
 
   const tabs: { to: string; label: string; Icon: IconType }[] = [
     { to: '/pets',        label: t('nav.pets'),        Icon: PawPrint },
+    { to: '/meal-plan',   label: t('nav.plan'),        Icon: ClipboardList },
     { to: '/cooking',     label: t('nav.cooking'),     Icon: Flame },
     { to: '/nutrition',   label: t('nav.nutrition'),   Icon: Dog },
     { to: '/food-safety', label: t('nav.foodSafety'),  Icon: ShieldAlert },
@@ -26,7 +27,7 @@ export function BottomNav() {
       style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 0.5rem)' }}
     >
       <div className="pointer-events-auto glass shadow-xl rounded-[26px] overflow-hidden">
-        <div className="grid grid-cols-6 h-[60px] relative">
+        <div className="grid grid-cols-7 h-[60px] relative">
           {tabs.map(({ to, label, Icon }) => {
             const active = location.pathname === to || location.pathname.startsWith(to + '/');
             return (

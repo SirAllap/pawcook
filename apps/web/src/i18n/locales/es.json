@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Mascotas",
+    "plan": "Plan",
     "cooking": "Cocción",
     "nutrition": "Nutrición",
     "foodSafety": "Alimentos",
@@ -125,6 +126,125 @@
       "added":   "{{name}} añadido.",
       "updated": "{{name}} actualizado.",
       "removed": "{{name}} eliminado."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Plan de comidas",
+    "landing": {
+      "title": "Planes de comidas",
+      "subtitle": "Genera un plan semanal, quincenal o mensual y la lista de la compra para llevar a la tienda.",
+      "create": "Crear plan",
+      "emptyTitle": "Aún no hay planes",
+      "emptyDescription": "Crea tu primer plan para generar menús y listas de compra a partir de tus mascotas."
+    },
+    "new": {
+      "title": "Nuevo plan",
+      "subtitle": "Elige tus mascotas y los días a planificar. Nos ocupamos del resto."
+    },
+    "needPet": {
+      "title": "Añade primero una mascota",
+      "description": "Los planes usan el perfil de cada mascota para calcular menús. Añade una para empezar.",
+      "cta": "Añadir mascota"
+    },
+    "wizard": {
+      "pets": "Mascotas del plan",
+      "petsHelp": "Elige una o más. Los planes mixtos comparten una sola lista de compra.",
+      "duration": "Duración",
+      "days": "días",
+      "duration_7":  "Semanal",
+      "duration_14": "Quincenal",
+      "duration_30": "Mensual",
+      "nameLabel": "Nombre del plan",
+      "generate": "Generar vista previa",
+      "regenerate": "Volver a barajar",
+      "save": "Guardar plan",
+      "previewEyebrow": "Vista previa",
+      "previewSubtitle": "{{days}} días · listo para guardar",
+      "defaultName": "{{names}} · {{days}} días",
+      "defaultNameEmpty": "Plan sin título"
+    },
+    "sourcing": {
+      "varietyLabel": "Variedad",
+      "varietyHelp": "Cuánta rotación de proteínas durante la semana.",
+      "variety": {
+        "standard": "Estándar",
+        "diverse":  "Diversa",
+        "novel":    "Solo novedosas"
+      },
+      "accessLabel": "Dónde compras",
+      "accessHelp": "Elige lo que es realista en tus tiendas habituales.",
+      "access": {
+        "easy":      "Supermercado",
+        "specialty": "Carnicería / tiendas especializadas"
+      },
+      "prefsLabel": "Preferencias de origen",
+      "preferWildFish":  "Pescado salvaje preferido",
+      "preferGrassFed":  "Proteínas de pasto preferidas",
+      "preferOrganic":   "Vegetales ecológicos preferidos"
+    },
+    "coverage": {
+      "passed": "Parece equilibrado",
+      "passedHelp": "Sin avisos nutricionales para las mascotas de este plan.",
+      "flagged": "A tener en cuenta"
+    },
+    "day": "Día",
+    "slot": {
+      "meal": "Comida",
+      "breakfast": "Desayuno",
+      "lunch": "Almuerzo",
+      "dinner": "Cena"
+    },
+    "view": {
+      "back": "Volver a los planes",
+      "delete": "Eliminar plan",
+      "subtitle": "{{days}} días · empieza el {{startDate}}",
+      "tabMeals": "Comidas",
+      "tabShopping": "Compras"
+    },
+    "shopping": {
+      "total": "Total de la compra",
+      "totalSummary": "{{items}} artículos · {{grams}} g en todas las secciones",
+      "empty": "Nada que comprar — tu despensa ya cubre este plan.",
+      "exportFooter": "Lista de compras PawCook — no es asesoramiento veterinario.",
+      "section": {
+        "butcher":      "Carnicería",
+        "fish-counter": "Pescadería",
+        "produce":      "Frutas y verduras",
+        "pantry":       "Despensa y conservas",
+        "pet-store":    "Tienda de mascotas",
+        "supplements":  "Suplementos",
+        "online":       "Pedido online",
+        "other":        "Otros"
+      }
+    },
+    "confirmDelete": "¿Eliminar el plan «{{name}}»? Esta acción no se puede deshacer.",
+    "toast": {
+      "saved":   "«{{name}}» guardado.",
+      "deleted": "«{{name}}» eliminado."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Problemas renales: mantener el fósforo en la parte baja del plan.",
+      "avoidOrgans":   "Problemas renales: evitar días con muchas vísceras; rotar el hígado fuera cuando sea posible."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancreatitis: solo proteínas magras, sin pato, cordero ni cortes grasos."
+    },
+    "diabetes": {
+      "lowCarb": "Diabetes: pocos almidones y frutas; prioriza proteínas y vegetales fibrosos."
+    },
+    "joint": {
+      "omega3": "Apoyo articular: prioriza fuentes de omega-3 (sardinas, caballa, salmón)."
+    },
+    "gi": {
+      "bland": "Estómago sensible: proteínas blancas magras (pollo, pavo, conejo) son más digestibles."
+    },
+    "obese": {
+      "kcalReduce": "Sobrepeso: calorías reducidas — controla la condición corporal cada semana."
+    },
+    "allergy": {
+      "respectList": "Los alérgenos del perfil de esta mascota se excluyen del plan."
     }
   },
   "cooking": {

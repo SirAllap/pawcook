@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Animaux",
+    "plan": "Plan",
     "cooking": "Cuisson",
     "nutrition": "Nutrition",
     "foodSafety": "Sécurité",
@@ -125,6 +126,125 @@
       "added":   "{{name}} ajouté.",
       "updated": "{{name}} mis à jour.",
       "removed": "{{name}} supprimé."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Plan de repas",
+    "landing": {
+      "title": "Plans de repas",
+      "subtitle": "Génère un plan hebdomadaire, bihebdomadaire ou mensuel et la liste de courses à emporter.",
+      "create": "Créer un plan",
+      "emptyTitle": "Pas encore de plan",
+      "emptyDescription": "Crée ton premier plan pour générer menus et listes de courses depuis tes animaux."
+    },
+    "new": {
+      "title": "Nouveau plan",
+      "subtitle": "Choisis tes animaux et le nombre de jours. On s'occupe du reste."
+    },
+    "needPet": {
+      "title": "Ajoute d'abord un animal",
+      "description": "Les plans utilisent le profil de chaque animal pour calculer les menus. Ajoute-en un pour commencer.",
+      "cta": "Ajouter un animal"
+    },
+    "wizard": {
+      "pets": "Animaux du plan",
+      "petsHelp": "Choisis-en un ou plusieurs. Les plans mixtes partagent une seule liste de courses.",
+      "duration": "Durée",
+      "days": "jours",
+      "duration_7":  "Hebdomadaire",
+      "duration_14": "Bihebdomadaire",
+      "duration_30": "Mensuel",
+      "nameLabel": "Nom du plan",
+      "generate": "Générer l'aperçu",
+      "regenerate": "Mélanger à nouveau",
+      "save": "Enregistrer",
+      "previewEyebrow": "Aperçu",
+      "previewSubtitle": "{{days}} jours · prêt à enregistrer",
+      "defaultName": "{{names}} · {{days}} jours",
+      "defaultNameEmpty": "Plan sans titre"
+    },
+    "sourcing": {
+      "varietyLabel": "Variété",
+      "varietyHelp": "Niveau de rotation des protéines dans la semaine.",
+      "variety": {
+        "standard": "Standard",
+        "diverse":  "Diversifiée",
+        "novel":    "Nouvelles uniquement"
+      },
+      "accessLabel": "Où vous achetez",
+      "accessHelp": "Choisissez ce qui est réaliste dans vos magasins habituels.",
+      "access": {
+        "easy":      "Supermarché",
+        "specialty": "Boucher / spécialisé OK"
+      },
+      "prefsLabel": "Préférences d'approvisionnement",
+      "preferWildFish":  "Poisson sauvage préféré",
+      "preferGrassFed":  "Élevé à l'herbe préféré",
+      "preferOrganic":   "Légumes bio préférés"
+    },
+    "coverage": {
+      "passed": "Semble équilibré",
+      "passedHelp": "Aucun avertissement nutritionnel pour les animaux de ce plan.",
+      "flagged": "À surveiller"
+    },
+    "day": "Jour",
+    "slot": {
+      "meal": "Repas",
+      "breakfast": "Petit-déj",
+      "lunch": "Déjeuner",
+      "dinner": "Dîner"
+    },
+    "view": {
+      "back": "Retour aux plans",
+      "delete": "Supprimer le plan",
+      "subtitle": "{{days}} jours · démarre le {{startDate}}",
+      "tabMeals": "Repas",
+      "tabShopping": "Courses"
+    },
+    "shopping": {
+      "total": "Total des courses",
+      "totalSummary": "{{items}} articles · {{grams}} g toutes sections confondues",
+      "empty": "Rien à acheter — votre garde-manger couvre ce plan.",
+      "exportFooter": "Liste de courses PawCook — pas un conseil vétérinaire.",
+      "section": {
+        "butcher":      "Boucher",
+        "fish-counter": "Poissonnerie",
+        "produce":      "Fruits & légumes",
+        "pantry":       "Garde-manger & conserves",
+        "pet-store":    "Animalerie",
+        "supplements":  "Compléments",
+        "online":       "Commande en ligne",
+        "other":        "Autres"
+      }
+    },
+    "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
+    "toast": {
+      "saved":   "« {{name}} » enregistré.",
+      "deleted": "« {{name}} » supprimé."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Insuffisance rénale : maintenir le phosphore en bas du plan.",
+      "avoidOrgans":   "Insuffisance rénale : éviter les jours riches en abats ; faire tourner le foie."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancréatite : protéines maigres uniquement — pas de canard, agneau ou morceaux gras."
+    },
+    "diabetes": {
+      "lowCarb": "Diabète : féculents et fruits limités ; privilégier protéines et légumes fibreux."
+    },
+    "joint": {
+      "omega3": "Soutien articulaire : prioriser les sources d'oméga-3 (sardines, maquereau, saumon)."
+    },
+    "gi": {
+      "bland": "Estomac sensible : protéines blanches maigres (poulet, dinde, lapin) plus digestes."
+    },
+    "obese": {
+      "kcalReduce": "Surpoids : apport calorique réduit — suivre la condition corporelle chaque semaine."
+    },
+    "allergy": {
+      "respectList": "Les allergènes du profil de cet animal sont exclus du plan."
     }
   },
   "cooking": {

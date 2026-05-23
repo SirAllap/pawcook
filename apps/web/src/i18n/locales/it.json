@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Animali",
+    "plan": "Piano",
     "cooking": "Cottura",
     "nutrition": "Nutrizione",
     "foodSafety": "Sicurezza",
@@ -125,6 +126,125 @@
       "added":   "{{name}} aggiunto.",
       "updated": "{{name}} aggiornato.",
       "removed": "{{name}} rimosso."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Piano pasti",
+    "landing": {
+      "title": "Piani pasti",
+      "subtitle": "Genera un piano settimanale, quindicinale o mensile con la lista della spesa da portare al negozio.",
+      "create": "Crea piano",
+      "emptyTitle": "Ancora nessun piano",
+      "emptyDescription": "Crea il tuo primo piano per generare menu e liste della spesa dai tuoi animali."
+    },
+    "new": {
+      "title": "Nuovo piano",
+      "subtitle": "Scegli gli animali e i giorni. Pensiamo a tutto il resto."
+    },
+    "needPet": {
+      "title": "Aggiungi prima un animale",
+      "description": "I piani usano il profilo di ogni animale per calcolare i menu. Aggiungine uno per iniziare.",
+      "cta": "Aggiungi animale"
+    },
+    "wizard": {
+      "pets": "Animali nel piano",
+      "petsHelp": "Seleziona uno o più. I piani misti condividono una sola lista della spesa.",
+      "duration": "Durata",
+      "days": "giorni",
+      "duration_7":  "Settimanale",
+      "duration_14": "Quindicinale",
+      "duration_30": "Mensile",
+      "nameLabel": "Nome del piano",
+      "generate": "Genera anteprima",
+      "regenerate": "Rimescola",
+      "save": "Salva piano",
+      "previewEyebrow": "Anteprima",
+      "previewSubtitle": "{{days}} giorni · pronto da salvare",
+      "defaultName": "{{names}} · {{days}} giorni",
+      "defaultNameEmpty": "Piano senza titolo"
+    },
+    "sourcing": {
+      "varietyLabel": "Varietà",
+      "varietyHelp": "Quanta rotazione proteica nella settimana.",
+      "variety": {
+        "standard": "Standard",
+        "diverse":  "Variegata",
+        "novel":    "Solo nuove"
+      },
+      "accessLabel": "Dove fai la spesa",
+      "accessHelp": "Scegli cosa è realistico nei tuoi negozi abituali.",
+      "access": {
+        "easy":      "Supermercato",
+        "specialty": "Macelleria / specializzato OK"
+      },
+      "prefsLabel": "Preferenze di origine",
+      "preferWildFish":  "Preferisci pesce selvaggio",
+      "preferGrassFed":  "Preferisci allevamento al pascolo",
+      "preferOrganic":   "Preferisci verdure bio"
+    },
+    "coverage": {
+      "passed": "Sembra bilanciato",
+      "passedHelp": "Nessun avviso nutrizionale per gli animali in questo piano.",
+      "flagged": "Cose da tenere d'occhio"
+    },
+    "day": "Giorno",
+    "slot": {
+      "meal": "Pasto",
+      "breakfast": "Colazione",
+      "lunch": "Pranzo",
+      "dinner": "Cena"
+    },
+    "view": {
+      "back": "Torna ai piani",
+      "delete": "Elimina piano",
+      "subtitle": "{{days}} giorni · parte il {{startDate}}",
+      "tabMeals": "Pasti",
+      "tabShopping": "Spesa"
+    },
+    "shopping": {
+      "total": "Totale spesa",
+      "totalSummary": "{{items}} articoli · {{grams}} g in tutte le sezioni",
+      "empty": "Nulla da comprare — la dispensa copre già il piano.",
+      "exportFooter": "Lista della spesa PawCook — non è un consiglio veterinario.",
+      "section": {
+        "butcher":      "Macelleria",
+        "fish-counter": "Pescheria",
+        "produce":      "Ortofrutta",
+        "pantry":       "Dispensa & conserve",
+        "pet-store":    "Negozio animali",
+        "supplements":  "Integratori",
+        "online":       "Ordine online",
+        "other":        "Altro"
+      }
+    },
+    "confirmDelete": "Eliminare il piano «{{name}}»? L'azione è irreversibile.",
+    "toast": {
+      "saved":   "«{{name}}» salvato.",
+      "deleted": "«{{name}}» eliminato."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Problemi renali: mantieni il fosforo nella parte bassa del piano.",
+      "avoidOrgans":   "Problemi renali: evita giorni ricchi di interiora; ruota fuori il fegato quando possibile."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancreatite: solo proteine magre — niente anatra, agnello o tagli grassi."
+    },
+    "diabetes": {
+      "lowCarb": "Diabete: poco amido e frutta; privilegia proteine e verdure fibrose."
+    },
+    "joint": {
+      "omega3": "Supporto articolare: priorità alle fonti di omega-3 (sardine, sgombro, salmone)."
+    },
+    "gi": {
+      "bland": "Stomaco sensibile: proteine bianche magre (pollo, tacchino, coniglio) più digeribili."
+    },
+    "obese": {
+      "kcalReduce": "Sovrappeso: calorie ridotte — controlla la condizione corporea ogni settimana."
+    },
+    "allergy": {
+      "respectList": "Gli allergeni nel profilo di questo animale sono esclusi dal piano."
     }
   },
   "cooking": {

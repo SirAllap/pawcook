@@ -24,7 +24,7 @@ export function recommendForPet(pet: PetProfile): PlanFinding[] {
 
   for (const w of nutrition.warnings) {
     findings.push({
-      id: `nutrition.${w.id}`,
+      id: `nutrition.warnings.${w.id}`,
       severity: nutrition.aafcoStatus === 'fail' ? 'warning' : 'caution',
       petId: pet.id,
       values: stringifyValues(w.values),
@@ -91,7 +91,7 @@ export function nutrientCoverage(plan: MealPlan): PlanFinding[] {
         if (seen.has(key)) continue;
         seen.add(key);
         findings.push({
-          id: `nutrition.${w.id}`,
+          id: `nutrition.warnings.${w.id}`,
           severity: 'caution',
           petId: pp.petId,
           values: w.values as Record<string, string | number> | undefined,

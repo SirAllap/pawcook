@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Huisdieren",
+    "plan": "Plan",
     "cooking": "Koken",
     "nutrition": "Voeding",
     "foodSafety": "Veiligheid",
@@ -125,6 +126,125 @@
       "added":   "{{name}} toegevoegd.",
       "updated": "{{name}} bijgewerkt.",
       "removed": "{{name}} verwijderd."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Maaltijdplan",
+    "landing": {
+      "title": "Maaltijdplannen",
+      "subtitle": "Maak een week-, tweeweek- of maandplan met de boodschappenlijst voor de winkel.",
+      "create": "Plan maken",
+      "emptyTitle": "Nog geen plannen",
+      "emptyDescription": "Maak je eerste plan om menu's en boodschappenlijsten op basis van je huisdieren te genereren."
+    },
+    "new": {
+      "title": "Nieuw plan",
+      "subtitle": "Kies je huisdieren en het aantal dagen. Wij regelen de rest."
+    },
+    "needPet": {
+      "title": "Voeg eerst een huisdier toe",
+      "description": "Plannen gebruiken het profiel van elk huisdier voor de menu's. Voeg er een toe om te starten.",
+      "cta": "Huisdier toevoegen"
+    },
+    "wizard": {
+      "pets": "Huisdieren in dit plan",
+      "petsHelp": "Kies één of meer. Gemengde plannen delen één boodschappenlijst.",
+      "duration": "Duur",
+      "days": "dagen",
+      "duration_7":  "Wekelijks",
+      "duration_14": "Tweewekelijks",
+      "duration_30": "Maandelijks",
+      "nameLabel": "Plannaam",
+      "generate": "Voorbeeld maken",
+      "regenerate": "Opnieuw schudden",
+      "save": "Plan opslaan",
+      "previewEyebrow": "Voorbeeld",
+      "previewSubtitle": "{{days}} dagen · klaar om op te slaan",
+      "defaultName": "{{names}} · {{days}} dagen",
+      "defaultNameEmpty": "Plan zonder titel"
+    },
+    "sourcing": {
+      "varietyLabel": "Variatie",
+      "varietyHelp": "Hoeveel eiwitrotatie per week.",
+      "variety": {
+        "standard": "Standaard",
+        "diverse":  "Gevarieerd",
+        "novel":    "Alleen novel"
+      },
+      "accessLabel": "Waar je winkelt",
+      "accessHelp": "Kies wat realistisch is in je gebruikelijke winkels.",
+      "access": {
+        "easy":      "Supermarkt-vriendelijk",
+        "specialty": "Slager / speciaalzaak OK"
+      },
+      "prefsLabel": "Herkomstvoorkeuren",
+      "preferWildFish":  "Wilde vis bij voorkeur",
+      "preferGrassFed":  "Graskoe bij voorkeur",
+      "preferOrganic":   "Biologische groente bij voorkeur"
+    },
+    "coverage": {
+      "passed": "Ziet er evenwichtig uit",
+      "passedHelp": "Geen voedingswaarschuwingen voor de huisdieren in dit plan.",
+      "flagged": "Aandachtspunten"
+    },
+    "day": "Dag",
+    "slot": {
+      "meal": "Maaltijd",
+      "breakfast": "Ontbijt",
+      "lunch": "Lunch",
+      "dinner": "Avondeten"
+    },
+    "view": {
+      "back": "Terug naar plannen",
+      "delete": "Plan verwijderen",
+      "subtitle": "{{days}} dagen · start op {{startDate}}",
+      "tabMeals": "Maaltijden",
+      "tabShopping": "Boodschappen"
+    },
+    "shopping": {
+      "total": "Totale boodschappen",
+      "totalSummary": "{{items}} items · {{grams}} g over alle secties",
+      "empty": "Niks te kopen — je voorraadkast dekt dit plan al.",
+      "exportFooter": "PawCook boodschappenlijst — geen veterinair advies.",
+      "section": {
+        "butcher":      "Slager",
+        "fish-counter": "Visafdeling",
+        "produce":      "Groente & fruit",
+        "pantry":       "Voorraadkast & blik",
+        "pet-store":    "Dierenwinkel",
+        "supplements":  "Supplementen",
+        "online":       "Online bestelling",
+        "other":        "Overig"
+      }
+    },
+    "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "toast": {
+      "saved":   "\"{{name}}\" opgeslagen.",
+      "deleted": "\"{{name}}\" verwijderd."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Nierprobleem: houd fosfor aan de lage kant van het plan.",
+      "avoidOrgans":   "Nierprobleem: vermijd orgaanrijke dagen; roteer lever weg waar mogelijk."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancreatitis: alleen magere eiwitten — geen eend, lam of vette stukken."
+    },
+    "diabetes": {
+      "lowCarb": "Diabetes: weinig zetmeel en fruit; geef voorkeur aan eiwitten en vezelige groente."
+    },
+    "joint": {
+      "omega3": "Gewrichtsondersteuning: prioriteit voor omega-3 (sardines, makreel, zalm)."
+    },
+    "gi": {
+      "bland": "Gevoelige maag: magere witte eiwitten (kip, kalkoen, konijn) zijn beter verteerbaar."
+    },
+    "obese": {
+      "kcalReduce": "Overgewicht: caloriedoel verlaagd — controleer wekelijks de conditie."
+    },
+    "allergy": {
+      "respectList": "Allergenen uit het profiel van dit huisdier worden uitgesloten."
     }
   },
   "cooking": {

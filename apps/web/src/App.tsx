@@ -14,6 +14,9 @@ const PetsList            = lazy(() => import('./pages/Pets/PetsList'));
 const PetNew              = lazy(() => import('./pages/Pets/PetNew'));
 const PetDetail           = lazy(() => import('./pages/Pets/PetDetail'));
 const PetEdit             = lazy(() => import('./pages/Pets/PetEdit'));
+const PlanLanding         = lazy(() => import('./pages/MealPlan/PlanLanding'));
+const PlanWizard          = lazy(() => import('./pages/MealPlan/PlanWizard'));
+const PlanView            = lazy(() => import('./pages/MealPlan/PlanView'));
 
 function PageFallback() {
   const { t } = useTranslation();
@@ -39,6 +42,9 @@ export default function App() {
             <Route path="/pets/new"      element={<PetNew />} />
             <Route path="/pets/:id"      element={<PetDetail />} />
             <Route path="/pets/:id/edit" element={<PetEdit />} />
+            <Route path="/meal-plan"     element={<PlanLanding />} />
+            <Route path="/meal-plan/new" element={<PlanWizard />} />
+            <Route path="/meal-plan/:id" element={<PlanView />} />
             <Route path="/about"       element={<About />} />
           </Routes>
         </Suspense>

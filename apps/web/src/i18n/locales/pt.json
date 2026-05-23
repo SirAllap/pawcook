@@ -1,6 +1,7 @@
 {
   "nav": {
     "pets": "Animais",
+    "plan": "Plano",
     "cooking": "Culinária",
     "nutrition": "Nutrição",
     "foodSafety": "Segurança",
@@ -125,6 +126,125 @@
       "added":   "{{name}} adicionado.",
       "updated": "{{name}} atualizado.",
       "removed": "{{name}} removido."
+    }
+  },
+  "mealPlan": {
+    "eyebrow": "Plano de refeições",
+    "landing": {
+      "title": "Planos de refeições",
+      "subtitle": "Gera um plano semanal, quinzenal ou mensal e a lista de compras para a loja.",
+      "create": "Criar plano",
+      "emptyTitle": "Ainda sem planos",
+      "emptyDescription": "Cria o teu primeiro plano para gerar menus e listas de compras a partir dos teus animais."
+    },
+    "new": {
+      "title": "Novo plano",
+      "subtitle": "Escolhe os teus animais e quantos dias planear. Cuidamos do resto."
+    },
+    "needPet": {
+      "title": "Adiciona primeiro um animal",
+      "description": "Os planos usam o perfil de cada animal para calcular os menus. Adiciona um para começar.",
+      "cta": "Adicionar animal"
+    },
+    "wizard": {
+      "pets": "Animais no plano",
+      "petsHelp": "Seleciona um ou mais. Planos mistos partilham uma única lista de compras.",
+      "duration": "Duração",
+      "days": "dias",
+      "duration_7":  "Semanal",
+      "duration_14": "Quinzenal",
+      "duration_30": "Mensal",
+      "nameLabel": "Nome do plano",
+      "generate": "Gerar pré-visualização",
+      "regenerate": "Voltar a baralhar",
+      "save": "Guardar plano",
+      "previewEyebrow": "Pré-visualização",
+      "previewSubtitle": "{{days}} dias · pronto para guardar",
+      "defaultName": "{{names}} · {{days}} dias",
+      "defaultNameEmpty": "Plano sem título"
+    },
+    "sourcing": {
+      "varietyLabel": "Variedade",
+      "varietyHelp": "Quanta rotação de proteínas durante a semana.",
+      "variety": {
+        "standard": "Padrão",
+        "diverse":  "Diversa",
+        "novel":    "Só novas"
+      },
+      "accessLabel": "Onde compras",
+      "accessHelp": "Escolhe o que é realista nas tuas lojas habituais.",
+      "access": {
+        "easy":      "Supermercado",
+        "specialty": "Talho / lojas especializadas OK"
+      },
+      "prefsLabel": "Preferências de origem",
+      "preferWildFish":  "Peixe selvagem preferido",
+      "preferGrassFed":  "Pastagem preferida",
+      "preferOrganic":   "Vegetais bio preferidos"
+    },
+    "coverage": {
+      "passed": "Parece equilibrado",
+      "passedHelp": "Sem alertas nutricionais para os animais neste plano.",
+      "flagged": "A ter em atenção"
+    },
+    "day": "Dia",
+    "slot": {
+      "meal": "Refeição",
+      "breakfast": "Pequeno-almoço",
+      "lunch": "Almoço",
+      "dinner": "Jantar"
+    },
+    "view": {
+      "back": "Voltar aos planos",
+      "delete": "Eliminar plano",
+      "subtitle": "{{days}} dias · começa a {{startDate}}",
+      "tabMeals": "Refeições",
+      "tabShopping": "Compras"
+    },
+    "shopping": {
+      "total": "Total da compra",
+      "totalSummary": "{{items}} itens · {{grams}} g em todas as secções",
+      "empty": "Nada para comprar — a tua despensa já cobre este plano.",
+      "exportFooter": "Lista de compras PawCook — não é aconselhamento veterinário.",
+      "section": {
+        "butcher":      "Talho",
+        "fish-counter": "Peixaria",
+        "produce":      "Frutas e legumes",
+        "pantry":       "Despensa & conservas",
+        "pet-store":    "Loja de animais",
+        "supplements":  "Suplementos",
+        "online":       "Encomenda online",
+        "other":        "Outros"
+      }
+    },
+    "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
+    "toast": {
+      "saved":   "«{{name}}» guardado.",
+      "deleted": "«{{name}}» eliminado."
+    }
+  },
+  "condition": {
+    "kidney": {
+      "lowPhosphorus": "Doença renal: manter o fósforo no extremo baixo do plano.",
+      "avoidOrgans":   "Doença renal: evitar dias ricos em vísceras; rodar o fígado quando possível."
+    },
+    "pancreatitis": {
+      "leanOnly": "Pancreatite: apenas proteínas magras — sem pato, borrego ou cortes gordos."
+    },
+    "diabetes": {
+      "lowCarb": "Diabetes: poucos amidos e frutas; priorizar proteínas e vegetais fibrosos."
+    },
+    "joint": {
+      "omega3": "Apoio articular: prioridade a fontes de ómega-3 (sardinhas, cavala, salmão)."
+    },
+    "gi": {
+      "bland": "Estômago sensível: proteínas brancas magras (frango, peru, coelho) são mais digestíveis."
+    },
+    "obese": {
+      "kcalReduce": "Excesso de peso: meta calórica reduzida — controla a condição corporal semanalmente."
+    },
+    "allergy": {
+      "respectList": "Os alergénios no perfil deste animal são excluídos do plano."
     }
   },
   "cooking": {

@@ -6,6 +6,7 @@ import './styles/globals.css';
 import { ThemeProvider } from './lib/theme';
 import { SpeciesProvider } from './lib/species';
 import { PetProfilesProvider } from './contexts/PetProfilesContext';
+import { MealPlansProvider } from './contexts/MealPlansContext';
 import App from './App';
 
 createRoot(document.getElementById('root')!).render(
@@ -13,9 +14,11 @@ createRoot(document.getElementById('root')!).render(
     <ThemeProvider>
       <SpeciesProvider>
         <PetProfilesProvider>
-          <BrowserRouter basename={import.meta.env.BASE_URL}>
-            <App />
-          </BrowserRouter>
+          <MealPlansProvider>
+            <BrowserRouter basename={import.meta.env.BASE_URL}>
+              <App />
+            </BrowserRouter>
+          </MealPlansProvider>
         </PetProfilesProvider>
       </SpeciesProvider>
     </ThemeProvider>
