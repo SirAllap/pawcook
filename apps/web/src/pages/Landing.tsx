@@ -98,7 +98,7 @@ export default function Landing() {
                            hover:bg-white/[0.055] active:scale-[0.98] overflow-hidden animate-fade-in-up"
                 style={{ animationDelay: `${200 + i * 75}ms` }}>
                 {/* Colored left edge */}
-                <div className={`absolute inset-y-4 left-0 w-[3px] rounded-r-full bg-gradient-to-b ${cls.edge}`} />
+                <div className={`absolute inset-y-0 left-0 w-[3px] bg-gradient-to-b ${cls.edge}`} />
 
                 <div className="flex items-start gap-4 pl-3">
                   <div className={`shrink-0 w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl ${cls.icon}`}>
