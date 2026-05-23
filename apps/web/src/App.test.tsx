@@ -10,7 +10,9 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText(/PawCook/i)).toBeInTheDocument();
+    // Logo split across two spans: <span>Paw</span><span>Cook</span> — appears in header + mobile nav
+    expect(screen.getAllByText('Paw').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Cook').length).toBeGreaterThan(0);
   });
 
   it('renders the navigation links', () => {
