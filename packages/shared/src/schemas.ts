@@ -19,12 +19,23 @@ export const TemperatureUnitSchema = z.enum(['celsius', 'fahrenheit']);
 export const CookingInputSchema = z.object({
   meatType: MeatTypeSchema,
   form: MeatFormSchema,
-  weightKg: z.number().min(0.1).max(5),
-  numberOfBags: z.number().int().min(1).max(20),
-  thicknessCm: z.number().min(1).max(10),
   cookingMethod: CookingMethodSchema,
   fatContent: FatContentSchema.default('medium'),
   temperatureUnit: TemperatureUnitSchema.default('celsius'),
+  // Sous-vide: per-bag weight, bag count, and bag thickness (heat penetration)
+  weightKg: z.number().min(0.1).max(5).optional(),
+  numberOfBags: z.number().int().min(1).max(20).optional(),
+  thicknessCm: z.number().min(1).max(10).optional(),
+  // Oven / stovetop / slow cooker: total batch weight
+  totalWeightKg: z.number().min(0.1).max(30).optional(),
+}).superRefine((data, ctx) => {
+  if (data.cookingMethod === 'sous_vide') {
+    if (data.weightKg == null) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['weightKg'], message: 'Required' });
+    if (data.numberOfBags == null) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['numberOfBags'], message: 'Required' });
+    if (data.thicknessCm == null) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['thicknessCm'], message: 'Required' });
+  } else {
+    if (data.totalWeightKg == null) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['totalWeightKg'], message: 'Required' });
+  }
 });
 
 export type CookingInput = z.infer<typeof CookingInputSchema>;
