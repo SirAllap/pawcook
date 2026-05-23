@@ -74,6 +74,7 @@
     "cooked": "cooked",
     "instructionsSection": "Instructions",
     "optionsSection": "Options",
+    "totalWeight": "Total weight (kg)",
     "placeholder": "Fill in the form above and tap"
   },
   "nutrition": {
