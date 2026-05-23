@@ -75,7 +75,30 @@
     "instructionsSection": "Instructies",
     "optionsSection": "Opties",
     "totalWeight": "Totaalgewicht (kg)",
-    "placeholder": "Vul het formulier in en tik op"
+    "placeholder": "Vul het formulier in en tik op",
+    "instr": {
+      "sous_vide": "Seal het vlees in vacuümzakken. Verwarm het waterbad voor op 74 °C (165 °F). Dompel de zakken onder en kook voor de berekende tijd. Controleer de kerntemperatuur met een thermometer voor het serveren.",
+      "oven": "Verwarm de oven voor op 120 °C (248 °F). Leg het vlees in een afgedekte schaal; voeg een scheutje water of bouillon toe om uitdrogen te voorkomen. Controleer met een thermometer — doel: 74 °C (165 °F) kerntemperatuur.",
+      "stovetop_low": "Breng een pan water aan de kook op laag vuur (niet onstuimig koken). Voeg vlees toe en roer regelmatig — elke 2 min voor gehakt, elke 5 min voor blokjes. Haal van het vuur wanneer de kerntemperatuur 74 °C (165 °F) bereikt. Voeg het kookvocht toe aan de maaltijd.",
+      "slow_cooker": "Leg het vlees in de slowcooker en voeg ½ kopje water of bouillon toe. Stel in op LAAG — gebruik geen HOOG omdat snelle temperatuurwisselingen het bacterierisico verhogen. Controleer 74 °C (165 °F) kerntemperatuur voor het serveren."
+    },
+    "store": {
+      "refrigerated": "Gekookt, gekoeld: 3–4 dagen.",
+      "frozen": "Gekookt, ingevroren: tot 3 maanden in luchtdichte containers.",
+      "cooling": "Afkoelen van 60 °C → 21 °C binnen 2 uur, dan naar ≤4 °C binnen nog 4 uur."
+    },
+    "warn": {
+      "noBones": "Voeg nooit gekookte botten toe aan een recept — ze versplinteren en kunnen verstikking of maagdarmperforatie veroorzaken.",
+      "thermometer": "Controleer altijd de kerntemperatuur met een vleesthermometer.",
+      "pork": "Varkensvlees moet altijd volledig gaar zijn — rauw varkensvlees draagt Trichinella-risico.",
+      "salmon": "Zalm mag alleen rauw worden gegeven als het ≥7 dagen is ingevroren (Neorickettsia-risico)."
+    },
+    "nutrient": {
+      "sous_vide": "Sous-vide bewaart de meeste in water oplosbare vitamines (B-complex, Vit C). Voeg alle zakjussappen toe aan de maaltijd.",
+      "oven": "Sommige B-vitamines gaan verloren in het braadvocht — voeg alle braadsappen toe aan de maaltijd.",
+      "stovetop_low": "B-vitamines logen uit in het kookwater — voeg altijd de bouillon toe aan de maaltijd.",
+      "slow_cooker": "Langzaam, zacht garen houdt de meeste voedingsstoffen in de vloeistof — serveer de bouillon naast het vlees."
+    }
   },
   "nutrition": {
     "title": "Voedingscalculator",
@@ -203,5 +226,320 @@
     "openSource": "Open Source",
     "openSourceText": "PawCook is MIT-gelicentieerd. Bijdragen, correcties en functieverzoeken zijn welkom op",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Rundvlees",
+      "notes": "IJzer, zink, B12, creatine"
+    },
+    "chicken": {
+      "label": "Kip",
+      "notes": "Goed doorkoken; uitstekend na maag-darmziekte"
+    },
+    "turkey": {
+      "label": "Kalkoen",
+      "notes": "Lager allergeenrisico dan kip"
+    },
+    "lamb": {
+      "label": "Lam",
+      "notes": "Nieuw eiwit; goed voor honden met rundvleesgevoeligheid"
+    },
+    "pork": {
+      "label": "Varkensvlees",
+      "notes": "Vermijd gezouten/verwerkt. Trichinella-risico rauw."
+    },
+    "duck": {
+      "label": "Eend",
+      "notes": "Nieuw eiwit, hypoallergeen"
+    },
+    "rabbit": {
+      "label": "Konijn",
+      "notes": "Zeer mager, nieuw eiwit"
+    },
+    "venison": {
+      "label": "Wildvlees",
+      "notes": "Zeer mager, nieuw eiwit"
+    },
+    "salmon": {
+      "label": "Zalm",
+      "notes": "Rauw alleen na ≥7 dagen invriezen. Let op Neorickettsia (Pacifische NW)."
+    },
+    "mackerel": {
+      "label": "Makreel",
+      "notes": "Omega-3 krachtpatser"
+    },
+    "sardines": {
+      "label": "Sardines",
+      "notes": "Volledige visvoeding"
+    },
+    "whitefish": {
+      "label": "Witte vis (kabeljauw, schelvis)",
+      "notes": "Mager, mild"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Wortelen",
+      "benefit": "Beta-caroteen, vezels",
+      "notes": "Rauw of gekookt, helpt tanden"
+    },
+    "pumpkin": {
+      "label": "Pompoen (naturel)",
+      "benefit": "Vezels, spijsverteringshelp",
+      "notes": "Geen suiker/specerijen — nooit pompoen taartenvulling"
+    },
+    "sweet_potato": {
+      "label": "Zoete aardappel",
+      "benefit": "Complexe koolhydraten, Vit A",
+      "notes": "Altijd gekookt"
+    },
+    "broccoli": {
+      "label": "Broccoli",
+      "benefit": "Vit C, K",
+      "notes": "Max 10% van maaltijd (isothiocyanaten)"
+    },
+    "spinach": {
+      "label": "Spinazie",
+      "benefit": "IJzer, antioxidanten",
+      "notes": "Matig (oxalaten)"
+    },
+    "green_beans": {
+      "label": "Sperziebonen",
+      "benefit": "Weinig calorieën, vezels",
+      "notes": "Onbeperkt binnen reden"
+    },
+    "zucchini": {
+      "label": "Courgette",
+      "benefit": "Hydratatie, weinig calorieën",
+      "notes": "Goed vulmateriaal"
+    },
+    "peas": {
+      "label": "Erwten",
+      "benefit": "Eiwit, vezels",
+      "notes": "Vers of diepvries, niet uit blik"
+    },
+    "kale": {
+      "label": "Boerenkool",
+      "benefit": "Calcium, antioxidanten",
+      "notes": "Spaarzaam (oxalaten, thiocyanaten)"
+    },
+    "parsnips": {
+      "label": "Pastinaken",
+      "benefit": "Vit C, vezels",
+      "notes": "Eerst koken"
+    },
+    "beets": {
+      "label": "Bieten",
+      "benefit": "IJzer, folaat",
+      "notes": "Koken; gekleurde ontlasting verwachten"
+    },
+    "butternut_squash": {
+      "label": "Butternut pompoen",
+      "benefit": "Vit A, kalium",
+      "notes": "Eerst koken"
+    },
+    "cucumber": {
+      "label": "Komkommer",
+      "benefit": "Hydratatie",
+      "notes": "Rauw, veilig"
+    },
+    "celery": {
+      "label": "Selderij",
+      "benefit": "Weinig calorieën, verfrist adem",
+      "notes": "Snipperen om verslikken te voorkomen"
+    },
+    "asparagus": {
+      "label": "Asperges",
+      "benefit": "Vitaminen",
+      "notes": "Koken om te verzachten"
+    },
+    "brussels_sprouts": {
+      "label": "Spruitjes",
+      "benefit": "Vit K",
+      "notes": "Matig (winderigheid)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Bosbessen",
+      "notes": "Antioxidanten, weinig calorieën"
+    },
+    "apple": {
+      "label": "Appel (zonder pitten/klokhuis)",
+      "notes": "Vezels, Vit C — pitten bevatten cyanide"
+    },
+    "banana": {
+      "label": "Banaan",
+      "notes": "Veel suiker, matig"
+    },
+    "watermelon": {
+      "label": "Watermeloen (zonder pitten/schil)",
+      "notes": "92% water, zomerhydratatie"
+    },
+    "strawberries": {
+      "label": "Aardbeien",
+      "notes": "Vit C, matig"
+    },
+    "pear": {
+      "label": "Peer (zonder pitten/klokhuis)",
+      "notes": "Vezels"
+    },
+    "cantaloupe": {
+      "label": "Cantaloupe (zonder schil)",
+      "notes": "Vitaminen"
+    },
+    "mango": {
+      "label": "Mango (zonder pit/schil)",
+      "notes": "Vitaminen"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Uien, knoflook, prei, bieslook, lente-uitjes",
+      "compound": "Thiosulfaten (allium-familie)",
+      "effect": "Vernietigt rode bloedcellen → hemolytische anemie"
+    },
+    "grapes_raisins": {
+      "label": "Druiven en rozijnen",
+      "compound": "Onbekend (wijnsteenzuur verdacht)",
+      "effect": "Acuut nierfalen"
+    },
+    "chocolate": {
+      "label": "Chocolade",
+      "compound": "Theobromide",
+      "effect": "Hart, neurologisch, fataal"
+    },
+    "xylitol": {
+      "label": "Xylitol / berksuiker",
+      "compound": "Xylitol",
+      "effect": "Snelle hypoglykemie, leverfalen"
+    },
+    "macadamia": {
+      "label": "Macadamianoten",
+      "compound": "Onbekend",
+      "effect": "Zwakte, tremoren, hyperthermie"
+    },
+    "avocado": {
+      "label": "Avocado",
+      "compound": "Persine",
+      "effect": "Braken, diarree; pit = verstikkingsrisico"
+    },
+    "green_tomatoes": {
+      "label": "Tomaten (groen/bladeren)",
+      "compound": "Solanine",
+      "effect": "Tremoren, GI-problemen — rijp rood vruchtvlees meestal OK"
+    },
+    "raw_bread_dough": {
+      "label": "Rauw brooddeeg",
+      "compound": "Gist + ethanol",
+      "effect": "Opgeblazen gevoel, alcoholvergiftiging"
+    },
+    "alcohol": {
+      "label": "Alcohol",
+      "compound": "Ethanol",
+      "effect": "Zoals bij mensen maar veel lagere letale dosis"
+    },
+    "caffeine": {
+      "label": "Cafeïne",
+      "compound": "Methylxantinen",
+      "effect": "Zoals chocolade — hart, neurologisch"
+    },
+    "wild_mushrooms": {
+      "label": "Wilde paddenstoelen",
+      "compound": "Diverse",
+      "effect": "Onbekend zonder identificatie — als giftig beschouwen"
+    },
+    "cooked_bones": {
+      "label": "Gekookte botten (alle)",
+      "compound": "Splinterrisico",
+      "effect": "Verstikking, GI-perforatie, interne bloeding"
+    },
+    "nutmeg": {
+      "label": "Nootmuskaat",
+      "compound": "Myristicine",
+      "effect": "Tremoren, stuipen"
+    },
+    "raw_potato_green": {
+      "label": "Rauwe aardappel (groen)",
+      "compound": "Solanine",
+      "effect": "GI-problemen"
+    },
+    "rhubarb_leaves": {
+      "label": "Rabarberbladen",
+      "compound": "Oxalaten",
+      "effect": "Nierschade"
+    },
+    "cherry_pits": {
+      "label": "Kerspitten",
+      "compound": "Cyanide",
+      "effect": "Giftig"
+    },
+    "walnuts": {
+      "label": "Walnoten (vooral schimmelig/zwart)",
+      "compound": "Tremorgeenachtige mycotoxinen",
+      "effect": "Stuipen"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Calcium",
+      "target": "~500 mg per 454g (1 lb) vlees, OF 9–15 mg per kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Gemalen eierschaal",
+          "dose": "½ theelepel per 500g vlees (1 grote schaal ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Beendermeel (levensmiddelenkwaliteit)",
+          "dose": "½ theelepel per 500g vlees (controleer op loodvrij)"
+        },
+        "seaweed_calcium": {
+          "label": "Zeewierkalcium",
+          "dose": "Volgens productlabel"
+        },
+        "mcha": {
+          "label": "MCHA (Microkristallijn hydroxylapatiet)",
+          "dose": "Volgens label (Vit D bewaken)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg gecombineerde EPA+DHA per 9–13 kg lichaamsgewicht op niet-visdagen",
+      "sources": {
+        "fish_oil": {
+          "label": "Visolie",
+          "dose": "Varieert per concentratie — gekoeld bewaren, elke 2 maanden na openen vervangen"
+        },
+        "sardines": {
+          "label": "Sardines (geheel, in water)",
+          "dose": "1 sardine per 4,5 kg lichaamsgewicht, 2–3× per week"
+        },
+        "cod_liver_oil": {
+          "label": "Levertraanolie",
+          "dose": "Bevat ook Vit A en D — niet dubbel doseren"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Vitamine E",
+      "target": "Beschermt meervoudig onverzadigde vetten",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Tarwekiemolie of supplement",
+          "dose": "Volgens label"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Vitamine D",
+      "target": "500–3000 IE/kg droge stof (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Levertraanolie of supplement",
+          "dose": "Volgens label — niet meer dan 3000 IE/kg DS"
+        }
+      }
+    }
   }
 }

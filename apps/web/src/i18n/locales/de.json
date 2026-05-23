@@ -75,7 +75,30 @@
     "instructionsSection": "Anleitung",
     "optionsSection": "Optionen",
     "totalWeight": "Gesamtgewicht (kg)",
-    "placeholder": "Formular ausfüllen und auf"
+    "placeholder": "Formular ausfüllen und auf",
+    "instr": {
+      "sous_vide": "Fleisch in Vakuumbeuteln einschweißen. Wasserbad auf 74 °C (165 °F) vorheizen. Beutel eintauchen und die berechnete Zeit garen. Vor dem Servieren die Kerntemperatur mit einem Thermometer prüfen.",
+      "oven": "Backofen auf 120 °C (248 °F) vorheizen. Fleisch in einem abgedeckten Bräter mit etwas Wasser oder Brühe garen. Mit einem Thermometer prüfen — Zieltemperatur: 74 °C (165 °F) Kerntemperatur.",
+      "stovetop_low": "Einen Topf Wasser zum leichten Simmern bringen (kein kräftiges Kochen). Fleisch hinzufügen und regelmäßig rühren — alle 2 Min. bei Hackfleisch, alle 5 Min. bei Würfeln. Vom Herd nehmen, wenn die Kerntemperatur 74 °C (165 °F) erreicht. Kochbrühe in die Mahlzeit einbeziehen.",
+      "slow_cooker": "Fleisch in den Slow Cooker legen und ½ Tasse Wasser oder Brühe hinzufügen. Auf NIEDRIG stellen — nicht auf HOCH, da schnelle Temperaturschwankungen das Bakterienrisiko erhöhen. Vor dem Servieren 74 °C (165 °F) Kerntemperatur prüfen."
+    },
+    "store": {
+      "refrigerated": "Gegart, gekühlt: 3–4 Tage.",
+      "frozen": "Gegart, eingefroren: bis zu 3 Monate in luftdichten Behältern.",
+      "cooling": "Innerhalb von 2 Stunden von 60 °C → 21 °C abkühlen, dann in weiteren 4 Stunden auf ≤4 °C."
+    },
+    "warn": {
+      "noBones": "Niemals gekochte Knochen in ein Rezept einbeziehen — sie splittern und können zum Ersticken oder zu Magen-Darm-Perforationen führen.",
+      "thermometer": "Kerntemperatur immer mit einem Fleischthermometer prüfen.",
+      "pork": "Schweinefleisch muss immer vollständig durchgegart werden — rohes Schweinefleisch birgt Trichinellen-Risiko.",
+      "salmon": "Lachs sollte nur roh gegeben werden, wenn er zuvor mindestens 7 Tage eingefroren war (Neorickettsia-Risiko)."
+    },
+    "nutrient": {
+      "sous_vide": "Sous-vide bewahrt die meisten wasserlöslichen Vitamine (B-Komplex, Vit C). Alle Beutelsäfte in die Mahlzeit einbeziehen.",
+      "oven": "Einige B-Vitamine gehen in den Bratensaft über — alle Bratensäfte für den vollen Nährwert in die Mahlzeit einbeziehen.",
+      "stovetop_low": "B-Vitamine gehen ins Kochwasser über — Brühe immer in die Mahlzeit einbeziehen.",
+      "slow_cooker": "Langsames, schonendes Garen erhält die meisten Nährstoffe in der Flüssigkeit — Brühe zusammen mit dem Fleisch servieren."
+    }
   },
   "nutrition": {
     "title": "Ernährungsrechner",
@@ -203,5 +226,320 @@
     "openSource": "Open Source",
     "openSourceText": "PawCook ist MIT-lizenziert. Beiträge, Korrekturen und Feature-Anfragen sind willkommen auf",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Rindfleisch",
+      "notes": "Eisen, Zink, B12, Kreatin"
+    },
+    "chicken": {
+      "label": "Hühnchen",
+      "notes": "Vollständig garen; ideal nach GI-Erkrankung"
+    },
+    "turkey": {
+      "label": "Truthahn",
+      "notes": "Geringeres Allergenrisiko als Huhn"
+    },
+    "lamb": {
+      "label": "Lamm",
+      "notes": "Neues Protein; gut für rindfleischsensible Hunde"
+    },
+    "pork": {
+      "label": "Schweinefleisch",
+      "notes": "Kein Gepökeltes/Verarbeitetes. Trichinella-Risiko roh."
+    },
+    "duck": {
+      "label": "Ente",
+      "notes": "Neues Protein, hypoallergen"
+    },
+    "rabbit": {
+      "label": "Kaninchen",
+      "notes": "Sehr mager, neues Protein"
+    },
+    "venison": {
+      "label": "Wildfleisch",
+      "notes": "Sehr mager, neues Protein"
+    },
+    "salmon": {
+      "label": "Lachs",
+      "notes": "Roh nur wenn ≥7 Tage tiefgefroren. Achtung Neorickettsia (Pazifik-NW)."
+    },
+    "mackerel": {
+      "label": "Makrele",
+      "notes": "Omega-3-Kraftpaket"
+    },
+    "sardines": {
+      "label": "Sardinen",
+      "notes": "Ganzer-Fisch-Ernährung"
+    },
+    "whitefish": {
+      "label": "Weißfisch (Kabeljau, Schellfisch)",
+      "notes": "Mager, mild"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Karotten",
+      "benefit": "Beta-Carotin, Ballaststoffe",
+      "notes": "Roh oder gekocht, hilft Zähnen"
+    },
+    "pumpkin": {
+      "label": "Kürbis (natur)",
+      "benefit": "Ballaststoffe, Verdauungshilfe",
+      "notes": "Kein Zucker/Gewürz — nie Kürbiskuchen-Füllung"
+    },
+    "sweet_potato": {
+      "label": "Süßkartoffel",
+      "benefit": "Komplexe Kohlenhydrate, Vit A",
+      "notes": "Immer gekocht"
+    },
+    "broccoli": {
+      "label": "Brokkoli",
+      "benefit": "Vit C, K",
+      "notes": "Max. 10% der Mahlzeit (Isothiocyanate)"
+    },
+    "spinach": {
+      "label": "Spinat",
+      "benefit": "Eisen, Antioxidantien",
+      "notes": "Moderat (Oxalate)"
+    },
+    "green_beans": {
+      "label": "Grüne Bohnen",
+      "benefit": "Kalorienarm, Ballaststoffe",
+      "notes": "Unbegrenzt in Maßen"
+    },
+    "zucchini": {
+      "label": "Zucchini",
+      "benefit": "Hydratation, kalorienarm",
+      "notes": "Gute Füllung"
+    },
+    "peas": {
+      "label": "Erbsen",
+      "benefit": "Protein, Ballaststoffe",
+      "notes": "Frisch oder tiefgekühlt, nicht aus der Dose"
+    },
+    "kale": {
+      "label": "Grünkohl",
+      "benefit": "Kalzium, Antioxidantien",
+      "notes": "Sparsam (Oxalate, Thiocyanate)"
+    },
+    "parsnips": {
+      "label": "Pastinaken",
+      "benefit": "Vit C, Ballaststoffe",
+      "notes": "Zuerst kochen"
+    },
+    "beets": {
+      "label": "Rote Bete",
+      "benefit": "Eisen, Folat",
+      "notes": "Kochen; gefärbten Stuhl erwarten"
+    },
+    "butternut_squash": {
+      "label": "Butternusskürbis",
+      "benefit": "Vit A, Kalium",
+      "notes": "Zuerst kochen"
+    },
+    "cucumber": {
+      "label": "Gurke",
+      "benefit": "Hydratation",
+      "notes": "Roh, sicher"
+    },
+    "celery": {
+      "label": "Sellerie",
+      "benefit": "Kalorienarm, erfrischt Atem",
+      "notes": "Hacken um Verschlucken zu vermeiden"
+    },
+    "asparagus": {
+      "label": "Spargel",
+      "benefit": "Vitamine",
+      "notes": "Kochen zum Weichmachen"
+    },
+    "brussels_sprouts": {
+      "label": "Rosenkohl",
+      "benefit": "Vit K",
+      "notes": "Moderat (Blähungen)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Blaubeeren",
+      "notes": "Antioxidantien, kalorienarm"
+    },
+    "apple": {
+      "label": "Apfel (ohne Kerne/Kerngehäuse)",
+      "notes": "Ballaststoffe, Vit C — Kerne enthalten Blausäure"
+    },
+    "banana": {
+      "label": "Banane",
+      "notes": "Viel Zucker, moderat"
+    },
+    "watermelon": {
+      "label": "Wassermelone (ohne Kerne/Schale)",
+      "notes": "92% Wasser, Sommerhydratation"
+    },
+    "strawberries": {
+      "label": "Erdbeeren",
+      "notes": "Vit C, moderat"
+    },
+    "pear": {
+      "label": "Birne (ohne Kerne/Kerngehäuse)",
+      "notes": "Ballaststoffe"
+    },
+    "cantaloupe": {
+      "label": "Cantaloupe (ohne Schale)",
+      "notes": "Vitamine"
+    },
+    "mango": {
+      "label": "Mango (ohne Kern/Schale)",
+      "notes": "Vitamine"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Zwiebeln, Knoblauch, Lauch, Schnittlauch, Frühlingszwiebeln",
+      "compound": "Thiosulfate (Allium-Familie)",
+      "effect": "Zerstört rote Blutkörperchen → hämolytische Anämie"
+    },
+    "grapes_raisins": {
+      "label": "Weintrauben & Rosinen",
+      "compound": "Unbekannt (Weinsäure vermutet)",
+      "effect": "Akutes Nierenversagen"
+    },
+    "chocolate": {
+      "label": "Schokolade",
+      "compound": "Theobromin",
+      "effect": "Herz, neurologisch, tödlich"
+    },
+    "xylitol": {
+      "label": "Xylitol / Birkenzucker",
+      "compound": "Xylitol",
+      "effect": "Schnelle Hypoglykämie, Leberversagen"
+    },
+    "macadamia": {
+      "label": "Macadamia-Nüsse",
+      "compound": "Unbekannt",
+      "effect": "Schwäche, Tremor, Hyperthermie"
+    },
+    "avocado": {
+      "label": "Avocado",
+      "compound": "Persin",
+      "effect": "Erbrechen, Durchfall; Kern = Erstickungsrisiko"
+    },
+    "green_tomatoes": {
+      "label": "Tomaten (grün/Blätter)",
+      "compound": "Solanin",
+      "effect": "Tremor, GI-Probleme — reifes rotes Fruchtfleisch meist OK"
+    },
+    "raw_bread_dough": {
+      "label": "Roher Brotteig",
+      "compound": "Hefe + Ethanol",
+      "effect": "Blähungen, Alkoholvergiftung"
+    },
+    "alcohol": {
+      "label": "Alkohol",
+      "compound": "Ethanol",
+      "effect": "Wie beim Menschen, aber viel kleinere letale Dosis"
+    },
+    "caffeine": {
+      "label": "Koffein",
+      "compound": "Methylxanthine",
+      "effect": "Wie Schokolade — Herz, neurologisch"
+    },
+    "wild_mushrooms": {
+      "label": "Wildpilze",
+      "compound": "Verschiedene",
+      "effect": "Ohne Bestimmung unbekannt — als giftig annehmen"
+    },
+    "cooked_bones": {
+      "label": "Gekochte Knochen (alle)",
+      "compound": "Splitterrisiko",
+      "effect": "Erstickung, GI-Perforation, innere Blutung"
+    },
+    "nutmeg": {
+      "label": "Muskatnuss",
+      "compound": "Myristicin",
+      "effect": "Tremor, Krämpfe"
+    },
+    "raw_potato_green": {
+      "label": "Rohe Kartoffel (grün)",
+      "compound": "Solanin",
+      "effect": "GI-Probleme"
+    },
+    "rhubarb_leaves": {
+      "label": "Rhabarberblätter",
+      "compound": "Oxalate",
+      "effect": "Nierenschäden"
+    },
+    "cherry_pits": {
+      "label": "Kirschkerne",
+      "compound": "Blausäure",
+      "effect": "Giftig"
+    },
+    "walnuts": {
+      "label": "Walnüsse (besonders schimmelig/schwarz)",
+      "compound": "Tremorgene Mykotoxine",
+      "effect": "Krämpfe"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Kalzium",
+      "target": "~500 mg pro 454g (1 lb) Fleisch, ODER 9–15 mg pro kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Gemahlene Eierschale",
+          "dose": "½ TL pro 500g Fleisch (1 große Schale ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Knochenmehl (Lebensmittelqualität)",
+          "dose": "½ TL pro 500g Fleisch (auf Bleifreiheit prüfen)"
+        },
+        "seaweed_calcium": {
+          "label": "Meeresalgen-Kalzium",
+          "dose": "Laut Produktetikett"
+        },
+        "mcha": {
+          "label": "MCHA (Mikrokristallines Hydroxylapatit)",
+          "dose": "Laut Etikett (Vit D beachten)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg EPA+DHA kombiniert pro 9–13 kg Körpergewicht an Nicht-Fischtagen",
+      "sources": {
+        "fish_oil": {
+          "label": "Fischöl",
+          "dose": "Je nach Konzentration — kühl lagern, alle 2 Monate nach Öffnung ersetzen"
+        },
+        "sardines": {
+          "label": "Sardinen (ganz, in Wasser)",
+          "dose": "1 Sardine pro 4,5 kg Körpergewicht, 2–3× pro Woche"
+        },
+        "cod_liver_oil": {
+          "label": "Lebertran",
+          "dose": "Enthält auch Vit A & D — nicht doppelt dosieren"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Vitamin E",
+      "target": "Schützt mehrfach ungesättigte Fettsäuren",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Weizenkeimöl oder Supplement",
+          "dose": "Laut Etikett"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Vitamin D",
+      "target": "500–3000 IU/kg Trockenmasse (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Lebertran oder Supplement",
+          "dose": "Laut Etikett — 3000 IU/kg TS nicht überschreiten"
+        }
+      }
+    }
   }
 }

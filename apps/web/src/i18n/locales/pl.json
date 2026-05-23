@@ -75,7 +75,30 @@
     "instructionsSection": "Instrukcje",
     "optionsSection": "Opcje",
     "totalWeight": "Łączna waga (kg)",
-    "placeholder": "Wypełnij formularz i naciśnij"
+    "placeholder": "Wypełnij formularz i naciśnij",
+    "instr": {
+      "sous_vide": "Zaplombuj mięso w woreczkach próżniowych. Podgrzej kąpiel wodną do 74 °C (165 °F). Zanurz woreczki i gotuj przez obliczony czas. Przed podaniem sprawdź temperaturę wewnętrzną termometrem.",
+      "oven": "Rozgrzej piekarnik do 120 °C (248 °F). Umieść mięso w przykrytym naczyniu; dodaj odrobinę wody lub bulionu, aby zapobiec wysychaniu. Sprawdź termometrem — cel: 74 °C (165 °F) wewnętrznie.",
+      "stovetop_low": "Doprowadź garnek wody do delikatnego wrzenia (nie gwałtownego). Dodaj mięso i mieszaj regularnie — co 2 min dla mielonego, co 5 min dla kostek. Zdejmij z ognia gdy temperatura wewnętrzna osiągnie 74 °C (165 °F). Włącz wywar do posiłku.",
+      "slow_cooker": "Umieść mięso w wolnowarze i dodaj ½ szklanki wody lub bulionu. Ustaw na NISKI — nie używaj WYSOKIEGO, gdyż gwałtowne zmiany temperatury zwiększają ryzyko bakteryjne. Sprawdź 74 °C (165 °F) wewnętrznie przed podaniem."
+    },
+    "store": {
+      "refrigerated": "Ugotowane, w lodówce: 3–4 dni.",
+      "frozen": "Ugotowane, zamrożone: do 3 miesięcy w szczelnych pojemnikach.",
+      "cooling": "Schłodzić z 60 °C → 21 °C w ciągu 2 godzin, następnie do ≤4 °C w ciągu kolejnych 4 godzin."
+    },
+    "warn": {
+      "noBones": "Nigdy nie włączaj gotowanych kości do żadnego przepisu — kruszą się i mogą powodować zadławienie lub perforację przewodu pokarmowego.",
+      "thermometer": "Zawsze sprawdzaj temperaturę wewnętrzną termometrem do mięsa.",
+      "pork": "Wieprzowina musi być zawsze w pełni ugotowana — surowa wieprzowina niesie ryzyko Trichinella.",
+      "salmon": "Łosoś powinien być podawany surowy tylko jeśli był zamrożony przez ≥7 dni (ryzyko Neorickettsia)."
+    },
+    "nutrient": {
+      "sous_vide": "Sous-vide najlepiej zachowuje witaminy rozpuszczalne w wodzie (kompleks B, Vit C). Dodaj wszystkie soki z woreczków do posiłku.",
+      "oven": "Niektóre witaminy z grupy B przechodzą do soków — dodaj wszystkie soki z pieczenia do posiłku.",
+      "stovetop_low": "Witaminy B przenikają do wody gotowania — zawsze dodaj wywar do posiłku.",
+      "slow_cooker": "Wolne, delikatne gotowanie zachowuje większość składników odżywczych w płynie — podaj wywar razem z mięsem."
+    }
   },
   "nutrition": {
     "title": "Kalkulator żywienia",
@@ -203,5 +226,320 @@
     "openSource": "Open Source",
     "openSourceText": "PawCook jest na licencji MIT. Wkład, poprawki i prośby o nowe funkcje mile widziane na",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Wołowina",
+      "notes": "Żelazo, cynk, B12, kreatyna"
+    },
+    "chicken": {
+      "label": "Kurczak",
+      "notes": "Dobrze ugotować; świetne po chorobie przewodu pokarmowego"
+    },
+    "turkey": {
+      "label": "Indyk",
+      "notes": "Mniejsze ryzyko alergii niż kurczak"
+    },
+    "lamb": {
+      "label": "Jagnięcina",
+      "notes": "Nowe białko; dobre dla psów wrażliwych na wołowinę"
+    },
+    "pork": {
+      "label": "Wieprzowina",
+      "notes": "Unikać wędzonego/przetworzonego. Ryzyko Trichinella surowego."
+    },
+    "duck": {
+      "label": "Kaczka",
+      "notes": "Nowe białko, hipoalergeniczne"
+    },
+    "rabbit": {
+      "label": "Królik",
+      "notes": "Bardzo chude, nowe białko"
+    },
+    "venison": {
+      "label": "Dziczyzna",
+      "notes": "Bardzo chude, nowe białko"
+    },
+    "salmon": {
+      "label": "Łosoś",
+      "notes": "Surowy tylko po ≥7 dniach mrożenia. Uwaga na Neorickettsia (Pacyfik NW)."
+    },
+    "mackerel": {
+      "label": "Makrela",
+      "notes": "Bomba omega-3"
+    },
+    "sardines": {
+      "label": "Sardynki",
+      "notes": "Odżywcze całe ryby"
+    },
+    "whitefish": {
+      "label": "Biała ryba (dorsz, plamiak)",
+      "notes": "Chude, delikatne"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Marchew",
+      "benefit": "Beta-karoten, błonnik",
+      "notes": "Surowa lub gotowana, pomaga zębom"
+    },
+    "pumpkin": {
+      "label": "Dynia (naturalna)",
+      "benefit": "Błonnik, pomoc trawienna",
+      "notes": "Bez cukru/przypraw — nigdy nadzienie do ciasta"
+    },
+    "sweet_potato": {
+      "label": "Batat",
+      "benefit": "Złożone węglowodany, Wit A",
+      "notes": "Zawsze gotowany"
+    },
+    "broccoli": {
+      "label": "Brokuły",
+      "benefit": "Wit C, K",
+      "notes": "Maks. 10% posiłku (izotiocyjaniany)"
+    },
+    "spinach": {
+      "label": "Szpinak",
+      "benefit": "Żelazo, antyoksydanty",
+      "notes": "Umiarkowanie (szczawiany)"
+    },
+    "green_beans": {
+      "label": "Zielona fasolka",
+      "benefit": "Mało kalorii, błonnik",
+      "notes": "Nieograniczone w rozsądnych ilościach"
+    },
+    "zucchini": {
+      "label": "Cukinia",
+      "benefit": "Nawodnienie, mało kalorii",
+      "notes": "Świetny wypełniacz"
+    },
+    "peas": {
+      "label": "Groch",
+      "benefit": "Białko, błonnik",
+      "notes": "Świeży lub mrożony, nie konserwowy"
+    },
+    "kale": {
+      "label": "Jarmuż",
+      "benefit": "Wapń, antyoksydanty",
+      "notes": "Oszczędnie (szczawiany, tiocyjaniany)"
+    },
+    "parsnips": {
+      "label": "Pasternak",
+      "benefit": "Wit C, błonnik",
+      "notes": "Najpierw ugotować"
+    },
+    "beets": {
+      "label": "Buraki",
+      "benefit": "Żelazo, folian",
+      "notes": "Gotować; spodziewać się zabarwionych odchodów"
+    },
+    "butternut_squash": {
+      "label": "Dynia piżmowa",
+      "benefit": "Wit A, potas",
+      "notes": "Najpierw ugotować"
+    },
+    "cucumber": {
+      "label": "Ogórek",
+      "benefit": "Nawodnienie",
+      "notes": "Surowy, bezpieczny"
+    },
+    "celery": {
+      "label": "Seler naciowy",
+      "benefit": "Mało kalorii, odświeża oddech",
+      "notes": "Pokroić aby uniknąć zadławienia"
+    },
+    "asparagus": {
+      "label": "Szparagi",
+      "benefit": "Witaminy",
+      "notes": "Gotować dla zmiękczenia"
+    },
+    "brussels_sprouts": {
+      "label": "Brukselka",
+      "benefit": "Wit K",
+      "notes": "Umiarkowanie (gazy)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Borówki",
+      "notes": "Antyoksydanty, mało kalorii"
+    },
+    "apple": {
+      "label": "Jabłko (bez pestek/gniazda)",
+      "notes": "Błonnik, Wit C — pestki zawierają cyjanek"
+    },
+    "banana": {
+      "label": "Banan",
+      "notes": "Dużo cukru, umiarkowanie"
+    },
+    "watermelon": {
+      "label": "Arbuz (bez pestek/skórki)",
+      "notes": "92% wody, nawodnienie latem"
+    },
+    "strawberries": {
+      "label": "Truskawki",
+      "notes": "Wit C, umiarkowanie"
+    },
+    "pear": {
+      "label": "Gruszka (bez pestek/gniazda)",
+      "notes": "Błonnik"
+    },
+    "cantaloupe": {
+      "label": "Melon kantalupa (bez skórki)",
+      "notes": "Witaminy"
+    },
+    "mango": {
+      "label": "Mango (bez pestki/skóry)",
+      "notes": "Witaminy"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Cebula, czosnek, por, szczypiorek, dymka",
+      "compound": "Tiosiarczany (rodzina allium)",
+      "effect": "Niszczy czerwone krwinki → niedokrwistość hemolityczna"
+    },
+    "grapes_raisins": {
+      "label": "Winogrona i rodzynki",
+      "compound": "Nieznany (podejrzewany kwas winowy)",
+      "effect": "Ostra niewydolność nerek"
+    },
+    "chocolate": {
+      "label": "Czekolada",
+      "compound": "Teobromina",
+      "effect": "Sercowy, neurologiczny, śmiertelny"
+    },
+    "xylitol": {
+      "label": "Ksylitol / cukier brzozowy",
+      "compound": "Ksylitol",
+      "effect": "Szybka hipoglikemia, niewydolność wątroby"
+    },
+    "macadamia": {
+      "label": "Orzechy macadamia",
+      "compound": "Nieznany",
+      "effect": "Słabość, drżenia, hipertermia"
+    },
+    "avocado": {
+      "label": "Awokado",
+      "compound": "Persyna",
+      "effect": "Wymioty, biegunka; pestka = ryzyko zadławienia"
+    },
+    "green_tomatoes": {
+      "label": "Pomidory (zielone/liście)",
+      "compound": "Solanina",
+      "effect": "Drżenia, problemy żołądkowe — dojrzały czerwony miąższ zwykle OK"
+    },
+    "raw_bread_dough": {
+      "label": "Surowe ciasto chlebowe",
+      "compound": "Drożdże + etanol",
+      "effect": "Wzdęcia, zatrucie alkoholem"
+    },
+    "alcohol": {
+      "label": "Alkohol",
+      "compound": "Etanol",
+      "effect": "Jak u ludzi ale dawka śmiertelna znacznie mniejsza"
+    },
+    "caffeine": {
+      "label": "Kofeina",
+      "compound": "Metyloksantyny",
+      "effect": "Jak czekolada — sercowy, neurologiczny"
+    },
+    "wild_mushrooms": {
+      "label": "Grzyby dziko rosnące",
+      "compound": "Różne",
+      "effect": "Nieznany bez identyfikacji — zakładać toksyczność"
+    },
+    "cooked_bones": {
+      "label": "Gotowane kości (wszystkie)",
+      "compound": "Ryzyko odłamków",
+      "effect": "Zadławienie, perforacja przewodu pokarmowego, wewnętrzne krwawienie"
+    },
+    "nutmeg": {
+      "label": "Gałka muszkatołowa",
+      "compound": "Miristicyna",
+      "effect": "Drżenia, drgawki"
+    },
+    "raw_potato_green": {
+      "label": "Surowy ziemniak (zielony)",
+      "compound": "Solanina",
+      "effect": "Problemy żołądkowe"
+    },
+    "rhubarb_leaves": {
+      "label": "Liście rabarbaru",
+      "compound": "Szczawiany",
+      "effect": "Uszkodzenie nerek"
+    },
+    "cherry_pits": {
+      "label": "Pestki wiśni",
+      "compound": "Cyjanek",
+      "effect": "Toksyczne"
+    },
+    "walnuts": {
+      "label": "Orzechy włoskie (szczególnie spleśniałe/czarne)",
+      "compound": "Tremorgeniczne mykotoksyny",
+      "effect": "Drgawki"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Wapń",
+      "target": "~500 mg na 454g (1 funt) mięsa, LUB 9–15 mg na kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Zmielona skorupka jajka",
+          "dose": "½ łyżeczki na 500g mięsa (1 duża skorupka ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Mączka kostna (spożywcza)",
+          "dose": "½ łyżeczki na 500g mięsa (sprawdzić brak ołowiu)"
+        },
+        "seaweed_calcium": {
+          "label": "Wapń z alg morskich",
+          "dose": "Wg etykiety produktu"
+        },
+        "mcha": {
+          "label": "MCHA (Mikrokrystaliczny hydroksyapatyt)",
+          "dose": "Wg etykiety (pilnować Wit D)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg EPA+DHA łącznie na 9–13 kg masy ciała w dni bez ryb",
+      "sources": {
+        "fish_oil": {
+          "label": "Olej rybny",
+          "dose": "Różny w zależności od stężenia — przechowywać w lodówce, wymieniać co 2 miesiące po otwarciu"
+        },
+        "sardines": {
+          "label": "Sardynki (całe, w wodzie)",
+          "dose": "1 sardynka na 4,5 kg masy ciała, 2–3× w tygodniu"
+        },
+        "cod_liver_oil": {
+          "label": "Tran (olej z wątroby dorsza)",
+          "dose": "Zawiera też Wit A i D — nie podwajać dawki"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Witamina E",
+      "target": "Chroni wielonienasycone tłuszcze",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Olej z kiełków pszenicy lub suplement",
+          "dose": "Wg etykiety"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Witamina D",
+      "target": "500–3000 IU/kg suchej masy (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Tran lub suplement",
+          "dose": "Wg etykiety — nie przekraczać 3000 IU/kg SM"
+        }
+      }
+    }
   }
 }

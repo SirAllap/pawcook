@@ -51,10 +51,10 @@ export default function FoodSafety() {
     { id: 'fruits',     label: t('foodSafety.tabs.fruits'),     icon: '🍎', count: fruits.length },
   ];
 
-  const filteredToxic      = toxic.filter(      x => !q || x.label.toLowerCase().includes(q) || x.effect.toLowerCase().includes(q));
-  const filteredMeats      = meats.filter(      x => !q || x.label.toLowerCase().includes(q));
-  const filteredVegetables = vegetables.filter( x => !q || x.label.toLowerCase().includes(q));
-  const filteredFruits     = fruits.filter(     x => !q || x.label.toLowerCase().includes(q));
+  const filteredToxic      = toxic.filter(      x => !q || t(`toxicData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q) || t(`toxicData.${x.id}.effect`, {defaultValue: x.effect}).toLowerCase().includes(q));
+  const filteredMeats      = meats.filter(      x => !q || t(`meatData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
+  const filteredVegetables = vegetables.filter( x => !q || t(`vegData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
+  const filteredFruits     = fruits.filter(     x => !q || t(`fruitData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
 
   return (
     <div className="space-y-5">
@@ -118,7 +118,7 @@ export default function FoodSafety() {
                 className="glass-card rounded-2xl p-4 border-l-[3px] border-red-500/60 animate-slide-up"
                 style={{ animationDelay: `${i * 35}ms` }}>
                 <div className="flex items-start justify-between gap-2 mb-2.5">
-                  <h3 className="font-black text-white text-base">{item.label}</h3>
+                  <h3 className="font-black text-white text-base">{t(`toxicData.${item.id}.label`, {defaultValue: item.label})}</h3>
                   <span className="text-[11px] bg-red-500/15 text-red-300 border border-red-500/30
                                   px-2.5 py-1 rounded-full font-black shrink-0 tracking-wide">
                     {t('common.toxic')}
@@ -127,11 +127,11 @@ export default function FoodSafety() {
                 <div className="space-y-1">
                   <p className="text-sm text-gray-400">
                     <span className="text-red-400/80 font-bold">{t('foodSafety.compound')}: </span>
-                    <span className="text-gray-300">{item.toxicCompound}</span>
+                    <span className="text-gray-300">{t(`toxicData.${item.id}.compound`, {defaultValue: item.toxicCompound})}</span>
                   </p>
                   <p className="text-sm text-gray-400">
                     <span className="text-red-400/80 font-bold">{t('foodSafety.effect')}: </span>
-                    <span className="text-gray-300">{item.effect}</span>
+                    <span className="text-gray-300">{t(`toxicData.${item.id}.effect`, {defaultValue: item.effect})}</span>
                   </p>
                 </div>
               </div>
@@ -150,8 +150,8 @@ export default function FoodSafety() {
                 style={{ animationDelay: `${i * 30}ms` }}>
                 <div className="flex items-start gap-3">
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-black text-white text-base mb-1">{item.label}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">{item.notes}</p>
+                    <h3 className="font-black text-white text-base mb-1">{t(`meatData.${item.id}.label`, {defaultValue: item.label})}</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">{t(`meatData.${item.id}.notes`, {defaultValue: item.notes})}</p>
                   </div>
                   <div className="flex flex-col gap-1.5 shrink-0">
                     <span className={`text-[11px] px-2.5 py-1 rounded-xl font-bold text-center ${
@@ -185,13 +185,13 @@ export default function FoodSafety() {
                 className="glass-card rounded-2xl p-4 animate-slide-up"
                 style={{ animationDelay: `${i * 25}ms` }}>
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-black text-white text-base">{item.label}</h3>
+                  <h3 className="font-black text-white text-base">{t(`vegData.${item.id}.label`, {defaultValue: item.label})}</h3>
                   <span className="text-[10px] font-bold bg-green-900/50 text-green-300 border border-green-800/40 px-2 py-0.5 rounded-full">
                     {t('common.safe')}
                   </span>
                 </div>
-                <p className="text-sm text-amber-400 font-semibold mb-1">{item.benefit}</p>
-                <p className="text-xs text-gray-500 leading-relaxed">{item.notes}</p>
+                <p className="text-sm text-amber-400 font-semibold mb-1">{t(`vegData.${item.id}.benefit`, {defaultValue: item.benefit})}</p>
+                <p className="text-xs text-gray-500 leading-relaxed">{t(`vegData.${item.id}.notes`, {defaultValue: item.notes})}</p>
               </div>
             ))}
           </div>
@@ -207,12 +207,12 @@ export default function FoodSafety() {
                 className="glass-card rounded-2xl p-4 animate-slide-up"
                 style={{ animationDelay: `${i * 25}ms` }}>
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-black text-white text-base">{item.label}</h3>
+                  <h3 className="font-black text-white text-base">{t(`fruitData.${item.id}.label`, {defaultValue: item.label})}</h3>
                   <span className="text-[10px] font-bold bg-green-900/50 text-green-300 border border-green-800/40 px-2 py-0.5 rounded-full">
                     {t('common.safe')}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 leading-relaxed">{item.notes}</p>
+                <p className="text-xs text-gray-500 leading-relaxed">{t(`fruitData.${item.id}.notes`, {defaultValue: item.notes})}</p>
               </div>
             ))}
           </div>

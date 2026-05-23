@@ -43,6 +43,7 @@ function SectionHead({ children }: { children: ReactNode }) {
 export default function CookingCalculator() {
   const { t } = useTranslation();
   const [result, setResult] = useState<CookingResult | null>(null);
+  const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
   const [calculating, setCalculating] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
 
@@ -73,6 +74,7 @@ export default function CookingCalculator() {
     setCalculating(true);
     setTimeout(() => {
       setResult(calculateCookingTime(data));
+      setSubmittedData(data);
       setCalculating(false);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
     }, 200);
@@ -239,16 +241,16 @@ export default function CookingCalculator() {
           <div className="px-5 pb-4">
             <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-4">
               <p className="text-[11px] font-black text-gray-400 uppercase tracking-[0.12em] mb-2">📋 {t('cooking.instructionsSection')}</p>
-              <p className="text-sm text-gray-300 leading-relaxed">{result.methodInstructions}</p>
+              <p className="text-sm text-gray-300 leading-relaxed">{t(`cooking.instr.${submittedData?.cookingMethod}`)}</p>
             </div>
           </div>
 
           <div className="px-5 pb-4">
             <div className="bg-green-950/50 border border-green-800/40 rounded-2xl p-4 space-y-2">
               <p className="text-[11px] font-black text-green-400 uppercase tracking-[0.12em] mb-2">🧊 {t('cooking.storage')}</p>
-              {result.storageInstructions.map((s, i) => (
-                <p key={i} className="text-sm text-green-200 flex gap-2 items-start">
-                  <span className="text-green-500 shrink-0 mt-0.5 font-bold">✓</span>{s}
+              {(['refrigerated', 'frozen', 'cooling'] as const).map(k => (
+                <p key={k} className="text-sm text-green-200 flex gap-2 items-start">
+                  <span className="text-green-500 shrink-0 mt-0.5 font-bold">✓</span>{t(`cooking.store.${k}`)}
                 </p>
               ))}
             </div>
@@ -257,7 +259,12 @@ export default function CookingCalculator() {
           <div className="px-5 pb-5">
             <div className="bg-red-950/50 border border-red-800/40 rounded-2xl p-4 space-y-2">
               <p className="text-[11px] font-black text-red-400 uppercase tracking-[0.12em] mb-2">⚠️ {t('cooking.warnings')}</p>
-              {result.warnings.map((w, i) => (
+              {[
+                t('cooking.warn.noBones'),
+                t('cooking.warn.thermometer'),
+                ...(submittedData?.meatType === 'pork'   ? [t('cooking.warn.pork')]   : []),
+                ...(submittedData?.meatType === 'salmon' ? [t('cooking.warn.salmon')] : []),
+              ].map((w, i) => (
                 <p key={i} className="text-sm text-red-200 flex gap-2 items-start">
                   <span className="text-red-400 shrink-0 mt-0.5 font-black">!</span>{w}
                 </p>

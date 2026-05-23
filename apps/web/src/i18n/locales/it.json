@@ -75,7 +75,30 @@
     "instructionsSection": "Istruzioni",
     "optionsSection": "Opzioni",
     "totalWeight": "Peso totale (kg)",
-    "placeholder": "Compila il modulo e premi"
+    "placeholder": "Compila il modulo e premi",
+    "instr": {
+      "sous_vide": "Sigilla la carne in sacchetti sottovuoto. Preriscalda il bagnomaria a 74 °C (165 °F). Immergi i sacchetti e cuoci per il tempo calcolato. Verifica la temperatura interna con un termometro a sonda prima di servire.",
+      "oven": "Preriscalda il forno a 120 °C (248 °F). Disponi la carne in una teglia coperta; aggiungi un po' di acqua o brodo per evitare che si secchi. Controlla con un termometro — obiettivo: 74 °C (165 °F) di temperatura interna.",
+      "stovetop_low": "Porta una pentola d'acqua a un lieve fremito (non a ebollizione vivace). Aggiungi la carne e mescola regolarmente — ogni 2 min per la carne macinata, ogni 5 min per i cubetti. Togli dal fuoco quando la temperatura interna raggiunge 74 °C (165 °F). Includi il brodo di cottura nel pasto.",
+      "slow_cooker": "Metti la carne nella slow cooker e aggiungi ½ tazza di acqua o brodo. Imposta su BASSO — non usare ALTO poiché le rapide variazioni di temperatura aumentano il rischio batterico. Verifica 74 °C (165 °F) di temperatura interna prima di servire."
+    },
+    "store": {
+      "refrigerated": "Cotto, in frigorifero: 3–4 giorni.",
+      "frozen": "Cotto, congelato: fino a 3 mesi in contenitori ermetici.",
+      "cooling": "Raffreddare da 60 °C → 21 °C entro 2 ore, poi a ≤4 °C entro altre 4 ore."
+    },
+    "warn": {
+      "noBones": "Non includere mai ossa cotte in nessuna ricetta — si scheggiano e possono causare soffocamento o perforazione gastrointestinale.",
+      "thermometer": "Verifica sempre la temperatura interna con un termometro da cucina.",
+      "pork": "Il maiale deve essere sempre completamente cotto — il maiale crudo comporta rischio di Trichinella.",
+      "salmon": "Il salmone va dato crudo solo se precedentemente congelato per ≥7 giorni (rischio di Neorickettsia)."
+    },
+    "nutrient": {
+      "sous_vide": "Il sous-vide preserva la maggior parte delle vitamine idrosolubili (complesso B, Vit C). Includi tutti i succhi dei sacchetti nel pasto.",
+      "oven": "Alcune vitamine B si perdono nel sugo di cottura — includi tutti i succhi della teglia per il pieno valore nutrizionale.",
+      "stovetop_low": "Le vitamine B migrano nell'acqua di cottura — includi sempre il brodo nel pasto.",
+      "slow_cooker": "La cottura lenta e delicata trattiene la maggior parte dei nutrienti nel liquido — servi il brodo insieme alla carne."
+    }
   },
   "nutrition": {
     "title": "Calcolatore nutrizionale",
@@ -203,5 +226,320 @@
     "openSource": "Open Source",
     "openSourceText": "PawCook è sotto licenza MIT. Contributi, correzioni e richieste di funzionalità sono benvenuti su",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Manzo",
+      "notes": "Ferro, zinco, B12, creatina"
+    },
+    "chicken": {
+      "label": "Pollo",
+      "notes": "Cuocere bene; ottimo dopo malattie gastrointestinali"
+    },
+    "turkey": {
+      "label": "Tacchino",
+      "notes": "Minor rischio allergenico rispetto al pollo"
+    },
+    "lamb": {
+      "label": "Agnello",
+      "notes": "Proteina novità; ottima per cani sensibili al manzo"
+    },
+    "pork": {
+      "label": "Maiale",
+      "notes": "Evitare stagionato/lavorato. Rischio Trichinella crudo."
+    },
+    "duck": {
+      "label": "Anatra",
+      "notes": "Proteina novità, ipoallergenica"
+    },
+    "rabbit": {
+      "label": "Coniglio",
+      "notes": "Molto magro, proteina novità"
+    },
+    "venison": {
+      "label": "Cervo",
+      "notes": "Molto magro, proteina novità"
+    },
+    "salmon": {
+      "label": "Salmone",
+      "notes": "Crudo solo se congelato ≥7 giorni. Attenzione Neorickettsia (NW Pacifico)."
+    },
+    "mackerel": {
+      "label": "Sgombro",
+      "notes": "Fonte potente di Omega-3"
+    },
+    "sardines": {
+      "label": "Sardine",
+      "notes": "Nutrizione del pesce intero"
+    },
+    "whitefish": {
+      "label": "Pesce bianco (merluzzo, eglefino)",
+      "notes": "Magro, delicato"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Carote",
+      "benefit": "Beta-carotene, fibre",
+      "notes": "Crudo o cotto, aiuta i denti"
+    },
+    "pumpkin": {
+      "label": "Zucca (semplice)",
+      "benefit": "Fibre, aiuto digestivo",
+      "notes": "Senza zucchero/spezie — mai ripieno di torta"
+    },
+    "sweet_potato": {
+      "label": "Patata dolce",
+      "benefit": "Carboidrati complessi, Vit A",
+      "notes": "Sempre cotta"
+    },
+    "broccoli": {
+      "label": "Broccoli",
+      "benefit": "Vit C, K",
+      "notes": "Max 10% del pasto (isotiocianati)"
+    },
+    "spinach": {
+      "label": "Spinaci",
+      "benefit": "Ferro, antiossidanti",
+      "notes": "Moderato (ossalati)"
+    },
+    "green_beans": {
+      "label": "Fagiolini",
+      "benefit": "Poche calorie, fibre",
+      "notes": "Illimitato entro il ragionevole"
+    },
+    "zucchini": {
+      "label": "Zucchine",
+      "benefit": "Idratazione, poche calorie",
+      "notes": "Ottimo riempitivo"
+    },
+    "peas": {
+      "label": "Piselli",
+      "benefit": "Proteine, fibre",
+      "notes": "Freschi o surgelati, non in scatola"
+    },
+    "kale": {
+      "label": "Cavolo riccio",
+      "benefit": "Calcio, antiossidanti",
+      "notes": "Con parsimonia (ossalati, tiocianati)"
+    },
+    "parsnips": {
+      "label": "Pastinache",
+      "benefit": "Vit C, fibre",
+      "notes": "Cuocere prima"
+    },
+    "beets": {
+      "label": "Barbabietole",
+      "benefit": "Ferro, folato",
+      "notes": "Cuocere; aspettarsi feci colorate"
+    },
+    "butternut_squash": {
+      "label": "Zucca butternut",
+      "benefit": "Vit A, potassio",
+      "notes": "Cuocere prima"
+    },
+    "cucumber": {
+      "label": "Cetriolo",
+      "benefit": "Idratazione",
+      "notes": "Crudo, sicuro"
+    },
+    "celery": {
+      "label": "Sedano",
+      "benefit": "Poche calorie, rinfresca il respiro",
+      "notes": "Tagliare per evitare soffocamento"
+    },
+    "asparagus": {
+      "label": "Asparagi",
+      "benefit": "Vitamine",
+      "notes": "Cuocere per ammorbidire"
+    },
+    "brussels_sprouts": {
+      "label": "Cavoletti di Bruxelles",
+      "benefit": "Vit K",
+      "notes": "Moderato (gas)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Mirtilli",
+      "notes": "Antiossidanti, poche calorie"
+    },
+    "apple": {
+      "label": "Mela (senza semi/torsolo)",
+      "notes": "Fibre, Vit C — i semi contengono cianuro"
+    },
+    "banana": {
+      "label": "Banana",
+      "notes": "Alto contenuto di zuccheri, moderato"
+    },
+    "watermelon": {
+      "label": "Anguria (senza semi/buccia)",
+      "notes": "92% acqua, idratazione estiva"
+    },
+    "strawberries": {
+      "label": "Fragole",
+      "notes": "Vit C, moderato"
+    },
+    "pear": {
+      "label": "Pera (senza semi/torsolo)",
+      "notes": "Fibre"
+    },
+    "cantaloupe": {
+      "label": "Melone cantalupo (senza buccia)",
+      "notes": "Vitamine"
+    },
+    "mango": {
+      "label": "Mango (senza nocciolo/buccia)",
+      "notes": "Vitamine"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Cipolle, aglio, porri, erba cipollina, cipollotti",
+      "compound": "Tiosolfati (famiglia allium)",
+      "effect": "Distrugge i globuli rossi → anemia emolitica"
+    },
+    "grapes_raisins": {
+      "label": "Uva e uvetta",
+      "compound": "Sconosciuto (acido tartarico sospettato)",
+      "effect": "Insufficienza renale acuta"
+    },
+    "chocolate": {
+      "label": "Cioccolato",
+      "compound": "Teobromina",
+      "effect": "Cardiaco, neurologico, fatale"
+    },
+    "xylitol": {
+      "label": "Xilitolo / zucchero di betulla",
+      "compound": "Xilitolo",
+      "effect": "Ipoglicemia rapida, insufficienza epatica"
+    },
+    "macadamia": {
+      "label": "Noci di macadamia",
+      "compound": "Sconosciuto",
+      "effect": "Debolezza, tremori, ipertermia"
+    },
+    "avocado": {
+      "label": "Avocado",
+      "compound": "Persina",
+      "effect": "Vomito, diarrea; nocciolo = rischio soffocamento"
+    },
+    "green_tomatoes": {
+      "label": "Pomodori (verdi/foglie)",
+      "compound": "Solanina",
+      "effect": "Tremori, problemi GI — polpa rossa matura di solito OK"
+    },
+    "raw_bread_dough": {
+      "label": "Impasto crudo",
+      "compound": "Lievito + etanolo",
+      "effect": "Gonfiore, avvelenamento da alcol"
+    },
+    "alcohol": {
+      "label": "Alcol",
+      "compound": "Etanolo",
+      "effect": "Come per gli umani ma dose letale molto più bassa"
+    },
+    "caffeine": {
+      "label": "Caffeina",
+      "compound": "Metilxantine",
+      "effect": "Come il cioccolato — cardiaco, neurologico"
+    },
+    "wild_mushrooms": {
+      "label": "Funghi selvatici",
+      "compound": "Vari",
+      "effect": "Sconosciuto senza identificazione — presumere tossico"
+    },
+    "cooked_bones": {
+      "label": "Ossa cotte (tutte)",
+      "compound": "Rischio schegge",
+      "effect": "Soffocamento, perforazione GI, emorragia interna"
+    },
+    "nutmeg": {
+      "label": "Noce moscata",
+      "compound": "Miristicina",
+      "effect": "Tremori, convulsioni"
+    },
+    "raw_potato_green": {
+      "label": "Patata cruda (verde)",
+      "compound": "Solanina",
+      "effect": "Problemi GI"
+    },
+    "rhubarb_leaves": {
+      "label": "Foglie di rabarbaro",
+      "compound": "Ossalati",
+      "effect": "Danno renale"
+    },
+    "cherry_pits": {
+      "label": "Noccioli di ciliegia",
+      "compound": "Cianuro",
+      "effect": "Tossico"
+    },
+    "walnuts": {
+      "label": "Noci (specialmente ammuffite/nere)",
+      "compound": "Micotossine tremorigeniche",
+      "effect": "Convulsioni"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Calcio",
+      "target": "~500 mg per 454g (1 lb) di carne, OPPURE 9–15 mg per kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Guscio d'uovo macinato",
+          "dose": "½ cucchiaino per 500g di carne (1 guscio grande ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Farina d'ossa (uso alimentare)",
+          "dose": "½ cucchiaino per 500g di carne (verificare senza piombo)"
+        },
+        "seaweed_calcium": {
+          "label": "Calcio da alghe marine",
+          "dose": "Secondo etichetta prodotto"
+        },
+        "mcha": {
+          "label": "MCHA (Idrossiapatite microcristallina)",
+          "dose": "Secondo etichetta (monitorare Vit D)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg EPA+DHA combinati per 9–13 kg di peso corporeo nei giorni senza pesce",
+      "sources": {
+        "fish_oil": {
+          "label": "Olio di pesce",
+          "dose": "Varia per concentrazione — conservare in frigo, sostituire ogni 2 mesi dopo apertura"
+        },
+        "sardines": {
+          "label": "Sardine (intere, in acqua)",
+          "dose": "1 sardina per 4,5 kg di peso, 2–3× alla settimana"
+        },
+        "cod_liver_oil": {
+          "label": "Olio di fegato di merluzzo",
+          "dose": "Contiene anche Vit A e D — non duplicare la dose"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Vitamina E",
+      "target": "Protegge i grassi polinsaturi",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Olio di germe di grano o integratore",
+          "dose": "Secondo etichetta"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Vitamina D",
+      "target": "500–3000 UI/kg materia secca (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Olio di fegato di merluzzo o integratore",
+          "dose": "Secondo etichetta — non superare 3000 UI/kg SS"
+        }
+      }
+    }
   }
 }

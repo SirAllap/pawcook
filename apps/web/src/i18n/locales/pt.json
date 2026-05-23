@@ -75,7 +75,30 @@
     "instructionsSection": "Instruções",
     "optionsSection": "Opções",
     "totalWeight": "Peso total (kg)",
-    "placeholder": "Preencha o formulário e toque em"
+    "placeholder": "Preencha o formulário e toque em",
+    "instr": {
+      "sous_vide": "Sele a carne em sacos a vácuo. Pré-aqueça o banho-maria a 74 °C (165 °F). Mergulhe os sacos e cozinhe pelo tempo calculado. Verifique a temperatura interna com um termómetro de sonda antes de servir.",
+      "oven": "Pré-aqueça o forno a 120 °C (248 °F). Coloque a carne num recipiente tapado; adicione um pouco de água ou caldo para evitar que seque. Verifique com um termómetro — objetivo: 74 °C (165 °F) de temperatura interna.",
+      "stovetop_low": "Leve uma panela de água a um leve frémito (não a fervura intensa). Adicione a carne e mexa regularmente — a cada 2 min para picada, a cada 5 min para cubos. Retire do lume quando a temperatura interna atingir 74 °C (165 °F). Inclua o caldo de cozedura na refeição.",
+      "slow_cooker": "Coloque a carne na panela de cocção lenta e adicione ½ chávena de água ou caldo. Use a temperatura BAIXA — não use ALTA pois as variações bruscas aumentam o risco bacteriano. Verifique 74 °C (165 °F) de temperatura interna antes de servir."
+    },
+    "store": {
+      "refrigerated": "Cozinhado, refrigerado: 3–4 dias.",
+      "frozen": "Cozinhado, congelado: até 3 meses em recipientes herméticos.",
+      "cooling": "Arrefecer de 60 °C → 21 °C em 2 horas, depois a ≤4 °C em mais 4 horas."
+    },
+    "warn": {
+      "noBones": "Nunca inclua ossos cozinhados em nenhuma receita — partem-se e podem causar engasgamento ou perfuração gastrointestinal.",
+      "thermometer": "Verifique sempre a temperatura interna com um termómetro de cozinha.",
+      "pork": "O porco deve ser sempre totalmente cozinhado — o porco cru transporta risco de Trichinella.",
+      "salmon": "O salmão só deve ser dado cru se tiver sido congelado durante ≥7 dias (risco de Neorickettsia)."
+    },
+    "nutrient": {
+      "sous_vide": "O sous-vide preserva mais vitaminas hidrossolúveis (complexo B, Vit C). Inclua todos os sucos dos sacos na refeição.",
+      "oven": "Algumas vitaminas B perdem-se nos sucos do assado — inclua todos os sucos da assadeira na refeição.",
+      "stovetop_low": "As vitaminas B migram para a água de cozedura — inclua sempre o caldo na refeição.",
+      "slow_cooker": "A cozedura lenta e suave retém a maioria dos nutrientes no líquido — sirva o caldo juntamente com a carne."
+    }
   },
   "nutrition": {
     "title": "Calculadora de nutrição",
@@ -203,5 +226,320 @@
     "openSource": "Código Aberto",
     "openSourceText": "PawCook é licenciado pelo MIT. Contribuições, correções e solicitações de recursos são bem-vindas no",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Vaca",
+      "notes": "Ferro, zinco, B12, creatina"
+    },
+    "chicken": {
+      "label": "Frango",
+      "notes": "Cozinhar bem; ótimo após doença gastrointestinal"
+    },
+    "turkey": {
+      "label": "Peru",
+      "notes": "Menor risco alérgico que o frango"
+    },
+    "lamb": {
+      "label": "Borrego",
+      "notes": "Proteína nova; boa para cães sensíveis à carne bovina"
+    },
+    "pork": {
+      "label": "Porco",
+      "notes": "Evitar curado/processado. Risco de Trichinella cru."
+    },
+    "duck": {
+      "label": "Pato",
+      "notes": "Proteína nova, hipoalergênica"
+    },
+    "rabbit": {
+      "label": "Coelho",
+      "notes": "Muito magro, proteína nova"
+    },
+    "venison": {
+      "label": "Veado",
+      "notes": "Muito magro, proteína nova"
+    },
+    "salmon": {
+      "label": "Salmão",
+      "notes": "Cru só se congelado ≥7 dias. Atenção à Neorickettsia (NW do Pacífico)."
+    },
+    "mackerel": {
+      "label": "Cavala",
+      "notes": "Grande fonte de Omega-3"
+    },
+    "sardines": {
+      "label": "Sardinhas",
+      "notes": "Nutrição de peixe inteiro"
+    },
+    "whitefish": {
+      "label": "Peixe branco (bacalhau, arinca)",
+      "notes": "Magro, suave"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Cenouras",
+      "benefit": "Beta-caroteno, fibra",
+      "notes": "Cru ou cozido, ajuda dentária"
+    },
+    "pumpkin": {
+      "label": "Abóbora (natural)",
+      "benefit": "Fibra, ajuda digestiva",
+      "notes": "Sem açúcar/especiarias — nunca recheio de torta"
+    },
+    "sweet_potato": {
+      "label": "Batata-doce",
+      "benefit": "Carboidratos complexos, Vit A",
+      "notes": "Sempre cozida"
+    },
+    "broccoli": {
+      "label": "Brócoli",
+      "benefit": "Vit C, K",
+      "notes": "Máx. 10% da refeição (isotiocianatos)"
+    },
+    "spinach": {
+      "label": "Espinafre",
+      "benefit": "Ferro, antioxidantes",
+      "notes": "Moderado (oxalatos)"
+    },
+    "green_beans": {
+      "label": "Feijão verde",
+      "benefit": "Poucas calorias, fibra",
+      "notes": "Ilimitado com razão"
+    },
+    "zucchini": {
+      "label": "Abobrinha",
+      "benefit": "Hidratação, poucas calorias",
+      "notes": "Ótimo enchimento"
+    },
+    "peas": {
+      "label": "Ervilhas",
+      "benefit": "Proteína, fibra",
+      "notes": "Frescas ou congeladas, não enlatadas"
+    },
+    "kale": {
+      "label": "Couve kale",
+      "benefit": "Cálcio, antioxidantes",
+      "notes": "Com moderação (oxalatos, tiocianatos)"
+    },
+    "parsnips": {
+      "label": "Pastinaca",
+      "benefit": "Vit C, fibra",
+      "notes": "Cozinhar primeiro"
+    },
+    "beets": {
+      "label": "Beterraba",
+      "benefit": "Ferro, folato",
+      "notes": "Cozinhar; esperar fezes coloridas"
+    },
+    "butternut_squash": {
+      "label": "Abóbora butternut",
+      "benefit": "Vit A, potássio",
+      "notes": "Cozinhar primeiro"
+    },
+    "cucumber": {
+      "label": "Pepino",
+      "benefit": "Hidratação",
+      "notes": "Cru, seguro"
+    },
+    "celery": {
+      "label": "Aipo",
+      "benefit": "Poucas calorias, refresca o hálito",
+      "notes": "Cortar para evitar engasgamento"
+    },
+    "asparagus": {
+      "label": "Espargos",
+      "benefit": "Vitaminas",
+      "notes": "Cozinhar para amolecer"
+    },
+    "brussels_sprouts": {
+      "label": "Couves de Bruxelas",
+      "benefit": "Vit K",
+      "notes": "Moderado (gases)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Mirtilo",
+      "notes": "Antioxidantes, poucas calorias"
+    },
+    "apple": {
+      "label": "Maçã (sem sementes/caroço)",
+      "notes": "Fibra, Vit C — sementes contêm cianeto"
+    },
+    "banana": {
+      "label": "Banana",
+      "notes": "Alto teor de açúcar, moderado"
+    },
+    "watermelon": {
+      "label": "Melancia (sem sementes/casca)",
+      "notes": "92% água, hidratação no verão"
+    },
+    "strawberries": {
+      "label": "Morangos",
+      "notes": "Vit C, moderado"
+    },
+    "pear": {
+      "label": "Pera (sem sementes/caroço)",
+      "notes": "Fibra"
+    },
+    "cantaloupe": {
+      "label": "Melão cantaloupe (sem casca)",
+      "notes": "Vitaminas"
+    },
+    "mango": {
+      "label": "Manga (sem caroço/pele)",
+      "notes": "Vitaminas"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Cebolas, alho, alho-poró, cebolinha, cebola verde",
+      "compound": "Tiossulfatos (família allium)",
+      "effect": "Destrói glóbulos vermelhos → anemia hemolítica"
+    },
+    "grapes_raisins": {
+      "label": "Uvas e passas",
+      "compound": "Desconhecido (ácido tartárico suspeito)",
+      "effect": "Insuficiência renal aguda"
+    },
+    "chocolate": {
+      "label": "Chocolate",
+      "compound": "Teobromina",
+      "effect": "Cardíaco, neurológico, fatal"
+    },
+    "xylitol": {
+      "label": "Xilitol / açúcar de bétula",
+      "compound": "Xilitol",
+      "effect": "Hipoglicemia rápida, insuficiência hepática"
+    },
+    "macadamia": {
+      "label": "Nozes de macadâmia",
+      "compound": "Desconhecido",
+      "effect": "Fraqueza, tremores, hipertermia"
+    },
+    "avocado": {
+      "label": "Abacate",
+      "compound": "Persina",
+      "effect": "Vômitos, diarreia; caroço é risco de engasgamento"
+    },
+    "green_tomatoes": {
+      "label": "Tomates (verdes/folhas)",
+      "compound": "Solanina",
+      "effect": "Tremores, problemas GI — polpa vermelha madura geralmente OK"
+    },
+    "raw_bread_dough": {
+      "label": "Massa de pão crua",
+      "compound": "Fermento + etanol",
+      "effect": "Inchaço, envenenamento por álcool"
+    },
+    "alcohol": {
+      "label": "Álcool",
+      "compound": "Etanol",
+      "effect": "Igual a humanos mas dose letal muito menor"
+    },
+    "caffeine": {
+      "label": "Cafeína",
+      "compound": "Metilxantinas",
+      "effect": "Como chocolate — cardíaco, neurológico"
+    },
+    "wild_mushrooms": {
+      "label": "Cogumelos silvestres",
+      "compound": "Vários",
+      "effect": "Desconhecido sem identificação — assumir tóxico"
+    },
+    "cooked_bones": {
+      "label": "Ossos cozidos (todos)",
+      "compound": "Risco de lasca",
+      "effect": "Engasgamento, perfuração GI, hemorragia interna"
+    },
+    "nutmeg": {
+      "label": "Noz-moscada",
+      "compound": "Miristicina",
+      "effect": "Tremores, convulsões"
+    },
+    "raw_potato_green": {
+      "label": "Batata crua (verde)",
+      "compound": "Solanina",
+      "effect": "Problemas GI"
+    },
+    "rhubarb_leaves": {
+      "label": "Folhas de ruibarbo",
+      "compound": "Oxalatos",
+      "effect": "Dano renal"
+    },
+    "cherry_pits": {
+      "label": "Caroços de cereja",
+      "compound": "Cianeto",
+      "effect": "Tóxico"
+    },
+    "walnuts": {
+      "label": "Nozes (especialmente mofadas/negras)",
+      "compound": "Micotoxinas tremorígenas",
+      "effect": "Convulsões"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Cálcio",
+      "target": "~500 mg por 454g (1 lb) de carne, OU 9–15 mg por kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Casca de ovo moída",
+          "dose": "½ col. chá por 500g de carne (1 casca grande ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Farinha de ossos (grau alimentar)",
+          "dose": "½ col. chá por 500g de carne (verificar livre de chumbo)"
+        },
+        "seaweed_calcium": {
+          "label": "Cálcio de algas marinhas",
+          "dose": "Conforme rótulo do produto"
+        },
+        "mcha": {
+          "label": "MCHA (Hidroxiapatita Microcristalina)",
+          "dose": "Conforme rótulo (monitorar Vit D)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg EPA+DHA combinados por 9–13 kg de peso corporal em dias sem peixe",
+      "sources": {
+        "fish_oil": {
+          "label": "Óleo de peixe",
+          "dose": "Varia conforme concentração — refrigerar, substituir a cada 2 meses aberto"
+        },
+        "sardines": {
+          "label": "Sardinhas (inteiras, em água)",
+          "dose": "1 sardinha por 4,5 kg de peso, 2–3× por semana"
+        },
+        "cod_liver_oil": {
+          "label": "Óleo de fígado de bacalhau",
+          "dose": "Contém Vit A e D também — não duplicar dose"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Vitamina E",
+      "target": "Protege gorduras poli-insaturadas",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Óleo de gérmen de trigo ou suplemento",
+          "dose": "Conforme rótulo"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Vitamina D",
+      "target": "500–3000 UI/kg matéria seca (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Óleo de fígado de bacalhau ou suplemento",
+          "dose": "Conforme rótulo — não exceder 3000 UI/kg MS"
+        }
+      }
+    }
   }
 }

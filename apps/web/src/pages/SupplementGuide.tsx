@@ -42,19 +42,19 @@ export default function SupplementGuide() {
             <div className="px-5 py-4 border-b border-white/[0.06] flex items-center gap-3">
               <span className="text-2xl">{SUPP_ICONS[si] ?? '💊'}</span>
               <div>
-                <h2 className="font-black text-base text-white leading-snug">{supp.label}</h2>
+                <h2 className="font-black text-base text-white leading-snug">{t(`suppData.${supp.id}.label`, {defaultValue: supp.label})}</h2>
                 <p className="text-xs text-gray-400 mt-0.5">
-                  <span className="text-gray-300 font-semibold">{t('common.target')}:</span> {supp.target}
+                  <span className="text-gray-300 font-semibold">{t('common.target')}:</span> {t(`suppData.${supp.id}.target`, {defaultValue: supp.target})}
                 </p>
               </div>
             </div>
             <div className="p-4 space-y-2">
               {supp.sources.map(src => (
                 <div key={src.id} className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-3.5">
-                  <p className="text-sm font-bold text-gray-100">{src.label}</p>
+                  <p className="text-sm font-bold text-gray-100">{t(`suppData.${supp.id}.sources.${src.id}.label`, {defaultValue: src.label})}</p>
                   <p className="text-xs text-gray-400 mt-0.5">
                     <span className="text-gray-500 font-semibold">{t('supplements.dose')}:</span>{' '}
-                    {src.dose}
+                    {t(`suppData.${supp.id}.sources.${src.id}.dose`, {defaultValue: src.dose})}
                   </p>
                 </div>
               ))}

@@ -75,7 +75,30 @@
     "instructionsSection": "Instructions",
     "optionsSection": "Options",
     "totalWeight": "Total weight (kg)",
-    "placeholder": "Fill in the form above and tap"
+    "placeholder": "Fill in the form above and tap",
+    "instr": {
+      "sous_vide": "Seal meat in vacuum bags. Preheat water bath to 74 °C (165 °F). Submerge bags and cook for the full calculated time. Verify internal temperature with a probe thermometer before serving.",
+      "oven": "Preheat oven to 120 °C (248 °F). Place meat in a covered roasting dish; add a splash of water or broth to prevent drying. Check with a probe thermometer — target 74 °C (165 °F) internal temperature.",
+      "stovetop_low": "Bring a pot of water to a gentle simmer (not a rolling boil). Add meat and stir regularly — every 2 min for minced, every 5 min for cubed or larger cuts. Remove from heat when internal temperature reaches 74 °C (165 °F). Include the cooking broth in the meal.",
+      "slow_cooker": "Place meat in the slow cooker and add ½ cup water or broth. Set to LOW — do not use HIGH as rapid temperature swings increase bacterial risk. Verify 74 °C (165 °F) internal temperature before serving."
+    },
+    "store": {
+      "refrigerated": "Cooked, refrigerated: 3–4 days.",
+      "frozen": "Cooked, frozen: up to 3 months in airtight containers.",
+      "cooling": "Cool from 60 °C → 21 °C within 2 hours, then to ≤4 °C within 4 more hours."
+    },
+    "warn": {
+      "noBones": "Never include cooked bones in any recipe — they splinter and can cause choking or GI perforation.",
+      "thermometer": "Always verify internal temperature with a meat thermometer.",
+      "pork": "Pork must always be fully cooked — raw pork carries Trichinella risk.",
+      "salmon": "Salmon should only be fed raw if frozen for ≥7 days first (Neorickettsia risk)."
+    },
+    "nutrient": {
+      "sous_vide": "Sous-vide preserves the most water-soluble vitamins (B-complex, Vit C). Include all bag juices in the meal.",
+      "oven": "Some B vitamins are lost to pan drippings — include all pan juices in the meal for full nutritional value.",
+      "stovetop_low": "B vitamins leach into the cooking water — always include the broth in the meal.",
+      "slow_cooker": "Long, gentle cooking retains most nutrients in the liquid — serve the broth alongside the meat."
+    }
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -203,5 +226,320 @@
     "openSource": "Open Source",
     "openSourceText": "PawCook is MIT licensed. Contributions, corrections, and feature requests welcome on",
     "github": "GitHub"
+  },
+  "meatData": {
+    "beef": {
+      "label": "Beef",
+      "notes": "Iron, zinc, B12, creatine"
+    },
+    "chicken": {
+      "label": "Chicken",
+      "notes": "Cook thoroughly; great post-GI illness"
+    },
+    "turkey": {
+      "label": "Turkey",
+      "notes": "Lower allergen risk than chicken"
+    },
+    "lamb": {
+      "label": "Lamb",
+      "notes": "Novel protein; good for beef-sensitive dogs"
+    },
+    "pork": {
+      "label": "Pork",
+      "notes": "Avoid cured/processed. Trichinella risk raw."
+    },
+    "duck": {
+      "label": "Duck",
+      "notes": "Novel protein, hypoallergenic"
+    },
+    "rabbit": {
+      "label": "Rabbit",
+      "notes": "Very lean, novel protein"
+    },
+    "venison": {
+      "label": "Venison",
+      "notes": "Very lean, novel protein"
+    },
+    "salmon": {
+      "label": "Salmon",
+      "notes": "Raw only if frozen ≥7 days first. Watch Neorickettsia (Pacific NW)."
+    },
+    "mackerel": {
+      "label": "Mackerel",
+      "notes": "Omega-3 powerhouse"
+    },
+    "sardines": {
+      "label": "Sardines",
+      "notes": "Whole-fish nutrition"
+    },
+    "whitefish": {
+      "label": "Whitefish (cod, haddock)",
+      "notes": "Lean, mild"
+    }
+  },
+  "vegData": {
+    "carrots": {
+      "label": "Carrots",
+      "benefit": "Beta-carotene, fiber",
+      "notes": "Raw or cooked, aids dental"
+    },
+    "pumpkin": {
+      "label": "Pumpkin (plain)",
+      "benefit": "Fiber, digestion aid",
+      "notes": "No sugar/spice — never pumpkin pie filling"
+    },
+    "sweet_potato": {
+      "label": "Sweet Potato",
+      "benefit": "Complex carbs, Vit A",
+      "notes": "Always cooked"
+    },
+    "broccoli": {
+      "label": "Broccoli",
+      "benefit": "Vit C, K",
+      "notes": "Max 10% of meal (isothiocyanates)"
+    },
+    "spinach": {
+      "label": "Spinach",
+      "benefit": "Iron, antioxidants",
+      "notes": "Moderate (oxalates)"
+    },
+    "green_beans": {
+      "label": "Green Beans",
+      "benefit": "Low cal, fiber",
+      "notes": "Unlimited within reason"
+    },
+    "zucchini": {
+      "label": "Zucchini",
+      "benefit": "Hydration, low cal",
+      "notes": "Great filler"
+    },
+    "peas": {
+      "label": "Peas",
+      "benefit": "Protein, fiber",
+      "notes": "Fresh or frozen, not canned"
+    },
+    "kale": {
+      "label": "Kale",
+      "benefit": "Calcium, antioxidants",
+      "notes": "Sparingly (oxalates, thiocyanates)"
+    },
+    "parsnips": {
+      "label": "Parsnips",
+      "benefit": "Vit C, fiber",
+      "notes": "Cook first"
+    },
+    "beets": {
+      "label": "Beets",
+      "benefit": "Iron, folate",
+      "notes": "Cook, expect colored stool"
+    },
+    "butternut_squash": {
+      "label": "Butternut Squash",
+      "benefit": "Vit A, potassium",
+      "notes": "Cook first"
+    },
+    "cucumber": {
+      "label": "Cucumber",
+      "benefit": "Hydration",
+      "notes": "Raw, safe"
+    },
+    "celery": {
+      "label": "Celery",
+      "benefit": "Low cal, freshens breath",
+      "notes": "Chop to prevent choking"
+    },
+    "asparagus": {
+      "label": "Asparagus",
+      "benefit": "Vitamins",
+      "notes": "Cook to soften"
+    },
+    "brussels_sprouts": {
+      "label": "Brussels Sprouts",
+      "benefit": "Vit K",
+      "notes": "Moderate (gas)"
+    }
+  },
+  "fruitData": {
+    "blueberries": {
+      "label": "Blueberries",
+      "notes": "Antioxidants, low cal"
+    },
+    "apple": {
+      "label": "Apple (no seeds/core)",
+      "notes": "Fiber, Vit C — seeds contain cyanide"
+    },
+    "banana": {
+      "label": "Banana",
+      "notes": "High sugar, moderate"
+    },
+    "watermelon": {
+      "label": "Watermelon (no seeds/rind)",
+      "notes": "92% water, summer hydration"
+    },
+    "strawberries": {
+      "label": "Strawberries",
+      "notes": "Vit C, moderate"
+    },
+    "pear": {
+      "label": "Pear (no seeds/core)",
+      "notes": "Fiber"
+    },
+    "cantaloupe": {
+      "label": "Cantaloupe (no rind)",
+      "notes": "Vitamins"
+    },
+    "mango": {
+      "label": "Mango (no pit/skin)",
+      "notes": "Vitamins"
+    }
+  },
+  "toxicData": {
+    "onions_garlic": {
+      "label": "Onions, Garlic, Leeks, Chives, Scallions",
+      "compound": "Thiosulfates (allium family)",
+      "effect": "Destroys red blood cells → hemolytic anemia"
+    },
+    "grapes_raisins": {
+      "label": "Grapes & Raisins",
+      "compound": "Unknown (tartaric acid suspected)",
+      "effect": "Acute kidney failure"
+    },
+    "chocolate": {
+      "label": "Chocolate",
+      "compound": "Theobromine",
+      "effect": "Cardiac, neurological, fatal"
+    },
+    "xylitol": {
+      "label": "Xylitol / Birch Sugar",
+      "compound": "Xylitol",
+      "effect": "Rapid hypoglycemia, liver failure"
+    },
+    "macadamia": {
+      "label": "Macadamia Nuts",
+      "compound": "Unknown",
+      "effect": "Weakness, tremors, hyperthermia"
+    },
+    "avocado": {
+      "label": "Avocado",
+      "compound": "Persin",
+      "effect": "Vomiting, diarrhea; pit is choking + obstruction risk"
+    },
+    "green_tomatoes": {
+      "label": "Tomatoes (green/leaves)",
+      "compound": "Solanine",
+      "effect": "Tremors, GI issues — ripe red flesh usually OK"
+    },
+    "raw_bread_dough": {
+      "label": "Raw Bread Dough",
+      "compound": "Yeast + ethanol",
+      "effect": "Bloat, alcohol poisoning"
+    },
+    "alcohol": {
+      "label": "Alcohol",
+      "compound": "Ethanol",
+      "effect": "Same as humans but much smaller dose lethal"
+    },
+    "caffeine": {
+      "label": "Caffeine",
+      "compound": "Methylxanthines",
+      "effect": "Like chocolate — cardiac, neurological"
+    },
+    "wild_mushrooms": {
+      "label": "Wild Mushrooms",
+      "compound": "Various",
+      "effect": "Unknown without ID — assume toxic"
+    },
+    "cooked_bones": {
+      "label": "Cooked Bones (all)",
+      "compound": "Splinter risk",
+      "effect": "Choking, GI perforation, internal bleeding"
+    },
+    "nutmeg": {
+      "label": "Nutmeg",
+      "compound": "Myristicin",
+      "effect": "Tremors, seizures"
+    },
+    "raw_potato_green": {
+      "label": "Raw Potato (green)",
+      "compound": "Solanine",
+      "effect": "GI issues"
+    },
+    "rhubarb_leaves": {
+      "label": "Rhubarb Leaves",
+      "compound": "Oxalates",
+      "effect": "Kidney damage"
+    },
+    "cherry_pits": {
+      "label": "Cherry Pits",
+      "compound": "Cyanide",
+      "effect": "Toxic"
+    },
+    "walnuts": {
+      "label": "Walnuts (especially moldy/black)",
+      "compound": "Tremorgenic mycotoxins",
+      "effect": "Seizures"
+    }
+  },
+  "suppData": {
+    "calcium": {
+      "label": "Calcium",
+      "target": "~500 mg per 454g (1 lb) of meat, OR 9–15 mg per kcal",
+      "sources": {
+        "eggshell": {
+          "label": "Ground eggshell",
+          "dose": "½ tsp per 1 lb meat (1 large eggshell ≈ 2000 mg Ca)"
+        },
+        "bone_meal": {
+          "label": "Bone meal (food grade)",
+          "dose": "½ tsp per 1 lb meat (verify lead-free)"
+        },
+        "seaweed_calcium": {
+          "label": "Seaweed calcium",
+          "dose": "Per product label"
+        },
+        "mcha": {
+          "label": "MCHA (Microcrystalline Hydroxyapatite)",
+          "dose": "Per label (watch Vit D)"
+        }
+      }
+    },
+    "omega3": {
+      "label": "Omega-3 (EPA + DHA)",
+      "target": "~300 mg combined EPA+DHA per 9–13 kg body weight on non-fish days",
+      "sources": {
+        "fish_oil": {
+          "label": "Fish oil",
+          "dose": "Varies by concentration — store refrigerated, replace every 2 months once opened"
+        },
+        "sardines": {
+          "label": "Sardines (whole, in water)",
+          "dose": "1 sardine per 10 lb body weight, 2–3× weekly"
+        },
+        "cod_liver_oil": {
+          "label": "Cod liver oil",
+          "dose": "Contains Vit A & D too — don't double-dose"
+        }
+      }
+    },
+    "vitamin_e": {
+      "label": "Vitamin E",
+      "target": "Protects polyunsaturated fats",
+      "sources": {
+        "wheat_germ_oil": {
+          "label": "Wheat germ oil or supplement",
+          "dose": "Per label"
+        }
+      }
+    },
+    "vitamin_d": {
+      "label": "Vitamin D",
+      "target": "500–3000 IU/kg dry matter (AAFCO)",
+      "sources": {
+        "cod_liver_oil_d": {
+          "label": "Cod liver oil or supplement",
+          "dose": "Per label — do not exceed 3000 IU/kg DM"
+        }
+      }
+    }
   }
 }
