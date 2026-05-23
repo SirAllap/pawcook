@@ -61,6 +61,14 @@ export default function CookingCalculator() {
     ? (values.weightKg || 0) * (values.numberOfBags || 0)
     : (values.totalWeightKg || 0);
 
+  // Sous-vide bags are sealed — virtually no moisture escapes (~97% yield).
+  // Oven loses moisture to evaporation (~82%). Stovetop/slow cooker yield
+  // assumes the cooking broth is served with the meat (~90% / ~88%).
+  const YIELD_PCT: Record<string, number> = {
+    sous_vide: 0.97, oven: 0.82, stovetop_low: 0.90, slow_cooker: 0.88,
+  };
+  const yieldPct = YIELD_PCT[values.cookingMethod] ?? 0.90;
+
   function onSubmit(data: CookingInput) {
     setCalculating(true);
     setTimeout(() => {
@@ -154,7 +162,7 @@ export default function CookingCalculator() {
               <span className="text-amber-400 text-lg">⚖️</span>
               <span className="text-sm text-amber-200 font-semibold">
                 {t('cooking.total')}: <strong>{totalKg.toFixed(1)} kg</strong>
-                &nbsp;· {t('cooking.yield')} ≈ <strong>{(totalKg * 0.9).toFixed(1)} kg</strong> {t('cooking.cooked')}
+                &nbsp;· {t('cooking.yield')} ≈ <strong>{(totalKg * yieldPct).toFixed(1)} kg</strong> {t('cooking.cooked')} ({Math.round(yieldPct * 100)}%)
               </span>
             </div>
           )}
