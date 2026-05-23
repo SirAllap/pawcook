@@ -6,11 +6,13 @@ import { PawMark } from '../brand/logo';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/cn';
 import { useSpecies } from '../../lib/species';
+import { useSpeciesT } from '../../lib/use-species-t';
 
 const SOURCES = ['AAFCO', 'NRC', 'FEDIAF', 'WSAVA', 'ACVN'];
 
 export function Hero() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   const { species } = useSpecies();
 
   return (
@@ -91,7 +93,7 @@ export function Hero() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-5 mx-auto max-w-xl text-base sm:text-lg text-muted-fg text-pretty leading-relaxed"
         >
-          {t('landing.hero.subtitle')}
+          {tS('landing.hero.subtitle')}
         </motion.p>
 
         {/* CTAs */}

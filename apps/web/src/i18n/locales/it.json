@@ -20,7 +20,8 @@
     "loading": "Caricamento",
     "changeLanguage": "Scegli lingua",
     "preferences": "Preferenze",
-    "brandHome": "Home PawCook"
+    "brandHome": "Home PawCook",
+    "catFoodCalc": "Calcolatore alimentare felino"
   },
   "cooking": {
     "title": "Calcolatore di cottura",
@@ -109,7 +110,8 @@
     "toastReady": "Ricetta pronta.",
     "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola.",
     "catSupplementsTitle": "Integratori per gatto dopo la cottura",
-    "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto."
+    "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto.",
+    "subtitle_cat": "Tempo e temperatura di cottura sicuri per il cibo del tuo gatto. Ricorda di aggiungere taurina + complesso B dopo la cottura."
   },
   "nutrition": {
     "title": "Calcolatore nutrizionale",
@@ -242,7 +244,12 @@
     "placeholderHint": "Inserisci il profilo del tuo cane e tocca Calcola.",
     "toastPass": "Piano giornaliero pronto — conforme AAFCO.",
     "toastCaution": "Piano pronto — controlla le avvertenze.",
-    "toastFail": "Il piano va modificato per soddisfare i target AAFCO."
+    "toastFail": "Il piano va modificato per soddisfare i target AAFCO.",
+    "subtitle_cat": "Calcola le porzioni giornaliere in base al profilo del tuo gatto.",
+    "weight_cat": "Peso del gatto (kg)",
+    "profileSection_cat": "Profilo del gatto",
+    "placeholder_cat": "Compila il profilo del tuo gatto e tocca",
+    "placeholderHint_cat": "Inserisci il profilo del tuo gatto e tocca Calcola."
   },
   "foodSafety": {
     "title": "Riferimento sicurezza alimentare",
@@ -263,7 +270,8 @@
     "benefit": "Beneficio",
     "noResults": "Nessun risultato per",
     "noResultsHint": "Prova un altro termine di ricerca",
-    "eyebrow": "Sicurezza alimentare"
+    "eyebrow": "Sicurezza alimentare",
+    "subtitle_cat": "Cerca cibi sicuri e tossici per i gatti. I gatti sono più sensibili dei cani a molte sostanze."
   },
   "supplements": {
     "title": "Guida agli integratori",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Integratori",
-    "taurineCallout": "I gatti non sintetizzano la taurina — la supplementazione è obbligatoria nelle diete cotte e fortemente raccomandata in quelle crude senza cuori. La carenza causa cecità irreversibile e cardiomiopatia dilatativa."
+    "taurineCallout": "I gatti non sintetizzano la taurina — la supplementazione è obbligatoria nelle diete cotte e fortemente raccomandata in quelle crude senza cuori. La carenza causa cecità irreversibile e cardiomiopatia dilatativa.",
+    "subtitle_cat": "Le diete casalinghe per gatto senza taurina, calcio, vitamina E e complesso B falliscono nel giro di mesi. La supplementazione è obbligatoria, non opzionale."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Metodologia avallata da veterinari",
       "headlineA": "Cibo vero.",
       "headlineB": "Per il tuo vero cane.",
-      "headlineB_cat": "Per il tuo vero gatto."
+      "headlineB_cat": "Per il tuo vero gatto.",
+      "tagline_cat": "Nutri bene il tuo gatto.",
+      "subtitle_cat": "Strumenti open source per chi cucina in casa per il proprio gatto — piani nutrizionali con focus sulla taurina, cottura sicura, guide di sicurezza alimentare e lo stack di integratori di cui i gatti hanno bisogno."
     },
     "features": {
       "heading": "Tutto quello che ti serve",
       "cooking": "Tempi e temperature di cottura sicuri per 12 tipi di carne tramite sous-vide, forno, fornello o slow cooker.",
       "nutrition": "Calcolatore di porzioni giornaliere basato su peso, età, attività e dieta del tuo cane.",
       "foodSafety": "Database di alimenti tossici, carni, verdure e frutta sicure.",
-      "supplements": "Guida a calcio, omega-3 e micronutrienti per diete fatte in casa."
+      "supplements": "Guida a calcio, omega-3 e micronutrienti per diete fatte in casa.",
+      "nutrition_cat": "Calcolatore di porzioni giornaliere basato su peso, fase di vita e attività del tuo gatto — progettato per carnivori stretti."
     },
     "openTool": "Apri strumento",
     "open": {
@@ -373,7 +385,8 @@
       "text": "Licenza MIT. Creato da proprietari di cani per proprietari di cani.",
       "eyebrow": "100% open source",
       "starUs": "Aggiungi una stella su GitHub",
-      "fork": "Fai un fork"
+      "fork": "Fai un fork",
+      "text_cat": "Licenza MIT. Costruito da persone che cucinano per cani e gatti."
     },
     "trustedBy": "Metodologia basata su",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Grassi",
         "veg": "Verdura",
         "safeCore": "Centro sicuro"
-      }
+      },
+      "nutrition_cat": "Macro giornalieri, calorie e i guardrail specifici per gatti (taurina, AA, arginina, vit. A) tarati sul tuo gatto.",
+      "cooking_cat": "Tempo e temperatura sicuri per ogni carne — più i promemoria degli integratori post-cottura di cui i gatti hanno bisogno."
     },
     "how": {
       "eyebrow": "Come funziona",
       "heading": "Dal cane alla ciotola in tre passi",
       "step1": {
         "title": "Parlaci del tuo cane",
-        "desc": "Peso, età, attività, condizione corporea — i dati che ti chiederebbe il veterinario."
+        "desc": "Peso, età, attività, condizione corporea — i dati che ti chiederebbe il veterinario.",
+        "title_cat": "Parlaci del tuo gatto",
+        "desc_cat": "Peso, età, attività, condizione corporea, sterilizzazione — i dati che ti chiederebbe il veterinario."
       },
       "step2": {
         "title": "Scegli una dieta di cui ti fidi",
-        "desc": "Cotto bilanciato, BARF, PMR, iperproteico o ancestrale — tutti basati sui target AAFCO."
+        "desc": "Cotto bilanciato, BARF, PMR, iperproteico o ancestrale — tutti basati sui target AAFCO.",
+        "title_cat": "Scegli una dieta felina sicura",
+        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, preda intera o carnivoro cotto — tutte basate sulla biologia carnivora stretta."
       },
       "step3": {
         "title": "Cucina con sicurezza",
-        "desc": "Ottieni grammi esatti, temperature sicure e una ricetta stampabile per la settimana."
-      }
+        "desc": "Ottieni grammi esatti, temperature sicure e una ricetta stampabile per la settimana.",
+        "title_cat": "Nutri con sicurezza",
+        "desc_cat": "Grammi esatti, promemoria taurina, banda Ca:P, tetto di vitamina A — ogni piano felino include le sue salvaguardie."
+      },
+      "heading_cat": "Dal gatto alla ciotola in tre passi"
     },
     "diets": {
       "eyebrow": "Profili dietetici",
       "heading": "Cinque approcci affidabili",
-      "sub": "Ogni profilo di macronutrienti rispetta i target AAFCO e la fase di vita del tuo cane."
+      "sub": "Ogni profilo di macronutrienti rispetta i target AAFCO e la fase di vita del tuo cane.",
+      "sub_cat": "Ogni profilo felino corrisponde ai target AAFCO per gatti e alla fase di vita del tuo gatto. La taurina non è negoziabile."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "Sull'hosting",
     "privacyHostBody": "PawCook è ospitato su GitHub Pages. Per servire la pagina, l'infrastruttura di GitHub vede necessariamente il tuo indirizzo IP. Non abbiamo accesso a quei log né alcun'altra relazione con te.",
     "privacyHostLink": "Informativa sulla privacy di GitHub",
-    "eyebrow": "Informazioni"
+    "eyebrow": "Informazioni",
+    "subtitle_cat": "Calcolatore open source di cibo casalingo per cani e gatti, costruito per chi cucina per i propri animali.",
+    "notVetAdvice_cat": "Questo strumento non è un parere veterinario. Fornisce linee guida generali basate su standard pubblicati (AAFCO, NRC, FEDIAF). I gatti hanno margini particolarmente stretti per taurina, acido arachidonico e vitamina A. Per alimentazione casalinga a lungo termine, consulta un nutrizionista veterinario certificato (diplomato ACVN)."
   },
   "meatData": {
     "beef": {

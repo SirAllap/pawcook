@@ -20,7 +20,8 @@
     "loading": "Chargement",
     "changeLanguage": "Choisir la langue",
     "preferences": "Préférences",
-    "brandHome": "Accueil PawCook"
+    "brandHome": "Accueil PawCook",
+    "catFoodCalc": "Calculateur alimentaire félin"
   },
   "cooking": {
     "title": "Calculateur de cuisson",
@@ -109,7 +110,8 @@
     "toastReady": "Recette prête.",
     "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer.",
     "catSupplementsTitle": "Suppléments félins après cuisson",
-    "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi."
+    "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi.",
+    "subtitle_cat": "Temps et température de cuisson sûrs pour la nourriture de votre chat. Pensez à ajouter taurine + complexe B après cuisson."
   },
   "nutrition": {
     "title": "Calculateur nutritionnel",
@@ -242,7 +244,12 @@
     "placeholderHint": "Saisissez le profil de votre chien et appuyez sur Calculer.",
     "toastPass": "Plan quotidien prêt — conforme à l'AAFCO.",
     "toastCaution": "Plan prêt — consultez les avertissements.",
-    "toastFail": "Le plan doit être ajusté pour atteindre les objectifs AAFCO."
+    "toastFail": "Le plan doit être ajusté pour atteindre les objectifs AAFCO.",
+    "subtitle_cat": "Calculez les portions quotidiennes selon le profil de votre chat.",
+    "weight_cat": "Poids du chat (kg)",
+    "profileSection_cat": "Profil du chat",
+    "placeholder_cat": "Remplissez le profil de votre chat puis appuyez sur",
+    "placeholderHint_cat": "Saisissez le profil de votre chat puis appuyez sur Calculer."
   },
   "foodSafety": {
     "title": "Référence sécurité alimentaire",
@@ -263,7 +270,8 @@
     "benefit": "Bénéfice",
     "noResults": "Aucun résultat pour",
     "noResultsHint": "Essayez un autre terme de recherche",
-    "eyebrow": "Sécurité alimentaire"
+    "eyebrow": "Sécurité alimentaire",
+    "subtitle_cat": "Recherchez les aliments sûrs et toxiques pour chats. Les chats sont plus sensibles que les chiens à de nombreux composés."
   },
   "supplements": {
     "title": "Guide des suppléments",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Compléments",
-    "taurineCallout": "Les chats ne synthétisent pas la taurine — la supplémentation est obligatoire dans les régimes cuits et fortement recommandée dans les régimes crus sans cœurs. La carence cause cécité irréversible et cardiomyopathie dilatée."
+    "taurineCallout": "Les chats ne synthétisent pas la taurine — la supplémentation est obligatoire dans les régimes cuits et fortement recommandée dans les régimes crus sans cœurs. La carence cause cécité irréversible et cardiomyopathie dilatée.",
+    "subtitle_cat": "Les régimes maison pour chat sans taurine, calcium, vitamine E et complexe B échouent en quelques mois. La supplémentation est obligatoire, pas optionnelle."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Méthodologie validée par des vétérinaires",
       "headlineA": "Une vraie alimentation.",
       "headlineB": "Pour votre vrai chien.",
-      "headlineB_cat": "Pour votre vrai chat."
+      "headlineB_cat": "Pour votre vrai chat.",
+      "tagline_cat": "Nourrissez bien votre chat.",
+      "subtitle_cat": "Outils open source pour qui cuisine maison pour son chat — plans nutritionnels axés taurine, cuisson sûre, guides de sécurité alimentaire et le stack de suppléments dont les chats ont besoin."
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
       "cooking": "Temps et températures de cuisson sûrs pour 12 types de viande via sous-vide, four, plaque ou mijoteuse.",
       "nutrition": "Calculateur de portions quotidiennes selon le poids, l'âge, l'activité et le régime de votre chien.",
       "foodSafety": "Base de données des aliments toxiques, viandes, légumes et fruits sûrs.",
-      "supplements": "Guide calcium, oméga-3 et micronutriments pour les régimes maison."
+      "supplements": "Guide calcium, oméga-3 et micronutriments pour les régimes maison.",
+      "nutrition_cat": "Calculateur de portions quotidiennes basé sur le poids, l'étape de vie et l'activité de votre chat — conçu pour les carnivores stricts."
     },
     "openTool": "Ouvrir l'outil",
     "open": {
@@ -373,7 +385,8 @@
       "text": "Licence MIT. Créé par des propriétaires de chiens pour des propriétaires de chiens.",
       "eyebrow": "100% open source",
       "starUs": "Mettre une étoile sur GitHub",
-      "fork": "Forker"
+      "fork": "Forker",
+      "text_cat": "Licence MIT. Conçu par des gens qui cuisinent pour chiens et chats."
     },
     "trustedBy": "Méthodologie fondée sur",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Lipides",
         "veg": "Légumes",
         "safeCore": "Cœur sûr"
-      }
+      },
+      "nutrition_cat": "Macros quotidiens, calories et les garde-fous spécifiques chats (taurine, AA, arginine, vit. A) adaptés à votre chat.",
+      "cooking_cat": "Temps et température sûrs pour chaque viande — plus les rappels de suppléments post-cuisson dont les chats ont besoin."
     },
     "how": {
       "eyebrow": "Comment ça marche",
       "heading": "Du chien au repas en trois étapes",
       "step1": {
         "title": "Parlez-nous de votre chien",
-        "desc": "Poids, âge, activité, condition physique — les éléments que votre vétérinaire demanderait."
+        "desc": "Poids, âge, activité, condition physique — les éléments que votre vétérinaire demanderait.",
+        "title_cat": "Parlez-nous de votre chat",
+        "desc_cat": "Poids, âge, activité, condition corporelle, stérilisation — les éléments que votre vétérinaire demanderait."
       },
       "step2": {
         "title": "Choisissez une alimentation de confiance",
-        "desc": "Cuit équilibré, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO."
+        "desc": "Cuit équilibré, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
+        "title_cat": "Choisissez une alimentation féline sûre",
+        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, proie entière ou carnivore cuit — toutes fondées sur la biologie carnivore stricte."
       },
       "step3": {
         "title": "Cuisinez en toute confiance",
-        "desc": "Obtenez les grammes exacts, les températures sûres et une fiche recette imprimable pour la semaine."
-      }
+        "desc": "Obtenez les grammes exacts, les températures sûres et une fiche recette imprimable pour la semaine.",
+        "title_cat": "Nourrissez en toute confiance",
+        "desc_cat": "Grammes exacts, rappels de taurine, plage Ca:P, plafond vitamine A — chaque plan félin embarque ses garde-fous."
+      },
+      "heading_cat": "Du chat à la gamelle en trois étapes"
     },
     "diets": {
       "eyebrow": "Profils de régime",
       "heading": "Cinq approches éprouvées",
-      "sub": "Chaque profil de macronutriments correspond aux cibles AAFCO et à l'étape de vie de votre chien."
+      "sub": "Chaque profil de macronutriments correspond aux cibles AAFCO et à l'étape de vie de votre chien.",
+      "sub_cat": "Chaque profil félin correspond aux cibles AAFCO chat et à l'étape de vie de votre chat. La taurine n'est pas négociable."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "À propos de l'hébergeur",
     "privacyHostBody": "PawCook est hébergé sur GitHub Pages. Pour servir la page, l'infrastructure de GitHub voit nécessairement votre adresse IP. Nous n'avons pas accès à ces journaux ni aucune autre relation avec vous.",
     "privacyHostLink": "Politique de confidentialité de GitHub",
-    "eyebrow": "À propos"
+    "eyebrow": "À propos",
+    "subtitle_cat": "Calculateur open source de nourriture maison pour chiens et chats, conçu pour qui cuisine pour ses animaux.",
+    "notVetAdvice_cat": "Cet outil n'est pas un avis vétérinaire. Il fournit des recommandations générales basées sur des normes publiées (AAFCO, NRC, FEDIAF). Les chats ont en particulier des marges étroites pour la taurine, l'acide arachidonique et la vitamine A. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplômé ACVN)."
   },
   "meatData": {
     "beef": {

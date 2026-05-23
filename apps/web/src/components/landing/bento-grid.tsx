@@ -7,6 +7,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
+import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
 type Tile = {
@@ -205,6 +206,7 @@ export function BentoGrid() {
 
 function BentoTile({ tile, index }: { tile: Tile; index: number }) {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -228,10 +230,10 @@ function BentoTile({ tile, index }: { tile: Tile; index: number }) {
           <ArrowUpRight className="h-4 w-4 text-muted-fg transition-all duration-200 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
         <h3 className="mt-3 text-lg font-bold tracking-tight">
-          {t(tile.titleKey, { defaultValue: tile.titleDefault })}
+          {tS(tile.titleKey) || tile.titleDefault}
         </h3>
         <p className="mt-1 text-sm text-muted-fg leading-relaxed max-w-xs">
-          {t(tile.descKey, { defaultValue: tile.descDefault })}
+          {tS(tile.descKey) || tile.descDefault}
         </p>
         {tile.feature}
       </Link>

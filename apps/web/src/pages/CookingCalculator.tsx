@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import { Flame, Printer, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles } from 'lucide-react';
 import { CookingInputSchema, type CookingInput, calculateCookingTime, type CookingResult } from '@pawcook/shared';
 import { useSpecies } from '../lib/species';
+import { useSpeciesT } from '../lib/use-species-t';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -69,6 +70,7 @@ function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 
 
 export default function CookingCalculator() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   const { species } = useSpecies();
   const [result, setResult] = useState<CookingResult | null>(null);
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
@@ -107,7 +109,7 @@ export default function CookingCalculator() {
       <PageHeader
         eyebrow={t('cooking.eyebrow', { defaultValue: 'Cooking' })}
         title={t('cooking.title')}
-        description={t('cooking.subtitle')}
+        description={tS('cooking.subtitle')}
       />
 
       <Card padding="none" className="overflow-hidden">

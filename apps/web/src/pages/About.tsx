@@ -8,8 +8,12 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { GithubIcon } from '../components/brand/icons';
 import { FadeIn } from '../components/motion/fade-in';
+import { useSpeciesT } from '../lib/use-species-t';
+import { useSpecies } from '../lib/species';
 
-const SOURCES: { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; url: string }[] = [
+type Source = { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; url: string };
+
+const DOG_SOURCES: Source[] = [
   { label: 'AAFCO Dog Food Nutrient Profiles',                  Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
   { label: 'NRC Nutrient Requirements of Dogs and Cats (2006)', Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
   { label: 'FEDIAF Nutritional Guidelines',                     Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
@@ -18,9 +22,22 @@ const SOURCES: { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; ur
   { label: 'ACVN position statements',                          Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
 ];
 
+const CAT_SOURCES: Source[] = [
+  { label: 'AAFCO Cat Food Nutrient Profiles',                  Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
+  { label: 'NRC Nutrient Requirements of Dogs and Cats (2006)', Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
+  { label: 'AAHA / AAFP 2021 Feline Life Stage Guidelines',     Icon: Building2,    url: 'https://www.aaha.org/resources/2021-aaha-aafp-feline-life-stage-guidelines/' },
+  { label: 'Zoran (2002) — The Carnivore Connection to Nutrition in Cats', Icon: FlaskConical, url: 'https://avmajournals.avma.org/view/journals/javma/221/11/javma.2002.221.1559.xml' },
+  { label: 'catinfo.org — Lisa A. Pierson, DVM',                Icon: BookOpen,     url: 'https://catinfo.org/making-cat-food/' },
+  { label: 'FEDIAF Nutritional Guidelines',                     Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
+  { label: 'ACVN position statements',                          Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
+];
+
 export default function About() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
+  const { species } = useSpecies();
   const location = useLocation();
+  const sources = species === 'cat' ? CAT_SOURCES : DOG_SOURCES;
 
   // Scroll to #privacy when arriving via the footer link.
   useEffect(() => {
@@ -35,7 +52,7 @@ export default function About() {
       <PageHeader
         eyebrow={t('about.eyebrow', { defaultValue: 'About' })}
         title={t('about.title')}
-        description={t('about.subtitle')}
+        description={tS('about.subtitle')}
       />
 
       <FadeIn>
@@ -45,7 +62,7 @@ export default function About() {
             <h2 className="font-black text-danger">{t('about.disclaimers')}</h2>
           </header>
           <div className="p-5 space-y-3">
-            <p className="text-sm leading-relaxed text-foreground/90">{t('about.notVetAdvice')}</p>
+            <p className="text-sm leading-relaxed text-foreground/90">{tS('about.notVetAdvice')}</p>
             <Card padding="md" className="bg-danger/5 border-danger/30">
               <p className="text-sm font-bold leading-relaxed text-foreground/90">🦴 {t('about.noBones')}</p>
             </Card>
@@ -63,7 +80,7 @@ export default function About() {
             <h2 className="font-black">{t('about.methodology')}</h2>
           </header>
           <div className="p-4 space-y-2">
-            {SOURCES.map(({ label, Icon, url }) => (
+            {sources.map(({ label, Icon, url }) => (
               <a
                 key={label}
                 href={url}

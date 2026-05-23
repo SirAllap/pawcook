@@ -20,7 +20,8 @@
     "loading": "Ładowanie",
     "changeLanguage": "Wybierz język",
     "preferences": "Preferencje",
-    "brandHome": "Strona główna PawCook"
+    "brandHome": "Strona główna PawCook",
+    "catFoodCalc": "Kalkulator karmy dla kota"
   },
   "cooking": {
     "title": "Kalkulator gotowania",
@@ -109,7 +110,8 @@
     "toastReady": "Przepis gotowy.",
     "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz.",
     "catSupplementsTitle": "Suplementy dla kota po gotowaniu",
-    "catSupplementsBody": "Ciepło niszczy taurynę, witaminy B (tiamina, niacyna) i część witaminy E. Dodaj zestaw dla kota — tauryna 250–500 mg, kompleks B, witamina E — po ostygnięciu posiłku."
+    "catSupplementsBody": "Ciepło niszczy taurynę, witaminy B (tiamina, niacyna) i część witaminy E. Dodaj zestaw dla kota — tauryna 250–500 mg, kompleks B, witamina E — po ostygnięciu posiłku.",
+    "subtitle_cat": "Bezpieczny czas i temperatura gotowania jedzenia dla Twojego kota. Pamiętaj, aby dodać taurynę + kompleks B po ugotowaniu."
   },
   "nutrition": {
     "title": "Kalkulator żywienia",
@@ -242,7 +244,12 @@
     "placeholderHint": "Wprowadź profil swojego psa i naciśnij Oblicz.",
     "toastPass": "Plan dzienny gotowy — zgodny z AAFCO.",
     "toastCaution": "Plan gotowy — sprawdź ostrzeżenia.",
-    "toastFail": "Plan wymaga korekty, aby spełnić cele AAFCO."
+    "toastFail": "Plan wymaga korekty, aby spełnić cele AAFCO.",
+    "subtitle_cat": "Oblicz dzienne porcje na podstawie profilu Twojego kota.",
+    "weight_cat": "Waga kota (kg)",
+    "profileSection_cat": "Profil kota",
+    "placeholder_cat": "Wypełnij profil swojego kota i naciśnij",
+    "placeholderHint_cat": "Wprowadź profil swojego kota i naciśnij Oblicz."
   },
   "foodSafety": {
     "title": "Informacje o bezpieczeństwie żywności",
@@ -263,7 +270,8 @@
     "benefit": "Korzyść",
     "noResults": "Brak wyników dla",
     "noResultsHint": "Spróbuj innego terminu wyszukiwania",
-    "eyebrow": "Bezpieczeństwo żywności"
+    "eyebrow": "Bezpieczeństwo żywności",
+    "subtitle_cat": "Wyszukaj bezpieczne i toksyczne produkty dla kotów. Koty są bardziej wrażliwe niż psy na wiele związków."
   },
   "supplements": {
     "title": "Przewodnik po suplementach",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Suplementy",
-    "taurineCallout": "Koty nie syntetyzują tauryny — suplementacja jest obowiązkowa w dietach gotowanych i mocno zalecana w surowych bez serc. Niedobór powoduje nieodwracalną ślepotę i kardiomiopatię rozstrzeniową."
+    "taurineCallout": "Koty nie syntetyzują tauryny — suplementacja jest obowiązkowa w dietach gotowanych i mocno zalecana w surowych bez serc. Niedobór powoduje nieodwracalną ślepotę i kardiomiopatię rozstrzeniową.",
+    "subtitle_cat": "Domowe diety dla kota bez tauryny, wapnia, witaminy E i kompleksu B zawodzą w ciągu miesięcy. Suplementacja jest obowiązkowa, nie opcjonalna."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Metodologia zgodna z weterynarią",
       "headlineA": "Prawdziwe jedzenie.",
       "headlineB": "Dla Twojego prawdziwego psa.",
-      "headlineB_cat": "Dla Twojego prawdziwego kota."
+      "headlineB_cat": "Dla Twojego prawdziwego kota.",
+      "tagline_cat": "Karm swojego kota odpowiednio.",
+      "subtitle_cat": "Narzędzia open source dla osób gotujących w domu dla swojego kota — plany żywieniowe skupione na taurynie, bezpieczne gotowanie, przewodniki bezpieczeństwa żywności i zestaw suplementów, którego potrzebują koty."
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
       "cooking": "Bezpieczne czasy i temperatury gotowania dla 12 rodzajów mięsa: sous-vide, piekarnik, kuchenka lub wolnowar.",
       "nutrition": "Kalkulator dziennych porcji oparty na wadze, wieku, aktywności i diecie twojego psa.",
       "foodSafety": "Przeszukiwalna baza toksycznych pokarmów, bezpiecznych mięs, warzyw i owoców.",
-      "supplements": "Przewodnik po wapniu, kwasach omega-3 i mikroelementach dla domowych diet."
+      "supplements": "Przewodnik po wapniu, kwasach omega-3 i mikroelementach dla domowych diet.",
+      "nutrition_cat": "Kalkulator dziennych porcji oparty na wadze, etapie życia i aktywności Twojego kota — zaprojektowany dla bezwzględnych mięsożerców."
     },
     "openTool": "Otwórz narzędzie",
     "open": {
@@ -373,7 +385,8 @@
       "text": "Licencja MIT. Stworzony przez właścicieli psów dla właścicieli psów.",
       "eyebrow": "100% open source",
       "starUs": "Dodaj gwiazdkę na GitHubie",
-      "fork": "Forkuj"
+      "fork": "Forkuj",
+      "text_cat": "Licencja MIT. Stworzone przez osoby gotujące dla psów i kotów."
     },
     "trustedBy": "Metodologia oparta na",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Tłuszcz",
         "veg": "Warzywa",
         "safeCore": "Bezpieczny rdzeń"
-      }
+      },
+      "nutrition_cat": "Dzienne makro, kalorie i specyficzne dla kotów bariery (tauryna, AA, arginina, wit. A) dostrojone do Twojego kota.",
+      "cooking_cat": "Bezpieczny czas i temperatura dla każdego mięsa — plus przypomnienia o suplementach po gotowaniu, których koty potrzebują."
     },
     "how": {
       "eyebrow": "Jak to działa",
       "heading": "Od psa do posiłku w trzech krokach",
       "step1": {
         "title": "Opowiedz nam o swoim psie",
-        "desc": "Waga, wiek, aktywność, kondycja — dane, o które zapyta weterynarz."
+        "desc": "Waga, wiek, aktywność, kondycja — dane, o które zapyta weterynarz.",
+        "title_cat": "Opowiedz nam o swoim kocie",
+        "desc_cat": "Waga, wiek, aktywność, kondycja ciała, sterylizacja — dane, o które zapyta weterynarz."
       },
       "step2": {
         "title": "Wybierz dietę, której ufasz",
-        "desc": "Gotowana zbilansowana, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO."
+        "desc": "Gotowana zbilansowana, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
+        "title_cat": "Wybierz dietę bezpieczną dla kota",
+        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, cała ofiara lub gotowany mięsożerca — wszystkie oparte na biologii bezwzględnych mięsożerców."
       },
       "step3": {
         "title": "Gotuj z pewnością",
-        "desc": "Otrzymaj dokładne gramy, bezpieczne temperatury i przepis do druku na cały tydzień."
-      }
+        "desc": "Otrzymaj dokładne gramy, bezpieczne temperatury i przepis do druku na cały tydzień.",
+        "title_cat": "Karm z pewnością",
+        "desc_cat": "Dokładne gramy, przypomnienia o taurynie, zakres Ca:P, sufit witaminy A — każdy plan dla kota ma swoje zabezpieczenia."
+      },
+      "heading_cat": "Od kota do miski w trzech krokach"
     },
     "diets": {
       "eyebrow": "Profile diet",
       "heading": "Pięć sprawdzonych podejść",
-      "sub": "Każdy profil makroskładników odpowiada celom AAFCO i etapowi życia Twojego psa."
+      "sub": "Każdy profil makroskładników odpowiada celom AAFCO i etapowi życia Twojego psa.",
+      "sub_cat": "Każdy profil felinarny odpowiada celom AAFCO dla kotów i etapowi życia Twojego kota. Tauryna nie podlega negocjacji."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "O hostingu",
     "privacyHostBody": "PawCook jest hostowany na GitHub Pages. Aby udostępnić stronę, infrastruktura GitHub musi widzieć Twój adres IP. Nie mamy dostępu do tych logów ani żadnej innej relacji z Tobą.",
     "privacyHostLink": "Polityka prywatności GitHuba",
-    "eyebrow": "O nas"
+    "eyebrow": "O nas",
+    "subtitle_cat": "Open-source kalkulator domowej karmy dla psów i kotów, stworzony dla osób gotujących dla swoich zwierząt.",
+    "notVetAdvice_cat": "To narzędzie nie zastępuje porady weterynaryjnej. Dostarcza ogólne wytyczne oparte na opublikowanych standardach (AAFCO, NRC, FEDIAF). Koty mają szczególnie wąskie marginesy dla tauryny, kwasu arachidonowego i witaminy A. W przypadku długoterminowego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomata ACVN)."
   },
   "meatData": {
     "beef": {

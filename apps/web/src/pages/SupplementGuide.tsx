@@ -12,6 +12,7 @@ import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { FadeIn } from '../components/motion/fade-in';
 import { useSpecies } from '../lib/species';
+import { useSpeciesT } from '../lib/use-species-t';
 
 interface SupplementSource { id: string; label: string; dose: string; }
 interface Supplement       { id: string; label: string; target: string; sources: SupplementSource[]; }
@@ -47,6 +48,7 @@ function fmt(v: number | null) {
 
 export default function SupplementGuide() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   const { species } = useSpecies();
 
   // Pick the right dataset for the current species.
@@ -63,7 +65,7 @@ export default function SupplementGuide() {
       <PageHeader
         eyebrow={t('supplements.eyebrow', { defaultValue: 'Supplements' })}
         title={t('supplements.title')}
-        description={t('supplements.subtitle')}
+        description={tS('supplements.subtitle')}
       />
 
       <FadeIn>
@@ -81,8 +83,10 @@ export default function SupplementGuide() {
             <h2 className="font-black text-base">
               {t('supplements.aafcoTable.title', { defaultValue: 'AAFCO Nutrient Profile' })}
             </h2>
+            {/* Source string comes from the per-species AAFCO JSON, not i18n,
+                so the cat table doesn't get tagged with "Dog Food Nutrient Profiles". */}
             <p className="text-xs text-muted-fg mt-0.5">
-              {t('supplements.aafcoTable.source', { defaultValue: aafco.source })}
+              {aafco.source}
             </p>
           </header>
           <div className="overflow-x-auto">

@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/button';
 import { GithubIcon } from '../brand/icons';
 import { FadeIn } from '../motion/fade-in';
+import { useSpeciesT } from '../../lib/use-species-t';
 
 export function OssCta() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   return (
     <FadeIn>
       <section className="relative rounded-3xl border border-border bg-surface p-8 sm:p-12 overflow-hidden">
@@ -25,7 +27,7 @@ export function OssCta() {
               {t('landing.open.title')}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-muted-fg max-w-xl leading-relaxed">
-              {t('landing.open.text')}
+              {tS('landing.open.text')}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-2">
               <a

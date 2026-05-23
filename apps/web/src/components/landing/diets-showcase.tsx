@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
+import { useSpecies } from '../../lib/species';
+import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
 type Diet = {
@@ -12,7 +14,8 @@ type Diet = {
   glow: string;
 };
 
-const DIETS: Diet[] = [
+// Macros = visual approximation (protein / fat / veg-or-other) for the ring.
+const DOG_DIETS: Diet[] = [
   { key: 'balanced_cooked', emoji: '⚖️', macros: { p: 40, f: 30, v: 30 }, glow: 'from-primary/30' },
   { key: 'high_protein',    emoji: '💪', macros: { p: 55, f: 25, v: 20 }, glow: 'from-danger/25' },
   { key: 'pmr',             emoji: '🦴', macros: { p: 80, f: 10, v: 10 }, glow: 'from-warning/30' },
@@ -20,8 +23,20 @@ const DIETS: Diet[] = [
   { key: 'real_ancestral',  emoji: '🐺', macros: { p: 70, f: 15, v: 15 }, glow: 'from-info/25' },
 ];
 
+const CAT_DIETS: Diet[] = [
+  { key: 'cat_pmr',              emoji: '🦴', macros: { p: 84, f: 6,  v: 10 }, glow: 'from-warning/30' },
+  { key: 'cat_frankenprey',      emoji: '🥩', macros: { p: 84, f: 6,  v: 10 }, glow: 'from-primary/30' },
+  { key: 'cat_whole_prey',       emoji: '🐭', macros: { p: 80, f: 8,  v: 12 }, glow: 'from-info/25' },
+  { key: 'cat_barf_lite',        emoji: '🌿', macros: { p: 75, f: 5,  v: 20 }, glow: 'from-success/30' },
+  { key: 'cat_cooked_carnivore', emoji: '🍳', macros: { p: 70, f: 25, v: 5  }, glow: 'from-danger/25' },
+];
+
 export function DietsShowcase() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
+  const { species } = useSpecies();
+
+  const diets = species === 'cat' ? CAT_DIETS : DOG_DIETS;
 
   return (
     <FadeIn className="space-y-8">
@@ -33,12 +48,12 @@ export function DietsShowcase() {
           {t('landing.diets.heading', { defaultValue: 'Five trusted approaches' })}
         </h2>
         <p className="mt-3 text-muted-fg">
-          {t('landing.diets.sub', { defaultValue: 'Every macronutrient profile maps to AAFCO targets and your dog\'s life stage.' })}
+          {tS('landing.diets.sub')}
         </p>
       </div>
 
       <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-5 no-scrollbar snap-x snap-mandatory">
-        {DIETS.map((diet, i) => (
+        {diets.map((diet, i) => (
           <motion.div
             key={diet.key}
             initial={{ opacity: 0, y: 18 }}
@@ -80,6 +95,7 @@ export function DietsShowcase() {
 }
 
 function MacroRing({ macros }: { macros: { p: number; f: number; v: number } }) {
+  const { t } = useTranslation();
   const C = 2 * Math.PI * 30;
   const segs = [
     { val: macros.p, color: 'hsl(var(--primary))' },
@@ -114,9 +130,9 @@ function MacroRing({ macros }: { macros: { p: number; f: number; v: number } }) 
         })}
       </svg>
       <div className="text-[10px] font-bold text-muted-fg space-y-0.5">
-        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-primary" />Protein {macros.p}%</div>
-        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-warning" />Fat {macros.f}%</div>
-        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-success" />Veg {macros.v}%</div>
+        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-primary" />{t('landing.bento.preview.protein')} {macros.p}%</div>
+        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-warning" />{t('landing.bento.preview.fat')} {macros.f}%</div>
+        <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-success" />{t('landing.bento.preview.veg')} {macros.v}%</div>
       </div>
     </div>
   );

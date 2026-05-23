@@ -20,7 +20,8 @@
     "loading": "Lädt",
     "changeLanguage": "Sprache wählen",
     "preferences": "Einstellungen",
-    "brandHome": "PawCook Startseite"
+    "brandHome": "PawCook Startseite",
+    "catFoodCalc": "Katzenfutter-Rechner"
   },
   "cooking": {
     "title": "Kochrechner",
@@ -109,7 +110,8 @@
     "toastReady": "Rezept fertig.",
     "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen.",
     "catSupplementsTitle": "Katzen-Supplemente nach dem Kochen",
-    "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist."
+    "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist.",
+    "subtitle_cat": "Sichere Garzeit und -temperatur für das Futter Ihrer Katze. Vergessen Sie nicht, Taurin + B-Komplex nach dem Kochen hinzuzufügen."
   },
   "nutrition": {
     "title": "Ernährungsrechner",
@@ -242,7 +244,12 @@
     "placeholderHint": "Geben Sie das Profil Ihres Hundes ein und tippen Sie auf Berechnen.",
     "toastPass": "Tagesplan fertig — AAFCO-konform.",
     "toastCaution": "Plan fertig — prüfen Sie die Warnhinweise.",
-    "toastFail": "Der Plan muss angepasst werden, um die AAFCO-Vorgaben zu erfüllen."
+    "toastFail": "Der Plan muss angepasst werden, um die AAFCO-Vorgaben zu erfüllen.",
+    "subtitle_cat": "Berechnen Sie die täglichen Portionen anhand des Profils Ihrer Katze.",
+    "weight_cat": "Gewicht der Katze (kg)",
+    "profileSection_cat": "Katzenprofil",
+    "placeholder_cat": "Füllen Sie das Profil Ihrer Katze aus und tippen Sie auf",
+    "placeholderHint_cat": "Geben Sie das Profil Ihrer Katze ein und tippen Sie auf Berechnen."
   },
   "foodSafety": {
     "title": "Lebensmittelsicherheits-Referenz",
@@ -263,7 +270,8 @@
     "benefit": "Nutzen",
     "noResults": "Keine Ergebnisse für",
     "noResultsHint": "Anderen Suchbegriff versuchen",
-    "eyebrow": "Lebensmittelsicherheit"
+    "eyebrow": "Lebensmittelsicherheit",
+    "subtitle_cat": "Suchen Sie nach sicheren und giftigen Lebensmitteln für Katzen. Katzen reagieren empfindlicher als Hunde auf viele Stoffe."
   },
   "supplements": {
     "title": "Nahrungsergänzungs-Leitfaden",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Ergänzungen",
-    "taurineCallout": "Katzen synthetisieren kein Taurin — Supplementierung ist in gekochten Diäten zwingend und in rohen Diäten ohne Herzen dringend empfohlen. Mangel verursacht irreversible Blindheit und dilatative Kardiomyopathie."
+    "taurineCallout": "Katzen synthetisieren kein Taurin — Supplementierung ist in gekochten Diäten zwingend und in rohen Diäten ohne Herzen dringend empfohlen. Mangel verursacht irreversible Blindheit und dilatative Kardiomyopathie.",
+    "subtitle_cat": "Selbst gemachte Katzendiäten ohne Taurin, Kalzium, Vitamin E und B-Komplex versagen innerhalb von Monaten. Supplementierung ist Pflicht, nicht optional."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Tierärztlich validierte Methodik",
       "headlineA": "Echtes Futter.",
       "headlineB": "Für Ihren echten Hund.",
-      "headlineB_cat": "Für Ihre echte Katze."
+      "headlineB_cat": "Für Ihre echte Katze.",
+      "tagline_cat": "Ernähren Sie Ihre Katze richtig.",
+      "subtitle_cat": "Open-Source-Tools für Selbstkocher — taurinbewusste Ernährungspläne, sicheres Garen, Lebensmittelsicherheit und der Supplement-Stack, den Katzen brauchen."
     },
     "features": {
       "heading": "Alles, was du brauchst",
       "cooking": "Sichere Garzeiten und -temperaturen für 12 Fleischsorten via Sous-vide, Ofen, Herd oder Schongarer.",
       "nutrition": "Tagesportions-Rechner basierend auf Gewicht, Alter, Aktivität und Ernährung deines Hundes.",
       "foodSafety": "Durchsuchbare Datenbank toxischer Lebensmittel, sicherer Fleischsorten, Gemüse und Früchte.",
-      "supplements": "Kalzium-, Omega-3- und Mikronährstoffleitfaden für selbstgekochte Ernährung."
+      "supplements": "Kalzium-, Omega-3- und Mikronährstoffleitfaden für selbstgekochte Ernährung.",
+      "nutrition_cat": "Tagesportionen nach Gewicht, Lebensphase und Aktivität Ihrer Katze — gebaut für strikte Karnivoren."
     },
     "openTool": "Tool öffnen",
     "open": {
@@ -373,7 +385,8 @@
       "text": "MIT-Lizenz. Von Hundebesitzern für Hundebesitzer erstellt.",
       "eyebrow": "100% Open Source",
       "starUs": "Auf GitHub mit Stern markieren",
-      "fork": "Forken"
+      "fork": "Forken",
+      "text_cat": "MIT-Lizenz. Gebaut von Menschen, die für Hunde und Katzen kochen."
     },
     "trustedBy": "Methodik basiert auf",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Fett",
         "veg": "Gemüse",
         "safeCore": "Sicherer Kern"
-      }
+      },
+      "nutrition_cat": "Tägliche Makros, Kalorien und die katzenspezifischen Leitplanken (Taurin, AA, Arginin, Vit. A), abgestimmt auf Ihre Katze.",
+      "cooking_cat": "Sichere Zeit & Temperatur für jedes Fleisch — plus die Erinnerungen an Supplemente nach dem Kochen, die Katzen brauchen."
     },
     "how": {
       "eyebrow": "So funktioniert es",
       "heading": "Vom Hund zum Abendessen in drei Schritten",
       "step1": {
         "title": "Erzählen Sie uns von Ihrem Hund",
-        "desc": "Gewicht, Alter, Aktivität, Körperzustand — die Angaben, die Ihr Tierarzt verlangen würde."
+        "desc": "Gewicht, Alter, Aktivität, Körperzustand — die Angaben, die Ihr Tierarzt verlangen würde.",
+        "title_cat": "Erzählen Sie uns von Ihrer Katze",
+        "desc_cat": "Gewicht, Alter, Aktivität, Körperzustand, Kastration — die Angaben, die Ihr Tierarzt verlangen würde."
       },
       "step2": {
         "title": "Wählen Sie eine vertrauenswürdige Diät",
-        "desc": "Ausgewogen gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben."
+        "desc": "Ausgewogen gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben.",
+        "title_cat": "Wählen Sie eine katzensichere Ernährung",
+        "desc_cat": "PMR 84/6/10, BARF-light, Frankenprey, Ganze Beute oder gekochter Karnivor — alle auf strikt-karnivorer Biologie aufgebaut."
       },
       "step3": {
         "title": "Mit Sicherheit kochen",
-        "desc": "Erhalten Sie exakte Gramm, sichere Temperaturen und eine druckbare Rezeptkarte für die Woche."
-      }
+        "desc": "Erhalten Sie exakte Gramm, sichere Temperaturen und eine druckbare Rezeptkarte für die Woche.",
+        "title_cat": "Mit Sicherheit füttern",
+        "desc_cat": "Exakte Gramm, Taurin-Erinnerungen, Ca:P-Band, Vitamin-A-Obergrenze — jeder Katzenplan kommt mit seinen Schutzlinien."
+      },
+      "heading_cat": "Von der Katze zum Napf in drei Schritten"
     },
     "diets": {
       "eyebrow": "Ernährungsprofile",
       "heading": "Fünf bewährte Ansätze",
-      "sub": "Jedes Makronährstoffprofil ist auf die AAFCO-Ziele und die Lebensphase Ihres Hundes abgestimmt."
+      "sub": "Jedes Makronährstoffprofil ist auf die AAFCO-Ziele und die Lebensphase Ihres Hundes abgestimmt.",
+      "sub_cat": "Jedes Katzenprofil bildet die AAFCO-Katzenziele und die Lebensphase Ihrer Katze ab. Taurin ist nicht verhandelbar."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "Über den Hoster",
     "privacyHostBody": "PawCook wird auf GitHub Pages gehostet. Zum Ausliefern der Seite sieht die GitHub-Infrastruktur zwangsläufig Ihre IP-Adresse. Wir haben keinen Zugriff auf diese Logs und keine weitere Beziehung zu Ihnen.",
     "privacyHostLink": "Datenschutzerklärung von GitHub",
-    "eyebrow": "Über"
+    "eyebrow": "Über",
+    "subtitle_cat": "Open-Source-Rechner für selbstgekochtes Hunde- und Katzenfutter, gebaut für Menschen, die für ihre Tiere kochen.",
+    "notVetAdvice_cat": "Dieses Tool ist kein tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten Standards (AAFCO, NRC, FEDIAF). Besonders bei Katzen sind die Spielräume für Taurin, Arachidonsäure und Vitamin A eng. Für langfristiges Selberkochen konsultieren Sie eine zertifizierte Tierernährungsfachkraft (ACVN-Diplomate)."
   },
   "meatData": {
     "beef": {

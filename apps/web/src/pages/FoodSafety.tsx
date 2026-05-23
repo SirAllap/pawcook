@@ -7,6 +7,7 @@ import vegetablesData from '@pawcook/data/vegetables';
 import fruitsData from '@pawcook/data/fruits';
 import toxicData from '@pawcook/data/toxic';
 import { useSpecies } from '../lib/species';
+import { useSpeciesT } from '../lib/use-species-t';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -29,6 +30,7 @@ const toxic = toxicData as Toxic[];
 
 export default function FoodSafety() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   const { species } = useSpecies();
   const [tab, setTab] = useState<TabId>('toxic');
   const [search, setSearch] = useState('');
@@ -60,7 +62,7 @@ export default function FoodSafety() {
       <PageHeader
         eyebrow={t('foodSafety.eyebrow', { defaultValue: 'Food safety' })}
         title={t('foodSafety.title')}
-        description={t('foodSafety.subtitle')}
+        description={tS('foodSafety.subtitle')}
       />
 
       <div className="sticky top-14 sm:top-16 z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 bg-background/85 backdrop-blur-xl border-b border-border">

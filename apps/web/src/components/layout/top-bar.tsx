@@ -8,10 +8,12 @@ import { LanguageSwitcher } from '../i18n/language-switcher';
 import { SpeciesSwitcher } from '../species/species-switcher';
 import { DesktopNav } from './desktop-nav';
 import { useIsDesktop } from '../../lib/use-media-query';
+import { useSpecies } from '../../lib/species';
 import { cn } from '../../lib/cn';
 
 export function TopBar() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
   const isDesktop = useIsDesktop();
   const { scrollY } = useScroll();
   const [elevated, setElevated] = useState(false);
@@ -45,7 +47,7 @@ export function TopBar() {
             <div className="flex flex-col leading-none">
               <Wordmark />
               <span className="hidden sm:block text-[10px] text-muted-fg font-medium mt-0.5">
-                {t('common.dogFoodCalc')}
+                {t(species === 'cat' ? 'common.catFoodCalc' : 'common.dogFoodCalc')}
               </span>
             </div>
           </NavLink>

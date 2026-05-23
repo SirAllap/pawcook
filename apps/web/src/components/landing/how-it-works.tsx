@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { FadeIn } from '../motion/fade-in';
 import { Stethoscope, Salad, ChefHat } from 'lucide-react';
+import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
 const STEPS = [
@@ -39,6 +40,7 @@ const ACCENTS = {
 
 export function HowItWorks() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   return (
     <FadeIn className="space-y-10">
       <div className="text-center max-w-2xl mx-auto">
@@ -46,7 +48,7 @@ export function HowItWorks() {
           {t('landing.how.eyebrow', { defaultValue: 'How it works' })}
         </p>
         <h2 className="mt-3 text-3xl sm:text-4xl font-black tracking-tight">
-          {t('landing.how.heading', { defaultValue: 'From dog to dinner in three steps' })}
+          {tS('landing.how.heading')}
         </h2>
       </div>
 
@@ -68,10 +70,10 @@ export function HowItWorks() {
             </div>
             <div className="mt-4 flex items-baseline gap-2">
               <span className="font-mono text-xs font-black text-muted-fg">0{i + 1}</span>
-              <h3 className="text-lg font-bold tracking-tight">{t(step.titleKey, { defaultValue: step.titleDefault })}</h3>
+              <h3 className="text-lg font-bold tracking-tight">{tS(step.titleKey) || step.titleDefault}</h3>
             </div>
             <p className="mt-2 text-sm text-muted-fg leading-relaxed">
-              {t(step.descKey, { defaultValue: step.descDefault })}
+              {tS(step.descKey) || step.descDefault}
             </p>
           </motion.li>
         ))}

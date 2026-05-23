@@ -20,7 +20,8 @@
     "loading": "Laden",
     "changeLanguage": "Taal kiezen",
     "preferences": "Voorkeuren",
-    "brandHome": "PawCook startpagina"
+    "brandHome": "PawCook startpagina",
+    "catFoodCalc": "Kattenvoer calculator"
   },
   "cooking": {
     "title": "Kookcalculator",
@@ -109,7 +110,8 @@
     "toastReady": "Recept klaar.",
     "placeholderHint": "Kies een vlees en methode, tik dan op Bereken.",
     "catSupplementsTitle": "Kat-supplementen na het koken",
-    "catSupplementsBody": "Warmte vernietigt taurine, B-vitamines (thiamine, niacine) en een deel van vitamine E. Voeg de kattenstapel toe — taurine 250–500 mg, B-complex, vitamine E — nadat het gerecht is afgekoeld."
+    "catSupplementsBody": "Warmte vernietigt taurine, B-vitamines (thiamine, niacine) en een deel van vitamine E. Voeg de kattenstapel toe — taurine 250–500 mg, B-complex, vitamine E — nadat het gerecht is afgekoeld.",
+    "subtitle_cat": "Veilige bereidingstijd en -temperatuur voor het eten van je kat. Vergeet niet om taurine + B-complex na het koken toe te voegen."
   },
   "nutrition": {
     "title": "Voedingscalculator",
@@ -242,7 +244,12 @@
     "placeholderHint": "Voer het profiel van je hond in en tik op Bereken.",
     "toastPass": "Dagplan klaar — voldoet aan AAFCO.",
     "toastCaution": "Plan klaar — bekijk de waarschuwingen.",
-    "toastFail": "Plan moet worden aangepast om aan AAFCO-doelen te voldoen."
+    "toastFail": "Plan moet worden aangepast om aan AAFCO-doelen te voldoen.",
+    "subtitle_cat": "Bereken dagelijkse porties op basis van het profiel van je kat.",
+    "weight_cat": "Gewicht van de kat (kg)",
+    "profileSection_cat": "Kat-profiel",
+    "placeholder_cat": "Vul het profiel van je kat in en tik op",
+    "placeholderHint_cat": "Voer het profiel van je kat in en tik op Bereken."
   },
   "foodSafety": {
     "title": "Voedselveiligheidsreferentie",
@@ -263,7 +270,8 @@
     "benefit": "Voordeel",
     "noResults": "Geen resultaten voor",
     "noResultsHint": "Probeer een andere zoekterm",
-    "eyebrow": "Voedselveiligheid"
+    "eyebrow": "Voedselveiligheid",
+    "subtitle_cat": "Zoek veilige en giftige voedingsmiddelen voor katten. Katten zijn gevoeliger dan honden voor veel stoffen."
   },
   "supplements": {
     "title": "Supplementengids",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Supplementen",
-    "taurineCallout": "Katten maken geen taurine aan — suppletie is verplicht bij gekookte diëten en sterk aanbevolen bij rauwe diëten zonder harten. Tekort veroorzaakt onomkeerbare blindheid en gedilateerde cardiomyopathie."
+    "taurineCallout": "Katten maken geen taurine aan — suppletie is verplicht bij gekookte diëten en sterk aanbevolen bij rauwe diëten zonder harten. Tekort veroorzaakt onomkeerbare blindheid en gedilateerde cardiomyopathie.",
+    "subtitle_cat": "Zelfgemaakte kattendiëten zonder taurine, calcium, vitamine E en B-complex falen binnen maanden. Suppletie is verplicht, niet optioneel."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Door dierenartsen onderschreven methodiek",
       "headlineA": "Echt eten.",
       "headlineB": "Voor je echte hond.",
-      "headlineB_cat": "Voor je echte kat."
+      "headlineB_cat": "Voor je echte kat.",
+      "tagline_cat": "Voer je kat goed.",
+      "subtitle_cat": "Open source tools voor wie thuis voor zijn kat kookt — taurinebewuste voedingsplannen, veilige bereiding, voedselveiligheidsgidsen en de supplementstack die katten nodig hebben."
     },
     "features": {
       "heading": "Alles wat je nodig hebt",
       "cooking": "Veilige kooktijden en -temperaturen voor 12 vleessoorten via sous-vide, oven, kookplaat of slowcooker.",
       "nutrition": "Dagelijkse portiecalculator op basis van gewicht, leeftijd, activiteit en dieet van je hond.",
       "foodSafety": "Doorzoekbare database met giftige voedingsmiddelen, veilig vlees, groenten en fruit.",
-      "supplements": "Gids voor calcium, omega-3 en micronutriënten voor zelfgemaakte diëten."
+      "supplements": "Gids voor calcium, omega-3 en micronutriënten voor zelfgemaakte diëten.",
+      "nutrition_cat": "Dagelijkse-portiecalculator op basis van gewicht, levensfase en activiteit van je kat — gebouwd voor strikte carnivoren."
     },
     "openTool": "Tool openen",
     "open": {
@@ -373,7 +385,8 @@
       "text": "MIT-licentie. Gemaakt door hondeneigenaren voor hondeneigenaren.",
       "eyebrow": "100% open source",
       "starUs": "Geef een ster op GitHub",
-      "fork": "Forken"
+      "fork": "Forken",
+      "text_cat": "MIT-licentie. Gebouwd door mensen die koken voor honden en katten."
     },
     "trustedBy": "Methodologie gebaseerd op",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Vet",
         "veg": "Groente",
         "safeCore": "Veilige kern"
-      }
+      },
+      "nutrition_cat": "Dagelijkse macro's, calorieën en de katspecifieke vangrails (taurine, AA, arginine, vit. A) afgestemd op je kat.",
+      "cooking_cat": "Veilige tijd & temperatuur voor elk vlees — plus de supplementherinneringen na het koken die katten nodig hebben."
     },
     "how": {
       "eyebrow": "Hoe het werkt",
       "heading": "Van hond tot maaltijd in drie stappen",
       "step1": {
         "title": "Vertel ons over je hond",
-        "desc": "Gewicht, leeftijd, activiteit, lichaamsconditie — wat je dierenarts zou vragen."
+        "desc": "Gewicht, leeftijd, activiteit, lichaamsconditie — wat je dierenarts zou vragen.",
+        "title_cat": "Vertel ons over je kat",
+        "desc_cat": "Gewicht, leeftijd, activiteit, lichaamsconditie, sterilisatie — wat je dierenarts zou vragen."
       },
       "step2": {
         "title": "Kies een dieet dat je vertrouwt",
-        "desc": "Gebalanceerd gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen."
+        "desc": "Gebalanceerd gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
+        "title_cat": "Kies een kat-veilig dieet",
+        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, hele prooi of gekookte carnivoor — allemaal gebouwd op strikt-carnivore biologie."
       },
       "step3": {
         "title": "Kook met vertrouwen",
-        "desc": "Krijg exacte grammen, veilige temperaturen en een afdrukbare receptkaart voor de week."
-      }
+        "desc": "Krijg exacte grammen, veilige temperaturen en een afdrukbare receptkaart voor de week.",
+        "title_cat": "Voer met vertrouwen",
+        "desc_cat": "Exacte grammen, taurine-herinneringen, Ca:P-band, vitamine A-plafond — elk kattenplan komt met zijn vangrails."
+      },
+      "heading_cat": "Van kat tot bakje in drie stappen"
     },
     "diets": {
       "eyebrow": "Dieetprofielen",
       "heading": "Vijf vertrouwde benaderingen",
-      "sub": "Elk macronutriëntenprofiel sluit aan op AAFCO-doelen en de levensfase van je hond."
+      "sub": "Elk macronutriëntenprofiel sluit aan op AAFCO-doelen en de levensfase van je hond.",
+      "sub_cat": "Elk kat-profiel komt overeen met AAFCO-doelen voor katten en de levensfase van je kat. Taurine is niet onderhandelbaar."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "Over de host",
     "privacyHostBody": "PawCook wordt gehost op GitHub Pages. Om de pagina te serveren ziet de infrastructuur van GitHub noodzakelijkerwijs je IP-adres. Wij hebben geen toegang tot die logs en geen andere relatie met jou.",
     "privacyHostLink": "Privacyverklaring van GitHub",
-    "eyebrow": "Over"
+    "eyebrow": "Over",
+    "subtitle_cat": "Open source calculator voor zelfgemaakte honden- en kattenvoeding, gebouwd voor mensen die voor hun dieren koken.",
+    "notVetAdvice_cat": "Deze tool vervangt geen diergeneeskundig advies. Ze geeft algemene richtlijnen op basis van gepubliceerde standaarden (AAFCO, NRC, FEDIAF). Katten hebben bijzonder krappe marges voor taurine, arachidonzuur en vitamine A. Voor langdurige zelfgemaakte voeding raadpleeg een gecertificeerd veterinair voedingsdeskundige (ACVN-diplomate)."
   },
   "meatData": {
     "beef": {

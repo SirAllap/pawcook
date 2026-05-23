@@ -20,7 +20,8 @@
     "loading": "Carregando",
     "changeLanguage": "Escolher idioma",
     "preferences": "Preferências",
-    "brandHome": "Início do PawCook"
+    "brandHome": "Início do PawCook",
+    "catFoodCalc": "Calculadora alimentar felina"
   },
   "cooking": {
     "title": "Calculadora de culinária",
@@ -109,7 +110,8 @@
     "toastReady": "Receita pronta.",
     "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular.",
     "catSupplementsTitle": "Suplementos para gato após cozinhar",
-    "catSupplementsBody": "O calor destrói a taurina, vitaminas B (tiamina, niacina) e parte da vitamina E. Adicione o stack felino — taurina 250–500 mg, complexo B, vitamina E — depois do prato esfriar."
+    "catSupplementsBody": "O calor destrói a taurina, vitaminas B (tiamina, niacina) e parte da vitamina E. Adicione o stack felino — taurina 250–500 mg, complexo B, vitamina E — depois do prato esfriar.",
+    "subtitle_cat": "Tempo e temperatura de cozimento seguros para a comida do seu gato. Lembre-se de adicionar taurina + complexo B após cozinhar."
   },
   "nutrition": {
     "title": "Calculadora de nutrição",
@@ -242,7 +244,12 @@
     "placeholderHint": "Insira o perfil do seu cão e toque em Calcular.",
     "toastPass": "Plano diário pronto — em conformidade com AAFCO.",
     "toastCaution": "Plano pronto — verifique os alertas.",
-    "toastFail": "O plano precisa de ajustes para atender às metas AAFCO."
+    "toastFail": "O plano precisa de ajustes para atender às metas AAFCO.",
+    "subtitle_cat": "Calcule as porções diárias com base no perfil do seu gato.",
+    "weight_cat": "Peso do gato (kg)",
+    "profileSection_cat": "Perfil do gato",
+    "placeholder_cat": "Preencha o perfil do seu gato e toque em",
+    "placeholderHint_cat": "Insira o perfil do seu gato e toque em Calcular."
   },
   "foodSafety": {
     "title": "Referência de segurança alimentar",
@@ -263,7 +270,8 @@
     "benefit": "Benefício",
     "noResults": "Sem resultados para",
     "noResultsHint": "Tente outro termo de pesquisa",
-    "eyebrow": "Segurança alimentar"
+    "eyebrow": "Segurança alimentar",
+    "subtitle_cat": "Pesquise alimentos seguros e tóxicos para gatos. Os gatos são mais sensíveis que os cães a muitos compostos."
   },
   "supplements": {
     "title": "Guia de suplementos",
@@ -347,7 +355,8 @@
       }
     },
     "eyebrow": "Suplementos",
-    "taurineCallout": "Gatos não sintetizam taurina — suplementação é obrigatória em dietas cozidas e fortemente recomendada em dietas cruas sem corações. Deficiência causa cegueira irreversível e cardiomiopatia dilatada."
+    "taurineCallout": "Gatos não sintetizam taurina — suplementação é obrigatória em dietas cozidas e fortemente recomendada em dietas cruas sem corações. Deficiência causa cegueira irreversível e cardiomiopatia dilatada.",
+    "subtitle_cat": "Dietas caseiras para gato sem taurina, cálcio, vitamina E e complexo B falham em meses. A suplementação é obrigatória, não opcional."
   },
   "landing": {
     "hero": {
@@ -358,14 +367,17 @@
       "badge": "Metodologia validada por veterinários",
       "headlineA": "Comida de verdade.",
       "headlineB": "Para o seu cão de verdade.",
-      "headlineB_cat": "Para o seu gato de verdade."
+      "headlineB_cat": "Para o seu gato de verdade.",
+      "tagline_cat": "Alimente bem o seu gato.",
+      "subtitle_cat": "Ferramentas open source para quem cozinha em casa para o seu gato — planos nutricionais com foco em taurina, cozimento seguro, guias de segurança alimentar e o stack de suplementos que os gatos precisam."
     },
     "features": {
       "heading": "Tudo o que precisa",
       "cooking": "Tempos e temperaturas de cozedura seguras para 12 tipos de carne via sous-vide, forno, fogão ou panela elétrica.",
       "nutrition": "Calculadora de porções diárias com base no peso, idade, atividade e dieta do seu cão.",
       "foodSafety": "Base de dados de alimentos tóxicos, carnes, legumes e frutas seguras.",
-      "supplements": "Guia de cálcio, ómega-3 e micronutrientes para dietas caseiras."
+      "supplements": "Guia de cálcio, ómega-3 e micronutrientes para dietas caseiras.",
+      "nutrition_cat": "Calculadora de porções diárias com base no peso, fase de vida e atividade do seu gato — feita para carnívoros estritos."
     },
     "openTool": "Abrir ferramenta",
     "open": {
@@ -373,7 +385,8 @@
       "text": "Licença MIT. Criado por donos de cães para donos de cães.",
       "eyebrow": "100% código aberto",
       "starUs": "Dar estrela no GitHub",
-      "fork": "Fazer fork"
+      "fork": "Fazer fork",
+      "text_cat": "Licença MIT. Feito por pessoas que cozinham para cães e gatos."
     },
     "trustedBy": "Metodologia baseada em",
     "stats": {
@@ -399,28 +412,38 @@
         "fat": "Gordura",
         "veg": "Vegetal",
         "safeCore": "Núcleo seguro"
-      }
+      },
+      "nutrition_cat": "Macros diários, calorias e as proteções específicas para gatos (taurina, AA, arginina, vit. A) ajustadas ao seu gato.",
+      "cooking_cat": "Tempo e temperatura seguros para cada carne — mais os lembretes de suplementos pós-cozimento que os gatos precisam."
     },
     "how": {
       "eyebrow": "Como funciona",
       "heading": "Do cão ao jantar em três passos",
       "step1": {
         "title": "Conte-nos sobre o seu cão",
-        "desc": "Peso, idade, atividade, condição corporal — os dados que o seu veterinário pediria."
+        "desc": "Peso, idade, atividade, condição corporal — os dados que o seu veterinário pediria.",
+        "title_cat": "Conte-nos sobre o seu gato",
+        "desc_cat": "Peso, idade, atividade, condição corporal, castração — os dados que o seu veterinário pediria."
       },
       "step2": {
         "title": "Escolha uma dieta confiável",
-        "desc": "Cozinhado balanceado, BARF, PMR, alto em proteína ou ancestral — todos baseados nas metas AAFCO."
+        "desc": "Cozinhado balanceado, BARF, PMR, alto em proteína ou ancestral — todos baseados nas metas AAFCO.",
+        "title_cat": "Escolha uma dieta felina segura",
+        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, presa inteira ou carnívoro cozido — todas baseadas na biologia do carnívoro estrito."
       },
       "step3": {
         "title": "Cozinhe com confiança",
-        "desc": "Obtenha gramas exatos, temperaturas seguras e uma ficha de receita imprimível para a semana."
-      }
+        "desc": "Obtenha gramas exatos, temperaturas seguras e uma ficha de receita imprimível para a semana.",
+        "title_cat": "Alimente com confiança",
+        "desc_cat": "Gramas exatos, lembretes de taurina, faixa Ca:P, teto de vitamina A — cada plano felino traz seus avisos de segurança."
+      },
+      "heading_cat": "Do gato à tigela em três passos"
     },
     "diets": {
       "eyebrow": "Perfis de dieta",
       "heading": "Cinco abordagens confiáveis",
-      "sub": "Cada perfil de macronutrientes corresponde às metas AAFCO e à fase de vida do seu cão."
+      "sub": "Cada perfil de macronutrientes corresponde às metas AAFCO e à fase de vida do seu cão.",
+      "sub_cat": "Cada perfil felino corresponde às metas AAFCO para gatos e à fase de vida do seu gato. Taurina não é negociável."
     }
   },
   "about": {
@@ -446,7 +469,9 @@
     "privacyHostTitle": "Sobre a hospedagem",
     "privacyHostBody": "O PawCook é hospedado no GitHub Pages. Para servir a página, a infraestrutura do GitHub necessariamente vê seu endereço IP. Não temos acesso a esses logs nem qualquer outra relação com você.",
     "privacyHostLink": "Política de privacidade do GitHub",
-    "eyebrow": "Sobre"
+    "eyebrow": "Sobre",
+    "subtitle_cat": "Calculadora open source de comida caseira para cães e gatos, feita para quem cozinha para os seus animais.",
+    "notVetAdvice_cat": "Esta ferramenta não substitui orientação veterinária. Fornece diretrizes gerais baseadas em padrões publicados (AAFCO, NRC, FEDIAF). Gatos têm margens estreitas para taurina, ácido araquidônico e vitamina A. Para alimentação caseira de longo prazo, consulte um nutricionista veterinário certificado (diplomado ACVN)."
   },
   "meatData": {
     "beef": {

@@ -11,6 +11,7 @@ import {
   type MacroRatioProfile, type ComponentKey, type AafcoStatus,
 } from '@pawcook/shared';
 import { useSpecies } from '../lib/species';
+import { useSpeciesT } from '../lib/use-species-t';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -97,6 +98,7 @@ function AafcoBadge({ status }: { status: AafcoStatus }) {
 
 export default function NutritionCalculator() {
   const { t } = useTranslation();
+  const tS = useSpeciesT();
   const { species } = useSpecies();
   const [result, setResult] = useState<NutritionResult | null>(null);
   const [calculating, setCalculating] = useState(false);
@@ -144,16 +146,16 @@ export default function NutritionCalculator() {
       <PageHeader
         eyebrow={t('nutrition.eyebrow', { defaultValue: 'Nutrition' })}
         title={t('nutrition.title')}
-        description={t('nutrition.subtitle')}
+        description={tS('nutrition.subtitle')}
       />
 
       <Card padding="none" className="overflow-hidden">
         <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-6 space-y-6">
-          <SectionLabel>{t('nutrition.profileSection')}</SectionLabel>
+          <SectionLabel>{tS('nutrition.profileSection')}</SectionLabel>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
-              label={t('nutrition.weight')}
+              label={tS('nutrition.weight')}
               type="number" step="0.1" inputMode="decimal"
               {...register('weightKg', { valueAsNumber: true })}
               error={errors.weightKg?.message}
@@ -412,8 +414,8 @@ export default function NutritionCalculator() {
           <EmptyState
             key="empty"
             icon={<Sparkles className="h-8 w-8" />}
-            title={t('nutrition.placeholder')}
-            description={t('nutrition.placeholderHint', { defaultValue: 'Enter your dog’s profile and tap Calculate.' })}
+            title={tS('nutrition.placeholder')}
+            description={tS('nutrition.placeholderHint')}
           />
         )}
       </AnimatePresence>
