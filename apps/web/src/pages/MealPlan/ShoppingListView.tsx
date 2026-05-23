@@ -27,9 +27,10 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
 
   function openCookingFor(item: ShoppingItem) {
     const meat = MeatTypeSchema.safeParse(item.ingredientId);
+    const totalWeightKg = Math.max(0.1, Math.min(30, item.totalGrams / 1000));
     const prefill: CookingPrefill = {
       meatType: meat.success ? meat.data : undefined,
-      totalWeightKg: Math.max(0.1, Math.min(30, item.totalGrams / 1000)),
+      totalWeightKg,
       planName: plan.name,
       // The bag-strategy panel needs both to be useful: how many pets share
       // this batch, and how many days of feeding the total covers.
@@ -39,7 +40,18 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       // don't have to re-pick it every time they tap "Cook".
       cookingMethod: plan.sourcing.preferredCookingMethod,
     };
-    navigate('/cooking', { state: { prefill } });
+    // Pass the prefill via BOTH the URL query string and router state. The
+    // query string is the source of truth (deterministic, deep-linkable,
+    // visible in the address bar); state is a back-compat fallback.
+    const search = new URLSearchParams();
+    search.set('from', 'plan');
+    if (prefill.meatType)       search.set('meat',   prefill.meatType);
+    if (prefill.cookingMethod)  search.set('method', prefill.cookingMethod);
+    if (prefill.totalWeightKg)  search.set('kg',     prefill.totalWeightKg.toString());
+    if (prefill.petCount)       search.set('pets',   prefill.petCount.toString());
+    if (prefill.feedingDays)    search.set('days',   prefill.feedingDays.toString());
+    if (prefill.planName)       search.set('plan',   prefill.planName);
+    navigate({ pathname: '/cooking', search: `?${search.toString()}` }, { state: { prefill } });
   }
 
   const exportConfig = useMemo(() => ({
