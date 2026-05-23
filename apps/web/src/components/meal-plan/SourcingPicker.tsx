@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Beef, Carrot } from 'lucide-react';
 import {
   getMeatIngredients, getVegIngredients,
-  type AccessibilityTier, type Species, type SourcingPrefs, type VarietyTier,
+  type AccessibilityTier, type CookingMethod, type Species, type SourcingPrefs, type VarietyTier,
 } from '@pawcook/shared';
 import { SectionLabel } from '../ui/section-label';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
@@ -13,6 +13,13 @@ import { cn } from '../../lib/cn';
 
 const VARIETY_OPTIONS: VarietyTier[] = ['standard', 'diverse', 'novel'];
 const ACCESS_OPTIONS: AccessibilityTier[] = ['easy', 'specialty'];
+const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker'];
+const METHOD_EMOJI: Record<CookingMethod, string> = {
+  sous_vide: '🛁',
+  oven: '🍲',
+  stovetop_low: '🫕',
+  slow_cooker: '🥘',
+};
 
 export function SourcingPicker({
   value,
@@ -91,6 +98,31 @@ export function SourcingPicker({
           {ACCESS_OPTIONS.map((opt) => (
             <ToggleGroupItem key={opt} value={opt}>
               {t(`mealPlan.sourcing.access.${opt}`)}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+      </div>
+
+      <div className="space-y-2">
+        <SectionLabel>
+          {t('mealPlan.sourcing.methodLabel', { defaultValue: 'Cooking method' })}
+        </SectionLabel>
+        <p className="text-xs text-muted-fg leading-relaxed">
+          {t('mealPlan.sourcing.methodHelp', {
+            defaultValue: 'We remember this so "Cook" buttons in the shopping list open the calculator already set up your way.',
+          })}
+        </p>
+        <ToggleGroup
+          type="single"
+          value={value.preferredCookingMethod}
+          onValueChange={(v) => v && onChange({ ...value, preferredCookingMethod: v as CookingMethod })}
+          aria-label={t('mealPlan.sourcing.methodLabel', { defaultValue: 'Cooking method' })}
+          className="grid grid-cols-2 sm:grid-cols-4 w-full"
+        >
+          {METHOD_OPTIONS.map((opt) => (
+            <ToggleGroupItem key={opt} value={opt} aria-label={t(`cooking.methods.${opt}`)}>
+              <span aria-hidden>{METHOD_EMOJI[opt]}</span>
+              <span className="truncate">{t(`cooking.methods.${opt}`)}</span>
             </ToggleGroupItem>
           ))}
         </ToggleGroup>

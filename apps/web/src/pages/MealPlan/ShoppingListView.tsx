@@ -35,6 +35,9 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       // this batch, and how many days of feeding the total covers.
       petCount: item.forPetIds.length,
       feedingDays: plan.durationDays,
+      // Carry the user's preferred cooking method from the plan so they
+      // don't have to re-pick it every time they tap "Cook".
+      cookingMethod: plan.sourcing.preferredCookingMethod,
     };
     navigate('/cooking', { state: { prefill } });
   }

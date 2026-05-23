@@ -9,7 +9,7 @@ import { Flame, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles,
 import {
   CookingInputSchema, type CookingInput,
   calculateCookingTime, type CookingResult,
-  MeatTypeSchema,
+  MeatTypeSchema, CookingMethodSchema,
 } from '@pawcook/shared';
 import vegCookingData from '@pawcook/data/vegetable-cooking';
 import { useSpecies } from '../lib/species';
@@ -63,6 +63,7 @@ export type CookingPrefill = {
   planName?: string;
   petCount?: number;
   feedingDays?: number;
+  cookingMethod?: CookingInput['cookingMethod'];
 };
 
 // Default refrigerator life of a cooked, sealed bag. Three days is the
@@ -76,6 +77,8 @@ function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInpu
   const merged = { ...base };
   const parsedMeat = MeatTypeSchema.safeParse(prefill.meatType);
   if (parsedMeat.success) merged.meatType = parsedMeat.data;
+  const parsedMethod = CookingMethodSchema.safeParse(prefill.cookingMethod);
+  if (parsedMethod.success) merged.cookingMethod = parsedMethod.data;
   if (typeof prefill.totalWeightKg === 'number' && Number.isFinite(prefill.totalWeightKg)) {
     // Cap to the schema max so router payloads can't bypass validation.
     merged.totalWeightKg = Math.min(30, Math.max(0.1, prefill.totalWeightKg));

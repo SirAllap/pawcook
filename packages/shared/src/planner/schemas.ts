@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { CookingMethodSchema } from '../schemas.js';
 
 // ─── Sourcing preferences ────────────────────────────────────────────
 // Pricing-free framing — these flags drive which ingredients the
@@ -12,6 +13,12 @@ export type AccessibilityTier = z.infer<typeof AccessibilityTierSchema>;
 export const SourcingPrefsSchema = z.object({
   variety: VarietyTierSchema.default('standard'),
   accessibility: AccessibilityTierSchema.default('easy'),
+  /**
+   * How the user plans to cook this plan's meat. Stored with the plan so
+   * that "Cook this" from the shopping list can pre-select the method
+   * without asking again — the planner itself doesn't read this field.
+   */
+  preferredCookingMethod: CookingMethodSchema.default('sous_vide'),
   preferWildFish: z.boolean().default(false),
   preferGrassFed: z.boolean().default(false),
   preferOrganic: z.boolean().default(false),

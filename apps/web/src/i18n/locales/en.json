@@ -245,7 +245,9 @@
       "veggiesLabel": "Veggies to include",
       "veggiesHelp": "Pick the produce you want — leave empty to let the planner choose any.",
       "anyMeats": "Any · planner picks",
-      "anyVeggies": "Any · planner picks"
+      "anyVeggies": "Any · planner picks",
+      "methodLabel": "Cooking method",
+      "methodHelp": "We remember this so \"Cook\" buttons in the shopping list open the calculator already set up your way."
     },
     "coverage": {
       "passed": "Looks balanced",

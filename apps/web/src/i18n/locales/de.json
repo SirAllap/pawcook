@@ -245,7 +245,9 @@
       "veggiesLabel": "Gemüse einbeziehen",
       "veggiesHelp": "Wähle das gewünschte Gemüse — leer = Planer entscheidet.",
       "anyMeats": "Beliebig · Planer wählt",
-      "anyVeggies": "Beliebig · Planer wählt"
+      "anyVeggies": "Beliebig · Planer wählt",
+      "methodLabel": "Garmethode",
+      "methodHelp": "Wir merken uns das, damit die \"Kochen\"-Buttons in der Einkaufsliste den Rechner schon nach deinem Workflow eingestellt öffnen."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",

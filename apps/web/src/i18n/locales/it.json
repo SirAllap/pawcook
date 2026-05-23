@@ -245,7 +245,9 @@
       "veggiesLabel": "Verdure da includere",
       "veggiesHelp": "Scegli le verdure — lascia vuoto per far decidere al planner.",
       "anyMeats": "Qualsiasi · sceglie il planner",
-      "anyVeggies": "Qualsiasi · sceglie il planner"
+      "anyVeggies": "Qualsiasi · sceglie il planner",
+      "methodLabel": "Metodo di cottura",
+      "methodHelp": "Lo ricordiamo così che il pulsante \"Cuoci\" nella lista della spesa apra il calcolatore già impostato come preferisci."
     },
     "coverage": {
       "passed": "Sembra bilanciato",
