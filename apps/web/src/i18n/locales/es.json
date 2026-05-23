@@ -155,14 +155,22 @@
     "risky": "Riesgoso",
     "compound": "Compuesto",
     "effect": "Efecto",
-    "benefit": "Beneficio"
+    "benefit": "Beneficio",
+    "noResults": "Sin resultados para",
+    "noResultsHint": "Prueba con otro término de búsqueda"
   },
   "supplements": {
     "title": "Guía de suplementos",
     "subtitle": "Una dieta casera sin huesos requiere suplementación de calcio — la deficiencia n.º 1 en la comida casera para perros.",
     "caRatio": "Objetivo de la relación Ca:P: 1,2:1 a 1,4:1 (rango aceptable AAFCO 1:1 a 2,1:1). La carne sola es ~1:20 — fuertemente sesgada hacia el fósforo. La suplementación es obligatoria.",
     "commercialBalancers": "Equilibradores comerciales recomendados",
-    "dose": "Dosis"
+    "dose": "Dosis",
+    "bal": {
+      "balanceIt": "Nutricionistas veterinarios de UC Davis — específico por receta",
+      "wysong": "Para dietas solo con carne",
+      "animalEssentials": "Espectro amplio",
+      "volhard": "Enfoque de premezcla completa"
+    }
   },
   "landing": {
     "hero": {

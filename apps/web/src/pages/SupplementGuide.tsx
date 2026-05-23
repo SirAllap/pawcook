@@ -6,11 +6,11 @@ interface Supplement       { id: string; label: string; target: string; sources:
 
 const supplements = supplementsData as Supplement[];
 
-const COMMERCIAL_BALANCERS = [
-  ['Balance IT',                                    'UC Davis veterinary nutritionists — recipe-specific'],
-  ['Wysong Call of the Wild',                       'For all-meat diets'],
-  ['Animal Essentials Complete Multivitamin & Mineral', 'Broad spectrum'],
-  ['Volhard NDF2',                                  'Full premix approach'],
+const COMMERCIAL_BALANCERS: { name: string; descKey: string }[] = [
+  { name: 'Balance IT',                                     descKey: 'supplements.bal.balanceIt' },
+  { name: 'Wysong Call of the Wild',                        descKey: 'supplements.bal.wysong' },
+  { name: 'Animal Essentials Complete Multivitamin & Mineral', descKey: 'supplements.bal.animalEssentials' },
+  { name: 'Volhard NDF2',                                   descKey: 'supplements.bal.volhard' },
 ];
 
 const SUPP_ICONS: Record<number, string> = { 0: '🦴', 1: '🐟', 2: '💊', 3: '🌿', 4: '⚡' };
@@ -69,12 +69,12 @@ export default function SupplementGuide() {
           <h2 className="font-black text-base text-white">🛒 {t('supplements.commercialBalancers')}</h2>
         </div>
         <div className="p-4 space-y-2">
-          {COMMERCIAL_BALANCERS.map(([name, desc]) => (
+          {COMMERCIAL_BALANCERS.map(({ name, descKey }) => (
             <div key={name} className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-3.5 flex gap-3 items-start">
               <span className="text-amber-500 shrink-0 mt-0.5 font-black text-base">→</span>
               <div>
                 <p className="text-sm font-bold text-white">{name}</p>
-                <p className="text-xs text-gray-400 mt-0.5">{desc}</p>
+                <p className="text-xs text-gray-400 mt-0.5">{t(descKey)}</p>
               </div>
             </div>
           ))}

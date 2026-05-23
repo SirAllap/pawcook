@@ -155,14 +155,22 @@
     "risky": "Riskant",
     "compound": "Verbindung",
     "effect": "Wirkung",
-    "benefit": "Nutzen"
+    "benefit": "Nutzen",
+    "noResults": "Keine Ergebnisse für",
+    "noResultsHint": "Anderen Suchbegriff versuchen"
   },
   "supplements": {
     "title": "Nahrungsergänzungs-Leitfaden",
     "subtitle": "Eine Heimernährung ohne Knochen erfordert Kalzium-Supplementierung — der häufigste Mangel bei selbst zubereiteten Hundefutter.",
     "caRatio": "Ca:P-Verhältnisziel: 1,2:1 bis 1,4:1 (AAFCO-Toleranzbereich 1:1 bis 2,1:1). Fleisch allein liegt bei ~1:20 — stark phosphorlastig. Supplementierung ist obligatorisch.",
     "commercialBalancers": "Empfohlene kommerzielle Zusätze",
-    "dose": "Dosis"
+    "dose": "Dosis",
+    "bal": {
+      "balanceIt": "Tierernährungsberater der UC Davis — rezeptspezifisch",
+      "wysong": "Für reine Fleischdiäten",
+      "animalEssentials": "Breitspektrum",
+      "volhard": "Kompletter Premix-Ansatz"
+    }
   },
   "landing": {
     "hero": {

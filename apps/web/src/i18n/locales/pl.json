@@ -155,14 +155,22 @@
     "risky": "Ryzykowne",
     "compound": "Związek",
     "effect": "Efekt",
-    "benefit": "Korzyść"
+    "benefit": "Korzyść",
+    "noResults": "Brak wyników dla",
+    "noResultsHint": "Spróbuj innego terminu wyszukiwania"
   },
   "supplements": {
     "title": "Przewodnik po suplementach",
     "subtitle": "Domowa dieta bez kości wymaga suplementacji wapniem — niedobór nr 1 w domowej karmie dla psów.",
     "caRatio": "Cel stosunku Ca:P: 1,2:1 do 1,4:1 (akceptowalny zakres AAFCO 1:1 do 2,1:1). Samo mięso to ~1:20 — silnie nakierowane na fosfor. Suplementacja jest obowiązkowa.",
     "commercialBalancers": "Zalecane komercyjne suplementy kompleksowe",
-    "dose": "Dawka"
+    "dose": "Dawka",
+    "bal": {
+      "balanceIt": "Weterynaryjni dietetycy UC Davis — dopasowane do receptury",
+      "wysong": "Do diet mięsnych",
+      "animalEssentials": "Szerokie spektrum",
+      "volhard": "Pełne podejście premixowe"
+    }
   },
   "landing": {
     "hero": {

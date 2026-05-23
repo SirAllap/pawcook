@@ -155,14 +155,22 @@
     "risky": "Risqué",
     "compound": "Composé",
     "effect": "Effet",
-    "benefit": "Bénéfice"
+    "benefit": "Bénéfice",
+    "noResults": "Aucun résultat pour",
+    "noResultsHint": "Essayez un autre terme de recherche"
   },
   "supplements": {
     "title": "Guide des suppléments",
     "subtitle": "Une alimentation maison sans os nécessite une supplémentation en calcium — la carence n°1 dans la nourriture maison pour chiens.",
     "caRatio": "Objectif du rapport Ca:P : 1,2:1 à 1,4:1 (plage acceptable AAFCO 1:1 à 2,1:1). La viande seule est ~1:20 — fortement biaisée vers le phosphore. La supplémentation est obligatoire.",
     "commercialBalancers": "Compléments commerciaux recommandés",
-    "dose": "Dose"
+    "dose": "Dose",
+    "bal": {
+      "balanceIt": "Nutritionnistes vétérinaires UC Davis — spécifique à la recette",
+      "wysong": "Pour les régimes tout-viande",
+      "animalEssentials": "Large spectre",
+      "volhard": "Approche prémix complet"
+    }
   },
   "landing": {
     "hero": {

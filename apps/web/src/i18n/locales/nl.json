@@ -155,14 +155,22 @@
     "risky": "Riskant",
     "compound": "Verbinding",
     "effect": "Effect",
-    "benefit": "Voordeel"
+    "benefit": "Voordeel",
+    "noResults": "Geen resultaten voor",
+    "noResultsHint": "Probeer een andere zoekterm"
   },
   "supplements": {
     "title": "Supplementengids",
     "subtitle": "Een thuisdieet zonder botten vereist calciumsuppletie — de grootste tekortkoming bij zelfgemaakt hondenvoer.",
     "caRatio": "Ca:P-verhouding doel: 1,2:1 tot 1,4:1 (AAFCO aanvaardbaar bereik 1:1 tot 2,1:1). Vlees alleen is ~1:20 — sterk fosforgericht. Suppletie is verplicht.",
     "commercialBalancers": "Aanbevolen commerciële balancers",
-    "dose": "Dosis"
+    "dose": "Dosis",
+    "bal": {
+      "balanceIt": "UC Davis veterinaire voedingsdeskundigen — receptspecifiek",
+      "wysong": "Voor volledig vleesdiëten",
+      "animalEssentials": "Breed spectrum",
+      "volhard": "Volledige premix-aanpak"
+    }
   },
   "landing": {
     "hero": {

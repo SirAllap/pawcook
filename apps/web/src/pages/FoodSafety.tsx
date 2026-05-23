@@ -26,13 +26,14 @@ function SearchIcon() {
 }
 
 function EmptyState({ query }: { query: string }) {
+  const { t } = useTranslation();
   return (
     <div className="text-center py-16 animate-fade-in">
       <div className="text-5xl mb-4">🔍</div>
       <p className="text-gray-300 font-bold text-base">
-        No results for &ldquo;<span className="text-amber-400">{query}</span>&rdquo;
+        {t('foodSafety.noResults')} &ldquo;<span className="text-amber-400">{query}</span>&rdquo;
       </p>
-      <p className="text-gray-500 text-sm mt-1">Try a different search term</p>
+      <p className="text-gray-500 text-sm mt-1">{t('foodSafety.noResultsHint')}</p>
     </div>
   );
 }

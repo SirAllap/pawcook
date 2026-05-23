@@ -155,14 +155,22 @@
     "risky": "Risky",
     "compound": "Compound",
     "effect": "Effect",
-    "benefit": "Benefit"
+    "benefit": "Benefit",
+    "noResults": "No results for",
+    "noResultsHint": "Try a different search term"
   },
   "supplements": {
     "title": "Supplement Guide",
     "subtitle": "A homemade diet without bones requires calcium supplementation — the #1 deficiency in DIY dog food.",
     "caRatio": "Ca:P ratio target: 1.2:1 to 1.4:1 (AAFCO acceptable range 1:1 to 2.1:1). Meat alone is ~1:20 — heavily phosphorus-skewed. Supplementation is mandatory.",
     "commercialBalancers": "Recommended Commercial Balancers",
-    "dose": "Dose"
+    "dose": "Dose",
+    "bal": {
+      "balanceIt": "UC Davis veterinary nutritionists — recipe-specific",
+      "wysong": "For all-meat diets",
+      "animalEssentials": "Broad spectrum",
+      "volhard": "Full premix approach"
+    }
   },
   "landing": {
     "hero": {

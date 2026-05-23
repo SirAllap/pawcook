@@ -155,14 +155,22 @@
     "risky": "Rischioso",
     "compound": "Composto",
     "effect": "Effetto",
-    "benefit": "Beneficio"
+    "benefit": "Beneficio",
+    "noResults": "Nessun risultato per",
+    "noResultsHint": "Prova un altro termine di ricerca"
   },
   "supplements": {
     "title": "Guida agli integratori",
     "subtitle": "Una dieta casalinga senza ossa richiede la supplementazione di calcio — la carenza n. 1 nel cibo casalingo per cani.",
     "caRatio": "Obiettivo del rapporto Ca:P: 1,2:1 a 1,4:1 (intervallo accettabile AAFCO 1:1 a 2,1:1). La carne da sola è ~1:20 — fortemente sbilanciata verso il fosforo. La supplementazione è obbligatoria.",
     "commercialBalancers": "Integratori commerciali consigliati",
-    "dose": "Dose"
+    "dose": "Dose",
+    "bal": {
+      "balanceIt": "Nutrizionisti veterinari UC Davis — specifico per ricetta",
+      "wysong": "Per diete solo carne",
+      "animalEssentials": "Ampio spettro",
+      "volhard": "Approccio premix completo"
+    }
   },
   "landing": {
     "hero": {

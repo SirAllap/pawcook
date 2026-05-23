@@ -155,14 +155,22 @@
     "risky": "Arriscado",
     "compound": "Composto",
     "effect": "Efeito",
-    "benefit": "Benefício"
+    "benefit": "Benefício",
+    "noResults": "Sem resultados para",
+    "noResultsHint": "Tente outro termo de pesquisa"
   },
   "supplements": {
     "title": "Guia de suplementos",
     "subtitle": "Uma dieta caseira sem ossos requer suplementação de cálcio — a deficiência nº 1 na comida caseira para cães.",
     "caRatio": "Meta da relação Ca:P: 1,2:1 a 1,4:1 (faixa aceitável AAFCO 1:1 a 2,1:1). A carne sozinha é ~1:20 — fortemente tendenciosa para o fósforo. A suplementação é obrigatória.",
     "commercialBalancers": "Balanceadores comerciais recomendados",
-    "dose": "Dose"
+    "dose": "Dose",
+    "bal": {
+      "balanceIt": "Nutricionistas veterinários da UC Davis — específico por receita",
+      "wysong": "Para dietas somente à base de carne",
+      "animalEssentials": "Amplo espectro",
+      "volhard": "Abordagem de pré-mistura completa"
+    }
   },
   "landing": {
     "hero": {
