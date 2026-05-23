@@ -5,11 +5,13 @@ import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { PawMark } from '../brand/logo';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/cn';
+import { useSpecies } from '../../lib/species';
 
 const SOURCES = ['AAFCO', 'NRC', 'FEDIAF', 'WSAVA', 'ACVN'];
 
 export function Hero() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -75,7 +77,11 @@ export function Hero() {
           )}
         >
           <span className="text-foreground">{t('landing.hero.headlineA', { defaultValue: 'Real food.' })}</span>{' '}
-          <span className="text-gradient-brand">{t('landing.hero.headlineB', { defaultValue: 'For your real dog.' })}</span>
+          <span className="text-gradient-brand">
+            {species === 'cat'
+              ? t('landing.hero.headlineB_cat', { defaultValue: 'For your real cat.' })
+              : t('landing.hero.headlineB', { defaultValue: 'For your real dog.' })}
+          </span>
         </motion.h1>
 
         {/* Subtitle */}

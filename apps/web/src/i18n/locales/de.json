@@ -96,7 +96,8 @@
       "noBones": "Niemals gekochte Knochen in ein Rezept einbeziehen — sie splittern und können zum Ersticken oder zu Magen-Darm-Perforationen führen.",
       "thermometer": "Kerntemperatur immer mit einem Fleischthermometer prüfen.",
       "pork": "Schweinefleisch muss immer vollständig durchgegart werden — rohes Schweinefleisch birgt Trichinellen-Risiko.",
-      "salmon": "Lachs sollte nur roh gegeben werden, wenn er zuvor mindestens 7 Tage eingefroren war (Neorickettsia-Risiko)."
+      "salmon": "Lachs sollte nur roh gegeben werden, wenn er zuvor mindestens 7 Tage eingefroren war (Neorickettsia-Risiko).",
+      "catThiaminase": "Für Katzen: Thiaminase in rohem Fisch zerstört Thiamin. Fisch für Katzen immer gut durchgaren."
     },
     "nutrient": {
       "sous_vide": "Sous-vide bewahrt die meisten wasserlöslichen Vitamine (B-Komplex, Vit C). Alle Beutelsäfte in die Mahlzeit einbeziehen.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Kochen",
     "toastReady": "Rezept fertig.",
-    "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen."
+    "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen.",
+    "catSupplementsTitle": "Katzen-Supplemente nach dem Kochen",
+    "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist."
   },
   "nutrition": {
     "title": "Ernährungsrechner",
@@ -129,12 +132,17 @@
       "rer": "RER (Ruhe): {{kcal}} kcal/Tag",
       "der": "DER (Tagesenergie): {{kcal}} kcal/Tag (×{{multiplier}} Multiplikator)",
       "rawDiet": "Fortgeschrittene Rohfütterung — der Knochen liefert natürliches Kalzium; niemals durch gekochten Knochen ersetzen.",
-      "realAncestralOmega": "Ganzer Fisch (Sardinen, Makrele) gleicht das Omega-3:6-Verhältnis aus. Kleine Wildfische verwenden, um Quecksilber zu begrenzen."
+      "realAncestralOmega": "Ganzer Fisch (Sardinen, Makrele) gleicht das Omega-3:6-Verhältnis aus. Kleine Wildfische verwenden, um Quecksilber zu begrenzen.",
+      "taurineHeartsNote": "Rohdiät mit Herzen angenommen — natürliche Taurinquelle. Ziel: ≥30% Muskelfleisch aus Herzen.",
+      "arachidonicCookedNote": "Gekochte Diät: tierisches Fett (Hühnerhaut, Eigelb) für Arachidonsäure unbedingt einbeziehen.",
+      "cookedCatSupplementsNote": "Gekochte Katzenfutter benötigen Taurin + B-Komplex + Vitamin E, nach dem Kochen hinzugefügt.",
+      "hydrationCatNote": "Katzen trinken wenig — feuchtes Futter geben, Wasser oder Brühe ergänzen, Urinmenge überwachen."
     },
     "ages": {
       "puppy": "Welpe (<1 Jahr)",
       "adult": "Erwachsen (1–7 Jahre)",
-      "senior": "Senior (7+ Jahre)"
+      "senior": "Senior (7+ Jahre)",
+      "kitten": "Kätzchen (< 1 J.)"
     },
     "activities": {
       "sedentary": "Sitzend",
@@ -165,14 +173,24 @@
       "high_protein": "Proteinreich",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ursprüngliche Diät"
+      "real_ancestral": "Ursprüngliche Diät",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Ganze Beute",
+      "cat_barf_lite": "BARF-light",
+      "cat_cooked_carnivore": "Gekochter Karnivor"
     },
     "dietSub": {
       "balanced_cooked": "40% Protein / 50% Gemüse",
       "high_protein": "55% Protein / 30% Gemüse",
       "pmr": "Roh 80-10-10",
       "barf": "Roh + Gemüse + Saaten",
-      "real_ancestral": "Roh + Fisch + Faser"
+      "real_ancestral": "Roh + Fisch + Faser",
+      "cat_pmr": "Beutemodell roh",
+      "cat_frankenprey": "Zusammengesetzte Rohstücke",
+      "cat_whole_prey": "Mäuse, Wachteln, Küken",
+      "cat_barf_lite": "Roh + wenig Gemüse",
+      "cat_cooked_carnivore": "+ Taurin-Supplement"
     },
     "macroProtein": "Protein",
     "macroVeg": "Gemüse",
@@ -212,7 +230,13 @@
       "caPLow": "Ca:P-Verhältnis ist {{ratio}}:1 — unter dem AAFCO-Sicherheitsminimum von 1:1. Geben Sie ~{{calcium}} mg zusätzliches Kalzium pro Tag.",
       "caPHigh": "Ca:P-Verhältnis ist {{ratio}}:1 — über dem AAFCO-Sicherheitsmaximum von 2:1. Knochenanteil reduzieren oder mit kalziumarmem Protein ausgleichen.",
       "puppyCaP": "Wachsende Welpen sind empfindlich gegenüber hohem Ca:P — unter 1.6:1 halten, um Skeletterkrankungen zu vermeiden.",
-      "cookedCaDeficient": "Gekochte Diäten sind standardmäßig kalziumarm. Geben Sie ~{{calcium}} mg Ca (≈½ TL gemahlene Eierschale pro ~454 g Fleisch oder einen Ausgleicher)."
+      "cookedCaDeficient": "Gekochte Diäten sind standardmäßig kalziumarm. Geben Sie ~{{calcium}} mg Ca (≈½ TL gemahlene Eierschale pro ~454 g Fleisch oder einen Ausgleicher).",
+      "lowTaurine": "Taurin fehlt oder ist zu niedrig. Kochen zerstört Taurin; Supplementierung ist zwingend. Mangel verursacht irreversible Blindheit und dilatative Kardiomyopathie.",
+      "lowArachidonic": "Arachidonsäure zu niedrig. Katzen können sie nicht synthetisieren — sie muss aus tierischem Fett oder Eigelb stammen.",
+      "lowArginine": "Arginin zu niedrig. Eine einzige argininfreie Mahlzeit kann bei Katzen akute Hyperammonämie auslösen.",
+      "vitAToxicity": "Leberanteil ({{liverPct}}%) überschreitet die sichere Obergrenze. Reduzieren, um Hypervitaminose A zu vermeiden.",
+      "thiamineRiskRawFish": "Roher Süßwasserfisch zerstört Thiamin durch Thiaminase. Kochen Sie den Fisch für Katzen oder verwenden Sie gelegentlich Meeresfisch.",
+      "steatitisTunaExcess": "Thunfisch überschreitet 10% der Aufnahme. Risiko von Quecksilberakkumulation + Steatitis (Gelbfettkrankheit). Proteine rotieren."
     },
     "eyebrow": "Ernährung",
     "placeholderHint": "Geben Sie das Profil Ihres Hundes ein und tippen Sie auf Berechnen.",
@@ -251,7 +275,10 @@
       "balanceIt": "Tierernährungsberater der UC Davis — rezeptspezifisch",
       "wysong": "Für reine Fleischdiäten",
       "animalEssentials": "Breitspektrum",
-      "volhard": "Kompletter Premix-Ansatz"
+      "volhard": "Kompletter Premix-Ansatz",
+      "balanceItFeline": "UC-Davis-Spin-off — Formulierungsservice und Prämixe speziell für Katzen.",
+      "ezComplete": "EZ Complete Fur Cats — Alles-in-einem-Prämix für rohe und gekochte selbstgemachte Katzenfutter.",
+      "alnutrin": "Alnutrin mit Kalzium — Prämix mit optionalem Ca für knochenfreie Diäten."
     },
     "aafcoTable": {
       "title": "AAFCO-Nährstoffprofil",
@@ -319,7 +346,8 @@
         "3": "Ältere Hunde oder solche mit empfindlichem Verdauungstrakt benötigen ggf. eine 10- bis 14-tägige Umstellung statt 7 Tage."
       }
     },
-    "eyebrow": "Ergänzungen"
+    "eyebrow": "Ergänzungen",
+    "taurineCallout": "Katzen synthetisieren kein Taurin — Supplementierung ist in gekochten Diäten zwingend und in rohen Diäten ohne Herzen dringend empfohlen. Mangel verursacht irreversible Blindheit und dilatative Kardiomyopathie."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Mehr erfahren",
       "badge": "Tierärztlich validierte Methodik",
       "headlineA": "Echtes Futter.",
-      "headlineB": "Für Ihren echten Hund."
+      "headlineB": "Für Ihren echten Hund.",
+      "headlineB_cat": "Für Ihre echte Katze."
     },
     "features": {
       "heading": "Alles, was du brauchst",
@@ -767,6 +796,22 @@
           "dose": "Laut Etikett — 3000 IU/kg TS nicht überschreiten"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Hund",
+    "cat": "Katze",
+    "tooltip": {
+      "dog": "Zur Katze wechseln",
+      "cat": "Zum Hund wechseln"
+    },
+    "switchTo": "Wechseln zu {{other}}",
+    "welcome": {
+      "title": "Für wen kochen Sie?",
+      "body": "Katzen und Hunde haben unterschiedliche Ernährungsbedürfnisse. Wählen Sie zum Start — Sie können jederzeit oben in der Leiste wechseln.",
+      "dogDesc": "Hunde sind flexible Allesfresser mit moderatem Proteinbedarf.",
+      "catDesc": "Katzen sind strikte Karnivoren. Ihre Pläne sind strenger.",
+      "footnote": "PawCook ersetzt keine tierärztliche Beratung. Bei chronischen Erkrankungen oder Wachstum konsultieren Sie eine Tierernährungsfachkraft."
     }
   }
 }

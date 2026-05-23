@@ -1,4 +1,5 @@
-import type { NutritionInput, MacroRatioProfile } from './schemas.js';
+import type { NutritionInput, MacroRatioProfile, DogMacroProfile } from './schemas.js';
+import { calculateCatNutrition } from './nutrition-cat.js';
 
 export type ComponentKey =
   | 'protein' | 'muscle' | 'bone' | 'liver' | 'organ'
@@ -12,8 +13,23 @@ export interface DietComponent {
 
 export type AafcoStatus = 'pass' | 'caution' | 'fail';
 
-export type NoteId = 'rer' | 'der' | 'rawDiet' | 'realAncestralOmega';
-export type WarningId = 'caPLow' | 'caPHigh' | 'puppyCaP' | 'cookedCaDeficient';
+export type NoteId =
+  | 'rer' | 'der' | 'rawDiet' | 'realAncestralOmega'
+  // Cat-only notes
+  | 'taurineHeartsNote'        // raw cat diet w/ hearts assumed
+  | 'arachidonicCookedNote'    // cooked cat: AA from animal fat reminder
+  | 'cookedCatSupplementsNote' // cooked cat: B-complex + taurine + AA reminder
+  | 'hydrationCatNote';        // cats have weak thirst drive
+
+export type WarningId =
+  | 'caPLow' | 'caPHigh' | 'puppyCaP' | 'cookedCaDeficient'
+  // Cat-only warnings (cat engine emits these)
+  | 'lowTaurine'
+  | 'lowArachidonic'
+  | 'lowArginine'
+  | 'vitAToxicity'
+  | 'thiamineRiskRawFish'
+  | 'steatitisTunaExcess';
 
 export interface NutritionNote {
   id: NoteId;
@@ -81,7 +97,7 @@ interface ProfileSpec {
 }
 
 // Ratios sourced from the PawCook nutritional engineering blueprint.
-const DIET_PROFILES: Record<MacroRatioProfile, ProfileSpec> = {
+const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   balanced_cooked: {
     isRaw: false,
     components: [
@@ -167,7 +183,7 @@ export function toDryMatter(asFedPct: number, moisturePct: number): number {
   return asFedPct / (1 - moisturePct / 100);
 }
 
-export function getDietProfile(profile: MacroRatioProfile): ProfileSpec {
+export function getDietProfile(profile: DogMacroProfile): ProfileSpec {
   return DIET_PROFILES[profile];
 }
 
@@ -176,6 +192,13 @@ export function componentLabel(key: ComponentKey): string {
 }
 
 export function calculateNutrition(input: NutritionInput): NutritionResult {
+  // Dispatch by species. Cat math lives in nutrition-cat.ts; this file
+  // remains the dog implementation + shared types.
+  if (input.species === 'cat') return calculateCatNutrition(input);
+  return calculateDogNutrition(input);
+}
+
+function calculateDogNutrition(input: NutritionInput): NutritionResult {
   const { weightKg, age, mealsPerDay, macroProfile, bodyCondition } = input;
 
   const rer = calcRER(weightKg);
@@ -184,7 +207,7 @@ export function calculateNutrition(input: NutritionInput): NutritionResult {
   if (bodyCondition === 'overweight') der = rer * 1.0; // weight-loss target
   if (bodyCondition === 'underweight') der *= 1.2;
 
-  const spec = DIET_PROFILES[macroProfile];
+  const spec = DIET_PROFILES[macroProfile as DogMacroProfile];
 
   // Adults: 2–3% of body weight, puppies: 3–5%. Raw diets sit at the lower band.
   const dailyPct = age === 'puppy'

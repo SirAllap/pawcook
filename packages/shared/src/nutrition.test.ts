@@ -22,6 +22,7 @@ describe('toDryMatter', () => {
 
 describe('calculateNutrition', () => {
   const base = {
+    species: 'dog' as const,
     weightKg: 20, age: 'adult' as const, activityLevel: 'moderate' as const,
     bodyCondition: 'ideal' as const, reproductiveStatus: 'neutered' as const,
     mealsPerDay: 2, macroProfile: 'balanced_cooked' as const,

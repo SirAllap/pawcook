@@ -2,14 +2,21 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from './lib/theme';
+import { SpeciesProvider } from './lib/species';
 import App from './App';
 
 function setup() {
+  // Pre-set the species so the picker sheet doesn't intercept on mount.
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('pawcook_species', 'dog');
+  }
   return render(
     <ThemeProvider>
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
+      <SpeciesProvider>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </SpeciesProvider>
     </ThemeProvider>
   );
 }

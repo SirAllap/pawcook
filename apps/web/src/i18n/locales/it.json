@@ -96,7 +96,8 @@
       "noBones": "Non includere mai ossa cotte in nessuna ricetta — si scheggiano e possono causare soffocamento o perforazione gastrointestinale.",
       "thermometer": "Verifica sempre la temperatura interna con un termometro da cucina.",
       "pork": "Il maiale deve essere sempre completamente cotto — il maiale crudo comporta rischio di Trichinella.",
-      "salmon": "Il salmone va dato crudo solo se precedentemente congelato per ≥7 giorni (rischio di Neorickettsia)."
+      "salmon": "Il salmone va dato crudo solo se precedentemente congelato per ≥7 giorni (rischio di Neorickettsia).",
+      "catThiaminase": "Per i gatti: la tiaminasi del pesce crudo distrugge la tiamina. Cuoci sempre bene il pesce prima di darlo a un gatto."
     },
     "nutrient": {
       "sous_vide": "Il sous-vide preserva la maggior parte delle vitamine idrosolubili (complesso B, Vit C). Includi tutti i succhi dei sacchetti nel pasto.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Cottura",
     "toastReady": "Ricetta pronta.",
-    "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola."
+    "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola.",
+    "catSupplementsTitle": "Integratori per gatto dopo la cottura",
+    "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto."
   },
   "nutrition": {
     "title": "Calcolatore nutrizionale",
@@ -129,12 +132,17 @@
       "rer": "RER (a riposo): {{kcal}} kcal/giorno",
       "der": "DER (energia giornaliera): {{kcal}} kcal/giorno (×{{multiplier}} moltiplicatore)",
       "rawDiet": "Dieta cruda avanzata — l'osso fornisce calcio naturale; non sostituirlo mai con osso cotto.",
-      "realAncestralOmega": "Il pesce intero (sardine, sgombro) bilancia il rapporto omega-3:6. Usa pesci piccoli pescati in mare aperto per limitare il mercurio."
+      "realAncestralOmega": "Il pesce intero (sardine, sgombro) bilancia il rapporto omega-3:6. Usa pesci piccoli pescati in mare aperto per limitare il mercurio.",
+      "taurineHeartsNote": "Dieta cruda con cuori inclusi — fonte naturale di taurina. Obiettivo: ≥30% della carne muscolare in cuori.",
+      "arachidonicCookedNote": "Dieta cotta: includi grasso animale (pelle di pollo, tuorlo) per l’acido arachidonico.",
+      "cookedCatSupplementsNote": "Le diete cotte per gatto richiedono taurina + complesso B + vitamina E, aggiunti dopo la cottura.",
+      "hydrationCatNote": "I gatti bevono poco — offri cibo umido, aggiungi acqua o brodo, controlla la diuresi."
     },
     "ages": {
       "puppy": "Cucciolo (<1 anno)",
       "adult": "Adulto (1–7 anni)",
-      "senior": "Senior (7+ anni)"
+      "senior": "Senior (7+ anni)",
+      "kitten": "Gattino (< 1 anno)"
     },
     "activities": {
       "sedentary": "Sedentario",
@@ -165,14 +173,24 @@
       "high_protein": "Alto proteico",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ancestrale Reale"
+      "real_ancestral": "Ancestrale Reale",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Preda intera",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Carnivoro cotto"
     },
     "dietSub": {
       "balanced_cooked": "40% proteine / 50% verdure",
       "high_protein": "55% proteine / 30% verdure",
       "pmr": "Crudo 80-10-10",
       "barf": "Crudo + verdure + semi",
-      "real_ancestral": "Crudo + pesce + fibra"
+      "real_ancestral": "Crudo + pesce + fibra",
+      "cat_pmr": "Modello preda crudo",
+      "cat_frankenprey": "Tagli crudi assemblati",
+      "cat_whole_prey": "Topi, quaglie, pulcini",
+      "cat_barf_lite": "Crudo + poca verdura",
+      "cat_cooked_carnivore": "+ integratore di taurina"
     },
     "macroProtein": "proteine",
     "macroVeg": "verdure",
@@ -212,7 +230,13 @@
       "caPLow": "Il rapporto Ca:P è {{ratio}}:1 — sotto il minimo di sicurezza AAFCO (1:1). Aggiungi ~{{calcium}} mg di calcio supplementare al giorno.",
       "caPHigh": "Il rapporto Ca:P è {{ratio}}:1 — sopra il massimo di sicurezza AAFCO (2:1). Riduci l'osso o bilancia con proteine povere di calcio.",
       "puppyCaP": "I cuccioli in crescita sono sensibili a Ca:P alto — mantienilo sotto 1.6:1 per evitare malattie ossee.",
-      "cookedCaDeficient": "Le diete cotte sono carenti di calcio per impostazione predefinita. Aggiungi ~{{calcium}} mg di Ca (≈½ cucchiaino di guscio d'uovo tritato per ~454 g di carne, o usa un bilanciatore)."
+      "cookedCaDeficient": "Le diete cotte sono carenti di calcio per impostazione predefinita. Aggiungi ~{{calcium}} mg di Ca (≈½ cucchiaino di guscio d'uovo tritato per ~454 g di carne, o usa un bilanciatore).",
+      "lowTaurine": "La taurina manca o è insufficiente. La cottura la distrugge; la supplementazione è obbligatoria. La carenza causa cecità irreversibile e cardiomiopatia dilatativa.",
+      "lowArachidonic": "Acido arachidonico troppo basso. I gatti non possono sintetizzarlo — deve provenire da grasso animale o tuorlo.",
+      "lowArginine": "Arginina troppo bassa. Un solo pasto privo di arginina può causare iperammoniemia acuta nel gatto.",
+      "vitAToxicity": "La quota di fegato ({{liverPct}}%) supera il limite sicuro. Riduci per evitare ipervitaminosi A.",
+      "thiamineRiskRawFish": "Il pesce d'acqua dolce crudo distrugge la tiamina via tiaminasi. Cuoci il pesce per i gatti o usa specie marine occasionalmente.",
+      "steatitisTunaExcess": "Il tonno supera il 10% dell'apporto. Accumulo di mercurio + rischio di steatite (malattia del grasso giallo). Ruota le proteine."
     },
     "eyebrow": "Nutrizione",
     "placeholderHint": "Inserisci il profilo del tuo cane e tocca Calcola.",
@@ -251,7 +275,10 @@
       "balanceIt": "Nutrizionisti veterinari UC Davis — specifico per ricetta",
       "wysong": "Per diete solo carne",
       "animalEssentials": "Ampio spettro",
-      "volhard": "Approccio premix completo"
+      "volhard": "Approccio premix completo",
+      "balanceItFeline": "Spin-off di UC Davis — servizio di formulazione e premix specifici per il gatto.",
+      "ezComplete": "EZ Complete Fur Cats — premix tutto-in-uno per diete casalinghe crude e cotte.",
+      "alnutrin": "Alnutrin con calcio — premix con Ca opzionale per diete senza osso."
     },
     "aafcoTable": {
       "title": "Profilo nutrienti AAFCO",
@@ -319,7 +346,8 @@
         "3": "I cani anziani o con apparato digerente sensibile possono richiedere una transizione di 10–14 giorni invece di 7."
       }
     },
-    "eyebrow": "Integratori"
+    "eyebrow": "Integratori",
+    "taurineCallout": "I gatti non sintetizzano la taurina — la supplementazione è obbligatoria nelle diete cotte e fortemente raccomandata in quelle crude senza cuori. La carenza causa cecità irreversibile e cardiomiopatia dilatativa."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Scopri di più",
       "badge": "Metodologia avallata da veterinari",
       "headlineA": "Cibo vero.",
-      "headlineB": "Per il tuo vero cane."
+      "headlineB": "Per il tuo vero cane.",
+      "headlineB_cat": "Per il tuo vero gatto."
     },
     "features": {
       "heading": "Tutto quello che ti serve",
@@ -767,6 +796,22 @@
           "dose": "Secondo etichetta — non superare 3000 UI/kg SS"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Cane",
+    "cat": "Gatto",
+    "tooltip": {
+      "dog": "Passa a gatto",
+      "cat": "Passa a cane"
+    },
+    "switchTo": "Passa a {{other}}",
+    "welcome": {
+      "title": "Per chi stai cucinando?",
+      "body": "Gatti e cani hanno esigenze nutrizionali diverse. Scegline uno per iniziare — puoi cambiare in qualsiasi momento dalla barra in alto.",
+      "dogDesc": "I cani sono onnivori flessibili con esigenze proteiche moderate.",
+      "catDesc": "I gatti sono carnivori stretti. I loro piani sono più rigorosi.",
+      "footnote": "PawCook non sostituisce un parere veterinario. Per patologie croniche o crescita, consulta un nutrizionista veterinario."
     }
   }
 }

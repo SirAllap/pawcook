@@ -4,14 +4,17 @@ import { BrowserRouter } from 'react-router-dom';
 import './i18n';
 import './styles/globals.css';
 import { ThemeProvider } from './lib/theme';
+import { SpeciesProvider } from './lib/species';
 import App from './App';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <App />
-      </BrowserRouter>
+      <SpeciesProvider>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <App />
+        </BrowserRouter>
+      </SpeciesProvider>
     </ThemeProvider>
   </StrictMode>
 );

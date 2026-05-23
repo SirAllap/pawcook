@@ -96,7 +96,8 @@
       "noBones": "Nunca inclua ossos cozinhados em nenhuma receita — partem-se e podem causar engasgamento ou perfuração gastrointestinal.",
       "thermometer": "Verifique sempre a temperatura interna com um termómetro de cozinha.",
       "pork": "O porco deve ser sempre totalmente cozinhado — o porco cru transporta risco de Trichinella.",
-      "salmon": "O salmão só deve ser dado cru se tiver sido congelado durante ≥7 dias (risco de Neorickettsia)."
+      "salmon": "O salmão só deve ser dado cru se tiver sido congelado durante ≥7 dias (risco de Neorickettsia).",
+      "catThiaminase": "Para gatos: a tiaminase do peixe cru destrói a tiamina. Sempre cozinhe bem o peixe antes de dar a um gato."
     },
     "nutrient": {
       "sous_vide": "O sous-vide preserva mais vitaminas hidrossolúveis (complexo B, Vit C). Inclua todos os sucos dos sacos na refeição.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Cozinha",
     "toastReady": "Receita pronta.",
-    "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular."
+    "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular.",
+    "catSupplementsTitle": "Suplementos para gato após cozinhar",
+    "catSupplementsBody": "O calor destrói a taurina, vitaminas B (tiamina, niacina) e parte da vitamina E. Adicione o stack felino — taurina 250–500 mg, complexo B, vitamina E — depois do prato esfriar."
   },
   "nutrition": {
     "title": "Calculadora de nutrição",
@@ -129,12 +132,17 @@
       "rer": "RER (em repouso): {{kcal}} kcal/dia",
       "der": "DER (energia diária): {{kcal}} kcal/dia (×{{multiplier}} multiplicador)",
       "rawDiet": "Dieta crua avançada — o osso fornece cálcio natural; nunca substitua por osso cozido.",
-      "realAncestralOmega": "O peixe inteiro (sardinha, cavala) equilibra a relação ómega-3:6. Use peixes pequenos selvagens para limitar o mercúrio."
+      "realAncestralOmega": "O peixe inteiro (sardinha, cavala) equilibra a relação ómega-3:6. Use peixes pequenos selvagens para limitar o mercúrio.",
+      "taurineHeartsNote": "Dieta crua com corações assumidos — fonte natural de taurina. Mire ≥30% da carne muscular como coração.",
+      "arachidonicCookedNote": "Dieta cozida: garanta gordura animal (pele de frango, gema) para o ácido araquidônico.",
+      "cookedCatSupplementsNote": "Dietas cozidas para gato precisam de taurina + complexo B + vitamina E, adicionados após o cozimento.",
+      "hydrationCatNote": "Gatos bebem pouca água — sirva comida úmida, adicione água ou caldo, monitore a urina."
     },
     "ages": {
       "puppy": "Filhote (<1 ano)",
       "adult": "Adulto (1–7 anos)",
-      "senior": "Sênior (7+ anos)"
+      "senior": "Sênior (7+ anos)",
+      "kitten": "Gatinho (< 1 ano)"
     },
     "activities": {
       "sedentary": "Sedentário",
@@ -165,14 +173,24 @@
       "high_protein": "Rico em proteína",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ancestral Real"
+      "real_ancestral": "Ancestral Real",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Presa inteira",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Carnívoro cozido"
     },
     "dietSub": {
       "balanced_cooked": "40% proteína / 50% veg",
       "high_protein": "55% proteína / 30% veg",
       "pmr": "Cru 80-10-10",
       "barf": "Cru + vegetais + sementes",
-      "real_ancestral": "Cru + peixe + fibra"
+      "real_ancestral": "Cru + peixe + fibra",
+      "cat_pmr": "Modelo de presa cru",
+      "cat_frankenprey": "Cortes crus montados",
+      "cat_whole_prey": "Camundongos, codornas, pintos",
+      "cat_barf_lite": "Cru + pouca verdura",
+      "cat_cooked_carnivore": "+ suplemento de taurina"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
@@ -212,7 +230,13 @@
       "caPLow": "O rácio Ca:P é de {{ratio}}:1 — abaixo do mínimo seguro AAFCO (1:1). Adicione ~{{calcium}} mg de cálcio suplementar por dia.",
       "caPHigh": "O rácio Ca:P é de {{ratio}}:1 — acima do máximo seguro AAFCO (2:1). Reduza o osso ou equilibre com proteína pobre em cálcio.",
       "puppyCaP": "Cachorros em crescimento são sensíveis ao Ca:P alto — mantenha abaixo de 1.6:1 para evitar doenças ósseas.",
-      "cookedCaDeficient": "Dietas cozidas são deficientes em cálcio por defeito. Adicione ~{{calcium}} mg de Ca (≈½ c.chá de casca de ovo moída por ~454 g de carne, ou use um balanceador)."
+      "cookedCaDeficient": "Dietas cozidas são deficientes em cálcio por defeito. Adicione ~{{calcium}} mg de Ca (≈½ c.chá de casca de ovo moída por ~454 g de carne, ou use um balanceador).",
+      "lowTaurine": "A taurina está ausente ou baixa. O cozimento a destrói; a suplementação é obrigatória. A deficiência causa cegueira irreversível e cardiomiopatia dilatada.",
+      "lowArachidonic": "Ácido araquidônico muito baixo. Gatos não conseguem sintetizá-lo — deve vir de gordura animal ou gema de ovo.",
+      "lowArginine": "Arginina muito baixa. Uma única refeição sem arginina pode causar hiperamonemia aguda em gatos.",
+      "vitAToxicity": "A proporção de fígado ({{liverPct}}%) excede o limite seguro. Reduza para evitar hipervitaminose A.",
+      "thiamineRiskRawFish": "Peixe de água doce cru destrói a tiamina por tiaminase. Cozinhe o peixe para gatos ou use espécies marinhas ocasionalmente.",
+      "steatitisTunaExcess": "O atum excede 10% da ingestão. Risco de acúmulo de mercúrio + esteatite (doença da gordura amarela). Faça rotação de proteínas."
     },
     "eyebrow": "Nutrição",
     "placeholderHint": "Insira o perfil do seu cão e toque em Calcular.",
@@ -251,7 +275,10 @@
       "balanceIt": "Nutricionistas veterinários da UC Davis — específico por receita",
       "wysong": "Para dietas somente à base de carne",
       "animalEssentials": "Amplo espectro",
-      "volhard": "Abordagem de pré-mistura completa"
+      "volhard": "Abordagem de pré-mistura completa",
+      "balanceItFeline": "Spin-off da UC Davis — serviço de formulação felina e premixes específicos.",
+      "ezComplete": "EZ Complete Fur Cats — premix tudo-em-um para dietas caseiras cruas e cozidas.",
+      "alnutrin": "Alnutrin com cálcio — premix com Ca opcional, projetado para dietas sem osso."
     },
     "aafcoTable": {
       "title": "Perfil de nutrientes AAFCO",
@@ -319,7 +346,8 @@
         "3": "Cães séniores ou com aparelho digestivo sensível podem precisar de 10–14 dias em vez de 7."
       }
     },
-    "eyebrow": "Suplementos"
+    "eyebrow": "Suplementos",
+    "taurineCallout": "Gatos não sintetizam taurina — suplementação é obrigatória em dietas cozidas e fortemente recomendada em dietas cruas sem corações. Deficiência causa cegueira irreversível e cardiomiopatia dilatada."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Saber mais",
       "badge": "Metodologia validada por veterinários",
       "headlineA": "Comida de verdade.",
-      "headlineB": "Para o seu cão de verdade."
+      "headlineB": "Para o seu cão de verdade.",
+      "headlineB_cat": "Para o seu gato de verdade."
     },
     "features": {
       "heading": "Tudo o que precisa",
@@ -767,6 +796,22 @@
           "dose": "Conforme rótulo — não exceder 3000 UI/kg MS"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Cão",
+    "cat": "Gato",
+    "tooltip": {
+      "dog": "Mudar para gato",
+      "cat": "Mudar para cão"
+    },
+    "switchTo": "Mudar para {{other}}",
+    "welcome": {
+      "title": "Para quem você está cozinhando?",
+      "body": "Gatos e cães têm necessidades nutricionais diferentes. Escolha para começar — pode mudar a qualquer momento na barra superior.",
+      "dogDesc": "Cães são onívoros flexíveis com necessidades proteicas moderadas.",
+      "catDesc": "Gatos são carnívoros obrigatórios. Os planos são mais rígidos.",
+      "footnote": "PawCook não substitui orientação veterinária. Consulte um nutricionista veterinário para doenças crônicas ou crescimento."
     }
   }
 }

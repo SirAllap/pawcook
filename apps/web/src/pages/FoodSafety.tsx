@@ -6,6 +6,7 @@ import meatsData from '@pawcook/data/meats';
 import vegetablesData from '@pawcook/data/vegetables';
 import fruitsData from '@pawcook/data/fruits';
 import toxicData from '@pawcook/data/toxic';
+import { useSpecies } from '../lib/species';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -16,10 +17,10 @@ import { cn } from '../lib/cn';
 
 type TabId = 'toxic' | 'meats' | 'vegetables' | 'fruits';
 
-interface Meat { id: string; label: string; rawSafe: boolean; cookedSafe: boolean; notes: string; }
+interface Meat { id: string; label: string; rawSafe: boolean; cookedSafe: boolean; notes: string; catNotes?: string; }
 interface Veg  { id: string; label: string; benefit: string; notes: string; }
 interface Fruit{ id: string; label: string; notes: string; }
-interface Toxic{ id: string; label: string; toxicCompound: string; effect: string; }
+interface Toxic{ id: string; label: string; toxicCompound: string; effect: string; species?: ('dog' | 'cat')[]; }
 
 const meats = meatsData as Meat[];
 const vegetables = vegetablesData as Veg[];
@@ -28,11 +29,16 @@ const toxic = toxicData as Toxic[];
 
 export default function FoodSafety() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
   const [tab, setTab] = useState<TabId>('toxic');
   const [search, setSearch] = useState('');
   const q = search.toLowerCase();
 
-  const fToxic = toxic.filter((x) => !q
+  // Filter toxic items by species — entries without a species field
+  // apply to both, by convention.
+  const speciesToxic = toxic.filter((x) => !x.species || x.species.includes(species));
+
+  const fToxic = speciesToxic.filter((x) => !q
     || t(`toxicData.${x.id}.label`,    { defaultValue: x.label }).toLowerCase().includes(q)
     || t(`toxicData.${x.id}.effect`,   { defaultValue: x.effect }).toLowerCase().includes(q));
   const fMeats = meats.filter((x) => !q
@@ -43,7 +49,7 @@ export default function FoodSafety() {
     || t(`fruitData.${x.id}.label`, { defaultValue: x.label }).toLowerCase().includes(q));
 
   const tabs: { id: TabId; label: string; Icon: typeof ShieldAlert; count: number }[] = [
-    { id: 'toxic',      label: t('foodSafety.tabs.toxic'),      Icon: ShieldAlert, count: toxic.length },
+    { id: 'toxic',      label: t('foodSafety.tabs.toxic'),      Icon: ShieldAlert, count: speciesToxic.length },
     { id: 'meats',      label: t('foodSafety.tabs.meats'),      Icon: Beef,        count: meats.length },
     { id: 'vegetables', label: t('foodSafety.tabs.vegetables'), Icon: Carrot,      count: vegetables.length },
     { id: 'fruits',     label: t('foodSafety.tabs.fruits'),     Icon: Apple,       count: fruits.length },
@@ -140,6 +146,11 @@ export default function FoodSafety() {
                       <div className="flex-1 min-w-0">
                         <h3 className="font-black text-base mb-1">{t(`meatData.${x.id}.label`, { defaultValue: x.label })}</h3>
                         <p className="text-sm text-muted-fg leading-relaxed">{t(`meatData.${x.id}.notes`, { defaultValue: x.notes })}</p>
+                        {species === 'cat' && x.catNotes && (
+                          <p className="mt-2 text-xs text-primary leading-relaxed font-medium border-l-2 border-primary/30 pl-2">
+                            {t(`meatData.${x.id}.catNotes`, { defaultValue: x.catNotes })}
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-col gap-1.5 shrink-0">
                         <Badge variant={x.rawSafe ? 'success' : 'warning'} className="justify-center">

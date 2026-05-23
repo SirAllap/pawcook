@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner';
-import { Flame, Printer, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer } from 'lucide-react';
+import { Flame, Printer, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles } from 'lucide-react';
 import { CookingInputSchema, type CookingInput, calculateCookingTime, type CookingResult } from '@pawcook/shared';
+import { useSpecies } from '../lib/species';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -68,6 +69,7 @@ function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 
 
 export default function CookingCalculator() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
   const [result, setResult] = useState<CookingResult | null>(null);
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
   const [calculating, setCalculating] = useState(false);
@@ -297,12 +299,27 @@ export default function CookingCalculator() {
                     t('cooking.warn.thermometer'),
                     ...(submittedData.meatType === 'pork'   ? [t('cooking.warn.pork')]   : []),
                     ...(submittedData.meatType === 'salmon' ? [t('cooking.warn.salmon')] : []),
+                    ...(species === 'cat' && ['salmon', 'whitefish', 'mackerel'].includes(submittedData.meatType)
+                      ? [t('cooking.warn.catThiaminase')]
+                      : []),
                   ].map((w, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
                       <span className="text-danger font-black shrink-0">!</span>{w}
                     </p>
                   ))}
                 </Card>
+
+                {species === 'cat' && (
+                  <Card padding="md" className="bg-primary/5 border-primary/30">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-primary mb-2 flex items-center gap-1.5">
+                      <Sparkles className="h-3 w-3" />
+                      {t('cooking.catSupplementsTitle')}
+                    </p>
+                    <p className="text-sm text-foreground/90 leading-relaxed">
+                      {t('cooking.catSupplementsBody')}
+                    </p>
+                  </Card>
+                )}
               </div>
             </Card>
           </motion.div>

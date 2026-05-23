@@ -96,7 +96,8 @@
       "noBones": "Nunca incluyas huesos cocidos en ninguna receta — se astillan y pueden causar atragantamiento o perforación gastrointestinal.",
       "thermometer": "Verifica siempre la temperatura interna con un termómetro de cocina.",
       "pork": "El cerdo siempre debe estar completamente cocido — el cerdo crudo lleva riesgo de Trichinella.",
-      "salmon": "El salmón solo debe darse crudo si fue congelado durante ≥7 días (riesgo de Neorickettsia)."
+      "salmon": "El salmón solo debe darse crudo si fue congelado durante ≥7 días (riesgo de Neorickettsia).",
+      "catThiaminase": "Para gatos: la tiaminasa del pescado crudo destruye la tiamina. Cocina siempre bien el pescado antes de dárselo a un gato."
     },
     "nutrient": {
       "sous_vide": "El sous-vide preserva la mayoría de las vitaminas hidrosolubles (complejo B, Vit C). Incluye todos los jugos de las bolsas en la comida.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Cocina",
     "toastReady": "¡Receta lista!",
-    "placeholderHint": "Elige una carne y un método, luego pulsa Calcular."
+    "placeholderHint": "Elige una carne y un método, luego pulsa Calcular.",
+    "catSupplementsTitle": "Suplementos para gato tras cocinar",
+    "catSupplementsBody": "El calor destruye la taurina, las vitaminas B (tiamina, niacina) y parte de la vitamina E. Añade el stack felino — taurina 250–500 mg, complejo B, vitamina E — una vez enfriado el plato."
   },
   "nutrition": {
     "title": "Calculadora de nutrición",
@@ -129,12 +132,17 @@
       "rer": "RER (en reposo): {{kcal}} kcal/día",
       "der": "DER (energía diaria): {{kcal}} kcal/día (×{{multiplier}} multiplicador)",
       "rawDiet": "Dieta cruda avanzada — el hueso aporta calcio natural; nunca sustituyas por hueso cocinado.",
-      "realAncestralOmega": "El pescado entero (sardinas, caballa) equilibra el ratio omega-3:6. Usa pescados pequeños salvajes para limitar el mercurio."
+      "realAncestralOmega": "El pescado entero (sardinas, caballa) equilibra el ratio omega-3:6. Usa pescados pequeños salvajes para limitar el mercurio.",
+      "taurineHeartsNote": "Dieta cruda con corazones asumidos — fuente natural de taurina. Apunta a ≥30% de carne muscular procedente de corazones.",
+      "arachidonicCookedNote": "Dieta cocinada: asegúrate de incluir grasa animal (piel de pollo, yema de huevo) para el ácido araquidónico.",
+      "cookedCatSupplementsNote": "Las dietas cocinadas para gato necesitan suplementación de taurina + complejo B + vitamina E, añadidos tras cocinar.",
+      "hydrationCatNote": "Los gatos beben poca agua — ofrece comida húmeda, añade caldo o agua, vigila la orina."
     },
     "ages": {
       "puppy": "Cachorro (<1 año)",
       "adult": "Adulto (1–7 años)",
-      "senior": "Senior (7+ años)"
+      "senior": "Senior (7+ años)",
+      "kitten": "Gatito (< 1 año)"
     },
     "activities": {
       "sedentary": "Sedentario",
@@ -165,14 +173,24 @@
       "high_protein": "Alto en proteína",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ancestral Real"
+      "real_ancestral": "Ancestral Real",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Presa entera",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Carnívoro cocinado"
     },
     "dietSub": {
       "balanced_cooked": "40% proteína / 50% veg",
       "high_protein": "55% proteína / 30% veg",
       "pmr": "Crudo 80-10-10",
       "barf": "Crudo + verduras + semillas",
-      "real_ancestral": "Crudo + pescado + fibra"
+      "real_ancestral": "Crudo + pescado + fibra",
+      "cat_pmr": "Modelo de presa crudo",
+      "cat_frankenprey": "Cortes crudos ensamblados",
+      "cat_whole_prey": "Ratones, codornices, pollitos",
+      "cat_barf_lite": "Crudo + verdura",
+      "cat_cooked_carnivore": "+ suplemento de taurina"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
@@ -212,7 +230,13 @@
       "caPLow": "La relación Ca:P es de {{ratio}}:1 — por debajo del mínimo seguro AAFCO (1:1). Añade ~{{calcium}} mg de calcio suplementario al día.",
       "caPHigh": "La relación Ca:P es de {{ratio}}:1 — por encima del máximo seguro AAFCO (2:1). Reduce el hueso o equilibra con proteína baja en calcio.",
       "puppyCaP": "Los cachorros en crecimiento son sensibles al Ca:P alto — mantenlo por debajo de 1.6:1 para evitar enfermedades óseas.",
-      "cookedCaDeficient": "Las dietas cocinadas son deficientes en calcio por defecto. Añade ~{{calcium}} mg de Ca (≈½ cdta de cáscara de huevo molida por ~454 g de carne, o usa un balanceador)."
+      "cookedCaDeficient": "Las dietas cocinadas son deficientes en calcio por defecto. Añade ~{{calcium}} mg de Ca (≈½ cdta de cáscara de huevo molida por ~454 g de carne, o usa un balanceador).",
+      "lowTaurine": "La taurina falta o es insuficiente. Cocinar la destruye; suplementarla es obligatorio. Su carencia causa ceguera irreversible y cardiomiopatía dilatada.",
+      "lowArachidonic": "Ácido araquidónico demasiado bajo. Los gatos no pueden sintetizarlo — debe venir de grasa animal o yema de huevo.",
+      "lowArginine": "Arginina demasiado baja. Una sola comida sin arginina puede causar hiperamoniemia aguda en gatos.",
+      "vitAToxicity": "La proporción de hígado ({{liverPct}}%) supera el límite seguro. Redúcela para evitar hipervitaminosis A.",
+      "thiamineRiskRawFish": "El pescado de agua dulce crudo destruye la tiamina por tiaminasa. Cocina el pescado para gatos o usa especies marinas ocasionalmente.",
+      "steatitisTunaExcess": "El atún supera el 10% de la ingesta. Riesgo de acumulación de mercurio y esteatitis (enfermedad de la grasa amarilla). Rota proteínas."
     },
     "eyebrow": "Nutrición",
     "placeholderHint": "Introduce el perfil de tu perro y pulsa Calcular.",
@@ -251,7 +275,10 @@
       "balanceIt": "Nutricionistas veterinarios de UC Davis — específico por receta",
       "wysong": "Para dietas solo con carne",
       "animalEssentials": "Espectro amplio",
-      "volhard": "Enfoque de premezcla completa"
+      "volhard": "Enfoque de premezcla completa",
+      "balanceItFeline": "Derivado de UC Davis — servicio de formulación felina y premixes específicos para gato.",
+      "ezComplete": "EZ Complete Fur Cats — premix todo-en-uno para dietas caseras crudas y cocinadas.",
+      "alnutrin": "Alnutrin con calcio — premix con Ca opcional, diseñado para dietas caseras sin hueso."
     },
     "aafcoTable": {
       "title": "Perfil de nutrientes AAFCO",
@@ -319,7 +346,8 @@
         "3": "Los perros mayores o con sistemas digestivos sensibles pueden necesitar una transición de 10–14 días en vez de 7."
       }
     },
-    "eyebrow": "Suplementos"
+    "eyebrow": "Suplementos",
+    "taurineCallout": "Los gatos no sintetizan taurina — la suplementación es obligatoria en dietas cocinadas y muy recomendada en dietas crudas sin corazones. Su carencia provoca ceguera irreversible y cardiomiopatía dilatada."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Más información",
       "badge": "Metodología veterinaria validada",
       "headlineA": "Comida real.",
-      "headlineB": "Para tu perro de verdad."
+      "headlineB": "Para tu perro de verdad.",
+      "headlineB_cat": "Para tu gato de verdad."
     },
     "features": {
       "heading": "Todo lo que necesitas",
@@ -767,6 +796,22 @@
           "dose": "Según etiqueta — no exceder 3000 UI/kg MS"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Perro",
+    "cat": "Gato",
+    "tooltip": {
+      "dog": "Cambiar a gato",
+      "cat": "Cambiar a perro"
+    },
+    "switchTo": "Cambiar a {{other}}",
+    "welcome": {
+      "title": "¿Para quién estás cocinando?",
+      "body": "Los gatos y los perros tienen necesidades nutricionales distintas. Elige uno para empezar — puedes cambiar en cualquier momento desde la barra superior.",
+      "dogDesc": "Los perros son omnívoros flexibles con necesidades proteicas moderadas.",
+      "catDesc": "Los gatos son carnívoros estrictos. Sus planes son más rigurosos.",
+      "footnote": "PawCook no es consejo veterinario. Consulta a un nutricionista veterinario para enfermedades crónicas o crecimiento."
     }
   }
 }

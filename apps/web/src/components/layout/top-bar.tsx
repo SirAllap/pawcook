@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { PawMark, Wordmark } from '../brand/logo';
 import { ThemeToggle } from '../theme/theme-toggle';
 import { LanguageSwitcher } from '../i18n/language-switcher';
+import { SpeciesSwitcher } from '../species/species-switcher';
 import { DesktopNav } from './desktop-nav';
 import { useIsDesktop } from '../../lib/use-media-query';
 import { cn } from '../../lib/cn';
@@ -52,6 +53,7 @@ export function TopBar() {
           {isDesktop && <DesktopNav />}
 
           <div className="flex items-center gap-1">
+            <SpeciesSwitcher />
             <ThemeToggle />
             <LanguageSwitcher />
           </div>

@@ -96,7 +96,8 @@
       "noBones": "Voeg nooit gekookte botten toe aan een recept — ze versplinteren en kunnen verstikking of maagdarmperforatie veroorzaken.",
       "thermometer": "Controleer altijd de kerntemperatuur met een vleesthermometer.",
       "pork": "Varkensvlees moet altijd volledig gaar zijn — rauw varkensvlees draagt Trichinella-risico.",
-      "salmon": "Zalm mag alleen rauw worden gegeven als het ≥7 dagen is ingevroren (Neorickettsia-risico)."
+      "salmon": "Zalm mag alleen rauw worden gegeven als het ≥7 dagen is ingevroren (Neorickettsia-risico).",
+      "catThiaminase": "Voor katten: thiaminase in rauwe vis vernietigt thiamine. Kook vis altijd goed voordat je het aan een kat geeft."
     },
     "nutrient": {
       "sous_vide": "Sous-vide bewaart de meeste in water oplosbare vitamines (B-complex, Vit C). Voeg alle zakjussappen toe aan de maaltijd.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Koken",
     "toastReady": "Recept klaar.",
-    "placeholderHint": "Kies een vlees en methode, tik dan op Bereken."
+    "placeholderHint": "Kies een vlees en methode, tik dan op Bereken.",
+    "catSupplementsTitle": "Kat-supplementen na het koken",
+    "catSupplementsBody": "Warmte vernietigt taurine, B-vitamines (thiamine, niacine) en een deel van vitamine E. Voeg de kattenstapel toe — taurine 250–500 mg, B-complex, vitamine E — nadat het gerecht is afgekoeld."
   },
   "nutrition": {
     "title": "Voedingscalculator",
@@ -129,12 +132,17 @@
       "rer": "RER (rust): {{kcal}} kcal/dag",
       "der": "DER (dagelijkse energie): {{kcal}} kcal/dag (×{{multiplier}} vermenigvuldiger)",
       "rawDiet": "Geavanceerd rauwvoerdieet — bot levert natuurlijk calcium; vervang nooit door gekookt bot.",
-      "realAncestralOmega": "Hele vis (sardines, makreel) balanceert de omega-3:6-verhouding. Gebruik kleine wildvang om kwik te beperken."
+      "realAncestralOmega": "Hele vis (sardines, makreel) balanceert de omega-3:6-verhouding. Gebruik kleine wildvang om kwik te beperken.",
+      "taurineHeartsNote": "Rauw dieet met harten verondersteld — natuurlijke taurinebron. Streef naar ≥30% spiervlees uit harten.",
+      "arachidonicCookedNote": "Gekookt dieet: dierlijk vet (kippenhuid, eidooier) insluiten voor arachidonzuur.",
+      "cookedCatSupplementsNote": "Gekookte kattendiëten vereisen taurine + B-complex + vitamine E, toegevoegd na het koken.",
+      "hydrationCatNote": "Katten drinken weinig — geef natvoer, voeg water of bouillon toe, let op urineproductie."
     },
     "ages": {
       "puppy": "Pup (<1 jaar)",
       "adult": "Volwassen (1–7 jaar)",
-      "senior": "Senior (7+ jaar)"
+      "senior": "Senior (7+ jaar)",
+      "kitten": "Kitten (< 1 jr)"
     },
     "activities": {
       "sedentary": "Sedentair",
@@ -165,14 +173,24 @@
       "high_protein": "Eiwitrijk",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Echte Voorouderlijke"
+      "real_ancestral": "Echte Voorouderlijke",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Hele prooi",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Gekookte carnivoor"
     },
     "dietSub": {
       "balanced_cooked": "40% eiwit / 50% groenten",
       "high_protein": "55% eiwit / 30% groenten",
       "pmr": "Rauw 80-10-10",
       "barf": "Rauw + groenten + zaden",
-      "real_ancestral": "Rauw + vis + vezel"
+      "real_ancestral": "Rauw + vis + vezel",
+      "cat_pmr": "Prooi-model rauw",
+      "cat_frankenprey": "Samengestelde rauwe stukken",
+      "cat_whole_prey": "Muizen, kwartels, kuikens",
+      "cat_barf_lite": "Rauw + beetje groente",
+      "cat_cooked_carnivore": "+ taurine-supplement"
     },
     "macroProtein": "eiwit",
     "macroVeg": "groenten",
@@ -212,7 +230,13 @@
       "caPLow": "De Ca:P-verhouding is {{ratio}}:1 — onder het AAFCO-minimum van 1:1. Voeg ~{{calcium}} mg extra calcium per dag toe.",
       "caPHigh": "De Ca:P-verhouding is {{ratio}}:1 — boven het AAFCO-maximum van 2:1. Verminder bot of balanceer met eiwit met weinig calcium.",
       "puppyCaP": "Groeiende pups zijn gevoelig voor hoge Ca:P — houd onder 1.6:1 om botziekten te voorkomen.",
-      "cookedCaDeficient": "Gekookte diëten zijn standaard calciumarm. Voeg ~{{calcium}} mg Ca toe (≈½ tl gemalen eierschaal per ~454 g vlees, of gebruik een balancer)."
+      "cookedCaDeficient": "Gekookte diëten zijn standaard calciumarm. Voeg ~{{calcium}} mg Ca toe (≈½ tl gemalen eierschaal per ~454 g vlees, of gebruik een balancer).",
+      "lowTaurine": "Taurine ontbreekt of is te laag. Koken vernietigt het; suppletie is verplicht. Tekort veroorzaakt onomkeerbare blindheid en gedilateerde cardiomyopathie.",
+      "lowArachidonic": "Arachidonzuur te laag. Katten kunnen het niet aanmaken — moet komen uit dierlijk vet of eidooier.",
+      "lowArginine": "Arginine te laag. Eén argininevrije maaltijd kan acute hyperammoniëmie veroorzaken bij katten.",
+      "vitAToxicity": "Leveraandeel ({{liverPct}}%) overschrijdt het veilige plafond. Verlaag om hypervitaminose A te voorkomen.",
+      "thiamineRiskRawFish": "Rauwe zoetwatervis vernietigt thiamine via thiaminase. Kook vis voor katten of gebruik incidenteel zoutwatersoorten.",
+      "steatitisTunaExcess": "Tonijn overschrijdt 10% van de inname. Risico van kwikophoping + steatitis (gele-vet-ziekte). Wissel eiwitten af."
     },
     "eyebrow": "Voeding",
     "placeholderHint": "Voer het profiel van je hond in en tik op Bereken.",
@@ -251,7 +275,10 @@
       "balanceIt": "UC Davis veterinaire voedingsdeskundigen — receptspecifiek",
       "wysong": "Voor volledig vleesdiëten",
       "animalEssentials": "Breed spectrum",
-      "volhard": "Volledige premix-aanpak"
+      "volhard": "Volledige premix-aanpak",
+      "balanceItFeline": "Spin-off van UC Davis — formuleringsservice en premixen specifiek voor katten.",
+      "ezComplete": "EZ Complete Fur Cats — alles-in-één premix voor zelfgemaakte rauwe en gekookte kattenvoeding.",
+      "alnutrin": "Alnutrin met calcium — premix met optionele Ca voor botloze diëten."
     },
     "aafcoTable": {
       "title": "AAFCO-voedingsprofiel",
@@ -319,7 +346,8 @@
         "3": "Oudere honden of honden met een gevoelig maag-darmstelsel hebben mogelijk een overgang van 10–14 dagen nodig in plaats van 7."
       }
     },
-    "eyebrow": "Supplementen"
+    "eyebrow": "Supplementen",
+    "taurineCallout": "Katten maken geen taurine aan — suppletie is verplicht bij gekookte diëten en sterk aanbevolen bij rauwe diëten zonder harten. Tekort veroorzaakt onomkeerbare blindheid en gedilateerde cardiomyopathie."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Meer info",
       "badge": "Door dierenartsen onderschreven methodiek",
       "headlineA": "Echt eten.",
-      "headlineB": "Voor je echte hond."
+      "headlineB": "Voor je echte hond.",
+      "headlineB_cat": "Voor je echte kat."
     },
     "features": {
       "heading": "Alles wat je nodig hebt",
@@ -767,6 +796,22 @@
           "dose": "Volgens label — niet meer dan 3000 IE/kg DS"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Hond",
+    "cat": "Kat",
+    "tooltip": {
+      "dog": "Wissel naar kat",
+      "cat": "Wissel naar hond"
+    },
+    "switchTo": "Wissel naar {{other}}",
+    "welcome": {
+      "title": "Voor wie kook je?",
+      "body": "Katten en honden hebben verschillende voedingsbehoeften. Kies er een om te starten — je kunt altijd wisselen via de bovenste balk.",
+      "dogDesc": "Honden zijn flexibele omnivoren met matige eiwitbehoefte.",
+      "catDesc": "Katten zijn strikte carnivoren. Hun plannen zijn strenger.",
+      "footnote": "PawCook is geen diergeneeskundig advies. Raadpleeg een veterinair voedingsdeskundige voor chronische aandoeningen of groei."
     }
   }
 }

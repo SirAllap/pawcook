@@ -96,7 +96,8 @@
       "noBones": "Never include cooked bones in any recipe — they splinter and can cause choking or GI perforation.",
       "thermometer": "Always verify internal temperature with a meat thermometer.",
       "pork": "Pork must always be fully cooked — raw pork carries Trichinella risk.",
-      "salmon": "Salmon should only be fed raw if frozen for ≥7 days first (Neorickettsia risk)."
+      "salmon": "Salmon should only be fed raw if frozen for ≥7 days first (Neorickettsia risk).",
+      "catThiaminase": "For cats: thiaminase in raw fish destroys thiamine. Always cook fish thoroughly before feeding to a cat."
     },
     "nutrient": {
       "sous_vide": "Sous-vide preserves the most water-soluble vitamins (B-complex, Vit C). Include all bag juices in the meal.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Cooking",
     "toastReady": "Recipe ready.",
-    "placeholderHint": "Choose a meat and method, then tap Calculate."
+    "placeholderHint": "Choose a meat and method, then tap Calculate.",
+    "catSupplementsTitle": "Cat supplements after cooking",
+    "catSupplementsBody": "Heat destroys taurine, B-vitamins (thiamine, niacin) and some vitamin E. Add a feline supplement stack — taurine 250–500 mg, B-complex, vitamin E — after the meal cools."
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -129,12 +132,17 @@
       "rer": "RER (resting): {{kcal}} kcal/day",
       "der": "DER (daily energy): {{kcal}} kcal/day (×{{multiplier}} multiplier)",
       "rawDiet": "Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.",
-      "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury."
+      "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury.",
+      "taurineHeartsNote": "Raw diet with hearts assumed — natural taurine source. Aim for ≥30% of muscle meat from hearts.",
+      "arachidonicCookedNote": "Cooked diet: ensure animal fat (chicken skin, egg yolk) is included for arachidonic acid.",
+      "cookedCatSupplementsNote": "Cooked cat diets need taurine + B-complex + vitamin E supplementation, added after cooking.",
+      "hydrationCatNote": "Cats have weak thirst drive — feed wet food, add water or bone broth, monitor urine output."
     },
     "ages": {
       "puppy": "Puppy (<1 yr)",
       "adult": "Adult (1–7 yr)",
-      "senior": "Senior (7+ yr)"
+      "senior": "Senior (7+ yr)",
+      "kitten": "Kitten (< 1 yr)"
     },
     "activities": {
       "sedentary": "Sedentary",
@@ -165,14 +173,24 @@
       "high_protein": "High Protein",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Real Ancestral"
+      "real_ancestral": "Real Ancestral",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Whole prey",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Cooked carnivore"
     },
     "dietSub": {
       "balanced_cooked": "40% protein / 50% veg",
       "high_protein": "55% protein / 30% veg",
       "pmr": "80-10-10 raw",
       "barf": "Raw + veg + seeds",
-      "real_ancestral": "Raw + seafood + fiber"
+      "real_ancestral": "Raw + seafood + fiber",
+      "cat_pmr": "Prey-model raw",
+      "cat_frankenprey": "Assembled raw cuts",
+      "cat_whole_prey": "Mice, quail, chicks",
+      "cat_barf_lite": "Raw + small veg",
+      "cat_cooked_carnivore": "+ taurine supplement"
     },
     "macroProtein": "protein",
     "macroVeg": "veg",
@@ -212,7 +230,13 @@
       "caPLow": "Ca:P ratio is {{ratio}}:1 — below the AAFCO safe minimum of 1:1. Add ~{{calcium}} mg supplemental calcium daily.",
       "caPHigh": "Ca:P ratio is {{ratio}}:1 — above the AAFCO safe maximum of 2:1. Reduce bone content or balance with low-calcium protein.",
       "puppyCaP": "Growing puppies are sensitive to high Ca:P — keep under 1.6:1 to avoid skeletal disease.",
-      "cookedCaDeficient": "Cooked diets are calcium-deficient by default. Add ~{{calcium}} mg Ca (≈½ tsp ground eggshell per ~454 g meat, or use a balancer)."
+      "cookedCaDeficient": "Cooked diets are calcium-deficient by default. Add ~{{calcium}} mg Ca (≈½ tsp ground eggshell per ~454 g meat, or use a balancer).",
+      "lowTaurine": "Taurine is missing or low. Cooking destroys taurine; supplementation is mandatory. Deficiency causes irreversible blindness and dilated cardiomyopathy.",
+      "lowArachidonic": "Arachidonic acid is too low. Cats cannot synthesize it — must come from animal fat or egg yolk.",
+      "lowArginine": "Arginine is too low. A single arginine-deficient meal can cause acute hyperammonemia in cats.",
+      "vitAToxicity": "Liver share ({{liverPct}}%) exceeds safe ceiling. Reduce to avoid hypervitaminosis A.",
+      "thiamineRiskRawFish": "Raw freshwater fish destroys thiamine via thiaminase. Cook fish for cats or use saltwater species occasionally.",
+      "steatitisTunaExcess": "Tuna exceeds 10% of intake. Mercury accumulation + steatitis (yellow fat disease) risk. Rotate proteins."
     },
     "eyebrow": "Nutrition",
     "placeholderHint": "Enter your dog's profile and tap Calculate.",
@@ -251,7 +275,10 @@
       "balanceIt": "UC Davis veterinary nutritionists — recipe-specific",
       "wysong": "For all-meat diets",
       "animalEssentials": "Broad spectrum",
-      "volhard": "Full premix approach"
+      "volhard": "Full premix approach",
+      "balanceItFeline": "UC Davis spinoff — feline-specific formulation service and premixes.",
+      "ezComplete": "EZ Complete Fur Cats — all-in-one premix designed for raw and cooked homemade feline diets.",
+      "alnutrin": "Alnutrin with calcium — premix with optional Ca, designed for boneless homemade cat food."
     },
     "aafcoTable": {
       "title": "AAFCO Nutrient Profile",
@@ -319,7 +346,8 @@
         "3": "Senior dogs and dogs with sensitive GI tracts may need a 10–14 day transition instead of 7."
       }
     },
-    "eyebrow": "Supplements"
+    "eyebrow": "Supplements",
+    "taurineCallout": "Cats cannot synthesize taurine — supplementation is mandatory in cooked diets and strongly recommended in raw diets without hearts. Deficiency causes irreversible blindness and dilated cardiomyopathy."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Learn more",
       "badge": "Vet-aligned methodology",
       "headlineA": "Real food.",
-      "headlineB": "For your real dog."
+      "headlineB": "For your real dog.",
+      "headlineB_cat": "For your real cat."
     },
     "features": {
       "heading": "Everything you need",
@@ -767,6 +796,22 @@
           "dose": "Per label — do not exceed 3000 IU/kg DM"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Dog",
+    "cat": "Cat",
+    "tooltip": {
+      "dog": "Switch to cat",
+      "cat": "Switch to dog"
+    },
+    "switchTo": "Switch to {{other}}",
+    "welcome": {
+      "title": "Who are you cooking for?",
+      "body": "Cats and dogs need different nutrition. Pick one to start — you can switch any time from the top bar.",
+      "dogDesc": "Dogs are flexible omnivores with moderate protein needs.",
+      "catDesc": "Cats are obligate carnivores. Their plans are stricter.",
+      "footnote": "PawCook is not veterinary advice. Consult a vet nutritionist for chronic conditions or growth."
     }
   }
 }

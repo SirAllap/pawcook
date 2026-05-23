@@ -9,6 +9,9 @@
     "./toxic": "./src/toxic.json",
     "./supplements": "./src/supplements.json",
     "./aafco": "./src/aafco.json",
-    "./transition": "./src/transition.json"
+    "./aafco-cat": "./src/aafco-cat.json",
+    "./cat-supplements": "./src/cat-supplements.json",
+    "./transition": "./src/transition.json",
+    "./cat-transition": "./src/cat-transition.json"
   }
 }

@@ -1,14 +1,14 @@
 [
-  { "id": "beef", "label": "Beef", "rawSafe": true, "cookedSafe": true, "notes": "Iron, zinc, B12, creatine" },
-  { "id": "chicken", "label": "Chicken", "rawSafe": false, "cookedSafe": true, "notes": "Cook thoroughly; great post-GI illness" },
-  { "id": "turkey", "label": "Turkey", "rawSafe": false, "cookedSafe": true, "notes": "Lower allergen risk than chicken" },
-  { "id": "lamb", "label": "Lamb", "rawSafe": true, "cookedSafe": true, "notes": "Novel protein; good for beef-sensitive dogs" },
-  { "id": "pork", "label": "Pork", "rawSafe": false, "cookedSafe": true, "notes": "Avoid cured/processed. Trichinella risk raw." },
-  { "id": "duck", "label": "Duck", "rawSafe": true, "cookedSafe": true, "notes": "Novel protein, hypoallergenic" },
-  { "id": "rabbit", "label": "Rabbit", "rawSafe": true, "cookedSafe": true, "notes": "Very lean, novel protein" },
-  { "id": "venison", "label": "Venison", "rawSafe": true, "cookedSafe": true, "notes": "Very lean, novel protein" },
-  { "id": "salmon", "label": "Salmon", "rawSafe": false, "cookedSafe": true, "notes": "Raw only if frozen ≥7 days first. Watch Neorickettsia (Pacific NW)." },
-  { "id": "mackerel", "label": "Mackerel", "rawSafe": true, "cookedSafe": true, "notes": "Omega-3 powerhouse" },
-  { "id": "sardines", "label": "Sardines", "rawSafe": true, "cookedSafe": true, "notes": "Whole-fish nutrition" },
-  { "id": "whitefish", "label": "Whitefish (cod, haddock)", "rawSafe": true, "cookedSafe": true, "notes": "Lean, mild" }
+  { "id": "beef",      "label": "Beef",      "rawSafe": true,  "cookedSafe": true, "notes": "Iron, zinc, B12, creatine",                                                        "catNotes": "Excellent for cats. Beef heart is one of the richest natural taurine sources." },
+  { "id": "chicken",   "label": "Chicken",   "rawSafe": false, "cookedSafe": true, "notes": "Cook thoroughly; great post-GI illness",                                            "catNotes": "Cats: prefer dark meat over breast (more taurine). Hearts highly recommended." },
+  { "id": "turkey",    "label": "Turkey",    "rawSafe": false, "cookedSafe": true, "notes": "Lower allergen risk than chicken",                                                  "catNotes": "Cats: turkey heart is rich in taurine. Avoid skin if cat is overweight." },
+  { "id": "lamb",      "label": "Lamb",      "rawSafe": true,  "cookedSafe": true, "notes": "Novel protein; good for beef-sensitive dogs",                                       "catNotes": "Fine for cats — slightly higher fat than beef. Lamb heart includes taurine." },
+  { "id": "pork",      "label": "Pork",      "rawSafe": false, "cookedSafe": true, "notes": "Avoid cured/processed. Trichinella risk raw.",                                       "catNotes": "Cats: cook fully; otherwise same risks. Pork hearts an option for taurine." },
+  { "id": "duck",      "label": "Duck",      "rawSafe": true,  "cookedSafe": true, "notes": "Novel protein, hypoallergenic",                                                     "catNotes": "Excellent for cats. Duck heart is a good taurine source." },
+  { "id": "rabbit",    "label": "Rabbit",    "rawSafe": true,  "cookedSafe": true, "notes": "Very lean, novel protein",                                                          "catNotes": "Ideal cat protein — closest to wild prey. May need added fat (very lean)." },
+  { "id": "venison",   "label": "Venison",   "rawSafe": true,  "cookedSafe": true, "notes": "Very lean, novel protein",                                                          "catNotes": "Good novel protein for cats; add fat source." },
+  { "id": "salmon",    "label": "Salmon",    "rawSafe": false, "cookedSafe": true, "notes": "Raw only if frozen ≥7 days first. Watch Neorickettsia (Pacific NW).",                "catNotes": "Cats: never raw freshwater fish (thiaminase). Cooked salmon is safe and a good omega-3 source. Pair with vitamin E." },
+  { "id": "mackerel",  "label": "Mackerel",  "rawSafe": true,  "cookedSafe": true, "notes": "Omega-3 powerhouse",                                                                 "catNotes": "Cats: limit to ≤ 10% of intake — mercury + PUFA. Always pair with vitamin E." },
+  { "id": "sardines",  "label": "Sardines",  "rawSafe": true,  "cookedSafe": true, "notes": "Whole-fish nutrition",                                                              "catNotes": "Best fish for cats — low mercury, high omega-3. Limit to ½ sardine 2–3× weekly for a 4 kg cat." },
+  { "id": "whitefish", "label": "Whitefish (cod, haddock)", "rawSafe": true, "cookedSafe": true, "notes": "Lean, mild",                                                            "catNotes": "Cats: cook to inactivate thiaminase. Lean — pair with fat source." }
 ]

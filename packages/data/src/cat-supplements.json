@@ -1,0 +1,75 @@
+[
+  {
+    "id": "taurine",
+    "label": "Taurine",
+    "target": "250–500 mg per 4 kg cat per day. Mandatory in cooked diets — cooking destroys ~20%. Required in raw diets if hearts aren't a major component.",
+    "sources": [
+      { "id": "taurine_powder", "label": "Pure taurine powder", "dose": "Sprinkle 250–500 mg per day. Water-soluble, excess is excreted." },
+      { "id": "heart_cuts",     "label": "Heart cuts (chicken, beef, turkey)", "dose": "Hearts are the richest natural source. Aim for ≥ 30% of muscle meat from hearts in raw diets." },
+      { "id": "dark_poultry",   "label": "Dark poultry meat",   "dose": "Higher taurine than breast meat; rotate frequently." }
+    ]
+  },
+  {
+    "id": "calcium_cat",
+    "label": "Calcium",
+    "target": "~900–1100 mg per day for a 4 kg cat fed boneless meat. Meat alone is Ca:P ≈ 1:20 — calcium supplementation is mandatory in any boneless homemade diet.",
+    "sources": [
+      { "id": "eggshell_cat",   "label": "Ground eggshell",      "dose": "¼ tsp per 1 lb meat (1 large eggshell ≈ 2000 mg Ca)" },
+      { "id": "bone_meal_cat",  "label": "Bone meal (food grade)","dose": "¼ tsp per 1 lb meat — verify lead-free source" },
+      { "id": "mcha_cat",       "label": "MCHA (Microcrystalline Hydroxyapatite)", "dose": "Per label — provides Ca + P together; check Vit D content" }
+    ]
+  },
+  {
+    "id": "vitamin_e_cat",
+    "label": "Vitamin E",
+    "target": "10–30 IU per day. Mandatory whenever fish oil or high-PUFA meats are fed — prevents steatitis (yellow fat disease).",
+    "sources": [
+      { "id": "vit_e_cat_supp", "label": "Vitamin E supplement", "dose": "10–30 IU/day per 4 kg cat — natural d-alpha tocopherol preferred" },
+      { "id": "wheat_germ_cat", "label": "Wheat germ oil",       "dose": "Small amounts; refrigerate" }
+    ]
+  },
+  {
+    "id": "b_complex_cat",
+    "label": "B-complex (incl. thiamine, B6, niacin)",
+    "target": "Cats need ~4× the niacin dogs do. Water-soluble B vitamins are lost in cooking liquid — supplement is mandatory in cooked diets.",
+    "sources": [
+      { "id": "b_complex_cat_supp", "label": "Feline B-complex supplement", "dose": "Per product label — choose a balanced complex, not isolated B vitamins" },
+      { "id": "nutritional_yeast",  "label": "Nutritional yeast (fortified)", "dose": "½ tsp/day for a 4 kg cat — natural B-vitamin source" }
+    ]
+  },
+  {
+    "id": "iodine_cat",
+    "label": "Iodine",
+    "target": "0.1–0.2 mg per day. Required for thyroid function. Muscle meat alone is iodine-poor.",
+    "sources": [
+      { "id": "kelp_cat",       "label": "Kelp powder",          "dose": "Pinch (≈ 100 mg of kelp powder ≈ 0.1 mg iodine) — verify iodine content per product" },
+      { "id": "iodized_salt",   "label": "Iodized salt (tiny pinch)", "dose": "1/16 tsp per day max — avoid sodium overload" }
+    ]
+  },
+  {
+    "id": "omega3_cat",
+    "label": "Omega-3 (EPA + DHA)",
+    "target": "75–150 mg combined EPA + DHA per day for a 4 kg cat. Pair with vitamin E to prevent oxidative damage.",
+    "sources": [
+      { "id": "fish_oil_cat",   "label": "Fish oil (anchovy, sardine)", "dose": "Per concentration — refrigerate, replace every 2 months once opened" },
+      { "id": "sardines_cat",   "label": "Sardines (whole, in water)", "dose": "½ sardine 2–3× weekly for a 4 kg cat" }
+    ]
+  },
+  {
+    "id": "vit_a_cat",
+    "label": "Pre-formed vitamin A",
+    "target": "Cats cannot convert beta-carotene — pre-formed retinol only. Liver provides it but has a strict ceiling.",
+    "sources": [
+      { "id": "liver_cat",      "label": "Liver (chicken, beef)", "dose": "Cap at 5–10 g/day for a 4 kg cat — never more (vitamin A toxicity)" }
+    ]
+  },
+  {
+    "id": "arachidonic_cat",
+    "label": "Arachidonic acid",
+    "target": "Cats lack delta-6-desaturase — they cannot synthesize AA from linoleic acid. Must come from animal fat.",
+    "sources": [
+      { "id": "animal_fat",     "label": "Animal fat (chicken skin, beef tallow)", "dose": "Included naturally if feeding skin-on poultry or fatty cuts" },
+      { "id": "egg_yolk",       "label": "Egg yolk",              "dose": "1–2 yolks per week for a 4 kg cat — cooked recommended" }
+    ]
+  }
+]

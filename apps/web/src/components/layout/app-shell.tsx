@@ -5,6 +5,7 @@ import { useTheme } from '../../lib/theme';
 import { TopBar } from './top-bar';
 import { BottomNav } from './bottom-nav';
 import { Footer } from './footer';
+import { SpeciesPickerSheet } from '../species/species-picker-sheet';
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { resolvedTheme } = useTheme();
@@ -20,6 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
         <Footer />
         <BottomNav />
+        <SpeciesPickerSheet />
 
         <Toaster
           theme={resolvedTheme}

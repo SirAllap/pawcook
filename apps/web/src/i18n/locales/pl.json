@@ -96,7 +96,8 @@
       "noBones": "Nigdy nie włączaj gotowanych kości do żadnego przepisu — kruszą się i mogą powodować zadławienie lub perforację przewodu pokarmowego.",
       "thermometer": "Zawsze sprawdzaj temperaturę wewnętrzną termometrem do mięsa.",
       "pork": "Wieprzowina musi być zawsze w pełni ugotowana — surowa wieprzowina niesie ryzyko Trichinella.",
-      "salmon": "Łosoś powinien być podawany surowy tylko jeśli był zamrożony przez ≥7 dni (ryzyko Neorickettsia)."
+      "salmon": "Łosoś powinien być podawany surowy tylko jeśli był zamrożony przez ≥7 dni (ryzyko Neorickettsia).",
+      "catThiaminase": "Dla kotów: tiaminaza w surowej rybie niszczy tiaminę. Zawsze dobrze gotuj rybę przed podaniem kotu."
     },
     "nutrient": {
       "sous_vide": "Sous-vide najlepiej zachowuje witaminy rozpuszczalne w wodzie (kompleks B, Vit C). Dodaj wszystkie soki z woreczków do posiłku.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Gotowanie",
     "toastReady": "Przepis gotowy.",
-    "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz."
+    "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz.",
+    "catSupplementsTitle": "Suplementy dla kota po gotowaniu",
+    "catSupplementsBody": "Ciepło niszczy taurynę, witaminy B (tiamina, niacyna) i część witaminy E. Dodaj zestaw dla kota — tauryna 250–500 mg, kompleks B, witamina E — po ostygnięciu posiłku."
   },
   "nutrition": {
     "title": "Kalkulator żywienia",
@@ -129,12 +132,17 @@
       "rer": "RER (spoczynkowe): {{kcal}} kcal/dobę",
       "der": "DER (dzienne zapotrzebowanie): {{kcal}} kcal/dobę (×{{multiplier}} mnożnik)",
       "rawDiet": "Zaawansowana dieta surowa — kość dostarcza naturalnego wapnia; nigdy nie zastępuj kością gotowaną.",
-      "realAncestralOmega": "Cała ryba (sardynki, makrela) równoważy stosunek omega-3:6. Używaj małych dziko żyjących ryb, by ograniczyć rtęć."
+      "realAncestralOmega": "Cała ryba (sardynki, makrela) równoważy stosunek omega-3:6. Używaj małych dziko żyjących ryb, by ograniczyć rtęć.",
+      "taurineHeartsNote": "Dieta surowa z sercami — naturalne źródło tauryny. Cel: ≥30% mięsa mięśniowego z serc.",
+      "arachidonicCookedNote": "Dieta gotowana: dodaj tłuszcz zwierzęcy (skóra z kurczaka, żółtko) jako źródło kwasu arachidonowego.",
+      "cookedCatSupplementsNote": "Gotowane diety dla kota wymagają tauryny + kompleksu B + witaminy E, dodawanych po ugotowaniu.",
+      "hydrationCatNote": "Koty piją mało — podawaj mokrą karmę, dodaj wodę lub bulion, monitoruj wydalanie moczu."
     },
     "ages": {
       "puppy": "Szczenię (<1 roku)",
       "adult": "Dorosły (1–7 lat)",
-      "senior": "Senior (7+ lat)"
+      "senior": "Senior (7+ lat)",
+      "kitten": "Kociak (< 1 r.)"
     },
     "activities": {
       "sedentary": "Siedzący tryb życia",
@@ -165,14 +173,24 @@
       "high_protein": "Wysokobiałkowa",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ancestralna"
+      "real_ancestral": "Ancestralna",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Cała ofiara",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Mięsożerca gotowany"
     },
     "dietSub": {
       "balanced_cooked": "40% białko / 50% warzywa",
       "high_protein": "55% białko / 30% warzywa",
       "pmr": "Surowo 80-10-10",
       "barf": "Surowo + warzywa + nasiona",
-      "real_ancestral": "Surowo + ryba + błonnik"
+      "real_ancestral": "Surowo + ryba + błonnik",
+      "cat_pmr": "Model ofiary surowy",
+      "cat_frankenprey": "Złożone surowe kawałki",
+      "cat_whole_prey": "Myszy, przepiórki, pisklęta",
+      "cat_barf_lite": "Surowe + odrobina warzyw",
+      "cat_cooked_carnivore": "+ suplement tauryny"
     },
     "macroProtein": "białko",
     "macroVeg": "warzywa",
@@ -212,7 +230,13 @@
       "caPLow": "Stosunek Ca:P wynosi {{ratio}}:1 — poniżej bezpiecznego minimum AAFCO 1:1. Dodaj ~{{calcium}} mg dodatkowego wapnia dziennie.",
       "caPHigh": "Stosunek Ca:P wynosi {{ratio}}:1 — powyżej bezpiecznego maksimum AAFCO 2:1. Zmniejsz ilość kości lub zrównoważ białkiem o niskiej zawartości wapnia.",
       "puppyCaP": "Rosnące szczenięta są wrażliwe na wysokie Ca:P — utrzymuj poniżej 1.6:1, aby uniknąć chorób układu kostnego.",
-      "cookedCaDeficient": "Diety gotowane są domyślnie ubogie w wapń. Dodaj ~{{calcium}} mg Ca (≈½ łyżeczki zmielonej skorupki jajka na ~454 g mięsa lub użyj balansera)."
+      "cookedCaDeficient": "Diety gotowane są domyślnie ubogie w wapń. Dodaj ~{{calcium}} mg Ca (≈½ łyżeczki zmielonej skorupki jajka na ~454 g mięsa lub użyj balansera).",
+      "lowTaurine": "Brak tauryny lub zbyt mało. Gotowanie ją niszczy; suplementacja jest obowiązkowa. Niedobór powoduje nieodwracalną ślepotę i kardiomiopatię rozstrzeniową.",
+      "lowArachidonic": "Kwas arachidonowy zbyt niski. Koty nie potrafią go syntetyzować — musi pochodzić z tłuszczu zwierzęcego lub żółtka jaja.",
+      "lowArginine": "Arginina zbyt niska. Jeden posiłek bez argininy może spowodować ostrą hiperamonemię u kota.",
+      "vitAToxicity": "Udział wątroby ({{liverPct}}%) przekracza bezpieczny limit. Zmniejsz, aby uniknąć hiperwitaminozy A.",
+      "thiamineRiskRawFish": "Surowa ryba słodkowodna niszczy tiaminę przez tiaminazę. Gotuj rybę dla kotów lub stosuj okazjonalnie gatunki morskie.",
+      "steatitisTunaExcess": "Tuńczyk przekracza 10% spożycia. Ryzyko akumulacji rtęci + steatozy (choroba żółtego tłuszczu). Rotuj białka."
     },
     "eyebrow": "Żywienie",
     "placeholderHint": "Wprowadź profil swojego psa i naciśnij Oblicz.",
@@ -251,7 +275,10 @@
       "balanceIt": "Weterynaryjni dietetycy UC Davis — dopasowane do receptury",
       "wysong": "Do diet mięsnych",
       "animalEssentials": "Szerokie spektrum",
-      "volhard": "Pełne podejście premixowe"
+      "volhard": "Pełne podejście premixowe",
+      "balanceItFeline": "Spin-off UC Davis — usługa formulacji i premixy specyficzne dla kotów.",
+      "ezComplete": "EZ Complete Fur Cats — premix wszystko-w-jednym dla domowych diet surowych i gotowanych.",
+      "alnutrin": "Alnutrin z wapniem — premix z opcjonalnym Ca, dla diet bezkostnych."
     },
     "aafcoTable": {
       "title": "Profil składników odżywczych AAFCO",
@@ -319,7 +346,8 @@
         "3": "Starsze psy lub psy z wrażliwym układem trawiennym mogą potrzebować przejścia trwającego 10–14 dni zamiast 7."
       }
     },
-    "eyebrow": "Suplementy"
+    "eyebrow": "Suplementy",
+    "taurineCallout": "Koty nie syntetyzują tauryny — suplementacja jest obowiązkowa w dietach gotowanych i mocno zalecana w surowych bez serc. Niedobór powoduje nieodwracalną ślepotę i kardiomiopatię rozstrzeniową."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "Dowiedz się więcej",
       "badge": "Metodologia zgodna z weterynarią",
       "headlineA": "Prawdziwe jedzenie.",
-      "headlineB": "Dla Twojego prawdziwego psa."
+      "headlineB": "Dla Twojego prawdziwego psa.",
+      "headlineB_cat": "Dla Twojego prawdziwego kota."
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
@@ -767,6 +796,22 @@
           "dose": "Wg etykiety — nie przekraczać 3000 IU/kg SM"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Pies",
+    "cat": "Kot",
+    "tooltip": {
+      "dog": "Przełącz na kota",
+      "cat": "Przełącz na psa"
+    },
+    "switchTo": "Przełącz na {{other}}",
+    "welcome": {
+      "title": "Dla kogo gotujesz?",
+      "body": "Koty i psy mają różne potrzeby żywieniowe. Wybierz, aby zacząć — możesz przełączać w dowolnym momencie z górnego paska.",
+      "dogDesc": "Psy są elastycznymi wszystkożercami o umiarkowanym zapotrzebowaniu na białko.",
+      "catDesc": "Koty są bezwzględnymi mięsożercami. Ich plany są bardziej rygorystyczne.",
+      "footnote": "PawCook nie zastępuje porady weterynaryjnej. W przypadku chorób przewlekłych lub wzrostu skonsultuj się ze specjalistą żywienia zwierząt."
     }
   }
 }

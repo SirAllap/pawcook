@@ -1,13 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { AlertTriangle, Pill, RefreshCw, ShoppingCart, Bone, Fish, Leaf, Zap } from 'lucide-react';
-import supplementsData from '@pawcook/data/supplements';
-import aafcoData from '@pawcook/data/aafco';
-import transitionData from '@pawcook/data/transition';
+import { AlertTriangle, Pill, RefreshCw, ShoppingCart, Bone, Fish, Leaf, Zap, Heart } from 'lucide-react';
+import dogSupplementsData from '@pawcook/data/supplements';
+import catSupplementsData from '@pawcook/data/cat-supplements';
+import dogAafcoData from '@pawcook/data/aafco';
+import catAafcoData from '@pawcook/data/aafco-cat';
+import dogTransitionData from '@pawcook/data/transition';
+import catTransitionData from '@pawcook/data/cat-transition';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { FadeIn } from '../components/motion/fade-in';
+import { useSpecies } from '../lib/species';
 
 interface SupplementSource { id: string; label: string; dose: string; }
 interface Supplement       { id: string; label: string; target: string; sources: SupplementSource[]; }
@@ -20,18 +24,20 @@ interface AafcoTable { source: string; nutrients: AafcoNutrient[]; ratios: Aafco
 interface TransitionDay { days: string; oldPct: number; newPct: number; note: string; }
 interface TransitionData { title: string; summary: string; days: TransitionDay[]; tips: string[]; }
 
-const supplements = supplementsData as Supplement[];
-const aafco       = aafcoData as AafcoTable;
-const transition  = transitionData as TransitionData;
-
-const COMMERCIAL_BALANCERS = [
+const DOG_BALANCERS = [
   { name: 'Balance IT',                                       descKey: 'supplements.bal.balanceIt' },
   { name: 'Wysong Call of the Wild',                          descKey: 'supplements.bal.wysong' },
   { name: 'Animal Essentials Complete Multivitamin & Mineral',descKey: 'supplements.bal.animalEssentials' },
   { name: 'Volhard NDF2',                                     descKey: 'supplements.bal.volhard' },
 ];
 
-const SUPP_ICONS = [Bone, Fish, Pill, Leaf, Zap];
+const CAT_BALANCERS = [
+  { name: 'Balance IT Feline',                                descKey: 'supplements.bal.balanceItFeline' },
+  { name: 'EZ Complete Fur Cats',                             descKey: 'supplements.bal.ezComplete' },
+  { name: 'Alnutrin (with calcium)',                          descKey: 'supplements.bal.alnutrin' },
+];
+
+const SUPP_ICONS = [Bone, Fish, Pill, Leaf, Zap, Heart];
 
 function fmt(v: number | null) {
   if (v === null) return '—';
@@ -41,6 +47,16 @@ function fmt(v: number | null) {
 
 export default function SupplementGuide() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
+
+  // Pick the right dataset for the current species.
+  const supplements = (species === 'cat' ? catSupplementsData : dogSupplementsData) as Supplement[];
+  const aafco       = (species === 'cat' ? catAafcoData       : dogAafcoData)       as AafcoTable;
+  const transition  = (species === 'cat' ? catTransitionData  : dogTransitionData)  as TransitionData;
+  const balancers   =  species === 'cat' ? CAT_BALANCERS      : DOG_BALANCERS;
+  const calloutText = species === 'cat'
+    ? t('supplements.taurineCallout', { defaultValue: 'Cats cannot synthesize taurine — supplementation is mandatory in cooked diets and strongly recommended in raw diets without hearts. Deficiency causes irreversible blindness and dilated cardiomyopathy.' })
+    : t('supplements.caRatio');
 
   return (
     <div className="space-y-7 sm:space-y-9">
@@ -54,7 +70,7 @@ export default function SupplementGuide() {
         <Card padding="md" className="border-l-[3px] border-l-primary">
           <div className="flex items-start gap-3">
             <AlertTriangle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <p className="text-sm text-foreground/90 leading-relaxed">{t('supplements.caRatio')}</p>
+            <p className="text-sm text-foreground/90 leading-relaxed">{calloutText}</p>
           </div>
         </Card>
       </FadeIn>
@@ -222,7 +238,7 @@ export default function SupplementGuide() {
             </h2>
           </header>
           <div className="p-4 space-y-2">
-            {COMMERCIAL_BALANCERS.map(({ name, descKey }) => (
+            {balancers.map(({ name, descKey }) => (
               <div key={name} className="rounded-2xl border border-border bg-surface-2 p-4 flex gap-3 items-start">
                 <Badge variant="primary" className="shrink-0">→</Badge>
                 <div>

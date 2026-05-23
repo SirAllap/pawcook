@@ -10,6 +10,7 @@ import {
   type NutritionInput, type NutritionResult,
   type MacroRatioProfile, type ComponentKey, type AafcoStatus,
 } from '@pawcook/shared';
+import { useSpecies } from '../lib/species';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -25,21 +26,36 @@ import { EmptyState } from '../components/ui/empty-state';
 import { Tooltip } from '../components/ui/tooltip';
 import { cn } from '../lib/cn';
 
-const STORAGE_KEY = 'pawcook_nutrition_input';
-const DEFAULT_VALUES: NutritionInput = {
+// Keys are tied to per-species storage so dog inputs and cat inputs
+// don't overwrite each other.
+const STORAGE_KEY = (species: 'dog' | 'cat') => `pawcook_nutrition_input_${species}`;
+
+const DOG_DEFAULTS: NutritionInput = {
+  species: 'dog',
   weightKg: 20, age: 'adult', activityLevel: 'moderate', bodyCondition: 'ideal',
   reproductiveStatus: 'neutered', mealsPerDay: 2, macroProfile: 'balanced_cooked',
 };
+const CAT_DEFAULTS: NutritionInput = {
+  species: 'cat',
+  weightKg: 4, age: 'adult', activityLevel: 'moderate', bodyCondition: 'ideal',
+  reproductiveStatus: 'neutered', mealsPerDay: 2, macroProfile: 'cat_pmr',
+};
 
-function loadSaved(): NutritionInput {
+function loadSaved(species: 'dog' | 'cat'): NutritionInput {
+  const defaults = species === 'dog' ? DOG_DEFAULTS : CAT_DEFAULTS;
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return { ...DEFAULT_VALUES, ...JSON.parse(saved) };
+    const saved = localStorage.getItem(STORAGE_KEY(species));
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Discard any stale species mismatch from migration.
+      if (parsed?.species === species) return { ...defaults, ...parsed };
+    }
   } catch { /* ignore */ }
-  return DEFAULT_VALUES;
+  return defaults;
 }
 
-const DIET_KEYS: MacroRatioProfile[] = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'];
+const DOG_DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'] as const;
+const CAT_DIET_KEYS = ['cat_pmr', 'cat_frankenprey', 'cat_barf_lite', 'cat_whole_prey', 'cat_cooked_carnivore'] as const;
 
 const DIET_META: Record<MacroRatioProfile, { emoji: string; label: string; sub: string }> = {
   balanced_cooked: { emoji: '⚖️', label: 'Balanced',       sub: '40 · 30 · 30' },
@@ -47,6 +63,12 @@ const DIET_META: Record<MacroRatioProfile, { emoji: string; label: string; sub: 
   pmr:             { emoji: '🦴', label: 'PMR 80/10/10',   sub: 'Raw, ancestral' },
   barf:            { emoji: '🌿', label: 'BARF',           sub: 'Raw + veg' },
   real_ancestral:  { emoji: '🐺', label: 'Real ancestral', sub: 'Raw + seafood' },
+  // Cat profiles
+  cat_pmr:              { emoji: '🦴', label: 'PMR 84/6/10',     sub: 'Prey model raw' },
+  cat_frankenprey:      { emoji: '🥩', label: 'Frankenprey',     sub: 'Assembled raw cuts' },
+  cat_whole_prey:       { emoji: '🐭', label: 'Whole prey',      sub: 'Mice, quail, chicks' },
+  cat_barf_lite:        { emoji: '🌿', label: 'BARF-lite',       sub: 'Raw + small veg' },
+  cat_cooked_carnivore: { emoji: '🍳', label: 'Cooked carnivore', sub: '+ taurine supplement' },
 };
 
 const COMPONENT_META: Record<ComponentKey, { Icon: typeof Beef; color: string }> = {
@@ -75,19 +97,30 @@ function AafcoBadge({ status }: { status: AafcoStatus }) {
 
 export default function NutritionCalculator() {
   const { t } = useTranslation();
+  const { species } = useSpecies();
   const [result, setResult] = useState<NutritionResult | null>(null);
   const [calculating, setCalculating] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const { register, handleSubmit, watch, control, formState: { errors } } = useForm<NutritionInput>({
+  const { register, handleSubmit, watch, control, reset, formState: { errors } } = useForm<NutritionInput>({
     resolver: zodResolver(NutritionInputSchema),
-    defaultValues: loadSaved(),
+    defaultValues: loadSaved(species),
   });
+
+  // Reset form when the user flips species in the top bar
+  useEffect(() => {
+    reset(loadSaved(species));
+    setResult(null);
+  }, [species, reset]);
 
   const values = watch();
   useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch { /* ignore */ }
-  }, [values]);
+    try { localStorage.setItem(STORAGE_KEY(species), JSON.stringify(values)); } catch { /* ignore */ }
+  }, [values, species]);
+
+  const dietKeys = species === 'cat' ? CAT_DIET_KEYS : DOG_DIET_KEYS;
+  const growthLabel = species === 'cat' ? t('nutrition.ages.kitten') : t('nutrition.ages.puppy');
+  const growthValue: 'puppy' | 'kitten' = species === 'cat' ? 'kitten' : 'puppy';
 
   function onSubmit(data: NutritionInput) {
     setCalculating(true);
@@ -126,7 +159,7 @@ export default function NutritionCalculator() {
               error={errors.weightKg?.message}
             />
             <Select label={t('nutrition.age')} {...register('age')}>
-              <option value="puppy">{t('nutrition.ages.puppy')}</option>
+              <option value={growthValue}>{growthLabel}</option>
               <option value="adult">{t('nutrition.ages.adult')}</option>
               <option value="senior">{t('nutrition.ages.senior')}</option>
             </Select>
@@ -199,7 +232,7 @@ export default function NutritionCalculator() {
             name="macroProfile"
             render={({ field }) => (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
-                {DIET_KEYS.map((key) => {
+                {dietKeys.map((key) => {
                   const meta = DIET_META[key];
                   const active = field.value === key;
                   return (

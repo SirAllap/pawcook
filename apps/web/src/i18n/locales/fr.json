@@ -96,7 +96,8 @@
       "noBones": "N'incluez jamais d'os cuits dans une recette — ils se fragmentent et peuvent causer une obstruction ou une perforation digestive.",
       "thermometer": "Vérifiez toujours la température interne avec un thermomètre alimentaire.",
       "pork": "Le porc doit toujours être entièrement cuit — le porc cru présente un risque de Trichinella.",
-      "salmon": "Le saumon ne doit être donné cru que s'il a été congelé pendant ≥7 jours (risque de Neorickettsia)."
+      "salmon": "Le saumon ne doit être donné cru que s'il a été congelé pendant ≥7 jours (risque de Neorickettsia).",
+      "catThiaminase": "Pour les chats : la thiaminase du poisson cru détruit la thiamine. Cuisez toujours bien le poisson avant de le donner à un chat."
     },
     "nutrient": {
       "sous_vide": "Le sous-vide préserve le plus de vitamines hydrosolubles (complexe B, Vit C). Incorporez tous les jus des sacs dans le repas.",
@@ -106,7 +107,9 @@
     },
     "eyebrow": "Cuisine",
     "toastReady": "Recette prête.",
-    "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer."
+    "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer.",
+    "catSupplementsTitle": "Suppléments félins après cuisson",
+    "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi."
   },
   "nutrition": {
     "title": "Calculateur nutritionnel",
@@ -129,12 +132,17 @@
       "rer": "RER (au repos) : {{kcal}} kcal/jour",
       "der": "DER (énergie quotidienne) : {{kcal}} kcal/jour (×{{multiplier}} multiplicateur)",
       "rawDiet": "Régime cru avancé — l'os apporte le calcium naturel ; ne jamais remplacer par de l'os cuit.",
-      "realAncestralOmega": "Le poisson entier (sardines, maquereau) équilibre le rapport oméga-3:6. Utilisez de petits poissons sauvages pour limiter le mercure."
+      "realAncestralOmega": "Le poisson entier (sardines, maquereau) équilibre le rapport oméga-3:6. Utilisez de petits poissons sauvages pour limiter le mercure.",
+      "taurineHeartsNote": "Régime cru avec cœurs supposés — source naturelle de taurine. Visez ≥30% de viande musculaire en cœurs.",
+      "arachidonicCookedNote": "Régime cuit : assurez-vous d'inclure de la graisse animale (peau de poulet, jaune d'œuf) pour l'acide arachidonique.",
+      "cookedCatSupplementsNote": "Les régimes cuits pour chat nécessitent taurine + complexe B + vitamine E, ajoutés après cuisson.",
+      "hydrationCatNote": "Les chats boivent peu — donnez de la nourriture humide, ajoutez de l'eau ou du bouillon, surveillez les urines."
     },
     "ages": {
       "puppy": "Chiot (<1 an)",
       "adult": "Adulte (1–7 ans)",
-      "senior": "Senior (7+ ans)"
+      "senior": "Senior (7+ ans)",
+      "kitten": "Chaton (< 1 an)"
     },
     "activities": {
       "sedentary": "Sédentaire",
@@ -165,14 +173,24 @@
       "high_protein": "Riche en protéines",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
-      "real_ancestral": "Ancestral Réel"
+      "real_ancestral": "Ancestral Réel",
+      "cat_pmr": "PMR 84/6/10",
+      "cat_frankenprey": "Frankenprey",
+      "cat_whole_prey": "Proie entière",
+      "cat_barf_lite": "BARF-lite",
+      "cat_cooked_carnivore": "Carnivore cuit"
     },
     "dietSub": {
       "balanced_cooked": "40% protéines / 50% légumes",
       "high_protein": "55% protéines / 30% légumes",
       "pmr": "Cru 80-10-10",
       "barf": "Cru + légumes + graines",
-      "real_ancestral": "Cru + poisson + fibres"
+      "real_ancestral": "Cru + poisson + fibres",
+      "cat_pmr": "Modèle proie cru",
+      "cat_frankenprey": "Morceaux crus assemblés",
+      "cat_whole_prey": "Souris, cailles, poussins",
+      "cat_barf_lite": "Cru + un peu de légumes",
+      "cat_cooked_carnivore": "+ supplément de taurine"
     },
     "macroProtein": "protéines",
     "macroVeg": "légumes",
@@ -212,7 +230,13 @@
       "caPLow": "Le ratio Ca:P est de {{ratio}}:1 — sous le minimum AAFCO (1:1). Ajoutez ~{{calcium}} mg de calcium supplémentaire par jour.",
       "caPHigh": "Le ratio Ca:P est de {{ratio}}:1 — au-dessus du maximum AAFCO (2:1). Réduisez l'os ou équilibrez avec une protéine pauvre en calcium.",
       "puppyCaP": "Les chiots en croissance sont sensibles à un Ca:P élevé — gardez-le sous 1.6:1 pour éviter les maladies osseuses.",
-      "cookedCaDeficient": "Les régimes cuits sont déficients en calcium par défaut. Ajoutez ~{{calcium}} mg de Ca (≈½ c.à.c. de coquille d'œuf moulue par ~454 g de viande, ou utilisez un équilibrant)."
+      "cookedCaDeficient": "Les régimes cuits sont déficients en calcium par défaut. Ajoutez ~{{calcium}} mg de Ca (≈½ c.à.c. de coquille d'œuf moulue par ~454 g de viande, ou utilisez un équilibrant).",
+      "lowTaurine": "La taurine manque ou est insuffisante. La cuisson la détruit ; la supplémentation est obligatoire. La carence cause cécité irréversible et cardiomyopathie dilatée.",
+      "lowArachidonic": "Acide arachidonique trop bas. Les chats ne peuvent pas le synthétiser — il doit provenir de graisse animale ou de jaune d'œuf.",
+      "lowArginine": "Arginine trop basse. Un seul repas sans arginine peut causer une hyperammonémie aiguë chez le chat.",
+      "vitAToxicity": "La part de foie ({{liverPct}}%) dépasse le plafond sûr. Réduisez pour éviter l'hypervitaminose A.",
+      "thiamineRiskRawFish": "Le poisson d'eau douce cru détruit la thiamine via la thiaminase. Cuisez le poisson pour les chats ou utilisez des espèces marines occasionnellement.",
+      "steatitisTunaExcess": "Le thon dépasse 10% des apports. Accumulation de mercure + risque de stéatite (maladie de la graisse jaune). Faites une rotation des protéines."
     },
     "eyebrow": "Nutrition",
     "placeholderHint": "Saisissez le profil de votre chien et appuyez sur Calculer.",
@@ -251,7 +275,10 @@
       "balanceIt": "Nutritionnistes vétérinaires UC Davis — spécifique à la recette",
       "wysong": "Pour les régimes tout-viande",
       "animalEssentials": "Large spectre",
-      "volhard": "Approche prémix complet"
+      "volhard": "Approche prémix complet",
+      "balanceItFeline": "Spin-off UC Davis — service de formulation féline et prémixes spécifiques.",
+      "ezComplete": "EZ Complete Fur Cats — prémixe tout-en-un pour régimes maison crus et cuits.",
+      "alnutrin": "Alnutrin avec calcium — prémixe à Ca optionnel, conçu pour les régimes sans os."
     },
     "aafcoTable": {
       "title": "Profil nutritionnel AAFCO",
@@ -319,7 +346,8 @@
         "3": "Les chiens âgés ou à digestion sensible peuvent nécessiter une transition de 10 à 14 jours au lieu de 7."
       }
     },
-    "eyebrow": "Compléments"
+    "eyebrow": "Compléments",
+    "taurineCallout": "Les chats ne synthétisent pas la taurine — la supplémentation est obligatoire dans les régimes cuits et fortement recommandée dans les régimes crus sans cœurs. La carence cause cécité irréversible et cardiomyopathie dilatée."
   },
   "landing": {
     "hero": {
@@ -329,7 +357,8 @@
       "learnMore": "En savoir plus",
       "badge": "Méthodologie validée par des vétérinaires",
       "headlineA": "Une vraie alimentation.",
-      "headlineB": "Pour votre vrai chien."
+      "headlineB": "Pour votre vrai chien.",
+      "headlineB_cat": "Pour votre vrai chat."
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
@@ -767,6 +796,22 @@
           "dose": "Selon étiquette — ne pas dépasser 3000 UI/kg MS"
         }
       }
+    }
+  },
+  "species": {
+    "dog": "Chien",
+    "cat": "Chat",
+    "tooltip": {
+      "dog": "Passer au chat",
+      "cat": "Passer au chien"
+    },
+    "switchTo": "Passer à {{other}}",
+    "welcome": {
+      "title": "Pour qui cuisinez-vous ?",
+      "body": "Chats et chiens ont des besoins nutritionnels différents. Choisissez pour commencer — vous pouvez changer à tout moment depuis la barre du haut.",
+      "dogDesc": "Les chiens sont des omnivores flexibles aux besoins protéiques modérés.",
+      "catDesc": "Les chats sont des carnivores stricts. Leurs plans sont plus rigoureux.",
+      "footnote": "PawCook n'est pas un avis vétérinaire. Consultez un nutritionniste vétérinaire pour les maladies chroniques ou la croissance."
     }
   }
 }
