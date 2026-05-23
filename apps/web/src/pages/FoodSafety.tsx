@@ -1,42 +1,30 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'motion/react';
+import { Search, X, ShieldAlert, Beef, Carrot, Apple } from 'lucide-react';
 import meatsData from '@pawcook/data/meats';
 import vegetablesData from '@pawcook/data/vegetables';
 import fruitsData from '@pawcook/data/fruits';
 import toxicData from '@pawcook/data/toxic';
+import { PageHeader } from '../components/ui/page-header';
+import { Card } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { Badge } from '../components/ui/badge';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
+import { EmptyState } from '../components/ui/empty-state';
+import { cn } from '../lib/cn';
 
 type TabId = 'toxic' | 'meats' | 'vegetables' | 'fruits';
 
-interface Meat     { id: string; label: string; rawSafe: boolean; cookedSafe: boolean; notes: string; }
-interface Vegetable{ id: string; label: string; benefit: string; notes: string; }
-interface Fruit    { id: string; label: string; notes: string; }
-interface ToxicItem{ id: string; label: string; toxicCompound: string; effect: string; }
+interface Meat { id: string; label: string; rawSafe: boolean; cookedSafe: boolean; notes: string; }
+interface Veg  { id: string; label: string; benefit: string; notes: string; }
+interface Fruit{ id: string; label: string; notes: string; }
+interface Toxic{ id: string; label: string; toxicCompound: string; effect: string; }
 
-const meats      = meatsData      as Meat[];
-const vegetables = vegetablesData as Vegetable[];
-const fruits     = fruitsData     as Fruit[];
-const toxic      = toxicData      as ToxicItem[];
-
-function SearchIcon() {
-  return (
-    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-  );
-}
-
-function EmptyState({ query }: { query: string }) {
-  const { t } = useTranslation();
-  return (
-    <div className="text-center py-16 animate-fade-in">
-      <div className="text-5xl mb-4">🔍</div>
-      <p className="text-gray-300 font-bold text-base">
-        {t('foodSafety.noResults')} &ldquo;<span className="text-amber-400">{query}</span>&rdquo;
-      </p>
-      <p className="text-gray-500 text-sm mt-1">{t('foodSafety.noResultsHint')}</p>
-    </div>
-  );
-}
+const meats = meatsData as Meat[];
+const vegetables = vegetablesData as Veg[];
+const fruits = fruitsData as Fruit[];
+const toxic = toxicData as Toxic[];
 
 export default function FoodSafety() {
   const { t } = useTranslation();
@@ -44,180 +32,188 @@ export default function FoodSafety() {
   const [search, setSearch] = useState('');
   const q = search.toLowerCase();
 
-  const tabs: { id: TabId; label: string; icon: string; count: number }[] = [
-    { id: 'toxic',      label: t('foodSafety.tabs.toxic'),      icon: '⚠️', count: toxic.length },
-    { id: 'meats',      label: t('foodSafety.tabs.meats'),      icon: '🥩', count: meats.length },
-    { id: 'vegetables', label: t('foodSafety.tabs.vegetables'), icon: '🥕', count: vegetables.length },
-    { id: 'fruits',     label: t('foodSafety.tabs.fruits'),     icon: '🍎', count: fruits.length },
+  const fToxic = toxic.filter((x) => !q
+    || t(`toxicData.${x.id}.label`,    { defaultValue: x.label }).toLowerCase().includes(q)
+    || t(`toxicData.${x.id}.effect`,   { defaultValue: x.effect }).toLowerCase().includes(q));
+  const fMeats = meats.filter((x) => !q
+    || t(`meatData.${x.id}.label`, { defaultValue: x.label }).toLowerCase().includes(q));
+  const fVeg   = vegetables.filter((x) => !q
+    || t(`vegData.${x.id}.label`, { defaultValue: x.label }).toLowerCase().includes(q));
+  const fFruit = fruits.filter((x) => !q
+    || t(`fruitData.${x.id}.label`, { defaultValue: x.label }).toLowerCase().includes(q));
+
+  const tabs: { id: TabId; label: string; Icon: typeof ShieldAlert; count: number }[] = [
+    { id: 'toxic',      label: t('foodSafety.tabs.toxic'),      Icon: ShieldAlert, count: toxic.length },
+    { id: 'meats',      label: t('foodSafety.tabs.meats'),      Icon: Beef,        count: meats.length },
+    { id: 'vegetables', label: t('foodSafety.tabs.vegetables'), Icon: Carrot,      count: vegetables.length },
+    { id: 'fruits',     label: t('foodSafety.tabs.fruits'),     Icon: Apple,       count: fruits.length },
   ];
 
-  const filteredToxic      = toxic.filter(      x => !q || t(`toxicData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q) || t(`toxicData.${x.id}.effect`, {defaultValue: x.effect}).toLowerCase().includes(q));
-  const filteredMeats      = meats.filter(      x => !q || t(`meatData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
-  const filteredVegetables = vegetables.filter( x => !q || t(`vegData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
-  const filteredFruits     = fruits.filter(     x => !q || t(`fruitData.${x.id}.label`, {defaultValue: x.label}).toLowerCase().includes(q));
-
   return (
-    <div className="space-y-5">
-      <div className="animate-fade-in-up">
-        <h1 className="text-3xl font-black text-white mb-1 tracking-tight">{t('foodSafety.title')}</h1>
-        <p className="text-gray-400 text-sm">{t('foodSafety.subtitle')}</p>
-      </div>
+    <div className="space-y-7">
+      <PageHeader
+        eyebrow={t('foodSafety.eyebrow', { defaultValue: 'Food safety' })}
+        title={t('foodSafety.title')}
+        description={t('foodSafety.subtitle')}
+      />
 
-      {/* Search */}
-      <div className="relative animate-fade-in-up delay-100">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-          <SearchIcon />
-        </div>
-        <input
+      <div className="sticky top-14 sm:top-16 z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 bg-background/85 backdrop-blur-xl border-b border-border">
+        <Input
           type="search"
           placeholder={t('foodSafety.search')}
           value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="w-full bg-white/[0.05] border border-white/[0.08] rounded-2xl
-                    pl-11 pr-10 py-3.5 text-base text-white placeholder-gray-500
-                    focus:outline-none focus:border-amber-500/50 focus:bg-white/[0.07] transition-all"
+          onChange={(e) => setSearch(e.target.value)}
+          leading={<Search className="h-4 w-4" />}
+          trailing={
+            search ? (
+              <button
+                type="button"
+                onClick={() => setSearch('')}
+                className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-surface-3 text-muted-fg hover:text-foreground transition-colors"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            ) : null
+          }
         />
-        {search && (
-          <button
-            onClick={() => setSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full
-                      bg-white/[0.08] text-gray-400 hover:text-white flex items-center justify-center
-                      text-base transition-colors">
-            ×
-          </button>
-        )}
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 lg:mx-0 lg:px-0 no-scrollbar animate-fade-in-up delay-150">
-        {tabs.map(tabItem => (
-          <button key={tabItem.id} onClick={() => setTab(tabItem.id)}
-            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-sm font-bold
-                       transition-all active:scale-95 whitespace-nowrap shrink-0 ${
-              tab === tabItem.id
-                ? 'bg-amber-500 text-gray-900 shadow-lg shadow-amber-500/25'
-                : 'glass text-gray-400 hover:text-gray-200'
-            }`}>
-            <span>{tabItem.icon}</span>
-            <span>{tabItem.label}</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-black ${
-              tab === tabItem.id ? 'bg-amber-600/50 text-amber-100' : 'bg-white/[0.07] text-gray-500'
-            }`}>
-              {tabItem.count}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      {/* ── Toxic ── */}
-      {tab === 'toxic' && (
-        filteredToxic.length === 0 ? <EmptyState query={search} /> : (
-          <div className="space-y-3">
-            {filteredToxic.map((item, i) => (
-              <div key={item.id}
-                className="glass-card rounded-2xl p-4 border-l-[3px] border-red-500/60 animate-slide-up"
-                style={{ animationDelay: `${i * 35}ms` }}>
-                <div className="flex items-start justify-between gap-2 mb-2.5">
-                  <h3 className="font-black text-white text-base">{t(`toxicData.${item.id}.label`, {defaultValue: item.label})}</h3>
-                  <span className="text-[11px] bg-red-500/15 text-red-300 border border-red-500/30
-                                  px-2.5 py-1 rounded-full font-black shrink-0 tracking-wide">
-                    {t('common.toxic')}
-                  </span>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-400">
-                    <span className="text-red-400/80 font-bold">{t('foodSafety.compound')}: </span>
-                    <span className="text-gray-300">{t(`toxicData.${item.id}.compound`, {defaultValue: item.toxicCompound})}</span>
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <span className="text-red-400/80 font-bold">{t('foodSafety.effect')}: </span>
-                    <span className="text-gray-300">{t(`toxicData.${item.id}.effect`, {defaultValue: item.effect})}</span>
-                  </p>
-                </div>
-              </div>
+      <Tabs value={tab} onValueChange={(v) => setTab(v as TabId)} className="space-y-6">
+        <div className="overflow-x-auto no-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0">
+          <TabsList className="inline-flex w-auto">
+            {tabs.map(({ id, label, Icon, count }) => (
+              <TabsTrigger key={id} value={id} className="gap-2">
+                <Icon className="h-4 w-4" />
+                <span>{label}</span>
+                <span className={cn(
+                  'inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 rounded-full text-[10px] font-black tabular-nums',
+                  tab === id ? 'bg-primary/15 text-primary' : 'bg-surface-3 text-muted-fg'
+                )}>
+                  {count}
+                </span>
+              </TabsTrigger>
             ))}
-          </div>
-        )
-      )}
+          </TabsList>
+        </div>
 
-      {/* ── Meats ── */}
-      {tab === 'meats' && (
-        filteredMeats.length === 0 ? <EmptyState query={search} /> : (
-          <div className="space-y-2.5">
-            {filteredMeats.map((item, i) => (
-              <div key={item.id}
-                className="glass-card rounded-2xl p-4 animate-slide-up"
-                style={{ animationDelay: `${i * 30}ms` }}>
-                <div className="flex items-start gap-3">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-black text-white text-base mb-1">{t(`meatData.${item.id}.label`, {defaultValue: item.label})}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">{t(`meatData.${item.id}.notes`, {defaultValue: item.notes})}</p>
-                  </div>
-                  <div className="flex flex-col gap-1.5 shrink-0">
-                    <span className={`text-[11px] px-2.5 py-1 rounded-xl font-bold text-center ${
-                      item.rawSafe
-                        ? 'bg-green-900/50 text-green-300 border border-green-800/40'
-                        : 'bg-yellow-900/50 text-yellow-300 border border-yellow-800/40'
-                    }`}>
-                      {t('foodSafety.raw')}: {item.rawSafe ? t('foodSafety.ok') : t('foodSafety.risky')}
-                    </span>
-                    <span className={`text-[11px] px-2.5 py-1 rounded-xl font-bold text-center ${
-                      item.cookedSafe
-                        ? 'bg-green-900/50 text-green-300 border border-green-800/40'
-                        : 'bg-red-900/50 text-red-300 border border-red-800/40'
-                    }`}>
-                      {t('foodSafety.cooked')}: {item.cookedSafe ? t('common.safe') : 'No'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )
-      )}
+        <TabsContent value="toxic">
+          {fToxic.length === 0 ? (
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+          ) : (
+            <ItemList>
+              {fToxic.map((x, i) => (
+                <motion.div
+                  key={x.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.02 }}
+                >
+                  <Card variant="surface" padding="md" className="border-l-[3px] border-l-danger">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h3 className="font-black text-base">{t(`toxicData.${x.id}.label`, { defaultValue: x.label })}</h3>
+                      <Badge variant="danger">{t('common.toxic')}</Badge>
+                    </div>
+                    <p className="text-sm text-muted-fg">
+                      <span className="font-bold text-danger">{t('foodSafety.compound')}: </span>
+                      <span className="text-foreground/90">{t(`toxicData.${x.id}.compound`, { defaultValue: x.toxicCompound })}</span>
+                    </p>
+                    <p className="text-sm text-muted-fg mt-1">
+                      <span className="font-bold text-danger">{t('foodSafety.effect')}: </span>
+                      <span className="text-foreground/90">{t(`toxicData.${x.id}.effect`, { defaultValue: x.effect })}</span>
+                    </p>
+                  </Card>
+                </motion.div>
+              ))}
+            </ItemList>
+          )}
+        </TabsContent>
 
-      {/* ── Vegetables ── */}
-      {tab === 'vegetables' && (
-        filteredVegetables.length === 0 ? <EmptyState query={search} /> : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {filteredVegetables.map((item, i) => (
-              <div key={item.id}
-                className="glass-card rounded-2xl p-4 animate-slide-up"
-                style={{ animationDelay: `${i * 25}ms` }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-black text-white text-base">{t(`vegData.${item.id}.label`, {defaultValue: item.label})}</h3>
-                  <span className="text-[10px] font-bold bg-green-900/50 text-green-300 border border-green-800/40 px-2 py-0.5 rounded-full">
-                    {t('common.safe')}
-                  </span>
-                </div>
-                <p className="text-sm text-amber-400 font-semibold mb-1">{t(`vegData.${item.id}.benefit`, {defaultValue: item.benefit})}</p>
-                <p className="text-xs text-gray-500 leading-relaxed">{t(`vegData.${item.id}.notes`, {defaultValue: item.notes})}</p>
-              </div>
-            ))}
-          </div>
-        )
-      )}
+        <TabsContent value="meats">
+          {fMeats.length === 0 ? (
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+          ) : (
+            <ItemList>
+              {fMeats.map((x, i) => (
+                <motion.div key={x.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.02 }}>
+                  <Card padding="md">
+                    <div className="flex items-start gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-black text-base mb-1">{t(`meatData.${x.id}.label`, { defaultValue: x.label })}</h3>
+                        <p className="text-sm text-muted-fg leading-relaxed">{t(`meatData.${x.id}.notes`, { defaultValue: x.notes })}</p>
+                      </div>
+                      <div className="flex flex-col gap-1.5 shrink-0">
+                        <Badge variant={x.rawSafe ? 'success' : 'warning'} className="justify-center">
+                          {t('foodSafety.raw')}: {x.rawSafe ? t('foodSafety.ok') : t('foodSafety.risky')}
+                        </Badge>
+                        <Badge variant={x.cookedSafe ? 'success' : 'danger'} className="justify-center">
+                          {t('foodSafety.cooked')}: {x.cookedSafe ? t('common.safe') : 'No'}
+                        </Badge>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </ItemList>
+          )}
+        </TabsContent>
 
-      {/* ── Fruits ── */}
-      {tab === 'fruits' && (
-        filteredFruits.length === 0 ? <EmptyState query={search} /> : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {filteredFruits.map((item, i) => (
-              <div key={item.id}
-                className="glass-card rounded-2xl p-4 animate-slide-up"
-                style={{ animationDelay: `${i * 25}ms` }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-black text-white text-base">{t(`fruitData.${item.id}.label`, {defaultValue: item.label})}</h3>
-                  <span className="text-[10px] font-bold bg-green-900/50 text-green-300 border border-green-800/40 px-2 py-0.5 rounded-full">
-                    {t('common.safe')}
-                  </span>
-                </div>
-                <p className="text-xs text-gray-500 leading-relaxed">{t(`fruitData.${item.id}.notes`, {defaultValue: item.notes})}</p>
-              </div>
-            ))}
-          </div>
-        )
-      )}
+        <TabsContent value="vegetables">
+          {fVeg.length === 0 ? (
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+          ) : (
+            <GridList>
+              {fVeg.map((x, i) => (
+                <motion.div key={x.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.02 }}>
+                  <Card padding="md">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="font-black text-base">{t(`vegData.${x.id}.label`, { defaultValue: x.label })}</h3>
+                      <Badge variant="success" className="text-[10px]">{t('common.safe')}</Badge>
+                    </div>
+                    <p className="text-sm text-primary font-semibold mb-1">{t(`vegData.${x.id}.benefit`, { defaultValue: x.benefit })}</p>
+                    <p className="text-xs text-muted-fg leading-relaxed">{t(`vegData.${x.id}.notes`, { defaultValue: x.notes })}</p>
+                  </Card>
+                </motion.div>
+              ))}
+            </GridList>
+          )}
+        </TabsContent>
+
+        <TabsContent value="fruits">
+          {fFruit.length === 0 ? (
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+          ) : (
+            <GridList>
+              {fFruit.map((x, i) => (
+                <motion.div key={x.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.02 }}>
+                  <Card padding="md">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="font-black text-base">{t(`fruitData.${x.id}.label`, { defaultValue: x.label })}</h3>
+                      <Badge variant="success" className="text-[10px]">{t('common.safe')}</Badge>
+                    </div>
+                    <p className="text-xs text-muted-fg leading-relaxed">{t(`fruitData.${x.id}.notes`, { defaultValue: x.notes })}</p>
+                  </Card>
+                </motion.div>
+              ))}
+            </GridList>
+          )}
+        </TabsContent>
+      </Tabs>
     </div>
+  );
+}
+
+function ItemList({ children }: { children: ReactNode }) {
+  return (
+    <AnimatePresence mode="popLayout">
+      <div className="space-y-3">{children}</div>
+    </AnimatePresence>
+  );
+}
+
+function GridList({ children }: { children: ReactNode }) {
+  return (
+    <AnimatePresence mode="popLayout">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">{children}</div>
+    </AnimatePresence>
   );
 }

@@ -1,31 +1,36 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from './lib/theme';
 import App from './App';
 
-describe('App', () => {
-  it('renders the PawCook header', () => {
-    render(
+function setup() {
+  return render(
+    <ThemeProvider>
       <MemoryRouter>
         <App />
       </MemoryRouter>
-    );
-    // Logo split across two spans: <span>Paw</span><span>Cook</span> — appears in header + mobile nav
-    expect(screen.getAllByText('Paw').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Cook').length).toBeGreaterThan(0);
+    </ThemeProvider>
+  );
+}
+
+describe('App', () => {
+  it('renders the PawCook wordmark', async () => {
+    setup();
+    await waitFor(() => {
+      expect(screen.getAllByText('Paw').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Cook').length).toBeGreaterThan(0);
+    });
   });
 
-  it('renders the navigation links', () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
-    // Nav labels appear in both desktop nav and mobile bottom nav
-    expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Supplements').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('About').length).toBeGreaterThan(0);
+  it('renders the navigation links', async () => {
+    setup();
+    await waitFor(() => {
+      expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Supplements').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('About').length).toBeGreaterThan(0);
+    });
   });
 });

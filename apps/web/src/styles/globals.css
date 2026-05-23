@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+@import "./tokens.css";
+
+/* ------------------------------------------------------------
+   Tailwind v4 theme — bind CSS vars to utility classes.
+   Use `bg-background text-foreground bg-primary text-primary-fg`.
+   ------------------------------------------------------------ */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-surface: hsl(var(--surface));
+  --color-surface-fg: hsl(var(--surface-foreground));
+  --color-surface-2: hsl(var(--surface-2));
+  --color-surface-3: hsl(var(--surface-3));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-fg: hsl(var(--muted-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-fg: hsl(var(--primary-foreground));
+  --color-primary-hover: hsl(var(--primary-hover));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-fg: hsl(var(--accent-foreground));
+
+  --color-success: hsl(var(--success));
+  --color-success-fg: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-fg: hsl(var(--warning-foreground));
+  --color-danger: hsl(var(--danger));
+  --color-danger-fg: hsl(var(--danger-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-fg: hsl(var(--info-foreground));
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-glow: var(--shadow-glow);
+}
+
+/* Dark variant for [data-theme="dark"] attribute -------------- */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+@layer base {
+  *,
+  *::before,
+  *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+  }
+
+  input, button, select, textarea { font: inherit; color: inherit; }
+
+  input[type="number"],
+  input[type="search"],
+  input[type="text"],
+  select,
+  textarea { font-size: 16px; }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.32);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)),
+                0 0 0 4px hsl(var(--ring) / 0.85);
+    border-radius: var(--radius-md);
+  }
+
+  /* Hide focus ring when not keyboard-driven on touch devices */
+  @media (pointer: coarse) {
+    :focus:not(:focus-visible) { outline: none; }
+  }
+}
+
+/* ------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------ */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  .surface-1 { background: hsl(var(--surface)); color: hsl(var(--surface-foreground)); }
+  .surface-2 { background: hsl(var(--surface-2)); color: hsl(var(--surface-foreground)); }
+  .surface-3 { background: hsl(var(--surface-3)); color: hsl(var(--surface-foreground)); }
+
+  /* Subtle glass — only used on app shell. Tint adapts to theme. */
+  .glass {
+    background: hsl(var(--surface) / 0.7);
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    border: 1px solid hsl(var(--border) / 0.7);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(110deg,
+      hsl(var(--hero-glow-a)) 0%,
+      hsl(var(--primary)) 50%,
+      hsl(var(--hero-glow-b)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  /* Diagonal noise pattern for hero — keeps the background alive */
+  .bg-grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.025) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  /* Safe-area helpers */
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pb-safe-nav { padding-bottom: calc(env(safe-area-inset-bottom) + 88px); }
+}
+
+/* ------------------------------------------------------------
+   Reduced motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Print
+   ------------------------------------------------------------ */
+@media print {
+  .no-print  { display: none !important; }
+  .print-card { break-inside: avoid; }
+  body { background: white !important; color: black !important; }
+}

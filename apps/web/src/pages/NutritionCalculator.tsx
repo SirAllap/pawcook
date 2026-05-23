@@ -1,12 +1,29 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'motion/react';
+import { toast } from 'sonner';
+import { Sparkles, Printer, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet } from 'lucide-react';
 import {
   NutritionInputSchema, calculateNutrition,
   type NutritionInput, type NutritionResult,
   type MacroRatioProfile, type ComponentKey,
 } from '@pawcook/shared';
+import { PageHeader } from '../components/ui/page-header';
+import { Card } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Select } from '../components/ui/select';
+import { Badge } from '../components/ui/badge';
+import { SectionLabel } from '../components/ui/section-label';
+import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
+import { StatTile } from '../components/calculators/stat-tile';
+import { MacroBar } from '../components/calculators/macro-bar';
+import { CaPGauge } from '../components/calculators/ca-p-gauge';
+import { EmptyState } from '../components/ui/empty-state';
+import { Tooltip } from '../components/ui/tooltip';
+import { cn } from '../lib/cn';
 
 const STORAGE_KEY = 'pawcook_nutrition_input';
 const DEFAULT_VALUES: NutritionInput = {
@@ -14,102 +31,46 @@ const DEFAULT_VALUES: NutritionInput = {
   reproductiveStatus: 'neutered', mealsPerDay: 2, macroProfile: 'balanced_cooked',
 };
 
-function loadSavedValues(): NutritionInput {
+function loadSaved(): NutritionInput {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return { ...DEFAULT_VALUES, ...JSON.parse(saved) };
-  } catch {}
+  } catch { /* ignore */ }
   return DEFAULT_VALUES;
 }
 
-const inputCls = 'w-full bg-white/[0.05] border border-white/[0.08] rounded-2xl px-4 py-3.5 text-base text-white placeholder-gray-500 focus:outline-none focus:border-amber-500/50 focus:bg-white/[0.07] transition-all appearance-none';
-const labelCls = 'block text-[11px] font-bold text-gray-400/80 uppercase tracking-[0.10em] mb-2';
-
-function SectionHead({ children }: { children: ReactNode }) {
-  return (
-    <div className="flex items-center gap-3 pt-1">
-      <span className="text-[11px] font-black text-amber-500/90 uppercase tracking-[0.14em] whitespace-nowrap">{children}</span>
-      <div className="flex-1 h-px bg-white/[0.06]" />
-    </div>
-  );
-}
-
 const DIET_KEYS: MacroRatioProfile[] = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'];
-const DIET_EMOJIS: Record<MacroRatioProfile, string> = {
-  balanced_cooked: '⚖️',
-  high_protein:    '💪',
-  pmr:             '🦴',
-  barf:            '🌿',
-  real_ancestral:  '🐺',
-};
-const DIET_LABELS: Record<MacroRatioProfile, string> = {
-  balanced_cooked: 'Balanced',
-  high_protein:    'High Protein',
-  pmr:             'PMR 80/10/10',
-  barf:            'BARF',
-  real_ancestral:  'Real Ancestral',
-};
-const DIET_SUBS: Record<MacroRatioProfile, string> = {
-  balanced_cooked: '40% protein / 50% veg',
-  high_protein:    '55% protein / 30% veg',
-  pmr:             '80-10-10 raw',
-  barf:            'Raw + veg + seeds',
-  real_ancestral:  'Raw + seafood + fiber',
+
+const DIET_META: Record<MacroRatioProfile, { emoji: string; label: string; sub: string }> = {
+  balanced_cooked: { emoji: '⚖️', label: 'Balanced',       sub: '40 · 30 · 30' },
+  high_protein:    { emoji: '💪', label: 'High protein',   sub: '55 · 30 · 15' },
+  pmr:             { emoji: '🦴', label: 'PMR 80/10/10',   sub: 'Raw, ancestral' },
+  barf:            { emoji: '🌿', label: 'BARF',           sub: 'Raw + veg' },
+  real_ancestral:  { emoji: '🐺', label: 'Real ancestral', sub: 'Raw + seafood' },
 };
 
-const COMPONENT_META: Record<ComponentKey, { label: string; emoji: string; color: string }> = {
-  protein: { label: 'Protein',     emoji: '🥩', color: 'from-amber-600 to-amber-400' },
-  muscle:  { label: 'Muscle meat', emoji: '🥩', color: 'from-red-700 to-red-500' },
-  bone:    { label: 'Raw bone',    emoji: '🦴', color: 'from-stone-400 to-stone-200' },
-  liver:   { label: 'Liver',       emoji: '🩸', color: 'from-rose-900 to-rose-700' },
-  organ:   { label: 'Organs',      emoji: '🫀', color: 'from-fuchsia-700 to-fuchsia-500' },
-  seafood: { label: 'Seafood',     emoji: '🐟', color: 'from-cyan-600 to-cyan-400' },
-  fiber:   { label: 'Animal fiber',emoji: '🪶', color: 'from-lime-700 to-lime-500' },
-  veg:     { label: 'Vegetables',  emoji: '🥕', color: 'from-green-600 to-green-400' },
-  seeds:   { label: 'Seeds & nuts',emoji: '🌰', color: 'from-yellow-700 to-yellow-500' },
-  fruit:   { label: 'Fruits',      emoji: '🍎', color: 'from-pink-600 to-pink-400' },
-  starch:  { label: 'Starch',      emoji: '🌾', color: 'from-blue-600 to-blue-400' },
+const COMPONENT_META: Record<ComponentKey, { label: string; Icon: typeof Beef; color: string }> = {
+  protein: { label: 'Protein',     Icon: Beef,     color: 'bg-primary' },
+  muscle:  { label: 'Muscle meat', Icon: Beef,     color: 'bg-rose-500' },
+  bone:    { label: 'Raw bone',    Icon: Bone,     color: 'bg-stone-300' },
+  liver:   { label: 'Liver',       Icon: Droplet,  color: 'bg-rose-700' },
+  organ:   { label: 'Organs',      Icon: Heart,    color: 'bg-fuchsia-500' },
+  seafood: { label: 'Seafood',     Icon: Fish,     color: 'bg-cyan-500' },
+  fiber:   { label: 'Animal fiber',Icon: Wind,     color: 'bg-lime-500' },
+  veg:     { label: 'Vegetables',  Icon: Carrot,   color: 'bg-success' },
+  seeds:   { label: 'Seeds & nuts',Icon: Drumstick,color: 'bg-amber-700' },
+  fruit:   { label: 'Fruits',      Icon: Apple,    color: 'bg-pink-500' },
+  starch:  { label: 'Starch',      Icon: Wheat,    color: 'bg-info' },
 };
 
 function AafcoBadge({ status }: { status: 'pass' | 'caution' | 'fail' }) {
-  const style = status === 'pass'
-    ? 'bg-green-500/15 text-green-300 border-green-500/30'
-    : status === 'caution'
-      ? 'bg-amber-500/15 text-amber-300 border-amber-500/30'
-      : 'bg-red-500/15 text-red-300 border-red-500/30';
-  const label = status === 'pass' ? 'AAFCO ✓' : status === 'caution' ? 'AAFCO ⚠' : 'AAFCO ✗';
-  return <span className={`text-[11px] font-black px-2.5 py-1 rounded-full border tracking-wide ${style}`}>{label}</span>;
-}
-
-function CaPMeter({ ratio, target }: { ratio: number; target: { min: number; max: number } }) {
-  // Map 0–4 onto a 100% bar; safe band is target.min–target.max
-  const max = 4;
-  const pct = Math.min(100, Math.max(0, (ratio / max) * 100));
-  const safeStart = (target.min / max) * 100;
-  const safeEnd   = (target.max / max) * 100;
-  const inRange = ratio >= target.min && ratio <= target.max;
-
-  return (
-    <div className="space-y-2">
-      <div className="flex justify-between items-baseline">
-        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Ca : P ratio</span>
-        <span className={`text-lg font-black ${inRange ? 'text-green-300' : 'text-red-300'}`}>
-          {ratio.toFixed(2)} : 1
-        </span>
-      </div>
-      <div className="relative h-3 bg-white/[0.05] rounded-full overflow-hidden border border-white/[0.06]">
-        <div className="absolute inset-y-0 bg-green-500/15 border-x border-green-500/40"
-          style={{ left: `${safeStart}%`, width: `${safeEnd - safeStart}%` }} />
-        <div className={`absolute inset-y-0 w-1 ${inRange ? 'bg-green-400' : 'bg-red-400'} shadow-lg`}
-          style={{ left: `calc(${pct}% - 2px)` }} />
-      </div>
-      <div className="flex justify-between text-[10px] text-gray-500 font-semibold">
-        <span>0</span>
-        <span className="text-green-400">{target.min}:1 ← safe → {target.max}:1</span>
-        <span>4:1+</span>
-      </div>
-    </div>
-  );
+  const map = {
+    pass: { variant: 'success', label: 'AAFCO · pass' },
+    caution: { variant: 'warning', label: 'AAFCO · caution' },
+    fail: { variant: 'danger', label: 'AAFCO · fail' },
+  } as const;
+  const s = map[status];
+  return <Badge variant={s.variant} className="text-[10px]">{s.label}</Badge>;
 }
 
 export default function NutritionCalculator() {
@@ -120,264 +81,296 @@ export default function NutritionCalculator() {
 
   const { register, handleSubmit, watch, control, formState: { errors } } = useForm<NutritionInput>({
     resolver: zodResolver(NutritionInputSchema),
-    defaultValues: loadSavedValues(),
+    defaultValues: loadSaved(),
   });
 
   const values = watch();
   useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch { /* ignore */ }
   }, [values]);
 
   function onSubmit(data: NutritionInput) {
     setCalculating(true);
     setTimeout(() => {
-      setResult(calculateNutrition(data));
+      const r = calculateNutrition(data);
+      setResult(r);
       setCalculating(false);
-      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-    }, 200);
+      if (r.aafcoStatus === 'pass') {
+        toast.success(t('nutrition.toastPass', { defaultValue: 'Daily plan ready — AAFCO compliant.' }));
+      } else if (r.aafcoStatus === 'caution') {
+        toast.warning(t('nutrition.toastCaution', { defaultValue: 'Plan ready — review caution notes.' }));
+      } else {
+        toast.error(t('nutrition.toastFail', { defaultValue: 'Plan needs adjustment to meet AAFCO targets.' }));
+      }
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    }, 220);
   }
 
   return (
-    <div className="space-y-6">
-      <div className="animate-fade-in-up">
-        <h1 className="text-3xl font-black text-white mb-1 tracking-tight">{t('nutrition.title')}</h1>
-        <p className="text-gray-400 text-sm">{t('nutrition.subtitle')}</p>
-      </div>
+    <div className="space-y-7 sm:space-y-9">
+      <PageHeader
+        eyebrow={t('nutrition.eyebrow', { defaultValue: 'Nutrition' })}
+        title={t('nutrition.title')}
+        description={t('nutrition.subtitle')}
+      />
 
-      <form onSubmit={handleSubmit(onSubmit)}
-        className="glass-card rounded-3xl overflow-hidden animate-fade-in-up delay-100">
-        <div className="p-5 space-y-5">
+      <Card padding="none" className="overflow-hidden">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-6 space-y-6">
+          <SectionLabel>{t('nutrition.profileSection')}</SectionLabel>
 
-          <SectionHead>{t('nutrition.profileSection')}</SectionHead>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className={labelCls}>{t('nutrition.weight')}</label>
-              <input type="number" step="0.1" inputMode="decimal"
-                {...register('weightKg', { valueAsNumber: true })} className={inputCls} />
-              {errors.weightKg && <p className="text-red-400 text-xs mt-1.5 font-medium">{errors.weightKg.message}</p>}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label={t('nutrition.weight')}
+              type="number" step="0.1" inputMode="decimal"
+              {...register('weightKg', { valueAsNumber: true })}
+              error={errors.weightKg?.message}
+            />
+            <Select label={t('nutrition.age')} {...register('age')}>
+              <option value="puppy">{t('nutrition.ages.puppy')}</option>
+              <option value="adult">{t('nutrition.ages.adult')}</option>
+              <option value="senior">{t('nutrition.ages.senior')}</option>
+            </Select>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                {t('nutrition.activity')}
+              </span>
+              <Controller
+                control={control}
+                name="activityLevel"
+                render={({ field }) => (
+                  <ToggleGroup
+                    type="single"
+                    value={field.value}
+                    onValueChange={(v) => v && field.onChange(v)}
+                    className="grid grid-cols-2 sm:grid-cols-4 w-full"
+                  >
+                    <ToggleGroupItem value="sedentary">{t('nutrition.activities.sedentary')}</ToggleGroupItem>
+                    <ToggleGroupItem value="moderate">{t('nutrition.activities.moderate')}</ToggleGroupItem>
+                    <ToggleGroupItem value="active">{t('nutrition.activities.active')}</ToggleGroupItem>
+                    <ToggleGroupItem value="working">{t('nutrition.activities.working')}</ToggleGroupItem>
+                  </ToggleGroup>
+                )}
+              />
             </div>
-            <div>
-              <label className={labelCls}>{t('nutrition.age')}</label>
-              <select {...register('age')} className={inputCls}>
-                <option value="puppy">{t('nutrition.ages.puppy')}</option>
-                <option value="adult">{t('nutrition.ages.adult')}</option>
-                <option value="senior">{t('nutrition.ages.senior')}</option>
-              </select>
+            <div className="space-y-2">
+              <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                {t('nutrition.bodyCondition')}
+              </span>
+              <Controller
+                control={control}
+                name="bodyCondition"
+                render={({ field }) => (
+                  <ToggleGroup
+                    type="single"
+                    value={field.value}
+                    onValueChange={(v) => v && field.onChange(v)}
+                    className="grid grid-cols-3 w-full"
+                  >
+                    <ToggleGroupItem value="underweight">{t('nutrition.conditions.underweight')}</ToggleGroupItem>
+                    <ToggleGroupItem value="ideal">{t('nutrition.conditions.ideal')}</ToggleGroupItem>
+                    <ToggleGroupItem value="overweight">{t('nutrition.conditions.overweight')}</ToggleGroupItem>
+                  </ToggleGroup>
+                )}
+              />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className={labelCls}>{t('nutrition.activity')}</label>
-              <select {...register('activityLevel')} className={inputCls}>
-                <option value="sedentary">{t('nutrition.activities.sedentary')}</option>
-                <option value="moderate">{t('nutrition.activities.moderate')}</option>
-                <option value="active">{t('nutrition.activities.active')}</option>
-                <option value="working">{t('nutrition.activities.working')}</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelCls}>{t('nutrition.bodyCondition')}</label>
-              <select {...register('bodyCondition')} className={inputCls}>
-                <option value="underweight">{t('nutrition.conditions.underweight')}</option>
-                <option value="ideal">{t('nutrition.conditions.ideal')}</option>
-                <option value="overweight">{t('nutrition.conditions.overweight')}</option>
-              </select>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Select label={t('nutrition.reproStatus')} {...register('reproductiveStatus')}>
+              <option value="neutered">{t('nutrition.reproStatuses.neutered')}</option>
+              <option value="intact">{t('nutrition.reproStatuses.intact')}</option>
+              <option value="pregnant">{t('nutrition.reproStatuses.pregnant')}</option>
+              <option value="lactating">{t('nutrition.reproStatuses.lactating')}</option>
+            </Select>
+            <Input
+              label={t('nutrition.mealsPerDay')}
+              type="number" min={1} max={4} inputMode="numeric"
+              {...register('mealsPerDay', { valueAsNumber: true })}
+            />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className={labelCls}>{t('nutrition.reproStatus')}</label>
-              <select {...register('reproductiveStatus')} className={inputCls}>
-                <option value="neutered">{t('nutrition.reproStatuses.neutered')}</option>
-                <option value="intact">{t('nutrition.reproStatuses.intact')}</option>
-                <option value="pregnant">{t('nutrition.reproStatuses.pregnant')}</option>
-                <option value="lactating">{t('nutrition.reproStatuses.lactating')}</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelCls}>{t('nutrition.mealsPerDay')}</label>
-              <input type="number" min="1" max="4" inputMode="numeric"
-                {...register('mealsPerDay', { valueAsNumber: true })} className={inputCls} />
-            </div>
-          </div>
+          <SectionLabel>{t('nutrition.dietApproach')}</SectionLabel>
 
-          <SectionHead>{t('nutrition.dietApproach')}</SectionHead>
-          <Controller control={control} name="macroProfile"
+          <Controller
+            control={control}
+            name="macroProfile"
             render={({ field }) => (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {DIET_KEYS.map(key => (
-                  <button key={key} type="button" onClick={() => field.onChange(key)}
-                    className={`relative flex flex-col items-center gap-1.5 p-3 rounded-2xl border
-                               transition-all active:scale-95 text-center overflow-hidden ${
-                      field.value === key
-                        ? 'bg-amber-500/12 border-amber-500/45 text-amber-300'
-                        : 'bg-white/[0.04] border-white/[0.08] text-gray-400 hover:border-white/[0.14]'
-                    }`}>
-                    {field.value === key && (
-                      <div className="absolute inset-0 bg-gradient-to-b from-amber-500/8 to-transparent pointer-events-none" />
-                    )}
-                    <span className="text-[22px]">{DIET_EMOJIS[key]}</span>
-                    <span className="text-xs font-black leading-tight">
-                      {t(`nutrition.dietShort.${key}`, { defaultValue: DIET_LABELS[key] })}
-                    </span>
-                    <span className="text-[10px] text-gray-500 leading-tight">
-                      {t(`nutrition.dietSub.${key}`, { defaultValue: DIET_SUBS[key] })}
-                    </span>
-                  </button>
-                ))}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+                {DIET_KEYS.map((key) => {
+                  const meta = DIET_META[key];
+                  const active = field.value === key;
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => field.onChange(key)}
+                      className={cn(
+                        'relative flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border text-center',
+                        'transition-all duration-200 active:scale-95 overflow-hidden',
+                        active
+                          ? 'border-primary bg-primary/10 text-foreground'
+                          : 'border-border bg-surface-2 text-muted-fg hover:bg-surface-3 hover:text-foreground'
+                      )}
+                    >
+                      {active && (
+                        <motion.div
+                          layoutId="diet-active"
+                          className="absolute inset-0 -z-10 rounded-2xl bg-primary/5"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      <span className="text-2xl">{meta.emoji}</span>
+                      <span className="text-xs font-black leading-tight">
+                        {t(`nutrition.dietShort.${key}`, { defaultValue: meta.label })}
+                      </span>
+                      <span className="text-[10px] text-muted-fg leading-tight">
+                        {t(`nutrition.dietSub.${key}`, { defaultValue: meta.sub })}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             )}
           />
-        </div>
 
-        <div className="px-5 pb-5">
-          <button type="submit" disabled={calculating}
-            className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed
-                      active:scale-[0.98] text-gray-900 font-black py-4 rounded-2xl text-base
-                      transition-all glow-sm-amber flex items-center justify-center gap-2">
-            {calculating ? (
-              <>
-                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                </svg>
-                <span>{t('common.calculating')}</span>
-              </>
-            ) : <span>🐕 {t('common.calculate')}</span>}
-          </button>
-        </div>
-      </form>
+          <Button type="submit" variant="glow" size="lg" block loading={calculating}>
+            {calculating
+              ? t('common.calculating')
+              : <>
+                  <Sparkles className="h-4 w-4" />
+                  {t('common.calculate')}
+                </>
+            }
+          </Button>
+        </form>
+      </Card>
 
-      {result && (
-        <div ref={resultRef}
-          className="animate-spring-in glass-card rounded-3xl overflow-hidden scroll-mt-20">
-          <div className="px-5 pt-5 pb-4 border-b border-white/[0.06] flex items-start justify-between gap-3">
-            <div>
-              <h2 className="font-black text-lg text-white tracking-tight">📊 {t('nutrition.dailyPlan')}</h2>
-              <p className="text-xs text-gray-500 mt-1">
-                {t(`nutrition.dietShort.${result.dietProfile}`, { defaultValue: DIET_LABELS[result.dietProfile] })}
-                {' · '}
-                {t(`nutrition.dietSub.${result.dietProfile}`, { defaultValue: DIET_SUBS[result.dietProfile] })}
-              </p>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <AafcoBadge status={result.aafcoStatus} />
-              <button type="button" onClick={() => window.print()}
-                className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-1 rounded-full
-                          border border-white/[0.10] text-gray-300 hover:bg-white/[0.06] transition-all no-print">
-                🖨 Vet PDF
-              </button>
-            </div>
-          </div>
-
-          <div className="p-4 grid grid-cols-2 gap-3">
-            {[
-              { emoji: '🍽️', label: t('nutrition.dailyFood'), value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
-              { emoji: '🥣', label: t('nutrition.perMeal'),    value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
-              { emoji: '🔥', label: 'DER (energy)',            value: `${result.derKcal} kcal` },
-              { emoji: '🦴', label: t('nutrition.calciumNeeded'), value: `~${result.calciumMg} mg` },
-            ].map(({ emoji, label, value }, i) => (
-              <div key={label}
-                className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-4 text-center animate-slide-up"
-                style={{ animationDelay: `${i * 55}ms` }}>
-                <div className="text-2xl mb-1.5">{emoji}</div>
-                <p className="text-[11px] text-gray-400 font-semibold mb-1.5 leading-tight">{label}</p>
-                <p className="text-base font-black text-amber-300 leading-tight">{value}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Component breakdown */}
-          <div className="px-5 pb-4">
-            <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Diet breakdown</span>
-                <span className="text-[10px] text-gray-500 font-semibold">per day</span>
-              </div>
-              <div className="flex h-2.5 rounded-full overflow-hidden gap-px">
-                {result.components.map((c, idx) => {
-                  const meta = COMPONENT_META[c.key];
-                  const first = idx === 0;
-                  const last = idx === result.components.length - 1;
-                  return (
-                    <div key={c.key}
-                      className={`bg-gradient-to-r ${meta.color} transition-all duration-700`}
-                      style={{
-                        width: `${c.pct * 100}%`,
-                        borderRadius: first ? '9999px 0 0 9999px' : last ? '0 9999px 9999px 0' : '0',
-                      }}
-                      title={`${meta.label}: ${(c.pct * 100).toFixed(0)}%`} />
-                  );
-                })}
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-                {result.components.map(c => {
-                  const meta = COMPONENT_META[c.key];
-                  return (
-                    <div key={c.key} className="flex items-center gap-1.5 text-[11px] font-semibold">
-                      <span className="text-base">{meta.emoji}</span>
-                      <span className="text-gray-300 truncate">{meta.label}</span>
-                      <span className="text-gray-500 ml-auto whitespace-nowrap">{c.grams} g</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Ca:P ratio */}
-          <div className="px-5 pb-4">
-            <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4">
-              <CaPMeter ratio={result.caPRatio} target={result.caPTarget} />
-              <div className="flex justify-between text-[11px] text-gray-500 mt-3 pt-3 border-t border-white/[0.05]">
-                <span><span className="text-gray-400 font-semibold">Calcium:</span> {result.calciumMg} mg</span>
-                <span><span className="text-gray-400 font-semibold">Phosphorus:</span> {result.phosphorusMg} mg</span>
-                <span><span className="text-gray-400 font-semibold">Ω-3 target:</span> {result.omega3Mg} mg</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Warnings */}
-          {result.warnings.length > 0 && (
-            <div className="px-5 pb-4">
-              <div className="bg-red-500/[0.06] border border-red-500/30 rounded-2xl p-4 space-y-2">
-                <p className="text-[11px] font-black text-red-300 uppercase tracking-wider">⚠ Safety guardrails</p>
-                {result.warnings.map((w, i) => (
-                  <p key={i} className="text-sm text-red-200/90 flex gap-2 items-start leading-relaxed">
-                    <span className="text-red-400 shrink-0 font-black">•</span>{w}
+      <AnimatePresence mode="wait">
+        {result ? (
+          <motion.div
+            key="result"
+            ref={resultRef}
+            initial={{ opacity: 0, y: 18, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
+            className="scroll-mt-20"
+          >
+            <Card padding="none" variant="elevated" className="overflow-hidden print-card">
+              <header className="flex items-start justify-between gap-3 p-5 border-b border-border">
+                <div>
+                  <h2 className="font-black text-lg tracking-tight">{t('nutrition.dailyPlan')}</h2>
+                  <p className="text-xs text-muted-fg mt-1">
+                    {t(`nutrition.dietShort.${result.dietProfile}`, { defaultValue: DIET_META[result.dietProfile].label })}
+                    {' · '}
+                    {t(`nutrition.dietSub.${result.dietProfile}`, { defaultValue: DIET_META[result.dietProfile].sub })}
                   </p>
-                ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <AafcoBadge status={result.aafcoStatus} />
+                  <Tooltip content={t('common.print', { defaultValue: 'Print' })}>
+                    <button
+                      type="button"
+                      onClick={() => window.print()}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-2 hover:bg-surface-3 transition-colors no-print"
+                    >
+                      <Printer className="h-4 w-4" />
+                    </button>
+                  </Tooltip>
+                </div>
+              </header>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-5">
+                <StatTile label={t('nutrition.dailyFood')} value={`${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max}`} unit="g" tone="primary" delay={0.0} />
+                <StatTile label={t('nutrition.perMeal')}   value={`${result.perMealGrams.min}–${result.perMealGrams.max}`}   unit="g" tone="primary" delay={0.05} />
+                <StatTile label="DER (energy)" value={result.derKcal} unit="kcal" tone="warning" delay={0.10} />
+                <StatTile label={t('nutrition.calciumNeeded')} value={result.calciumMg} unit="mg" tone="info" delay={0.15} />
               </div>
-            </div>
-          )}
 
-          {/* Calculation notes */}
-          <div className="px-5 pb-4">
-            <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 space-y-2">
-              {result.notes.map((n, i) => (
-                <p key={i} className="text-sm text-gray-300 flex gap-2 items-start">
-                  <span className="text-amber-500 shrink-0 font-black">•</span>{n}
-                </p>
-              ))}
-            </div>
-          </div>
+              <div className="px-5 pb-5">
+                <Card variant="muted" padding="md" className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">
+                      {t('nutrition.dietBreakdown', { defaultValue: 'Diet breakdown' })}
+                    </p>
+                    <span className="text-[10px] text-muted-fg font-semibold">per day</span>
+                  </div>
+                  <MacroBar
+                    segments={result.components.map((c) => ({
+                      key: c.key,
+                      pct: c.pct,
+                      color: COMPONENT_META[c.key].color,
+                      label: `${COMPONENT_META[c.key].label}: ${Math.round(c.pct * 100)}%`,
+                    }))}
+                  />
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 pt-1">
+                    {result.components.map((c) => {
+                      const meta = COMPONENT_META[c.key];
+                      return (
+                        <div key={c.key} className="flex items-center gap-2 text-xs">
+                          <meta.Icon className="h-3.5 w-3.5 text-muted-fg" />
+                          <span className="text-foreground truncate">{meta.label}</span>
+                          <span className="ml-auto font-mono font-bold text-muted-fg tabular-nums">{c.grams}g</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Card>
+              </div>
 
-          <div className="px-5 pb-5">
-            <p className="text-xs text-gray-600 border-t border-white/[0.05] pt-3 leading-relaxed">
-              ⚠️ {t('nutrition.vetDisclaimer')}
-            </p>
-          </div>
-        </div>
-      )}
+              <div className="px-5 pb-5">
+                <Card variant="muted" padding="md">
+                  <CaPGauge ratio={result.caPRatio} target={result.caPTarget} />
+                  <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-border text-xs">
+                    <div><span className="text-muted-fg">Calcium:</span> <span className="font-mono font-bold">{result.calciumMg}mg</span></div>
+                    <div><span className="text-muted-fg">Phosphorus:</span> <span className="font-mono font-bold">{result.phosphorusMg}mg</span></div>
+                    <div><span className="text-muted-fg">Ω-3 target:</span> <span className="font-mono font-bold">{result.omega3Mg}mg</span></div>
+                  </div>
+                </Card>
+              </div>
 
-      {!result && (
-        <div className="text-center py-12 text-gray-600 animate-fade-in">
-          <div className="text-5xl mb-4 animate-float">🐕</div>
-          <p className="text-sm">{t('nutrition.placeholder')} <strong className="text-gray-500">{t('common.calculate')}</strong></p>
-        </div>
-      )}
+              {result.warnings.length > 0 && (
+                <div className="px-5 pb-5">
+                  <Card padding="md" className="bg-danger/5 border-danger/30">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-danger mb-2">
+                      {t('nutrition.safetyGuardrails', { defaultValue: 'Safety guardrails' })}
+                    </p>
+                    {result.warnings.map((w, i) => (
+                      <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
+                        <span className="text-danger font-black shrink-0">!</span>{w}
+                      </p>
+                    ))}
+                  </Card>
+                </div>
+              )}
+
+              <div className="px-5 pb-5">
+                <Card variant="muted" padding="md">
+                  {result.notes.map((n, i) => (
+                    <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1 first:mt-0">
+                      <span className="text-primary font-black shrink-0">•</span>{n}
+                    </p>
+                  ))}
+                </Card>
+              </div>
+
+              <p className="px-5 pb-5 text-xs text-muted-fg border-t border-border pt-4 leading-relaxed">
+                ⚠️ {t('nutrition.vetDisclaimer')}
+              </p>
+            </Card>
+          </motion.div>
+        ) : (
+          <EmptyState
+            key="empty"
+            icon={<Sparkles className="h-8 w-8" />}
+            title={t('nutrition.placeholder')}
+            description={t('nutrition.placeholderHint', { defaultValue: 'Enter your dog’s profile and tap Calculate.' })}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
