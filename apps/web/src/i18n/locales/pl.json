@@ -715,7 +715,11 @@
         "safeCore": "Bezpieczny rdzeń"
       },
       "nutrition_cat": "Dzienne makro, kalorie i specyficzne dla kotów bariery (tauryna, AA, arginina, wit. A) dostrojone do Twojego kota.",
-      "cooking_cat": "Bezpieczny czas i temperatura dla każdego mięsa — plus przypomnienia o suplementach po gotowaniu, których koty potrzebują."
+      "cooking_cat": "Bezpieczny czas i temperatura dla każdego mięsa — plus przypomnienia o suplementach po gotowaniu, których koty potrzebują.",
+      "petsTitle": "Profile zwierząt",
+      "petsDesc": "Zapisz psy i koty z alergiami i schorzeniami.",
+      "planTitle": "Plany posiłków",
+      "planDesc": "Plany 7-, 14- lub 30-dniowe z listą zakupów."
     },
     "how": {
       "eyebrow": "Jak to działa",

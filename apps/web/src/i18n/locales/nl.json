@@ -715,7 +715,11 @@
         "safeCore": "Veilige kern"
       },
       "nutrition_cat": "Dagelijkse macro's, calorieën en de katspecifieke vangrails (taurine, AA, arginine, vit. A) afgestemd op je kat.",
-      "cooking_cat": "Veilige tijd & temperatuur voor elk vlees — plus de supplementherinneringen na het koken die katten nodig hebben."
+      "cooking_cat": "Veilige tijd & temperatuur voor elk vlees — plus de supplementherinneringen na het koken die katten nodig hebben.",
+      "petsTitle": "Huisdierprofielen",
+      "petsDesc": "Bewaar honden en katten met allergieën en aandoeningen.",
+      "planTitle": "Maaltijdplannen",
+      "planDesc": "7-, 14- of 30-daagse plannen met boodschappenlijst."
     },
     "how": {
       "eyebrow": "Hoe het werkt",

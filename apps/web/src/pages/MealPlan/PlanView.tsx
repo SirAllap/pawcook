@@ -59,9 +59,15 @@ export default function PlanView() {
         title={plan.name}
         description={t('mealPlan.view.subtitle', { days: plan.durationDays, startDate })}
         actions={
-          <Button type="button" variant="ghost" onClick={() => setConfirmDelete(true)} className="text-danger">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => setConfirmDelete(true)}
+            className="text-danger border-danger/30 hover:bg-danger/5 self-start"
+          >
             <Trash2 className="h-4 w-4" aria-hidden />
-            <span className="hidden sm:inline">{t('mealPlan.view.delete')}</span>
+            {t('mealPlan.view.delete')}
           </Button>
         }
       />

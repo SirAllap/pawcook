@@ -715,7 +715,11 @@
         "safeCore": "Cœur sûr"
       },
       "nutrition_cat": "Macros quotidiens, calories et les garde-fous spécifiques chats (taurine, AA, arginine, vit. A) adaptés à votre chat.",
-      "cooking_cat": "Temps et température sûrs pour chaque viande — plus les rappels de suppléments post-cuisson dont les chats ont besoin."
+      "cooking_cat": "Temps et température sûrs pour chaque viande — plus les rappels de suppléments post-cuisson dont les chats ont besoin.",
+      "petsTitle": "Profils des animaux",
+      "petsDesc": "Enregistrez chiens et chats avec allergies et pathologies.",
+      "planTitle": "Plans de repas",
+      "planDesc": "Plans de 7, 14 ou 30 jours avec liste de courses."
     },
     "how": {
       "eyebrow": "Comment ça marche",

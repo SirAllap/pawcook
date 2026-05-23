@@ -219,10 +219,10 @@ function BentoTile({ tile, index }: { tile: Tile; index: number }) {
           <ArrowUpRight className="h-4 w-4 text-muted-fg transition-all duration-200 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
         <h3 className="mt-3 text-lg font-bold tracking-tight">
-          {tS(tile.titleKey) || tile.titleDefault}
+          {tS(tile.titleKey, { defaultValue: tile.titleDefault })}
         </h3>
         <p className="mt-1 text-sm text-muted-fg leading-relaxed max-w-xs">
-          {tS(tile.descKey) || tile.descDefault}
+          {tS(tile.descKey, { defaultValue: tile.descDefault })}
         </p>
         {tile.feature}
       </Link>
