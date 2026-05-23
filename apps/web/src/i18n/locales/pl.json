@@ -13,7 +13,9 @@
     "toxic": "TOKSYCZNY",
     "disclaimer": "Nie jest to porada weterynaryjna. Skonsultuj się z dyplomowanym lekarzem ACVN w sprawie długotrwałego karmienia domowego.",
     "openSource": "Open source",
-    "target": "Cel"
+    "target": "Cel",
+    "calculating": "Obliczanie…",
+    "dogFoodCalc": "Kalkulator żywienia"
   },
   "cooking": {
     "title": "Kalkulator gotowania",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsjusz",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Wołowina",
+      "chicken": "Kurczak",
+      "turkey": "Indyk",
+      "lamb": "Jagnięcina",
+      "pork": "Wieprzowina",
+      "duck": "Kaczka",
+      "rabbit": "Królik",
+      "venison": "Dziczyzna",
+      "salmon": "Łosoś",
+      "mackerel": "Makrela",
+      "sardines": "Sardynki",
+      "whitefish": "Biała ryba"
+    },
+    "total": "Łącznie",
+    "yield": "Uzysk",
+    "cooked": "po ugotowaniu",
+    "instructionsSection": "Instrukcje",
+    "optionsSection": "Opcje",
+    "placeholder": "Wypełnij formularz i naciśnij"
   },
   "nutrition": {
     "title": "Kalkulator żywienia",
@@ -99,7 +121,22 @@
       "high_protein": "Gotowane wysokobiałkowe — 50% białko / 30% warzywa / 15% skrobia",
       "pmr": "PMR 80-10-10 (zaawansowane)"
     },
-    "vetDisclaimer": "To narzędzie dostarcza jedynie ogólnych wskazówek. Skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (ACVN) w sprawie długotrwałego karmienia domowego."
+    "vetDisclaimer": "To narzędzie dostarcza jedynie ogólnych wskazówek. Skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (ACVN) w sprawie długotrwałego karmienia domowego.",
+    "profileSection": "Profil psa",
+    "dietShort": {
+      "balanced_cooked": "Zbilansowana",
+      "high_protein": "Wysokobiałkowa",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% białko / 50% warzywa",
+      "high_protein": "50% białko / 30% warzywa",
+      "pmr": "Dla zaawansowanych"
+    },
+    "macroProtein": "białko",
+    "macroVeg": "warzywa",
+    "macroStarch": "skrobia",
+    "placeholder": "Wypełnij profil psa i naciśnij"
   },
   "foodSafety": {
     "title": "Informacje o bezpieczeństwie żywności",
