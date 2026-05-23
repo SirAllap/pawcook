@@ -12,6 +12,7 @@
     "./aafco-cat": "./src/aafco-cat.json",
     "./cat-supplements": "./src/cat-supplements.json",
     "./transition": "./src/transition.json",
-    "./cat-transition": "./src/cat-transition.json"
+    "./cat-transition": "./src/cat-transition.json",
+    "./ingredient-meta": "./src/ingredient-meta.json"
   }
 }
