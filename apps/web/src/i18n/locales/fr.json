@@ -13,7 +13,9 @@
     "toxic": "TOXIQUE",
     "disclaimer": "Pas un conseil vétérinaire. Consultez un diplomate ACVN pour une alimentation maison à long terme.",
     "openSource": "Open source",
-    "target": "Objectif"
+    "target": "Objectif",
+    "calculating": "Calcul en cours…",
+    "dogFoodCalc": "Calculateur d'alimentation"
   },
   "cooking": {
     "title": "Calculateur de cuisson",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Bœuf",
+      "chicken": "Poulet",
+      "turkey": "Dinde",
+      "lamb": "Agneau",
+      "pork": "Porc",
+      "duck": "Canard",
+      "rabbit": "Lapin",
+      "venison": "Cerf",
+      "salmon": "Saumon",
+      "mackerel": "Maquereau",
+      "sardines": "Sardines",
+      "whitefish": "Poisson blanc"
+    },
+    "total": "Total",
+    "yield": "Rendement",
+    "cooked": "cuit",
+    "instructionsSection": "Instructions",
+    "optionsSection": "Options",
+    "placeholder": "Remplissez le formulaire et appuyez sur"
   },
   "nutrition": {
     "title": "Calculateur nutritionnel",
@@ -99,7 +121,22 @@
       "high_protein": "Cuit riche en protéines — 50% protéines / 30% légumes / 15% féculents",
       "pmr": "PMR 80-10-10 (avancé)"
     },
-    "vetDisclaimer": "Cet outil fournit des conseils généraux uniquement. Consultez un nutritionniste vétérinaire certifié (ACVN) pour une alimentation maison à long terme."
+    "vetDisclaimer": "Cet outil fournit des conseils généraux uniquement. Consultez un nutritionniste vétérinaire certifié (ACVN) pour une alimentation maison à long terme.",
+    "profileSection": "Profil du chien",
+    "dietShort": {
+      "balanced_cooked": "Équilibré",
+      "high_protein": "Riche en protéines",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% protéines / 50% légumes",
+      "high_protein": "50% protéines / 30% légumes",
+      "pmr": "Utilisateurs avancés"
+    },
+    "macroProtein": "protéines",
+    "macroVeg": "légumes",
+    "macroStarch": "féculents",
+    "placeholder": "Remplissez le profil de votre chien et appuyez sur"
   },
   "foodSafety": {
     "title": "Référence sécurité alimentaire",
