@@ -74,6 +74,7 @@
     "cooked": "cocido",
     "instructionsSection": "Instrucciones",
     "optionsSection": "Opciones",
+    "totalWeight": "Peso total (kg)",
     "placeholder": "Rellena el formulario y pulsa"
   },
   "nutrition": {
