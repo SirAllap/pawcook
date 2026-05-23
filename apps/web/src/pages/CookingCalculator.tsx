@@ -128,13 +128,41 @@ function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 
   );
 }
 
+/**
+ * Read the prefill payload from either the URL query string (preferred —
+ * it's deterministic, deep-linkable, and visible in the address bar) or
+ * router state (legacy fallback). Returns null when neither carries a
+ * `from=plan` signal so casual visits to /cooking are unaffected.
+ */
+function readPrefill(search: string, state: unknown): CookingPrefill | null {
+  const params = new URLSearchParams(search);
+  if (params.get('from') === 'plan') {
+    const num = (k: string) => {
+      const v = params.get(k);
+      if (v == null) return undefined;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : undefined;
+    };
+    return {
+      meatType: (params.get('meat') as CookingPrefill['meatType']) ?? undefined,
+      cookingMethod: (params.get('method') as CookingPrefill['cookingMethod']) ?? undefined,
+      totalWeightKg: num('kg'),
+      petCount: num('pets'),
+      feedingDays: num('days'),
+      planName: params.get('plan') ?? undefined,
+    };
+  }
+  const fromState = (state as { prefill?: CookingPrefill } | null)?.prefill;
+  return fromState ?? null;
+}
+
 export default function CookingCalculator() {
   const { t } = useTranslation();
   const tS = useSpeciesT();
   const { species } = useSpecies();
   const location = useLocation();
   const navigate = useNavigate();
-  const prefill = (location.state as { prefill?: CookingPrefill } | null)?.prefill;
+  const prefill = readPrefill(location.search, location.state);
   const [prefillBanner, setPrefillBanner] = useState<CookingPrefill | null>(prefill ?? null);
   const [result, setResult] = useState<CookingResult | null>(null);
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
@@ -155,7 +183,7 @@ export default function CookingCalculator() {
   const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
     mode: 'onBlur',
-    defaultValues: applyPrefill(loadSaved(), prefill),
+    defaultValues: applyPrefill(loadSaved(), prefill ?? undefined),
   });
 
   // Re-apply the prefill on every navigation that carries a new one.
@@ -165,7 +193,7 @@ export default function CookingCalculator() {
   // every navigate() call, so we use it as the dependency.
   useEffect(() => {
     if (!prefill) return;
-    reset(applyPrefill(loadSaved(), prefill));
+    reset(applyPrefill(loadSaved(), prefill ?? undefined));
     setPrefillBanner(prefill);
     setResult(null);
     setSubmittedData(null);
