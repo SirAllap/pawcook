@@ -37,6 +37,7 @@ describe('calculateNutrition', () => {
   it('cooked balanced diet recommends a calcium supplement', () => {
     const r = calculateNutrition({ ...base, macroProfile: 'balanced_cooked' });
     expect(r.calciumSupplementMg).toBeGreaterThan(0);
+    expect(r.warnings.map(w => w.id)).toContain('cookedCaDeficient');
   });
 
   it('produces component grams that sum approximately to mid daily food', () => {

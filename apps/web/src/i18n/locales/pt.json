@@ -150,17 +150,63 @@
     "dietShort": {
       "balanced_cooked": "Equilibrado",
       "high_protein": "Rico em proteína",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Ancestral Real"
     },
     "dietSub": {
       "balanced_cooked": "40% proteína / 50% veg",
-      "high_protein": "50% proteína / 30% veg",
-      "pmr": "Utilizadores avançados"
+      "high_protein": "55% proteína / 30% veg",
+      "pmr": "Cru 80-10-10",
+      "barf": "Cru + vegetais + sementes",
+      "real_ancestral": "Cru + peixe + fibra"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
     "macroStarch": "amido",
-    "placeholder": "Preencha o perfil do seu cão e toque em"
+    "placeholder": "Preencha o perfil do seu cão e toque em",
+    "components": {
+      "protein": "Proteína",
+      "muscle": "Carne muscular",
+      "bone": "Osso cru",
+      "liver": "Fígado",
+      "organ": "Órgãos",
+      "seafood": "Peixe inteiro",
+      "fiber": "Fibra animal",
+      "veg": "Vegetais",
+      "seeds": "Sementes e frutos secos",
+      "fruit": "Frutas",
+      "starch": "Amido"
+    },
+    "result": {
+      "breakdown": "Composição da dieta",
+      "perDay": "por dia",
+      "derEnergy": "DER (energia)",
+      "vetPdf": "PDF veterinário",
+      "calcium": "Cálcio",
+      "phosphorus": "Fósforo",
+      "omegaTarget": "Alvo Ω-3",
+      "safetyGuardrails": "Alertas de segurança",
+      "caP": "Rácio Ca : P",
+      "safe": "seguro"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (em repouso): {{kcal}} kcal/dia",
+      "der": "DER (energia diária): {{kcal}} kcal/dia (×{{multiplier}} multiplicador)",
+      "rawDiet": "Dieta crua avançada — o osso fornece cálcio natural; nunca substitua por osso cozido.",
+      "realAncestralOmega": "O peixe inteiro (sardinha, cavala) equilibra a relação ómega-3:6. Use peixes pequenos selvagens para limitar o mercúrio."
+    },
+    "warnings": {
+      "caPLow": "O rácio Ca:P é de {{ratio}}:1 — abaixo do mínimo seguro AAFCO (1:1). Adicione ~{{calcium}} mg de cálcio suplementar por dia.",
+      "caPHigh": "O rácio Ca:P é de {{ratio}}:1 — acima do máximo seguro AAFCO (2:1). Reduza o osso ou equilibre com proteína pobre em cálcio.",
+      "puppyCaP": "Cachorros em crescimento são sensíveis ao Ca:P alto — mantenha abaixo de 1.6:1 para evitar doenças ósseas.",
+      "cookedCaDeficient": "Dietas cozidas são deficientes em cálcio por defeito. Adicione ~{{calcium}} mg de Ca (≈½ c.chá de casca de ovo moída por ~454 g de carne, ou use um balanceador)."
+    }
   },
   "foodSafety": {
     "title": "Referência de segurança alimentar",
@@ -193,6 +239,60 @@
       "wysong": "Para dietas somente à base de carne",
       "animalEssentials": "Amplo espectro",
       "volhard": "Abordagem de pré-mistura completa"
+    },
+    "aafcoTable": {
+      "title": "Perfil de nutrientes AAFCO",
+      "source": "Perfil de nutrientes AAFCO para cães (base matéria seca)",
+      "nutrient": "Nutriente",
+      "unit": "Unidade",
+      "adultMin": "Mín. adulto",
+      "growthMin": "Mín. crescimento",
+      "safeMax": "Máx. seguro",
+      "nutrients": {
+        "crude_protein": "Proteína bruta",
+        "crude_fat": "Gordura bruta",
+        "linoleic_acid": "Ácido linoleico",
+        "ala": "Ácido alfa-linolénico",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Cálcio",
+        "phosphorus": "Fósforo",
+        "iron": "Ferro",
+        "copper": "Cobre",
+        "zinc": "Zinco",
+        "iodine": "Iodo",
+        "selenium": "Selénio",
+        "vit_a": "Vitamina A",
+        "vit_d": "Vitamina D",
+        "vit_e": "Vitamina E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Cálcio : Fósforo",
+          "note": "Crítico para a saúde óssea; cachorros em crescimento devem ficar abaixo de 1.6:1"
+        },
+        "omega": {
+          "label": "Ómega-6 : Ómega-3",
+          "note": "Rácios mais baixos (5:1 a 10:1) reduzem a inflamação sistémica"
+        }
+      }
+    },
+    "transition": {
+      "title": "Transição de 7 dias de ração para comida fresca",
+      "summary": "A transição gradual previne diarreia osmótica e problemas gástricos. Use uma única proteína altamente digestível (frango ou peru) durante toda a transição.",
+      "tipsTitle": "Dicas",
+      "oldFresh": "{{old}}% antigo · {{new}}% fresco",
+      "days": {
+        "0": { "label": "Dia 1–2", "note": "Observe as fezes — algo moles é normal, mas devem ficar firmes até ao dia 2." },
+        "1": { "label": "Dia 3–4", "note": "Se aparecerem problemas digestivos, mantenha este rácio mais um dia antes de avançar." },
+        "2": { "label": "Dia 5–6", "note": "Comece a eliminar qualquer comida comercial." },
+        "3": { "label": "Dia 7+",  "note": "Dieta fresca completa. Introduza a rotação de proteínas só após 14–21 dias de digestão estável." }
+      },
+      "tips": {
+        "0": "Adicione uma colher de chá de abóbora enlatada natural nos primeiros 3 dias para apoiar a digestão.",
+        "1": "Espere 48 h antes de adicionar suplementos (cálcio, óleo de peixe), depois introduza um de cada vez.",
+        "2": "Se a diarreia persistir mais de 48 horas, volte ao rácio do dia anterior e consulte um veterinário.",
+        "3": "Cães séniores ou com aparelho digestivo sensível podem precisar de 10–14 dias em vez de 7."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Nozes (especialmente mofadas/negras)",
       "compound": "Micotoxinas tremorígenas",
       "effect": "Convulsões"
+    },
+    "salt_excess": {
+      "label": "Sal (em excesso)",
+      "compound": "Sódio",
+      "effect": "Intoxicação por iões de sódio — vómitos, tremores, convulsões"
+    },
+    "dairy_milk": {
+      "label": "Leite e lacticínios com lactose",
+      "compound": "Lactose",
+      "effect": "A maioria dos cães adultos é intolerante à lactose — diarreia, gases"
+    },
+    "raw_egg_whites": {
+      "label": "Claras de ovo cruas (consumo regular)",
+      "compound": "Avidina",
+      "effect": "O consumo prolongado bloqueia a biotina → problemas de pele e pelo. Ovo inteiro cru ocasional é seguro."
+    },
+    "hops": {
+      "label": "Lúpulo (cervejaria)",
+      "compound": "Desconhecido",
+      "effect": "Hipertermia maligna, fatal em algumas raças"
+    },
+    "stone_fruit_pits": {
+      "label": "Caroços de pêssego, ameixa e damasco",
+      "compound": "Cianeto + obstrução",
+      "effect": "Asfixia, obstrução intestinal, envenenamento por cianeto"
+    },
+    "raw_yeast_dough": {
+      "label": "Massa com levedura (a levedar)",
+      "compound": "Etanol + CO₂",
+      "effect": "Distensão abdominal (risco de torção), intoxicação alcoólica"
+    },
+    "currants": {
+      "label": "Groselhas / passas de Corinto",
+      "compound": "Igual às uvas",
+      "effect": "Insuficiência renal aguda"
     }
   },
   "suppData": {

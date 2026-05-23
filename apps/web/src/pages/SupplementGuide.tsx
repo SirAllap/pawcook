@@ -62,24 +62,30 @@ export default function SupplementGuide() {
       <FadeIn>
         <Card padding="none" variant="elevated" className="overflow-hidden">
           <header className="px-5 py-4 border-b border-border">
-            <h2 className="font-black text-base">AAFCO Nutrient Profile</h2>
-            <p className="text-xs text-muted-fg mt-0.5">{aafco.source}</p>
+            <h2 className="font-black text-base">
+              {t('supplements.aafcoTable.title', { defaultValue: 'AAFCO Nutrient Profile' })}
+            </h2>
+            <p className="text-xs text-muted-fg mt-0.5">
+              {t('supplements.aafcoTable.source', { defaultValue: aafco.source })}
+            </p>
           </header>
           <div className="overflow-x-auto">
             <table className="w-full text-[12px]">
               <thead>
                 <tr className="border-b border-border text-muted-fg bg-surface-2/50">
-                  <th className="text-left font-bold px-4 py-2.5">Nutrient</th>
-                  <th className="text-right font-bold px-3 py-2.5">Unit</th>
-                  <th className="text-right font-bold px-3 py-2.5">Adult</th>
-                  <th className="text-right font-bold px-3 py-2.5">Growth</th>
-                  <th className="text-right font-bold px-4 py-2.5">Max</th>
+                  <th className="text-left font-bold px-4 py-2.5">{t('supplements.aafcoTable.nutrient', { defaultValue: 'Nutrient' })}</th>
+                  <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.unit', { defaultValue: 'Unit' })}</th>
+                  <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.adultMin', { defaultValue: 'Adult' })}</th>
+                  <th className="text-right font-bold px-3 py-2.5">{t('supplements.aafcoTable.growthMin', { defaultValue: 'Growth' })}</th>
+                  <th className="text-right font-bold px-4 py-2.5">{t('supplements.aafcoTable.safeMax', { defaultValue: 'Max' })}</th>
                 </tr>
               </thead>
               <tbody>
                 {aafco.nutrients.map((n, i) => (
                   <tr key={n.id} className={i % 2 ? 'bg-surface-2/30' : ''}>
-                    <td className="px-4 py-2 font-semibold text-foreground">{n.label}</td>
+                    <td className="px-4 py-2 font-semibold text-foreground">
+                      {t(`supplements.aafcoTable.nutrients.${n.id}`, { defaultValue: n.label })}
+                    </td>
                     <td className="px-3 py-2 text-right text-muted-fg font-mono">{n.unit}</td>
                     <td className="px-3 py-2 text-right font-mono font-bold text-primary tabular-nums">{fmt(n.adultMin)}</td>
                     <td className="px-3 py-2 text-right font-mono font-bold text-primary tabular-nums">{fmt(n.growthMin)}</td>
@@ -92,9 +98,13 @@ export default function SupplementGuide() {
           <div className="px-5 py-4 border-t border-border space-y-2">
             {aafco.ratios.map((r) => (
               <div key={r.id} className="text-sm">
-                <span className="font-bold text-foreground">{r.label}:</span>{' '}
+                <span className="font-bold text-foreground">
+                  {t(`supplements.aafcoTable.ratios.${r.id}.label`, { defaultValue: r.label })}:
+                </span>{' '}
                 <span className="text-success font-mono font-semibold">{r.min} – {r.max}</span>
-                <p className="text-xs text-muted-fg mt-0.5">{r.note}</p>
+                <p className="text-xs text-muted-fg mt-0.5">
+                  {t(`supplements.aafcoTable.ratios.${r.id}.note`, { defaultValue: r.note })}
+                </p>
               </div>
             ))}
           </div>
@@ -106,9 +116,11 @@ export default function SupplementGuide() {
           <header className="px-5 py-4 border-b border-border">
             <h2 className="font-black text-base flex items-center gap-2">
               <RefreshCw className="h-4 w-4 text-primary" />
-              {transition.title}
+              {t('supplements.transition.title', { defaultValue: transition.title })}
             </h2>
-            <p className="text-xs text-muted-fg mt-1 leading-relaxed">{transition.summary}</p>
+            <p className="text-xs text-muted-fg mt-1 leading-relaxed">
+              {t('supplements.transition.summary', { defaultValue: transition.summary })}
+            </p>
           </header>
           <div className="p-4 space-y-3">
             {transition.days.map((d, i) => (
@@ -121,9 +133,11 @@ export default function SupplementGuide() {
                 className="rounded-2xl border border-border bg-surface-2 p-4"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-black text-primary">{d.days}</span>
+                  <span className="text-sm font-black text-primary">
+                    {t(`supplements.transition.days.${i}.label`, { defaultValue: d.days })}
+                  </span>
                   <span className="text-[11px] font-bold text-muted-fg font-mono tabular-nums">
-                    {d.oldPct}% old · {d.newPct}% new
+                    {t('supplements.transition.oldFresh', { old: d.oldPct, new: d.newPct, defaultValue: `${d.oldPct}% old · ${d.newPct}% new` })}
                   </span>
                 </div>
                 <div className="flex h-2.5 rounded-full overflow-hidden bg-surface">
@@ -142,15 +156,20 @@ export default function SupplementGuide() {
                     className="bg-primary"
                   />
                 </div>
-                <p className="text-xs text-muted-fg mt-2 leading-relaxed">{d.note}</p>
+                <p className="text-xs text-muted-fg mt-2 leading-relaxed">
+                  {t(`supplements.transition.days.${i}.note`, { defaultValue: d.note })}
+                </p>
               </motion.div>
             ))}
           </div>
           <div className="px-5 py-4 border-t border-border space-y-1.5">
-            <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg mb-1">Tips</p>
+            <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg mb-1">
+              {t('supplements.transition.tipsTitle', { defaultValue: 'Tips' })}
+            </p>
             {transition.tips.map((tip, i) => (
               <p key={i} className="text-xs text-muted-fg leading-relaxed flex gap-2">
-                <span className="text-primary font-black shrink-0">•</span>{tip}
+                <span className="text-primary font-black shrink-0">•</span>
+                {t(`supplements.transition.tips.${i}`, { defaultValue: tip })}
               </p>
             ))}
           </div>
@@ -170,14 +189,17 @@ export default function SupplementGuide() {
                   <div>
                     <h2 className="font-black text-base">{t(`suppData.${supp.id}.label`, { defaultValue: supp.label })}</h2>
                     <p className="text-xs text-muted-fg mt-0.5">
-                      <span className="text-foreground/80 font-semibold">{t('common.target')}:</span> {t(`suppData.${supp.id}.target`, { defaultValue: supp.target })}
+                      <span className="text-foreground/80 font-semibold">{t('common.target')}:</span>{' '}
+                      {t(`suppData.${supp.id}.target`, { defaultValue: supp.target })}
                     </p>
                   </div>
                 </header>
                 <div className="p-4 space-y-2">
                   {supp.sources.map((src) => (
                     <div key={src.id} className="rounded-2xl border border-border bg-surface-2 p-4">
-                      <p className="text-sm font-bold">{t(`suppData.${supp.id}.sources.${src.id}.label`, { defaultValue: src.label })}</p>
+                      <p className="text-sm font-bold">
+                        {t(`suppData.${supp.id}.sources.${src.id}.label`, { defaultValue: src.label })}
+                      </p>
                       <p className="text-xs text-muted-fg mt-1">
                         <span className="font-semibold">{t('supplements.dose')}:</span>{' '}
                         <span className="font-mono">{t(`suppData.${supp.id}.sources.${src.id}.dose`, { defaultValue: src.dose })}</span>

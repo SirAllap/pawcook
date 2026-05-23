@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/cn';
 
 export function CaPGauge({
@@ -8,6 +9,7 @@ export function CaPGauge({
   ratio: number;
   target: { min: number; max: number };
 }) {
+  const { t } = useTranslation();
   const reduced = useReducedMotion();
   const max = 4;
   const pct = Math.min(100, Math.max(0, (ratio / max) * 100));
@@ -19,8 +21,12 @@ export function CaPGauge({
     <div className="space-y-3">
       <div className="flex items-baseline justify-between">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">Ca : P ratio</p>
-          <p className="text-xs text-muted-fg mt-0.5">Safe zone {target.min} – {target.max} : 1</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">
+            {t('nutrition.result.caP', { defaultValue: 'Ca : P ratio' })}
+          </p>
+          <p className="text-xs text-muted-fg mt-0.5">
+            {t('nutrition.result.safe', { defaultValue: 'Safe' })} {target.min} – {target.max} : 1
+          </p>
         </div>
         <span
           className={cn(

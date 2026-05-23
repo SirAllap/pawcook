@@ -150,17 +150,63 @@
     "dietShort": {
       "balanced_cooked": "Zbilansowana",
       "high_protein": "Wysokobiałkowa",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Ancestralna"
     },
     "dietSub": {
       "balanced_cooked": "40% białko / 50% warzywa",
-      "high_protein": "50% białko / 30% warzywa",
-      "pmr": "Dla zaawansowanych"
+      "high_protein": "55% białko / 30% warzywa",
+      "pmr": "Surowo 80-10-10",
+      "barf": "Surowo + warzywa + nasiona",
+      "real_ancestral": "Surowo + ryba + błonnik"
     },
     "macroProtein": "białko",
     "macroVeg": "warzywa",
     "macroStarch": "skrobia",
-    "placeholder": "Wypełnij profil psa i naciśnij"
+    "placeholder": "Wypełnij profil psa i naciśnij",
+    "components": {
+      "protein": "Białko",
+      "muscle": "Mięso mięśniowe",
+      "bone": "Surowa kość",
+      "liver": "Wątroba",
+      "organ": "Narządy",
+      "seafood": "Cała ryba",
+      "fiber": "Błonnik zwierzęcy",
+      "veg": "Warzywa",
+      "seeds": "Nasiona i orzechy",
+      "fruit": "Owoce",
+      "starch": "Skrobia"
+    },
+    "result": {
+      "breakdown": "Skład diety",
+      "perDay": "dziennie",
+      "derEnergy": "DER (energia)",
+      "vetPdf": "PDF dla weterynarza",
+      "calcium": "Wapń",
+      "phosphorus": "Fosfor",
+      "omegaTarget": "Cel Ω-3",
+      "safetyGuardrails": "Ostrzeżenia bezpieczeństwa",
+      "caP": "Stosunek Ca : P",
+      "safe": "bezpieczny"
+    },
+    "aafco": {
+      "pass": "AAFCO",
+      "caution": "AAFCO",
+      "fail": "AAFCO"
+    },
+    "notes": {
+      "rer": "RER (spoczynkowe): {{kcal}} kcal/dobę",
+      "der": "DER (dzienne zapotrzebowanie): {{kcal}} kcal/dobę (×{{multiplier}} mnożnik)",
+      "rawDiet": "Zaawansowana dieta surowa — kość dostarcza naturalnego wapnia; nigdy nie zastępuj kością gotowaną.",
+      "realAncestralOmega": "Cała ryba (sardynki, makrela) równoważy stosunek omega-3:6. Używaj małych dziko żyjących ryb, by ograniczyć rtęć."
+    },
+    "warnings": {
+      "caPLow": "Stosunek Ca:P wynosi {{ratio}}:1 — poniżej bezpiecznego minimum AAFCO 1:1. Dodaj ~{{calcium}} mg dodatkowego wapnia dziennie.",
+      "caPHigh": "Stosunek Ca:P wynosi {{ratio}}:1 — powyżej bezpiecznego maksimum AAFCO 2:1. Zmniejsz ilość kości lub zrównoważ białkiem o niskiej zawartości wapnia.",
+      "puppyCaP": "Rosnące szczenięta są wrażliwe na wysokie Ca:P — utrzymuj poniżej 1.6:1, aby uniknąć chorób układu kostnego.",
+      "cookedCaDeficient": "Diety gotowane są domyślnie ubogie w wapń. Dodaj ~{{calcium}} mg Ca (≈½ łyżeczki zmielonej skorupki jajka na ~454 g mięsa lub użyj balansera)."
+    }
   },
   "foodSafety": {
     "title": "Informacje o bezpieczeństwie żywności",
@@ -193,6 +239,60 @@
       "wysong": "Do diet mięsnych",
       "animalEssentials": "Szerokie spektrum",
       "volhard": "Pełne podejście premixowe"
+    },
+    "aafcoTable": {
+      "title": "Profil składników odżywczych AAFCO",
+      "source": "Profil składników AAFCO dla psów (w przeliczeniu na suchą masę)",
+      "nutrient": "Składnik",
+      "unit": "Jednostka",
+      "adultMin": "Min. dorosły",
+      "growthMin": "Min. wzrost",
+      "safeMax": "Maks. bezp.",
+      "nutrients": {
+        "crude_protein": "Białko surowe",
+        "crude_fat": "Tłuszcz surowy",
+        "linoleic_acid": "Kwas linolowy",
+        "ala": "Kwas alfa-linolenowy",
+        "epa_dha": "EPA + DHA",
+        "calcium": "Wapń",
+        "phosphorus": "Fosfor",
+        "iron": "Żelazo",
+        "copper": "Miedź",
+        "zinc": "Cynk",
+        "iodine": "Jod",
+        "selenium": "Selen",
+        "vit_a": "Witamina A",
+        "vit_d": "Witamina D",
+        "vit_e": "Witamina E"
+      },
+      "ratios": {
+        "ca_p": {
+          "label": "Wapń : Fosfor",
+          "note": "Krytyczne dla zdrowia kości; rosnące szczenięta powinny pozostać poniżej 1.6:1"
+        },
+        "omega": {
+          "label": "Omega-6 : Omega-3",
+          "note": "Niższe stosunki (5:1 do 10:1) zmniejszają stan zapalny w organizmie"
+        }
+      }
+    },
+    "transition": {
+      "title": "7-dniowa zmiana z karmy suchej na świeżą",
+      "summary": "Stopniowa zmiana zapobiega biegunce osmotycznej i dolegliwościom żołądkowym. Używaj jednego, bardzo strawnego białka (kurczak lub indyk) przez cały okres przejścia.",
+      "tipsTitle": "Wskazówki",
+      "oldFresh": "{{old}}% starej · {{new}}% świeżej",
+      "days": {
+        "0": { "label": "Dzień 1–2", "note": "Obserwuj stolec — lekko luźny stolec jest normalny, ale do 2. dnia powinien być uformowany." },
+        "1": { "label": "Dzień 3–4", "note": "Jeśli pojawią się problemy trawienne, utrzymaj ten stosunek o dzień dłużej, zanim przejdziesz dalej." },
+        "2": { "label": "Dzień 5–6", "note": "Zacznij stopniowo eliminować jakąkolwiek karmę komercyjną." },
+        "3": { "label": "Dzień 7+",  "note": "Pełna dieta świeża. Wprowadzaj rotację białka dopiero po 14–21 dniach stabilnego trawienia." }
+      },
+      "tips": {
+        "0": "Dodaj łyżeczkę dyni z puszki (bez przypraw) przez pierwsze 3 dni, aby wspomóc trawienie.",
+        "1": "Odczekaj 48 godzin przed wprowadzeniem suplementów (wapń, olej rybi), potem dodawaj je pojedynczo.",
+        "2": "Jeśli biegunka utrzymuje się dłużej niż 48 godzin, wróć do poprzedniego stosunku i skonsultuj się z weterynarzem.",
+        "3": "Starsze psy lub psy z wrażliwym układem trawiennym mogą potrzebować przejścia trwającego 10–14 dni zamiast 7."
+      }
     }
   },
   "landing": {
@@ -478,6 +578,41 @@
       "label": "Orzechy włoskie (szczególnie spleśniałe/czarne)",
       "compound": "Tremorgeniczne mykotoksyny",
       "effect": "Drgawki"
+    },
+    "salt_excess": {
+      "label": "Sól (w nadmiarze)",
+      "compound": "Sód",
+      "effect": "Zatrucie jonami sodu — wymioty, drżenia, drgawki"
+    },
+    "dairy_milk": {
+      "label": "Mleko i nabiał laktozowy",
+      "compound": "Laktoza",
+      "effect": "Większość dorosłych psów nie toleruje laktozy — biegunka, gazy"
+    },
+    "raw_egg_whites": {
+      "label": "Surowe białko jaja (przy regularnym karmieniu)",
+      "compound": "Awidyna",
+      "effect": "Długotrwałe karmienie wiąże biotynę → problemy ze skórą i sierścią. Całe surowe jajka okazjonalnie są OK."
+    },
+    "hops": {
+      "label": "Chmiel (warzenie)",
+      "compound": "Nieznany",
+      "effect": "Hipertermia złośliwa, śmiertelna u niektórych ras"
+    },
+    "stone_fruit_pits": {
+      "label": "Pestki brzoskwini, śliwki, moreli",
+      "compound": "Cyjanek + niedrożność",
+      "effect": "Zadławienie, niedrożność jelit, zatrucie cyjankiem"
+    },
+    "raw_yeast_dough": {
+      "label": "Ciasto drożdżowe (rosnące)",
+      "compound": "Etanol + CO₂",
+      "effect": "Wzdęcie (ryzyko skrętu żołądka), zatrucie alkoholowe"
+    },
+    "currants": {
+      "label": "Porzeczki / rodzynki koryntyjskie",
+      "compound": "Jak winogrona",
+      "effect": "Ostra niewydolność nerek"
     }
   },
   "suppData": {

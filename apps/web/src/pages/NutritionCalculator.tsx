@@ -8,7 +8,7 @@ import { Sparkles, Printer, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, A
 import {
   NutritionInputSchema, calculateNutrition,
   type NutritionInput, type NutritionResult,
-  type MacroRatioProfile, type ComponentKey,
+  type MacroRatioProfile, type ComponentKey, type AafcoStatus,
 } from '@pawcook/shared';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
@@ -49,28 +49,28 @@ const DIET_META: Record<MacroRatioProfile, { emoji: string; label: string; sub: 
   real_ancestral:  { emoji: '🐺', label: 'Real ancestral', sub: 'Raw + seafood' },
 };
 
-const COMPONENT_META: Record<ComponentKey, { label: string; Icon: typeof Beef; color: string }> = {
-  protein: { label: 'Protein',     Icon: Beef,     color: 'bg-primary' },
-  muscle:  { label: 'Muscle meat', Icon: Beef,     color: 'bg-rose-500' },
-  bone:    { label: 'Raw bone',    Icon: Bone,     color: 'bg-stone-300' },
-  liver:   { label: 'Liver',       Icon: Droplet,  color: 'bg-rose-700' },
-  organ:   { label: 'Organs',      Icon: Heart,    color: 'bg-fuchsia-500' },
-  seafood: { label: 'Seafood',     Icon: Fish,     color: 'bg-cyan-500' },
-  fiber:   { label: 'Animal fiber',Icon: Wind,     color: 'bg-lime-500' },
-  veg:     { label: 'Vegetables',  Icon: Carrot,   color: 'bg-success' },
-  seeds:   { label: 'Seeds & nuts',Icon: Drumstick,color: 'bg-amber-700' },
-  fruit:   { label: 'Fruits',      Icon: Apple,    color: 'bg-pink-500' },
-  starch:  { label: 'Starch',      Icon: Wheat,    color: 'bg-info' },
+const COMPONENT_META: Record<ComponentKey, { Icon: typeof Beef; color: string }> = {
+  protein: { Icon: Beef,     color: 'bg-primary' },
+  muscle:  { Icon: Beef,     color: 'bg-rose-500' },
+  bone:    { Icon: Bone,     color: 'bg-stone-300' },
+  liver:   { Icon: Droplet,  color: 'bg-rose-700' },
+  organ:   { Icon: Heart,    color: 'bg-fuchsia-500' },
+  seafood: { Icon: Fish,     color: 'bg-cyan-500' },
+  fiber:   { Icon: Wind,     color: 'bg-lime-500' },
+  veg:     { Icon: Carrot,   color: 'bg-success' },
+  seeds:   { Icon: Drumstick,color: 'bg-amber-700' },
+  fruit:   { Icon: Apple,    color: 'bg-pink-500' },
+  starch:  { Icon: Wheat,    color: 'bg-info' },
 };
 
-function AafcoBadge({ status }: { status: 'pass' | 'caution' | 'fail' }) {
-  const map = {
-    pass: { variant: 'success', label: 'AAFCO · pass' },
-    caution: { variant: 'warning', label: 'AAFCO · caution' },
-    fail: { variant: 'danger', label: 'AAFCO · fail' },
-  } as const;
-  const s = map[status];
-  return <Badge variant={s.variant} className="text-[10px]">{s.label}</Badge>;
+function AafcoBadge({ status }: { status: AafcoStatus }) {
+  const { t } = useTranslation();
+  const variant = status === 'pass' ? 'success' : status === 'caution' ? 'warning' : 'danger';
+  return (
+    <Badge variant={variant} className="text-[10px]">
+      {t(`nutrition.aafco.${status}`)}
+    </Badge>
+  );
 }
 
 export default function NutritionCalculator() {
@@ -286,7 +286,7 @@ export default function NutritionCalculator() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-5">
                 <StatTile label={t('nutrition.dailyFood')} value={`${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max}`} unit="g" tone="primary" delay={0.0} />
                 <StatTile label={t('nutrition.perMeal')}   value={`${result.perMealGrams.min}–${result.perMealGrams.max}`}   unit="g" tone="primary" delay={0.05} />
-                <StatTile label="DER (energy)" value={result.derKcal} unit="kcal" tone="warning" delay={0.10} />
+                <StatTile label={t('nutrition.result.derEnergy', { defaultValue: 'DER (energy)' })} value={result.derKcal} unit="kcal" tone="warning" delay={0.10} />
                 <StatTile label={t('nutrition.calciumNeeded')} value={result.calciumMg} unit="mg" tone="info" delay={0.15} />
               </div>
 
@@ -294,16 +294,18 @@ export default function NutritionCalculator() {
                 <Card variant="muted" padding="md" className="space-y-3">
                   <div className="flex items-center justify-between">
                     <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">
-                      {t('nutrition.dietBreakdown', { defaultValue: 'Diet breakdown' })}
+                      {t('nutrition.result.breakdown', { defaultValue: 'Diet breakdown' })}
                     </p>
-                    <span className="text-[10px] text-muted-fg font-semibold">per day</span>
+                    <span className="text-[10px] text-muted-fg font-semibold">
+                      {t('nutrition.result.perDay', { defaultValue: 'per day' })}
+                    </span>
                   </div>
                   <MacroBar
                     segments={result.components.map((c) => ({
                       key: c.key,
                       pct: c.pct,
                       color: COMPONENT_META[c.key].color,
-                      label: `${COMPONENT_META[c.key].label}: ${Math.round(c.pct * 100)}%`,
+                      label: `${t(`nutrition.components.${c.key}`)}: ${Math.round(c.pct * 100)}%`,
                     }))}
                   />
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 pt-1">
@@ -312,7 +314,7 @@ export default function NutritionCalculator() {
                       return (
                         <div key={c.key} className="flex items-center gap-2 text-xs">
                           <meta.Icon className="h-3.5 w-3.5 text-muted-fg" />
-                          <span className="text-foreground truncate">{meta.label}</span>
+                          <span className="text-foreground truncate">{t(`nutrition.components.${c.key}`)}</span>
                           <span className="ml-auto font-mono font-bold text-muted-fg tabular-nums">{c.grams}g</span>
                         </div>
                       );
@@ -325,9 +327,18 @@ export default function NutritionCalculator() {
                 <Card variant="muted" padding="md">
                   <CaPGauge ratio={result.caPRatio} target={result.caPTarget} />
                   <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-border text-xs">
-                    <div><span className="text-muted-fg">Calcium:</span> <span className="font-mono font-bold">{result.calciumMg}mg</span></div>
-                    <div><span className="text-muted-fg">Phosphorus:</span> <span className="font-mono font-bold">{result.phosphorusMg}mg</span></div>
-                    <div><span className="text-muted-fg">Ω-3 target:</span> <span className="font-mono font-bold">{result.omega3Mg}mg</span></div>
+                    <div>
+                      <span className="text-muted-fg">{t('nutrition.result.calcium', { defaultValue: 'Calcium' })}:</span>{' '}
+                      <span className="font-mono font-bold">{result.calciumMg}mg</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-fg">{t('nutrition.result.phosphorus', { defaultValue: 'Phosphorus' })}:</span>{' '}
+                      <span className="font-mono font-bold">{result.phosphorusMg}mg</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-fg">{t('nutrition.result.omegaTarget', { defaultValue: 'Ω-3 target' })}:</span>{' '}
+                      <span className="font-mono font-bold">{result.omega3Mg}mg</span>
+                    </div>
                   </div>
                 </Card>
               </div>
@@ -336,11 +347,12 @@ export default function NutritionCalculator() {
                 <div className="px-5 pb-5">
                   <Card padding="md" className="bg-danger/5 border-danger/30">
                     <p className="text-[10px] font-black uppercase tracking-wider text-danger mb-2">
-                      {t('nutrition.safetyGuardrails', { defaultValue: 'Safety guardrails' })}
+                      {t('nutrition.result.safetyGuardrails', { defaultValue: 'Safety guardrails' })}
                     </p>
                     {result.warnings.map((w, i) => (
                       <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                        <span className="text-danger font-black shrink-0">!</span>{w}
+                        <span className="text-danger font-black shrink-0">!</span>
+                        {t(`nutrition.warnings.${w.id}`, w.values)}
                       </p>
                     ))}
                   </Card>
@@ -351,7 +363,8 @@ export default function NutritionCalculator() {
                 <Card variant="muted" padding="md">
                   {result.notes.map((n, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1 first:mt-0">
-                      <span className="text-primary font-black shrink-0">•</span>{n}
+                      <span className="text-primary font-black shrink-0">•</span>
+                      {t(`nutrition.notes.${n.id}`, n.values)}
                     </p>
                   ))}
                 </Card>

@@ -12,6 +12,18 @@ export interface DietComponent {
 
 export type AafcoStatus = 'pass' | 'caution' | 'fail';
 
+export type NoteId = 'rer' | 'der' | 'rawDiet' | 'realAncestralOmega';
+export type WarningId = 'caPLow' | 'caPHigh' | 'puppyCaP' | 'cookedCaDeficient';
+
+export interface NutritionNote {
+  id: NoteId;
+  values?: Record<string, number | string>;
+}
+export interface NutritionWarning {
+  id: WarningId;
+  values?: Record<string, number | string>;
+}
+
 export interface NutritionResult {
   rerKcal: number;
   derKcal: number;
@@ -19,7 +31,6 @@ export interface NutritionResult {
   dailyFoodGrams: { min: number; max: number };
   perMealGrams: { min: number; max: number };
   components: DietComponent[];
-  // Retained for compatibility with legacy summary cards
   macros: { proteinG: number; vegG: number; starchG: number };
   calciumMg: number;
   phosphorusMg: number;
@@ -27,8 +38,8 @@ export interface NutritionResult {
   caPTarget: { min: number; max: number };
   calciumSupplementMg: number;
   omega3Mg: number;
-  notes: string[];
-  warnings: string[];
+  notes: NutritionNote[];
+  warnings: NutritionWarning[];
   aafcoStatus: AafcoStatus;
   dietProfile: MacroRatioProfile;
   isRawDiet: boolean;
@@ -214,37 +225,38 @@ export function calculateNutrition(input: NutritionInput): NutritionResult {
 
   const caPRatio = phosphorusMg > 0 ? calciumMg / phosphorusMg : 0;
 
-  const warnings: string[] = [];
+  const warnings: NutritionWarning[] = [];
   let aafcoStatus: AafcoStatus = 'pass';
 
+  const ratioStr = caPRatio.toFixed(2);
   if (caPRatio < caPTarget.min) {
-    warnings.push(`Ca:P ratio is ${caPRatio.toFixed(2)}:1 — below the AAFCO safe minimum of 1:1. Add ~${calciumSupplementMg} mg supplemental calcium daily.`);
+    warnings.push({ id: 'caPLow', values: { ratio: ratioStr, calcium: calciumSupplementMg } });
     aafcoStatus = 'fail';
   } else if (caPRatio > caPTarget.max) {
-    warnings.push(`Ca:P ratio is ${caPRatio.toFixed(2)}:1 — above the AAFCO safe maximum of 2:1. Reduce bone content or balance with low-calcium protein.`);
+    warnings.push({ id: 'caPHigh', values: { ratio: ratioStr } });
     aafcoStatus = 'fail';
   } else if (caPRatio < 1.2 || caPRatio > 1.8) {
     aafcoStatus = 'caution';
   }
 
   if (age === 'puppy' && caPRatio > 1.6) {
-    warnings.push('Growing puppies are sensitive to high Ca:P — keep under 1.6:1 to avoid skeletal disease.');
+    warnings.push({ id: 'puppyCaP' });
     if (aafcoStatus === 'pass') aafcoStatus = 'caution';
   }
 
   if (calciumSupplementMg > 0 && !spec.isRaw) {
-    warnings.push(`Cooked diets are calcium-deficient by default. Add ~${calciumSupplementMg} mg Ca (≈½ tsp ground eggshell per ~454 g meat, or use a balancer).`);
+    warnings.push({ id: 'cookedCaDeficient', values: { calcium: calciumSupplementMg } });
   }
 
-  const notes: string[] = [
-    `RER (resting): ${Math.round(rer)} kcal/day`,
-    `DER (daily energy): ${Math.round(der)} kcal/day (×${merMultiplier.toFixed(1)} multiplier)`,
+  const notes: NutritionNote[] = [
+    { id: 'rer', values: { kcal: Math.round(rer) } },
+    { id: 'der', values: { kcal: Math.round(der), multiplier: merMultiplier.toFixed(1) } },
   ];
   if (macroProfile === 'pmr' || macroProfile === 'barf' || macroProfile === 'real_ancestral') {
-    notes.push('Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.');
+    notes.push({ id: 'rawDiet' });
   }
   if (macroProfile === 'real_ancestral') {
-    notes.push('Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury.');
+    notes.push({ id: 'realAncestralOmega' });
   }
 
   // Legacy macros structure for backward-compatible UI cards (cooked profiles only)
