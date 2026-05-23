@@ -208,9 +208,12 @@ function ShoppingRow({
             name: label,
             qty: formatQuantity(item.totalGrams, lang),
           })}
-          className="shrink-0 flex items-center justify-center w-12 border-l border-border/60 text-muted-fg hover:text-primary hover:bg-primary/5 transition-colors"
+          className="shrink-0 flex flex-col items-center justify-center gap-0.5 w-16 border-l border-border/60 text-primary hover:bg-primary/10 active:bg-primary/15 transition-colors min-h-[44px] font-bold"
         >
           <ChefHat className="h-4 w-4" aria-hidden />
+          <span className="text-[10px] uppercase tracking-wider">
+            {t('mealPlan.shopping.cookShort', { defaultValue: 'Cook' })}
+          </span>
         </button>
       )}
     </li>

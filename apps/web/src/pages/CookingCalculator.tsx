@@ -157,7 +157,7 @@ function readPrefill(search: string, state: unknown): CookingPrefill | null {
 }
 
 export default function CookingCalculator() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tS = useSpeciesT();
   const { species } = useSpecies();
   const location = useLocation();
@@ -267,15 +267,37 @@ export default function CookingCalculator() {
                 plan: prefillBanner.planName ?? t('cooking.prefilledPlanFallback', { defaultValue: 'your plan' }),
               })}
             </p>
-            {prefillBanner.feedingDays && prefillBanner.petCount ? (
-              <p className="text-xs text-muted-fg mt-1.5">
-                {t('cooking.prefilledContext', {
-                  defaultValue: '{{pets}} pet(s) · {{days}} days of feeding',
-                  pets: prefillBanner.petCount,
-                  days: prefillBanner.feedingDays,
-                })}
-              </p>
-            ) : null}
+            {/* Concrete echo of what the URL/state actually delivered. If
+               this shows the right values, the wire works — only the form
+               below would be at fault. If it shows wrong values, the wire
+               itself broke (cache, state-strip, etc). */}
+            <ul className="flex flex-wrap gap-1.5 mt-2 text-[11px] font-mono tabular-nums">
+              {prefillBanner.meatType && (
+                <li className="rounded-md bg-primary/10 text-primary px-2 py-0.5 font-bold">
+                  {t(`cooking.meats.${prefillBanner.meatType}`, { defaultValue: prefillBanner.meatType })}
+                </li>
+              )}
+              {prefillBanner.totalWeightKg != null && (
+                <li className="rounded-md bg-primary/10 text-primary px-2 py-0.5 font-bold">
+                  {prefillBanner.totalWeightKg.toLocaleString(i18n.language, { maximumFractionDigits: 2 })} kg
+                </li>
+              )}
+              {prefillBanner.cookingMethod && (
+                <li className="rounded-md bg-primary/10 text-primary px-2 py-0.5 font-bold">
+                  {t(`cooking.methods.${prefillBanner.cookingMethod}`, { defaultValue: prefillBanner.cookingMethod })}
+                </li>
+              )}
+              {prefillBanner.petCount != null && (
+                <li className="rounded-md bg-surface-2 text-muted-fg px-2 py-0.5">
+                  {prefillBanner.petCount} {t('cooking.prefilledPetsShort', { defaultValue: 'pets' })}
+                </li>
+              )}
+              {prefillBanner.feedingDays != null && (
+                <li className="rounded-md bg-surface-2 text-muted-fg px-2 py-0.5">
+                  {prefillBanner.feedingDays} {t('cooking.prefilledDaysShort', { defaultValue: 'days' })}
+                </li>
+              )}
+            </ul>
           </div>
           <button
             type="button"
