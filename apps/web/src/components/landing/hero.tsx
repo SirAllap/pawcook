@@ -18,27 +18,33 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Ambient glows */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      {/* Ambient glows
+         The decorative wrapper is masked with a soft radial fade so any blob
+         that gets clipped by overflow-hidden ends in transparent — no hard
+         box edge where the colored gradient meets the page background. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_45%,black_55%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_70%_70%_at_50%_45%,black_55%,transparent_100%)]"
+      >
         <motion.div
-          className="absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full blur-[120px] opacity-60"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--primary) / 0.45), transparent)' }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-[640px] w-[640px] rounded-full blur-[160px] opacity-60"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--primary) / 0.45), transparent 70%)' }}
           animate={reduced ? undefined : { x: ['-50%', '-46%', '-54%', '-50%'], y: [0, -8, 6, 0] }}
           transition={reduced ? undefined : { duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-40 right-[-10%] h-[360px] w-[360px] rounded-full blur-[110px] opacity-40"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-b) / 0.6), transparent)' }}
+          className="absolute top-32 -right-24 h-[420px] w-[420px] rounded-full blur-[140px] opacity-40"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-b) / 0.55), transparent 70%)' }}
           animate={reduced ? undefined : { x: [0, -12, 8, 0], y: [0, 14, -6, 0] }}
           transition={reduced ? undefined : { duration: 16, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-[-20%] left-[-10%] h-[420px] w-[420px] rounded-full blur-[120px] opacity-30"
-          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-c) / 0.6), transparent)' }}
+          className="absolute -bottom-32 -left-24 h-[480px] w-[480px] rounded-full blur-[150px] opacity-30"
+          style={{ background: 'radial-gradient(closest-side, hsl(var(--hero-glow-c) / 0.55), transparent 70%)' }}
           animate={reduced ? undefined : { x: [0, 10, -8, 0], y: [0, -10, 4, 0] }}
           transition={reduced ? undefined : { duration: 18, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="absolute inset-0 bg-grain opacity-50" />
+        <div className="absolute inset-0 bg-grain opacity-40" />
       </div>
 
       <div className="relative mx-auto max-w-5xl pt-12 sm:pt-20 pb-12 sm:pb-20 text-center">
