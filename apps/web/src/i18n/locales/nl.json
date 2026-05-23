@@ -13,7 +13,9 @@
     "toxic": "GIFTIG",
     "disclaimer": "Geen veterinair advies. Raadpleeg een ACVN-diplomaat voor langdurige huisvoeding.",
     "openSource": "Open source",
-    "target": "Doelwaarde"
+    "target": "Doelwaarde",
+    "calculating": "Berekening…",
+    "dogFoodCalc": "Hondenvoer-calculator"
   },
   "cooking": {
     "title": "Kookcalculator",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Rundvlees",
+      "chicken": "Kip",
+      "turkey": "Kalkoen",
+      "lamb": "Lam",
+      "pork": "Varkensvlees",
+      "duck": "Eend",
+      "rabbit": "Konijn",
+      "venison": "Wildvlees",
+      "salmon": "Zalm",
+      "mackerel": "Makreel",
+      "sardines": "Sardines",
+      "whitefish": "Witte vis"
+    },
+    "total": "Totaal",
+    "yield": "Opbrengst",
+    "cooked": "gekookt",
+    "instructionsSection": "Instructies",
+    "optionsSection": "Opties",
+    "placeholder": "Vul het formulier in en tik op"
   },
   "nutrition": {
     "title": "Voedingscalculator",
@@ -99,7 +121,22 @@
       "high_protein": "Eiwitrijk gekookt — 50% eiwit / 30% groenten / 15% zetmeel",
       "pmr": "PMR 80-10-10 (gevorderd)"
     },
-    "vetDisclaimer": "Dit hulpmiddel biedt alleen algemene richtlijnen. Raadpleeg een gecertificeerde veterinaire voedingsdeskundige (ACVN) voor langdurige huisvoeding."
+    "vetDisclaimer": "Dit hulpmiddel biedt alleen algemene richtlijnen. Raadpleeg een gecertificeerde veterinaire voedingsdeskundige (ACVN) voor langdurige huisvoeding.",
+    "profileSection": "Hondenprofiel",
+    "dietShort": {
+      "balanced_cooked": "Gebalanceerd",
+      "high_protein": "Eiwitrijk",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% eiwit / 50% groenten",
+      "high_protein": "50% eiwit / 30% groenten",
+      "pmr": "Alleen gevorderden"
+    },
+    "macroProtein": "eiwit",
+    "macroVeg": "groenten",
+    "macroStarch": "zetmeel",
+    "placeholder": "Vul het profiel in en tik op"
   },
   "foodSafety": {
     "title": "Voedselveiligheidsreferentie",
