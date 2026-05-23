@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { TooltipProvider } from '../ui/tooltip';
 import { Toaster } from 'sonner';
@@ -9,10 +10,15 @@ import { BottomNav } from './bottom-nav';
 import { Footer } from './footer';
 import { SpeciesPickerSheet } from '../species/species-picker-sheet';
 import { ErrorBoundary } from '../error-boundary';
+import { cn } from '../../lib/cn';
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { resolvedTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  // On landing we hide the bottom nav, so the page doesn't need the
+  // reserved padding that prevents content from being covered by it.
+  const isLanding = location.pathname === '/';
   const isDesktop = useIsDesktop();
 
   // Keep <html lang> in sync so AT pronounce localized content correctly.
@@ -36,7 +42,13 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main
           id="main"
           tabIndex={-1}
-          className="flex-1 w-full mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-32 lg:pb-12 outline-none"
+          className={cn(
+            'flex-1 w-full mx-auto max-w-6xl px-4 sm:px-6 pt-4 outline-none',
+            // 128px reserves room for the floating bottom nav on mobile.
+            // Landing hides the nav so it gets only the small desktop
+            // padding (12) at every breakpoint.
+            isLanding ? 'pb-12' : 'pb-32 lg:pb-12',
+          )}
         >
           <ErrorBoundary>{children}</ErrorBoundary>
         </main>

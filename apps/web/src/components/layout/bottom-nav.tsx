@@ -11,6 +11,11 @@ export function BottomNav() {
   const { t } = useTranslation();
   const location = useLocation();
 
+  // Landing is a marketing page — the bento grid IS the navigation in a
+  // far more inviting form, so the bottom-nav chrome would just compete
+  // with the CTAs for attention. Skip rendering it on '/'.
+  if (location.pathname === '/') return null;
+
   const tabs: { to: string; label: string; Icon: IconType }[] = [
     { to: '/pets',        label: t('nav.pets'),        Icon: PawPrint },
     { to: '/meal-plan',   label: t('nav.plan'),        Icon: ClipboardList },

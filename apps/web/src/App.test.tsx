@@ -6,7 +6,7 @@ import { SpeciesProvider } from './lib/species';
 import { PetProfilesProvider } from './contexts/PetProfilesContext';
 import App from './App';
 
-function setup() {
+function setup(initialPath: string = '/') {
   // Pre-set the species so the picker sheet doesn't intercept on mount.
   if (typeof window !== 'undefined') {
     window.localStorage.setItem('pawcook_species', 'dog');
@@ -15,7 +15,7 @@ function setup() {
     <ThemeProvider>
       <SpeciesProvider>
         <PetProfilesProvider>
-          <MemoryRouter>
+          <MemoryRouter initialEntries={[initialPath]}>
             <App />
           </MemoryRouter>
         </PetProfilesProvider>
@@ -33,8 +33,10 @@ describe('App', () => {
     });
   });
 
-  it('renders the navigation links', async () => {
-    setup();
+  it('renders the navigation links on an in-app route', async () => {
+    // Landing intentionally hides the bottom nav (the bento grid is the
+    // navigation there); pick a regular page so we exercise the nav.
+    setup('/about');
     await waitFor(() => {
       expect(screen.getAllByText('Pets').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
