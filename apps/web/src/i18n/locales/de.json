@@ -20,6 +20,7 @@
     "downloadFailed": "Datei konnte nicht erstellt werden. Bitte erneut versuchen.",
     "exportFooter": "PawCook — pawcook.app — kein tierärztlicher Rat.",
     "safe": "Sicher",
+    "no": "Nein",
     "toxic": "GIFTIG",
     "disclaimer": "Kein Tierärztlicher Rat. Wenden Sie sich für die langfristige Heimfütterung an einen ACVN-Diplomaten.",
     "openSource": "Open Source",
@@ -72,6 +73,8 @@
       "species": "Art",
       "speciesLocked": "Die Art lässt sich nach dem Anlegen nicht mehr ändern.",
       "name": "Name",
+      "namePlaceholderDog": "Bello",
+      "namePlaceholderCat": "Minka",
       "weight": "Gewicht (kg)",
       "lifestyleSection": "Lebensstil",
       "age": "Lebensphase",
@@ -158,6 +161,29 @@
       "added": "{{name}} hinzugefügt.",
       "updated": "{{name}} aktualisiert.",
       "removed": "{{name}} entfernt."
+    }
+  },
+  "data": {
+    "title": "Sicherung & Wiederherstellung",
+    "help": "Deine Tiere und Pläne werden nur auf diesem Gerät gespeichert. Exportiere eine Sicherungsdatei, die du auf einem anderen Handy oder nach dem Löschen des Speichers laden kannst.",
+    "export": "Sicherung exportieren",
+    "nothingToExport": "Noch nichts zu exportieren — füge zuerst ein Tier oder einen Plan hinzu.",
+    "exportSuccess": "Sicherung mit {{pets}} Tier(en) und {{plans}} Plan(/Plänen) gespeichert.",
+    "importPartial": "{{pets}} Tier(e) und {{plans}} Plan(/Pläne) importiert. {{skipped}} Eintrag/Einträge übersprungen (ungültig).",
+    "importSuccess": "{{pets}} Tier(e) und {{plans}} Plan(/Pläne) importiert.",
+    "importConfirm": {
+      "replaceOrMerge": "Aktuelle Tiere und Pläne durch die Sicherung ersetzen?\n\nOK = alles ersetzen.\nAbbrechen = zusammenführen (beide behalten, gleichnamige aktualisieren)."
+    },
+    "import": {
+      "cta": "Sicherung importieren",
+      "error": {
+        "generic": "Diese Datei konnte nicht gelesen werden.",
+        "fileTooLarge": "Die Sicherung ist zu groß. Verwende eine Datei unter 5 MB.",
+        "readFailed": "Datei konnte nicht gelesen werden. Bitte erneut versuchen.",
+        "notJson": "Diese Datei ist kein gültiges JSON.",
+        "notPawcookBackup": "Das sieht nicht nach einer PawCook-Sicherung aus.",
+        "unsupportedVersion": "Sicherung stammt aus einer neueren PawCook-Version. Bitte zuerst die App aktualisieren."
+      }
     }
   },
   "mealPlan": {
