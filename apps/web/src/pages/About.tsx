@@ -1,54 +1,79 @@
 import { useTranslation } from 'react-i18next';
 
 const SOURCES = [
-  'AAFCO Dog Food Nutrient Profiles',
-  'NRC Nutrient Requirements of Dogs and Cats (2006)',
-  'FEDIAF Nutritional Guidelines',
-  'Merck Veterinary Manual',
-  'WSAVA Global Nutrition Guidelines',
-  'ACVN position statements',
+  { label: 'AAFCO Dog Food Nutrient Profiles',             icon: '📋' },
+  { label: 'NRC Nutrient Requirements of Dogs and Cats (2006)', icon: '🔬' },
+  { label: 'FEDIAF Nutritional Guidelines',                icon: '🇪🇺' },
+  { label: 'Merck Veterinary Manual',                      icon: '📗' },
+  { label: 'WSAVA Global Nutrition Guidelines',            icon: '🌍' },
+  { label: 'ACVN position statements',                     icon: '🩺' },
 ];
+
+const GITHUB_SVG = (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+  </svg>
+);
 
 export default function About() {
   const { t } = useTranslation();
 
   return (
-    <div className="max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold text-amber-400 mb-1">{t('about.title')}</h1>
+    <div className="space-y-5 max-w-2xl">
+      <div className="animate-fade-in-up">
+        <h1 className="text-3xl font-black text-white mb-1 tracking-tight">{t('about.title')}</h1>
         <p className="text-gray-400 text-sm">{t('about.subtitle')}</p>
       </div>
 
-      <div className="bg-red-950/80 border border-red-800/60 rounded-2xl p-5 space-y-3 shadow-lg">
-        <h2 className="font-bold text-red-300 text-base">⚠️ {t('about.disclaimers')}</h2>
-        <p className="text-sm text-red-200">{t('about.notVetAdvice')}</p>
-        <p className="text-sm text-red-200"><strong>{t('about.noBones')}</strong></p>
-        <p className="text-sm text-red-200"><strong>{t('about.pathogen')}</strong></p>
+      {/* Disclaimer */}
+      <div className="glass-card rounded-3xl overflow-hidden border-l-[3px] border-red-500/60 animate-fade-in-up delay-100">
+        <div className="px-5 py-4 border-b border-white/[0.06]">
+          <h2 className="font-black text-red-300 text-base">⚠️ {t('about.disclaimers')}</h2>
+        </div>
+        <div className="p-5 space-y-3">
+          <p className="text-sm text-red-200/90 leading-relaxed">{t('about.notVetAdvice')}</p>
+          <div className="bg-red-950/40 border border-red-800/30 rounded-2xl px-4 py-3">
+            <p className="text-sm text-red-200 font-bold leading-relaxed">🦴 {t('about.noBones')}</p>
+          </div>
+          <div className="bg-red-950/40 border border-red-800/30 rounded-2xl px-4 py-3">
+            <p className="text-sm text-red-200 font-bold leading-relaxed">🌡️ {t('about.pathogen')}</p>
+          </div>
+        </div>
       </div>
 
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 space-y-3 shadow-lg">
-        <h2 className="font-bold text-amber-300 text-base">{t('about.methodology')}</h2>
-        <div className="space-y-2">
-          {SOURCES.map(s => (
-            <div key={s} className="flex gap-3 items-start">
-              <span className="text-amber-500 shrink-0 mt-0.5">•</span>
-              <p className="text-sm text-gray-300">{s}</p>
+      {/* Methodology */}
+      <div className="glass-card rounded-3xl overflow-hidden animate-fade-in-up delay-200">
+        <div className="px-5 py-4 border-b border-white/[0.06]">
+          <h2 className="font-black text-white text-base">📚 {t('about.methodology')}</h2>
+        </div>
+        <div className="p-4 space-y-2">
+          {SOURCES.map(({ label, icon }, i) => (
+            <div key={label}
+              className="bg-white/[0.04] border border-white/[0.06] rounded-2xl px-4 py-3 flex gap-3 items-center animate-slide-up"
+              style={{ animationDelay: `${200 + i * 50}ms` }}>
+              <span className="text-xl shrink-0">{icon}</span>
+              <p className="text-sm text-gray-300 font-medium">{label}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-lg">
-        <h2 className="font-bold text-amber-300 text-base mb-2">{t('about.openSource')}</h2>
-        <p className="text-sm text-gray-300">
+      {/* Open source */}
+      <div className="glass-card rounded-3xl p-5 animate-fade-in-up delay-400">
+        <h2 className="font-black text-white text-base mb-3">⭐ {t('about.openSource')}</h2>
+        <p className="text-sm text-gray-300 leading-relaxed mb-4">
           {t('about.openSourceText')}{' '}
-          <a
-            href="https://github.com/SirAllap/pawcook"
-            className="text-amber-400 underline hover:text-amber-300 transition-colors"
-          >
+          <a href="https://github.com/SirAllap/pawcook" target="_blank" rel="noopener noreferrer"
+            className="text-amber-400 hover:text-amber-300 font-bold transition-colors underline">
             {t('about.github')}
           </a>.
         </p>
+        <a href="https://github.com/SirAllap/pawcook" target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 glass px-4 py-2.5 rounded-xl text-sm font-bold
+                     text-gray-200 hover:text-white transition-all hover:bg-white/[0.08] active:scale-95">
+          {GITHUB_SVG}
+          GitHub
+        </a>
       </div>
     </div>
   );
