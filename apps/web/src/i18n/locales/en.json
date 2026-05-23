@@ -8,12 +8,14 @@
   },
   "common": {
     "calculate": "Calculate",
+    "calculating": "Calculating…",
     "print": "Print recipe card",
     "safe": "Safe",
     "toxic": "TOXIC",
     "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
     "openSource": "Open source",
-    "target": "Target"
+    "target": "Target",
+    "dogFoodCalc": "Dog Food Calculator"
   },
   "cooking": {
     "title": "Cooking Calculator",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Beef",
+      "chicken": "Chicken",
+      "turkey": "Turkey",
+      "lamb": "Lamb",
+      "pork": "Pork",
+      "duck": "Duck",
+      "rabbit": "Rabbit",
+      "venison": "Venison",
+      "salmon": "Salmon",
+      "mackerel": "Mackerel",
+      "sardines": "Sardines",
+      "whitefish": "Whitefish"
+    },
+    "total": "Total",
+    "yield": "Yield",
+    "cooked": "cooked",
+    "instructionsSection": "Instructions",
+    "optionsSection": "Options",
+    "placeholder": "Fill in the form above and tap"
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -99,7 +121,22 @@
       "high_protein": "High-protein cooked — 50% protein / 30% veg / 15% starch",
       "pmr": "PMR 80-10-10 (advanced)"
     },
-    "vetDisclaimer": "This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding."
+    "vetDisclaimer": "This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding.",
+    "profileSection": "Dog Profile",
+    "dietShort": {
+      "balanced_cooked": "Balanced",
+      "high_protein": "High Protein",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% protein / 50% veg",
+      "high_protein": "50% protein / 30% veg",
+      "pmr": "Advanced users only"
+    },
+    "macroProtein": "protein",
+    "macroVeg": "veg",
+    "macroStarch": "starch",
+    "placeholder": "Fill in your dog's profile and tap"
   },
   "foodSafety": {
     "title": "Food Safety Reference",
