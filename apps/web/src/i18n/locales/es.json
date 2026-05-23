@@ -245,7 +245,9 @@
       "veggiesLabel": "Verduras a incluir",
       "veggiesHelp": "Elige las verduras que quieres — déjalo vacío para que el planificador escoja.",
       "anyMeats": "Cualquiera · elige el planificador",
-      "anyVeggies": "Cualquiera · elige el planificador"
+      "anyVeggies": "Cualquiera · elige el planificador",
+      "methodLabel": "Método de cocción",
+      "methodHelp": "Lo recordamos para que el botón \"Cocinar\" de la lista de la compra abra la calculadora ya configurada a tu gusto."
     },
     "coverage": {
       "passed": "Parece equilibrado",

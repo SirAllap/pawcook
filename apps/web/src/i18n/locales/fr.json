@@ -245,7 +245,9 @@
       "veggiesLabel": "Légumes à inclure",
       "veggiesHelp": "Choisissez les légumes voulus — laissez vide pour laisser le planificateur choisir.",
       "anyMeats": "N'importe lesquels",
-      "anyVeggies": "N'importe lesquels"
+      "anyVeggies": "N'importe lesquels",
+      "methodLabel": "Méthode de cuisson",
+      "methodHelp": "Nous mémorisons ce choix pour que le bouton « Cuire » de la liste de courses ouvre la calculatrice déjà configurée comme vous le souhaitez."
     },
     "coverage": {
       "passed": "Semble équilibré",

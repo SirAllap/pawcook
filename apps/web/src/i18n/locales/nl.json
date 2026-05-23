@@ -245,7 +245,9 @@
       "veggiesLabel": "Groenten om mee te nemen",
       "veggiesHelp": "Kies de gewenste groenten — leeg = planner kiest.",
       "anyMeats": "Elke · planner kiest",
-      "anyVeggies": "Elke · planner kiest"
+      "anyVeggies": "Elke · planner kiest",
+      "methodLabel": "Bereidingswijze",
+      "methodHelp": "We onthouden dit zodat de \"Koken\"-knoppen in de boodschappenlijst de calculator meteen op jouw manier openen."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",

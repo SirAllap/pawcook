@@ -245,7 +245,9 @@
       "veggiesLabel": "Warzywa do uwzględnienia",
       "veggiesHelp": "Wybierz warzywa — puste = planer wybiera.",
       "anyMeats": "Dowolne · planer wybiera",
-      "anyVeggies": "Dowolne · planer wybiera"
+      "anyVeggies": "Dowolne · planer wybiera",
+      "methodLabel": "Metoda gotowania",
+      "methodHelp": "Zapamiętujemy to, aby przycisk \"Gotuj\" na liście zakupów otwierał kalkulator już ustawiony pod ciebie."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
