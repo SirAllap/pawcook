@@ -7,6 +7,8 @@
     "./vegetables": "./src/vegetables.json",
     "./fruits": "./src/fruits.json",
     "./toxic": "./src/toxic.json",
-    "./supplements": "./src/supplements.json"
+    "./supplements": "./src/supplements.json",
+    "./aafco": "./src/aafco.json",
+    "./transition": "./src/transition.json"
   }
 }

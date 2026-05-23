@@ -1,0 +1,24 @@
+{
+  "source": "AAFCO Dog Food Nutrient Profiles (dry-matter basis)",
+  "nutrients": [
+    { "id": "crude_protein",     "label": "Crude Protein",      "unit": "%",     "adultMin": 18.0,   "growthMin": 22.5,  "max": null     },
+    { "id": "crude_fat",         "label": "Crude Fat",          "unit": "%",     "adultMin": 5.5,    "growthMin": 8.5,   "max": null     },
+    { "id": "linoleic_acid",     "label": "Linoleic Acid",      "unit": "%",     "adultMin": 1.1,    "growthMin": 1.3,   "max": null     },
+    { "id": "ala",               "label": "Alpha-Linolenic Acid","unit": "%",    "adultMin": null,   "growthMin": 0.08,  "max": null     },
+    { "id": "epa_dha",           "label": "EPA + DHA",          "unit": "%",     "adultMin": null,   "growthMin": 0.05,  "max": null     },
+    { "id": "calcium",           "label": "Calcium",            "unit": "%",     "adultMin": 0.5,    "growthMin": 1.2,   "max": 2.5      },
+    { "id": "phosphorus",        "label": "Phosphorus",         "unit": "%",     "adultMin": 0.4,    "growthMin": 1.0,   "max": 1.6      },
+    { "id": "iron",              "label": "Iron",               "unit": "mg/kg", "adultMin": 40,     "growthMin": 88,    "max": 3000     },
+    { "id": "copper",            "label": "Copper",             "unit": "mg/kg", "adultMin": 7.3,    "growthMin": 12.4,  "max": 250      },
+    { "id": "zinc",              "label": "Zinc",               "unit": "mg/kg", "adultMin": 80,     "growthMin": 100,   "max": 1000     },
+    { "id": "iodine",            "label": "Iodine",             "unit": "mg/kg", "adultMin": 1.0,    "growthMin": 1.0,   "max": 11       },
+    { "id": "selenium",          "label": "Selenium",           "unit": "mg/kg", "adultMin": 0.35,   "growthMin": 0.35,  "max": 2        },
+    { "id": "vit_a",             "label": "Vitamin A",          "unit": "IU/kg", "adultMin": 5000,   "growthMin": 5000,  "max": 250000   },
+    { "id": "vit_d",             "label": "Vitamin D",          "unit": "IU/kg", "adultMin": 500,    "growthMin": 500,   "max": 3000     },
+    { "id": "vit_e",             "label": "Vitamin E",          "unit": "IU/kg", "adultMin": 50,     "growthMin": 50,    "max": 1000     }
+  ],
+  "ratios": [
+    { "id": "ca_p",    "label": "Calcium : Phosphorus", "min": "1:1",  "max": "2:1",  "note": "Critical for skeletal health; growing puppies should stay below 1.6:1" },
+    { "id": "omega",   "label": "Omega-6 : Omega-3",    "min": "—",    "max": "30:1", "note": "Lower ratios (5:1 to 10:1) reduce systemic inflammation" }
+  ]
+}

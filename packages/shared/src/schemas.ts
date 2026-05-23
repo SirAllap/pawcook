@@ -44,7 +44,13 @@ export const DogAgeSchema = z.enum(['puppy', 'adult', 'senior']);
 export const ActivityLevelSchema = z.enum(['sedentary', 'moderate', 'active', 'working']);
 export const BodyConditionSchema = z.enum(['underweight', 'ideal', 'overweight']);
 export const ReproductiveStatusSchema = z.enum(['intact', 'neutered', 'pregnant', 'lactating']);
-export const MacroRatioProfileSchema = z.enum(['balanced_cooked', 'high_protein', 'pmr']);
+export const MacroRatioProfileSchema = z.enum([
+  'balanced_cooked',
+  'high_protein',
+  'pmr',
+  'barf',
+  'real_ancestral',
+]);
 
 export const NutritionInputSchema = z.object({
   weightKg: z.number().min(0.5).max(120),
@@ -57,3 +63,4 @@ export const NutritionInputSchema = z.object({
 });
 
 export type NutritionInput = z.infer<typeof NutritionInputSchema>;
+export type MacroRatioProfile = z.infer<typeof MacroRatioProfileSchema>;

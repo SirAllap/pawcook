@@ -2,7 +2,11 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NutritionInputSchema, type NutritionInput, calculateNutrition, type NutritionResult } from '@pawcook/shared';
+import {
+  NutritionInputSchema, calculateNutrition,
+  type NutritionInput, type NutritionResult,
+  type MacroRatioProfile, type ComponentKey,
+} from '@pawcook/shared';
 
 const STORAGE_KEY = 'pawcook_nutrition_input';
 const DEFAULT_VALUES: NutritionInput = {
@@ -30,10 +34,83 @@ function SectionHead({ children }: { children: ReactNode }) {
   );
 }
 
-const DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr'] as const;
-const DIET_EMOJIS: Record<string, string> = {
-  balanced_cooked: '⚖️', high_protein: '💪', pmr: '🦴',
+const DIET_KEYS: MacroRatioProfile[] = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'];
+const DIET_EMOJIS: Record<MacroRatioProfile, string> = {
+  balanced_cooked: '⚖️',
+  high_protein:    '💪',
+  pmr:             '🦴',
+  barf:            '🌿',
+  real_ancestral:  '🐺',
 };
+const DIET_LABELS: Record<MacroRatioProfile, string> = {
+  balanced_cooked: 'Balanced',
+  high_protein:    'High Protein',
+  pmr:             'PMR 80/10/10',
+  barf:            'BARF',
+  real_ancestral:  'Real Ancestral',
+};
+const DIET_SUBS: Record<MacroRatioProfile, string> = {
+  balanced_cooked: '40% protein / 50% veg',
+  high_protein:    '55% protein / 30% veg',
+  pmr:             '80-10-10 raw',
+  barf:            'Raw + veg + seeds',
+  real_ancestral:  'Raw + seafood + fiber',
+};
+
+const COMPONENT_META: Record<ComponentKey, { label: string; emoji: string; color: string }> = {
+  protein: { label: 'Protein',     emoji: '🥩', color: 'from-amber-600 to-amber-400' },
+  muscle:  { label: 'Muscle meat', emoji: '🥩', color: 'from-red-700 to-red-500' },
+  bone:    { label: 'Raw bone',    emoji: '🦴', color: 'from-stone-400 to-stone-200' },
+  liver:   { label: 'Liver',       emoji: '🩸', color: 'from-rose-900 to-rose-700' },
+  organ:   { label: 'Organs',      emoji: '🫀', color: 'from-fuchsia-700 to-fuchsia-500' },
+  seafood: { label: 'Seafood',     emoji: '🐟', color: 'from-cyan-600 to-cyan-400' },
+  fiber:   { label: 'Animal fiber',emoji: '🪶', color: 'from-lime-700 to-lime-500' },
+  veg:     { label: 'Vegetables',  emoji: '🥕', color: 'from-green-600 to-green-400' },
+  seeds:   { label: 'Seeds & nuts',emoji: '🌰', color: 'from-yellow-700 to-yellow-500' },
+  fruit:   { label: 'Fruits',      emoji: '🍎', color: 'from-pink-600 to-pink-400' },
+  starch:  { label: 'Starch',      emoji: '🌾', color: 'from-blue-600 to-blue-400' },
+};
+
+function AafcoBadge({ status }: { status: 'pass' | 'caution' | 'fail' }) {
+  const style = status === 'pass'
+    ? 'bg-green-500/15 text-green-300 border-green-500/30'
+    : status === 'caution'
+      ? 'bg-amber-500/15 text-amber-300 border-amber-500/30'
+      : 'bg-red-500/15 text-red-300 border-red-500/30';
+  const label = status === 'pass' ? 'AAFCO ✓' : status === 'caution' ? 'AAFCO ⚠' : 'AAFCO ✗';
+  return <span className={`text-[11px] font-black px-2.5 py-1 rounded-full border tracking-wide ${style}`}>{label}</span>;
+}
+
+function CaPMeter({ ratio, target }: { ratio: number; target: { min: number; max: number } }) {
+  // Map 0–4 onto a 100% bar; safe band is target.min–target.max
+  const max = 4;
+  const pct = Math.min(100, Math.max(0, (ratio / max) * 100));
+  const safeStart = (target.min / max) * 100;
+  const safeEnd   = (target.max / max) * 100;
+  const inRange = ratio >= target.min && ratio <= target.max;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between items-baseline">
+        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Ca : P ratio</span>
+        <span className={`text-lg font-black ${inRange ? 'text-green-300' : 'text-red-300'}`}>
+          {ratio.toFixed(2)} : 1
+        </span>
+      </div>
+      <div className="relative h-3 bg-white/[0.05] rounded-full overflow-hidden border border-white/[0.06]">
+        <div className="absolute inset-y-0 bg-green-500/15 border-x border-green-500/40"
+          style={{ left: `${safeStart}%`, width: `${safeEnd - safeStart}%` }} />
+        <div className={`absolute inset-y-0 w-1 ${inRange ? 'bg-green-400' : 'bg-red-400'} shadow-lg`}
+          style={{ left: `calc(${pct}% - 2px)` }} />
+      </div>
+      <div className="flex justify-between text-[10px] text-gray-500 font-semibold">
+        <span>0</span>
+        <span className="text-green-400">{target.min}:1 ← safe → {target.max}:1</span>
+        <span>4:1+</span>
+      </div>
+    </div>
+  );
+}
 
 export default function NutritionCalculator() {
   const { t } = useTranslation();
@@ -59,11 +136,6 @@ export default function NutritionCalculator() {
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
     }, 200);
   }
-
-  const macroProfile = values.macroProfile;
-  const proteinPct = macroProfile === 'balanced_cooked' ? 40 : macroProfile === 'high_protein' ? 50 : 80;
-  const vegPct     = macroProfile === 'balanced_cooked' ? 50 : macroProfile === 'high_protein' ? 30 : 10;
-  const starchPct  = 100 - proteinPct - vegPct;
 
   return (
     <div className="space-y-6">
@@ -134,10 +206,10 @@ export default function NutritionCalculator() {
           <SectionHead>{t('nutrition.dietApproach')}</SectionHead>
           <Controller control={control} name="macroProfile"
             render={({ field }) => (
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {DIET_KEYS.map(key => (
                   <button key={key} type="button" onClick={() => field.onChange(key)}
-                    className={`relative flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border
+                    className={`relative flex flex-col items-center gap-1.5 p-3 rounded-2xl border
                                transition-all active:scale-95 text-center overflow-hidden ${
                       field.value === key
                         ? 'bg-amber-500/12 border-amber-500/45 text-amber-300'
@@ -147,30 +219,17 @@ export default function NutritionCalculator() {
                       <div className="absolute inset-0 bg-gradient-to-b from-amber-500/8 to-transparent pointer-events-none" />
                     )}
                     <span className="text-[22px]">{DIET_EMOJIS[key]}</span>
-                    <span className="text-xs font-black leading-tight">{t(`nutrition.dietShort.${key}`)}</span>
-                    <span className="text-[10px] text-gray-500 leading-tight">{t(`nutrition.dietSub.${key}`)}</span>
+                    <span className="text-xs font-black leading-tight">
+                      {t(`nutrition.dietShort.${key}`, { defaultValue: DIET_LABELS[key] })}
+                    </span>
+                    <span className="text-[10px] text-gray-500 leading-tight">
+                      {t(`nutrition.dietSub.${key}`, { defaultValue: DIET_SUBS[key] })}
+                    </span>
                   </button>
                 ))}
               </div>
             )}
           />
-
-          {/* Macro bar */}
-          <div className="space-y-2">
-            <div className="flex h-2.5 rounded-full overflow-hidden gap-px">
-              <div className="bg-gradient-to-r from-amber-600 to-amber-400 transition-all duration-700"
-                style={{ width: `${proteinPct}%`, borderRadius: '9999px 0 0 9999px' }} />
-              <div className="bg-gradient-to-r from-green-600 to-green-400 transition-all duration-700"
-                style={{ width: `${vegPct}%` }} />
-              <div className="bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-700"
-                style={{ width: `${starchPct}%`, borderRadius: '0 9999px 9999px 0' }} />
-            </div>
-            <div className="flex justify-between text-[11px] font-semibold">
-              <span className="text-amber-400">🥩 {proteinPct}% {t('nutrition.macroProtein')}</span>
-              <span className="text-green-400">🥕 {vegPct}% {t('nutrition.macroVeg')}</span>
-              <span className="text-blue-400">🌾 {starchPct}% {t('nutrition.macroStarch')}</span>
-            </div>
-          </div>
         </div>
 
         <div className="px-5 pb-5">
@@ -194,18 +253,31 @@ export default function NutritionCalculator() {
       {result && (
         <div ref={resultRef}
           className="animate-spring-in glass-card rounded-3xl overflow-hidden scroll-mt-20">
-          <div className="px-5 pt-5 pb-4 border-b border-white/[0.06]">
-            <h2 className="font-black text-lg text-white tracking-tight">📊 {t('nutrition.dailyPlan')}</h2>
+          <div className="px-5 pt-5 pb-4 border-b border-white/[0.06] flex items-start justify-between gap-3">
+            <div>
+              <h2 className="font-black text-lg text-white tracking-tight">📊 {t('nutrition.dailyPlan')}</h2>
+              <p className="text-xs text-gray-500 mt-1">
+                {t(`nutrition.dietShort.${result.dietProfile}`, { defaultValue: DIET_LABELS[result.dietProfile] })}
+                {' · '}
+                {t(`nutrition.dietSub.${result.dietProfile}`, { defaultValue: DIET_SUBS[result.dietProfile] })}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <AafcoBadge status={result.aafcoStatus} />
+              <button type="button" onClick={() => window.print()}
+                className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-1 rounded-full
+                          border border-white/[0.10] text-gray-300 hover:bg-white/[0.06] transition-all no-print">
+                🖨 Vet PDF
+              </button>
+            </div>
           </div>
 
           <div className="p-4 grid grid-cols-2 gap-3">
             {[
-              { emoji: '🍽️', label: t('nutrition.dailyFood'),      value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
-              { emoji: '🥣', label: t('nutrition.perMeal'),         value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
-              { emoji: '🥩', label: t('nutrition.protein'),         value: `~${result.macros.proteinG} g` },
-              { emoji: '🥕', label: t('nutrition.vegetables'),      value: `~${result.macros.vegG} g` },
-              { emoji: '🦴', label: t('nutrition.calciumNeeded'),   value: `~${result.calciumMg} mg` },
-              { emoji: '🐟', label: t('nutrition.omega3Target'),    value: `~${result.omega3Mg} mg` },
+              { emoji: '🍽️', label: t('nutrition.dailyFood'), value: `${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max} g` },
+              { emoji: '🥣', label: t('nutrition.perMeal'),    value: `${result.perMealGrams.min}–${result.perMealGrams.max} g` },
+              { emoji: '🔥', label: 'DER (energy)',            value: `${result.derKcal} kcal` },
+              { emoji: '🦴', label: t('nutrition.calciumNeeded'), value: `~${result.calciumMg} mg` },
             ].map(({ emoji, label, value }, i) => (
               <div key={label}
                 className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-4 text-center animate-slide-up"
@@ -217,6 +289,71 @@ export default function NutritionCalculator() {
             ))}
           </div>
 
+          {/* Component breakdown */}
+          <div className="px-5 pb-4">
+            <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Diet breakdown</span>
+                <span className="text-[10px] text-gray-500 font-semibold">per day</span>
+              </div>
+              <div className="flex h-2.5 rounded-full overflow-hidden gap-px">
+                {result.components.map((c, idx) => {
+                  const meta = COMPONENT_META[c.key];
+                  const first = idx === 0;
+                  const last = idx === result.components.length - 1;
+                  return (
+                    <div key={c.key}
+                      className={`bg-gradient-to-r ${meta.color} transition-all duration-700`}
+                      style={{
+                        width: `${c.pct * 100}%`,
+                        borderRadius: first ? '9999px 0 0 9999px' : last ? '0 9999px 9999px 0' : '0',
+                      }}
+                      title={`${meta.label}: ${(c.pct * 100).toFixed(0)}%`} />
+                  );
+                })}
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                {result.components.map(c => {
+                  const meta = COMPONENT_META[c.key];
+                  return (
+                    <div key={c.key} className="flex items-center gap-1.5 text-[11px] font-semibold">
+                      <span className="text-base">{meta.emoji}</span>
+                      <span className="text-gray-300 truncate">{meta.label}</span>
+                      <span className="text-gray-500 ml-auto whitespace-nowrap">{c.grams} g</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Ca:P ratio */}
+          <div className="px-5 pb-4">
+            <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4">
+              <CaPMeter ratio={result.caPRatio} target={result.caPTarget} />
+              <div className="flex justify-between text-[11px] text-gray-500 mt-3 pt-3 border-t border-white/[0.05]">
+                <span><span className="text-gray-400 font-semibold">Calcium:</span> {result.calciumMg} mg</span>
+                <span><span className="text-gray-400 font-semibold">Phosphorus:</span> {result.phosphorusMg} mg</span>
+                <span><span className="text-gray-400 font-semibold">Ω-3 target:</span> {result.omega3Mg} mg</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Warnings */}
+          {result.warnings.length > 0 && (
+            <div className="px-5 pb-4">
+              <div className="bg-red-500/[0.06] border border-red-500/30 rounded-2xl p-4 space-y-2">
+                <p className="text-[11px] font-black text-red-300 uppercase tracking-wider">⚠ Safety guardrails</p>
+                {result.warnings.map((w, i) => (
+                  <p key={i} className="text-sm text-red-200/90 flex gap-2 items-start leading-relaxed">
+                    <span className="text-red-400 shrink-0 font-black">•</span>{w}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Calculation notes */}
           <div className="px-5 pb-4">
             <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 space-y-2">
               {result.notes.map((n, i) => (

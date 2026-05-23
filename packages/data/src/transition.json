@@ -1,0 +1,16 @@
+{
+  "title": "7-day transition from kibble to fresh food",
+  "summary": "Gradual transition prevents osmotic diarrhea and gastric upset. Use a single highly digestible protein (chicken or turkey) for the entire transition.",
+  "days": [
+    { "days": "Day 1–2", "oldPct": 75, "newPct": 25, "note": "Watch stool — looser stool is normal, but firm should be the baseline by day 2." },
+    { "days": "Day 3–4", "oldPct": 50, "newPct": 50, "note": "If digestive issues appear, hold this ratio an extra day before advancing." },
+    { "days": "Day 5–6", "oldPct": 25, "newPct": 75, "note": "Begin tapering off any commercial food." },
+    { "days": "Day 7+",  "oldPct": 0,  "newPct": 100, "note": "Full fresh diet. Introduce protein rotation only after 14–21 days of stable digestion." }
+  ],
+  "tips": [
+    "Add a teaspoon of plain canned pumpkin for the first 3 days to support digestion.",
+    "Hold off on supplements (calcium, fish oil) for the first 48 hours, then introduce one at a time.",
+    "If diarrhea persists more than 48 hours, return to the previous day's ratio and consult a vet.",
+    "Senior dogs and dogs with sensitive GI tracts may need a 10–14 day transition instead of 7."
+  ]
+}

@@ -150,12 +150,16 @@
     "dietShort": {
       "balanced_cooked": "Balanced",
       "high_protein": "High Protein",
-      "pmr": "PMR 80/10/10"
+      "pmr": "PMR 80/10/10",
+      "barf": "BARF",
+      "real_ancestral": "Real Ancestral"
     },
     "dietSub": {
       "balanced_cooked": "40% protein / 50% veg",
-      "high_protein": "50% protein / 30% veg",
-      "pmr": "Advanced users only"
+      "high_protein": "55% protein / 30% veg",
+      "pmr": "80-10-10 raw",
+      "barf": "Raw + veg + seeds",
+      "real_ancestral": "Raw + seafood + fiber"
     },
     "macroProtein": "protein",
     "macroVeg": "veg",

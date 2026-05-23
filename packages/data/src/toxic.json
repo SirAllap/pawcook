@@ -15,5 +15,12 @@
   { "id": "raw_potato_green", "label": "Raw Potato (green)", "toxicCompound": "Solanine", "effect": "GI issues" },
   { "id": "rhubarb_leaves", "label": "Rhubarb Leaves", "toxicCompound": "Oxalates", "effect": "Kidney damage" },
   { "id": "cherry_pits", "label": "Cherry Pits", "toxicCompound": "Cyanide", "effect": "Toxic" },
-  { "id": "walnuts", "label": "Walnuts (especially moldy/black)", "toxicCompound": "Tremorgenic mycotoxins", "effect": "Seizures" }
+  { "id": "walnuts", "label": "Walnuts (especially moldy/black)", "toxicCompound": "Tremorgenic mycotoxins", "effect": "Seizures" },
+  { "id": "salt_excess", "label": "Salt (excess)", "toxicCompound": "Sodium", "effect": "Sodium ion poisoning — vomiting, tremors, seizures" },
+  { "id": "dairy_milk", "label": "Milk & Lactose Dairy", "toxicCompound": "Lactose", "effect": "Most adult dogs are lactose intolerant — diarrhea, gas" },
+  { "id": "raw_egg_whites", "label": "Raw Egg Whites (regular feeding)", "toxicCompound": "Avidin", "effect": "Long-term feeding binds biotin → skin/coat issues. Whole raw eggs OK occasionally." },
+  { "id": "hops", "label": "Hops (brewing)", "toxicCompound": "Unknown", "effect": "Malignant hyperthermia, fatal in some breeds" },
+  { "id": "stone_fruit_pits", "label": "Peach, Plum, Apricot Pits", "toxicCompound": "Cyanide + obstruction", "effect": "Choking, intestinal blockage, cyanide poisoning" },
+  { "id": "raw_yeast_dough", "label": "Yeast Dough (rising)", "toxicCompound": "Ethanol + CO₂", "effect": "Bloat (GDV risk), alcohol poisoning" },
+  { "id": "currants", "label": "Currants", "toxicCompound": "Same as grapes", "effect": "Acute kidney failure" }
 ]
