@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
 import { Flame, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles } from 'lucide-react';
 import { CookingInputSchema, type CookingInput, calculateCookingTime, type CookingResult } from '@pawcook/shared';
@@ -17,6 +17,8 @@ import { SectionLabel } from '../components/ui/section-label';
 import { EmptyState } from '../components/ui/empty-state';
 import { DownloadMenu } from '../components/recipe/DownloadMenu';
 import { useRecipeExport } from '../hooks/useRecipeExport';
+import { useDebouncedEffect } from '../lib/use-debounced-effect';
+import { blockBadNumberKeys } from '../lib/number-input';
 import { cn } from '../lib/cn';
 
 const STORAGE_KEY = 'pawcook_cooking_input';
@@ -43,26 +45,32 @@ function loadSaved(): CookingInput {
 }
 
 function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 'celsius' | 'fahrenheit' }) {
+  const reduced = useReducedMotion();
   const display = unit === 'fahrenheit' ? tempF : tempC;
   const max = unit === 'fahrenheit' ? 220 : 100;
   const pct = Math.min(1, display / max);
   const C = 2 * Math.PI * 56;
+  const unitLabel = `°${unit === 'fahrenheit' ? 'F' : 'C'}`;
   return (
-    <div className="relative h-40 w-40 sm:h-44 sm:w-44">
-      <svg viewBox="0 0 144 144" className="absolute inset-0 -rotate-90">
+    <div
+      className="relative h-40 w-40 sm:h-44 sm:w-44"
+      role="img"
+      aria-label={`${display}${unitLabel}`}
+    >
+      <svg viewBox="0 0 144 144" className="absolute inset-0 -rotate-90" aria-hidden>
         <circle cx="72" cy="72" r="56" fill="none" stroke="hsl(var(--border))" strokeWidth="10" />
         <motion.circle
           cx="72" cy="72" r="56" fill="none" stroke="hsl(var(--primary))" strokeWidth="10"
           strokeLinecap="round" strokeDasharray={C}
-          initial={{ strokeDashoffset: C }}
+          initial={reduced ? { strokeDashoffset: C * (1 - pct) } : { strokeDashoffset: C }}
           animate={{ strokeDashoffset: C * (1 - pct) }}
-          transition={{ duration: 1.2, ease: [0.32, 0.72, 0, 1] }}
+          transition={{ duration: reduced ? 0 : 1.2, ease: [0.32, 0.72, 0, 1] }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="font-mono text-4xl sm:text-5xl font-black text-foreground tabular-nums">{display}</span>
         <span className="text-xs font-bold text-muted-fg uppercase tracking-wider mt-1">
-          °{unit === 'fahrenheit' ? 'F' : 'C'}
+          {unitLabel}
         </span>
       </div>
     </div>
@@ -91,13 +99,14 @@ export default function CookingCalculator() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
+    mode: 'onBlur',
     defaultValues: loadSaved(),
   });
 
   const values = watch();
-  useEffect(() => {
+  useDebouncedEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(values)); } catch { /* ignore */ }
-  }, [values]);
+  }, [values], 300);
 
   const isSousVide = values.cookingMethod === 'sous_vide';
   const totalKg = isSousVide
@@ -105,15 +114,33 @@ export default function CookingCalculator() {
     : (values.totalWeightKg || 0);
   const yieldPct = YIELD_PCT[values.cookingMethod] ?? 0.90;
 
+  const timeouts = useRef<number[]>([]);
+  useEffect(() => () => {
+    for (const id of timeouts.current) window.clearTimeout(id);
+    timeouts.current = [];
+  }, []);
+
   function onSubmit(data: CookingInput) {
     setCalculating(true);
-    setTimeout(() => {
-      setResult(calculateCookingTime(data));
-      setSubmittedData(data);
+    try {
+      const result = calculateCookingTime(data);
+      const id1 = window.setTimeout(() => {
+        setResult(result);
+        setSubmittedData(data);
+        setCalculating(false);
+        toast.success(t('cooking.toastReady', { defaultValue: 'Recipe ready.' }));
+        const id2 = window.setTimeout(
+          () => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+          60,
+        );
+        timeouts.current.push(id2);
+      }, 220);
+      timeouts.current.push(id1);
+    } catch (err) {
+      console.error(err);
       setCalculating(false);
-      toast.success(t('cooking.toastReady', { defaultValue: 'Recipe ready.' }));
-      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
-    }, 220);
+      toast.error(t('common.calcFailed', { defaultValue: 'Could not calculate — please check inputs.' }));
+    }
   }
 
   return (
@@ -162,20 +189,23 @@ export default function CookingCalculator() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label={t('cooking.weightPerBag')}
-                    type="number" step="0.1" inputMode="decimal"
+                    type="number" step="0.1" min={0.05} max={20} inputMode="decimal"
+                    onKeyDown={blockBadNumberKeys}
                     {...register('weightKg', { valueAsNumber: true })}
                     error={errors.weightKg?.message}
                   />
                   <Input
                     label={t('cooking.numberOfBags')}
-                    type="number" inputMode="numeric"
+                    type="number" min={1} max={50} step={1} inputMode="numeric"
+                    onKeyDown={blockBadNumberKeys}
                     {...register('numberOfBags', { valueAsNumber: true })}
                     error={errors.numberOfBags?.message}
                   />
                 </div>
                 <Input
                   label={t('cooking.thickness')}
-                  type="number" step="0.5" inputMode="decimal"
+                  type="number" step="0.5" min={0.5} max={20} inputMode="decimal"
+                  onKeyDown={blockBadNumberKeys}
                   {...register('thicknessCm', { valueAsNumber: true })}
                   error={errors.thicknessCm?.message}
                 />
@@ -190,7 +220,8 @@ export default function CookingCalculator() {
               >
                 <Input
                   label={t('cooking.totalWeight')}
-                  type="number" step="0.1" inputMode="decimal"
+                  type="number" step="0.1" min={0.05} max={100} inputMode="decimal"
+                  onKeyDown={blockBadNumberKeys}
                   {...register('totalWeightKg', { valueAsNumber: true })}
                   error={errors.totalWeightKg?.message}
                 />
@@ -222,10 +253,14 @@ export default function CookingCalculator() {
           </div>
 
           <Button type="submit" variant="glow" size="lg" block loading={calculating}>
-            {calculating
-              ? t('common.calculating')
-              : <><Thermometer className="h-4 w-4" />{t('common.calculate')}</>
-            }
+            {calculating ? (
+              t('common.calculating')
+            ) : (
+              <>
+                <Thermometer className="h-4 w-4" aria-hidden />
+                {t('common.calculate')}
+              </>
+            )}
           </Button>
         </form>
       </Card>

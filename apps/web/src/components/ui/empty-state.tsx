@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../lib/cn';
 
 export function EmptyState({
@@ -15,18 +15,20 @@ export function EmptyState({
   action?: ReactNode;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={reduced ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+      transition={{ duration: reduced ? 0 : 0.4, ease: [0.32, 0.72, 0, 1] }}
       className={cn('flex flex-col items-center justify-center text-center py-14 px-6', className)}
     >
       {icon && (
         <motion.div
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+          animate={reduced ? undefined : { y: [0, -6, 0] }}
+          transition={reduced ? undefined : { duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
           className="mb-4 text-5xl text-muted-fg"
+          aria-hidden
         >
           {icon}
         </motion.div>

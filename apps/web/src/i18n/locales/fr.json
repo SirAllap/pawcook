@@ -6,7 +6,8 @@
     "nutrition": "Nutrition",
     "foodSafety": "Sécurité",
     "supplements": "Suppléments",
-    "about": "À propos"
+    "about": "À propos",
+    "primary": "Navigation principale"
   },
   "common": {
     "calculate": "Calculer",
@@ -32,7 +33,14 @@
     "preferences": "Préférences",
     "brandHome": "Accueil PawCook",
     "catFoodCalc": "Calculateur alimentaire félin",
-    "allYourPets": "Tous vos animaux"
+    "allYourPets": "Tous vos animaux",
+    "disclaimerLabel": "Remarque",
+    "skipToContent": "Aller au contenu",
+    "switchToLight": "Passer en mode clair",
+    "switchToDark": "Passer en mode sombre",
+    "unsavedChanges": "Modifications non enregistrées. Voulez-vous vraiment quitter ?",
+    "calcFailed": "Calcul impossible : vérifiez les valeurs.",
+    "cancel": "Annuler"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -118,18 +126,39 @@
     "conditions": {
       "label": "Conditions chroniques",
       "help": "Guident les recommandations (par ex. faible phosphore en cas d'insuffisance rénale). Ce n'est pas un outil de diagnostic.",
-      "allergy":      { "label": "Allergies alimentaires", "help": "Les allergènes seront exclus des plans." },
-      "kidney":       { "label": "Maladie rénale",         "help": "Moins de phosphore, éviter les jours riches en abats." },
-      "pancreatitis": { "label": "Pancréatite",            "help": "Protéines maigres uniquement, sans morceaux gras." },
-      "diabetes":     { "label": "Diabète",                "help": "Plans pauvres en glucides, attention aux féculents." },
-      "joint":        { "label": "Problèmes articulaires", "help": "Priorité aux protéines riches en oméga-3." },
-      "gi_sensitive": { "label": "Estomac sensible",       "help": "Options douces et faciles à digérer." },
-      "obese":        { "label": "Surpoids / obésité",     "help": "Poids cible avec restriction calorique." }
+      "allergy": {
+        "label": "Allergies alimentaires",
+        "help": "Les allergènes seront exclus des plans."
+      },
+      "kidney": {
+        "label": "Maladie rénale",
+        "help": "Moins de phosphore, éviter les jours riches en abats."
+      },
+      "pancreatitis": {
+        "label": "Pancréatite",
+        "help": "Protéines maigres uniquement, sans morceaux gras."
+      },
+      "diabetes": {
+        "label": "Diabète",
+        "help": "Plans pauvres en glucides, attention aux féculents."
+      },
+      "joint": {
+        "label": "Problèmes articulaires",
+        "help": "Priorité aux protéines riches en oméga-3."
+      },
+      "gi_sensitive": {
+        "label": "Estomac sensible",
+        "help": "Options douces et faciles à digérer."
+      },
+      "obese": {
+        "label": "Surpoids / obésité",
+        "help": "Poids cible avec restriction calorique."
+      }
     },
     "conditionsLabel": "Conditions",
     "confirmDelete": "Supprimer {{name}} ? Cette action est irréversible.",
     "toast": {
-      "added":   "{{name}} ajouté.",
+      "added": "{{name}} ajouté.",
       "updated": "{{name}} mis à jour.",
       "removed": "{{name}} supprimé."
     }
@@ -180,7 +209,7 @@
       "petsHelp": "Choisis-en un ou plusieurs. Les plans mixtes partagent une seule liste de courses.",
       "duration": "Durée",
       "days": "jours",
-      "duration_7":  "Hebdomadaire",
+      "duration_7": "Hebdomadaire",
       "duration_14": "Bihebdomadaire",
       "duration_30": "Mensuel",
       "nameLabel": "Nom du plan",
@@ -197,19 +226,19 @@
       "varietyHelp": "Niveau de rotation des protéines dans la semaine.",
       "variety": {
         "standard": "Standard",
-        "diverse":  "Diversifiée",
-        "novel":    "Nouvelles uniquement"
+        "diverse": "Diversifiée",
+        "novel": "Nouvelles uniquement"
       },
       "accessLabel": "Où vous achetez",
       "accessHelp": "Choisissez ce qui est réaliste dans vos magasins habituels.",
       "access": {
-        "easy":      "Supermarché",
+        "easy": "Supermarché",
         "specialty": "Boucher / spécialisé OK"
       },
       "prefsLabel": "Préférences d'approvisionnement",
-      "preferWildFish":  "Poisson sauvage préféré",
-      "preferGrassFed":  "Élevé à l'herbe préféré",
-      "preferOrganic":   "Légumes bio préférés"
+      "preferWildFish": "Poisson sauvage préféré",
+      "preferGrassFed": "Élevé à l'herbe préféré",
+      "preferOrganic": "Légumes bio préférés"
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -236,26 +265,26 @@
       "empty": "Rien à acheter — votre garde-manger couvre ce plan.",
       "exportFooter": "Liste de courses PawCook — pas un conseil vétérinaire.",
       "section": {
-        "butcher":      "Boucher",
+        "butcher": "Boucher",
         "fish-counter": "Poissonnerie",
-        "produce":      "Fruits & légumes",
-        "pantry":       "Garde-manger & conserves",
-        "pet-store":    "Animalerie",
-        "supplements":  "Compléments",
-        "online":       "Commande en ligne",
-        "other":        "Autres"
+        "produce": "Fruits & légumes",
+        "pantry": "Garde-manger & conserves",
+        "pet-store": "Animalerie",
+        "supplements": "Compléments",
+        "online": "Commande en ligne",
+        "other": "Autres"
       }
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
-      "saved":   "« {{name}} » enregistré.",
+      "saved": "« {{name}} » enregistré.",
       "deleted": "« {{name}} » supprimé."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Insuffisance rénale : maintenir le phosphore en bas du plan.",
-      "avoidOrgans":   "Insuffisance rénale : éviter les jours riches en abats ; faire tourner le foie."
+      "avoidOrgans": "Insuffisance rénale : éviter les jours riches en abats ; faire tourner le foie."
     },
     "pancreatitis": {
       "leanOnly": "Pancréatite : protéines maigres uniquement — pas de canard, agneau ou morceaux gras."

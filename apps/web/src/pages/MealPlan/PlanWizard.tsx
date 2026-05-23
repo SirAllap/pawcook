@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMemo, useState, type FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Check, Calendar, Sparkles, RotateCcw, Save } from 'lucide-react';
@@ -13,6 +13,7 @@ import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { SectionLabel } from '../../components/ui/section-label';
 import { EmptyState } from '../../components/ui/empty-state';
+import { PageFallback } from '../../components/ui/page-fallback';
 import { PetAvatar } from '../../components/pets/PetAvatar';
 import { SourcingPicker } from '../../components/meal-plan/SourcingPicker';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
@@ -48,14 +49,23 @@ export default function PlanWizard() {
 
   function regenerate() {
     if (selectedPets.length === 0) return;
-    const plan = generateMealPlan({
-      name: name || defaultName(selectedPets, duration, t),
-      pets: selectedPets,
-      durationDays: duration,
-      startDate: new Date().toISOString().slice(0, 10),
-      sourcing,
-    });
-    setPreview(plan);
+    try {
+      const plan = generateMealPlan({
+        name: name || defaultName(selectedPets, duration, t),
+        pets: selectedPets,
+        durationDays: duration,
+        startDate: new Date().toISOString().slice(0, 10),
+        sourcing,
+      });
+      setPreview(plan);
+    } catch (err) {
+      console.error(err);
+      toast.error(
+        t('mealPlan.toast.generateFailed', {
+          defaultValue: 'Could not generate the plan — try different settings.',
+        }),
+      );
+    }
   }
 
   function save() {
@@ -67,7 +77,7 @@ export default function PlanWizard() {
     navigate(`/meal-plan/${toSave.id}`);
   }
 
-  if (!petsReady) return null;
+  if (!petsReady) return <PageFallback />;
 
   if (pets.length === 0) {
     return (
@@ -81,18 +91,25 @@ export default function PlanWizard() {
           icon={<Sparkles className="h-8 w-8" />}
           title={t('mealPlan.needPet.title')}
           description={t('mealPlan.needPet.description')}
+          action={
+            <Button asChild variant="primary">
+              <Link to="/pets/new">{t('mealPlan.needPet.cta')}</Link>
+            </Button>
+          }
         />
-        <div className="flex justify-center">
-          <Button variant="primary" onClick={() => navigate('/pets/new')}>
-            {t('mealPlan.needPet.cta')}
-          </Button>
-        </div>
       </div>
     );
   }
 
+  // Enter key triggers "Generate" when nothing is previewed yet, otherwise "Save".
+  function onFormSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (preview) save();
+    else regenerate();
+  }
+
   return (
-    <div className="space-y-7">
+    <form onSubmit={onFormSubmit} className="space-y-7">
       <PageHeader
         eyebrow={t('mealPlan.eyebrow')}
         title={t('mealPlan.new.title')}
@@ -111,14 +128,16 @@ export default function PlanWizard() {
                 key={pet.id}
                 type="button"
                 onClick={() => togglePet(pet.id)}
+                aria-pressed={active}
                 className={cn(
                   'flex items-center gap-3 p-3 rounded-2xl border text-left transition-colors',
+                  'min-h-[44px]',
                   active
                     ? 'border-primary bg-primary/10'
                     : 'border-border bg-surface-2 hover:bg-surface-3',
                 )}
               >
-                <PetAvatar photo={pet.photo} species={pet.nutrition.species} size="md" />
+                <PetAvatar photo={pet.photo} name={pet.name} species={pet.nutrition.species} size="md" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-black truncate">{pet.name}</p>
                   <p className="text-[11px] text-muted-fg">
@@ -130,6 +149,7 @@ export default function PlanWizard() {
                     'h-5 w-5 shrink-0 rounded-full border flex items-center justify-center',
                     active ? 'border-primary bg-primary text-primary-fg' : 'border-border',
                   )}
+                  aria-hidden
                 >
                   {active && <Check className="h-3 w-3" />}
                 </span>
@@ -142,22 +162,25 @@ export default function PlanWizard() {
       {/* Step 2 — Duration */}
       <Card padding="md" className="space-y-3">
         <SectionLabel>{t('mealPlan.wizard.duration')}</SectionLabel>
-        <div className="grid grid-cols-3 gap-2">
+        <div role="radiogroup" aria-label={t('mealPlan.wizard.duration')} className="grid grid-cols-3 gap-2">
           {DURATIONS.map((d) => {
             const active = duration === d;
             return (
               <button
                 key={d}
                 type="button"
+                role="radio"
+                aria-checked={active}
                 onClick={() => setDuration(d)}
                 className={cn(
-                  'flex flex-col items-center gap-1 rounded-2xl border p-4 transition-colors',
+                  'flex flex-col items-center gap-1 rounded-2xl border p-3 sm:p-4 transition-colors',
+                  'min-h-[44px]',
                   active
                     ? 'border-primary bg-primary/10 text-foreground'
                     : 'border-border bg-surface-2 text-muted-fg hover:text-foreground',
                 )}
               >
-                <Calendar className="h-5 w-5" />
+                <Calendar className="h-5 w-5" aria-hidden />
                 <span className="text-sm font-black">{d} {t('mealPlan.wizard.days')}</span>
                 <span className="text-[10px] text-muted-fg">{t(`mealPlan.wizard.duration_${d}`)}</span>
               </button>
@@ -178,6 +201,7 @@ export default function PlanWizard() {
           placeholder={defaultName(selectedPets, duration, t)}
           value={name}
           onChange={(e) => setName(e.target.value)}
+          autoComplete="off"
         />
       </Card>
 
@@ -189,19 +213,19 @@ export default function PlanWizard() {
           onClick={regenerate}
           disabled={selectedPets.length === 0}
         >
-          <RotateCcw className="h-4 w-4" />
+          <RotateCcw className="h-4 w-4" aria-hidden />
           {preview ? t('mealPlan.wizard.regenerate') : t('mealPlan.wizard.generate')}
         </Button>
         <Button
-          type="button"
+          type="submit"
           variant="glow"
           size="lg"
           block
-          onClick={save}
           disabled={!preview}
+          title={!preview ? t('mealPlan.wizard.generateFirst', { defaultValue: 'Generate a plan first' }) : undefined}
           className="sm:ml-auto sm:w-auto"
         >
-          <Save className="h-4 w-4" />
+          <Save className="h-4 w-4" aria-hidden />
           {t('mealPlan.wizard.save')}
         </Button>
       </div>
@@ -218,7 +242,7 @@ export default function PlanWizard() {
           <CalendarGrid plan={preview} pets={selectedPets} />
         </div>
       )}
-    </div>
+    </form>
   );
 }
 

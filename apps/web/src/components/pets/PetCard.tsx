@@ -14,7 +14,7 @@ export function PetCard({ pet }: { pet: PetProfile }) {
   return (
     <Link to={`/pets/${pet.id}`} className="block group">
       <Card padding="md" className="flex items-center gap-4 hover:bg-surface-2 transition-colors">
-        <PetAvatar photo={pet.photo} species={pet.nutrition.species} size="md" />
+        <PetAvatar photo={pet.photo} name={pet.name} species={pet.nutrition.species} size="md" />
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
             <h3 className="text-base font-black tracking-tight truncate">{pet.name}</h3>

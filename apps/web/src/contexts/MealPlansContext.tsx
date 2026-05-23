@@ -15,6 +15,12 @@ type Ctx = {
   updatePlan: (id: string, patch: Partial<MealPlan>) => void;
   replacePlan: (plan: MealPlan) => void;
   removePlan: (id: string) => void;
+  /**
+   * Strip a deleted pet from every plan, dropping plans that referenced only
+   * that pet. Called from the PetProfiles flow so we never persist plans that
+   * point at a vanished pet.
+   */
+  removePetReferences: (petId: string) => void;
   ready: boolean;
 };
 
@@ -87,11 +93,23 @@ export function MealPlansProvider({ children }: { children: ReactNode }) {
     setPlans((prev) => prev.filter((p) => p.id !== id));
   }, []);
 
+  const removePetReferences = useCallback((petId: string) => {
+    setPlans((prev) =>
+      prev
+        .map((p) =>
+          p.petIds.includes(petId)
+            ? { ...p, petIds: p.petIds.filter((id) => id !== petId) }
+            : p,
+        )
+        .filter((p) => p.petIds.length > 0),
+    );
+  }, []);
+
   const getPlan = useCallback((id: string) => plans.find((p) => p.id === id), [plans]);
 
   const value = useMemo<Ctx>(() => ({
-    plans, getPlan, addPlan, updatePlan, replacePlan, removePlan, ready,
-  }), [plans, getPlan, addPlan, updatePlan, replacePlan, removePlan, ready]);
+    plans, getPlan, addPlan, updatePlan, replacePlan, removePlan, removePetReferences, ready,
+  }), [plans, getPlan, addPlan, updatePlan, replacePlan, removePlan, removePetReferences, ready]);
 
   return <MealPlansContext.Provider value={value}>{children}</MealPlansContext.Provider>;
 }

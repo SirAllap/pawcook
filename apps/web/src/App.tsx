@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { useTranslation } from 'react-i18next';
 import { AppShell } from './components/layout/app-shell';
 import { PageTransition } from './components/motion/page-transition';
+import { PageFallback } from './components/ui/page-fallback';
 
 const Landing             = lazy(() => import('./pages/Landing'));
 const CookingCalculator   = lazy(() => import('./pages/CookingCalculator'));
@@ -17,15 +17,7 @@ const PetEdit             = lazy(() => import('./pages/Pets/PetEdit'));
 const PlanLanding         = lazy(() => import('./pages/MealPlan/PlanLanding'));
 const PlanWizard          = lazy(() => import('./pages/MealPlan/PlanWizard'));
 const PlanView            = lazy(() => import('./pages/MealPlan/PlanView'));
-
-function PageFallback() {
-  const { t } = useTranslation();
-  return (
-    <div className="flex items-center justify-center py-24" aria-label={t('common.loading')}>
-      <div className="h-6 w-6 rounded-full border-2 border-border border-t-primary animate-spin" />
-    </div>
-  );
-}
+const NotFound            = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
   return (
@@ -46,6 +38,7 @@ export default function App() {
             <Route path="/meal-plan/new" element={<PlanWizard />} />
             <Route path="/meal-plan/:id" element={<PlanView />} />
             <Route path="/about"       element={<About />} />
+            <Route path="*"            element={<NotFound />} />
           </Routes>
         </Suspense>
       </PageTransition>

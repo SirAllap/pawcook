@@ -2,8 +2,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
+import { useDebouncedEffect } from '../lib/use-debounced-effect';
+import { blockBadNumberKeys } from '../lib/number-input';
 import { Sparkles, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet } from 'lucide-react';
 import {
   NutritionInputSchema, calculateNutrition,
@@ -98,9 +100,10 @@ function AafcoBadge({ status }: { status: AafcoStatus }) {
 }
 
 export default function NutritionCalculator() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tS = useSpeciesT();
   const { species } = useSpecies();
+  const reduced = useReducedMotion();
   const [result, setResult] = useState<NutritionResult | null>(null);
   const [calculating, setCalculating] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
@@ -118,6 +121,7 @@ export default function NutritionCalculator() {
 
   const { register, handleSubmit, watch, control, reset, formState: { errors } } = useForm<NutritionInput>({
     resolver: zodResolver(NutritionInputSchema),
+    mode: 'onBlur',
     defaultValues: loadSaved(species),
   });
 
@@ -128,29 +132,46 @@ export default function NutritionCalculator() {
   }, [species, reset]);
 
   const values = watch();
-  useEffect(() => {
+  useDebouncedEffect(() => {
     try { localStorage.setItem(STORAGE_KEY(species), JSON.stringify(values)); } catch { /* ignore */ }
-  }, [values, species]);
+  }, [values, species], 300);
 
   const dietKeys = species === 'cat' ? CAT_DIET_KEYS : DOG_DIET_KEYS;
   const growthLabel = species === 'cat' ? t('nutrition.ages.kitten') : t('nutrition.ages.puppy');
   const growthValue: 'puppy' | 'kitten' = species === 'cat' ? 'kitten' : 'puppy';
 
+  const timeouts = useRef<number[]>([]);
+  useEffect(() => () => {
+    for (const id of timeouts.current) window.clearTimeout(id);
+    timeouts.current = [];
+  }, []);
+
   function onSubmit(data: NutritionInput) {
     setCalculating(true);
-    setTimeout(() => {
+    try {
       const r = calculateNutrition(data);
-      setResult(r);
+      const id1 = window.setTimeout(() => {
+        setResult(r);
+        setCalculating(false);
+        if (r.aafcoStatus === 'pass') {
+          toast.success(t('nutrition.toastPass', { defaultValue: 'Daily plan ready — AAFCO compliant.' }));
+        } else if (r.aafcoStatus === 'caution') {
+          toast.warning(t('nutrition.toastCaution', { defaultValue: 'Plan ready — review caution notes.' }));
+        } else {
+          toast.error(t('nutrition.toastFail', { defaultValue: 'Plan needs adjustment to meet AAFCO targets.' }));
+        }
+        const id2 = window.setTimeout(
+          () => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+          60,
+        );
+        timeouts.current.push(id2);
+      }, 220);
+      timeouts.current.push(id1);
+    } catch (err) {
+      console.error(err);
       setCalculating(false);
-      if (r.aafcoStatus === 'pass') {
-        toast.success(t('nutrition.toastPass', { defaultValue: 'Daily plan ready — AAFCO compliant.' }));
-      } else if (r.aafcoStatus === 'caution') {
-        toast.warning(t('nutrition.toastCaution', { defaultValue: 'Plan ready — review caution notes.' }));
-      } else {
-        toast.error(t('nutrition.toastFail', { defaultValue: 'Plan needs adjustment to meet AAFCO targets.' }));
-      }
-      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
-    }, 220);
+      toast.error(t('common.calcFailed', { defaultValue: 'Could not calculate — please check inputs.' }));
+    }
   }
 
   return (
@@ -168,7 +189,8 @@ export default function NutritionCalculator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label={tS('nutrition.weight')}
-              type="number" step="0.1" inputMode="decimal"
+              type="number" step="0.1" min={0.1} max={100} inputMode="decimal"
+              onKeyDown={blockBadNumberKeys}
               {...register('weightKg', { valueAsNumber: true })}
               error={errors.weightKg?.message}
             />
@@ -234,8 +256,10 @@ export default function NutritionCalculator() {
             </Select>
             <Input
               label={t('nutrition.mealsPerDay')}
-              type="number" min={1} max={4} inputMode="numeric"
+              type="number" min={1} max={4} step={1} inputMode="numeric"
+              onKeyDown={blockBadNumberKeys}
               {...register('mealsPerDay', { valueAsNumber: true })}
+              error={errors.mealsPerDay?.message}
             />
           </div>
 
@@ -266,7 +290,7 @@ export default function NutritionCalculator() {
                         <motion.div
                           layoutId="diet-active"
                           className="absolute inset-0 -z-10 rounded-2xl bg-primary/5"
-                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                          transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
                       <span className="text-2xl">{meta.emoji}</span>
@@ -284,13 +308,14 @@ export default function NutritionCalculator() {
           />
 
           <Button type="submit" variant="glow" size="lg" block loading={calculating}>
-            {calculating
-              ? t('common.calculating')
-              : <>
-                  <Sparkles className="h-4 w-4" />
-                  {t('common.calculate')}
-                </>
-            }
+            {calculating ? (
+              t('common.calculating')
+            ) : (
+              <>
+                <Sparkles className="h-4 w-4" aria-hidden />
+                {t('common.calculate')}
+              </>
+            )}
           </Button>
         </form>
       </Card>
@@ -330,10 +355,26 @@ export default function NutritionCalculator() {
               </header>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-5">
-                <StatTile label={t('nutrition.dailyFood')} value={`${result.dailyFoodGrams.min}–${result.dailyFoodGrams.max}`} unit="g" tone="primary" delay={0.0} />
-                <StatTile label={t('nutrition.perMeal')}   value={`${result.perMealGrams.min}–${result.perMealGrams.max}`}   unit="g" tone="primary" delay={0.05} />
-                <StatTile label={t('nutrition.result.derEnergy', { defaultValue: 'DER (energy)' })} value={result.derKcal} unit="kcal" tone="warning" delay={0.10} />
-                <StatTile label={t('nutrition.calciumNeeded')} value={result.calciumMg} unit="mg" tone="info" delay={0.15} />
+                <StatTile
+                  label={t('nutrition.dailyFood')}
+                  value={`${result.dailyFoodGrams.min.toLocaleString(i18n.language)}–${result.dailyFoodGrams.max.toLocaleString(i18n.language)}`}
+                  unit="g" tone="primary" delay={0.0}
+                />
+                <StatTile
+                  label={t('nutrition.perMeal')}
+                  value={`${result.perMealGrams.min.toLocaleString(i18n.language)}–${result.perMealGrams.max.toLocaleString(i18n.language)}`}
+                  unit="g" tone="primary" delay={0.05}
+                />
+                <StatTile
+                  label={t('nutrition.result.derEnergy', { defaultValue: 'DER (energy)' })}
+                  value={result.derKcal.toLocaleString(i18n.language)}
+                  unit="kcal" tone="warning" delay={0.10}
+                />
+                <StatTile
+                  label={t('nutrition.calciumNeeded')}
+                  value={result.calciumMg.toLocaleString(i18n.language)}
+                  unit="mg" tone="info" delay={0.15}
+                />
               </div>
 
               <div className="px-5 pb-5">

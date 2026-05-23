@@ -4,6 +4,7 @@ import { Plus, PawPrint } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Button } from '../../components/ui/button';
 import { EmptyState } from '../../components/ui/empty-state';
+import { PageFallback } from '../../components/ui/page-fallback';
 import { PetCard } from '../../components/pets/PetCard';
 import { DataPortability } from '../../components/pets/DataPortability';
 import { usePets } from '../../contexts/PetProfilesContext';
@@ -12,7 +13,7 @@ export default function PetsList() {
   const { t } = useTranslation();
   const { pets, ready } = usePets();
 
-  if (!ready) return null;
+  if (!ready) return <PageFallback />;
 
   return (
     <div className="space-y-6">
@@ -21,12 +22,12 @@ export default function PetsList() {
         title={t('pets.list.title')}
         description={t('pets.list.subtitle')}
         actions={
-          <Link to="/pets/new">
-            <Button variant="primary" size="md">
-              <Plus className="h-4 w-4" />
+          <Button asChild variant="primary" size="md">
+            <Link to="/pets/new">
+              <Plus className="h-4 w-4" aria-hidden />
               {t('pets.list.addPet')}
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         }
       />
 
@@ -35,6 +36,14 @@ export default function PetsList() {
           icon={<PawPrint className="h-8 w-8" />}
           title={t('pets.list.emptyTitle')}
           description={t('pets.list.emptyDescription')}
+          action={
+            <Button asChild variant="primary" size="md">
+              <Link to="/pets/new">
+                <Plus className="h-4 w-4" aria-hidden />
+                {t('pets.list.addPet')}
+              </Link>
+            </Button>
+          }
         />
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">

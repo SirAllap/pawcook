@@ -6,7 +6,8 @@
     "nutrition": "Nutrição",
     "foodSafety": "Segurança",
     "supplements": "Suplementos",
-    "about": "Sobre"
+    "about": "Sobre",
+    "primary": "Navegação principal"
   },
   "common": {
     "calculate": "Calcular",
@@ -32,7 +33,14 @@
     "preferences": "Preferências",
     "brandHome": "Início do PawCook",
     "catFoodCalc": "Calculadora alimentar felina",
-    "allYourPets": "Todos os teus animais"
+    "allYourPets": "Todos os teus animais",
+    "disclaimerLabel": "Observação",
+    "skipToContent": "Pular para o conteúdo",
+    "switchToLight": "Mudar para o modo claro",
+    "switchToDark": "Mudar para o modo escuro",
+    "unsavedChanges": "Há alterações não salvas. Tem certeza de que quer sair?",
+    "calcFailed": "Não foi possível calcular — verifique os valores.",
+    "cancel": "Cancelar"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -118,18 +126,39 @@
     "conditions": {
       "label": "Condições crónicas",
       "help": "Guiam as recomendações (ex.: baixo fósforo em problemas renais). Não é uma ferramenta de diagnóstico.",
-      "allergy":      { "label": "Alergias alimentares", "help": "Excluímos alergénios dos planos." },
-      "kidney":       { "label": "Doença renal",        "help": "Menos fósforo, evitar dias com muitas vísceras." },
-      "pancreatitis": { "label": "Pancreatite",         "help": "Só proteínas magras, sem cortes gordos." },
-      "diabetes":     { "label": "Diabetes",            "help": "Planos pobres em hidratos, atenção aos amidos." },
-      "joint":        { "label": "Problemas articulares","help": "Prioriza proteínas ricas em ómega-3." },
-      "gi_sensitive": { "label": "Estômago sensível",   "help": "Opções suaves e fáceis de digerir." },
-      "obese":        { "label": "Excesso de peso",     "help": "Peso-alvo com restrição calórica." }
+      "allergy": {
+        "label": "Alergias alimentares",
+        "help": "Excluímos alergénios dos planos."
+      },
+      "kidney": {
+        "label": "Doença renal",
+        "help": "Menos fósforo, evitar dias com muitas vísceras."
+      },
+      "pancreatitis": {
+        "label": "Pancreatite",
+        "help": "Só proteínas magras, sem cortes gordos."
+      },
+      "diabetes": {
+        "label": "Diabetes",
+        "help": "Planos pobres em hidratos, atenção aos amidos."
+      },
+      "joint": {
+        "label": "Problemas articulares",
+        "help": "Prioriza proteínas ricas em ómega-3."
+      },
+      "gi_sensitive": {
+        "label": "Estômago sensível",
+        "help": "Opções suaves e fáceis de digerir."
+      },
+      "obese": {
+        "label": "Excesso de peso",
+        "help": "Peso-alvo com restrição calórica."
+      }
     },
     "conditionsLabel": "Condições",
     "confirmDelete": "Eliminar {{name}}? Esta ação é irreversível.",
     "toast": {
-      "added":   "{{name}} adicionado.",
+      "added": "{{name}} adicionado.",
       "updated": "{{name}} atualizado.",
       "removed": "{{name}} removido."
     }
@@ -180,7 +209,7 @@
       "petsHelp": "Seleciona um ou mais. Planos mistos partilham uma única lista de compras.",
       "duration": "Duração",
       "days": "dias",
-      "duration_7":  "Semanal",
+      "duration_7": "Semanal",
       "duration_14": "Quinzenal",
       "duration_30": "Mensal",
       "nameLabel": "Nome do plano",
@@ -197,19 +226,19 @@
       "varietyHelp": "Quanta rotação de proteínas durante a semana.",
       "variety": {
         "standard": "Padrão",
-        "diverse":  "Diversa",
-        "novel":    "Só novas"
+        "diverse": "Diversa",
+        "novel": "Só novas"
       },
       "accessLabel": "Onde compras",
       "accessHelp": "Escolhe o que é realista nas tuas lojas habituais.",
       "access": {
-        "easy":      "Supermercado",
+        "easy": "Supermercado",
         "specialty": "Talho / lojas especializadas OK"
       },
       "prefsLabel": "Preferências de origem",
-      "preferWildFish":  "Peixe selvagem preferido",
-      "preferGrassFed":  "Pastagem preferida",
-      "preferOrganic":   "Vegetais bio preferidos"
+      "preferWildFish": "Peixe selvagem preferido",
+      "preferGrassFed": "Pastagem preferida",
+      "preferOrganic": "Vegetais bio preferidos"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -236,26 +265,26 @@
       "empty": "Nada para comprar — a tua despensa já cobre este plano.",
       "exportFooter": "Lista de compras PawCook — não é aconselhamento veterinário.",
       "section": {
-        "butcher":      "Talho",
+        "butcher": "Talho",
         "fish-counter": "Peixaria",
-        "produce":      "Frutas e legumes",
-        "pantry":       "Despensa & conservas",
-        "pet-store":    "Loja de animais",
-        "supplements":  "Suplementos",
-        "online":       "Encomenda online",
-        "other":        "Outros"
+        "produce": "Frutas e legumes",
+        "pantry": "Despensa & conservas",
+        "pet-store": "Loja de animais",
+        "supplements": "Suplementos",
+        "online": "Encomenda online",
+        "other": "Outros"
       }
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
-      "saved":   "«{{name}}» guardado.",
+      "saved": "«{{name}}» guardado.",
       "deleted": "«{{name}}» eliminado."
     }
   },
   "condition": {
     "kidney": {
       "lowPhosphorus": "Doença renal: manter o fósforo no extremo baixo do plano.",
-      "avoidOrgans":   "Doença renal: evitar dias ricos em vísceras; rodar o fígado quando possível."
+      "avoidOrgans": "Doença renal: evitar dias ricos em vísceras; rodar o fígado quando possível."
     },
     "pancreatitis": {
       "leanOnly": "Pancreatite: apenas proteínas magras — sem pato, borrego ou cortes gordos."

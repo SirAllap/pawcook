@@ -6,7 +6,8 @@
     "nutrition": "Nutrition",
     "foodSafety": "Food Safety",
     "supplements": "Supplements",
-    "about": "About"
+    "about": "About",
+    "primary": "Primary navigation"
   },
   "common": {
     "calculate": "Calculate",
@@ -24,7 +25,14 @@
     "no": "No",
     "toxic": "TOXIC",
     "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
+    "disclaimerLabel": "Note",
     "openSource": "Open source",
+    "skipToContent": "Skip to content",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "unsavedChanges": "You have unsaved changes. Are you sure you want to leave?",
+    "calcFailed": "Could not calculate — please check inputs.",
+    "cancel": "Cancel",
     "target": "Target",
     "dogFoodCalc": "Dog Food Calculator",
     "privacy": "Privacy",

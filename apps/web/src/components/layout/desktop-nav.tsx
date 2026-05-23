@@ -18,7 +18,7 @@ export function DesktopNav() {
   ];
 
   return (
-    <nav className="flex items-center gap-0.5 text-sm">
+    <nav aria-label={t('nav.primary', { defaultValue: 'Primary navigation' })} className="flex items-center gap-0.5 text-sm">
       {items.map(({ to, label }) => {
         const active = location.pathname === to || location.pathname.startsWith(to + '/');
         return (
@@ -26,7 +26,7 @@ export function DesktopNav() {
             key={to}
             to={to}
             className={cn(
-              'relative px-3.5 py-2 rounded-xl font-semibold transition-colors',
+              'relative px-2.5 xl:px-3.5 py-2 rounded-xl font-semibold transition-colors',
               active ? 'text-foreground' : 'text-muted-fg hover:text-foreground'
             )}
           >

@@ -186,9 +186,8 @@ export default function About() {
               href="https://github.com/SirAllap/pawcook"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
             >
-              <GithubIcon className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" aria-hidden />
               GitHub
             </a>
           </Button>
