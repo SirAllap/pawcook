@@ -13,7 +13,9 @@
     "toxic": "GIFTIG",
     "disclaimer": "Kein Tierärztlicher Rat. Wenden Sie sich für die langfristige Heimfütterung an einen ACVN-Diplomaten.",
     "openSource": "Open Source",
-    "target": "Zielwert"
+    "target": "Zielwert",
+    "calculating": "Berechnung…",
+    "dogFoodCalc": "Hundefutter-Rechner"
   },
   "cooking": {
     "title": "Kochrechner",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Rindfleisch",
+      "chicken": "Hühnchen",
+      "turkey": "Truthahn",
+      "lamb": "Lamm",
+      "pork": "Schweinefleisch",
+      "duck": "Ente",
+      "rabbit": "Kaninchen",
+      "venison": "Wildfleisch",
+      "salmon": "Lachs",
+      "mackerel": "Makrele",
+      "sardines": "Sardinen",
+      "whitefish": "Weißfisch"
+    },
+    "total": "Gesamt",
+    "yield": "Ausbeute",
+    "cooked": "gegart",
+    "instructionsSection": "Anleitung",
+    "optionsSection": "Optionen",
+    "placeholder": "Formular ausfüllen und auf"
   },
   "nutrition": {
     "title": "Ernährungsrechner",
@@ -99,7 +121,22 @@
       "high_protein": "Proteinreich gekocht — 50% Protein / 30% Gemüse / 15% Stärke",
       "pmr": "PMR 80-10-10 (fortgeschritten)"
     },
-    "vetDisclaimer": "Dieses Tool gibt nur allgemeine Hinweise. Konsultieren Sie für eine langfristige Heimfütterung einen zertifizierten Tierernährungsberater (ACVN)."
+    "vetDisclaimer": "Dieses Tool gibt nur allgemeine Hinweise. Konsultieren Sie für eine langfristige Heimfütterung einen zertifizierten Tierernährungsberater (ACVN).",
+    "profileSection": "Hundeprofil",
+    "dietShort": {
+      "balanced_cooked": "Ausgewogen",
+      "high_protein": "Proteinreich",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% Protein / 50% Gemüse",
+      "high_protein": "50% Protein / 30% Gemüse",
+      "pmr": "Nur für Fortgeschrittene"
+    },
+    "macroProtein": "Protein",
+    "macroVeg": "Gemüse",
+    "macroStarch": "Stärke",
+    "placeholder": "Hundeprofil ausfüllen und auf"
   },
   "foodSafety": {
     "title": "Lebensmittelsicherheits-Referenz",
