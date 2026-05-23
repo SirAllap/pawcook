@@ -25,7 +25,7 @@ function GlobeIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-      className="w-5 h-5">
+      className="w-4 h-4">
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -53,29 +53,27 @@ function LanguageSwitcher() {
     setOpen(false);
   }
 
-  // The header has sticky+z-30 which creates a stacking context — any fixed/absolute child
-  // is trapped inside it. We portal the overlay elements to document.body so they sit in
-  // the root stacking context above the bottom nav (z-40).
+  // Portal escapes the header's sticky stacking context (z-30)
   const overlays = open ? createPortal(
     <>
       {/* Mobile backdrop */}
       <div
-        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
+        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm lg:hidden"
         onClick={() => setOpen(false)}
       />
       {/* Mobile bottom sheet */}
       <div
-        className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-gray-900 rounded-t-3xl border-t border-gray-700 shadow-2xl animate-fade-in-up"
+        className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-[#0e0e18] rounded-t-[28px] border-t border-white/[0.08] shadow-2xl animate-fade-in-up"
         style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)' }}
       >
-        <div className="w-12 h-1 bg-gray-700 rounded-full mx-auto mt-3 mb-4" />
+        <div className="w-10 h-1 bg-white/10 rounded-full mx-auto mt-3 mb-5" />
         <div className="px-4 pb-2 grid grid-cols-2 gap-2">
           {LANGUAGES.map(lang => (
             <button key={lang.code} onClick={() => selectLang(lang.code)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-all active:scale-95 font-medium ${
+              className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm transition-all active:scale-95 font-semibold ${
                 lang.code === currentLang.code
                   ? 'bg-amber-500 text-gray-900'
-                  : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+                  : 'bg-white/[0.05] border border-white/[0.08] text-gray-200 hover:bg-white/[0.09]'
               }`}>
               <span className="text-xl">{lang.flag}</span>
               <span>{lang.label}</span>
@@ -83,9 +81,9 @@ function LanguageSwitcher() {
           ))}
         </div>
       </div>
-      {/* Desktop dropdown — portalled to avoid header stacking context */}
+      {/* Desktop dropdown */}
       <div
-        className="hidden lg:block fixed z-50 w-52 bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+        className="hidden lg:block fixed z-50 w-52 bg-[#0e0e18] border border-white/[0.09] rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
         style={(() => {
           const r = btnRef.current?.getBoundingClientRect();
           return r ? { top: r.bottom + 8, right: window.innerWidth - r.right } : {};
@@ -93,12 +91,12 @@ function LanguageSwitcher() {
       >
         {LANGUAGES.map(lang => (
           <button key={lang.code} onClick={() => selectLang(lang.code)}
-            className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-gray-800 active:bg-gray-700 ${
+            className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-white/[0.06] active:bg-white/[0.03] ${
               lang.code === currentLang.code ? 'text-amber-400' : 'text-gray-200'
             }`}>
             <span className="text-xl">{lang.flag}</span>
             <span className="flex-1 text-left font-medium">{lang.label}</span>
-            {lang.code === currentLang.code && <span className="text-amber-400 text-base">✓</span>}
+            {lang.code === currentLang.code && <span className="text-amber-400">✓</span>}
           </button>
         ))}
       </div>
@@ -112,12 +110,12 @@ function LanguageSwitcher() {
       <button
         ref={btnRef}
         onClick={() => setOpen(o => !o)}
-        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all active:scale-95 border border-gray-700"
+        className="flex items-center gap-1.5 px-3 py-2 rounded-xl glass text-gray-300 hover:text-white transition-all active:scale-95"
         aria-label="Change language"
         aria-expanded={open}
       >
         <GlobeIcon />
-        <span className="text-sm hidden sm:block font-medium">{currentLang.flag} {currentLang.label}</span>
+        <span className="text-sm hidden sm:block font-semibold">{currentLang.flag} {currentLang.label}</span>
         <span className="text-sm sm:hidden">{currentLang.flag}</span>
       </button>
     </>
@@ -138,29 +136,35 @@ function BottomNav() {
 
   return (
     <nav
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-gray-900/95 backdrop-blur border-t border-gray-800 no-print"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      className="lg:hidden fixed inset-x-0 bottom-0 z-40 no-print px-3"
+      style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
     >
-      <div className="flex">
-        {tabs.map(({ to, label, icon }) => {
-          const isActive = location.pathname === to || location.pathname.startsWith(to + '/');
-          return (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              className={`flex-1 flex flex-col items-center gap-0.5 pt-1 pb-2 relative transition-all active:scale-95 ${
-                isActive ? 'text-amber-400' : 'text-gray-500'
-              }`}
-            >
-              {isActive && (
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-amber-400 rounded-full" />
-              )}
-              <span className="text-xl leading-tight">{icon}</span>
-              <span className="text-[10px] leading-tight font-medium w-full text-center truncate px-0.5">{label}</span>
-            </NavLink>
-          );
-        })}
+      <div className="bg-[#0d0d16]/95 backdrop-blur-2xl border border-white/[0.09] rounded-[26px] shadow-2xl shadow-black/60 overflow-hidden">
+        <div className="flex h-[60px]">
+          {tabs.map(({ to, label, icon }) => {
+            const isActive = location.pathname === to || location.pathname.startsWith(to + '/');
+            return (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={`flex-1 flex flex-col items-center justify-center gap-0.5 relative transition-all duration-200 active:scale-95 ${
+                  isActive ? 'text-amber-400' : 'text-gray-500'
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-7 h-[2.5px] bg-amber-400 rounded-full shadow-sm shadow-amber-400/80" />
+                )}
+                <span className={`text-[21px] leading-none transition-transform duration-200 ${isActive ? 'scale-110' : 'scale-100'}`}>
+                  {icon}
+                </span>
+                <span className="text-[10px] font-semibold leading-none w-full text-center truncate px-0.5 mt-0.5">
+                  {label}
+                </span>
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );
@@ -179,22 +183,27 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-gray-900/95 backdrop-blur-md border-b border-gray-800/80 sticky top-0 z-30 no-print">
+      <header className="bg-[#07070f]/85 backdrop-blur-2xl border-b border-white/[0.06] sticky top-0 z-30 no-print">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-          <NavLink to="/" className="flex items-center gap-2 shrink-0">
-            <span className="text-2xl">🐾</span>
+          <NavLink to="/" className="flex items-center gap-2.5 shrink-0">
+            <span className="text-2xl animate-float" style={{ animationDuration: '5s' }}>🐾</span>
             <div>
-              <span className="text-lg font-bold text-amber-400 leading-none block">PawCook</span>
-              <span className="text-[10px] text-gray-500 leading-none hidden sm:block">{t('common.dogFoodCalc')}</span>
+              <span className="text-[17px] font-black leading-none block tracking-tight">
+                <span className="text-gradient">Paw</span>
+                <span className="text-white">Cook</span>
+              </span>
+              <span className="text-[10px] text-gray-500 leading-none hidden sm:block font-medium mt-0.5">{t('common.dogFoodCalc')}</span>
             </div>
           </NavLink>
 
-          <nav className="hidden lg:flex gap-1 text-sm flex-1 justify-center">
+          <nav className="hidden lg:flex gap-0.5 text-sm flex-1 justify-center">
             {navItems.map(({ to, label }) => (
               <NavLink key={to} to={to} end={to === '/'}
                 className={({ isActive }) =>
-                  `px-3 py-1.5 rounded-lg transition-all font-medium ${
-                    isActive ? 'bg-amber-500 text-gray-900' : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  `px-3.5 py-1.5 rounded-xl transition-all font-semibold ${
+                    isActive
+                      ? 'bg-amber-500 text-gray-900 shadow-lg shadow-amber-500/25'
+                      : 'text-gray-400 hover:text-white hover:bg-white/[0.06]'
                   }`
                 }
               >
@@ -207,7 +216,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 pb-28 lg:pb-8">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 pb-32 lg:pb-8">
         <Routes>
           <Route path="/"            element={<Landing />} />
           <Route path="/cooking"     element={<CookingCalculator />} />
@@ -218,7 +227,7 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="hidden lg:block bg-gray-900/80 border-t border-gray-800 text-center text-xs text-gray-600 py-4 no-print">
+      <footer className="hidden lg:block border-t border-white/[0.05] text-center text-xs text-gray-600 py-4 no-print">
         ⚠️ {t('common.disclaimer')}
         &nbsp;·&nbsp;
         <a href="https://github.com/SirAllap/pawcook" className="text-gray-500 underline hover:text-gray-300 transition-colors">
