@@ -10,58 +10,110 @@ export interface CookingResult {
   nutrientNotes: string[];
 }
 
-const METHOD_CONFIG = {
-  sous_vide: { tempC: 74, timeMultiplier: 1.0, instructions: 'Seal bags, preheat water bath to 74 °C, submerge and cook for the full calculated time. Verify with a probe thermometer.' },
-  oven: { tempC: 120, timeMultiplier: 0.6, instructions: 'Preheat oven to 120 °C. Place bags in a covered dish with a little water. Check internal temp with a probe thermometer.' },
-  stovetop_low: { tempC: 74, timeMultiplier: 0.4, instructions: 'Cook on medium-low heat, stirring frequently. Minced meat: 3–5 min until no pink remains. Verify internal temperature.' },
-  slow_cooker: { tempC: 74, timeMultiplier: 2.5, instructions: 'Set to low. Minced meat: 2.5–4 hours. Very gentle cooking preserves moisture.' },
+const METHOD_INSTRUCTIONS = {
+  sous_vide: 'Seal meat in vacuum bags. Preheat water bath to 74 °C (165 °F). Submerge bags and cook for the full calculated time. Verify internal temperature with a probe thermometer before serving.',
+  oven: 'Preheat oven to 120 °C (248 °F). Place meat in a covered roasting dish; add a splash of water or broth to prevent drying. Check with a probe thermometer — target 74 °C (165 °F) internal temperature.',
+  stovetop_low: 'Bring a pot of water to a gentle simmer (not a rolling boil). Add meat and stir regularly — every 2 min for minced, every 5 min for cubed or larger cuts. Remove from heat when internal temperature reaches 74 °C (165 °F). Include the cooking broth in the meal.',
+  slow_cooker: 'Place meat in the slow cooker and add ½ cup water or broth. Set to LOW — do not use HIGH as rapid temperature swings increase bacterial risk. Verify 74 °C (165 °F) internal temperature before serving.',
 } as const;
+
+// Base cook times (minutes) at ~1 kg for each form × method
+const FORM_BASE_TIMES: Record<string, Record<string, number>> = {
+  minced:    { oven: 20,  stovetop_low: 8,  slow_cooker: 150 },
+  cubed:     { oven: 40,  stovetop_low: 18, slow_cooker: 240 },
+  whole_cut: { oven: 65,  stovetop_low: 35, slow_cooker: 330 },
+  fillet:    { oven: 30,  stovetop_low: 12, slow_cooker: 180 },
+};
 
 const FAT_FACTOR: Record<string, number> = { lean: 0, medium: 5, fatty: 10 };
 
-export function calculateCookingTime(input: CookingInput): CookingResult {
-  const { thicknessCm, weightKg, fatContent, cookingMethod, numberOfBags } = input;
-
+function calcSousVide(input: CookingInput): { min: number; max: number } {
+  const { thicknessCm = 5, weightKg = 1, fatContent, numberOfBags = 1 } = input;
   const baseTime = 30;
   const thicknessFactor = Math.max(0, (thicknessCm - 2.5)) * 8;
   const volumeEstimate = weightKg * 1.05;
   const densityFactor = (weightKg / volumeEstimate) * 5;
   const fatFactor = FAT_FACTOR[fatContent] ?? 5;
-
   const sousVideTime = baseTime + thicknessFactor + densityFactor + fatFactor;
-  const method = METHOD_CONFIG[cookingMethod];
-  const totalTime = Math.round(sousVideTime * method.timeMultiplier);
+  const totalTime = Math.round(sousVideTime);
   const bagFactor = Math.max(1, Math.log2(numberOfBags) * 5);
+  return {
+    min: Math.round(totalTime + bagFactor),
+    max: Math.round(totalTime * 1.2 + bagFactor),
+  };
+}
 
-  const timeMin = Math.round(totalTime + bagFactor);
-  const timeMax = Math.round(totalTime * 1.2 + bagFactor);
+function calcBatch(
+  method: 'oven' | 'stovetop_low' | 'slow_cooker',
+  input: CookingInput,
+): { min: number; max: number } {
+  const { form, fatContent, totalWeightKg, weightKg = 1, numberOfBags = 1 } = input;
+  // Fallback for callers that spread a sous-vide input without totalWeightKg
+  const effectiveWeight = totalWeightKg ?? weightKg * numberOfBags;
+
+  const baseTime = FORM_BASE_TIMES[form]?.[method] ?? 30;
+
+  let weightScale = 0;
+  if (method === 'oven') {
+    weightScale = Math.max(0, effectiveWeight - 1) * 12;
+  } else if (method === 'stovetop_low') {
+    weightScale = Math.max(0, effectiveWeight - 1) * 5;
+  } else {
+    weightScale = Math.max(0, effectiveWeight - 2) * 30;
+  }
+
+  // Fat content has minimal impact in slow cooker (fully submerged liquid)
+  const fatMod = method === 'slow_cooker' ? 0 : (FAT_FACTOR[fatContent] ?? 5);
+  const totalTime = Math.round(baseTime + weightScale + fatMod);
+
+  return { min: totalTime, max: Math.round(totalTime * 1.2) };
+}
+
+export function calculateCookingTime(input: CookingInput): CookingResult {
+  const { cookingMethod, meatType } = input;
+
+  const cookingTimeMinutes = cookingMethod === 'sous_vide'
+    ? calcSousVide(input)
+    : calcBatch(cookingMethod, input);
 
   const warnings: string[] = [
     'Never include cooked bones in any recipe — they splinter and can cause choking or GI perforation.',
     'Always verify internal temperature with a meat thermometer.',
   ];
 
-  if (input.meatType === 'pork') {
+  if (meatType === 'pork') {
     warnings.push('Pork must always be fully cooked — raw pork carries Trichinella risk.');
   }
-  if (input.meatType === 'salmon') {
+  if (meatType === 'salmon') {
     warnings.push('Salmon should only be fed raw if frozen for ≥7 days first (Neorickettsia risk).');
   }
+
+  const nutrientNotesByMethod: Record<string, string[]> = {
+    sous_vide: [
+      'Sous-vide preserves the most water-soluble vitamins (B-complex, Vit C). Include all bag juices in the meal.',
+    ],
+    oven: [
+      'Some B vitamins are lost to pan drippings — include all pan juices in the meal for full nutritional value.',
+    ],
+    stovetop_low: [
+      'B vitamins leach into the cooking water — always include the broth in the meal.',
+    ],
+    slow_cooker: [
+      'Long, gentle cooking retains most nutrients in the liquid — serve the broth alongside the meat.',
+    ],
+  };
 
   return {
     safeInternalTempC: 74,
     safeInternalTempF: 165,
-    cookingTimeMinutes: { min: timeMin, max: timeMax },
-    methodInstructions: method.instructions,
+    cookingTimeMinutes,
+    methodInstructions: METHOD_INSTRUCTIONS[cookingMethod],
     storageInstructions: [
       'Cooked, refrigerated: 3–4 days.',
-      'Cooked, frozen: up to 3 months in airtight bags.',
+      'Cooked, frozen: up to 3 months in airtight containers.',
       'Cool from 60 °C → 21 °C within 2 hours, then to ≤4 °C within 4 more hours.',
     ],
     warnings,
-    nutrientNotes: [
-      'Sous-vide preserves the most water-soluble vitamins (B-complex, Vit C).',
-      'Do not microwave — cooks unevenly, leaves cold spots where bacteria multiply.',
-    ],
+    nutrientNotes: nutrientNotesByMethod[cookingMethod] ?? [],
   };
 }
