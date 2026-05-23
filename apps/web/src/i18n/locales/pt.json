@@ -13,7 +13,9 @@
     "toxic": "TÓXICO",
     "disclaimer": "Não é aconselhamento veterinário. Consulte um diplomata ACVN para alimentação caseira de longo prazo.",
     "openSource": "Código aberto",
-    "target": "Meta"
+    "target": "Meta",
+    "calculating": "Calculando…",
+    "dogFoodCalc": "Calculadora alimentar"
   },
   "cooking": {
     "title": "Calculadora de culinária",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Vaca",
+      "chicken": "Frango",
+      "turkey": "Peru",
+      "lamb": "Borrego",
+      "pork": "Porco",
+      "duck": "Pato",
+      "rabbit": "Coelho",
+      "venison": "Veado",
+      "salmon": "Salmão",
+      "mackerel": "Cavala",
+      "sardines": "Sardinhas",
+      "whitefish": "Peixe branco"
+    },
+    "total": "Total",
+    "yield": "Rendimento",
+    "cooked": "cozido",
+    "instructionsSection": "Instruções",
+    "optionsSection": "Opções",
+    "placeholder": "Preencha o formulário e toque em"
   },
   "nutrition": {
     "title": "Calculadora de nutrição",
@@ -99,7 +121,22 @@
       "high_protein": "Cozido rico em proteína — 50% proteína / 30% vegetais / 15% amido",
       "pmr": "PMR 80-10-10 (avançado)"
     },
-    "vetDisclaimer": "Esta ferramenta fornece orientação geral apenas. Consulte um nutricionista veterinário certificado (ACVN) para alimentação caseira de longo prazo."
+    "vetDisclaimer": "Esta ferramenta fornece orientação geral apenas. Consulte um nutricionista veterinário certificado (ACVN) para alimentação caseira de longo prazo.",
+    "profileSection": "Perfil do cão",
+    "dietShort": {
+      "balanced_cooked": "Equilibrado",
+      "high_protein": "Rico em proteína",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% proteína / 50% veg",
+      "high_protein": "50% proteína / 30% veg",
+      "pmr": "Utilizadores avançados"
+    },
+    "macroProtein": "proteína",
+    "macroVeg": "veg",
+    "macroStarch": "amido",
+    "placeholder": "Preencha o perfil do seu cão e toque em"
   },
   "foodSafety": {
     "title": "Referência de segurança alimentar",
