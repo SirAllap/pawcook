@@ -13,7 +13,9 @@
     "toxic": "TOSSICO",
     "disclaimer": "Non è un consiglio veterinario. Consultare un diplomato ACVN per l'alimentazione casalinga a lungo termine.",
     "openSource": "Open source",
-    "target": "Obiettivo"
+    "target": "Obiettivo",
+    "calculating": "Calcolo in corso…",
+    "dogFoodCalc": "Calcolatore alimentare"
   },
   "cooking": {
     "title": "Calcolatore di cottura",
@@ -52,7 +54,27 @@
     "units": {
       "celsius": "Celsius",
       "fahrenheit": "Fahrenheit"
-    }
+    },
+    "meats": {
+      "beef": "Manzo",
+      "chicken": "Pollo",
+      "turkey": "Tacchino",
+      "lamb": "Agnello",
+      "pork": "Maiale",
+      "duck": "Anatra",
+      "rabbit": "Coniglio",
+      "venison": "Cervo",
+      "salmon": "Salmone",
+      "mackerel": "Sgombro",
+      "sardines": "Sardine",
+      "whitefish": "Pesce bianco"
+    },
+    "total": "Totale",
+    "yield": "Resa",
+    "cooked": "cotto",
+    "instructionsSection": "Istruzioni",
+    "optionsSection": "Opzioni",
+    "placeholder": "Compila il modulo e premi"
   },
   "nutrition": {
     "title": "Calcolatore nutrizionale",
@@ -99,7 +121,22 @@
       "high_protein": "Cotto ad alto contenuto proteico — 50% proteine / 30% verdure / 15% amidi",
       "pmr": "PMR 80-10-10 (avanzato)"
     },
-    "vetDisclaimer": "Questo strumento fornisce solo indicazioni generali. Consultare un nutrizionista veterinario certificato (ACVN) per l'alimentazione casalinga a lungo termine."
+    "vetDisclaimer": "Questo strumento fornisce solo indicazioni generali. Consultare un nutrizionista veterinario certificato (ACVN) per l'alimentazione casalinga a lungo termine.",
+    "profileSection": "Profilo del cane",
+    "dietShort": {
+      "balanced_cooked": "Equilibrato",
+      "high_protein": "Alto proteico",
+      "pmr": "PMR 80/10/10"
+    },
+    "dietSub": {
+      "balanced_cooked": "40% proteine / 50% verdure",
+      "high_protein": "50% proteine / 30% verdure",
+      "pmr": "Solo utenti avanzati"
+    },
+    "macroProtein": "proteine",
+    "macroVeg": "verdure",
+    "macroStarch": "amido",
+    "placeholder": "Compila il profilo del tuo cane e premi"
   },
   "foodSafety": {
     "title": "Riferimento sicurezza alimentare",
