@@ -1,4 +1,5 @@
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from './i18n';
@@ -34,13 +35,13 @@ function GlobeIcon() {
 
 function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
   const currentLang = LANGUAGES.find(l => i18n.language.startsWith(l.code)) ?? LANGUAGES[0];
 
   useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (btnRef.current && !btnRef.current.contains(e.target as Node)) setOpen(false);
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -52,64 +53,73 @@ function LanguageSwitcher() {
     setOpen(false);
   }
 
+  // The header has sticky+z-30 which creates a stacking context — any fixed/absolute child
+  // is trapped inside it. We portal the overlay elements to document.body so they sit in
+  // the root stacking context above the bottom nav (z-40).
+  const overlays = open ? createPortal(
+    <>
+      {/* Mobile backdrop */}
+      <div
+        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
+        onClick={() => setOpen(false)}
+      />
+      {/* Mobile bottom sheet */}
+      <div
+        className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-gray-900 rounded-t-3xl border-t border-gray-700 shadow-2xl animate-fade-in-up"
+        style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)' }}
+      >
+        <div className="w-12 h-1 bg-gray-700 rounded-full mx-auto mt-3 mb-4" />
+        <div className="px-4 pb-2 grid grid-cols-2 gap-2">
+          {LANGUAGES.map(lang => (
+            <button key={lang.code} onClick={() => selectLang(lang.code)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-all active:scale-95 font-medium ${
+                lang.code === currentLang.code
+                  ? 'bg-amber-500 text-gray-900'
+                  : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+              }`}>
+              <span className="text-xl">{lang.flag}</span>
+              <span>{lang.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      {/* Desktop dropdown — portalled to avoid header stacking context */}
+      <div
+        className="hidden lg:block fixed z-50 w-52 bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+        style={(() => {
+          const r = btnRef.current?.getBoundingClientRect();
+          return r ? { top: r.bottom + 8, right: window.innerWidth - r.right } : {};
+        })()}
+      >
+        {LANGUAGES.map(lang => (
+          <button key={lang.code} onClick={() => selectLang(lang.code)}
+            className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-gray-800 active:bg-gray-700 ${
+              lang.code === currentLang.code ? 'text-amber-400' : 'text-gray-200'
+            }`}>
+            <span className="text-xl">{lang.flag}</span>
+            <span className="flex-1 text-left font-medium">{lang.label}</span>
+            {lang.code === currentLang.code && <span className="text-amber-400 text-base">✓</span>}
+          </button>
+        ))}
+      </div>
+    </>,
+    document.body
+  ) : null;
+
   return (
     <>
-      {/* backdrop on mobile */}
-      {open && (
-        <div
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
-          onClick={() => setOpen(false)}
-        />
-      )}
-
-      <div ref={ref} className="relative z-50">
-        <button
-          onClick={() => setOpen(o => !o)}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all active:scale-95 border border-gray-700"
-          aria-label="Change language"
-        >
-          <GlobeIcon />
-          <span className="text-sm hidden sm:block font-medium">{currentLang.flag} {currentLang.label}</span>
-          <span className="text-sm sm:hidden">{currentLang.flag}</span>
-        </button>
-
-        {open && (
-          <>
-            {/* Desktop dropdown */}
-            <div className="hidden lg:block absolute right-0 top-full mt-2 w-52 bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in">
-              {LANGUAGES.map(lang => (
-                <button key={lang.code} onClick={() => selectLang(lang.code)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-gray-800 active:bg-gray-700 ${
-                    lang.code === currentLang.code ? 'text-amber-400' : 'text-gray-200'
-                  }`}>
-                  <span className="text-xl">{lang.flag}</span>
-                  <span className="flex-1 text-left font-medium">{lang.label}</span>
-                  {lang.code === currentLang.code && <span className="text-amber-400 text-base">✓</span>}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile bottom sheet — z-60 sits above bottom nav (z-40) */}
-            <div className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-gray-900 rounded-t-3xl border-t border-gray-700 shadow-2xl animate-fade-in-up"
-              style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 5rem)' }}>
-              <div className="w-12 h-1 bg-gray-700 rounded-full mx-auto mt-3 mb-4" />
-              <div className="px-4 pb-2 grid grid-cols-2 gap-2">
-                {LANGUAGES.map(lang => (
-                  <button key={lang.code} onClick={() => selectLang(lang.code)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-all active:scale-95 font-medium ${
-                      lang.code === currentLang.code
-                        ? 'bg-amber-500 text-gray-900'
-                        : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
-                    }`}>
-                    <span className="text-xl">{lang.flag}</span>
-                    <span>{lang.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-      </div>
+      {overlays}
+      <button
+        ref={btnRef}
+        onClick={() => setOpen(o => !o)}
+        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all active:scale-95 border border-gray-700"
+        aria-label="Change language"
+        aria-expanded={open}
+      >
+        <GlobeIcon />
+        <span className="text-sm hidden sm:block font-medium">{currentLang.flag} {currentLang.label}</span>
+        <span className="text-sm sm:hidden">{currentLang.flag}</span>
+      </button>
     </>
   );
 }
