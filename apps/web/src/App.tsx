@@ -57,7 +57,7 @@ function LanguageSwitcher() {
       {/* backdrop on mobile */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setOpen(false)}
         />
       )}
@@ -89,9 +89,9 @@ function LanguageSwitcher() {
               ))}
             </div>
 
-            {/* Mobile bottom sheet */}
-            <div className="lg:hidden fixed inset-x-0 bottom-0 z-50 bg-gray-900 rounded-t-3xl border-t border-gray-700 shadow-2xl animate-fade-in-up"
-              style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 1rem)' }}>
+            {/* Mobile bottom sheet — z-60 sits above bottom nav (z-40) */}
+            <div className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-gray-900 rounded-t-3xl border-t border-gray-700 shadow-2xl animate-fade-in-up"
+              style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 5rem)' }}>
               <div className="w-12 h-1 bg-gray-700 rounded-full mx-auto mt-3 mb-4" />
               <div className="px-4 pb-2 grid grid-cols-2 gap-2">
                 {LANGUAGES.map(lang => (
@@ -175,7 +175,7 @@ export default function App() {
             <span className="text-2xl">🐾</span>
             <div>
               <span className="text-lg font-bold text-amber-400 leading-none block">PawCook</span>
-              <span className="text-[10px] text-gray-500 leading-none hidden sm:block">Dog Food Calculator</span>
+              <span className="text-[10px] text-gray-500 leading-none hidden sm:block">{t('common.dogFoodCalc')}</span>
             </div>
           </NavLink>
 
