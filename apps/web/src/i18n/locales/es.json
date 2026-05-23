@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Mascotas",
     "cooking": "Cocción",
     "nutrition": "Nutrición",
     "foodSafety": "Alimentos",
@@ -28,7 +29,103 @@
     "changeLanguage": "Elegir idioma",
     "preferences": "Preferencias",
     "brandHome": "Inicio de PawCook",
-    "catFoodCalc": "Calculadora alimentaria felina"
+    "catFoodCalc": "Calculadora alimentaria felina",
+    "allYourPets": "Todas tus mascotas"
+  },
+  "pets": {
+    "eyebrow": "Mascotas",
+    "list": {
+      "title": "Tus mascotas",
+      "subtitle": "Añade un perfil para cada animal que alimentas para que los planes se ajusten a su especie, edad y condiciones.",
+      "addPet": "Añadir mascota",
+      "emptyTitle": "Aún no hay mascotas",
+      "emptyDescription": "Añade tu primera mascota para desbloquear planes de comida y listas de compra hechos a su medida."
+    },
+    "new": {
+      "title": "Añadir mascota",
+      "subtitle": "Cuéntanos sobre ella. Puedes cambiar cualquier dato más adelante."
+    },
+    "edit": {
+      "title": "Editar {{name}}",
+      "subtitle": "Actualiza datos de cuerpo, estilo de vida o salud."
+    },
+    "detail": {
+      "back": "Volver a mascotas",
+      "edit": "Editar",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Objetivo nutricional diario",
+      "findings": "A tener en cuenta"
+    },
+    "form": {
+      "species": "Especie",
+      "speciesLocked": "La especie no se puede cambiar una vez creada la mascota.",
+      "name": "Nombre",
+      "weight": "Peso (kg)",
+      "lifestyleSection": "Estilo de vida",
+      "age": "Etapa vital",
+      "activity": "Nivel de actividad",
+      "bodyCondition": "Condición corporal",
+      "reproStatus": "Estado reproductivo",
+      "mealsPerDay": "Comidas al día",
+      "dietSection": "Enfoque de dieta",
+      "notes": "Notas (opcional)",
+      "notesPlaceholder": "Cualquier dato útil sobre esta mascota.",
+      "create": "Crear mascota",
+      "saveChanges": "Guardar cambios",
+      "delete": "Eliminar mascota"
+    },
+    "species": {
+      "dog": "Perro",
+      "cat": "Gato"
+    },
+    "age": {
+      "puppy": "Cachorro",
+      "kitten": "Gatito",
+      "adult": "Adulto",
+      "senior": "Sénior"
+    },
+    "activity": {
+      "sedentary": "Sedentario",
+      "moderate": "Moderado",
+      "active": "Activo",
+      "working": "De trabajo"
+    },
+    "bodyCondition": {
+      "underweight": "Bajo peso",
+      "ideal": "Ideal",
+      "overweight": "Sobrepeso"
+    },
+    "reproStatus": {
+      "neutered": "Esterilizado",
+      "intact": "Entero",
+      "pregnant": "Gestante",
+      "lactating": "Lactante"
+    },
+    "allergies": {
+      "label": "Alergias alimentarias conocidas",
+      "help": "Toca para marcar proteínas o ingredientes a los que tu mascota reacciona. El planificador los excluirá.",
+      "addOther": "Añadir otro",
+      "pickOther": "Elige un ingrediente",
+      "done": "Hecho"
+    },
+    "conditions": {
+      "label": "Condiciones crónicas",
+      "help": "Guían las recomendaciones del planificador (por ejemplo, bajo fósforo si hay problemas renales). No es una herramienta de diagnóstico.",
+      "allergy":      { "label": "Alergias alimentarias", "help": "Excluiremos los alérgenos de los planes." },
+      "kidney":       { "label": "Enfermedad renal",     "help": "Menos fósforo, evitar días con muchas vísceras." },
+      "pancreatitis": { "label": "Pancreatitis",         "help": "Solo proteínas magras, sin cortes grasos." },
+      "diabetes":     { "label": "Diabetes",             "help": "Planes bajos en carbohidratos, vigila los almidones." },
+      "joint":        { "label": "Problemas articulares","help": "Prioriza proteínas ricas en omega-3." },
+      "gi_sensitive": { "label": "Estómago sensible",    "help": "Opciones suaves y fáciles de digerir." },
+      "obese":        { "label": "Sobrepeso / obesidad", "help": "Peso objetivo con restricción calórica." }
+    },
+    "conditionsLabel": "Condiciones",
+    "confirmDelete": "¿Eliminar a {{name}}? Esta acción no se puede deshacer.",
+    "toast": {
+      "added":   "{{name}} añadido.",
+      "updated": "{{name}} actualizado.",
+      "removed": "{{name}} eliminado."
+    }
   },
   "cooking": {
     "title": "Calculadora de cocción",

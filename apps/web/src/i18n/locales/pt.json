@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Animais",
     "cooking": "Culinária",
     "nutrition": "Nutrição",
     "foodSafety": "Segurança",
@@ -28,7 +29,103 @@
     "changeLanguage": "Escolher idioma",
     "preferences": "Preferências",
     "brandHome": "Início do PawCook",
-    "catFoodCalc": "Calculadora alimentar felina"
+    "catFoodCalc": "Calculadora alimentar felina",
+    "allYourPets": "Todos os teus animais"
+  },
+  "pets": {
+    "eyebrow": "Animais",
+    "list": {
+      "title": "Os teus animais",
+      "subtitle": "Adiciona um perfil para cada animal que alimentas para que os planos correspondam à espécie, idade e condições.",
+      "addPet": "Adicionar animal",
+      "emptyTitle": "Ainda sem animais",
+      "emptyDescription": "Adiciona o teu primeiro animal para desbloquear planos e listas de compras à medida."
+    },
+    "new": {
+      "title": "Adicionar animal",
+      "subtitle": "Conta-nos sobre ele. Podes alterar tudo mais tarde."
+    },
+    "edit": {
+      "title": "Editar {{name}}",
+      "subtitle": "Atualiza dados corporais, estilo de vida ou saúde."
+    },
+    "detail": {
+      "back": "Voltar aos animais",
+      "edit": "Editar",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Objetivo nutricional diário",
+      "findings": "A ter em atenção"
+    },
+    "form": {
+      "species": "Espécie",
+      "speciesLocked": "A espécie não pode ser alterada após a criação.",
+      "name": "Nome",
+      "weight": "Peso (kg)",
+      "lifestyleSection": "Estilo de vida",
+      "age": "Fase de vida",
+      "activity": "Nível de atividade",
+      "bodyCondition": "Condição corporal",
+      "reproStatus": "Estado reprodutivo",
+      "mealsPerDay": "Refeições por dia",
+      "dietSection": "Abordagem dietética",
+      "notes": "Notas (opcional)",
+      "notesPlaceholder": "Tudo o que vale a pena lembrar sobre este animal.",
+      "create": "Criar animal",
+      "saveChanges": "Guardar alterações",
+      "delete": "Eliminar animal"
+    },
+    "species": {
+      "dog": "Cão",
+      "cat": "Gato"
+    },
+    "age": {
+      "puppy": "Cachorro",
+      "kitten": "Gatinho",
+      "adult": "Adulto",
+      "senior": "Sénior"
+    },
+    "activity": {
+      "sedentary": "Sedentário",
+      "moderate": "Moderado",
+      "active": "Ativo",
+      "working": "De trabalho"
+    },
+    "bodyCondition": {
+      "underweight": "Abaixo do peso",
+      "ideal": "Ideal",
+      "overweight": "Acima do peso"
+    },
+    "reproStatus": {
+      "neutered": "Esterilizado",
+      "intact": "Inteiro",
+      "pregnant": "Gestante",
+      "lactating": "Lactante"
+    },
+    "allergies": {
+      "label": "Alergias alimentares conhecidas",
+      "help": "Toca para marcar proteínas ou ingredientes a que o teu animal reage. O planeador irá excluí-los.",
+      "addOther": "Adicionar outro",
+      "pickOther": "Escolhe um ingrediente",
+      "done": "Pronto"
+    },
+    "conditions": {
+      "label": "Condições crónicas",
+      "help": "Guiam as recomendações (ex.: baixo fósforo em problemas renais). Não é uma ferramenta de diagnóstico.",
+      "allergy":      { "label": "Alergias alimentares", "help": "Excluímos alergénios dos planos." },
+      "kidney":       { "label": "Doença renal",        "help": "Menos fósforo, evitar dias com muitas vísceras." },
+      "pancreatitis": { "label": "Pancreatite",         "help": "Só proteínas magras, sem cortes gordos." },
+      "diabetes":     { "label": "Diabetes",            "help": "Planos pobres em hidratos, atenção aos amidos." },
+      "joint":        { "label": "Problemas articulares","help": "Prioriza proteínas ricas em ómega-3." },
+      "gi_sensitive": { "label": "Estômago sensível",   "help": "Opções suaves e fáceis de digerir." },
+      "obese":        { "label": "Excesso de peso",     "help": "Peso-alvo com restrição calórica." }
+    },
+    "conditionsLabel": "Condições",
+    "confirmDelete": "Eliminar {{name}}? Esta ação é irreversível.",
+    "toast": {
+      "added":   "{{name}} adicionado.",
+      "updated": "{{name}} atualizado.",
+      "removed": "{{name}} removido."
+    }
   },
   "cooking": {
     "title": "Calculadora de culinária",

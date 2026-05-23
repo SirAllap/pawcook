@@ -10,6 +10,10 @@ const NutritionCalculator = lazy(() => import('./pages/NutritionCalculator'));
 const FoodSafety          = lazy(() => import('./pages/FoodSafety'));
 const SupplementGuide     = lazy(() => import('./pages/SupplementGuide'));
 const About               = lazy(() => import('./pages/About'));
+const PetsList            = lazy(() => import('./pages/Pets/PetsList'));
+const PetNew              = lazy(() => import('./pages/Pets/PetNew'));
+const PetDetail           = lazy(() => import('./pages/Pets/PetDetail'));
+const PetEdit             = lazy(() => import('./pages/Pets/PetEdit'));
 
 function PageFallback() {
   const { t } = useTranslation();
@@ -31,6 +35,10 @@ export default function App() {
             <Route path="/nutrition"   element={<NutritionCalculator />} />
             <Route path="/food-safety" element={<FoodSafety />} />
             <Route path="/supplements" element={<SupplementGuide />} />
+            <Route path="/pets"          element={<PetsList />} />
+            <Route path="/pets/new"      element={<PetNew />} />
+            <Route path="/pets/:id"      element={<PetDetail />} />
+            <Route path="/pets/:id/edit" element={<PetEdit />} />
             <Route path="/about"       element={<About />} />
           </Routes>
         </Suspense>

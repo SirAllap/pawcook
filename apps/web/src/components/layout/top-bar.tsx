@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useTranslation } from 'react-i18next';
@@ -11,12 +11,21 @@ import { useIsDesktop } from '../../lib/use-media-query';
 import { useSpecies } from '../../lib/species';
 import { cn } from '../../lib/cn';
 
+// Routes where the global species switcher doesn't apply — each pet
+// carries its own species inside these multi-species zones.
+const MULTI_SPECIES_ROUTES = ['/pets', '/meal-plan'];
+
 export function TopBar() {
   const { t } = useTranslation();
   const { species } = useSpecies();
   const isDesktop = useIsDesktop();
+  const location = useLocation();
   const { scrollY } = useScroll();
   const [elevated, setElevated] = useState(false);
+
+  const isMultiSpeciesZone = MULTI_SPECIES_ROUTES.some(
+    (r) => location.pathname === r || location.pathname.startsWith(r + '/'),
+  );
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setElevated(latest > 8);
@@ -47,7 +56,9 @@ export function TopBar() {
             <div className="flex flex-col leading-none">
               <Wordmark />
               <span className="hidden sm:block text-[10px] text-muted-fg font-medium mt-0.5">
-                {t(species === 'cat' ? 'common.catFoodCalc' : 'common.dogFoodCalc')}
+                {isMultiSpeciesZone
+                  ? t('common.allYourPets')
+                  : t(species === 'cat' ? 'common.catFoodCalc' : 'common.dogFoodCalc')}
               </span>
             </div>
           </NavLink>
@@ -55,7 +66,7 @@ export function TopBar() {
           {isDesktop && <DesktopNav />}
 
           <div className="flex items-center gap-1">
-            <SpeciesSwitcher />
+            {!isMultiSpeciesZone && <SpeciesSwitcher />}
             <ThemeToggle />
             <LanguageSwitcher />
           </div>

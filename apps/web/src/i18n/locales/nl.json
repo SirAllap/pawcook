@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Huisdieren",
     "cooking": "Koken",
     "nutrition": "Voeding",
     "foodSafety": "Veiligheid",
@@ -28,7 +29,103 @@
     "changeLanguage": "Taal kiezen",
     "preferences": "Voorkeuren",
     "brandHome": "PawCook startpagina",
-    "catFoodCalc": "Kattenvoer calculator"
+    "catFoodCalc": "Kattenvoer calculator",
+    "allYourPets": "Al je huisdieren"
+  },
+  "pets": {
+    "eyebrow": "Huisdieren",
+    "list": {
+      "title": "Je huisdieren",
+      "subtitle": "Voeg een profiel toe voor elk dier dat je voert zodat plannen passen bij soort, leeftijd en conditie.",
+      "addPet": "Huisdier toevoegen",
+      "emptyTitle": "Nog geen huisdieren",
+      "emptyDescription": "Voeg je eerste huisdier toe om plannen en boodschappenlijsten op maat te krijgen."
+    },
+    "new": {
+      "title": "Huisdier toevoegen",
+      "subtitle": "Vertel ons erover. Je kunt alles later wijzigen."
+    },
+    "edit": {
+      "title": "{{name}} bewerken",
+      "subtitle": "Werk lichaam, leefstijl of gezondheid bij."
+    },
+    "detail": {
+      "back": "Terug naar huisdieren",
+      "edit": "Bewerken",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Dagelijks voedingsdoel",
+      "findings": "Aandachtspunten"
+    },
+    "form": {
+      "species": "Soort",
+      "speciesLocked": "Soort kan na aanmaken niet meer worden gewijzigd.",
+      "name": "Naam",
+      "weight": "Gewicht (kg)",
+      "lifestyleSection": "Leefstijl",
+      "age": "Levensfase",
+      "activity": "Activiteitsniveau",
+      "bodyCondition": "Lichaamsconditie",
+      "reproStatus": "Voortplantingsstatus",
+      "mealsPerDay": "Maaltijden per dag",
+      "dietSection": "Dieetaanpak",
+      "notes": "Notities (optioneel)",
+      "notesPlaceholder": "Alles wat de moeite waard is om over dit dier te onthouden.",
+      "create": "Huisdier aanmaken",
+      "saveChanges": "Wijzigingen opslaan",
+      "delete": "Huisdier verwijderen"
+    },
+    "species": {
+      "dog": "Hond",
+      "cat": "Kat"
+    },
+    "age": {
+      "puppy": "Puppy",
+      "kitten": "Kitten",
+      "adult": "Volwassen",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Weinig actief",
+      "moderate": "Matig",
+      "active": "Actief",
+      "working": "Werkdier"
+    },
+    "bodyCondition": {
+      "underweight": "Te licht",
+      "ideal": "Ideaal",
+      "overweight": "Te zwaar"
+    },
+    "reproStatus": {
+      "neutered": "Gecastreerd",
+      "intact": "Intact",
+      "pregnant": "Drachtig",
+      "lactating": "Zogend"
+    },
+    "allergies": {
+      "label": "Bekende voedselallergieën",
+      "help": "Tik om eiwitten of ingrediënten te markeren waar je dier op reageert. De planner sluit ze uit.",
+      "addOther": "Voeg toe",
+      "pickOther": "Kies een ingrediënt",
+      "done": "Klaar"
+    },
+    "conditions": {
+      "label": "Chronische aandoeningen",
+      "help": "Sturen de aanbevelingen (bijv. weinig fosfor bij nierproblemen). Geen diagnosetool.",
+      "allergy":      { "label": "Voedselallergieën",  "help": "We laten allergenen uit plannen." },
+      "kidney":       { "label": "Nierziekte",         "help": "Minder fosfor, vermijd dagen vol orgaanvlees." },
+      "pancreatitis": { "label": "Alvleesontsteking",  "help": "Alleen magere eiwitten, geen vette stukken." },
+      "diabetes":     { "label": "Diabetes",           "help": "Koolhydraatarme plannen, let op zetmeel." },
+      "joint":        { "label": "Gewrichtsproblemen", "help": "Voorkeur voor omega-3 rijke eiwitten." },
+      "gi_sensitive": { "label": "Gevoelige maag",     "help": "Milde, makkelijk verteerbare opties." },
+      "obese":        { "label": "Overgewicht",        "help": "Calorie-beperkt streefgewicht." }
+    },
+    "conditionsLabel": "Aandoeningen",
+    "confirmDelete": "{{name}} verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "toast": {
+      "added":   "{{name}} toegevoegd.",
+      "updated": "{{name}} bijgewerkt.",
+      "removed": "{{name}} verwijderd."
+    }
   },
   "cooking": {
     "title": "Kookcalculator",

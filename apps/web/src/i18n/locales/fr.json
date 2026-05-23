@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Animaux",
     "cooking": "Cuisson",
     "nutrition": "Nutrition",
     "foodSafety": "Sécurité",
@@ -28,7 +29,103 @@
     "changeLanguage": "Choisir la langue",
     "preferences": "Préférences",
     "brandHome": "Accueil PawCook",
-    "catFoodCalc": "Calculateur alimentaire félin"
+    "catFoodCalc": "Calculateur alimentaire félin",
+    "allYourPets": "Tous vos animaux"
+  },
+  "pets": {
+    "eyebrow": "Animaux",
+    "list": {
+      "title": "Vos animaux",
+      "subtitle": "Ajoutez un profil pour chaque animal nourri afin que les plans correspondent à leur espèce, âge et conditions.",
+      "addPet": "Ajouter un animal",
+      "emptyTitle": "Pas encore d'animal",
+      "emptyDescription": "Ajoutez votre premier animal pour débloquer des plans et listes de courses sur mesure."
+    },
+    "new": {
+      "title": "Ajouter un animal",
+      "subtitle": "Parlez-nous de lui. Vous pouvez tout modifier plus tard."
+    },
+    "edit": {
+      "title": "Modifier {{name}}",
+      "subtitle": "Mettez à jour le corps, le mode de vie ou la santé."
+    },
+    "detail": {
+      "back": "Retour aux animaux",
+      "edit": "Modifier",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Objectif nutritionnel quotidien",
+      "findings": "À surveiller"
+    },
+    "form": {
+      "species": "Espèce",
+      "speciesLocked": "L'espèce ne peut plus être modifiée après la création.",
+      "name": "Nom",
+      "weight": "Poids (kg)",
+      "lifestyleSection": "Mode de vie",
+      "age": "Stade de vie",
+      "activity": "Niveau d'activité",
+      "bodyCondition": "Condition corporelle",
+      "reproStatus": "Statut reproductif",
+      "mealsPerDay": "Repas par jour",
+      "dietSection": "Approche alimentaire",
+      "notes": "Notes (optionnel)",
+      "notesPlaceholder": "Tout ce qui est utile à retenir sur cet animal.",
+      "create": "Créer l'animal",
+      "saveChanges": "Enregistrer",
+      "delete": "Supprimer l'animal"
+    },
+    "species": {
+      "dog": "Chien",
+      "cat": "Chat"
+    },
+    "age": {
+      "puppy": "Chiot",
+      "kitten": "Chaton",
+      "adult": "Adulte",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Sédentaire",
+      "moderate": "Modéré",
+      "active": "Actif",
+      "working": "De travail"
+    },
+    "bodyCondition": {
+      "underweight": "Trop maigre",
+      "ideal": "Idéal",
+      "overweight": "Surpoids"
+    },
+    "reproStatus": {
+      "neutered": "Stérilisé",
+      "intact": "Entier",
+      "pregnant": "Gestante",
+      "lactating": "Allaitante"
+    },
+    "allergies": {
+      "label": "Allergies alimentaires connues",
+      "help": "Touchez pour marquer les protéines ou ingrédients à exclure. Le planificateur les évitera.",
+      "addOther": "Ajouter un autre",
+      "pickOther": "Choisir un ingrédient",
+      "done": "Terminé"
+    },
+    "conditions": {
+      "label": "Conditions chroniques",
+      "help": "Guident les recommandations (par ex. faible phosphore en cas d'insuffisance rénale). Ce n'est pas un outil de diagnostic.",
+      "allergy":      { "label": "Allergies alimentaires", "help": "Les allergènes seront exclus des plans." },
+      "kidney":       { "label": "Maladie rénale",         "help": "Moins de phosphore, éviter les jours riches en abats." },
+      "pancreatitis": { "label": "Pancréatite",            "help": "Protéines maigres uniquement, sans morceaux gras." },
+      "diabetes":     { "label": "Diabète",                "help": "Plans pauvres en glucides, attention aux féculents." },
+      "joint":        { "label": "Problèmes articulaires", "help": "Priorité aux protéines riches en oméga-3." },
+      "gi_sensitive": { "label": "Estomac sensible",       "help": "Options douces et faciles à digérer." },
+      "obese":        { "label": "Surpoids / obésité",     "help": "Poids cible avec restriction calorique." }
+    },
+    "conditionsLabel": "Conditions",
+    "confirmDelete": "Supprimer {{name}} ? Cette action est irréversible.",
+    "toast": {
+      "added":   "{{name}} ajouté.",
+      "updated": "{{name}} mis à jour.",
+      "removed": "{{name}} supprimé."
+    }
   },
   "cooking": {
     "title": "Calculateur de cuisson",

@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Pets",
     "cooking": "Cooking",
     "nutrition": "Nutrition",
     "foodSafety": "Food Safety",
@@ -17,6 +18,7 @@
     "downloadSuccess": "Saved to your downloads.",
     "downloadFailed": "Couldn't generate the file. Please try again.",
     "exportFooter": "PawCook — pawcook.app — not veterinary advice.",
+    "allYourPets": "All your pets",
     "safe": "Safe",
     "toxic": "TOXIC",
     "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
@@ -29,6 +31,101 @@
     "preferences": "Preferences",
     "brandHome": "PawCook home",
     "catFoodCalc": "Cat Food Calculator"
+  },
+  "pets": {
+    "eyebrow": "Pets",
+    "list": {
+      "title": "Your pets",
+      "subtitle": "Add a profile for each animal you feed so meal plans match their species, age, and conditions.",
+      "addPet": "Add pet",
+      "emptyTitle": "No pets yet",
+      "emptyDescription": "Add your first pet to unlock meal plans and shopping lists tailored to them."
+    },
+    "new": {
+      "title": "Add a pet",
+      "subtitle": "Tell us about them. You can change anything later."
+    },
+    "edit": {
+      "title": "Edit {{name}}",
+      "subtitle": "Update body, lifestyle, or health details."
+    },
+    "detail": {
+      "back": "Back to pets",
+      "edit": "Edit",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Daily nutrition target",
+      "findings": "Things to watch"
+    },
+    "form": {
+      "species": "Species",
+      "speciesLocked": "Species can't be changed after the pet is created.",
+      "name": "Name",
+      "weight": "Weight (kg)",
+      "lifestyleSection": "Lifestyle",
+      "age": "Life stage",
+      "activity": "Activity level",
+      "bodyCondition": "Body condition",
+      "reproStatus": "Reproductive status",
+      "mealsPerDay": "Meals per day",
+      "dietSection": "Diet approach",
+      "notes": "Notes (optional)",
+      "notesPlaceholder": "Anything else worth remembering about this pet.",
+      "create": "Create pet",
+      "saveChanges": "Save changes",
+      "delete": "Delete pet"
+    },
+    "species": {
+      "dog": "Dog",
+      "cat": "Cat"
+    },
+    "age": {
+      "puppy": "Puppy",
+      "kitten": "Kitten",
+      "adult": "Adult",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Sedentary",
+      "moderate": "Moderate",
+      "active": "Active",
+      "working": "Working"
+    },
+    "bodyCondition": {
+      "underweight": "Underweight",
+      "ideal": "Ideal",
+      "overweight": "Overweight"
+    },
+    "reproStatus": {
+      "neutered": "Neutered",
+      "intact": "Intact",
+      "pregnant": "Pregnant",
+      "lactating": "Lactating"
+    },
+    "allergies": {
+      "label": "Known food allergies",
+      "help": "Tap to mark proteins or ingredients your pet reacts to. Planner will exclude them.",
+      "addOther": "Add another",
+      "pickOther": "Pick an ingredient",
+      "done": "Done"
+    },
+    "conditions": {
+      "label": "Chronic conditions",
+      "help": "These guide planner recommendations (e.g. low-phosphorus for kidney conditions). Not a diagnosis tool.",
+      "allergy":      { "label": "Food allergies",      "help": "We'll exclude allergens from plans." },
+      "kidney":       { "label": "Kidney disease",      "help": "Lower phosphorus, avoid organ-heavy days." },
+      "pancreatitis": { "label": "Pancreatitis",        "help": "Lean proteins only, no fatty cuts." },
+      "diabetes":     { "label": "Diabetes",            "help": "Lower-carb plans, watch starches." },
+      "joint":        { "label": "Joint issues",        "help": "Prioritise omega-3 rich proteins." },
+      "gi_sensitive": { "label": "Sensitive stomach",   "help": "Favour bland, easily digested options." },
+      "obese":        { "label": "Overweight / obese",  "help": "Calorie-restricted target weight." }
+    },
+    "conditionsLabel": "Conditions",
+    "confirmDelete": "Delete {{name}}? This can't be undone.",
+    "toast": {
+      "added":   "{{name}} added.",
+      "updated": "{{name}} updated.",
+      "removed": "{{name}} removed."
+    }
   },
   "cooking": {
     "title": "Cooking Calculator",

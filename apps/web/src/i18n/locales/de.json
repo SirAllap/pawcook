@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Tiere",
     "cooking": "Kochen",
     "nutrition": "Ernährung",
     "foodSafety": "Sicherheit",
@@ -28,7 +29,103 @@
     "changeLanguage": "Sprache wählen",
     "preferences": "Einstellungen",
     "brandHome": "PawCook Startseite",
-    "catFoodCalc": "Katzenfutter-Rechner"
+    "catFoodCalc": "Katzenfutter-Rechner",
+    "allYourPets": "Alle deine Tiere"
+  },
+  "pets": {
+    "eyebrow": "Tiere",
+    "list": {
+      "title": "Deine Tiere",
+      "subtitle": "Lege für jedes Tier ein Profil an, damit Pläne zu Art, Alter und Bedingungen passen.",
+      "addPet": "Tier hinzufügen",
+      "emptyTitle": "Noch keine Tiere",
+      "emptyDescription": "Füge dein erstes Tier hinzu, um maßgeschneiderte Pläne und Einkaufslisten freizuschalten."
+    },
+    "new": {
+      "title": "Tier hinzufügen",
+      "subtitle": "Erzähl uns davon. Du kannst alles später ändern."
+    },
+    "edit": {
+      "title": "{{name}} bearbeiten",
+      "subtitle": "Körper, Lebensstil oder Gesundheitsdaten aktualisieren."
+    },
+    "detail": {
+      "back": "Zurück zu den Tieren",
+      "edit": "Bearbeiten",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Tägliches Nährstoffziel",
+      "findings": "Worauf zu achten ist"
+    },
+    "form": {
+      "species": "Art",
+      "speciesLocked": "Die Art lässt sich nach dem Anlegen nicht mehr ändern.",
+      "name": "Name",
+      "weight": "Gewicht (kg)",
+      "lifestyleSection": "Lebensstil",
+      "age": "Lebensphase",
+      "activity": "Aktivitätsniveau",
+      "bodyCondition": "Körperkondition",
+      "reproStatus": "Fortpflanzungsstatus",
+      "mealsPerDay": "Mahlzeiten pro Tag",
+      "dietSection": "Ernährungsansatz",
+      "notes": "Notizen (optional)",
+      "notesPlaceholder": "Was sonst noch wichtig ist über dieses Tier.",
+      "create": "Tier anlegen",
+      "saveChanges": "Änderungen speichern",
+      "delete": "Tier löschen"
+    },
+    "species": {
+      "dog": "Hund",
+      "cat": "Katze"
+    },
+    "age": {
+      "puppy": "Welpe",
+      "kitten": "Kätzchen",
+      "adult": "Erwachsen",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Wenig aktiv",
+      "moderate": "Moderat",
+      "active": "Aktiv",
+      "working": "Arbeitstier"
+    },
+    "bodyCondition": {
+      "underweight": "Untergewicht",
+      "ideal": "Ideal",
+      "overweight": "Übergewicht"
+    },
+    "reproStatus": {
+      "neutered": "Kastriert",
+      "intact": "Intakt",
+      "pregnant": "Trächtig",
+      "lactating": "Säugend"
+    },
+    "allergies": {
+      "label": "Bekannte Futterallergien",
+      "help": "Tippe Proteine oder Zutaten an, auf die dein Tier reagiert. Der Planer schließt sie aus.",
+      "addOther": "Weitere hinzufügen",
+      "pickOther": "Zutat wählen",
+      "done": "Fertig"
+    },
+    "conditions": {
+      "label": "Chronische Beschwerden",
+      "help": "Lenken die Empfehlungen (z. B. wenig Phosphor bei Nierenleiden). Keine Diagnosehilfe.",
+      "allergy":      { "label": "Futterallergien",     "help": "Allergene werden aus Plänen entfernt." },
+      "kidney":       { "label": "Nierenerkrankung",    "help": "Weniger Phosphor, organreiche Tage meiden." },
+      "pancreatitis": { "label": "Pankreatitis",        "help": "Nur magere Proteine, keine fetten Stücke." },
+      "diabetes":     { "label": "Diabetes",            "help": "Kohlenhydratarme Pläne, Stärke beachten." },
+      "joint":        { "label": "Gelenkprobleme",      "help": "Omega-3-reiche Proteine bevorzugen." },
+      "gi_sensitive": { "label": "Empfindlicher Magen", "help": "Milde, leicht verdauliche Optionen." },
+      "obese":        { "label": "Übergewicht",         "help": "Kalorienreduziertes Zielgewicht." }
+    },
+    "conditionsLabel": "Beschwerden",
+    "confirmDelete": "{{name}} löschen? Das lässt sich nicht rückgängig machen.",
+    "toast": {
+      "added":   "{{name}} hinzugefügt.",
+      "updated": "{{name}} aktualisiert.",
+      "removed": "{{name}} entfernt."
+    }
   },
   "cooking": {
     "title": "Kochrechner",

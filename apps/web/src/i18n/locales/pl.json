@@ -1,5 +1,6 @@
 {
   "nav": {
+    "pets": "Zwierzęta",
     "cooking": "Gotowanie",
     "nutrition": "Żywienie",
     "foodSafety": "Żywność",
@@ -28,7 +29,103 @@
     "changeLanguage": "Wybierz język",
     "preferences": "Preferencje",
     "brandHome": "Strona główna PawCook",
-    "catFoodCalc": "Kalkulator karmy dla kota"
+    "catFoodCalc": "Kalkulator karmy dla kota",
+    "allYourPets": "Wszystkie Twoje zwierzęta"
+  },
+  "pets": {
+    "eyebrow": "Zwierzęta",
+    "list": {
+      "title": "Twoje zwierzęta",
+      "subtitle": "Dodaj profil dla każdego zwierzęcia, aby plany pasowały do jego gatunku, wieku i kondycji.",
+      "addPet": "Dodaj zwierzę",
+      "emptyTitle": "Brak zwierząt",
+      "emptyDescription": "Dodaj pierwsze zwierzę, aby odblokować plany i listy zakupów skrojone na miarę."
+    },
+    "new": {
+      "title": "Dodaj zwierzę",
+      "subtitle": "Opowiedz nam o nim. Wszystko możesz później zmienić."
+    },
+    "edit": {
+      "title": "Edytuj {{name}}",
+      "subtitle": "Aktualizuj dane fizyczne, styl życia lub zdrowie."
+    },
+    "detail": {
+      "back": "Wróć do zwierząt",
+      "edit": "Edytuj",
+      "subtitle": "{{age}} · {{weight}} kg",
+      "dailyPlan": "Dzienne zapotrzebowanie",
+      "findings": "Na co zwrócić uwagę"
+    },
+    "form": {
+      "species": "Gatunek",
+      "speciesLocked": "Gatunku nie można zmienić po utworzeniu profilu.",
+      "name": "Imię",
+      "weight": "Waga (kg)",
+      "lifestyleSection": "Styl życia",
+      "age": "Etap życia",
+      "activity": "Poziom aktywności",
+      "bodyCondition": "Kondycja ciała",
+      "reproStatus": "Status rozrodczy",
+      "mealsPerDay": "Posiłki dziennie",
+      "dietSection": "Podejście do diety",
+      "notes": "Notatki (opcjonalne)",
+      "notesPlaceholder": "Cokolwiek warto zapamiętać o tym zwierzęciu.",
+      "create": "Utwórz zwierzę",
+      "saveChanges": "Zapisz zmiany",
+      "delete": "Usuń zwierzę"
+    },
+    "species": {
+      "dog": "Pies",
+      "cat": "Kot"
+    },
+    "age": {
+      "puppy": "Szczeniak",
+      "kitten": "Kociak",
+      "adult": "Dorosły",
+      "senior": "Senior"
+    },
+    "activity": {
+      "sedentary": "Mało aktywny",
+      "moderate": "Umiarkowany",
+      "active": "Aktywny",
+      "working": "Pracujący"
+    },
+    "bodyCondition": {
+      "underweight": "Niedowaga",
+      "ideal": "Idealna",
+      "overweight": "Nadwaga"
+    },
+    "reproStatus": {
+      "neutered": "Sterylizowany",
+      "intact": "Nietknięty",
+      "pregnant": "Ciężarna",
+      "lactating": "Karmiąca"
+    },
+    "allergies": {
+      "label": "Znane alergie pokarmowe",
+      "help": "Dotknij, by oznaczyć białka lub składniki, na które reaguje. Planer je wykluczy.",
+      "addOther": "Dodaj kolejny",
+      "pickOther": "Wybierz składnik",
+      "done": "Gotowe"
+    },
+    "conditions": {
+      "label": "Choroby przewlekłe",
+      "help": "Sterują rekomendacjami (np. mniej fosforu przy chorobach nerek). To nie narzędzie diagnostyczne.",
+      "allergy":      { "label": "Alergie pokarmowe",   "help": "Wykluczymy alergeny z planów." },
+      "kidney":       { "label": "Choroba nerek",       "help": "Mniej fosforu, unikać dni z dużą ilością podrobów." },
+      "pancreatitis": { "label": "Zapalenie trzustki",  "help": "Tylko chude białka, bez tłustych kawałków." },
+      "diabetes":     { "label": "Cukrzyca",            "help": "Plany niskowęglowodanowe, uważaj na skrobie." },
+      "joint":        { "label": "Problemy ze stawami", "help": "Priorytet dla białek bogatych w omega-3." },
+      "gi_sensitive": { "label": "Wrażliwy żołądek",    "help": "Łagodne, łatwo strawne opcje." },
+      "obese":        { "label": "Nadwaga / otyłość",   "help": "Cel wagowy z restrykcją kalorii." }
+    },
+    "conditionsLabel": "Dolegliwości",
+    "confirmDelete": "Usunąć {{name}}? Tego nie da się cofnąć.",
+    "toast": {
+      "added":   "Dodano {{name}}.",
+      "updated": "Zaktualizowano {{name}}.",
+      "removed": "Usunięto {{name}}."
+    }
   },
   "cooking": {
     "title": "Kalkulator gotowania",
