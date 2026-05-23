@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ShieldCheck } from 'lucide-react';
 import { PawMark, Wordmark } from '../brand/logo';
 import { GithubIcon } from '../brand/icons';
 import { ThemeToggle } from '../theme/theme-toggle';
@@ -38,15 +39,24 @@ export function Footer() {
             <h4 className="text-xs font-black uppercase tracking-wider text-muted-fg mb-3">
               {t('nav.about')}
             </h4>
-            <a
-              href="https://github.com/SirAllap/pawcook"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
-            >
-              <GithubIcon className="h-4 w-4" />
-              GitHub <ExternalLink className="h-3 w-3 text-muted-fg" />
-            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                href="https://github.com/SirAllap/pawcook"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+              >
+                <GithubIcon className="h-4 w-4" />
+                GitHub <ExternalLink className="h-3 w-3 text-muted-fg" />
+              </a>
+              <Link
+                to="/about#privacy"
+                className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+              >
+                <ShieldCheck className="h-4 w-4" />
+                {t('common.privacy')}
+              </Link>
+            </div>
             <p className="text-xs text-muted-fg mt-3">MIT · Open source</p>
           </div>
 

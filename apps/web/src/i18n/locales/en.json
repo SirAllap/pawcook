@@ -15,7 +15,8 @@
     "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
     "openSource": "Open source",
     "target": "Target",
-    "dogFoodCalc": "Dog Food Calculator"
+    "dogFoodCalc": "Dog Food Calculator",
+    "privacy": "Privacy"
   },
   "cooking": {
     "title": "Cooking Calculator",
@@ -117,7 +118,12 @@
     "vegetables": "Vegetables",
     "calciumNeeded": "Calcium needed",
     "omega3Target": "Omega-3 target",
-    "notes": "Notes",
+    "notes": {
+      "rer": "RER (resting): {{kcal}} kcal/day",
+      "der": "DER (daily energy): {{kcal}} kcal/day (×{{multiplier}} multiplier)",
+      "rawDiet": "Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.",
+      "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury."
+    },
     "ages": {
       "puppy": "Puppy (<1 yr)",
       "adult": "Adult (1–7 yr)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (resting): {{kcal}} kcal/day",
-      "der": "DER (daily energy): {{kcal}} kcal/day (×{{multiplier}} multiplier)",
-      "rawDiet": "Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.",
-      "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury."
     },
     "warnings": {
       "caPLow": "Ca:P ratio is {{ratio}}:1 — below the AAFCO safe minimum of 1:1. Add ~{{calcium}} mg supplemental calcium daily.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Tips",
       "oldFresh": "{{old}}% old · {{new}}% fresh",
       "days": {
-        "0": { "label": "Day 1–2", "note": "Watch stool — looser stool is normal, but firm should be the baseline by day 2." },
-        "1": { "label": "Day 3–4", "note": "If digestive issues appear, hold this ratio an extra day before advancing." },
-        "2": { "label": "Day 5–6", "note": "Begin tapering off any commercial food." },
-        "3": { "label": "Day 7+",  "note": "Full fresh diet. Introduce protein rotation only after 14–21 days of stable digestion." }
+        "0": {
+          "label": "Day 1–2",
+          "note": "Watch stool — looser stool is normal, but firm should be the baseline by day 2."
+        },
+        "1": {
+          "label": "Day 3–4",
+          "note": "If digestive issues appear, hold this ratio an extra day before advancing."
+        },
+        "2": {
+          "label": "Day 5–6",
+          "note": "Begin tapering off any commercial food."
+        },
+        "3": {
+          "label": "Day 7+",
+          "note": "Full fresh diet. Introduce protein rotation only after 14–21 days of stable digestion."
+        }
       },
       "tips": {
         "0": "Add a teaspoon of plain canned pumpkin for the first 3 days to support digestion.",
@@ -325,7 +337,19 @@
     "methodology": "Methodology & Sources",
     "openSource": "Open Source",
     "openSourceText": "PawCook is MIT licensed. Contributions, corrections, and feature requests welcome on",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Privacy",
+    "privacyEyebrow": "Privacy",
+    "privacyLead": "PawCook stores nothing on our servers — because we don't have any. The app is a static page served by GitHub Pages.",
+    "privacyNoTracking": "No analytics, no tracking pixels, no third-party scripts, no cookies. We do not know who you are, what you searched, or which recipe you cooked.",
+    "privacyStorageTitle": "What stays on your device",
+    "privacyStorageBody": "Your browser's localStorage keeps your theme, language and the last values you entered in each calculator — so you don't have to re-enter them next time. That data never leaves your device.",
+    "privacyStorageKeys": "Stored keys: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "How to clear it",
+    "privacyClearBody": "Open your browser's site-data settings for this site and clear everything. PawCook will reset to defaults the next time you load it.",
+    "privacyHostTitle": "About the host",
+    "privacyHostBody": "PawCook is hosted on GitHub Pages. To serve the page, GitHub's infrastructure necessarily sees your IP address. We have no access to those logs and no other relationship with you.",
+    "privacyHostLink": "GitHub privacy statement"
   },
   "meatData": {
     "beef": {

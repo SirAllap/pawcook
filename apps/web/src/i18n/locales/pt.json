@@ -15,7 +15,8 @@
     "openSource": "Código aberto",
     "target": "Meta",
     "calculating": "Calculando…",
-    "dogFoodCalc": "Calculadora alimentar"
+    "dogFoodCalc": "Calculadora alimentar",
+    "privacy": "Privacidade"
   },
   "cooking": {
     "title": "Calculadora de culinária",
@@ -117,7 +118,12 @@
     "vegetables": "Vegetais",
     "calciumNeeded": "Cálcio necessário",
     "omega3Target": "Meta de Ômega-3",
-    "notes": "Observações",
+    "notes": {
+      "rer": "RER (em repouso): {{kcal}} kcal/dia",
+      "der": "DER (energia diária): {{kcal}} kcal/dia (×{{multiplier}} multiplicador)",
+      "rawDiet": "Dieta crua avançada — o osso fornece cálcio natural; nunca substitua por osso cozido.",
+      "realAncestralOmega": "O peixe inteiro (sardinha, cavala) equilibra a relação ómega-3:6. Use peixes pequenos selvagens para limitar o mercúrio."
+    },
     "ages": {
       "puppy": "Filhote (<1 ano)",
       "adult": "Adulto (1–7 anos)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (em repouso): {{kcal}} kcal/dia",
-      "der": "DER (energia diária): {{kcal}} kcal/dia (×{{multiplier}} multiplicador)",
-      "rawDiet": "Dieta crua avançada — o osso fornece cálcio natural; nunca substitua por osso cozido.",
-      "realAncestralOmega": "O peixe inteiro (sardinha, cavala) equilibra a relação ómega-3:6. Use peixes pequenos selvagens para limitar o mercúrio."
     },
     "warnings": {
       "caPLow": "O rácio Ca:P é de {{ratio}}:1 — abaixo do mínimo seguro AAFCO (1:1). Adicione ~{{calcium}} mg de cálcio suplementar por dia.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Dicas",
       "oldFresh": "{{old}}% antigo · {{new}}% fresco",
       "days": {
-        "0": { "label": "Dia 1–2", "note": "Observe as fezes — algo moles é normal, mas devem ficar firmes até ao dia 2." },
-        "1": { "label": "Dia 3–4", "note": "Se aparecerem problemas digestivos, mantenha este rácio mais um dia antes de avançar." },
-        "2": { "label": "Dia 5–6", "note": "Comece a eliminar qualquer comida comercial." },
-        "3": { "label": "Dia 7+",  "note": "Dieta fresca completa. Introduza a rotação de proteínas só após 14–21 dias de digestão estável." }
+        "0": {
+          "label": "Dia 1–2",
+          "note": "Observe as fezes — algo moles é normal, mas devem ficar firmes até ao dia 2."
+        },
+        "1": {
+          "label": "Dia 3–4",
+          "note": "Se aparecerem problemas digestivos, mantenha este rácio mais um dia antes de avançar."
+        },
+        "2": {
+          "label": "Dia 5–6",
+          "note": "Comece a eliminar qualquer comida comercial."
+        },
+        "3": {
+          "label": "Dia 7+",
+          "note": "Dieta fresca completa. Introduza a rotação de proteínas só após 14–21 dias de digestão estável."
+        }
       },
       "tips": {
         "0": "Adicione uma colher de chá de abóbora enlatada natural nos primeiros 3 dias para apoiar a digestão.",
@@ -325,7 +337,19 @@
     "methodology": "Metodologia e fontes",
     "openSource": "Código Aberto",
     "openSourceText": "PawCook é licenciado pelo MIT. Contribuições, correções e solicitações de recursos são bem-vindas no",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Privacidade",
+    "privacyEyebrow": "Privacidade",
+    "privacyLead": "PawCook não armazena nada em nossos servidores — porque não temos nenhum. O app é uma página estática servida pelo GitHub Pages.",
+    "privacyNoTracking": "Sem analytics, sem pixels de rastreamento, sem scripts de terceiros, sem cookies. Não sabemos quem você é, o que pesquisou ou qual receita cozinhou.",
+    "privacyStorageTitle": "O que fica no seu dispositivo",
+    "privacyStorageBody": "O localStorage do seu navegador guarda o tema, o idioma e os últimos valores que você digitou em cada calculadora — para você não precisar redigitar. Esses dados nunca saem do seu dispositivo.",
+    "privacyStorageKeys": "Chaves armazenadas: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "Como apagar",
+    "privacyClearBody": "Abra as configurações de dados do site no seu navegador e limpe tudo. O PawCook voltará aos padrões na próxima carga.",
+    "privacyHostTitle": "Sobre a hospedagem",
+    "privacyHostBody": "O PawCook é hospedado no GitHub Pages. Para servir a página, a infraestrutura do GitHub necessariamente vê seu endereço IP. Não temos acesso a esses logs nem qualquer outra relação com você.",
+    "privacyHostLink": "Política de privacidade do GitHub"
   },
   "meatData": {
     "beef": {

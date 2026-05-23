@@ -15,7 +15,8 @@
     "openSource": "Open source",
     "target": "Cel",
     "calculating": "Obliczanie…",
-    "dogFoodCalc": "Kalkulator żywienia"
+    "dogFoodCalc": "Kalkulator żywienia",
+    "privacy": "Prywatność"
   },
   "cooking": {
     "title": "Kalkulator gotowania",
@@ -117,7 +118,12 @@
     "vegetables": "Warzywa",
     "calciumNeeded": "Potrzebny wapń",
     "omega3Target": "Cel Omega-3",
-    "notes": "Uwagi",
+    "notes": {
+      "rer": "RER (spoczynkowe): {{kcal}} kcal/dobę",
+      "der": "DER (dzienne zapotrzebowanie): {{kcal}} kcal/dobę (×{{multiplier}} mnożnik)",
+      "rawDiet": "Zaawansowana dieta surowa — kość dostarcza naturalnego wapnia; nigdy nie zastępuj kością gotowaną.",
+      "realAncestralOmega": "Cała ryba (sardynki, makrela) równoważy stosunek omega-3:6. Używaj małych dziko żyjących ryb, by ograniczyć rtęć."
+    },
     "ages": {
       "puppy": "Szczenię (<1 roku)",
       "adult": "Dorosły (1–7 lat)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (spoczynkowe): {{kcal}} kcal/dobę",
-      "der": "DER (dzienne zapotrzebowanie): {{kcal}} kcal/dobę (×{{multiplier}} mnożnik)",
-      "rawDiet": "Zaawansowana dieta surowa — kość dostarcza naturalnego wapnia; nigdy nie zastępuj kością gotowaną.",
-      "realAncestralOmega": "Cała ryba (sardynki, makrela) równoważy stosunek omega-3:6. Używaj małych dziko żyjących ryb, by ograniczyć rtęć."
     },
     "warnings": {
       "caPLow": "Stosunek Ca:P wynosi {{ratio}}:1 — poniżej bezpiecznego minimum AAFCO 1:1. Dodaj ~{{calcium}} mg dodatkowego wapnia dziennie.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Wskazówki",
       "oldFresh": "{{old}}% starej · {{new}}% świeżej",
       "days": {
-        "0": { "label": "Dzień 1–2", "note": "Obserwuj stolec — lekko luźny stolec jest normalny, ale do 2. dnia powinien być uformowany." },
-        "1": { "label": "Dzień 3–4", "note": "Jeśli pojawią się problemy trawienne, utrzymaj ten stosunek o dzień dłużej, zanim przejdziesz dalej." },
-        "2": { "label": "Dzień 5–6", "note": "Zacznij stopniowo eliminować jakąkolwiek karmę komercyjną." },
-        "3": { "label": "Dzień 7+",  "note": "Pełna dieta świeża. Wprowadzaj rotację białka dopiero po 14–21 dniach stabilnego trawienia." }
+        "0": {
+          "label": "Dzień 1–2",
+          "note": "Obserwuj stolec — lekko luźny stolec jest normalny, ale do 2. dnia powinien być uformowany."
+        },
+        "1": {
+          "label": "Dzień 3–4",
+          "note": "Jeśli pojawią się problemy trawienne, utrzymaj ten stosunek o dzień dłużej, zanim przejdziesz dalej."
+        },
+        "2": {
+          "label": "Dzień 5–6",
+          "note": "Zacznij stopniowo eliminować jakąkolwiek karmę komercyjną."
+        },
+        "3": {
+          "label": "Dzień 7+",
+          "note": "Pełna dieta świeża. Wprowadzaj rotację białka dopiero po 14–21 dniach stabilnego trawienia."
+        }
       },
       "tips": {
         "0": "Dodaj łyżeczkę dyni z puszki (bez przypraw) przez pierwsze 3 dni, aby wspomóc trawienie.",
@@ -325,7 +337,19 @@
     "methodology": "Metodologia i źródła",
     "openSource": "Open Source",
     "openSourceText": "PawCook jest na licencji MIT. Wkład, poprawki i prośby o nowe funkcje mile widziane na",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Prywatność",
+    "privacyEyebrow": "Prywatność",
+    "privacyLead": "PawCook nie przechowuje niczego na naszych serwerach — bo ich nie mamy. Aplikacja to statyczna strona serwowana przez GitHub Pages.",
+    "privacyNoTracking": "Bez analityki, bez pikseli śledzących, bez skryptów stron trzecich, bez ciasteczek. Nie wiemy, kim jesteś, czego szukałeś ani jaki przepis ugotowałeś.",
+    "privacyStorageTitle": "Co zostaje na Twoim urządzeniu",
+    "privacyStorageBody": "localStorage Twojej przeglądarki przechowuje motyw, język i ostatnie wartości wprowadzone w każdym kalkulatorze — żebyś nie musiał wpisywać ich ponownie. Te dane nigdy nie opuszczają Twojego urządzenia.",
+    "privacyStorageKeys": "Zapisane klucze: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "Jak je wyczyścić",
+    "privacyClearBody": "Otwórz w przeglądarce ustawienia danych witryny i wyczyść wszystko. PawCook wróci do wartości domyślnych przy następnym wczytaniu.",
+    "privacyHostTitle": "O hostingu",
+    "privacyHostBody": "PawCook jest hostowany na GitHub Pages. Aby udostępnić stronę, infrastruktura GitHub musi widzieć Twój adres IP. Nie mamy dostępu do tych logów ani żadnej innej relacji z Tobą.",
+    "privacyHostLink": "Polityka prywatności GitHuba"
   },
   "meatData": {
     "beef": {

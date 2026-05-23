@@ -15,7 +15,8 @@
     "openSource": "Open source",
     "target": "Doelwaarde",
     "calculating": "Berekening…",
-    "dogFoodCalc": "Hondenvoer-calculator"
+    "dogFoodCalc": "Hondenvoer-calculator",
+    "privacy": "Privacy"
   },
   "cooking": {
     "title": "Kookcalculator",
@@ -117,7 +118,12 @@
     "vegetables": "Groenten",
     "calciumNeeded": "Benodigde calcium",
     "omega3Target": "Omega-3 doelwaarde",
-    "notes": "Opmerkingen",
+    "notes": {
+      "rer": "RER (rust): {{kcal}} kcal/dag",
+      "der": "DER (dagelijkse energie): {{kcal}} kcal/dag (×{{multiplier}} vermenigvuldiger)",
+      "rawDiet": "Geavanceerd rauwvoerdieet — bot levert natuurlijk calcium; vervang nooit door gekookt bot.",
+      "realAncestralOmega": "Hele vis (sardines, makreel) balanceert de omega-3:6-verhouding. Gebruik kleine wildvang om kwik te beperken."
+    },
     "ages": {
       "puppy": "Pup (<1 jaar)",
       "adult": "Volwassen (1–7 jaar)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (rust): {{kcal}} kcal/dag",
-      "der": "DER (dagelijkse energie): {{kcal}} kcal/dag (×{{multiplier}} vermenigvuldiger)",
-      "rawDiet": "Geavanceerd rauwvoerdieet — bot levert natuurlijk calcium; vervang nooit door gekookt bot.",
-      "realAncestralOmega": "Hele vis (sardines, makreel) balanceert de omega-3:6-verhouding. Gebruik kleine wildvang om kwik te beperken."
     },
     "warnings": {
       "caPLow": "De Ca:P-verhouding is {{ratio}}:1 — onder het AAFCO-minimum van 1:1. Voeg ~{{calcium}} mg extra calcium per dag toe.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Tips",
       "oldFresh": "{{old}}% oud · {{new}}% vers",
       "days": {
-        "0": { "label": "Dag 1–2", "note": "Let op de ontlasting — iets zachtere ontlasting is normaal, maar moet op dag 2 weer stevig zijn." },
-        "1": { "label": "Dag 3–4", "note": "Bij spijsverteringsproblemen, houd deze verhouding nog een dag aan voordat je verder gaat." },
-        "2": { "label": "Dag 5–6", "note": "Begin met het uitfaseren van commerciële voeding." },
-        "3": { "label": "Dag 7+",  "note": "Volledig vers dieet. Introduceer eiwitrotatie pas na 14–21 dagen stabiele spijsvertering." }
+        "0": {
+          "label": "Dag 1–2",
+          "note": "Let op de ontlasting — iets zachtere ontlasting is normaal, maar moet op dag 2 weer stevig zijn."
+        },
+        "1": {
+          "label": "Dag 3–4",
+          "note": "Bij spijsverteringsproblemen, houd deze verhouding nog een dag aan voordat je verder gaat."
+        },
+        "2": {
+          "label": "Dag 5–6",
+          "note": "Begin met het uitfaseren van commerciële voeding."
+        },
+        "3": {
+          "label": "Dag 7+",
+          "note": "Volledig vers dieet. Introduceer eiwitrotatie pas na 14–21 dagen stabiele spijsvertering."
+        }
       },
       "tips": {
         "0": "Voeg de eerste 3 dagen een theelepel pure pompoen uit blik toe om de spijsvertering te ondersteunen.",
@@ -325,7 +337,19 @@
     "methodology": "Methodologie & bronnen",
     "openSource": "Open Source",
     "openSourceText": "PawCook is MIT-gelicentieerd. Bijdragen, correcties en functieverzoeken zijn welkom op",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Privacy",
+    "privacyEyebrow": "Privacy",
+    "privacyLead": "PawCook bewaart niets op onze servers — omdat we er geen hebben. De app is een statische pagina die door GitHub Pages wordt geserveerd.",
+    "privacyNoTracking": "Geen analytics, geen tracking-pixels, geen scripts van derden, geen cookies. We weten niet wie je bent, wat je zocht of welk recept je kookte.",
+    "privacyStorageTitle": "Wat op je apparaat blijft",
+    "privacyStorageBody": "De localStorage van je browser bewaart je thema, taal en de laatst ingevulde waarden van elke calculator — zodat je ze niet opnieuw hoeft in te typen. Die gegevens verlaten je apparaat nooit.",
+    "privacyStorageKeys": "Opgeslagen sleutels: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "Hoe je het wist",
+    "privacyClearBody": "Open in je browser de site-data-instellingen en wis alles. PawCook valt bij de volgende keer laden terug op standaardwaarden.",
+    "privacyHostTitle": "Over de host",
+    "privacyHostBody": "PawCook wordt gehost op GitHub Pages. Om de pagina te serveren ziet de infrastructuur van GitHub noodzakelijkerwijs je IP-adres. Wij hebben geen toegang tot die logs en geen andere relatie met jou.",
+    "privacyHostLink": "Privacyverklaring van GitHub"
   },
   "meatData": {
     "beef": {

@@ -15,7 +15,8 @@
     "openSource": "Open source",
     "target": "Objectif",
     "calculating": "Calcul en cours…",
-    "dogFoodCalc": "Calculateur d'alimentation"
+    "dogFoodCalc": "Calculateur d'alimentation",
+    "privacy": "Confidentialité"
   },
   "cooking": {
     "title": "Calculateur de cuisson",
@@ -117,7 +118,12 @@
     "vegetables": "Légumes",
     "calciumNeeded": "Calcium nécessaire",
     "omega3Target": "Objectif Oméga-3",
-    "notes": "Remarques",
+    "notes": {
+      "rer": "RER (au repos) : {{kcal}} kcal/jour",
+      "der": "DER (énergie quotidienne) : {{kcal}} kcal/jour (×{{multiplier}} multiplicateur)",
+      "rawDiet": "Régime cru avancé — l'os apporte le calcium naturel ; ne jamais remplacer par de l'os cuit.",
+      "realAncestralOmega": "Le poisson entier (sardines, maquereau) équilibre le rapport oméga-3:6. Utilisez de petits poissons sauvages pour limiter le mercure."
+    },
     "ages": {
       "puppy": "Chiot (<1 an)",
       "adult": "Adulte (1–7 ans)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (au repos) : {{kcal}} kcal/jour",
-      "der": "DER (énergie quotidienne) : {{kcal}} kcal/jour (×{{multiplier}} multiplicateur)",
-      "rawDiet": "Régime cru avancé — l'os apporte le calcium naturel ; ne jamais remplacer par de l'os cuit.",
-      "realAncestralOmega": "Le poisson entier (sardines, maquereau) équilibre le rapport oméga-3:6. Utilisez de petits poissons sauvages pour limiter le mercure."
     },
     "warnings": {
       "caPLow": "Le ratio Ca:P est de {{ratio}}:1 — sous le minimum AAFCO (1:1). Ajoutez ~{{calcium}} mg de calcium supplémentaire par jour.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Conseils",
       "oldFresh": "{{old}}% ancien · {{new}}% frais",
       "days": {
-        "0": { "label": "Jour 1–2", "note": "Surveillez les selles — un peu molles est normal, mais elles doivent se fermer au jour 2." },
-        "1": { "label": "Jour 3–4", "note": "En cas de troubles digestifs, maintenez ce ratio un jour de plus avant d'avancer." },
-        "2": { "label": "Jour 5–6", "note": "Commencez à éliminer toute alimentation commerciale." },
-        "3": { "label": "Jour 7+",  "note": "Régime frais complet. Introduisez la rotation des protéines seulement après 14–21 jours de digestion stable." }
+        "0": {
+          "label": "Jour 1–2",
+          "note": "Surveillez les selles — un peu molles est normal, mais elles doivent se fermer au jour 2."
+        },
+        "1": {
+          "label": "Jour 3–4",
+          "note": "En cas de troubles digestifs, maintenez ce ratio un jour de plus avant d'avancer."
+        },
+        "2": {
+          "label": "Jour 5–6",
+          "note": "Commencez à éliminer toute alimentation commerciale."
+        },
+        "3": {
+          "label": "Jour 7+",
+          "note": "Régime frais complet. Introduisez la rotation des protéines seulement après 14–21 jours de digestion stable."
+        }
       },
       "tips": {
         "0": "Ajoutez une cuillère à café de purée de citrouille nature les 3 premiers jours pour soutenir la digestion.",
@@ -325,7 +337,19 @@
     "methodology": "Méthodologie et sources",
     "openSource": "Open Source",
     "openSourceText": "PawCook est sous licence MIT. Contributions, corrections et demandes de fonctionnalités bienvenues sur",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Confidentialité",
+    "privacyEyebrow": "Confidentialité",
+    "privacyLead": "PawCook ne stocke rien sur nos serveurs — parce que nous n'en avons pas. L'application est une page statique servie par GitHub Pages.",
+    "privacyNoTracking": "Aucun analytique, aucun pixel de suivi, aucun script tiers, aucun cookie. Nous ne savons pas qui vous êtes, ce que vous avez cherché ni quelle recette vous avez cuisinée.",
+    "privacyStorageTitle": "Ce qui reste sur votre appareil",
+    "privacyStorageBody": "Le localStorage de votre navigateur garde votre thème, votre langue et les dernières valeurs saisies dans chaque calculateur, pour vous éviter de les retaper. Ces données ne quittent jamais votre appareil.",
+    "privacyStorageKeys": "Clés stockées : pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "Comment les effacer",
+    "privacyClearBody": "Ouvrez les paramètres de données de site de votre navigateur et effacez tout. PawCook reviendra aux valeurs par défaut au prochain chargement.",
+    "privacyHostTitle": "À propos de l'hébergeur",
+    "privacyHostBody": "PawCook est hébergé sur GitHub Pages. Pour servir la page, l'infrastructure de GitHub voit nécessairement votre adresse IP. Nous n'avons pas accès à ces journaux ni aucune autre relation avec vous.",
+    "privacyHostLink": "Politique de confidentialité de GitHub"
   },
   "meatData": {
     "beef": {

@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, ExternalLink, BookOpen, Heart, FileText, FlaskConical, Globe, Building2, Stethoscope } from 'lucide-react';
+import { AlertTriangle, ExternalLink, BookOpen, Heart, FileText, FlaskConical, Globe, Building2, Stethoscope, ShieldCheck, EyeOff, HardDrive, Trash2, Server } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
@@ -18,6 +20,15 @@ const SOURCES: { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; ur
 
 export default function About() {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  // Scroll to #privacy when arriving via the footer link.
+  useEffect(() => {
+    if (location.hash !== '#privacy') return;
+    const el = document.getElementById('privacy');
+    if (!el) return;
+    requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }, [location.hash]);
 
   return (
     <div className="space-y-7 sm:space-y-9 max-w-3xl">
@@ -67,6 +78,70 @@ export default function About() {
                 <ExternalLink className="h-3.5 w-3.5 text-muted-fg group-hover:text-primary transition-colors" />
               </a>
             ))}
+          </div>
+        </Card>
+      </FadeIn>
+
+      <FadeIn>
+        <Card
+          id="privacy"
+          padding="none"
+          variant="elevated"
+          className="overflow-hidden border-l-[3px] border-l-success scroll-mt-24"
+        >
+          <header className="px-5 py-4 border-b border-border flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-success" />
+            <h2 className="font-black">{t('about.privacy')}</h2>
+          </header>
+          <div className="p-5 space-y-4">
+            <p className="text-sm leading-relaxed text-foreground/90">{t('about.privacyLead')}</p>
+
+            <Card padding="md" className="bg-success/5 border-success/30">
+              <div className="flex items-start gap-3">
+                <EyeOff className="h-5 w-5 text-success shrink-0 mt-0.5" />
+                <p className="text-sm leading-relaxed text-foreground/90 font-medium">
+                  {t('about.privacyNoTracking')}
+                </p>
+              </div>
+            </Card>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Card padding="md" variant="muted">
+                <div className="flex items-center gap-2 mb-2">
+                  <HardDrive className="h-4 w-4 text-primary" />
+                  <h3 className="text-sm font-black">{t('about.privacyStorageTitle')}</h3>
+                </div>
+                <p className="text-xs text-muted-fg leading-relaxed">{t('about.privacyStorageBody')}</p>
+                <p className="mt-3 text-[11px] font-mono text-muted-fg/90 leading-relaxed break-all bg-surface rounded-lg border border-border p-2.5">
+                  {t('about.privacyStorageKeys')}
+                </p>
+              </Card>
+
+              <Card padding="md" variant="muted">
+                <div className="flex items-center gap-2 mb-2">
+                  <Trash2 className="h-4 w-4 text-primary" />
+                  <h3 className="text-sm font-black">{t('about.privacyClearTitle')}</h3>
+                </div>
+                <p className="text-xs text-muted-fg leading-relaxed">{t('about.privacyClearBody')}</p>
+              </Card>
+            </div>
+
+            <Card padding="md" variant="muted">
+              <div className="flex items-center gap-2 mb-2">
+                <Server className="h-4 w-4 text-primary" />
+                <h3 className="text-sm font-black">{t('about.privacyHostTitle')}</h3>
+              </div>
+              <p className="text-xs text-muted-fg leading-relaxed">{t('about.privacyHostBody')}</p>
+              <a
+                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-primary-hover transition-colors"
+              >
+                {t('about.privacyHostLink')}
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Card>
           </div>
         </Card>
       </FadeIn>

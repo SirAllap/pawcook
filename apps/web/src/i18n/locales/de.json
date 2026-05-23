@@ -15,7 +15,8 @@
     "openSource": "Open Source",
     "target": "Zielwert",
     "calculating": "Berechnung…",
-    "dogFoodCalc": "Hundefutter-Rechner"
+    "dogFoodCalc": "Hundefutter-Rechner",
+    "privacy": "Datenschutz"
   },
   "cooking": {
     "title": "Kochrechner",
@@ -117,7 +118,12 @@
     "vegetables": "Gemüse",
     "calciumNeeded": "Benötigtes Kalzium",
     "omega3Target": "Omega-3-Zielwert",
-    "notes": "Hinweise",
+    "notes": {
+      "rer": "RER (Ruhe): {{kcal}} kcal/Tag",
+      "der": "DER (Tagesenergie): {{kcal}} kcal/Tag (×{{multiplier}} Multiplikator)",
+      "rawDiet": "Fortgeschrittene Rohfütterung — der Knochen liefert natürliches Kalzium; niemals durch gekochten Knochen ersetzen.",
+      "realAncestralOmega": "Ganzer Fisch (Sardinen, Makrele) gleicht das Omega-3:6-Verhältnis aus. Kleine Wildfische verwenden, um Quecksilber zu begrenzen."
+    },
     "ages": {
       "puppy": "Welpe (<1 Jahr)",
       "adult": "Erwachsen (1–7 Jahre)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (Ruhe): {{kcal}} kcal/Tag",
-      "der": "DER (Tagesenergie): {{kcal}} kcal/Tag (×{{multiplier}} Multiplikator)",
-      "rawDiet": "Fortgeschrittene Rohfütterung — der Knochen liefert natürliches Kalzium; niemals durch gekochten Knochen ersetzen.",
-      "realAncestralOmega": "Ganzer Fisch (Sardinen, Makrele) gleicht das Omega-3:6-Verhältnis aus. Kleine Wildfische verwenden, um Quecksilber zu begrenzen."
     },
     "warnings": {
       "caPLow": "Ca:P-Verhältnis ist {{ratio}}:1 — unter dem AAFCO-Sicherheitsminimum von 1:1. Geben Sie ~{{calcium}} mg zusätzliches Kalzium pro Tag.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Tipps",
       "oldFresh": "{{old}}% alt · {{new}}% frisch",
       "days": {
-        "0": { "label": "Tag 1–2", "note": "Stuhl beobachten — etwas weicher Stuhl ist normal, sollte aber am Tag 2 wieder fest sein." },
-        "1": { "label": "Tag 3–4", "note": "Bei Verdauungsproblemen dieses Verhältnis einen Tag länger halten, bevor Sie weitergehen." },
-        "2": { "label": "Tag 5–6", "note": "Beginnen Sie, jegliches Fertigfutter auslaufen zu lassen." },
-        "3": { "label": "Tag 7+",  "note": "Komplette Frischfütterung. Proteinwechsel erst nach 14–21 Tagen stabiler Verdauung einführen." }
+        "0": {
+          "label": "Tag 1–2",
+          "note": "Stuhl beobachten — etwas weicher Stuhl ist normal, sollte aber am Tag 2 wieder fest sein."
+        },
+        "1": {
+          "label": "Tag 3–4",
+          "note": "Bei Verdauungsproblemen dieses Verhältnis einen Tag länger halten, bevor Sie weitergehen."
+        },
+        "2": {
+          "label": "Tag 5–6",
+          "note": "Beginnen Sie, jegliches Fertigfutter auslaufen zu lassen."
+        },
+        "3": {
+          "label": "Tag 7+",
+          "note": "Komplette Frischfütterung. Proteinwechsel erst nach 14–21 Tagen stabiler Verdauung einführen."
+        }
       },
       "tips": {
         "0": "In den ersten 3 Tagen einen Teelöffel ungewürzten Kürbis (Konserve) zur Unterstützung der Verdauung beifügen.",
@@ -325,7 +337,19 @@
     "methodology": "Methodik & Quellen",
     "openSource": "Open Source",
     "openSourceText": "PawCook ist MIT-lizenziert. Beiträge, Korrekturen und Feature-Anfragen sind willkommen auf",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Datenschutz",
+    "privacyEyebrow": "Datenschutz",
+    "privacyLead": "PawCook speichert nichts auf unseren Servern — weil wir keine haben. Die App ist eine statische Seite, die von GitHub Pages ausgeliefert wird.",
+    "privacyNoTracking": "Keine Analytics, keine Tracking-Pixel, keine Drittanbieter-Skripte, keine Cookies. Wir wissen nicht, wer Sie sind, wonach Sie gesucht oder welches Rezept Sie gekocht haben.",
+    "privacyStorageTitle": "Was auf Ihrem Gerät bleibt",
+    "privacyStorageBody": "Der localStorage Ihres Browsers speichert Ihr Theme, Ihre Sprache und die zuletzt eingegebenen Werte jedes Rechners — damit Sie sie nicht erneut eingeben müssen. Diese Daten verlassen Ihr Gerät nie.",
+    "privacyStorageKeys": "Gespeicherte Schlüssel: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "So löschen Sie sie",
+    "privacyClearBody": "Öffnen Sie in Ihrem Browser die Website-Daten-Einstellungen und löschen Sie alles. PawCook wird beim nächsten Laden auf Standardwerte zurückgesetzt.",
+    "privacyHostTitle": "Über den Hoster",
+    "privacyHostBody": "PawCook wird auf GitHub Pages gehostet. Zum Ausliefern der Seite sieht die GitHub-Infrastruktur zwangsläufig Ihre IP-Adresse. Wir haben keinen Zugriff auf diese Logs und keine weitere Beziehung zu Ihnen.",
+    "privacyHostLink": "Datenschutzerklärung von GitHub"
   },
   "meatData": {
     "beef": {

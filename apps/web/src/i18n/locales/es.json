@@ -15,7 +15,8 @@
     "openSource": "Código abierto",
     "target": "Objetivo",
     "calculating": "Calculando…",
-    "dogFoodCalc": "Calculadora alimentaria"
+    "dogFoodCalc": "Calculadora alimentaria",
+    "privacy": "Privacidad"
   },
   "cooking": {
     "title": "Calculadora de cocción",
@@ -117,7 +118,12 @@
     "vegetables": "Verduras",
     "calciumNeeded": "Calcio necesario",
     "omega3Target": "Objetivo de Omega-3",
-    "notes": "Notas",
+    "notes": {
+      "rer": "RER (en reposo): {{kcal}} kcal/día",
+      "der": "DER (energía diaria): {{kcal}} kcal/día (×{{multiplier}} multiplicador)",
+      "rawDiet": "Dieta cruda avanzada — el hueso aporta calcio natural; nunca sustituyas por hueso cocinado.",
+      "realAncestralOmega": "El pescado entero (sardinas, caballa) equilibra el ratio omega-3:6. Usa pescados pequeños salvajes para limitar el mercurio."
+    },
     "ages": {
       "puppy": "Cachorro (<1 año)",
       "adult": "Adulto (1–7 años)",
@@ -194,12 +200,6 @@
       "pass": "AAFCO",
       "caution": "AAFCO",
       "fail": "AAFCO"
-    },
-    "notes": {
-      "rer": "RER (en reposo): {{kcal}} kcal/día",
-      "der": "DER (energía diaria): {{kcal}} kcal/día (×{{multiplier}} multiplicador)",
-      "rawDiet": "Dieta cruda avanzada — el hueso aporta calcio natural; nunca sustituyas por hueso cocinado.",
-      "realAncestralOmega": "El pescado entero (sardinas, caballa) equilibra el ratio omega-3:6. Usa pescados pequeños salvajes para limitar el mercurio."
     },
     "warnings": {
       "caPLow": "La relación Ca:P es de {{ratio}}:1 — por debajo del mínimo seguro AAFCO (1:1). Añade ~{{calcium}} mg de calcio suplementario al día.",
@@ -282,10 +282,22 @@
       "tipsTitle": "Consejos",
       "oldFresh": "{{old}}% antiguo · {{new}}% fresco",
       "days": {
-        "0": { "label": "Día 1–2", "note": "Vigila las heces — son normales las heces algo blandas, pero deberían firmarse en el día 2." },
-        "1": { "label": "Día 3–4", "note": "Si aparecen problemas digestivos, mantén este ratio un día más antes de avanzar." },
-        "2": { "label": "Día 5–6", "note": "Comienza a eliminar cualquier comida comercial." },
-        "3": { "label": "Día 7+",  "note": "Dieta fresca completa. Introduce la rotación de proteínas solo tras 14–21 días de digestión estable." }
+        "0": {
+          "label": "Día 1–2",
+          "note": "Vigila las heces — son normales las heces algo blandas, pero deberían firmarse en el día 2."
+        },
+        "1": {
+          "label": "Día 3–4",
+          "note": "Si aparecen problemas digestivos, mantén este ratio un día más antes de avanzar."
+        },
+        "2": {
+          "label": "Día 5–6",
+          "note": "Comienza a eliminar cualquier comida comercial."
+        },
+        "3": {
+          "label": "Día 7+",
+          "note": "Dieta fresca completa. Introduce la rotación de proteínas solo tras 14–21 días de digestión estable."
+        }
       },
       "tips": {
         "0": "Añade una cucharadita de calabaza enlatada simple los primeros 3 días para favorecer la digestión.",
@@ -325,7 +337,19 @@
     "methodology": "Metodología y fuentes",
     "openSource": "Código abierto",
     "openSourceText": "PawCook tiene licencia MIT. Contribuciones, correcciones y solicitudes de funciones son bienvenidas en",
-    "github": "GitHub"
+    "github": "GitHub",
+    "privacy": "Privacidad",
+    "privacyEyebrow": "Privacidad",
+    "privacyLead": "PawCook no guarda nada en nuestros servidores, porque no tenemos ninguno. La app es una página estática servida por GitHub Pages.",
+    "privacyNoTracking": "Sin analíticas, sin píxeles de seguimiento, sin scripts de terceros, sin cookies. No sabemos quién eres, qué buscaste ni qué receta cocinaste.",
+    "privacyStorageTitle": "Lo que se queda en tu dispositivo",
+    "privacyStorageBody": "El localStorage de tu navegador guarda tu tema, idioma y los últimos valores que introdujiste en cada calculadora, para que no tengas que volver a escribirlos. Esos datos nunca salen de tu dispositivo.",
+    "privacyStorageKeys": "Claves almacenadas: pawcook_theme, i18nextLng, pawcook_cooking_input, pawcook_nutrition_input.",
+    "privacyClearTitle": "Cómo borrarlo",
+    "privacyClearBody": "Abre la configuración de datos del sitio en tu navegador y bórralo todo. PawCook volverá a los valores por defecto la próxima vez que lo cargues.",
+    "privacyHostTitle": "Sobre el alojamiento",
+    "privacyHostBody": "PawCook está alojado en GitHub Pages. Para servir la página, la infraestructura de GitHub ve necesariamente tu dirección IP. No tenemos acceso a esos registros ni ninguna otra relación contigo.",
+    "privacyHostLink": "Política de privacidad de GitHub"
   },
   "meatData": {
     "beef": {
