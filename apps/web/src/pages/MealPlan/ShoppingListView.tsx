@@ -144,13 +144,15 @@ function ShoppingRow({
   const itemPets = pets.filter((p) => item.forPetIds.includes(p.id));
   const allPets = item.forPetIds.length === pets.length;
 
+  const displayQty = formatPurchase(item, lang, t);
+
   return (
     <li className="flex items-stretch">
       <button
         type="button"
         onClick={onToggle}
         aria-pressed={checked}
-        aria-label={`${label} — ${formatQuantity(item.totalGrams, lang)}`}
+        aria-label={`${label} — ${displayQty}`}
         className={cn(
           'flex-1 min-w-0 flex items-center gap-3 p-3 text-left transition-colors',
           'min-h-[44px] hover:bg-surface-2 active:bg-surface-3',
@@ -175,6 +177,11 @@ function ShoppingRow({
           >
             {label}
           </p>
+          {item.showSurplus && (
+            <p className="text-[11px] text-muted-fg leading-snug mt-0.5">
+              {formatSurplus(item, lang, t)}
+            </p>
+          )}
           {!allPets && itemPets.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-1">
               {itemPets.map((p) => <PetTag key={p.id} pet={p} />)}
@@ -182,7 +189,7 @@ function ShoppingRow({
           )}
         </div>
         <span className="text-sm font-mono font-bold tabular-nums text-foreground shrink-0">
-          {formatQuantity(item.totalGrams, lang)}
+          {displayQty}
         </span>
       </button>
       {onCook && (
@@ -219,4 +226,51 @@ function formatQuantity(grams: number, lang: string): string {
     })} kg`;
   }
   return `${grams.toLocaleString(lang)} g`;
+}
+
+// Render the purchase quantity in its native unit. Grams use kg/g
+// auto-formatting; piece/fish/pack/punnet/bunch use the i18n-friendly
+// unit string so "2 pcs", "1 punnet", "3 fish" all read naturally.
+function formatPurchase(
+  item: { purchaseQty: number; purchaseUnit: string; purchaseGrams: number },
+  lang: string,
+  t: (k: string, vals?: Record<string, unknown>) => string,
+): string {
+  if (item.purchaseUnit === 'g') return formatQuantity(item.purchaseGrams, lang);
+  const qty = item.purchaseQty.toLocaleString(lang);
+  switch (item.purchaseUnit) {
+    case 'piece':
+      return t('mealPlan.shopping.unit.piece', { defaultValue: '{{qty}} pcs', qty });
+    case 'fish':
+      return t('mealPlan.shopping.unit.fish', { defaultValue: '{{qty}} fish', qty });
+    case 'pack':
+      return t('mealPlan.shopping.unit.pack', { defaultValue: '{{qty}} pack', qty });
+    case 'punnet':
+      return t('mealPlan.shopping.unit.punnet', { defaultValue: '{{qty}} punnet', qty });
+    case 'bunch':
+      return t('mealPlan.shopping.unit.bunch', { defaultValue: '{{qty}} bunch', qty });
+    case 'bottle':
+      return t('mealPlan.shopping.unit.bottle', { defaultValue: '{{qty}} bottle', qty });
+    default:
+      return formatQuantity(item.purchaseGrams, lang);
+  }
+}
+
+function formatSurplus(
+  item: { neededGrams: number; surplusGrams: number; surplusBehavior: string },
+  lang: string,
+  t: (k: string, vals?: Record<string, unknown>) => string,
+): string {
+  const need = formatQuantity(item.neededGrams, lang);
+  const extra = formatQuantity(item.surplusGrams, lang);
+  if (item.surplusBehavior === 'do-not-feed') {
+    return t('mealPlan.shopping.surplusDoNotFeed', {
+      defaultValue: '{{need}} needed – {{extra}} do not feed, freeze for next plan',
+      need, extra,
+    });
+  }
+  return t('mealPlan.shopping.surplusFreeze', {
+    defaultValue: '{{need}} needed – {{extra}} extra to freeze',
+    need, extra,
+  });
 }

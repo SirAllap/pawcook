@@ -6,6 +6,7 @@ import type { ComponentKey } from '../nutrition.js';
 import type { Species } from '../schemas.js';
 import type { VarietyTier, AccessibilityTier } from './schemas.js';
 import type { HealthCondition } from '../pets.js';
+import { resolvePolicy, type IngredientPolicy, type PolicyOverride } from './policy.js';
 
 export type StoreSection = {
   id: string;
@@ -33,6 +34,7 @@ export type Ingredient = {
   avoidForConditions?: HealthCondition[];
   notes?: string;
   catNotes?: string;
+  policy: IngredientPolicy;
 };
 
 type RawMeta = {
@@ -48,6 +50,7 @@ type RawMeta = {
   dogMaxPctDaily?: number;
   rotation?: RotationRule;
   avoidForConditions?: HealthCondition[];
+  policy?: PolicyOverride;
 };
 
 type Labelable = { id: string; label: string; notes?: string; catNotes?: string };
@@ -67,7 +70,7 @@ const sectionLookup = new Map(STORE_SECTIONS.map((s) => [s.id, s]));
 
 export const INGREDIENTS: Ingredient[] = meta.ingredients.map((raw) => {
   const labelable = labelLookup.get(raw.id);
-  return {
+  const partial: Omit<Ingredient, 'policy'> = {
     id: raw.id,
     label: raw.label ?? labelable?.label ?? raw.id,
     componentRoles: raw.componentRoles,
@@ -83,6 +86,10 @@ export const INGREDIENTS: Ingredient[] = meta.ingredients.map((raw) => {
     notes: labelable?.notes,
     catNotes: labelable?.catNotes,
   };
+  // Resolve at module load using only the fields the policy reader needs.
+  // `partial as Ingredient` is safe because `resolvePolicy` never touches
+  // `policy` on its input.
+  return { ...partial, policy: resolvePolicy(partial as Ingredient, raw.policy) };
 });
 
 const ingredientLookup = new Map(INGREDIENTS.map((i) => [i.id, i]));

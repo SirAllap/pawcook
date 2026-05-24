@@ -74,12 +74,17 @@ export default function PlanWizard() {
     }
     setRefusals([]);
     try {
+      // Clamp bagDays in case the user dropped duration after picking a
+      // bigger bag. The wizard control disables out-of-range options
+      // visually but the underlying state can still carry a stale 4.
+      const maxBag = Math.min(4, Math.max(1, Math.floor(duration / 2))) as 1 | 2 | 3 | 4;
+      const safeSourcing = { ...sourcing, bagDays: Math.min(sourcing.bagDays, maxBag) as 1 | 2 | 3 | 4 };
       const plan = generateMealPlan({
         name: name || defaultName(selectedPets, duration, t),
         pets: selectedPets,
         durationDays: duration,
         startDate: new Date().toISOString().slice(0, 10),
-        sourcing,
+        sourcing: safeSourcing,
       });
       setPreview(plan);
     } catch (err) {
@@ -215,7 +220,12 @@ export default function PlanWizard() {
 
       {/* Step 3 — Sourcing */}
       <Card padding="md">
-        <SourcingPicker value={sourcing} onChange={setSourcing} species={sourcingSpecies} />
+        <SourcingPicker
+          value={sourcing}
+          onChange={setSourcing}
+          species={sourcingSpecies}
+          durationDays={duration}
+        />
       </Card>
 
       {/* Step 4 — Name */}
