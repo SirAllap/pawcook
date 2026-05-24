@@ -292,6 +292,25 @@
     "toast": {
       "saved": "Zapisano „{{name}}\".",
       "deleted": "Usunięto „{{name}}\"."
+    },
+    "refusal": {
+      "title": "Plan nie został wygenerowany",
+      "subtitle": "Napraw te problemy i spróbuj ponownie. Jeśli weterynarz przepisał tę dietę dla schorzenia medycznego, otwórz zwierzę i zaznacz dietę jako przepisaną, aby rozluźnić elastyczne kontrole.",
+      "editPet": "Edytuj zwierzę",
+      "vetOverrideHint": "Można rozluźnić odpowiednią receptą weterynaryjną.",
+      "severity": {
+        "absolute": "Absolutna",
+        "overridable": "Można pominąć"
+      },
+      "rule": {
+        "zero_protein": "Dieta ma 0% białka — każdy pies potrzebuje białka pokarmowego.",
+        "protein_below_nrc_min": "Białko wynosi {{value}}% — poniżej minimum FEDIAF/NRC dla utrzymania dorosłych {{threshold}}%.",
+        "cooked_bone": "Dieta zawiera gotowaną kość, która pęka i może powodować zadławienie lub perforację przewodu pokarmowego. Zmień sposób przygotowania na surowy lub usuń kość ze składu białka.",
+        "high_phosphorus_ckd": "Fosfor przekracza limit dla PChN.",
+        "ca_p_inverted": "Stosunek Ca:P {{value}}:1 jest poza bezpiecznym zakresem AAFCO od {{threshold}}:1 do 2:1.",
+        "high_fat_pancreatitis": "Tłuszcz wynosi {{value}}% — powyżej bezpiecznego limitu dla zapalenia trzustki {{threshold}}%.",
+        "expired_vet_review": "Data przeglądu recepty weterynaryjnej minęła. Potwierdź plan z weterynarzem przed wygenerowaniem nowych planów."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "Białko jest poniżej minimum FEDIAF/NRC dla dorosłych (~18%). Potwierdź z weterynarzem.",
         "noCalcium": "Brak źródła wapnia w planie samo-mięsnym. Dodaj kość, skorupki jaj lub suplement.",
         "highBone": "Ponad 15% kości może powodować zaparcia."
+      },
+      "vetPrescribed": "Ta dieta jest przepisana przez weterynarza",
+      "vetPrescribedHelp": "Oznaczenie diety jako przepisanej pozwala planiście rozluźnić kontrole bezpieczeństwa, które normalnie blokowałyby plany (np. niskie białko w zaawansowanej PChN). Zasady toksykologiczne (gotowane kości, allium, ksylitol itp.) pozostają aktywne.",
+      "vetName": "Lekarz weterynarii (opcjonalnie)",
+      "condition": "Schorzenie",
+      "reviewDate": "Następna data przeglądu",
+      "conditions": {
+        "renal_ckd": "Przewlekła choroba nerek",
+        "hepatic": "Choroba wątroby",
+        "pancreatitis": "Zapalenie trzustki",
+        "ibd": "ChZJ / przewlekła enteropatia",
+        "food_allergy": "Alergia pokarmowa (dieta eliminacyjna)",
+        "urolithiasis_struvite": "Kamica moczowa — struwit",
+        "urolithiasis_calcium_oxalate": "Kamica moczowa — szczawian wapnia",
+        "urolithiasis_urate": "Kamica moczowa — moczany",
+        "diabetes": "Cukrzyca",
+        "obesity": "Otyłość (utrata wagi)",
+        "cardiac": "Sercowa",
+        "epi": "NZT (niewydolność trzustki)",
+        "cancer_cachexia": "Nowotwór / kacheksja",
+        "other": "Inna"
       }
     },
     "cooking": {

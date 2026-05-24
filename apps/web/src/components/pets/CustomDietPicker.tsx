@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Settings2, ChevronDown, ChevronUp, Info } from 'lucide-react';
-import { type CustomDiet, type CalciumSource } from '@pawcook/shared';
+import { Settings2, ChevronDown, ChevronUp, Info, Stethoscope } from 'lucide-react';
+import { type CustomDiet, type CalciumSource, type VetPrescription, type ClinicalCondition } from '@pawcook/shared';
 import { Slider } from '../ui/slider';
+import { Input } from '../ui/input';
+import { Select } from '../ui/select';
 import { cn } from '../../lib/cn';
 
 // Default macro/composition values when the user first opens "+ Custom".
@@ -29,12 +31,26 @@ const EASY_PILLS = [
 // above 75% does not but is uncommon outside therapeutic plans.
 const PROTEIN_GUIDE = { min: 18, max: 75 };
 
+const CLINICAL_CONDITIONS: ClinicalCondition[] = [
+  'renal_ckd', 'hepatic', 'pancreatitis', 'ibd', 'food_allergy',
+  'urolithiasis_struvite', 'urolithiasis_calcium_oxalate', 'urolithiasis_urate',
+  'diabetes', 'obesity', 'cardiac', 'epi', 'cancer_cachexia', 'other',
+];
+
 export function CustomDietPicker({
   value,
   onChange,
+  vetPrescription,
+  onVetPrescriptionChange,
 }: {
   value: CustomDiet;
   onChange: (next: CustomDiet) => void;
+  // Optional vet-prescribed support. When both are provided, the Advanced
+  // section gets a "This diet is vet-prescribed" toggle that unlocks the
+  // clinical context fields. The planner uses these to relax overridable
+  // refusals — see packages/shared/src/planner/safety.ts.
+  vetPrescription?: VetPrescription;
+  onVetPrescriptionChange?: (next: VetPrescription | undefined) => void;
 }) {
   const { t } = useTranslation();
   const advanced = value.mode === 'advanced';
@@ -170,6 +186,12 @@ export function CustomDietPicker({
           <ProteinCompositionSection value={value} onChange={onChange} />
           <CalciumSourceSection value={value.calciumSource} onChange={(v) => patch({ calciumSource: v })} />
           <SupplementsSection value={value.supplements} onChange={(v) => patch({ supplements: v })} />
+          {onVetPrescriptionChange && (
+            <VetPrescriptionSection
+              value={vetPrescription}
+              onChange={onVetPrescriptionChange}
+            />
+          )}
         </div>
       )}
 
@@ -339,6 +361,65 @@ function SupplementsSection({
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function VetPrescriptionSection({
+  value, onChange,
+}: {
+  value: VetPrescription | undefined;
+  onChange: (v: VetPrescription | undefined) => void;
+}) {
+  const { t } = useTranslation();
+  const enabled = Boolean(value);
+
+  function toggle() {
+    onChange(enabled ? undefined : { condition: 'other', restrictedIngredients: [], acknowledgments: [] });
+  }
+  function patch(next: Partial<VetPrescription>) {
+    if (!value) return;
+    onChange({ ...value, ...next });
+  }
+
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        onClick={toggle}
+        className="flex items-center gap-2 text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]"
+      >
+        <span className={cn('inline-block h-3.5 w-3.5 rounded border', enabled ? 'bg-primary border-primary' : 'border-border bg-surface')} aria-hidden />
+        <Stethoscope className="h-3 w-3" aria-hidden />
+        {t('nutrition.custom.vetPrescribed')}
+      </button>
+      {enabled && value && (
+        <div className="space-y-3 rounded-xl bg-surface p-3 border border-primary/30">
+          <p className="text-[10px] text-muted-fg leading-snug">{t('nutrition.custom.vetPrescribedHelp')}</p>
+          <Input
+            label={t('nutrition.custom.vetName')}
+            placeholder=""
+            autoComplete="off"
+            value={value.vetName ?? ''}
+            onChange={(e) => patch({ vetName: e.target.value || undefined })}
+          />
+          <Select
+            label={t('nutrition.custom.condition')}
+            value={value.condition}
+            onChange={(e) => patch({ condition: e.target.value as ClinicalCondition })}
+          >
+            {CLINICAL_CONDITIONS.map((c) => (
+              <option key={c} value={c}>{t(`nutrition.custom.conditions.${c}`)}</option>
+            ))}
+          </Select>
+          <Input
+            label={t('nutrition.custom.reviewDate')}
+            type="date"
+            value={value.reviewDate ?? ''}
+            onChange={(e) => patch({ reviewDate: e.target.value || undefined })}
+          />
+        </div>
+      )}
     </div>
   );
 }

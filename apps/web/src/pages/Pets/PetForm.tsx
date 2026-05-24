@@ -331,9 +331,17 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
                 control={control}
                 name="nutrition.customDiet"
                 render={({ field }) => (
-                  <CustomDietPicker
-                    value={field.value ?? DEFAULT_CUSTOM_DIET}
-                    onChange={field.onChange}
+                  <Controller
+                    control={control}
+                    name="nutrition.vetPrescription"
+                    render={({ field: vetField }) => (
+                      <CustomDietPicker
+                        value={field.value ?? DEFAULT_CUSTOM_DIET}
+                        onChange={field.onChange}
+                        vetPrescription={vetField.value ?? undefined}
+                        onVetPrescriptionChange={vetField.onChange}
+                      />
+                    )}
                   />
                 )}
               />

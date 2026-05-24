@@ -292,6 +292,25 @@
     "toast": {
       "saved": "\"{{name}}\" opgeslagen.",
       "deleted": "\"{{name}}\" verwijderd."
+    },
+    "refusal": {
+      "title": "Plan niet gegenereerd",
+      "subtitle": "Los deze problemen op en probeer opnieuw. Als een dierenarts dit dieet voor een medische aandoening heeft voorgeschreven, open het huisdier en markeer het dieet als voorgeschreven om de flexibele controles te versoepelen.",
+      "editPet": "Huisdier bewerken",
+      "vetOverrideHint": "Kan worden versoepeld met een bijpassend dierenartsvoorschrift.",
+      "severity": {
+        "absolute": "Absoluut",
+        "overridable": "Te overschrijven"
+      },
+      "rule": {
+        "zero_protein": "Het dieet heeft 0% eiwit — elke hond heeft voedingseiwit nodig.",
+        "protein_below_nrc_min": "Eiwit is {{value}}% — onder het FEDIAF/NRC-onderhoudsminimum voor volwassenen van {{threshold}}%.",
+        "cooked_bone": "Het dieet bevat gekookt bot, dat splintert en verstikking of darmperforatie kan veroorzaken. Schakel de bereidingswijze naar rauw of verwijder bot uit de eiwitsamenstelling.",
+        "high_phosphorus_ckd": "Fosfor overschrijdt de CNI-grens.",
+        "ca_p_inverted": "Ca:P-verhouding {{value}}:1 valt buiten het veilige AAFCO-bereik van {{threshold}}:1 tot 2:1.",
+        "high_fat_pancreatitis": "Vet is {{value}}% — boven het pancreatitis-veilige plafond van {{threshold}}%.",
+        "expired_vet_review": "De controledatum van het dierenartsvoorschrift is verstreken. Bevestig het plan opnieuw met de dierenarts voordat je nieuwe plannen genereert."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "Eiwit ligt onder het FEDIAF/NRC-volwassenenminimum (~18%). Bevestig met je dierenarts.",
         "noCalcium": "Geen calciumbron voor een all-vleesplan. Voeg bot, eierschaal of een supplement toe.",
         "highBone": "Meer dan 15% bot kan verstopping veroorzaken."
+      },
+      "vetPrescribed": "Dit dieet is voorgeschreven door de dierenarts",
+      "vetPrescribedHelp": "Een dieet als voorgeschreven markeren laat de planner veiligheidscontroles versoepelen die normaal plannen zouden blokkeren (bijv. laag eiwit bij gevorderde CNI). Toxicologische regels (gekookt bot, allium, xylitol enz.) blijven actief.",
+      "vetName": "Voorschrijvende dierenarts (optioneel)",
+      "condition": "Aandoening",
+      "reviewDate": "Volgende controledatum",
+      "conditions": {
+        "renal_ckd": "Chronische nierziekte",
+        "hepatic": "Leverziekte",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "IBD / chronische enteropathie",
+        "food_allergy": "Voedselallergie (eliminatiedieet)",
+        "urolithiasis_struvite": "Urinestenen — struviet",
+        "urolithiasis_calcium_oxalate": "Urinestenen — calciumoxalaat",
+        "urolithiasis_urate": "Urinestenen — uraat",
+        "diabetes": "Diabetes",
+        "obesity": "Obesitas (gewichtsverlies)",
+        "cardiac": "Cardiaal",
+        "epi": "EPI (alvleesklierinsufficiëntie)",
+        "cancer_cachexia": "Kanker / cachexie",
+        "other": "Andere"
       }
     },
     "cooking": {

@@ -292,6 +292,25 @@
     "toast": {
       "saved": "«{{name}}» guardado.",
       "deleted": "«{{name}}» eliminado."
+    },
+    "refusal": {
+      "title": "Plano não gerado",
+      "subtitle": "Corrige estes problemas e tenta novamente. Se um veterinário receitou esta dieta para uma condição médica, abre o animal e marca a dieta como receitada para relaxar as verificações flexíveis.",
+      "editPet": "Editar animal",
+      "vetOverrideHint": "Pode ser relaxado com uma receita veterinária correspondente.",
+      "severity": {
+        "absolute": "Absoluta",
+        "overridable": "Anulável"
+      },
+      "rule": {
+        "zero_protein": "A dieta tem 0% de proteína — todo cão precisa de proteína dietética.",
+        "protein_below_nrc_min": "A proteína é {{value}}% — abaixo do mínimo de manutenção adulta FEDIAF/NRC de {{threshold}}%.",
+        "cooked_bone": "A dieta inclui osso cozido, que lasca e pode causar engasgo ou perfuração gastrointestinal. Mude o método de cozedura para cru ou retire o osso da composição proteica.",
+        "high_phosphorus_ckd": "O fósforo excede o limite para DRC.",
+        "ca_p_inverted": "A relação Ca:P {{value}}:1 está fora da faixa segura AAFCO de {{threshold}}:1 a 2:1.",
+        "high_fat_pancreatitis": "A gordura é {{value}}% — acima do limite seguro para pancreatite de {{threshold}}%.",
+        "expired_vet_review": "A data de revisão da receita veterinária passou. Re-confirme o plano com o veterinário antes de gerar novos planos."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "A proteína está abaixo do mínimo adulto FEDIAF/NRC (~18%). Confirme com o seu veterinário.",
         "noCalcium": "Sem fonte de cálcio num plano só de carne. Adicione osso, casca de ovo ou um suplemento.",
         "highBone": "Mais de 15% de osso pode causar prisão de ventre."
+      },
+      "vetPrescribed": "Esta dieta é receitada pelo veterinário",
+      "vetPrescribedHelp": "Marcar uma dieta como receitada permite ao planeador relaxar verificações de segurança que normalmente bloqueariam planos (p. ex. baixa proteína em DRC avançada). As regras toxicológicas (ossos cozidos, allium, xilitol, etc.) continuam a aplicar-se.",
+      "vetName": "Veterinário prescritor (opcional)",
+      "condition": "Condição",
+      "reviewDate": "Próxima data de revisão",
+      "conditions": {
+        "renal_ckd": "Doença renal crónica",
+        "hepatic": "Doença hepática",
+        "pancreatitis": "Pancreatite",
+        "ibd": "DII / enteropatia crónica",
+        "food_allergy": "Alergia alimentar (dieta de eliminação)",
+        "urolithiasis_struvite": "Cálculos urinários — estruvita",
+        "urolithiasis_calcium_oxalate": "Cálculos urinários — oxalato de cálcio",
+        "urolithiasis_urate": "Cálculos urinários — urato",
+        "diabetes": "Diabetes",
+        "obesity": "Obesidade (perda de peso)",
+        "cardiac": "Cardíaca",
+        "epi": "IPE (insuficiência pancreática)",
+        "cancer_cachexia": "Cancro / caquexia",
+        "other": "Outra"
       }
     },
     "cooking": {

@@ -292,6 +292,25 @@
     "toast": {
       "saved": "« {{name}} » enregistré.",
       "deleted": "« {{name}} » supprimé."
+    },
+    "refusal": {
+      "title": "Plan non généré",
+      "subtitle": "Corrigez ces problèmes et réessayez. Si un vétérinaire a prescrit ce régime pour une condition médicale, ouvrez l'animal et marquez le régime comme prescrit pour assouplir les contrôles flexibles.",
+      "editPet": "Modifier l'animal",
+      "vetOverrideHint": "Peut être assoupli avec une prescription vétérinaire correspondante.",
+      "severity": {
+        "absolute": "Absolue",
+        "overridable": "Modifiable"
+      },
+      "rule": {
+        "zero_protein": "Le régime a 0% de protéine — chaque chien a besoin de protéines alimentaires.",
+        "protein_below_nrc_min": "La protéine est de {{value}}% — sous le minimum d'entretien adulte FEDIAF/NRC de {{threshold}}%.",
+        "cooked_bone": "Le régime inclut de l'os cuit, qui éclate et peut provoquer un étouffement ou une perforation gastro-intestinale. Passez la méthode de cuisson à cru ou retirez l'os de la composition protéique.",
+        "high_phosphorus_ckd": "Le phosphore dépasse le plafond pour IRC.",
+        "ca_p_inverted": "Le rapport Ca:P {{value}}:1 est hors de la plage sûre AAFCO de {{threshold}}:1 à 2:1.",
+        "high_fat_pancreatitis": "Le gras est de {{value}}% — au-dessus du plafond sûr pour pancréatite de {{threshold}}%.",
+        "expired_vet_review": "La date de revue de la prescription vétérinaire est dépassée. Re-confirmez le plan avec le vétérinaire avant de générer de nouveaux plans."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "La protéine est sous le minimum adulte FEDIAF/NRC (~18%). Confirmez avec votre vétérinaire.",
         "noCalcium": "Pas de source de calcium pour un plan tout-viande. Ajoutez de l'os, de la coquille d'œuf ou un supplément.",
         "highBone": "Plus de 15% d'os peut provoquer une constipation."
+      },
+      "vetPrescribed": "Ce régime est prescrit par un vétérinaire",
+      "vetPrescribedHelp": "Marquer un régime comme prescrit permet au planificateur d'assouplir les contrôles de sécurité qui bloqueraient normalement les plans (par exemple faible protéine en IRC avancée). Les règles de toxicologie (os cuits, allium, xylitol, etc.) restent appliquées.",
+      "vetName": "Vétérinaire prescripteur (optionnel)",
+      "condition": "Condition",
+      "reviewDate": "Date de prochaine revue",
+      "conditions": {
+        "renal_ckd": "Maladie rénale chronique",
+        "hepatic": "Maladie hépatique",
+        "pancreatitis": "Pancréatite",
+        "ibd": "MICI / entéropathie chronique",
+        "food_allergy": "Allergie alimentaire (régime d'éviction)",
+        "urolithiasis_struvite": "Calculs urinaires — struvite",
+        "urolithiasis_calcium_oxalate": "Calculs urinaires — oxalate de calcium",
+        "urolithiasis_urate": "Calculs urinaires — urate",
+        "diabetes": "Diabète",
+        "obesity": "Obésité (perte de poids)",
+        "cardiac": "Cardiaque",
+        "epi": "IPE (insuffisance pancréatique)",
+        "cancer_cachexia": "Cancer / cachexie",
+        "other": "Autre"
       }
     },
     "cooking": {

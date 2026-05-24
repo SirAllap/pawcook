@@ -292,6 +292,25 @@
     "toast": {
       "saved": "„{{name}}\" gespeichert.",
       "deleted": "„{{name}}\" gelöscht."
+    },
+    "refusal": {
+      "title": "Plan nicht erstellt",
+      "subtitle": "Behebe diese Probleme und versuche es erneut. Wenn ein Tierarzt diese Diät für eine medizinische Erkrankung verordnet hat, öffne das Tier und markiere die Diät als verordnet, um die flexiblen Prüfungen zu lockern.",
+      "editPet": "Tier bearbeiten",
+      "vetOverrideHint": "Kann mit einer passenden tierärztlichen Verordnung gelockert werden.",
+      "severity": {
+        "absolute": "Absolut",
+        "overridable": "Überschreibbar"
+      },
+      "rule": {
+        "zero_protein": "Die Diät hat 0% Protein — jeder Hund braucht Nahrungsprotein.",
+        "protein_below_nrc_min": "Protein liegt bei {{value}}% — unter dem FEDIAF/NRC-Erwachsenenerhaltungsminimum von {{threshold}}%.",
+        "cooked_bone": "Die Diät enthält gekochten Knochen, der splittert und Erstickung oder GI-Perforation verursachen kann. Wechsle die Zubereitungsart auf roh oder entferne Knochen aus der Proteinzusammensetzung.",
+        "high_phosphorus_ckd": "Phosphor überschreitet die CNI-Obergrenze.",
+        "ca_p_inverted": "Ca:P-Verhältnis {{value}}:1 liegt außerhalb des AAFCO-Sicherheitsbereichs von {{threshold}}:1 bis 2:1.",
+        "high_fat_pancreatitis": "Fett liegt bei {{value}}% — über der pankreatitis-sicheren Obergrenze von {{threshold}}%.",
+        "expired_vet_review": "Der Überprüfungstermin der tierärztlichen Verordnung ist abgelaufen. Bestätige den Plan erneut mit dem Tierarzt, bevor du neue Pläne erstellst."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "Protein liegt unter dem FEDIAF/NRC-Erwachsenenminimum (~18%). Bestätige mit deinem Tierarzt.",
         "noCalcium": "Keine Calciumquelle bei reinem Fleischplan. Füge Knochen, Eierschale oder ein Präparat hinzu.",
         "highBone": "Mehr als 15% Knochen kann zu Verstopfung führen."
+      },
+      "vetPrescribed": "Diese Diät ist tierärztlich verordnet",
+      "vetPrescribedHelp": "Eine als verordnet markierte Diät lässt den Planer Sicherheitsprüfungen lockern, die sonst Pläne blockieren würden (z. B. niedriges Protein bei fortgeschrittener CNI). Toxikologische Regeln (gekochte Knochen, Allium, Xylit usw.) bleiben aktiv.",
+      "vetName": "Verschreibender Tierarzt (optional)",
+      "condition": "Erkrankung",
+      "reviewDate": "Nächster Überprüfungstermin",
+      "conditions": {
+        "renal_ckd": "Chronische Nierenerkrankung",
+        "hepatic": "Lebererkrankung",
+        "pancreatitis": "Pankreatitis",
+        "ibd": "CED / chronische Enteropathie",
+        "food_allergy": "Futtermittelallergie (Eliminationsdiät)",
+        "urolithiasis_struvite": "Harnsteine — Struvit",
+        "urolithiasis_calcium_oxalate": "Harnsteine — Calciumoxalat",
+        "urolithiasis_urate": "Harnsteine — Urat",
+        "diabetes": "Diabetes",
+        "obesity": "Adipositas (Gewichtsverlust)",
+        "cardiac": "Herzerkrankung",
+        "epi": "EPI (Pankreasinsuffizienz)",
+        "cancer_cachexia": "Krebs / Kachexie",
+        "other": "Andere"
       }
     },
     "cooking": {

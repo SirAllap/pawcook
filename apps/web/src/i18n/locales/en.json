@@ -292,6 +292,25 @@
     "toast": {
       "saved": "Saved \"{{name}}\".",
       "deleted": "Deleted \"{{name}}\"."
+    },
+    "refusal": {
+      "title": "Plan not generated",
+      "subtitle": "Fix these issues, then try again. If a vet has prescribed this diet for a medical condition, open the pet and mark the diet vet-prescribed to relax overridable checks.",
+      "editPet": "Edit pet",
+      "vetOverrideHint": "Can be relaxed with a matching vet prescription.",
+      "severity": {
+        "absolute": "Absolute",
+        "overridable": "Overridable"
+      },
+      "rule": {
+        "zero_protein": "Diet has 0% protein — every dog needs dietary protein.",
+        "protein_below_nrc_min": "Protein is {{value}}% — below the FEDIAF/NRC adult-maintenance minimum of {{threshold}}%.",
+        "cooked_bone": "Diet includes cooked bone, which splinters and can cause choking or GI perforation. Switch the cooking method to raw or remove bone from the protein composition.",
+        "high_phosphorus_ckd": "Phosphorus exceeds the CKD cap.",
+        "ca_p_inverted": "Ca:P ratio {{value}}:1 is outside the AAFCO safe range of {{threshold}}:1 to 2:1.",
+        "high_fat_pancreatitis": "Fat is {{value}}% — above the pancreatitis-safe ceiling of {{threshold}}%.",
+        "expired_vet_review": "The vet prescription's review date has passed. Re-confirm the plan with the vet before generating new plans."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "Protein is below the FEDIAF/NRC adult minimum (~18%). Confirm with your vet.",
         "noCalcium": "No calcium source for an all-meat plan. Add bone, eggshell, or a supplement.",
         "highBone": "Bone share above 15% may cause constipation."
+      },
+      "vetPrescribed": "This diet is vet-prescribed",
+      "vetPrescribedHelp": "Marking a diet vet-prescribed lets the planner relax overridable safety checks that would otherwise block plans (e.g. low protein in advanced CKD). Toxicology rules (cooked bone, allium, xylitol, etc.) stay enforced.",
+      "vetName": "Prescribing vet (optional)",
+      "condition": "Condition",
+      "reviewDate": "Next review date",
+      "conditions": {
+        "renal_ckd": "Chronic kidney disease",
+        "hepatic": "Liver disease",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "IBD / chronic enteropathy",
+        "food_allergy": "Food allergy (elimination diet)",
+        "urolithiasis_struvite": "Urinary stones — struvite",
+        "urolithiasis_calcium_oxalate": "Urinary stones — calcium oxalate",
+        "urolithiasis_urate": "Urinary stones — urate",
+        "diabetes": "Diabetes",
+        "obesity": "Obesity (weight loss)",
+        "cardiac": "Cardiac",
+        "epi": "EPI (pancreatic insufficiency)",
+        "cancer_cachexia": "Cancer / cachexia",
+        "other": "Other"
       }
     },
     "cooking": {

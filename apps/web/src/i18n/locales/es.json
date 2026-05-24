@@ -292,6 +292,25 @@
     "toast": {
       "saved": "«{{name}}» guardado.",
       "deleted": "«{{name}}» eliminado."
+    },
+    "refusal": {
+      "title": "Plan no generado",
+      "subtitle": "Corrige estos problemas y vuelve a intentarlo. Si un veterinario ha recetado esta dieta para una condición médica, abre la mascota y marca la dieta como recetada para relajar las comprobaciones flexibles.",
+      "editPet": "Editar mascota",
+      "vetOverrideHint": "Puede relajarse con una receta veterinaria correspondiente.",
+      "severity": {
+        "absolute": "Absoluta",
+        "overridable": "Anulable"
+      },
+      "rule": {
+        "zero_protein": "La dieta tiene 0% de proteína — todo perro necesita proteína dietética.",
+        "protein_below_nrc_min": "La proteína es {{value}}% — por debajo del mínimo de mantenimiento adulto FEDIAF/NRC de {{threshold}}%.",
+        "cooked_bone": "La dieta incluye hueso cocido, que se astilla y puede causar asfixia o perforación gastrointestinal. Cambia el método de cocción a crudo o elimina el hueso de la composición proteica.",
+        "high_phosphorus_ckd": "El fósforo supera el límite para ERC.",
+        "ca_p_inverted": "La relación Ca:P {{value}}:1 está fuera del rango seguro AAFCO de {{threshold}}:1 a 2:1.",
+        "high_fat_pancreatitis": "La grasa es {{value}}% — por encima del límite seguro para pancreatitis de {{threshold}}%.",
+        "expired_vet_review": "La fecha de revisión de la receta veterinaria ha pasado. Re-confirma el plan con el veterinario antes de generar nuevos planes."
+      }
     }
   },
   "condition": {
@@ -550,6 +569,27 @@
         "lowProtein": "La proteína está por debajo del mínimo adulto FEDIAF/NRC (~18%). Confirma con tu veterinario.",
         "noCalcium": "Sin fuente de calcio para un plan todo-carne. Añade hueso, cáscara de huevo o un suplemento.",
         "highBone": "Más del 15% de hueso puede causar estreñimiento."
+      },
+      "vetPrescribed": "Esta dieta es recetada por un veterinario",
+      "vetPrescribedHelp": "Marcar una dieta como recetada permite al planificador relajar comprobaciones de seguridad que normalmente bloquearían planes (p. ej. baja proteína en ERC avanzada). Las reglas toxicológicas (huesos cocidos, allium, xilitol, etc.) siguen aplicándose.",
+      "vetName": "Veterinario prescriptor (opcional)",
+      "condition": "Condición",
+      "reviewDate": "Próxima fecha de revisión",
+      "conditions": {
+        "renal_ckd": "Enfermedad renal crónica",
+        "hepatic": "Enfermedad hepática",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "EII / enteropatía crónica",
+        "food_allergy": "Alergia alimentaria (dieta de eliminación)",
+        "urolithiasis_struvite": "Cálculos urinarios — estruvita",
+        "urolithiasis_calcium_oxalate": "Cálculos urinarios — oxalato de calcio",
+        "urolithiasis_urate": "Cálculos urinarios — urato",
+        "diabetes": "Diabetes",
+        "obesity": "Obesidad (pérdida de peso)",
+        "cardiac": "Cardíaca",
+        "epi": "EPI (insuficiencia pancreática)",
+        "cancer_cachexia": "Cáncer / caquexia",
+        "other": "Otra"
       }
     },
     "cooking": {

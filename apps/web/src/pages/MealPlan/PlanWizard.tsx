@@ -2,10 +2,11 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { Check, Calendar, Sparkles, RotateCcw, Save } from 'lucide-react';
+import { Check, Calendar, Sparkles, RotateCcw, Save, ShieldAlert } from 'lucide-react';
 import {
-  generateMealPlan, SourcingPrefsSchema,
+  generateMealPlan, SourcingPrefsSchema, checkPlanSafety, hasBlockingRefusals,
   type MealPlan, type PetProfile, type PlanDuration, type SourcingPrefs,
+  type PlannerRefusal,
 } from '@pawcook/shared';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
@@ -35,6 +36,7 @@ export default function PlanWizard() {
   const [sourcing, setSourcing] = useState<SourcingPrefs>(() => SourcingPrefsSchema.parse({}));
   const [name, setName] = useState('');
   const [preview, setPreview] = useState<MealPlan | null>(null);
+  const [refusals, setRefusals] = useState<PlannerRefusal[]>([]);
 
   const selectedPets = useMemo(
     () => pets.filter((p) => selectedPetIds.includes(p.id)),
@@ -59,6 +61,18 @@ export default function PlanWizard() {
 
   function regenerate() {
     if (selectedPets.length === 0) return;
+    // Clinical-safety backstop: refuse to materialize a plan if any pet's
+    // diet violates the absolute or unmet-overridable rules. Form-level
+    // warnings (CustomDietPicker) already help users avoid this at the
+    // drafting surface, but the planner is the output surface so it
+    // enforces independently. See packages/shared/src/planner/safety.ts.
+    const safetyIssues = checkPlanSafety(selectedPets);
+    if (hasBlockingRefusals(safetyIssues)) {
+      setRefusals(safetyIssues);
+      setPreview(null);
+      return;
+    }
+    setRefusals([]);
     try {
       const plan = generateMealPlan({
         name: name || defaultName(selectedPets, duration, t),
@@ -239,6 +253,54 @@ export default function PlanWizard() {
           {t('mealPlan.wizard.save')}
         </Button>
       </div>
+
+      {/* Refusal state — replaces the preview when safety checks block the plan. */}
+      {refusals.length > 0 && (
+        <Card padding="md" className="space-y-4 border-danger/40 bg-danger/5">
+          <div className="flex items-start gap-3">
+            <ShieldAlert className="h-6 w-6 shrink-0 text-danger mt-0.5" aria-hidden />
+            <div className="space-y-1">
+              <h2 className="text-base font-black text-foreground">
+                {t('mealPlan.refusal.title')}
+              </h2>
+              <p className="text-xs text-muted-fg leading-relaxed">
+                {t('mealPlan.refusal.subtitle')}
+              </p>
+            </div>
+          </div>
+          <ul className="space-y-2">
+            {refusals.map((r, i) => (
+              <li
+                key={`${r.petId}-${r.rule}-${i}`}
+                className="rounded-xl border border-danger/30 bg-surface p-3 space-y-1.5"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm font-black">{r.petName}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-danger">
+                    {t(`mealPlan.refusal.severity.${r.severity}`)}
+                  </span>
+                </div>
+                <p className="text-xs text-foreground leading-snug">
+                  {t(`mealPlan.refusal.rule.${r.rule}`, {
+                    value: r.value !== undefined ? Math.round(r.value * 100) / 100 : '',
+                    threshold: r.threshold !== undefined ? Math.round(r.threshold * 100) / 100 : '',
+                  })}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <Button asChild variant="secondary" size="sm">
+                    <Link to={`/pets/${r.petId}/edit`}>{t('mealPlan.refusal.editPet')}</Link>
+                  </Button>
+                  {r.overrideAvailable && (
+                    <span className="text-[10px] text-muted-fg self-center">
+                      {t('mealPlan.refusal.vetOverrideHint')}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       {/* Preview */}
       {preview && (

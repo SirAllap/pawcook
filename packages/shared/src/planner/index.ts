@@ -6,3 +6,4 @@ export {
   swapIngredient,
 } from './shopping.js';
 export * from './recommendations.js';
+export * from './safety.js';

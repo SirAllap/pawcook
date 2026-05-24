@@ -140,6 +140,31 @@ export const CustomDietSchema = z.object({
 });
 export type CustomDiet = z.infer<typeof CustomDietSchema>;
 
+// ─── Vet-prescribed therapeutic diets ─────────────────────────────
+// A diet flagged as vet-prescribed gets clinical context (condition,
+// vet name, optional review date) that the planner uses to relax some
+// safety refusals which would otherwise block the plan. Toxicology and
+// mechanical-injury refusals (cooked bone, allium, xylitol, etc.) stay
+// absolute — there's no clinical scenario where they're justified.
+export const ClinicalConditionSchema = z.enum([
+  'renal_ckd', 'hepatic', 'pancreatitis', 'ibd', 'food_allergy',
+  'urolithiasis_struvite', 'urolithiasis_calcium_oxalate', 'urolithiasis_urate',
+  'diabetes', 'obesity', 'cardiac', 'epi', 'cancer_cachexia', 'other',
+]);
+export type ClinicalCondition = z.infer<typeof ClinicalConditionSchema>;
+
+export const VetPrescriptionSchema = z.object({
+  vetName: z.string().max(120).optional(),
+  condition: ClinicalConditionSchema,
+  restrictedIngredients: z.array(z.string()).default([]),
+  prescribedAt: z.string().datetime().optional(),
+  reviewDate: z.string().date().optional(),
+  // User-acknowledged override notes — required when relaxing an
+  // overridable refusal (logged as part of the audit trail).
+  acknowledgments: z.array(z.string()).default([]),
+});
+export type VetPrescription = z.infer<typeof VetPrescriptionSchema>;
+
 export const MacroRatioProfileSchema = z.union([DogMacroProfileSchema, CatMacroProfileSchema]);
 export type MacroRatioProfile = z.infer<typeof MacroRatioProfileSchema>;
 export type DogMacroProfile = z.infer<typeof DogMacroProfileSchema>;
@@ -158,6 +183,7 @@ export const NutritionInputSchema = z.object({
   macroProfile: MacroRatioProfileSchema.default('balanced_cooked'),
   cookingMethod: CookingPreparationSchema.optional(),
   customDiet: CustomDietSchema.optional(),
+  vetPrescription: VetPrescriptionSchema.optional(),
 }).superRefine((data, ctx) => {
   // Cross-field validation: species × age × profile coherence
   if (data.species === 'dog' && data.age === 'kitten') {
