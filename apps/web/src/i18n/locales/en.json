@@ -249,7 +249,12 @@
       "methodLabel": "Cooking method",
       "methodHelp": "We remember this so \"Cook\" buttons in the shopping list open the calculator already set up your way.",
       "includeOrgans": "Include organ meats (liver, kidney, spleen)",
-      "includeOrgansHelp": "Off = no organs in the shopping list. Heads up: raw-style diets rely on organs for vitamin A and (for cats) taurine."
+      "includeOrgansHelp": "Off = no organs in the shopping list. Heads up: raw-style diets rely on organs for vitamin A and (for cats) taurine.",
+      "bagSizeLabel": "Bag size",
+      "bagSizeHelp": "How many days of meals go in each sous-vide bag. Bigger bags = less plastic and fewer cook sessions, but they sit in the freezer longer.",
+      "bagSizeOpt": "{{n}} days",
+      "bagSizeCaption": "One protein per bag · veggies in their own bags",
+      "bagSizeWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3."
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -268,7 +273,8 @@
       "delete": "Delete plan",
       "subtitle": "{{days}} days · starts {{startDate}}",
       "tabMeals": "Meals",
-      "tabShopping": "Shopping"
+      "tabShopping": "Shopping",
+      "tabCooking": "Cooking plan"
     },
     "shopping": {
       "total": "Shopping total",
@@ -285,7 +291,49 @@
         "online": "Online order",
         "other": "Other"
       },
-      "cookWith": "Cook {{name}} ({{qty}})"
+      "cookWith": "Cook {{name}} ({{qty}})",
+      "surplusFreeze": "{{need}} needed – {{extra}} extra to freeze",
+      "surplusDoNotFeed": "{{need}} needed – {{extra}} do not feed, freeze for next plan",
+      "unit": {
+        "piece": "{{qty}} pcs",
+        "fish": "{{qty}} fish",
+        "pack": "{{qty}} pack",
+        "punnet": "{{qty}} punnet",
+        "bunch": "{{qty}} bunch",
+        "bottle": "{{qty}} bottle"
+      }
+    },
+    "cookingPlan": {
+      "emptyTitle": "Cooking plan only for sous-vide",
+      "emptyHelp": "Bags are generated when the plan uses sous-vide. Regenerate with sous-vide as the cooking method to see the bag schedule.",
+      "noBagsTitle": "Nothing to bag",
+      "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
+      "summaryLabel": "Cooking plan",
+      "summary": "{{bags}} bags · {{days}} days per bag · one protein per bag",
+      "thawIcs": "Thaw schedule (.ics)",
+      "groupSummary": "{{bags}} bags · {{grams}} g total",
+      "printLabels": "Print labels",
+      "bagN": "Bag {{n}} of {{total}}",
+      "thaw": "Thaw {{date}}",
+      "useBy": "Use by {{date}}",
+      "rotationNote": "Protein rotates — bag dates may be non-consecutive.",
+      "freshLabel": "Cook fresh (not batched)",
+      "freshHelp": "These don't freeze well batched. Handle daily or per recipe.",
+      "freshReason": {
+        "perishable": "perishable",
+        "no-batch-veg": "cook fresh",
+        "organ": "small portions",
+        "supplement-equiv": "daily add-in"
+      }
+    },
+    "labels": {
+      "title": "{{count}} bag labels — {{plan}}",
+      "bagN": "Bag {{n}}/{{total}}",
+      "cooked": "Cooked",
+      "useBy": "Use by",
+      "serves": "Serves",
+      "pets": "Pets",
+      "weight": "Weight"
     },
     "confirmDelete": "Delete plan \"{{name}}\"? This can't be undone.",
     "toast": {
