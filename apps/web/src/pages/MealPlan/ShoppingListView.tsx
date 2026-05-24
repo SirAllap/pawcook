@@ -36,6 +36,7 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       petCount: item.forPetIds.length,
       feedingDays: plan.durationDays,
       cookingMethod: plan.sourcing.preferredCookingMethod,
+      planId: plan.id,
     };
     // Hand off via the URL hash (primary — never stripped by any browser
     // or webview), plus in-memory module and localStorage as backups.

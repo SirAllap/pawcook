@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
@@ -14,7 +14,8 @@ import {
 import vegCookingData from '@pawcook/data/vegetable-cooking';
 import { useSpecies } from '../lib/species';
 import { useSpeciesT } from '../lib/use-species-t';
-import { consumePendingCookingPrefill } from '../lib/cooking-prefill-bridge';
+import { consumePendingCookingPrefill, setPendingCookingPrefill, buildPrefillHash } from '../lib/cooking-prefill-bridge';
+import { useMealPlans } from '../contexts/MealPlansContext';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -65,6 +66,13 @@ export type CookingPrefill = {
   petCount?: number;
   feedingDays?: number;
   cookingMethod?: CookingInput['cookingMethod'];
+  /**
+   * Plan ID the prefill came from. When set, CookingCalculator looks the
+   * plan up via MealPlansContext and renders an in-page meat switcher so
+   * the user can jump between proteins without going back to the shopping
+   * list. Optional; legacy URLs without it still work.
+   */
+  planId?: string;
 };
 
 // Default refrigerator life of a cooked, sealed bag. Three days is the
@@ -135,6 +143,8 @@ export default function CookingCalculator() {
   const tS = useSpeciesT();
   const { species } = useSpecies();
   const location = useLocation();
+  const navigate = useNavigate();
+  const { getPlan } = useMealPlans();
   // useRef so consumePrefill only runs once per mount (StrictMode-safe
   // because React 18 may run the initializer twice; we just memo it).
   const prefillRef = useRef<CookingPrefill | null | undefined>(undefined);
@@ -287,6 +297,18 @@ export default function CookingCalculator() {
             <X className="h-4 w-4" aria-hidden />
           </button>
         </Card>
+      )}
+
+      {prefillBanner?.planId && (
+        <PlanMeatSwitcher
+          planId={prefillBanner.planId}
+          activeMeat={prefillBanner.meatType}
+          getPlan={getPlan}
+          onPick={(next) => {
+            setPendingCookingPrefill(next);
+            navigate(`/cooking#${buildPrefillHash(next)}`);
+          }}
+        />
       )}
 
       <Card padding="none" className="overflow-hidden">
@@ -543,6 +565,97 @@ export default function CookingCalculator() {
  * rest). The user picks `daysPerBag` and we round both values to safe
  * schema bounds before pushing them into the form.
  */
+/**
+ * Horizontal chip row that lists every meat (chef-eligible protein) from
+ * the plan that triggered this prefill. Tapping a chip re-fires the same
+ * prefill flow with that meat selected — no need to back out to the
+ * shopping list to switch.
+ *
+ * Quietly renders nothing if the plan can't be found (deleted, different
+ * device, etc.) or if there's only one meat to choose from.
+ */
+function PlanMeatSwitcher({
+  planId, activeMeat, getPlan, onPick,
+}: {
+  planId: string;
+  activeMeat?: CookingInput['meatType'];
+  getPlan: (id: string) => import('@pawcook/shared').MealPlan | undefined;
+  onPick: (next: CookingPrefill) => void;
+}) {
+  const { t, i18n } = useTranslation();
+  const plan = getPlan(planId);
+
+  // Collect all chef-eligible meats from the plan's shopping list (the
+  // same set of items that would surface a Cook button in ShoppingListView).
+  const items = useMemo(() => {
+    if (!plan) return [];
+    type Row = { meatType: CookingInput['meatType']; totalGrams: number; petCount: number };
+    const out: Row[] = [];
+    for (const section of plan.shoppingList.sections) {
+      for (const item of section.items) {
+        const meat = MeatTypeSchema.safeParse(item.ingredientId);
+        if (!meat.success) continue;
+        out.push({
+          meatType: meat.data,
+          totalGrams: item.totalGrams,
+          petCount: item.forPetIds.length,
+        });
+      }
+    }
+    return out;
+  }, [plan]);
+
+  if (!plan || items.length < 2) return null;
+
+  return (
+    <Card padding="none" variant="muted" className="overflow-hidden">
+      <p className="px-4 pt-3 text-[10px] font-black uppercase tracking-wider text-muted-fg">
+        {t('cooking.meatSwitcher.label', { defaultValue: 'Cook a different meat from this plan' })}
+      </p>
+      <div className="flex gap-2 overflow-x-auto no-scrollbar p-3">
+        {items.map((row) => {
+          const isActive = row.meatType === activeMeat;
+          return (
+            <button
+              key={row.meatType}
+              type="button"
+              onClick={() => onPick({
+                meatType: row.meatType,
+                totalWeightKg: Math.max(0.1, Math.min(30, row.totalGrams / 1000)),
+                planName: plan.name,
+                petCount: row.petCount,
+                feedingDays: plan.durationDays,
+                cookingMethod: plan.sourcing.preferredCookingMethod,
+                planId: plan.id,
+              })}
+              aria-pressed={isActive}
+              className={cn(
+                'shrink-0 inline-flex flex-col items-start gap-0.5 rounded-2xl px-3.5 py-2 min-h-[44px]',
+                'border transition-colors',
+                isActive
+                  ? 'bg-primary text-primary-fg border-primary'
+                  : 'bg-surface border-border text-foreground hover:bg-surface-2',
+              )}
+            >
+              <span className="text-sm font-black">
+                {t(`cooking.meats.${row.meatType}`, { defaultValue: row.meatType })}
+              </span>
+              <span
+                className={cn(
+                  'text-[10px] font-mono tabular-nums',
+                  isActive ? 'text-primary-fg/80' : 'text-muted-fg',
+                )}
+              >
+                {(row.totalGrams / 1000).toLocaleString(i18n.language, { maximumFractionDigits: 2 })} kg
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </Card>
+  );
+}
+
 function BagStrategyPanel({
   totalWeightKg, feedingDays, petCount, onApply,
 }: {

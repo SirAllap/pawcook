@@ -21,6 +21,7 @@ export function buildPrefillHash(prefill: CookingPrefill): string {
   if (prefill.petCount)       params.set('pets',   String(prefill.petCount));
   if (prefill.feedingDays)    params.set('days',   String(prefill.feedingDays));
   if (prefill.planName)       params.set('plan',   prefill.planName);
+  if (prefill.planId)         params.set('planId', prefill.planId);
   return HASH_PREFIX + params.toString();
 }
 
@@ -43,6 +44,7 @@ function parseHashPrefill(hash: string): CookingPrefill | null {
       petCount: num('pets'),
       feedingDays: num('days'),
       planName: params.get('plan') ?? undefined,
+      planId: params.get('planId') ?? undefined,
     };
   } catch {
     return null;
