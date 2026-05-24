@@ -32,26 +32,17 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       meatType: meat.success ? meat.data : undefined,
       totalWeightKg,
       planName: plan.name,
-      // The bag-strategy panel needs both to be useful: how many pets share
-      // this batch, and how many days of feeding the total covers.
       petCount: item.forPetIds.length,
       feedingDays: plan.durationDays,
-      // Carry the user's preferred cooking method from the plan so they
-      // don't have to re-pick it every time they tap "Cook".
       cookingMethod: plan.sourcing.preferredCookingMethod,
     };
-    // Pass the prefill via BOTH the URL query string and router state. The
-    // query string is the source of truth (deterministic, deep-linkable,
-    // visible in the address bar); state is a back-compat fallback.
-    const search = new URLSearchParams();
-    search.set('from', 'plan');
-    if (prefill.meatType)       search.set('meat',   prefill.meatType);
-    if (prefill.cookingMethod)  search.set('method', prefill.cookingMethod);
-    if (prefill.totalWeightKg)  search.set('kg',     prefill.totalWeightKg.toString());
-    if (prefill.petCount)       search.set('pets',   prefill.petCount.toString());
-    if (prefill.feedingDays)    search.set('days',   prefill.feedingDays.toString());
-    if (prefill.planName)       search.set('plan',   prefill.planName);
-    navigate({ pathname: '/cooking', search: `?${search.toString()}` }, { state: { prefill } });
+    // Persist the prefill to localStorage so it survives the navigation
+    // regardless of router state, hash routing, in-app browsers, etc.
+    // CookingCalculator reads-and-deletes this on mount.
+    try {
+      localStorage.setItem('pawcook_cooking_prefill_v1', JSON.stringify(prefill));
+    } catch { /* quota / private-mode — ignore */ }
+    navigate('/cooking');
   }
 
   const exportConfig = useMemo(() => ({

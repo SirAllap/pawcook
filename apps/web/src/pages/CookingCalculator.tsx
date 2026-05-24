@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
@@ -128,32 +128,25 @@ function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 
   );
 }
 
+const PREFILL_STORAGE_KEY = 'pawcook_cooking_prefill_v1';
+
 /**
- * Read the prefill payload from either the URL query string (preferred —
- * it's deterministic, deep-linkable, and visible in the address bar) or
- * router state (legacy fallback). Returns null when neither carries a
- * `from=plan` signal so casual visits to /cooking are unaffected.
+ * Read-and-delete the prefill that ShoppingListView wrote to localStorage
+ * before navigating here. Synchronous, doesn't depend on router state or
+ * URL params surviving the navigation — works in every browser, in-app
+ * webview, and through cache layers.
  */
-function readPrefill(search: string, state: unknown): CookingPrefill | null {
-  const params = new URLSearchParams(search);
-  if (params.get('from') === 'plan') {
-    const num = (k: string) => {
-      const v = params.get(k);
-      if (v == null) return undefined;
-      const n = Number(v);
-      return Number.isFinite(n) ? n : undefined;
-    };
-    return {
-      meatType: (params.get('meat') as CookingPrefill['meatType']) ?? undefined,
-      cookingMethod: (params.get('method') as CookingPrefill['cookingMethod']) ?? undefined,
-      totalWeightKg: num('kg'),
-      petCount: num('pets'),
-      feedingDays: num('days'),
-      planName: params.get('plan') ?? undefined,
-    };
+function consumePrefill(): CookingPrefill | null {
+  if (typeof localStorage === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(PREFILL_STORAGE_KEY);
+    if (!raw) return null;
+    localStorage.removeItem(PREFILL_STORAGE_KEY);
+    const parsed = JSON.parse(raw) as CookingPrefill;
+    return parsed && typeof parsed === 'object' ? parsed : null;
+  } catch {
+    return null;
   }
-  const fromState = (state as { prefill?: CookingPrefill } | null)?.prefill;
-  return fromState ?? null;
 }
 
 export default function CookingCalculator() {
@@ -161,8 +154,13 @@ export default function CookingCalculator() {
   const tS = useSpeciesT();
   const { species } = useSpecies();
   const location = useLocation();
-  const navigate = useNavigate();
-  const prefill = readPrefill(location.search, location.state);
+  // useRef so consumePrefill only runs once per mount (StrictMode-safe
+  // because React 18 may run the initializer twice; we just memo it).
+  const prefillRef = useRef<CookingPrefill | null | undefined>(undefined);
+  if (prefillRef.current === undefined) {
+    prefillRef.current = consumePrefill();
+  }
+  const prefill = prefillRef.current;
   const [prefillBanner, setPrefillBanner] = useState<CookingPrefill | null>(prefill ?? null);
   const [result, setResult] = useState<CookingResult | null>(null);
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
@@ -186,18 +184,17 @@ export default function CookingCalculator() {
     defaultValues: applyPrefill(loadSaved(), prefill ?? undefined),
   });
 
-  // Re-apply the prefill on every navigation that carries a new one.
-  // useForm only consumes defaultValues at mount, so if the user is already
-  // on /cooking and taps another "Cook" button (different meat / weight)
-  // we'd otherwise keep showing the previous meat. location.key changes on
-  // every navigate() call, so we use it as the dependency.
+  // If the user was already on /cooking and tapped another "Cook" button
+  // from the shopping list, ShoppingListView wrote a new prefill into
+  // localStorage and then navigate() bumped location.key. Read-and-apply
+  // here so the form rebinds without needing a remount.
   useEffect(() => {
-    if (!prefill) return;
-    reset(applyPrefill(loadSaved(), prefill ?? undefined));
-    setPrefillBanner(prefill);
+    const fresh = consumePrefill();
+    if (!fresh) return;
+    reset(applyPrefill(loadSaved(), fresh));
+    setPrefillBanner(fresh);
     setResult(null);
     setSubmittedData(null);
-    navigate(location.pathname, { replace: true, state: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.key]);
 
