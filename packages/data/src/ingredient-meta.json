@@ -86,13 +86,7 @@
       "rotation": { "everyDays": 3 },
       "policy": {
         "roundingStepGrams": 250,
-        "roundDirection": "up",
-        "maxBagDays": 2,
-        "maxBagWeightG": 1500,
-        "maxFridgeHoursPostThaw": 48,
-        "surplusBehavior": "freeze",
-        "surplusDisplayThresholdPct": 0.1,
-        "allowCrossPetBatching": true
+        "roundDirection": "up"
       }
     },
     {

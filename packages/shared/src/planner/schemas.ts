@@ -43,8 +43,28 @@ export const SourcingPrefsSchema = z.object({
    * historically more nutritionally complete plan. Setting false skips
    * the organ/liver component slots entirely — useful for users who
    * prefer to source these separately or don't buy them at all.
+   *
+   * Kept for backward compatibility with saved plans. The `simpleMeals`
+   * toggle below subsumes this — when simpleMeals is true, organs and
+   * other add-in components are dropped and surfaced as supplements
+   * regardless of includeOrgans. See /CLAUDE.md (Followability Mandate).
    */
   includeOrgans: z.boolean().default(true),
+  /**
+   * Simple-meals mode (Followability Mandate; see /CLAUDE.md). When
+   * true (the default for the median household), every pet in the
+   * plan eats just the rotating muscle protein + a small veg portion
+   * — same single ingredient the dogs are cooking for the day. Cat-
+   * specific add-ins (organ, liver, seafood supplement) are dropped
+   * from meals and surfaced as a daily supplement recommendation
+   * (taurine powder + cod liver oil), not silently re-bagged.
+   *
+   * Set to false to opt into the full multi-component diet profiles
+   * (cat_cooked_carnivore with its seafood + organ slots, BARF with
+   * its organ/bone slots). Recommended for raw-feeders, vet-supervised
+   * diets, and single-pet households where bag overhead is trivial.
+   */
+  simpleMeals: z.boolean().default(true),
   /**
    * Days of meals each sous-vide bag should cover. Only used when
    * preferredCookingMethod === 'sous_vide'. Default 2 — one bag of meat

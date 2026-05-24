@@ -273,7 +273,9 @@
       "cookAheadCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
       "cookAheadWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak słabnie — spróbuj krótszego okna.",
       "cookAheadStats": "{{bags}} woreczków · {{sessions}} sesja/i gotowania",
-      "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna"
+      "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna",
+      "simpleMeals": "Proste posiłki",
+      "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet)."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",

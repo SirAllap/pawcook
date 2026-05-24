@@ -273,7 +273,9 @@
       "cookAheadCaption": "One protein per bag · veggies in their own bags",
       "cookAheadWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour fades — try a shorter window.",
       "cookAheadStats": "{{bags}} bags · {{sessions}} cook session(s)",
-      "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily"
+      "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily",
+      "simpleMeals": "Simple meals",
+      "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros)."
     },
     "coverage": {
       "passed": "Looks balanced",

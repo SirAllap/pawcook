@@ -10,6 +10,20 @@ Feline Support — Adaptation Specification
 Version 1.0 · Draft for sirallap/pawcook
 This document defines the changes required to extend PawCook from a dog-only homemade-food calculator to a species-aware tool that also supports cats. It is written as a concrete refactor plan: data model first, then calculator logic, then UI, then content, then safety guardrails.
 Cats are obligate carnivores. That is not a license to feed pure meat — it is the reason cat nutrition has tighter floors and ceilings than dog nutrition, and irreversible failure modes (blindness, dilated cardiomyopathy) when those margins are missed. The application must reflect this asymmetry: cat-mode is stricter than dog-mode, not looser.
+
+---
+
+> **A note on rigor vs. followability** — added after the v1.0 spec.
+>
+> The full cat profiles described in this document (`cat_cooked_carnivore`, `cat_pmr`, etc., with their 5-component allocations including a small daily seafood slot and an organ slot) are the **rigorous ceiling**. They are not the default output the user sees in a typical multi-species household.
+>
+> Per the [Followability Mandate](./CLAUDE.md), a plan the owner deviates from is, by definition, less nutritious than a simpler plan they execute faithfully. PawCook's default for a multi-pet household is therefore the simple-meals mode: cats eat the same protein as the dogs, scaled to cat kcal, with a small veg portion, and the missing nutrients (taurine, preformed vit A, omega-3) are surfaced as an explicit daily supplement card — never quietly dropped.
+>
+> The rigorous profiles below remain available behind a "Simple meals OFF" toggle for power users and vet-supervised diets. They are the engine's capability ceiling, not its starting point. When you add new cat-specific nutritional rules, ensure both modes still satisfy AAFCO when the recommended supplement is taken with the simple meal.
+>
+> The blocking-failure threshold from the original spec stands: a raw cat profile with no taurine source AND no supplement opt-in is a hard stop. Everything else warns.
+
+---
 1. Architectural principle: species as the top-level fork
 The current app implicitly assumes dog. Do not bolt cat support on as an option. Promote species to the root of the data model and route every downstream computation through it. The shared layer (RER formula, BCS scoring concept, batch-cooking workflow, food-safety storage guidance) stays generic. Everything nutrient-related forks.
 Tree of what forks vs. what stays shared

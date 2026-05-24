@@ -273,7 +273,9 @@
       "cookAheadCaption": "Una proteina per sacchetto · verdure nei loro sacchetti",
       "cookAheadWarn": "Alcuni sacchetti resteranno congelati ~3 settimane. Sicuro, ma il sapore cala — prova una finestra più corta.",
       "cookAheadStats": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura",
-      "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera"
+      "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera",
+      "simpleMeals": "Pasti semplici",
+      "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale)."
     },
     "coverage": {
       "passed": "Sembra bilanciato",

@@ -273,7 +273,9 @@
       "cookAheadCaption": "Uma proteína por saco · vegetais em seus próprios sacos",
       "cookAheadWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se perde — tente uma janela menor.",
       "cookAheadStats": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento",
-      "cookAheadStatsSaving": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · economiza {{saved}} vs diária"
+      "cookAheadStatsSaving": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · economiza {{saved}} vs diária",
+      "simpleMeals": "Refeições simples",
+      "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet)."
     },
     "coverage": {
       "passed": "Parece equilibrado",

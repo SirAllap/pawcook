@@ -273,7 +273,9 @@
       "cookAheadCaption": "Eén eiwit per zak · groenten in eigen zakken",
       "cookAheadWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — kies een korter venster.",
       "cookAheadStats": "{{bags}} zakken · {{sessions}} kooksessie(s)",
-      "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks"
+      "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks",
+      "simpleMeals": "Eenvoudige maaltijden",
+      "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier)."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
