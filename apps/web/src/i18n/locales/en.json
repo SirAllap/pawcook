@@ -479,14 +479,14 @@
       "lactating": "Lactating"
     },
     "diets": {
-      "balanced_cooked": "Balanced cooked (vet-recommended) — 40% protein / 50% veg / 10% starch",
-      "high_protein": "High-protein cooked — 50% protein / 30% veg / 15% starch",
+      "balanced_cooked": "Lean cooked (vet-recommended baseline) — 50% protein / 30% veg / 20% starch",
+      "high_protein": "High-protein cooked — 55% protein / 30% veg / 15% starch",
       "pmr": "PMR 80-10-10 (advanced)"
     },
     "vetDisclaimer": "This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding.",
     "profileSection": "Dog Profile",
     "dietShort": {
-      "balanced_cooked": "Balanced",
+      "balanced_cooked": "Lean Cooked",
       "high_protein": "High Protein",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Cooked carnivore"
     },
     "dietSub": {
-      "balanced_cooked": "40% protein / 50% veg",
-      "high_protein": "55% protein / 30% veg",
-      "pmr": "80-10-10 raw",
-      "barf": "Raw + veg + seeds",
-      "real_ancestral": "Raw + seafood + fiber",
+      "balanced_cooked": "50% protein / 30% veg / 20% starch",
+      "high_protein": "55% protein / 30% veg / 15% starch",
+      "pmr": "80% meat / 10% bone / 10% organ — no veg",
+      "barf": "70% meat-bone-organ / 30% veg & extras",
+      "real_ancestral": "64% muscle / 11% bone / 10% seafood / 10% organ / 5% fiber",
       "cat_pmr": "Prey-model raw",
       "cat_frankenprey": "Assembled raw cuts",
       "cat_whole_prey": "Mice, quail, chicks",
@@ -719,7 +719,7 @@
       "foodSafety": "Toxic foods, safe meats, vegetables, fruits.",
       "supplements": "AAFCO targets, balancers and a 7-day transition.",
       "dietsTitle": "5 diet profiles",
-      "dietsDesc": "Balanced cooked · BARF · PMR · High protein · Ancestral.",
+      "dietsDesc": "Lean cooked · BARF · PMR · High protein · Ancestral.",
       "langTitle": "8 languages",
       "langDesc": "Fully translated, anywhere you cook.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Pick a diet you trust",
-        "desc": "Balanced cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.",
+        "desc": "Lean cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.",
         "title_cat": "Pick a feline-safe diet",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, whole prey, or cooked carnivore — all built around obligate-carnivore biology."
       },

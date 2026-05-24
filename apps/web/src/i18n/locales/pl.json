@@ -479,14 +479,14 @@
       "lactating": "Karmiący"
     },
     "diets": {
-      "balanced_cooked": "Gotowane zrównoważone (zalecane przez weterynarza) — 40% białko / 50% warzywa / 10% skrobia",
+      "balanced_cooked": "Chuda gotowana (zalecana baza weterynaryjna) — 50% białko / 30% warzywa / 20% skrobia",
       "high_protein": "Gotowane wysokobiałkowe — 50% białko / 30% warzywa / 15% skrobia",
       "pmr": "PMR 80-10-10 (zaawansowane)"
     },
     "vetDisclaimer": "To narzędzie dostarcza jedynie ogólnych wskazówek. Skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (ACVN) w sprawie długotrwałego karmienia domowego.",
     "profileSection": "Profil psa",
     "dietShort": {
-      "balanced_cooked": "Zbilansowana",
+      "balanced_cooked": "Chuda Gotowana",
       "high_protein": "Wysokobiałkowa",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Mięsożerca gotowany"
     },
     "dietSub": {
-      "balanced_cooked": "40% białko / 50% warzywa",
-      "high_protein": "55% białko / 30% warzywa",
-      "pmr": "Surowo 80-10-10",
-      "barf": "Surowo + warzywa + nasiona",
-      "real_ancestral": "Surowo + ryba + błonnik",
+      "balanced_cooked": "50% białko / 30% warzywa / 20% skrobia",
+      "high_protein": "55% białko / 30% warzywa / 15% skrobia",
+      "pmr": "80% mięso / 10% kość / 10% narząd — bez warzyw",
+      "barf": "70% mięso-kość-narząd / 30% warzywa i dodatki",
+      "real_ancestral": "64% mięsień / 11% kość / 10% ryba / 10% narząd / 5% błonnik",
       "cat_pmr": "Model ofiary surowy",
       "cat_frankenprey": "Złożone surowe kawałki",
       "cat_whole_prey": "Myszy, przepiórki, pisklęta",
@@ -719,7 +719,7 @@
       "foodSafety": "Toksyczne pokarmy, bezpieczne mięsa, warzywa, owoce.",
       "supplements": "Cele AAFCO, suplementy bilansujące i 7-dniowa zmiana diety.",
       "dietsTitle": "5 profili diet",
-      "dietsDesc": "Gotowana zbilansowana · BARF · PMR · Wysokobiałkowa · Ancestralna.",
+      "dietsDesc": "Gotowana chuda · BARF · PMR · Wysokobiałkowa · Ancestralna.",
       "langTitle": "8 języków",
       "langDesc": "Pełne tłumaczenie, gdziekolwiek gotujesz.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Wybierz dietę, której ufasz",
-        "desc": "Gotowana zbilansowana, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
+        "desc": "Gotowana chuda, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
         "title_cat": "Wybierz dietę bezpieczną dla kota",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, cała ofiara lub gotowany mięsożerca — wszystkie oparte na biologii bezwzględnych mięsożerców."
       },

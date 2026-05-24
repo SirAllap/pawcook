@@ -479,14 +479,14 @@
       "lactating": "Lacterend"
     },
     "diets": {
-      "balanced_cooked": "Gekookt gebalanceerd (aanbevolen door dierenarts) — 40% eiwit / 50% groenten / 10% zetmeel",
+      "balanced_cooked": "Mager gekookt (basislijn aanbevolen door dierenarts) — 50% eiwit / 30% groenten / 20% zetmeel",
       "high_protein": "Eiwitrijk gekookt — 50% eiwit / 30% groenten / 15% zetmeel",
       "pmr": "PMR 80-10-10 (gevorderd)"
     },
     "vetDisclaimer": "Dit hulpmiddel biedt alleen algemene richtlijnen. Raadpleeg een gecertificeerde veterinaire voedingsdeskundige (ACVN) voor langdurige huisvoeding.",
     "profileSection": "Hondenprofiel",
     "dietShort": {
-      "balanced_cooked": "Gebalanceerd",
+      "balanced_cooked": "Mager Gekookt",
       "high_protein": "Eiwitrijk",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Gekookte carnivoor"
     },
     "dietSub": {
-      "balanced_cooked": "40% eiwit / 50% groenten",
-      "high_protein": "55% eiwit / 30% groenten",
-      "pmr": "Rauw 80-10-10",
-      "barf": "Rauw + groenten + zaden",
-      "real_ancestral": "Rauw + vis + vezel",
+      "balanced_cooked": "50% eiwit / 30% groenten / 20% zetmeel",
+      "high_protein": "55% eiwit / 30% groenten / 15% zetmeel",
+      "pmr": "80% vlees / 10% bot / 10% orgaan — geen groenten",
+      "barf": "70% vlees-bot-orgaan / 30% groenten & extra's",
+      "real_ancestral": "64% spier / 11% bot / 10% vis / 10% orgaan / 5% vezel",
       "cat_pmr": "Prooi-model rauw",
       "cat_frankenprey": "Samengestelde rauwe stukken",
       "cat_whole_prey": "Muizen, kwartels, kuikens",
@@ -719,7 +719,7 @@
       "foodSafety": "Giftige voeding, veilig vlees, groenten, fruit.",
       "supplements": "AAFCO-doelen, balancers en een 7-daagse overgang.",
       "dietsTitle": "5 dieetprofielen",
-      "dietsDesc": "Gebalanceerd gekookt · BARF · PMR · Eiwitrijk · Ancestral.",
+      "dietsDesc": "Mager gekookt · BARF · PMR · Eiwitrijk · Ancestral.",
       "langTitle": "8 talen",
       "langDesc": "Volledig vertaald, waar je ook kookt.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Kies een dieet dat je vertrouwt",
-        "desc": "Gebalanceerd gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
+        "desc": "Mager gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
         "title_cat": "Kies een kat-veilig dieet",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, hele prooi of gekookte carnivoor — allemaal gebouwd op strikt-carnivore biologie."
       },

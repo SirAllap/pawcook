@@ -479,14 +479,14 @@
       "lactating": "In allattamento"
     },
     "diets": {
-      "balanced_cooked": "Cotto bilanciato (raccomandato dai veterinari) — 40% proteine / 50% verdure / 10% amidi",
+      "balanced_cooked": "Magra cotta (base raccomandata dai veterinari) — 50% proteine / 30% verdure / 20% amidi",
       "high_protein": "Cotto ad alto contenuto proteico — 50% proteine / 30% verdure / 15% amidi",
       "pmr": "PMR 80-10-10 (avanzato)"
     },
     "vetDisclaimer": "Questo strumento fornisce solo indicazioni generali. Consultare un nutrizionista veterinario certificato (ACVN) per l'alimentazione casalinga a lungo termine.",
     "profileSection": "Profilo del cane",
     "dietShort": {
-      "balanced_cooked": "Equilibrato",
+      "balanced_cooked": "Magra Cotta",
       "high_protein": "Alto proteico",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Carnivoro cotto"
     },
     "dietSub": {
-      "balanced_cooked": "40% proteine / 50% verdure",
-      "high_protein": "55% proteine / 30% verdure",
-      "pmr": "Crudo 80-10-10",
-      "barf": "Crudo + verdure + semi",
-      "real_ancestral": "Crudo + pesce + fibra",
+      "balanced_cooked": "50% proteine / 30% verdure / 20% amidi",
+      "high_protein": "55% proteine / 30% verdure / 15% amidi",
+      "pmr": "80% carne / 10% osso / 10% organo — senza verdure",
+      "barf": "70% carne-osso-organo / 30% verdure ed extra",
+      "real_ancestral": "64% muscolo / 11% osso / 10% pesce / 10% organo / 5% fibra",
       "cat_pmr": "Modello preda crudo",
       "cat_frankenprey": "Tagli crudi assemblati",
       "cat_whole_prey": "Topi, quaglie, pulcini",
@@ -719,7 +719,7 @@
       "foodSafety": "Cibi tossici, carni sicure, verdure, frutta.",
       "supplements": "Target AAFCO, integratori bilancianti e transizione di 7 giorni.",
       "dietsTitle": "5 profili dietetici",
-      "dietsDesc": "Cotto bilanciato · BARF · PMR · Iperproteico · Ancestrale.",
+      "dietsDesc": "Cotto magro · BARF · PMR · Iperproteico · Ancestrale.",
       "langTitle": "8 lingue",
       "langDesc": "Totalmente tradotto, ovunque tu cucini.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Scegli una dieta di cui ti fidi",
-        "desc": "Cotto bilanciato, BARF, PMR, iperproteico o ancestrale — tutti basati sui target AAFCO.",
+        "desc": "Cotto magro, BARF, PMR, iperproteico o ancestrale — tutti basati sui target AAFCO.",
         "title_cat": "Scegli una dieta felina sicura",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, preda intera o carnivoro cotto — tutte basate sulla biologia carnivora stretta."
       },

@@ -479,14 +479,14 @@
       "lactating": "En lactancia"
     },
     "diets": {
-      "balanced_cooked": "Cocido equilibrado (recomendado por veterinarios) — 40% proteína / 50% veg / 10% almidón",
+      "balanced_cooked": "Magra cocida (línea base recomendada por veterinario) — 50% proteína / 30% veg / 20% almidón",
       "high_protein": "Cocido alto en proteína — 50% proteína / 30% veg / 15% almidón",
       "pmr": "PMR 80-10-10 (avanzado)"
     },
     "vetDisclaimer": "Esta herramienta proporciona orientación general únicamente. Consulta a un nutricionista veterinario certificado (ACVN) para alimentación casera a largo plazo.",
     "profileSection": "Perfil del perro",
     "dietShort": {
-      "balanced_cooked": "Equilibrado",
+      "balanced_cooked": "Magra Cocida",
       "high_protein": "Alto en proteína",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Carnívoro cocinado"
     },
     "dietSub": {
-      "balanced_cooked": "40% proteína / 50% veg",
-      "high_protein": "55% proteína / 30% veg",
-      "pmr": "Crudo 80-10-10",
-      "barf": "Crudo + verduras + semillas",
-      "real_ancestral": "Crudo + pescado + fibra",
+      "balanced_cooked": "50% proteína / 30% veg / 20% almidón",
+      "high_protein": "55% proteína / 30% veg / 15% almidón",
+      "pmr": "80% carne / 10% hueso / 10% órgano — sin verduras",
+      "barf": "70% carne-hueso-órgano / 30% veg y extras",
+      "real_ancestral": "64% músculo / 11% hueso / 10% pescado / 10% órgano / 5% fibra",
       "cat_pmr": "Modelo de presa crudo",
       "cat_frankenprey": "Cortes crudos ensamblados",
       "cat_whole_prey": "Ratones, codornices, pollitos",
@@ -719,7 +719,7 @@
       "foodSafety": "Alimentos tóxicos, carnes seguras, verduras, frutas.",
       "supplements": "Objetivos AAFCO, balanceadores y una transición de 7 días.",
       "dietsTitle": "5 perfiles de dieta",
-      "dietsDesc": "Cocinado equilibrado · BARF · PMR · Alta en proteína · Ancestral.",
+      "dietsDesc": "Cocinado magro · BARF · PMR · Alta en proteína · Ancestral.",
       "langTitle": "8 idiomas",
       "langDesc": "Totalmente traducido, dondequiera que cocines.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Elige una dieta de confianza",
-        "desc": "Cocinado equilibrado, BARF, PMR, alto en proteína o ancestral — todos basados en los objetivos AAFCO.",
+        "desc": "Cocinado magro, BARF, PMR, alto en proteína o ancestral — todos basados en los objetivos AAFCO.",
         "title_cat": "Elige una dieta felina segura",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, presa entera o carnívoro cocinado — todas basadas en la biología del carnívoro estricto."
       },

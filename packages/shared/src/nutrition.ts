@@ -101,9 +101,9 @@ const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   balanced_cooked: {
     isRaw: false,
     components: [
-      { key: 'protein', pct: 0.40 },
-      { key: 'veg',     pct: 0.50 },
-      { key: 'starch',  pct: 0.10 },
+      { key: 'protein', pct: 0.50 },
+      { key: 'veg',     pct: 0.30 },
+      { key: 'starch',  pct: 0.20 },
     ],
   },
   high_protein: {

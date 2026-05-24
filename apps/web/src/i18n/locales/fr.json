@@ -479,14 +479,14 @@
       "lactating": "En lactation"
     },
     "diets": {
-      "balanced_cooked": "Cuit équilibré (recommandé par les vétérinaires) — 40% protéines / 50% légumes / 10% féculents",
+      "balanced_cooked": "Cuit maigre (base recommandée par les vétérinaires) — 50% protéines / 30% légumes / 20% féculents",
       "high_protein": "Cuit riche en protéines — 50% protéines / 30% légumes / 15% féculents",
       "pmr": "PMR 80-10-10 (avancé)"
     },
     "vetDisclaimer": "Cet outil fournit des conseils généraux uniquement. Consultez un nutritionniste vétérinaire certifié (ACVN) pour une alimentation maison à long terme.",
     "profileSection": "Profil du chien",
     "dietShort": {
-      "balanced_cooked": "Équilibré",
+      "balanced_cooked": "Cuit Maigre",
       "high_protein": "Riche en protéines",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -498,11 +498,11 @@
       "cat_cooked_carnivore": "Carnivore cuit"
     },
     "dietSub": {
-      "balanced_cooked": "40% protéines / 50% légumes",
-      "high_protein": "55% protéines / 30% légumes",
-      "pmr": "Cru 80-10-10",
-      "barf": "Cru + légumes + graines",
-      "real_ancestral": "Cru + poisson + fibres",
+      "balanced_cooked": "50% protéines / 30% légumes / 20% féculents",
+      "high_protein": "55% protéines / 30% légumes / 15% féculents",
+      "pmr": "80% viande / 10% os / 10% organe — sans légumes",
+      "barf": "70% viande-os-organe / 30% légumes & extras",
+      "real_ancestral": "64% muscle / 11% os / 10% poisson / 10% organe / 5% fibre",
       "cat_pmr": "Modèle proie cru",
       "cat_frankenprey": "Morceaux crus assemblés",
       "cat_whole_prey": "Souris, cailles, poussins",
@@ -719,7 +719,7 @@
       "foodSafety": "Aliments toxiques, viandes sûres, légumes, fruits.",
       "supplements": "Objectifs AAFCO, équilibrants et transition sur 7 jours.",
       "dietsTitle": "5 profils de régime",
-      "dietsDesc": "Cuit équilibré · BARF · PMR · Riche en protéines · Ancestral.",
+      "dietsDesc": "Cuit maigre · BARF · PMR · Riche en protéines · Ancestral.",
       "langTitle": "8 langues",
       "langDesc": "Entièrement traduit, où que vous cuisiniez.",
       "preview": {
@@ -746,7 +746,7 @@
       },
       "step2": {
         "title": "Choisissez une alimentation de confiance",
-        "desc": "Cuit équilibré, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
+        "desc": "Cuit maigre, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
         "title_cat": "Choisissez une alimentation féline sûre",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, proie entière ou carnivore cuit — toutes fondées sur la biologie carnivore stricte."
       },
