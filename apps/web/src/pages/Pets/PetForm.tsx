@@ -20,13 +20,14 @@ import { Sheet } from '../../components/ui/sheet';
 import { DogIcon, CatIcon } from '../../components/species/species-icons';
 import { AllergyPicker } from '../../components/pets/AllergyPicker';
 import { ConditionPicker } from '../../components/pets/ConditionPicker';
+import { CustomDietPicker, DEFAULT_CUSTOM_DIET } from '../../components/pets/CustomDietPicker';
 import { usePets } from '../../contexts/PetProfilesContext';
 import { useMealPlans } from '../../contexts/MealPlansContext';
 import { useUnsavedGuard } from '../../lib/use-unsaved-guard';
 import { blockBadNumberKeys } from '../../lib/number-input';
 import { cn } from '../../lib/cn';
 
-const DOG_DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'] as const;
+const DOG_DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral', 'custom'] as const;
 const CAT_DIET_KEYS = ['cat_pmr', 'cat_frankenprey', 'cat_barf_lite', 'cat_whole_prey', 'cat_cooked_carnivore'] as const;
 
 function defaultsForSpecies(species: Species): PetProfile {
@@ -274,23 +275,38 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
                 <div
                   role="radiogroup"
                   aria-label={t('pets.form.dietSection')}
-                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 mt-3"
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-3"
                 >
                   {dietKeys.map((key) => {
                     const active = field.value === key;
+                    const isCustom = key === 'custom';
                     return (
                       <button
                         key={key}
                         type="button"
                         role="radio"
                         aria-checked={active}
-                        onClick={() => field.onChange(key)}
+                        onClick={() => {
+                          field.onChange(key);
+                          // Lazily attach / clear the custom payload as the
+                          // user moves in or out of the Custom chip.
+                          if (isCustom) {
+                            const current = watch('nutrition.customDiet');
+                            if (!current) {
+                              setValue('nutrition.customDiet', DEFAULT_CUSTOM_DIET, { shouldDirty: true });
+                            }
+                          } else {
+                            setValue('nutrition.customDiet', undefined, { shouldDirty: true });
+                          }
+                        }}
                         className={cn(
                           'flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border text-center',
                           'min-h-[44px] transition-colors',
                           active
                             ? 'border-primary bg-primary/10 text-foreground'
-                            : 'border-border bg-surface-2 text-muted-fg hover:text-foreground',
+                            : isCustom
+                              ? 'border-dashed border-border bg-surface-2 text-muted-fg hover:text-foreground'
+                              : 'border-border bg-surface-2 text-muted-fg hover:text-foreground',
                         )}
                       >
                         <span className="text-xs font-black leading-tight">
@@ -307,6 +323,20 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
             />
             {errors.nutrition?.macroProfile?.message && (
               <p className="text-xs text-danger mt-2">{errors.nutrition.macroProfile.message}</p>
+            )}
+
+            {/* Custom diet panel — expands inline when "+ Custom" is picked. */}
+            {macroProfile === 'custom' && (
+              <Controller
+                control={control}
+                name="nutrition.customDiet"
+                render={({ field }) => (
+                  <CustomDietPicker
+                    value={field.value ?? DEFAULT_CUSTOM_DIET}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
             )}
 
             {/* Cooking method — dog-only for now. Orthogonal to the preset. */}

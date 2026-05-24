@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Ganze Beute",
       "cat_barf_lite": "BARF-light",
-      "cat_cooked_carnivore": "Gekochter Karnivor"
+      "cat_cooked_carnivore": "Gekochter Karnivor",
+      "custom": "+ Individuell"
     },
     "dietSub": {
       "balanced_cooked": "50% Protein / 30% Gemüse / 20% Stärke",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Zusammengesetzte Rohstücke",
       "cat_whole_prey": "Mäuse, Wachteln, Küken",
       "cat_barf_lite": "Roh + wenig Gemüse",
-      "cat_cooked_carnivore": "+ Taurin-Supplement"
+      "cat_cooked_carnivore": "+ Taurin-Supplement",
+      "custom": "Eigene erstellen"
+    },
+    "custom": {
+      "title": "Deine eigene Mischung",
+      "expandAdvanced": "Erweitert anzeigen",
+      "collapseAdvanced": "Erweitert ausblenden",
+      "nearest": "Am nächsten:",
+      "sumLabel": "Makros gesamt",
+      "compositionLabel": "Proteinzusammensetzung (Muskel / Organ / Knochen)",
+      "compositionHelp": "Unteranteil der Proteinportion. Nützlich bei PMR-ähnlichen Verhältnissen.",
+      "calciumLabel": "Calciumquelle",
+      "supplementsLabel": "Empfohlene Ergänzungen",
+      "pills": {
+        "lean": "Mager gekocht",
+        "protein": "Proteinreich",
+        "meat90": "90/10 Fleisch"
+      },
+      "calcium": {
+        "bone_in": "Roher Knochen",
+        "eggshell": "Eierschalenpulver",
+        "supplement": "Calciumpräparat",
+        "none": "Keine / nicht hinzugefügt"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurin",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Hauptsächlich Fleisch. Füge eine Calciumquelle hinzu — in dieser Mischung ist kein Knochen.",
+        "highMeat": "Fleisch-geführt, mit kleinem Gemüseanteil. Häufig tierärztlich verschriebenes gekochtes Muster.",
+        "balancedMeat": "Ausgewogene Fleisch-Pflanzen-Verteilung — solider Mittelweg für erwachsene Hunde.",
+        "vegHeavy": "Sehr gemüselastig. Stelle sicher, dass dein Protein dicht genug ist, um den Tagesbedarf zu decken.",
+        "mixed": "Gemischtes Gericht. Prüfe, dass die Summen 100% ergeben."
+      },
+      "warn": {
+        "lowProtein": "Protein liegt unter dem FEDIAF/NRC-Erwachsenenminimum (~18%). Bestätige mit deinem Tierarzt.",
+        "noCalcium": "Keine Calciumquelle bei reinem Fleischplan. Füge Knochen, Eierschale oder ein Präparat hinzu.",
+        "highBone": "Mehr als 15% Knochen kann zu Verstopfung führen."
+      }
     },
     "cooking": {
       "raw": "Roh",

@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Presa inteira",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnívoro cozido"
+      "cat_cooked_carnivore": "Carnívoro cozido",
+      "custom": "+ Personalizada"
     },
     "dietSub": {
       "balanced_cooked": "50% proteína / 30% veg / 20% amido",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Cortes crus montados",
       "cat_whole_prey": "Camundongos, codornas, pintos",
       "cat_barf_lite": "Cru + pouca verdura",
-      "cat_cooked_carnivore": "+ suplemento de taurina"
+      "cat_cooked_carnivore": "+ suplemento de taurina",
+      "custom": "Crie a sua"
+    },
+    "custom": {
+      "title": "A sua mistura personalizada",
+      "expandAdvanced": "Mostrar avançado",
+      "collapseAdvanced": "Ocultar avançado",
+      "nearest": "Mais próximo:",
+      "sumLabel": "Total dos macros",
+      "compositionLabel": "Composição da proteína (músculo / órgão / osso)",
+      "compositionHelp": "Sub-porção da parte proteica. Útil ao seguir rácios estilo PMR.",
+      "calciumLabel": "Fonte de cálcio",
+      "supplementsLabel": "Suplementos sugeridos",
+      "pills": {
+        "lean": "Magra cozida",
+        "protein": "Rico em proteína",
+        "meat90": "90/10 carne"
+      },
+      "calcium": {
+        "bone_in": "Osso cru",
+        "eggshell": "Casca de ovo",
+        "supplement": "Suplemento de cálcio",
+        "none": "Nenhum / não adicionado"
+      },
+      "supplement": {
+        "omega3": "Ómega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurina",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Principalmente carne. Adicione uma fonte de cálcio — esta mistura não tem osso.",
+        "highMeat": "Carne como base, com uma pequena porção de vegetais. Padrão cozinhado típico receitado por veterinários.",
+        "balancedMeat": "Divisão equilibrada carne-vegetais — meio-termo para cães adultos.",
+        "vegHeavy": "Muitos vegetais. Garanta que a sua proteína é densa para cobrir as necessidades diárias.",
+        "mixed": "Prato misto. Confirme que os totais somam 100%."
+      },
+      "warn": {
+        "lowProtein": "A proteína está abaixo do mínimo adulto FEDIAF/NRC (~18%). Confirme com o seu veterinário.",
+        "noCalcium": "Sem fonte de cálcio num plano só de carne. Adicione osso, casca de ovo ou um suplemento.",
+        "highBone": "Mais de 15% de osso pode causar prisão de ventre."
+      }
     },
     "cooking": {
       "raw": "Cru",

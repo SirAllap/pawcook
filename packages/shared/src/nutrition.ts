@@ -1,4 +1,4 @@
-import type { NutritionInput, MacroRatioProfile, DogMacroProfile, CookingPreparation } from './schemas.js';
+import type { NutritionInput, MacroRatioProfile, DogMacroProfile, CookingPreparation, CustomDiet } from './schemas.js';
 import { calculateCatNutrition } from './nutrition-cat.js';
 
 export type ComponentKey =
@@ -101,7 +101,10 @@ interface ProfileSpec {
 }
 
 // Ratios sourced from the PawCook nutritional engineering blueprint.
-const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
+// 'custom' is intentionally omitted — it's resolved at runtime from the
+// NutritionInput.customDiet payload via buildCustomSpec.
+type PresetMacroProfile = Exclude<DogMacroProfile, 'custom'>;
+const DIET_PROFILES: Record<PresetMacroProfile, ProfileSpec> = {
   balanced_cooked: {
     isRaw: false,
     defaultCookingMethod: 'fully_cooked',
@@ -193,18 +196,73 @@ export function toDryMatter(asFedPct: number, moisturePct: number): number {
   return asFedPct / (1 - moisturePct / 100);
 }
 
-export function getDietProfile(profile: DogMacroProfile): ProfileSpec {
+export function getDietProfile(profile: PresetMacroProfile): ProfileSpec {
   return DIET_PROFILES[profile];
 }
 
 // Form-layer helper: which cooking method does this preset default to, and is
 // it locked? Cheaper than importing the full ProfileSpec into UI code.
+// 'custom' has no canonical preparation, so it defaults to fully_cooked and
+// is never locked — the user picks via the global Cooking method toggle.
 export function getDietCookingDefaults(profile: DogMacroProfile): {
   defaultCookingMethod: CookingPreparation;
   cookingLock?: CookingPreparation;
 } {
+  if (profile === 'custom') {
+    return { defaultCookingMethod: 'fully_cooked' };
+  }
   const spec = DIET_PROFILES[profile];
   return { defaultCookingMethod: spec.defaultCookingMethod, cookingLock: spec.cookingLock };
+}
+
+// Build a dynamic ProfileSpec from a CustomDiet payload. The user's macro
+// percentages map to existing ComponentKeys so the rest of the engine
+// (Ca:P math, ingredient selection, shopping list) needs no further
+// changes — custom diets are just an additional source of specs.
+function buildCustomSpec(custom: CustomDiet, cookingMethod: CookingPreparation): ProfileSpec {
+  const isRaw = cookingMethod === 'raw';
+  const components: { key: ComponentKey; pct: number }[] = [];
+  const proteinFraction = custom.macros.protein / 100;
+  const meatKey: ComponentKey = isRaw ? 'muscle' : 'protein';
+
+  if (custom.proteinComposition) {
+    // Advanced mode: split protein share into muscle/organ/bone. Bone is
+    // dropped silently for cooked diets — the schema-level PMR check
+    // doesn't fire here because Custom isn't PMR, so we rebalance into
+    // muscle and rely on the calcium ladder + cookedCaDeficient warning
+    // (or the user's explicit calciumSource selection) to cover the gap.
+    const { muscle, organ, bone } = custom.proteinComposition;
+    const muscleShare = isRaw ? muscle : muscle + bone;
+    if (muscleShare > 0) {
+      components.push({ key: meatKey, pct: proteinFraction * (muscleShare / 100) });
+    }
+    if (organ > 0) {
+      // Half to liver, half to other organ — mirrors PMR/BARF convention.
+      const organShare = proteinFraction * (organ / 100);
+      components.push({ key: 'liver', pct: organShare / 2 });
+      components.push({ key: 'organ', pct: organShare / 2 });
+    }
+    if (bone > 0 && isRaw) {
+      components.push({ key: 'bone', pct: proteinFraction * (bone / 100) });
+    }
+  } else {
+    components.push({ key: meatKey, pct: proteinFraction });
+  }
+
+  if (custom.macros.veg > 0) {
+    components.push({ key: 'veg', pct: custom.macros.veg / 100 });
+  }
+  if (custom.macros.carb > 0) {
+    components.push({ key: 'starch', pct: custom.macros.carb / 100 });
+  }
+  // Fat is implicit in the meat component (varies by cut/trim); not a
+  // standalone component in this engine.
+
+  return {
+    isRaw,
+    defaultCookingMethod: cookingMethod,
+    components,
+  };
 }
 
 export function componentLabel(key: ComponentKey): string {
@@ -219,7 +277,7 @@ export function calculateNutrition(input: NutritionInput): NutritionResult {
 }
 
 function calculateDogNutrition(input: NutritionInput): NutritionResult {
-  const { weightKg, age, mealsPerDay, macroProfile, bodyCondition, cookingMethod } = input;
+  const { weightKg, age, mealsPerDay, macroProfile, bodyCondition, cookingMethod, customDiet } = input;
 
   const rer = calcRER(weightKg);
   const merMultiplier = getMerMultiplier(input);
@@ -227,7 +285,18 @@ function calculateDogNutrition(input: NutritionInput): NutritionResult {
   if (bodyCondition === 'overweight') der = rer * 1.0; // weight-loss target
   if (bodyCondition === 'underweight') der *= 1.2;
 
-  const spec = DIET_PROFILES[macroProfile as DogMacroProfile];
+  let spec: ProfileSpec;
+  if (macroProfile === 'custom') {
+    // Schema's superRefine guarantees customDiet is present when profile
+    // is 'custom'; we still defend in case the engine is called via a path
+    // that bypasses validation (tests, direct API).
+    const effective = cookingMethod ?? 'fully_cooked';
+    spec = customDiet
+      ? buildCustomSpec(customDiet, effective)
+      : DIET_PROFILES.balanced_cooked;
+  } else {
+    spec = DIET_PROFILES[macroProfile as PresetMacroProfile];
+  }
   // Effective cooking method: schema-enforced lock wins, then user override,
   // then the spec's canonical default. Determines isRaw downstream.
   const effectiveCooking: CookingPreparation =

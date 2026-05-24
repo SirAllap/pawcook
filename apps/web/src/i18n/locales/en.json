@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Whole prey",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Cooked carnivore"
+      "cat_cooked_carnivore": "Cooked carnivore",
+      "custom": "+ Custom"
     },
     "dietSub": {
       "balanced_cooked": "50% protein / 30% veg / 20% starch",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Assembled raw cuts",
       "cat_whole_prey": "Mice, quail, chicks",
       "cat_barf_lite": "Raw + small veg",
-      "cat_cooked_carnivore": "+ taurine supplement"
+      "cat_cooked_carnivore": "+ taurine supplement",
+      "custom": "Build your own"
+    },
+    "custom": {
+      "title": "Your custom mix",
+      "expandAdvanced": "Show advanced",
+      "collapseAdvanced": "Hide advanced",
+      "nearest": "Nearest:",
+      "sumLabel": "Macros total",
+      "compositionLabel": "Protein composition (muscle / organ / bone)",
+      "compositionHelp": "Sub-share of the protein portion. Useful when following PMR-style ratios.",
+      "calciumLabel": "Calcium source",
+      "supplementsLabel": "Suggested supplements",
+      "pills": {
+        "lean": "Lean Cooked",
+        "protein": "High Protein",
+        "meat90": "90/10 meat"
+      },
+      "calcium": {
+        "bone_in": "Raw bone-in",
+        "eggshell": "Eggshell powder",
+        "supplement": "Calcium supplement",
+        "none": "None / not added"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Mostly meat. Add a calcium source — there's no bone in this mix.",
+        "highMeat": "Meat-led, with a small vegetable share. Common vet-prescribed cooked pattern.",
+        "balancedMeat": "Balanced meat-and-plant split — middle-of-the-road for adult dogs.",
+        "vegHeavy": "Vegetable-heavy. Make sure your protein is dense enough to meet daily needs.",
+        "mixed": "Mixed plate. Confirm the totals add up to 100%."
+      },
+      "warn": {
+        "lowProtein": "Protein is below the FEDIAF/NRC adult minimum (~18%). Confirm with your vet.",
+        "noCalcium": "No calcium source for an all-meat plan. Add bone, eggshell, or a supplement.",
+        "highBone": "Bone share above 15% may cause constipation."
+      }
     },
     "cooking": {
       "raw": "Raw",

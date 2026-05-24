@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Preda intera",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnivoro cotto"
+      "cat_cooked_carnivore": "Carnivoro cotto",
+      "custom": "+ Personalizzata"
     },
     "dietSub": {
       "balanced_cooked": "50% proteine / 30% verdure / 20% amidi",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Tagli crudi assemblati",
       "cat_whole_prey": "Topi, quaglie, pulcini",
       "cat_barf_lite": "Crudo + poca verdura",
-      "cat_cooked_carnivore": "+ integratore di taurina"
+      "cat_cooked_carnivore": "+ integratore di taurina",
+      "custom": "Crea la tua"
+    },
+    "custom": {
+      "title": "La tua miscela personalizzata",
+      "expandAdvanced": "Mostra avanzato",
+      "collapseAdvanced": "Nascondi avanzato",
+      "nearest": "Più vicino:",
+      "sumLabel": "Totale macro",
+      "compositionLabel": "Composizione proteica (muscolo / organo / osso)",
+      "compositionHelp": "Sotto-quota della porzione proteica. Utile seguendo proporzioni stile PMR.",
+      "calciumLabel": "Fonte di calcio",
+      "supplementsLabel": "Integratori suggeriti",
+      "pills": {
+        "lean": "Magra cotta",
+        "protein": "Alto proteico",
+        "meat90": "90/10 carne"
+      },
+      "calcium": {
+        "bone_in": "Osso crudo",
+        "eggshell": "Guscio d'uovo",
+        "supplement": "Integratore di calcio",
+        "none": "Nessuno / non aggiunto"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurina",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Principalmente carne. Aggiungi una fonte di calcio — questa miscela non contiene osso.",
+        "highMeat": "Carne dominante, con una piccola quota di verdure. Pattern cotto comunemente prescritto dai veterinari.",
+        "balancedMeat": "Divisione equilibrata carne-vegetali — via di mezzo per cani adulti.",
+        "vegHeavy": "Molte verdure. Assicurati che la tua proteina sia densa per coprire i fabbisogni giornalieri.",
+        "mixed": "Piatto misto. Verifica che i totali raggiungano il 100%."
+      },
+      "warn": {
+        "lowProtein": "La proteina è sotto il minimo adulto FEDIAF/NRC (~18%). Conferma con il tuo veterinario.",
+        "noCalcium": "Nessuna fonte di calcio in un piano tutto-carne. Aggiungi osso, guscio d'uovo o un integratore.",
+        "highBone": "Più del 15% di osso può causare stitichezza."
+      }
     },
     "cooking": {
       "raw": "Crudo",

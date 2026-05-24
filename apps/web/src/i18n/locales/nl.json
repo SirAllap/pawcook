@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Hele prooi",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Gekookte carnivoor"
+      "cat_cooked_carnivore": "Gekookte carnivoor",
+      "custom": "+ Aangepast"
     },
     "dietSub": {
       "balanced_cooked": "50% eiwit / 30% groenten / 20% zetmeel",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Samengestelde rauwe stukken",
       "cat_whole_prey": "Muizen, kwartels, kuikens",
       "cat_barf_lite": "Rauw + beetje groente",
-      "cat_cooked_carnivore": "+ taurine-supplement"
+      "cat_cooked_carnivore": "+ taurine-supplement",
+      "custom": "Bouw je eigen"
+    },
+    "custom": {
+      "title": "Je eigen mix",
+      "expandAdvanced": "Geavanceerd tonen",
+      "collapseAdvanced": "Geavanceerd verbergen",
+      "nearest": "Dichtstbij:",
+      "sumLabel": "Macros totaal",
+      "compositionLabel": "Eiwitsamenstelling (spier / orgaan / bot)",
+      "compositionHelp": "Onderdeel van de eiwitportie. Handig bij PMR-achtige verhoudingen.",
+      "calciumLabel": "Calciumbron",
+      "supplementsLabel": "Aanbevolen supplementen",
+      "pills": {
+        "lean": "Mager gekookt",
+        "protein": "Eiwitrijk",
+        "meat90": "90/10 vlees"
+      },
+      "calcium": {
+        "bone_in": "Rauw bot",
+        "eggshell": "Eierschaalpoeder",
+        "supplement": "Calciumsupplement",
+        "none": "Geen / niet toegevoegd"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Vooral vlees. Voeg een calciumbron toe — er zit geen bot in deze mix.",
+        "highMeat": "Vlees als basis, met een klein groente-aandeel. Veelvoorkomend gekookt patroon voorgeschreven door dierenartsen.",
+        "balancedMeat": "Evenwichtige vlees-plantaardige verdeling — gulden middenweg voor volwassen honden.",
+        "vegHeavy": "Veel groenten. Zorg dat je eiwit dicht genoeg is om de dagelijkse behoefte te dekken.",
+        "mixed": "Gemengd bord. Controleer of de totalen op 100% uitkomen."
+      },
+      "warn": {
+        "lowProtein": "Eiwit ligt onder het FEDIAF/NRC-volwassenenminimum (~18%). Bevestig met je dierenarts.",
+        "noCalcium": "Geen calciumbron voor een all-vleesplan. Voeg bot, eierschaal of een supplement toe.",
+        "highBone": "Meer dan 15% bot kan verstopping veroorzaken."
+      }
     },
     "cooking": {
       "raw": "Rauw",

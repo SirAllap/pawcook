@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Presa entera",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnívoro cocinado"
+      "cat_cooked_carnivore": "Carnívoro cocinado",
+      "custom": "+ Personalizada"
     },
     "dietSub": {
       "balanced_cooked": "50% proteína / 30% veg / 20% almidón",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Cortes crudos ensamblados",
       "cat_whole_prey": "Ratones, codornices, pollitos",
       "cat_barf_lite": "Crudo + verdura",
-      "cat_cooked_carnivore": "+ suplemento de taurina"
+      "cat_cooked_carnivore": "+ suplemento de taurina",
+      "custom": "Crea tu propia"
+    },
+    "custom": {
+      "title": "Tu mezcla personalizada",
+      "expandAdvanced": "Mostrar avanzado",
+      "collapseAdvanced": "Ocultar avanzado",
+      "nearest": "Más cercano:",
+      "sumLabel": "Total de macros",
+      "compositionLabel": "Composición de proteína (músculo / órgano / hueso)",
+      "compositionHelp": "Sub-porción de la parte proteica. Útil al seguir ratios estilo PMR.",
+      "calciumLabel": "Fuente de calcio",
+      "supplementsLabel": "Suplementos sugeridos",
+      "pills": {
+        "lean": "Magra cocida",
+        "protein": "Alta en proteína",
+        "meat90": "90/10 carne"
+      },
+      "calcium": {
+        "bone_in": "Hueso crudo",
+        "eggshell": "Cáscara de huevo",
+        "supplement": "Suplemento de calcio",
+        "none": "Ninguno / no añadido"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurina",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Mayoría carne. Añade una fuente de calcio — esta mezcla no contiene hueso.",
+        "highMeat": "Carne como base, con una pequeña parte de verduras. Patrón cocinado típico recetado por veterinarios.",
+        "balancedMeat": "División equilibrada carne-vegetales — punto medio para perros adultos.",
+        "vegHeavy": "Mucha verdura. Asegúrate de que tu proteína sea densa para cubrir las necesidades diarias.",
+        "mixed": "Plato mixto. Confirma que los totales sumen 100%."
+      },
+      "warn": {
+        "lowProtein": "La proteína está por debajo del mínimo adulto FEDIAF/NRC (~18%). Confirma con tu veterinario.",
+        "noCalcium": "Sin fuente de calcio para un plan todo-carne. Añade hueso, cáscara de huevo o un suplemento.",
+        "highBone": "Más del 15% de hueso puede causar estreñimiento."
+      }
     },
     "cooking": {
       "raw": "Crudo",

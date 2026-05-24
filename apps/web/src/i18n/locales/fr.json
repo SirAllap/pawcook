@@ -496,7 +496,8 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Proie entière",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnivore cuit"
+      "cat_cooked_carnivore": "Carnivore cuit",
+      "custom": "+ Personnalisé"
     },
     "dietSub": {
       "balanced_cooked": "50% protéines / 30% légumes / 20% féculents",
@@ -508,7 +509,48 @@
       "cat_frankenprey": "Morceaux crus assemblés",
       "cat_whole_prey": "Souris, cailles, poussins",
       "cat_barf_lite": "Cru + un peu de légumes",
-      "cat_cooked_carnivore": "+ supplément de taurine"
+      "cat_cooked_carnivore": "+ supplément de taurine",
+      "custom": "Construisez la vôtre"
+    },
+    "custom": {
+      "title": "Votre mélange personnalisé",
+      "expandAdvanced": "Afficher avancé",
+      "collapseAdvanced": "Masquer avancé",
+      "nearest": "Le plus proche :",
+      "sumLabel": "Total des macros",
+      "compositionLabel": "Composition des protéines (muscle / organe / os)",
+      "compositionHelp": "Sous-part de la portion protéique. Utile en suivant des ratios style PMR.",
+      "calciumLabel": "Source de calcium",
+      "supplementsLabel": "Suppléments suggérés",
+      "pills": {
+        "lean": "Cuit maigre",
+        "protein": "Hyperprotéiné",
+        "meat90": "90/10 viande"
+      },
+      "calcium": {
+        "bone_in": "Os cru",
+        "eggshell": "Coquille d'œuf",
+        "supplement": "Supplément de calcium",
+        "none": "Aucun / non ajouté"
+      },
+      "supplement": {
+        "omega3": "Oméga-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Surtout de la viande. Ajoutez une source de calcium — ce mélange ne contient pas d'os.",
+        "highMeat": "Viande dominante, avec une petite part de légumes. Schéma cuit couramment prescrit par les vétérinaires.",
+        "balancedMeat": "Répartition équilibrée viande-végétal — un juste milieu pour le chien adulte.",
+        "vegHeavy": "Beaucoup de légumes. Assurez-vous que votre protéine soit assez dense pour couvrir les besoins quotidiens.",
+        "mixed": "Assiette mixte. Vérifiez que les totaux atteignent 100%."
+      },
+      "warn": {
+        "lowProtein": "La protéine est sous le minimum adulte FEDIAF/NRC (~18%). Confirmez avec votre vétérinaire.",
+        "noCalcium": "Pas de source de calcium pour un plan tout-viande. Ajoutez de l'os, de la coquille d'œuf ou un supplément.",
+        "highBone": "Plus de 15% d'os peut provoquer une constipation."
+      }
     },
     "cooking": {
       "raw": "Cru",
