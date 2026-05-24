@@ -247,7 +247,9 @@
       "anyMeats": "Qualquer · planejador escolhe",
       "anyVeggies": "Qualquer · planejador escolhe",
       "methodLabel": "Método de cocção",
-      "methodHelp": "Lembramos disso para que o botão \"Cozinhar\" da lista de compras abra a calculadora já configurada do seu jeito."
+      "methodHelp": "Lembramos disso para que o botão \"Cozinhar\" da lista de compras abra a calculadora já configurada do seu jeito.",
+      "includeOrgans": "Incluir vísceras (fígado, rim, baço)",
+      "includeOrgansHelp": "Desligado = sem vísceras na lista de compras. Atenção: dietas cruas dependem das vísceras para vitamina A e (para gatos) taurina."
     },
     "coverage": {
       "passed": "Parece equilibrado",

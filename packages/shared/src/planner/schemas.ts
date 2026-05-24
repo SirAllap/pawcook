@@ -37,6 +37,14 @@ export const SourcingPrefsSchema = z.object({
    * Empty = any veg allowed.
    */
   vegIds: z.array(z.string()).default([]),
+  /**
+   * Whether the planner should include organ meats (liver, kidney,
+   * spleen) in the shopping list. Default true preserves the
+   * historically more nutritionally complete plan. Setting false skips
+   * the organ/liver component slots entirely — useful for users who
+   * prefer to source these separately or don't buy them at all.
+   */
+  includeOrgans: z.boolean().default(true),
 });
 export type SourcingPrefs = z.infer<typeof SourcingPrefsSchema>;
 

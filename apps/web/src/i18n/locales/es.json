@@ -247,7 +247,9 @@
       "anyMeats": "Cualquiera · elige el planificador",
       "anyVeggies": "Cualquiera · elige el planificador",
       "methodLabel": "Método de cocción",
-      "methodHelp": "Lo recordamos para que el botón \"Cocinar\" de la lista de la compra abra la calculadora ya configurada a tu gusto."
+      "methodHelp": "Lo recordamos para que el botón \"Cocinar\" de la lista de la compra abra la calculadora ya configurada a tu gusto.",
+      "includeOrgans": "Incluir vísceras (hígado, riñón, bazo)",
+      "includeOrgansHelp": "Desactivado = sin vísceras en la lista de la compra. Aviso: las dietas crudas dependen de las vísceras para vitamina A y (en gatos) taurina."
     },
     "coverage": {
       "passed": "Parece equilibrado",

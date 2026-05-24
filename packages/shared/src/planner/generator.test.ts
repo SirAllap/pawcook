@@ -161,6 +161,29 @@ describe('generateMealPlan', () => {
     }
   });
 
+  it('includeOrgans=false drops liver and organ slots from the plan', () => {
+    // BARF needs liver + organ; if the toggle works those slots vanish.
+    const barfDog: PetProfile = {
+      ...dog,
+      nutrition: { ...dog.nutrition, macroProfile: 'barf' },
+    };
+    const sourcing = SourcingPrefsSchema.parse({ includeOrgans: false });
+    const plan = generateMealPlan({
+      name: 'No organs', pets: [barfDog], durationDays: 7,
+      startDate: '2026-06-01', sourcing,
+    });
+    for (const day of plan.days) {
+      for (const pp of day.petPlans) {
+        for (const meal of pp.meals) {
+          for (const c of meal.components) {
+            expect(c.componentKey).not.toBe('liver');
+            expect(c.componentKey).not.toBe('organ');
+          }
+        }
+      }
+    }
+  });
+
   it('shopping list aggregates grams across days', () => {
     const plan = generateMealPlan({
       name: 'Two week', pets: [dog], durationDays: 14,
