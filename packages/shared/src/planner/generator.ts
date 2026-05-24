@@ -45,7 +45,7 @@ export function generateMealPlan(input: GeneratePlanInput): MealPlan {
   for (let d = 0; d < input.durationDays; d++) {
     const date = addDaysIso(input.startDate, d);
     const petPlans: PetDayPlan[] = input.pets.map((pet) =>
-      buildPetDay(pet, d, seed, input.sourcing),
+      buildPetDay(pet, d, seed, input.sourcing, input.durationDays),
     );
     days.push({ date, petPlans });
   }
@@ -79,19 +79,24 @@ function buildPetDay(
   dayIndex: number,
   seed: number,
   sourcing: SourcingPrefs,
+  durationDays: number,
 ): PetDayPlan {
   const nutrition = calculateNutrition(pet.nutrition);
-  const components = nutrition.components;
   const dislikedSet = new Set(sourcing.dislikedIngredientIds);
 
-  const allocations: PlannedComponent[] = components
+  // When the user opted out of organs, redistribute that mass onto the
+  // muscle/protein slot instead of dropping it: the user chose not to
+  // *buy* organ, not to feed less food. Nutritional cost (no pre-formed
+  // vitamin A, no organ-sourced taurine) is still flagged via warnings.
+  const componentsForAllocation = sourcing.includeOrgans
+    ? nutrition.components
+    : redistributeOrganMass(nutrition.components);
+
+  const allocations: PlannedComponent[] = componentsForAllocation
     .filter((c) => c.grams > 0)
-    // Skip organ slots entirely when the user opted out, rather than
-    // leaving them empty or filled with a placeholder. The plan ends up
-    // nutritionally lighter (no vitamin A, no taurine from organs) but
-    // matches what the user actually buys.
-    .filter((c) => sourcing.includeOrgans || (c.key !== 'liver' && c.key !== 'organ'))
-    .map((component) => pickIngredientForComponent(pet, component, dayIndex, seed, sourcing, dislikedSet));
+    .map((component) =>
+      pickIngredientForComponent(pet, component, dayIndex, seed, sourcing, dislikedSet, durationDays),
+    );
 
   const meals = splitIntoMeals(allocations, pet.nutrition.mealsPerDay, nutrition);
 
@@ -107,6 +112,24 @@ function buildPetDay(
   };
 }
 
+/**
+ * When the user excludes organs, fold the dropped 'liver' + 'organ' grams
+ * into the largest muscle-meat slot ('protein' if present, otherwise the
+ * first remaining component). This keeps the daily food mass close to the
+ * pet's body-weight range — without it, cats lose ~20% of mass and end up
+ * under their daily gram target while kcal-correct.
+ */
+function redistributeOrganMass(components: DietComponent[]): DietComponent[] {
+  const dropped = components
+    .filter((c) => c.key === 'liver' || c.key === 'organ')
+    .reduce((s, c) => s + c.grams, 0);
+  if (dropped <= 0) return components.filter((c) => c.key !== 'liver' && c.key !== 'organ');
+  const kept = components.filter((c) => c.key !== 'liver' && c.key !== 'organ');
+  const target = kept.find((c) => c.key === 'protein') ?? kept.find((c) => c.key === 'muscle') ?? kept[0];
+  if (!target) return kept;
+  return kept.map((c) => (c === target ? { ...c, grams: c.grams + dropped } : c));
+}
+
 function pickIngredientForComponent(
   pet: PetProfile,
   component: DietComponent,
@@ -114,6 +137,7 @@ function pickIngredientForComponent(
   seed: number,
   sourcing: SourcingPrefs,
   dislikedSet: Set<string>,
+  durationDays: number,
 ): PlannedComponent {
   const species = pet.nutrition.species;
   // Per-pet exclude set = plan-level dislikes + this pet's allergies.
@@ -154,8 +178,15 @@ function pickIngredientForComponent(
     .map((id) => pool.find((p) => p.id === id))
     .find((p): p is Ingredient => Boolean(p));
 
+  // Block size for rotation = bagDays for protein-side components (so each
+  // protein bag covers N consecutive days of the same protein), and 1 for
+  // veg-side components (we still want daily veg variety even when the
+  // protein blocks). Without this alignment, sous-vide bags can never be
+  // filled with N usage-days of the same ingredient — the wizard's
+  // "Cook ahead" choice would be cosmetic.
+  const blockSize = isMeatComponent(component.key) ? sourcing.bagDays : 1;
   const pick = mustInclude
-    ?? pool[rotationIndex(component.key, dayIndex, seed, pool.length)]
+    ?? pool[rotationIndex(component.key, dayIndex, seed, pool.length, blockSize, durationDays)]
     // last-resort fallback so the type is always defined
     ?? { id: 'unknown', label: 'Unknown' } as Ingredient;
 
@@ -166,11 +197,26 @@ function pickIngredientForComponent(
   };
 }
 
-function rotationIndex(componentKey: string, dayIndex: number, seed: number, poolLen: number): number {
+/**
+ * Block rotation. dayIndex 0..durationDays-1 maps onto a block index by
+ * integer division by blockSize, so all days in the same block resolve to
+ * the same ingredient. blockSize=1 = daily rotation (preserves prior
+ * behaviour). Seed determinism is preserved because the seed mixes into
+ * the result identically — the only change is the cadence of advances.
+ */
+function rotationIndex(
+  componentKey: string,
+  dayIndex: number,
+  seed: number,
+  poolLen: number,
+  blockSize: number,
+  _durationDays: number,
+): number {
   if (poolLen <= 0) return 0;
+  const block = Math.floor(dayIndex / Math.max(1, blockSize));
   // Component-specific offset so different components rotate independently.
   const componentSeed = hashSeed(componentKey);
-  return Math.abs((dayIndex * 31 + componentSeed + seed)) % poolLen;
+  return Math.abs((block * 31 + componentSeed + seed)) % poolLen;
 }
 
 function splitIntoMeals(
@@ -178,23 +224,38 @@ function splitIntoMeals(
   mealsPerDay: number,
   nutrition: NutritionResult,
 ): PlannedMeal[] {
-  const kcalPerMeal = nutrition.derKcal / Math.max(1, mealsPerDay);
-  const meals: PlannedMeal[] = [];
+  const meals = Math.max(1, mealsPerDay);
+  const kcalPerMeal = nutrition.derKcal / meals;
+  const out: PlannedMeal[] = [];
 
-  for (let i = 0; i < mealsPerDay; i++) {
-    const components: PlannedComponent[] = allocations.map((a) => ({
-      ingredientId: a.ingredientId,
-      componentKey: a.componentKey,
-      grams: Math.round(a.grams / mealsPerDay),
-    }));
-    meals.push({
-      slot: mealSlot(i, mealsPerDay),
-      components,
+  // Round once at the day level, then distribute that integer across the
+  // meals (giving the leftover grams to the first meals). Without this,
+  // independent per-meal Math.round() shaves ~½ g per component per meal —
+  // on small cats with five components × two meals, that's enough mass
+  // loss to drop a 130 g/day plan to 99 g/day.
+  const perMealComponents: PlannedComponent[][] = Array.from({ length: meals }, () => []);
+  for (const a of allocations) {
+    const dayTotal = Math.max(0, Math.round(a.grams));
+    const base = Math.floor(dayTotal / meals);
+    const remainder = dayTotal - base * meals;
+    for (let i = 0; i < meals; i++) {
+      perMealComponents[i]!.push({
+        ingredientId: a.ingredientId,
+        componentKey: a.componentKey,
+        grams: base + (i < remainder ? 1 : 0),
+      });
+    }
+  }
+
+  for (let i = 0; i < meals; i++) {
+    out.push({
+      slot: mealSlot(i, meals),
+      components: perMealComponents[i]!,
       kcal: Math.round(kcalPerMeal),
     });
   }
 
-  return meals;
+  return out;
 }
 
 function mealSlot(index: number, total: number): string {
