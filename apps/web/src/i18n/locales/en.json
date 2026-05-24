@@ -505,7 +505,9 @@
       "day": "day",
       "days": "days",
       "result": "Split",
-      "help": "Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving."
+      "help": "Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.",
+      "runtTip": "{{days}} days per bag would give you {{bags}} bags instead of {{current}} — same food, less plastic. Tap to switch.",
+      "floorReason": "Minimum {{bags}} bags for {{days}} days — cooked meat only keeps {{fridge}} days thawed."
     }
   },
   "nutrition": {

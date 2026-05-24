@@ -81,7 +81,10 @@ export type CookingPrefill = {
 // FDA-safe ceiling for cooked meats stored at ≤4 °C; we surface "use within
 // 2 days" copy because users open and re-seal the bag.
 const FRIDGE_SAFE_DAYS = 3;
-const DEFAULT_DAYS_PER_BAG = 2;
+// Default to the safety ceiling so the user gets the fewest bags by
+// default. Anything lower forces them to opt in to more plastic; the
+// slider still lets them drop to 1 if they want shorter fridge stays.
+const DEFAULT_DAYS_PER_BAG = 3;
 
 function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInput {
   if (!prefill) return base;
@@ -692,6 +695,24 @@ function BagStrategyPanel({
   const fmt = (n: number) => n.toLocaleString(i18n.language);
   const maxDays = Math.min(FRIDGE_SAFE_DAYS, feedingDays);
 
+  // Runt detection: when the user picks a shorter `daysPerBag`, the last
+  // bag often covers a fraction of a window (4 bags for 7 days at 2/bag =
+  // 2+2+2+1). If a higher `daysPerBag` would produce a strictly smaller
+  // bag count and stays within the safety cap, offer it as a tap target.
+  const upgrade = useMemo(() => {
+    if (daysPerBag >= maxDays) return null;
+    const next = daysPerBag + 1;
+    const nextBagCount = Math.max(1, Math.ceil(feedingDays / next));
+    if (nextBagCount >= bagCount) return null;
+    return { days: next, bags: nextBagCount };
+  }, [daysPerBag, maxDays, feedingDays, bagCount]);
+
+  // True when the user is already at the safety floor — the bag count
+  // can't be reduced without breaking the 3-day fridge rule. Used to
+  // surface the reason inline so they don't keep nudging the slider.
+  const atFloor = bagCount === Math.ceil(feedingDays / FRIDGE_SAFE_DAYS)
+    && feedingDays > FRIDGE_SAFE_DAYS;
+
   return (
     <Card padding="md" variant="muted" className="space-y-3 border-primary/30 bg-primary/5">
       <div className="flex items-center gap-2">
@@ -742,6 +763,22 @@ function BagStrategyPanel({
         </div>
       </div>
 
+      {upgrade && (
+        <button
+          type="button"
+          onClick={() => setDaysPerBag(upgrade.days)}
+          className="w-full text-left rounded-lg border border-primary/40 bg-primary/10 hover:bg-primary/15 active:bg-primary/20 transition-colors px-3 py-2 text-[11px] leading-snug font-bold text-primary min-h-[44px]"
+        >
+          {t('cooking.bagStrategy.runtTip', {
+            defaultValue:
+              '{{days}} days per bag would give you {{bags}} bags instead of {{current}} — same food, less plastic. Tap to switch.',
+            days: upgrade.days,
+            bags: upgrade.bags,
+            current: bagCount,
+          })}
+        </button>
+      )}
+
       <p className="text-xs text-foreground/90 leading-relaxed">
         {t('cooking.bagStrategy.help', {
           defaultValue: 'Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.',
@@ -751,6 +788,18 @@ function BagStrategyPanel({
           frozen: Math.max(0, bagCount - 1),
         })}
       </p>
+
+      {atFloor && (
+        <p className="text-[11px] text-muted-fg leading-snug">
+          {t('cooking.bagStrategy.floorReason', {
+            defaultValue:
+              'Minimum {{bags}} bags for {{days}} days — cooked meat only keeps {{fridge}} days thawed.',
+            bags: bagCount,
+            days: feedingDays,
+            fridge: FRIDGE_SAFE_DAYS,
+          })}
+        </p>
+      )}
     </Card>
   );
 }
