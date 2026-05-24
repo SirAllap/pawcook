@@ -62,6 +62,13 @@ export const DogMacroProfileSchema = z.enum([
   'real_ancestral',
 ]);
 
+// Preparation method, orthogonal to the diet approach itself. Each preset
+// has a canonical default (BARF/PMR/Ancestral → raw; Balanced/HighProtein
+// → fully_cooked); the user can override per-pet via the Cooking method
+// toggle on the form. PMR is locked to raw because cooked bone is unsafe.
+export const CookingPreparationSchema = z.enum(['raw', 'lightly_cooked', 'fully_cooked']);
+export type CookingPreparation = z.infer<typeof CookingPreparationSchema>;
+
 // Cat diet profiles — obligate-carnivore aware.
 //   • cat_cooked_carnivore : cooked, mandatory taurine + B-complex supplement
 //   • cat_pmr              : prey-model raw 84/6/10 (muscle/bone/organ)
@@ -92,6 +99,7 @@ export const NutritionInputSchema = z.object({
   reproductiveStatus: ReproductiveStatusSchema.default('neutered'),
   mealsPerDay: z.number().int().min(1).max(4).default(2),
   macroProfile: MacroRatioProfileSchema.default('balanced_cooked'),
+  cookingMethod: CookingPreparationSchema.optional(),
 }).superRefine((data, ctx) => {
   // Cross-field validation: species × age × profile coherence
   if (data.species === 'dog' && data.age === 'kitten') {
@@ -106,6 +114,15 @@ export const NutritionInputSchema = z.object({
   }
   if (data.species === 'cat' && !isCatProfile) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['macroProfile'], message: 'Dog diet profile selected for a cat — cats need a cat-specific profile.' });
+  }
+  // PMR (dog or cat) cannot be cooked: cooked bone splinters.
+  if ((data.macroProfile === 'pmr' || data.macroProfile === 'cat_pmr')
+      && data.cookingMethod && data.cookingMethod !== 'raw') {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['cookingMethod'],
+      message: 'PMR contains raw bone — switch to BARF (cooked) or use a custom diet with a calcium supplement.',
+    });
   }
 });
 

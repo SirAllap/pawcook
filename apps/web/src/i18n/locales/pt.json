@@ -84,6 +84,7 @@
       "reproStatus": "Estado reprodutivo",
       "mealsPerDay": "Refeições por dia",
       "dietSection": "Abordagem dietética",
+      "cookingMethod": "Método de cozedura",
       "notes": "Notas (opcional)",
       "notesPlaceholder": "Tudo o que vale a pena lembrar sobre este animal.",
       "create": "Criar animal",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Camundongos, codornas, pintos",
       "cat_barf_lite": "Cru + pouca verdura",
       "cat_cooked_carnivore": "+ suplemento de taurina"
+    },
+    "cooking": {
+      "raw": "Cru",
+      "lightly_cooked": "Pouco cozido",
+      "fully_cooked": "Bem cozido",
+      "nonCanonical": "{{preset}} é tradicionalmente alimentado cru — garanta que a sua receita cozida ainda forneça uma nutrição completa (especialmente cálcio).",
+      "pmrLockTitle": "PMR não pode ser cozinhado",
+      "pmrLockBody": "O cálcio do PMR vem do osso cru (10% da dieta). Ossos cozidos lascam e podem causar engasgo ou perfuração gastrointestinal. Mude para BARF cozinhado ou crie uma dieta personalizada com suplemento de cálcio.",
+      "pmrLockSwitchBarf": "Mudar para BARF (cozinhado)",
+      "pmrLockKeepRaw": "Manter PMR cru"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",

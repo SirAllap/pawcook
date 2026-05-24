@@ -84,6 +84,7 @@
       "reproStatus": "Fortpflanzungsstatus",
       "mealsPerDay": "Mahlzeiten pro Tag",
       "dietSection": "Ernährungsansatz",
+      "cookingMethod": "Zubereitungsart",
       "notes": "Notizen (optional)",
       "notesPlaceholder": "Was sonst noch wichtig ist über dieses Tier.",
       "create": "Tier anlegen",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Mäuse, Wachteln, Küken",
       "cat_barf_lite": "Roh + wenig Gemüse",
       "cat_cooked_carnivore": "+ Taurin-Supplement"
+    },
+    "cooking": {
+      "raw": "Roh",
+      "lightly_cooked": "Leicht gegart",
+      "fully_cooked": "Durchgegart",
+      "nonCanonical": "{{preset}} wird traditionell roh gefüttert — stelle sicher, dass dein gekochtes Rezept weiterhin eine vollständige Ernährung liefert (besonders Calcium).",
+      "pmrLockTitle": "PMR kann nicht gekocht werden",
+      "pmrLockBody": "Das Calcium von PMR stammt aus rohem Knochen (10% der Ration). Gekochte Knochen splittern und können zu Erstickung oder GI-Perforation führen. Wechsle zu BARF gekocht oder erstelle eine individuelle Diät mit Calciumpräparat.",
+      "pmrLockSwitchBarf": "Zu BARF (gekocht) wechseln",
+      "pmrLockKeepRaw": "PMR roh lassen"
     },
     "macroProtein": "Protein",
     "macroVeg": "Gemüse",

@@ -84,6 +84,7 @@
       "reproStatus": "Status rozrodczy",
       "mealsPerDay": "Posiłki dziennie",
       "dietSection": "Podejście do diety",
+      "cookingMethod": "Sposób przygotowania",
       "notes": "Notatki (opcjonalne)",
       "notesPlaceholder": "Cokolwiek warto zapamiętać o tym zwierzęciu.",
       "create": "Utwórz zwierzę",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Myszy, przepiórki, pisklęta",
       "cat_barf_lite": "Surowe + odrobina warzyw",
       "cat_cooked_carnivore": "+ suplement tauryny"
+    },
+    "cooking": {
+      "raw": "Surowe",
+      "lightly_cooked": "Lekko gotowane",
+      "fully_cooked": "W pełni ugotowane",
+      "nonCanonical": "{{preset}} jest tradycyjnie podawany na surowo — upewnij się, że Twój gotowany przepis nadal zapewnia pełnowartościowe odżywianie (szczególnie wapń).",
+      "pmrLockTitle": "PMR nie może być gotowane",
+      "pmrLockBody": "Wapń w PMR pochodzi z surowej kości (10% diety). Gotowane kości pękają i mogą powodować zadławienie lub perforację przewodu pokarmowego. Przełącz na gotowane BARF lub stwórz dietę niestandardową z suplementem wapnia.",
+      "pmrLockSwitchBarf": "Przełącz na BARF (gotowane)",
+      "pmrLockKeepRaw": "Zachowaj PMR na surowo"
     },
     "macroProtein": "białko",
     "macroVeg": "warzywa",

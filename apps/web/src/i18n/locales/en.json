@@ -84,6 +84,7 @@
       "reproStatus": "Reproductive status",
       "mealsPerDay": "Meals per day",
       "dietSection": "Diet approach",
+      "cookingMethod": "Cooking method",
       "notes": "Notes (optional)",
       "notesPlaceholder": "Anything else worth remembering about this pet.",
       "create": "Create pet",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Mice, quail, chicks",
       "cat_barf_lite": "Raw + small veg",
       "cat_cooked_carnivore": "+ taurine supplement"
+    },
+    "cooking": {
+      "raw": "Raw",
+      "lightly_cooked": "Lightly cooked",
+      "fully_cooked": "Fully cooked",
+      "nonCanonical": "{{preset}} is traditionally fed raw — make sure your cooked recipe still delivers complete nutrition (especially calcium).",
+      "pmrLockTitle": "PMR can't be cooked",
+      "pmrLockBody": "PMR's calcium comes from raw bone (10% of the diet). Cooked bones splinter and can cause choking or GI perforation. Switch to BARF cooked, or build a custom diet with a calcium supplement.",
+      "pmrLockSwitchBarf": "Switch to BARF (cooked)",
+      "pmrLockKeepRaw": "Keep PMR raw"
     },
     "macroProtein": "protein",
     "macroVeg": "veg",

@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Save, Trash2, AlertTriangle } from 'lucide-react';
+import { Save, Trash2, AlertTriangle, ChefHat } from 'lucide-react';
 import {
-  PetProfileSchema, newPetId,
+  PetProfileSchema, newPetId, getDietCookingDefaults,
   type PetProfile, type HealthCondition, type Species,
+  type DogMacroProfile, type CookingPreparation,
 } from '@pawcook/shared';
 import { Card } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
@@ -57,9 +58,10 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
   const { removePetReferences } = useMealPlans();
   const isEdit = Boolean(existing);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [pmrCookedDialog, setPmrCookedDialog] = useState(false);
 
   const {
-    register, control, handleSubmit, watch, reset,
+    register, control, handleSubmit, watch, reset, setValue,
     formState: { errors, isDirty, isSubmitting },
   } = useForm<PetProfile>({
     resolver: zodResolver(PetProfileSchema),
@@ -70,7 +72,17 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
   useUnsavedGuard(isDirty && !isSubmitting);
 
   const species = watch('nutrition.species');
+  const macroProfile = watch('nutrition.macroProfile');
+  const cookingMethod = watch('nutrition.cookingMethod');
   const dietKeys = species === 'cat' ? CAT_DIET_KEYS : DOG_DIET_KEYS;
+  // Cooking method axis is dog-only in this phase; cats inherit their
+  // preset's cooking convention until the feline custom creator ships.
+  const cookingDefaults = species === 'dog'
+    ? getDietCookingDefaults(macroProfile as DogMacroProfile)
+    : null;
+  const effectiveCooking: CookingPreparation | undefined = cookingDefaults
+    ? cookingMethod ?? cookingDefaults.defaultCookingMethod
+    : undefined;
   const ageGrowthLabel = species === 'cat' ? t('pets.age.kitten') : t('pets.age.puppy');
   const ageGrowthValue: 'puppy' | 'kitten' = species === 'cat' ? 'kitten' : 'puppy';
 
@@ -296,6 +308,48 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
             {errors.nutrition?.macroProfile?.message && (
               <p className="text-xs text-danger mt-2">{errors.nutrition.macroProfile.message}</p>
             )}
+
+            {/* Cooking method — dog-only for now. Orthogonal to the preset. */}
+            {cookingDefaults && (
+              <div className="space-y-2 mt-4">
+                <span className="flex items-center gap-1.5 text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                  <ChefHat className="h-3 w-3" aria-hidden />
+                  {t('pets.form.cookingMethod')}
+                </span>
+                <ToggleGroup
+                  type="single"
+                  value={effectiveCooking}
+                  onValueChange={(v) => {
+                    if (!v) return;
+                    const next = v as CookingPreparation;
+                    if (cookingDefaults.cookingLock && next !== cookingDefaults.cookingLock) {
+                      setPmrCookedDialog(true);
+                      return;
+                    }
+                    // Persist undefined when the user re-selects the canonical
+                    // default so we don't bloat stored pet profiles with no-op state.
+                    setValue(
+                      'nutrition.cookingMethod',
+                      next === cookingDefaults.defaultCookingMethod ? undefined : next,
+                      { shouldDirty: true },
+                    );
+                  }}
+                  aria-label={t('pets.form.cookingMethod')}
+                  className="grid grid-cols-3 w-full"
+                >
+                  <ToggleGroupItem value="raw">{t('nutrition.cooking.raw')}</ToggleGroupItem>
+                  <ToggleGroupItem value="lightly_cooked">{t('nutrition.cooking.lightly_cooked')}</ToggleGroupItem>
+                  <ToggleGroupItem value="fully_cooked">{t('nutrition.cooking.fully_cooked')}</ToggleGroupItem>
+                </ToggleGroup>
+                {cookingMethod && cookingMethod !== cookingDefaults.defaultCookingMethod && (
+                  <p className="text-[11px] text-warning leading-snug">
+                    {t('nutrition.cooking.nonCanonical', {
+                      preset: t(`nutrition.dietShort.${macroProfile}`),
+                    })}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Allergies */}
@@ -356,6 +410,36 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
           </div>
         </form>
       </Card>
+
+      <Sheet
+        open={pmrCookedDialog}
+        onOpenChange={setPmrCookedDialog}
+        title={
+          <span className="inline-flex items-center gap-2">
+            <AlertTriangle className="h-5 w-5 text-warning" aria-hidden />
+            {t('nutrition.cooking.pmrLockTitle')}
+          </span>
+        }
+        description={t('nutrition.cooking.pmrLockBody')}
+      >
+        <div className="flex flex-col gap-2 pt-2">
+          <Button
+            type="button"
+            variant="glow"
+            onClick={() => {
+              setValue('nutrition.macroProfile', 'barf', { shouldDirty: true });
+              setValue('nutrition.cookingMethod', 'fully_cooked', { shouldDirty: true });
+              setPmrCookedDialog(false);
+            }}
+            block
+          >
+            {t('nutrition.cooking.pmrLockSwitchBarf')}
+          </Button>
+          <Button type="button" variant="secondary" onClick={() => setPmrCookedDialog(false)} block>
+            {t('nutrition.cooking.pmrLockKeepRaw')}
+          </Button>
+        </div>
+      </Sheet>
 
       <Sheet
         open={confirmDelete}

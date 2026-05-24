@@ -84,6 +84,7 @@
       "reproStatus": "Statut reproductif",
       "mealsPerDay": "Repas par jour",
       "dietSection": "Approche alimentaire",
+      "cookingMethod": "Méthode de cuisson",
       "notes": "Notes (optionnel)",
       "notesPlaceholder": "Tout ce qui est utile à retenir sur cet animal.",
       "create": "Créer l'animal",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Souris, cailles, poussins",
       "cat_barf_lite": "Cru + un peu de légumes",
       "cat_cooked_carnivore": "+ supplément de taurine"
+    },
+    "cooking": {
+      "raw": "Cru",
+      "lightly_cooked": "Légèrement cuit",
+      "fully_cooked": "Bien cuit",
+      "nonCanonical": "{{preset}} est traditionnellement servi cru — assurez-vous que votre recette cuite apporte toujours une nutrition complète (surtout le calcium).",
+      "pmrLockTitle": "Le PMR ne peut pas être cuit",
+      "pmrLockBody": "Le calcium du PMR provient de l'os cru (10% de la ration). Les os cuits éclatent et peuvent provoquer un étouffement ou une perforation gastro-intestinale. Passez au BARF cuit, ou construisez une alimentation personnalisée avec un supplément de calcium.",
+      "pmrLockSwitchBarf": "Passer au BARF (cuit)",
+      "pmrLockKeepRaw": "Garder le PMR cru"
     },
     "macroProtein": "protéines",
     "macroVeg": "légumes",

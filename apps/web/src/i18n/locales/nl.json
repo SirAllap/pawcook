@@ -84,6 +84,7 @@
       "reproStatus": "Voortplantingsstatus",
       "mealsPerDay": "Maaltijden per dag",
       "dietSection": "Dieetaanpak",
+      "cookingMethod": "Bereidingswijze",
       "notes": "Notities (optioneel)",
       "notesPlaceholder": "Alles wat de moeite waard is om over dit dier te onthouden.",
       "create": "Huisdier aanmaken",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Muizen, kwartels, kuikens",
       "cat_barf_lite": "Rauw + beetje groente",
       "cat_cooked_carnivore": "+ taurine-supplement"
+    },
+    "cooking": {
+      "raw": "Rauw",
+      "lightly_cooked": "Licht gegaard",
+      "fully_cooked": "Doorgegaard",
+      "nonCanonical": "{{preset}} wordt traditioneel rauw gevoerd — zorg dat je gekookte recept nog steeds volledige voeding levert (vooral calcium).",
+      "pmrLockTitle": "PMR kan niet worden gekookt",
+      "pmrLockBody": "Het calcium in PMR komt uit rauw bot (10% van het dieet). Gekookte botten splinteren en kunnen verstikking of darmperforatie veroorzaken. Schakel over op BARF gekookt of bouw een eigen dieet met een calciumsupplement.",
+      "pmrLockSwitchBarf": "Overschakelen naar BARF (gekookt)",
+      "pmrLockKeepRaw": "PMR rauw houden"
     },
     "macroProtein": "eiwit",
     "macroVeg": "groenten",

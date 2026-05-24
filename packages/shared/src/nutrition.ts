@@ -1,4 +1,4 @@
-import type { NutritionInput, MacroRatioProfile, DogMacroProfile } from './schemas.js';
+import type { NutritionInput, MacroRatioProfile, DogMacroProfile, CookingPreparation } from './schemas.js';
 import { calculateCatNutrition } from './nutrition-cat.js';
 
 export type ComponentKey =
@@ -93,6 +93,10 @@ const COMPONENT_LABEL: Record<ComponentKey, string> = {
 
 interface ProfileSpec {
   isRaw: boolean;
+  defaultCookingMethod: CookingPreparation;
+  // When set, the user cannot override the cooking method for this profile.
+  // PMR is locked to raw because cooked bone splinters.
+  cookingLock?: CookingPreparation;
   components: { key: ComponentKey; pct: number }[];
 }
 
@@ -100,6 +104,7 @@ interface ProfileSpec {
 const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   balanced_cooked: {
     isRaw: false,
+    defaultCookingMethod: 'fully_cooked',
     components: [
       { key: 'protein', pct: 0.50 },
       { key: 'veg',     pct: 0.30 },
@@ -108,6 +113,7 @@ const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   },
   high_protein: {
     isRaw: false,
+    defaultCookingMethod: 'fully_cooked',
     components: [
       { key: 'protein', pct: 0.55 },
       { key: 'veg',     pct: 0.30 },
@@ -116,6 +122,8 @@ const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   },
   pmr: {
     isRaw: true,
+    defaultCookingMethod: 'raw',
+    cookingLock: 'raw',
     components: [
       { key: 'muscle', pct: 0.80 },
       { key: 'bone',   pct: 0.10 },
@@ -125,6 +133,7 @@ const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   },
   barf: {
     isRaw: true,
+    defaultCookingMethod: 'raw',
     components: [
       { key: 'muscle', pct: 0.70 },
       { key: 'bone',   pct: 0.10 },
@@ -137,6 +146,7 @@ const DIET_PROFILES: Record<DogMacroProfile, ProfileSpec> = {
   },
   real_ancestral: {
     isRaw: true,
+    defaultCookingMethod: 'raw',
     components: [
       { key: 'muscle',  pct: 0.64 },
       { key: 'bone',    pct: 0.11 },
@@ -187,6 +197,16 @@ export function getDietProfile(profile: DogMacroProfile): ProfileSpec {
   return DIET_PROFILES[profile];
 }
 
+// Form-layer helper: which cooking method does this preset default to, and is
+// it locked? Cheaper than importing the full ProfileSpec into UI code.
+export function getDietCookingDefaults(profile: DogMacroProfile): {
+  defaultCookingMethod: CookingPreparation;
+  cookingLock?: CookingPreparation;
+} {
+  const spec = DIET_PROFILES[profile];
+  return { defaultCookingMethod: spec.defaultCookingMethod, cookingLock: spec.cookingLock };
+}
+
 export function componentLabel(key: ComponentKey): string {
   return COMPONENT_LABEL[key];
 }
@@ -199,7 +219,7 @@ export function calculateNutrition(input: NutritionInput): NutritionResult {
 }
 
 function calculateDogNutrition(input: NutritionInput): NutritionResult {
-  const { weightKg, age, mealsPerDay, macroProfile, bodyCondition } = input;
+  const { weightKg, age, mealsPerDay, macroProfile, bodyCondition, cookingMethod } = input;
 
   const rer = calcRER(weightKg);
   const merMultiplier = getMerMultiplier(input);
@@ -208,11 +228,16 @@ function calculateDogNutrition(input: NutritionInput): NutritionResult {
   if (bodyCondition === 'underweight') der *= 1.2;
 
   const spec = DIET_PROFILES[macroProfile as DogMacroProfile];
+  // Effective cooking method: schema-enforced lock wins, then user override,
+  // then the spec's canonical default. Determines isRaw downstream.
+  const effectiveCooking: CookingPreparation =
+    spec.cookingLock ?? cookingMethod ?? spec.defaultCookingMethod;
+  const isRaw = effectiveCooking === 'raw';
 
   // Adults: 2–3% of body weight, puppies: 3–5%. Raw diets sit at the lower band.
   const dailyPct = age === 'puppy'
     ? { min: 0.03, max: 0.05 }
-    : spec.isRaw
+    : isRaw
       ? { min: 0.02, max: 0.03 }
       : { min: 0.025, max: 0.035 };
 
@@ -267,7 +292,7 @@ function calculateDogNutrition(input: NutritionInput): NutritionResult {
     if (aafcoStatus === 'pass') aafcoStatus = 'caution';
   }
 
-  if (calciumSupplementMg > 0 && !spec.isRaw) {
+  if (calciumSupplementMg > 0 && !isRaw) {
     warnings.push({ id: 'cookedCaDeficient', values: { calcium: calciumSupplementMg } });
   }
 
@@ -275,7 +300,7 @@ function calculateDogNutrition(input: NutritionInput): NutritionResult {
     { id: 'rer', values: { kcal: Math.round(rer) } },
     { id: 'der', values: { kcal: Math.round(der), multiplier: merMultiplier.toFixed(1) } },
   ];
-  if (macroProfile === 'pmr' || macroProfile === 'barf' || macroProfile === 'real_ancestral') {
+  if (isRaw) {
     notes.push({ id: 'rawDiet' });
   }
   if (macroProfile === 'real_ancestral') {
@@ -308,6 +333,6 @@ function calculateDogNutrition(input: NutritionInput): NutritionResult {
     warnings,
     aafcoStatus,
     dietProfile: macroProfile,
-    isRawDiet: spec.isRaw,
+    isRawDiet: isRaw,
   };
 }

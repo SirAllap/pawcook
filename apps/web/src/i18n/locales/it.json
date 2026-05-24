@@ -84,6 +84,7 @@
       "reproStatus": "Stato riproduttivo",
       "mealsPerDay": "Pasti al giorno",
       "dietSection": "Approccio dietetico",
+      "cookingMethod": "Metodo di cottura",
       "notes": "Note (opzionale)",
       "notesPlaceholder": "Tutto ciò che è utile ricordare su questo animale.",
       "create": "Crea animale",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Topi, quaglie, pulcini",
       "cat_barf_lite": "Crudo + poca verdura",
       "cat_cooked_carnivore": "+ integratore di taurina"
+    },
+    "cooking": {
+      "raw": "Crudo",
+      "lightly_cooked": "Poco cotto",
+      "fully_cooked": "Ben cotto",
+      "nonCanonical": "{{preset}} viene tradizionalmente servito crudo — assicurati che la tua ricetta cotta fornisca comunque una nutrizione completa (specialmente il calcio).",
+      "pmrLockTitle": "Il PMR non può essere cotto",
+      "pmrLockBody": "Il calcio del PMR proviene dall'osso crudo (10% della dieta). Le ossa cotte si scheggiano e possono causare soffocamento o perforazione gastrointestinale. Passa a BARF cotto, o crea una dieta personalizzata con integratore di calcio.",
+      "pmrLockSwitchBarf": "Passa a BARF (cotto)",
+      "pmrLockKeepRaw": "Mantieni PMR crudo"
     },
     "macroProtein": "proteine",
     "macroVeg": "verdure",

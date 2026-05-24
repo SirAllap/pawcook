@@ -84,6 +84,7 @@
       "reproStatus": "Estado reproductivo",
       "mealsPerDay": "Comidas al día",
       "dietSection": "Enfoque de dieta",
+      "cookingMethod": "Método de cocción",
       "notes": "Notas (opcional)",
       "notesPlaceholder": "Cualquier dato útil sobre esta mascota.",
       "create": "Crear mascota",
@@ -508,6 +509,16 @@
       "cat_whole_prey": "Ratones, codornices, pollitos",
       "cat_barf_lite": "Crudo + verdura",
       "cat_cooked_carnivore": "+ suplemento de taurina"
+    },
+    "cooking": {
+      "raw": "Crudo",
+      "lightly_cooked": "Poco cocinado",
+      "fully_cooked": "Bien cocinado",
+      "nonCanonical": "{{preset}} se alimenta tradicionalmente en crudo — asegúrate de que tu receta cocida siga aportando una nutrición completa (especialmente calcio).",
+      "pmrLockTitle": "PMR no se puede cocinar",
+      "pmrLockBody": "El calcio del PMR viene del hueso crudo (10% de la dieta). Los huesos cocidos se astillan y pueden causar asfixia o perforación gastrointestinal. Cambia a BARF cocinado o crea una dieta personalizada con suplemento de calcio.",
+      "pmrLockSwitchBarf": "Cambiar a BARF (cocinado)",
+      "pmrLockKeepRaw": "Mantener PMR crudo"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
