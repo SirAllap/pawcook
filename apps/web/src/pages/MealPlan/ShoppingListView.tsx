@@ -37,6 +37,10 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       feedingDays: plan.durationDays,
       cookingMethod: plan.sourcing.preferredCookingMethod,
       planId: plan.id,
+      // Pass the ingredient so the calculator can look up the plan's
+      // actual cooking batches for this protein instead of fabricating a
+      // schedule from totalWeight + feedingDays.
+      ingredientId: item.ingredientId,
     };
     // Hand off via the URL hash (primary — never stripped by any browser
     // or webview), plus in-memory module and localStorage as backups.
