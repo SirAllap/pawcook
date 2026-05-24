@@ -95,7 +95,11 @@ const FRIDGE_SAFE_DAYS = 3;
 // slider still lets them drop to 1 if they want shorter fridge stays.
 const DEFAULT_DAYS_PER_BAG = 3;
 
-function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInput {
+function applyPrefill(
+  base: CookingInput,
+  prefill?: CookingPrefill,
+  planBatches?: import('@pawcook/shared').CookingBatch[] | null,
+): CookingInput {
   if (!prefill) return base;
   const merged = { ...base };
   const parsedMeat = MeatTypeSchema.safeParse(prefill.meatType);
@@ -105,10 +109,17 @@ function applyPrefill(base: CookingInput, prefill?: CookingPrefill): CookingInpu
   if (typeof prefill.totalWeightKg === 'number' && Number.isFinite(prefill.totalWeightKg)) {
     // Cap to the schema max so router payloads can't bypass validation.
     merged.totalWeightKg = Math.min(30, Math.max(0.1, prefill.totalWeightKg));
-    // Seed sous-vide bag fields too so switching methods doesn't lose the
-    // prefilled total. We assume DEFAULT_DAYS_PER_BAG; the user can tune
-    // it via the bag-strategy panel.
-    if (prefill.feedingDays && prefill.feedingDays > 0) {
+    // When we have the plan's real cooking batches, use those directly so
+    // the form initializes with the exact bag count and per-bag weight the
+    // panel will render. Otherwise fall back to the days-per-bag heuristic
+    // (legacy URLs, missing plan, non-sous-vide).
+    if (planBatches && planBatches.length > 0) {
+      const totalGrams = planBatches.reduce((s, b) => s + b.totalGrams, 0);
+      const bagCount = Math.min(20, Math.max(1, planBatches.length));
+      const weightPerBag = Math.min(5, Math.max(0.1, (totalGrams / 1000) / bagCount));
+      merged.numberOfBags = bagCount;
+      merged.weightKg = Math.round(weightPerBag * 100) / 100;
+    } else if (prefill.feedingDays && prefill.feedingDays > 0) {
       const bagCount = Math.max(1, Math.ceil(prefill.feedingDays / DEFAULT_DAYS_PER_BAG));
       const weightPerBag = Math.min(5, Math.max(0.1, merged.totalWeightKg / bagCount));
       merged.numberOfBags = Math.min(20, bagCount);
@@ -166,6 +177,19 @@ export default function CookingCalculator() {
     prefillRef.current = consumePendingCookingPrefill(location.hash);
   }
   const prefill = prefillRef.current;
+  // Resolve the plan's actual cooking batches for this prefill (when the
+  // user came from a "Cook" button on the shopping list). Threaded into
+  // applyPrefill so the form's bag count and per-bag weight initialize
+  // with the real numbers, not the days-per-bag heuristic — otherwise the
+  // form fields stay stale even though the Bag Strategy panel above them
+  // shows the correct schedule.
+  const initialPlanBatches = useMemo(() => {
+    if (!prefill?.planId || !prefill?.ingredientId) return null;
+    const plan = getPlan(prefill.planId);
+    if (!plan?.cookingPlan) return null;
+    const b = plan.cookingPlan.batches.filter((x) => x.ingredientId === prefill.ingredientId);
+    return b.length > 0 ? b : null;
+  }, [prefill, getPlan]);
   const [prefillBanner, setPrefillBanner] = useState<CookingPrefill | null>(prefill ?? null);
   const [result, setResult] = useState<CookingResult | null>(null);
   const [submittedData, setSubmittedData] = useState<CookingInput | null>(null);
@@ -186,7 +210,7 @@ export default function CookingCalculator() {
   const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm<CookingInput>({
     resolver: zodResolver(CookingInputSchema),
     mode: 'onBlur',
-    defaultValues: applyPrefill(loadSaved(), prefill ?? undefined),
+    defaultValues: applyPrefill(loadSaved(), prefill ?? undefined, initialPlanBatches),
   });
 
   // If the user was already on /cooking and tapped another "Cook" button
@@ -196,7 +220,17 @@ export default function CookingCalculator() {
   useEffect(() => {
     const fresh = consumePendingCookingPrefill(location.hash);
     if (!fresh) return;
-    reset(applyPrefill(loadSaved(), fresh));
+    // Re-resolve plan batches for the new prefill — they drive the form's
+    // initial bag count and per-bag weight, same as on first mount.
+    let freshBatches: import('@pawcook/shared').CookingBatch[] | null = null;
+    if (fresh.planId && fresh.ingredientId) {
+      const plan = getPlan(fresh.planId);
+      if (plan?.cookingPlan) {
+        const b = plan.cookingPlan.batches.filter((x) => x.ingredientId === fresh.ingredientId);
+        freshBatches = b.length > 0 ? b : null;
+      }
+    }
+    reset(applyPrefill(loadSaved(), fresh, freshBatches));
     setPrefillBanner(fresh);
     setResult(null);
     setSubmittedData(null);
