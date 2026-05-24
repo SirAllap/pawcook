@@ -247,7 +247,9 @@
       "anyMeats": "Dowolne · planer wybiera",
       "anyVeggies": "Dowolne · planer wybiera",
       "methodLabel": "Metoda gotowania",
-      "methodHelp": "Zapamiętujemy to, aby przycisk \"Gotuj\" na liście zakupów otwierał kalkulator już ustawiony pod ciebie."
+      "methodHelp": "Zapamiętujemy to, aby przycisk \"Gotuj\" na liście zakupów otwierał kalkulator już ustawiony pod ciebie.",
+      "includeOrgans": "Uwzględnij podroby (wątroba, nerka, śledziona)",
+      "includeOrgansHelp": "Wyłączone = brak podrobów na liście zakupów. Uwaga: diety surowe wymagają podrobów dla witaminy A i (u kotów) tauryny."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",

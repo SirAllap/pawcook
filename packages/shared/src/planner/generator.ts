@@ -77,6 +77,11 @@ function buildPetDay(
 
   const allocations: PlannedComponent[] = components
     .filter((c) => c.grams > 0)
+    // Skip organ slots entirely when the user opted out, rather than
+    // leaving them empty or filled with a placeholder. The plan ends up
+    // nutritionally lighter (no vitamin A, no taurine from organs) but
+    // matches what the user actually buys.
+    .filter((c) => sourcing.includeOrgans || (c.key !== 'liver' && c.key !== 'organ'))
     .map((component) => pickIngredientForComponent(pet, component, dayIndex, seed, sourcing, dislikedSet));
 
   const meals = splitIntoMeals(allocations, pet.nutrition.mealsPerDay, nutrition);

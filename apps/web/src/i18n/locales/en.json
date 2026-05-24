@@ -247,7 +247,9 @@
       "anyMeats": "Any · planner picks",
       "anyVeggies": "Any · planner picks",
       "methodLabel": "Cooking method",
-      "methodHelp": "We remember this so \"Cook\" buttons in the shopping list open the calculator already set up your way."
+      "methodHelp": "We remember this so \"Cook\" buttons in the shopping list open the calculator already set up your way.",
+      "includeOrgans": "Include organ meats (liver, kidney, spleen)",
+      "includeOrgansHelp": "Off = no organs in the shopping list. Heads up: raw-style diets rely on organs for vitamin A and (for cats) taurine."
     },
     "coverage": {
       "passed": "Looks balanced",

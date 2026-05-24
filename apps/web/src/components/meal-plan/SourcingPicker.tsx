@@ -157,6 +157,14 @@ export function SourcingPicker({
       <div className="space-y-2.5">
         <SectionLabel>{t('mealPlan.sourcing.prefsLabel')}</SectionLabel>
         <SourcingFlag
+          label={t('mealPlan.sourcing.includeOrgans', { defaultValue: 'Include organ meats (liver, kidney, spleen)' })}
+          help={t('mealPlan.sourcing.includeOrgansHelp', {
+            defaultValue: 'Off = no organs in the shopping list. Heads up: raw-style diets rely on organs for vitamin A and (for cats) taurine.',
+          })}
+          checked={value.includeOrgans}
+          onChange={(v) => onChange({ ...value, includeOrgans: v })}
+        />
+        <SourcingFlag
           label={t('mealPlan.sourcing.preferWildFish')}
           checked={value.preferWildFish}
           onChange={(v) => onChange({ ...value, preferWildFish: v })}
@@ -234,16 +242,20 @@ function IngredientChips({
 }
 
 function SourcingFlag({
-  label, checked, onChange,
+  label, help, checked, onChange,
 }: {
   label: string;
+  help?: string;
   checked: boolean;
   onChange: (next: boolean) => void;
 }) {
   return (
     <label className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-surface-2 p-3 cursor-pointer min-h-[44px]">
-      <span className="text-sm font-bold text-foreground">{label}</span>
-      <Switch checked={checked} onCheckedChange={onChange} />
+      <span className="flex-1 min-w-0">
+        <span className="block text-sm font-bold text-foreground">{label}</span>
+        {help && <span className="block text-[11px] text-muted-fg leading-snug mt-0.5">{help}</span>}
+      </span>
+      <Switch checked={checked} onCheckedChange={onChange} className="shrink-0" />
     </label>
   );
 }

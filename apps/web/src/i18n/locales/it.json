@@ -247,7 +247,9 @@
       "anyMeats": "Qualsiasi · sceglie il planner",
       "anyVeggies": "Qualsiasi · sceglie il planner",
       "methodLabel": "Metodo di cottura",
-      "methodHelp": "Lo ricordiamo così che il pulsante \"Cuoci\" nella lista della spesa apra il calcolatore già impostato come preferisci."
+      "methodHelp": "Lo ricordiamo così che il pulsante \"Cuoci\" nella lista della spesa apra il calcolatore già impostato come preferisci.",
+      "includeOrgans": "Includi frattaglie (fegato, rene, milza)",
+      "includeOrgansHelp": "Disattivato = niente frattaglie nella lista. Nota: le diete crude dipendono dalle frattaglie per vitamina A e (per i gatti) taurina."
     },
     "coverage": {
       "passed": "Sembra bilanciato",

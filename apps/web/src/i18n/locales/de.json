@@ -247,7 +247,9 @@
       "anyMeats": "Beliebig · Planer wählt",
       "anyVeggies": "Beliebig · Planer wählt",
       "methodLabel": "Garmethode",
-      "methodHelp": "Wir merken uns das, damit die \"Kochen\"-Buttons in der Einkaufsliste den Rechner schon nach deinem Workflow eingestellt öffnen."
+      "methodHelp": "Wir merken uns das, damit die \"Kochen\"-Buttons in der Einkaufsliste den Rechner schon nach deinem Workflow eingestellt öffnen.",
+      "includeOrgans": "Innereien einbeziehen (Leber, Niere, Milz)",
+      "includeOrgansHelp": "Aus = keine Innereien auf der Einkaufsliste. Achtung: Rohfütterung ist auf Innereien angewiesen für Vitamin A und (bei Katzen) Taurin."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",

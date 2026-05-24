@@ -247,7 +247,9 @@
       "anyMeats": "N'importe lesquels",
       "anyVeggies": "N'importe lesquels",
       "methodLabel": "Méthode de cuisson",
-      "methodHelp": "Nous mémorisons ce choix pour que le bouton « Cuire » de la liste de courses ouvre la calculatrice déjà configurée comme vous le souhaitez."
+      "methodHelp": "Nous mémorisons ce choix pour que le bouton « Cuire » de la liste de courses ouvre la calculatrice déjà configurée comme vous le souhaitez.",
+      "includeOrgans": "Inclure les abats (foie, rognon, rate)",
+      "includeOrgansHelp": "Désactivé = pas d'abats dans la liste. Attention : les régimes crus dépendent des abats pour la vitamine A et (pour les chats) la taurine."
     },
     "coverage": {
       "passed": "Semble équilibré",

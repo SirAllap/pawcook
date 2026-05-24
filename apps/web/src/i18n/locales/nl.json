@@ -247,7 +247,9 @@
       "anyMeats": "Elke · planner kiest",
       "anyVeggies": "Elke · planner kiest",
       "methodLabel": "Bereidingswijze",
-      "methodHelp": "We onthouden dit zodat de \"Koken\"-knoppen in de boodschappenlijst de calculator meteen op jouw manier openen."
+      "methodHelp": "We onthouden dit zodat de \"Koken\"-knoppen in de boodschappenlijst de calculator meteen op jouw manier openen.",
+      "includeOrgans": "Voeg orgaanvlees toe (lever, nier, milt)",
+      "includeOrgansHelp": "Uit = geen orgaanvlees op de boodschappenlijst. Let op: rauwe diëten zijn afhankelijk van orgaanvlees voor vitamine A en (bij katten) taurine."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
