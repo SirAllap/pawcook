@@ -139,7 +139,7 @@ export default function CookingCalculator() {
   // because React 18 may run the initializer twice; we just memo it).
   const prefillRef = useRef<CookingPrefill | null | undefined>(undefined);
   if (prefillRef.current === undefined) {
-    prefillRef.current = consumePendingCookingPrefill();
+    prefillRef.current = consumePendingCookingPrefill(location.hash);
   }
   const prefill = prefillRef.current;
   const [prefillBanner, setPrefillBanner] = useState<CookingPrefill | null>(prefill ?? null);
@@ -170,7 +170,7 @@ export default function CookingCalculator() {
   // localStorage and then navigate() bumped location.key. Read-and-apply
   // here so the form rebinds without needing a remount.
   useEffect(() => {
-    const fresh = consumePendingCookingPrefill();
+    const fresh = consumePendingCookingPrefill(location.hash);
     if (!fresh) return;
     reset(applyPrefill(loadSaved(), fresh));
     setPrefillBanner(fresh);

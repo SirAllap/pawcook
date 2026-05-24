@@ -14,7 +14,7 @@ import { PetTag } from '../../components/meal-plan/PetTag';
 import { useRecipeExport } from '../../hooks/useRecipeExport';
 import { useShoppingChecks } from '../../contexts/ShoppingChecksContext';
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
-import { setPendingCookingPrefill } from '../../lib/cooking-prefill-bridge';
+import { setPendingCookingPrefill, buildPrefillHash } from '../../lib/cooking-prefill-bridge';
 import { cn } from '../../lib/cn';
 import type { CookingPrefill } from '../CookingCalculator';
 
@@ -37,11 +37,11 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       feedingDays: plan.durationDays,
       cookingMethod: plan.sourcing.preferredCookingMethod,
     };
-    // Hand off via the module-level bridge (in-memory, cannot fail) AND
-    // localStorage as a backup. CookingCalculator's consume reads both
-    // tiers so we cover lazy-load timing and storage-blocked browsers.
+    // Hand off via the URL hash (primary — never stripped by any browser
+    // or webview), plus in-memory module and localStorage as backups.
+    // CookingCalculator's consume checks all three.
     setPendingCookingPrefill(prefill);
-    navigate('/cooking');
+    navigate(`/cooking#${buildPrefillHash(prefill)}`);
   }
 
   const exportConfig = useMemo(() => ({
