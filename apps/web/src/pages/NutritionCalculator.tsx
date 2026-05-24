@@ -67,6 +67,9 @@ const DIET_META: Record<MacroRatioProfile, { emoji: string; label: string; sub: 
   pmr:             { emoji: '🦴', label: 'PMR 80/10/10',   sub: 'Raw, ancestral' },
   barf:            { emoji: '🌿', label: 'BARF',           sub: 'Raw + veg' },
   real_ancestral:  { emoji: '🐺', label: 'Real ancestral', sub: 'Raw + seafood' },
+  // Custom is set on pet profiles, not the standalone calculator — falls back
+  // to a generic label if a saved input happens to carry it.
+  custom:          { emoji: '🛠️', label: 'Custom mix',     sub: 'Your own ratio' },
   // Cat profiles
   cat_pmr:              { emoji: '🦴', label: 'PMR 84/6/10',     sub: 'Prey model raw' },
   cat_frankenprey:      { emoji: '🥩', label: 'Frankenprey',     sub: 'Assembled raw cuts' },

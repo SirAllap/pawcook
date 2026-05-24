@@ -60,4 +60,56 @@ describe('calculateNutrition', () => {
     expect(r.components.map(c => c.key)).toContain('seafood');
     expect(r.components.map(c => c.key)).toContain('fiber');
   });
+
+  it('cookingMethod=raw on a cooked preset flips the engine to raw allowances', () => {
+    const cooked = calculateNutrition({ ...base, macroProfile: 'balanced_cooked' });
+    const raw = calculateNutrition({ ...base, macroProfile: 'balanced_cooked', cookingMethod: 'raw' });
+    expect(raw.isRawDiet).toBe(true);
+    expect(cooked.isRawDiet).toBe(false);
+    // Raw diets are fed at the lower 2–3% of BW band vs. 2.5–3.5% for cooked.
+    expect(raw.dailyFoodGrams.min).toBeLessThan(cooked.dailyFoodGrams.min);
+  });
+
+  it('custom diet (90/10 cooked) produces a meat-led component split', () => {
+    const r = calculateNutrition({
+      ...base,
+      macroProfile: 'custom',
+      cookingMethod: 'fully_cooked',
+      customDiet: {
+        mode: 'easy',
+        macros: { protein: 90, fat: 0, veg: 10, carb: 0 },
+        calciumSource: 'eggshell',
+        supplements: { omega3: false, vitaminE: false, taurine: false, multivitamin: false },
+      },
+    });
+    expect(r.isRawDiet).toBe(false);
+    const protein = r.components.find((c) => c.key === 'protein');
+    const veg = r.components.find((c) => c.key === 'veg');
+    expect(protein?.pct).toBeCloseTo(0.9, 2);
+    expect(veg?.pct).toBeCloseTo(0.1, 2);
+    // Cooked + no calcium source → engine surfaces a Ca deficiency warning.
+    expect(r.warnings.map((w) => w.id)).toContain('cookedCaDeficient');
+  });
+
+  it('custom diet with proteinComposition splits muscle/organ/bone in raw mode', () => {
+    const r = calculateNutrition({
+      ...base,
+      macroProfile: 'custom',
+      cookingMethod: 'raw',
+      customDiet: {
+        mode: 'advanced',
+        macros: { protein: 80, fat: 0, veg: 20, carb: 0 },
+        proteinComposition: { muscle: 80, organ: 10, bone: 10 },
+        calciumSource: 'bone_in',
+        supplements: { omega3: false, vitaminE: false, taurine: false, multivitamin: false },
+      },
+    });
+    expect(r.isRawDiet).toBe(true);
+    expect(r.components.map((c) => c.key)).toContain('muscle');
+    expect(r.components.map((c) => c.key)).toContain('bone');
+    expect(r.components.map((c) => c.key)).toContain('liver');
+    expect(r.components.map((c) => c.key)).toContain('organ');
+    // Bone supplies the calcium — no supplement needed.
+    expect(r.calciumSupplementMg).toBe(0);
+  });
 });

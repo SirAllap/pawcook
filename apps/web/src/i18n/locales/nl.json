@@ -84,6 +84,7 @@
       "reproStatus": "Voortplantingsstatus",
       "mealsPerDay": "Maaltijden per dag",
       "dietSection": "Dieetaanpak",
+      "cookingMethod": "Bereidingswijze",
       "notes": "Notities (optioneel)",
       "notesPlaceholder": "Alles wat de moeite waard is om over dit dier te onthouden.",
       "create": "Huisdier aanmaken",
@@ -291,6 +292,25 @@
     "toast": {
       "saved": "\"{{name}}\" opgeslagen.",
       "deleted": "\"{{name}}\" verwijderd."
+    },
+    "refusal": {
+      "title": "Plan niet gegenereerd",
+      "subtitle": "Los deze problemen op en probeer opnieuw. Als een dierenarts dit dieet voor een medische aandoening heeft voorgeschreven, open het huisdier en markeer het dieet als voorgeschreven om de flexibele controles te versoepelen.",
+      "editPet": "Huisdier bewerken",
+      "vetOverrideHint": "Kan worden versoepeld met een bijpassend dierenartsvoorschrift.",
+      "severity": {
+        "absolute": "Absoluut",
+        "overridable": "Te overschrijven"
+      },
+      "rule": {
+        "zero_protein": "Het dieet heeft 0% eiwit — elke hond heeft voedingseiwit nodig.",
+        "protein_below_nrc_min": "Eiwit is {{value}}% — onder het FEDIAF/NRC-onderhoudsminimum voor volwassenen van {{threshold}}%.",
+        "cooked_bone": "Het dieet bevat gekookt bot, dat splintert en verstikking of darmperforatie kan veroorzaken. Schakel de bereidingswijze naar rauw of verwijder bot uit de eiwitsamenstelling.",
+        "high_phosphorus_ckd": "Fosfor overschrijdt de CNI-grens.",
+        "ca_p_inverted": "Ca:P-verhouding {{value}}:1 valt buiten het veilige AAFCO-bereik van {{threshold}}:1 tot 2:1.",
+        "high_fat_pancreatitis": "Vet is {{value}}% — boven het pancreatitis-veilige plafond van {{threshold}}%.",
+        "expired_vet_review": "De controledatum van het dierenartsvoorschrift is verstreken. Bevestig het plan opnieuw met de dierenarts voordat je nieuwe plannen genereert."
+      }
     }
   },
   "condition": {
@@ -479,14 +499,14 @@
       "lactating": "Lacterend"
     },
     "diets": {
-      "balanced_cooked": "Gekookt gebalanceerd (aanbevolen door dierenarts) — 40% eiwit / 50% groenten / 10% zetmeel",
+      "balanced_cooked": "Mager gekookt (basislijn aanbevolen door dierenarts) — 50% eiwit / 30% groenten / 20% zetmeel",
       "high_protein": "Eiwitrijk gekookt — 50% eiwit / 30% groenten / 15% zetmeel",
       "pmr": "PMR 80-10-10 (gevorderd)"
     },
     "vetDisclaimer": "Dit hulpmiddel biedt alleen algemene richtlijnen. Raadpleeg een gecertificeerde veterinaire voedingsdeskundige (ACVN) voor langdurige huisvoeding.",
     "profileSection": "Hondenprofiel",
     "dietShort": {
-      "balanced_cooked": "Gebalanceerd",
+      "balanced_cooked": "Mager Gekookt",
       "high_protein": "Eiwitrijk",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -495,19 +515,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Hele prooi",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Gekookte carnivoor"
+      "cat_cooked_carnivore": "Gekookte carnivoor",
+      "custom": "+ Aangepast"
     },
     "dietSub": {
-      "balanced_cooked": "40% eiwit / 50% groenten",
-      "high_protein": "55% eiwit / 30% groenten",
-      "pmr": "Rauw 80-10-10",
-      "barf": "Rauw + groenten + zaden",
-      "real_ancestral": "Rauw + vis + vezel",
+      "balanced_cooked": "50% eiwit / 30% groenten / 20% zetmeel",
+      "high_protein": "55% eiwit / 30% groenten / 15% zetmeel",
+      "pmr": "80% vlees / 10% bot / 10% orgaan — geen groenten",
+      "barf": "70% vlees-bot-orgaan / 30% groenten & extra's",
+      "real_ancestral": "64% spier / 11% bot / 10% vis / 10% orgaan / 5% vezel",
       "cat_pmr": "Prooi-model rauw",
       "cat_frankenprey": "Samengestelde rauwe stukken",
       "cat_whole_prey": "Muizen, kwartels, kuikens",
       "cat_barf_lite": "Rauw + beetje groente",
-      "cat_cooked_carnivore": "+ taurine-supplement"
+      "cat_cooked_carnivore": "+ taurine-supplement",
+      "custom": "Bouw je eigen"
+    },
+    "custom": {
+      "title": "Je eigen mix",
+      "expandAdvanced": "Geavanceerd tonen",
+      "collapseAdvanced": "Geavanceerd verbergen",
+      "nearest": "Dichtstbij:",
+      "sumLabel": "Macros totaal",
+      "compositionLabel": "Eiwitsamenstelling (spier / orgaan / bot)",
+      "compositionHelp": "Onderdeel van de eiwitportie. Handig bij PMR-achtige verhoudingen.",
+      "calciumLabel": "Calciumbron",
+      "supplementsLabel": "Aanbevolen supplementen",
+      "pills": {
+        "lean": "Mager gekookt",
+        "protein": "Eiwitrijk",
+        "meat90": "90/10 vlees"
+      },
+      "calcium": {
+        "bone_in": "Rauw bot",
+        "eggshell": "Eierschaalpoeder",
+        "supplement": "Calciumsupplement",
+        "none": "Geen / niet toegevoegd"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Vooral vlees. Voeg een calciumbron toe — er zit geen bot in deze mix.",
+        "highMeat": "Vlees als basis, met een klein groente-aandeel. Veelvoorkomend gekookt patroon voorgeschreven door dierenartsen.",
+        "balancedMeat": "Evenwichtige vlees-plantaardige verdeling — gulden middenweg voor volwassen honden.",
+        "vegHeavy": "Veel groenten. Zorg dat je eiwit dicht genoeg is om de dagelijkse behoefte te dekken.",
+        "mixed": "Gemengd bord. Controleer of de totalen op 100% uitkomen."
+      },
+      "warn": {
+        "lowProtein": "Eiwit ligt onder het FEDIAF/NRC-volwassenenminimum (~18%). Bevestig met je dierenarts.",
+        "noCalcium": "Geen calciumbron voor een all-vleesplan. Voeg bot, eierschaal of een supplement toe.",
+        "highBone": "Meer dan 15% bot kan verstopping veroorzaken."
+      },
+      "vetPrescribed": "Dit dieet is voorgeschreven door de dierenarts",
+      "vetPrescribedHelp": "Een dieet als voorgeschreven markeren laat de planner veiligheidscontroles versoepelen die normaal plannen zouden blokkeren (bijv. laag eiwit bij gevorderde CNI). Toxicologische regels (gekookt bot, allium, xylitol enz.) blijven actief.",
+      "vetName": "Voorschrijvende dierenarts (optioneel)",
+      "condition": "Aandoening",
+      "reviewDate": "Volgende controledatum",
+      "conditions": {
+        "renal_ckd": "Chronische nierziekte",
+        "hepatic": "Leverziekte",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "IBD / chronische enteropathie",
+        "food_allergy": "Voedselallergie (eliminatiedieet)",
+        "urolithiasis_struvite": "Urinestenen — struviet",
+        "urolithiasis_calcium_oxalate": "Urinestenen — calciumoxalaat",
+        "urolithiasis_urate": "Urinestenen — uraat",
+        "diabetes": "Diabetes",
+        "obesity": "Obesitas (gewichtsverlies)",
+        "cardiac": "Cardiaal",
+        "epi": "EPI (alvleesklierinsufficiëntie)",
+        "cancer_cachexia": "Kanker / cachexie",
+        "other": "Andere"
+      }
+    },
+    "cooking": {
+      "raw": "Rauw",
+      "lightly_cooked": "Licht gegaard",
+      "fully_cooked": "Doorgegaard",
+      "nonCanonical": "{{preset}} wordt traditioneel rauw gevoerd — zorg dat je gekookte recept nog steeds volledige voeding levert (vooral calcium).",
+      "pmrLockTitle": "PMR kan niet worden gekookt",
+      "pmrLockBody": "Het calcium in PMR komt uit rauw bot (10% van het dieet). Gekookte botten splinteren en kunnen verstikking of darmperforatie veroorzaken. Schakel over op BARF gekookt of bouw een eigen dieet met een calciumsupplement.",
+      "pmrLockSwitchBarf": "Overschakelen naar BARF (gekookt)",
+      "pmrLockKeepRaw": "PMR rauw houden"
     },
     "macroProtein": "eiwit",
     "macroVeg": "groenten",
@@ -719,7 +812,7 @@
       "foodSafety": "Giftige voeding, veilig vlees, groenten, fruit.",
       "supplements": "AAFCO-doelen, balancers en een 7-daagse overgang.",
       "dietsTitle": "5 dieetprofielen",
-      "dietsDesc": "Gebalanceerd gekookt · BARF · PMR · Eiwitrijk · Ancestral.",
+      "dietsDesc": "Mager gekookt · BARF · PMR · Eiwitrijk · Ancestral.",
       "langTitle": "8 talen",
       "langDesc": "Volledig vertaald, waar je ook kookt.",
       "preview": {
@@ -746,7 +839,7 @@
       },
       "step2": {
         "title": "Kies een dieet dat je vertrouwt",
-        "desc": "Gebalanceerd gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
+        "desc": "Mager gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
         "title_cat": "Kies een kat-veilig dieet",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, hele prooi of gekookte carnivoor — allemaal gebouwd op strikt-carnivore biologie."
       },

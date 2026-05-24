@@ -84,6 +84,7 @@
       "reproStatus": "Fortpflanzungsstatus",
       "mealsPerDay": "Mahlzeiten pro Tag",
       "dietSection": "Ernährungsansatz",
+      "cookingMethod": "Zubereitungsart",
       "notes": "Notizen (optional)",
       "notesPlaceholder": "Was sonst noch wichtig ist über dieses Tier.",
       "create": "Tier anlegen",
@@ -291,6 +292,25 @@
     "toast": {
       "saved": "„{{name}}\" gespeichert.",
       "deleted": "„{{name}}\" gelöscht."
+    },
+    "refusal": {
+      "title": "Plan nicht erstellt",
+      "subtitle": "Behebe diese Probleme und versuche es erneut. Wenn ein Tierarzt diese Diät für eine medizinische Erkrankung verordnet hat, öffne das Tier und markiere die Diät als verordnet, um die flexiblen Prüfungen zu lockern.",
+      "editPet": "Tier bearbeiten",
+      "vetOverrideHint": "Kann mit einer passenden tierärztlichen Verordnung gelockert werden.",
+      "severity": {
+        "absolute": "Absolut",
+        "overridable": "Überschreibbar"
+      },
+      "rule": {
+        "zero_protein": "Die Diät hat 0% Protein — jeder Hund braucht Nahrungsprotein.",
+        "protein_below_nrc_min": "Protein liegt bei {{value}}% — unter dem FEDIAF/NRC-Erwachsenenerhaltungsminimum von {{threshold}}%.",
+        "cooked_bone": "Die Diät enthält gekochten Knochen, der splittert und Erstickung oder GI-Perforation verursachen kann. Wechsle die Zubereitungsart auf roh oder entferne Knochen aus der Proteinzusammensetzung.",
+        "high_phosphorus_ckd": "Phosphor überschreitet die CNI-Obergrenze.",
+        "ca_p_inverted": "Ca:P-Verhältnis {{value}}:1 liegt außerhalb des AAFCO-Sicherheitsbereichs von {{threshold}}:1 bis 2:1.",
+        "high_fat_pancreatitis": "Fett liegt bei {{value}}% — über der pankreatitis-sicheren Obergrenze von {{threshold}}%.",
+        "expired_vet_review": "Der Überprüfungstermin der tierärztlichen Verordnung ist abgelaufen. Bestätige den Plan erneut mit dem Tierarzt, bevor du neue Pläne erstellst."
+      }
     }
   },
   "condition": {
@@ -479,14 +499,14 @@
       "lactating": "Laktierend"
     },
     "diets": {
-      "balanced_cooked": "Ausgewogen gekocht (tierärztlich empfohlen) — 40% Protein / 50% Gemüse / 10% Stärke",
+      "balanced_cooked": "Mager gekocht (tierärztlich empfohlene Basis) — 50% Protein / 30% Gemüse / 20% Stärke",
       "high_protein": "Proteinreich gekocht — 50% Protein / 30% Gemüse / 15% Stärke",
       "pmr": "PMR 80-10-10 (fortgeschritten)"
     },
     "vetDisclaimer": "Dieses Tool gibt nur allgemeine Hinweise. Konsultieren Sie für eine langfristige Heimfütterung einen zertifizierten Tierernährungsberater (ACVN).",
     "profileSection": "Hundeprofil",
     "dietShort": {
-      "balanced_cooked": "Ausgewogen",
+      "balanced_cooked": "Mager Gekocht",
       "high_protein": "Proteinreich",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -495,19 +515,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Ganze Beute",
       "cat_barf_lite": "BARF-light",
-      "cat_cooked_carnivore": "Gekochter Karnivor"
+      "cat_cooked_carnivore": "Gekochter Karnivor",
+      "custom": "+ Individuell"
     },
     "dietSub": {
-      "balanced_cooked": "40% Protein / 50% Gemüse",
-      "high_protein": "55% Protein / 30% Gemüse",
-      "pmr": "Roh 80-10-10",
-      "barf": "Roh + Gemüse + Saaten",
-      "real_ancestral": "Roh + Fisch + Faser",
+      "balanced_cooked": "50% Protein / 30% Gemüse / 20% Stärke",
+      "high_protein": "55% Protein / 30% Gemüse / 15% Stärke",
+      "pmr": "80% Fleisch / 10% Knochen / 10% Organ — kein Gemüse",
+      "barf": "70% Fleisch-Knochen-Organ / 30% Gemüse & Extras",
+      "real_ancestral": "64% Muskel / 11% Knochen / 10% Fisch / 10% Organ / 5% Faser",
       "cat_pmr": "Beutemodell roh",
       "cat_frankenprey": "Zusammengesetzte Rohstücke",
       "cat_whole_prey": "Mäuse, Wachteln, Küken",
       "cat_barf_lite": "Roh + wenig Gemüse",
-      "cat_cooked_carnivore": "+ Taurin-Supplement"
+      "cat_cooked_carnivore": "+ Taurin-Supplement",
+      "custom": "Eigene erstellen"
+    },
+    "custom": {
+      "title": "Deine eigene Mischung",
+      "expandAdvanced": "Erweitert anzeigen",
+      "collapseAdvanced": "Erweitert ausblenden",
+      "nearest": "Am nächsten:",
+      "sumLabel": "Makros gesamt",
+      "compositionLabel": "Proteinzusammensetzung (Muskel / Organ / Knochen)",
+      "compositionHelp": "Unteranteil der Proteinportion. Nützlich bei PMR-ähnlichen Verhältnissen.",
+      "calciumLabel": "Calciumquelle",
+      "supplementsLabel": "Empfohlene Ergänzungen",
+      "pills": {
+        "lean": "Mager gekocht",
+        "protein": "Proteinreich",
+        "meat90": "90/10 Fleisch"
+      },
+      "calcium": {
+        "bone_in": "Roher Knochen",
+        "eggshell": "Eierschalenpulver",
+        "supplement": "Calciumpräparat",
+        "none": "Keine / nicht hinzugefügt"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurin",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Hauptsächlich Fleisch. Füge eine Calciumquelle hinzu — in dieser Mischung ist kein Knochen.",
+        "highMeat": "Fleisch-geführt, mit kleinem Gemüseanteil. Häufig tierärztlich verschriebenes gekochtes Muster.",
+        "balancedMeat": "Ausgewogene Fleisch-Pflanzen-Verteilung — solider Mittelweg für erwachsene Hunde.",
+        "vegHeavy": "Sehr gemüselastig. Stelle sicher, dass dein Protein dicht genug ist, um den Tagesbedarf zu decken.",
+        "mixed": "Gemischtes Gericht. Prüfe, dass die Summen 100% ergeben."
+      },
+      "warn": {
+        "lowProtein": "Protein liegt unter dem FEDIAF/NRC-Erwachsenenminimum (~18%). Bestätige mit deinem Tierarzt.",
+        "noCalcium": "Keine Calciumquelle bei reinem Fleischplan. Füge Knochen, Eierschale oder ein Präparat hinzu.",
+        "highBone": "Mehr als 15% Knochen kann zu Verstopfung führen."
+      },
+      "vetPrescribed": "Diese Diät ist tierärztlich verordnet",
+      "vetPrescribedHelp": "Eine als verordnet markierte Diät lässt den Planer Sicherheitsprüfungen lockern, die sonst Pläne blockieren würden (z. B. niedriges Protein bei fortgeschrittener CNI). Toxikologische Regeln (gekochte Knochen, Allium, Xylit usw.) bleiben aktiv.",
+      "vetName": "Verschreibender Tierarzt (optional)",
+      "condition": "Erkrankung",
+      "reviewDate": "Nächster Überprüfungstermin",
+      "conditions": {
+        "renal_ckd": "Chronische Nierenerkrankung",
+        "hepatic": "Lebererkrankung",
+        "pancreatitis": "Pankreatitis",
+        "ibd": "CED / chronische Enteropathie",
+        "food_allergy": "Futtermittelallergie (Eliminationsdiät)",
+        "urolithiasis_struvite": "Harnsteine — Struvit",
+        "urolithiasis_calcium_oxalate": "Harnsteine — Calciumoxalat",
+        "urolithiasis_urate": "Harnsteine — Urat",
+        "diabetes": "Diabetes",
+        "obesity": "Adipositas (Gewichtsverlust)",
+        "cardiac": "Herzerkrankung",
+        "epi": "EPI (Pankreasinsuffizienz)",
+        "cancer_cachexia": "Krebs / Kachexie",
+        "other": "Andere"
+      }
+    },
+    "cooking": {
+      "raw": "Roh",
+      "lightly_cooked": "Leicht gegart",
+      "fully_cooked": "Durchgegart",
+      "nonCanonical": "{{preset}} wird traditionell roh gefüttert — stelle sicher, dass dein gekochtes Rezept weiterhin eine vollständige Ernährung liefert (besonders Calcium).",
+      "pmrLockTitle": "PMR kann nicht gekocht werden",
+      "pmrLockBody": "Das Calcium von PMR stammt aus rohem Knochen (10% der Ration). Gekochte Knochen splittern und können zu Erstickung oder GI-Perforation führen. Wechsle zu BARF gekocht oder erstelle eine individuelle Diät mit Calciumpräparat.",
+      "pmrLockSwitchBarf": "Zu BARF (gekocht) wechseln",
+      "pmrLockKeepRaw": "PMR roh lassen"
     },
     "macroProtein": "Protein",
     "macroVeg": "Gemüse",
@@ -719,7 +812,7 @@
       "foodSafety": "Giftige Lebensmittel, sichere Fleisch-, Gemüse- und Obstsorten.",
       "supplements": "AAFCO-Ziele, Balancer und ein 7-Tage-Übergang.",
       "dietsTitle": "5 Ernährungsprofile",
-      "dietsDesc": "Ausgewogen gekocht · BARF · PMR · Proteinreich · Ancestral.",
+      "dietsDesc": "Mager gekocht · BARF · PMR · Proteinreich · Ancestral.",
       "langTitle": "8 Sprachen",
       "langDesc": "Vollständig übersetzt, egal wo Sie kochen.",
       "preview": {
@@ -746,7 +839,7 @@
       },
       "step2": {
         "title": "Wählen Sie eine vertrauenswürdige Diät",
-        "desc": "Ausgewogen gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben.",
+        "desc": "Mager gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben.",
         "title_cat": "Wählen Sie eine katzensichere Ernährung",
         "desc_cat": "PMR 84/6/10, BARF-light, Frankenprey, Ganze Beute oder gekochter Karnivor — alle auf strikt-karnivorer Biologie aufgebaut."
       },

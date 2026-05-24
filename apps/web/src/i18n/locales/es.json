@@ -84,6 +84,7 @@
       "reproStatus": "Estado reproductivo",
       "mealsPerDay": "Comidas al día",
       "dietSection": "Enfoque de dieta",
+      "cookingMethod": "Método de cocción",
       "notes": "Notas (opcional)",
       "notesPlaceholder": "Cualquier dato útil sobre esta mascota.",
       "create": "Crear mascota",
@@ -291,6 +292,25 @@
     "toast": {
       "saved": "«{{name}}» guardado.",
       "deleted": "«{{name}}» eliminado."
+    },
+    "refusal": {
+      "title": "Plan no generado",
+      "subtitle": "Corrige estos problemas y vuelve a intentarlo. Si un veterinario ha recetado esta dieta para una condición médica, abre la mascota y marca la dieta como recetada para relajar las comprobaciones flexibles.",
+      "editPet": "Editar mascota",
+      "vetOverrideHint": "Puede relajarse con una receta veterinaria correspondiente.",
+      "severity": {
+        "absolute": "Absoluta",
+        "overridable": "Anulable"
+      },
+      "rule": {
+        "zero_protein": "La dieta tiene 0% de proteína — todo perro necesita proteína dietética.",
+        "protein_below_nrc_min": "La proteína es {{value}}% — por debajo del mínimo de mantenimiento adulto FEDIAF/NRC de {{threshold}}%.",
+        "cooked_bone": "La dieta incluye hueso cocido, que se astilla y puede causar asfixia o perforación gastrointestinal. Cambia el método de cocción a crudo o elimina el hueso de la composición proteica.",
+        "high_phosphorus_ckd": "El fósforo supera el límite para ERC.",
+        "ca_p_inverted": "La relación Ca:P {{value}}:1 está fuera del rango seguro AAFCO de {{threshold}}:1 a 2:1.",
+        "high_fat_pancreatitis": "La grasa es {{value}}% — por encima del límite seguro para pancreatitis de {{threshold}}%.",
+        "expired_vet_review": "La fecha de revisión de la receta veterinaria ha pasado. Re-confirma el plan con el veterinario antes de generar nuevos planes."
+      }
     }
   },
   "condition": {
@@ -479,14 +499,14 @@
       "lactating": "En lactancia"
     },
     "diets": {
-      "balanced_cooked": "Cocido equilibrado (recomendado por veterinarios) — 40% proteína / 50% veg / 10% almidón",
+      "balanced_cooked": "Magra cocida (línea base recomendada por veterinario) — 50% proteína / 30% veg / 20% almidón",
       "high_protein": "Cocido alto en proteína — 50% proteína / 30% veg / 15% almidón",
       "pmr": "PMR 80-10-10 (avanzado)"
     },
     "vetDisclaimer": "Esta herramienta proporciona orientación general únicamente. Consulta a un nutricionista veterinario certificado (ACVN) para alimentación casera a largo plazo.",
     "profileSection": "Perfil del perro",
     "dietShort": {
-      "balanced_cooked": "Equilibrado",
+      "balanced_cooked": "Magra Cocida",
       "high_protein": "Alto en proteína",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -495,19 +515,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Presa entera",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnívoro cocinado"
+      "cat_cooked_carnivore": "Carnívoro cocinado",
+      "custom": "+ Personalizada"
     },
     "dietSub": {
-      "balanced_cooked": "40% proteína / 50% veg",
-      "high_protein": "55% proteína / 30% veg",
-      "pmr": "Crudo 80-10-10",
-      "barf": "Crudo + verduras + semillas",
-      "real_ancestral": "Crudo + pescado + fibra",
+      "balanced_cooked": "50% proteína / 30% veg / 20% almidón",
+      "high_protein": "55% proteína / 30% veg / 15% almidón",
+      "pmr": "80% carne / 10% hueso / 10% órgano — sin verduras",
+      "barf": "70% carne-hueso-órgano / 30% veg y extras",
+      "real_ancestral": "64% músculo / 11% hueso / 10% pescado / 10% órgano / 5% fibra",
       "cat_pmr": "Modelo de presa crudo",
       "cat_frankenprey": "Cortes crudos ensamblados",
       "cat_whole_prey": "Ratones, codornices, pollitos",
       "cat_barf_lite": "Crudo + verdura",
-      "cat_cooked_carnivore": "+ suplemento de taurina"
+      "cat_cooked_carnivore": "+ suplemento de taurina",
+      "custom": "Crea tu propia"
+    },
+    "custom": {
+      "title": "Tu mezcla personalizada",
+      "expandAdvanced": "Mostrar avanzado",
+      "collapseAdvanced": "Ocultar avanzado",
+      "nearest": "Más cercano:",
+      "sumLabel": "Total de macros",
+      "compositionLabel": "Composición de proteína (músculo / órgano / hueso)",
+      "compositionHelp": "Sub-porción de la parte proteica. Útil al seguir ratios estilo PMR.",
+      "calciumLabel": "Fuente de calcio",
+      "supplementsLabel": "Suplementos sugeridos",
+      "pills": {
+        "lean": "Magra cocida",
+        "protein": "Alta en proteína",
+        "meat90": "90/10 carne"
+      },
+      "calcium": {
+        "bone_in": "Hueso crudo",
+        "eggshell": "Cáscara de huevo",
+        "supplement": "Suplemento de calcio",
+        "none": "Ninguno / no añadido"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurina",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Mayoría carne. Añade una fuente de calcio — esta mezcla no contiene hueso.",
+        "highMeat": "Carne como base, con una pequeña parte de verduras. Patrón cocinado típico recetado por veterinarios.",
+        "balancedMeat": "División equilibrada carne-vegetales — punto medio para perros adultos.",
+        "vegHeavy": "Mucha verdura. Asegúrate de que tu proteína sea densa para cubrir las necesidades diarias.",
+        "mixed": "Plato mixto. Confirma que los totales sumen 100%."
+      },
+      "warn": {
+        "lowProtein": "La proteína está por debajo del mínimo adulto FEDIAF/NRC (~18%). Confirma con tu veterinario.",
+        "noCalcium": "Sin fuente de calcio para un plan todo-carne. Añade hueso, cáscara de huevo o un suplemento.",
+        "highBone": "Más del 15% de hueso puede causar estreñimiento."
+      },
+      "vetPrescribed": "Esta dieta es recetada por un veterinario",
+      "vetPrescribedHelp": "Marcar una dieta como recetada permite al planificador relajar comprobaciones de seguridad que normalmente bloquearían planes (p. ej. baja proteína en ERC avanzada). Las reglas toxicológicas (huesos cocidos, allium, xilitol, etc.) siguen aplicándose.",
+      "vetName": "Veterinario prescriptor (opcional)",
+      "condition": "Condición",
+      "reviewDate": "Próxima fecha de revisión",
+      "conditions": {
+        "renal_ckd": "Enfermedad renal crónica",
+        "hepatic": "Enfermedad hepática",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "EII / enteropatía crónica",
+        "food_allergy": "Alergia alimentaria (dieta de eliminación)",
+        "urolithiasis_struvite": "Cálculos urinarios — estruvita",
+        "urolithiasis_calcium_oxalate": "Cálculos urinarios — oxalato de calcio",
+        "urolithiasis_urate": "Cálculos urinarios — urato",
+        "diabetes": "Diabetes",
+        "obesity": "Obesidad (pérdida de peso)",
+        "cardiac": "Cardíaca",
+        "epi": "EPI (insuficiencia pancreática)",
+        "cancer_cachexia": "Cáncer / caquexia",
+        "other": "Otra"
+      }
+    },
+    "cooking": {
+      "raw": "Crudo",
+      "lightly_cooked": "Poco cocinado",
+      "fully_cooked": "Bien cocinado",
+      "nonCanonical": "{{preset}} se alimenta tradicionalmente en crudo — asegúrate de que tu receta cocida siga aportando una nutrición completa (especialmente calcio).",
+      "pmrLockTitle": "PMR no se puede cocinar",
+      "pmrLockBody": "El calcio del PMR viene del hueso crudo (10% de la dieta). Los huesos cocidos se astillan y pueden causar asfixia o perforación gastrointestinal. Cambia a BARF cocinado o crea una dieta personalizada con suplemento de calcio.",
+      "pmrLockSwitchBarf": "Cambiar a BARF (cocinado)",
+      "pmrLockKeepRaw": "Mantener PMR crudo"
     },
     "macroProtein": "proteína",
     "macroVeg": "veg",
@@ -719,7 +812,7 @@
       "foodSafety": "Alimentos tóxicos, carnes seguras, verduras, frutas.",
       "supplements": "Objetivos AAFCO, balanceadores y una transición de 7 días.",
       "dietsTitle": "5 perfiles de dieta",
-      "dietsDesc": "Cocinado equilibrado · BARF · PMR · Alta en proteína · Ancestral.",
+      "dietsDesc": "Cocinado magro · BARF · PMR · Alta en proteína · Ancestral.",
       "langTitle": "8 idiomas",
       "langDesc": "Totalmente traducido, dondequiera que cocines.",
       "preview": {
@@ -746,7 +839,7 @@
       },
       "step2": {
         "title": "Elige una dieta de confianza",
-        "desc": "Cocinado equilibrado, BARF, PMR, alto en proteína o ancestral — todos basados en los objetivos AAFCO.",
+        "desc": "Cocinado magro, BARF, PMR, alto en proteína o ancestral — todos basados en los objetivos AAFCO.",
         "title_cat": "Elige una dieta felina segura",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, presa entera o carnívoro cocinado — todas basadas en la biología del carnívoro estricto."
       },

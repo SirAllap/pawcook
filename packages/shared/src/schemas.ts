@@ -53,14 +53,25 @@ export const ActivityLevelSchema = z.enum(['sedentary', 'moderate', 'active', 'w
 export const BodyConditionSchema = z.enum(['underweight', 'ideal', 'overweight']);
 export const ReproductiveStatusSchema = z.enum(['intact', 'neutered', 'pregnant', 'lactating']);
 
-// Dog diet profiles (the original five).
+// Dog diet profiles. 'custom' is resolved at runtime from NutritionInput.customDiet
+// rather than from a static spec — it lets users build their own macro split
+// (e.g., vet-prescribed 90/10 cooked) without us shipping a marquee preset
+// that implies endorsement of a single ratio.
 export const DogMacroProfileSchema = z.enum([
   'balanced_cooked',
   'high_protein',
   'pmr',
   'barf',
   'real_ancestral',
+  'custom',
 ]);
+
+// Preparation method, orthogonal to the diet approach itself. Each preset
+// has a canonical default (BARF/PMR/Ancestral → raw; Balanced/HighProtein
+// → fully_cooked); the user can override per-pet via the Cooking method
+// toggle on the form. PMR is locked to raw because cooked bone is unsafe.
+export const CookingPreparationSchema = z.enum(['raw', 'lightly_cooked', 'fully_cooked']);
+export type CookingPreparation = z.infer<typeof CookingPreparationSchema>;
 
 // Cat diet profiles — obligate-carnivore aware.
 //   • cat_cooked_carnivore : cooked, mandatory taurine + B-complex supplement
@@ -75,6 +86,84 @@ export const CatMacroProfileSchema = z.enum([
   'cat_whole_prey',
   'cat_barf_lite',
 ]);
+
+// ─── Custom diet payload ──────────────────────────────────────────
+// When macroProfile === 'custom', the engine builds the spec from this
+// payload at runtime. Easy mode only uses protein + veg; Advanced unlocks
+// fat, carb, protein composition, calcium source, and supplement hints.
+export const CalciumSourceSchema = z.enum(['bone_in', 'eggshell', 'supplement', 'none']);
+export type CalciumSource = z.infer<typeof CalciumSourceSchema>;
+
+export const CustomDietSchema = z.object({
+  // Drives which controls the UI shows. The engine treats both modes the
+  // same — proteinComposition is just optional.
+  mode: z.enum(['easy', 'advanced']).default('easy'),
+  macros: z.object({
+    protein: z.number().min(0).max(100),
+    fat: z.number().min(0).max(100).default(0),
+    veg: z.number().min(0).max(100),
+    carb: z.number().min(0).max(100).default(0),
+  }),
+  // Advanced-only: how the protein share splits into muscle/organ/bone.
+  // Each value is a % of the protein share, not of the whole diet.
+  proteinComposition: z.object({
+    muscle: z.number().min(0).max(100),
+    organ: z.number().min(0).max(100),
+    bone: z.number().min(0).max(100),
+  }).optional(),
+  calciumSource: CalciumSourceSchema.default('eggshell'),
+  supplements: z.object({
+    omega3: z.boolean().default(false),
+    vitaminE: z.boolean().default(false),
+    taurine: z.boolean().default(false),
+    multivitamin: z.boolean().default(false),
+  }).default({ omega3: false, vitaminE: false, taurine: false, multivitamin: false }),
+}).superRefine((data, ctx) => {
+  const macroSum = data.macros.protein + data.macros.fat + data.macros.veg + data.macros.carb;
+  if (Math.abs(macroSum - 100) > 1) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['macros'],
+      message: `Macros must sum to 100% (currently ${Math.round(macroSum)}%).`,
+    });
+  }
+  if (data.proteinComposition) {
+    const compSum = data.proteinComposition.muscle + data.proteinComposition.organ + data.proteinComposition.bone;
+    if (Math.abs(compSum - 100) > 1) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['proteinComposition'],
+        message: `Protein composition must sum to 100% (currently ${Math.round(compSum)}%).`,
+      });
+    }
+  }
+});
+export type CustomDiet = z.infer<typeof CustomDietSchema>;
+
+// ─── Vet-prescribed therapeutic diets ─────────────────────────────
+// A diet flagged as vet-prescribed gets clinical context (condition,
+// vet name, optional review date) that the planner uses to relax some
+// safety refusals which would otherwise block the plan. Toxicology and
+// mechanical-injury refusals (cooked bone, allium, xylitol, etc.) stay
+// absolute — there's no clinical scenario where they're justified.
+export const ClinicalConditionSchema = z.enum([
+  'renal_ckd', 'hepatic', 'pancreatitis', 'ibd', 'food_allergy',
+  'urolithiasis_struvite', 'urolithiasis_calcium_oxalate', 'urolithiasis_urate',
+  'diabetes', 'obesity', 'cardiac', 'epi', 'cancer_cachexia', 'other',
+]);
+export type ClinicalCondition = z.infer<typeof ClinicalConditionSchema>;
+
+export const VetPrescriptionSchema = z.object({
+  vetName: z.string().max(120).optional(),
+  condition: ClinicalConditionSchema,
+  restrictedIngredients: z.array(z.string()).default([]),
+  prescribedAt: z.string().datetime().optional(),
+  reviewDate: z.string().date().optional(),
+  // User-acknowledged override notes — required when relaxing an
+  // overridable refusal (logged as part of the audit trail).
+  acknowledgments: z.array(z.string()).default([]),
+});
+export type VetPrescription = z.infer<typeof VetPrescriptionSchema>;
 
 export const MacroRatioProfileSchema = z.union([DogMacroProfileSchema, CatMacroProfileSchema]);
 export type MacroRatioProfile = z.infer<typeof MacroRatioProfileSchema>;
@@ -92,6 +181,9 @@ export const NutritionInputSchema = z.object({
   reproductiveStatus: ReproductiveStatusSchema.default('neutered'),
   mealsPerDay: z.number().int().min(1).max(4).default(2),
   macroProfile: MacroRatioProfileSchema.default('balanced_cooked'),
+  cookingMethod: CookingPreparationSchema.optional(),
+  customDiet: CustomDietSchema.optional(),
+  vetPrescription: VetPrescriptionSchema.optional(),
 }).superRefine((data, ctx) => {
   // Cross-field validation: species × age × profile coherence
   if (data.species === 'dog' && data.age === 'kitten') {
@@ -106,6 +198,23 @@ export const NutritionInputSchema = z.object({
   }
   if (data.species === 'cat' && !isCatProfile) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['macroProfile'], message: 'Dog diet profile selected for a cat — cats need a cat-specific profile.' });
+  }
+  // PMR (dog or cat) cannot be cooked: cooked bone splinters.
+  if ((data.macroProfile === 'pmr' || data.macroProfile === 'cat_pmr')
+      && data.cookingMethod && data.cookingMethod !== 'raw') {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['cookingMethod'],
+      message: 'PMR contains raw bone — switch to BARF (cooked) or use a custom diet with a calcium supplement.',
+    });
+  }
+  // Custom diets require their payload to be present.
+  if (data.macroProfile === 'custom' && !data.customDiet) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['customDiet'],
+      message: 'Custom diet selected — fill in the macro sliders to continue.',
+    });
   }
 });
 

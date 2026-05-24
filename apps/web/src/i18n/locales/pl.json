@@ -84,6 +84,7 @@
       "reproStatus": "Status rozrodczy",
       "mealsPerDay": "Posiłki dziennie",
       "dietSection": "Podejście do diety",
+      "cookingMethod": "Sposób przygotowania",
       "notes": "Notatki (opcjonalne)",
       "notesPlaceholder": "Cokolwiek warto zapamiętać o tym zwierzęciu.",
       "create": "Utwórz zwierzę",
@@ -291,6 +292,25 @@
     "toast": {
       "saved": "Zapisano „{{name}}\".",
       "deleted": "Usunięto „{{name}}\"."
+    },
+    "refusal": {
+      "title": "Plan nie został wygenerowany",
+      "subtitle": "Napraw te problemy i spróbuj ponownie. Jeśli weterynarz przepisał tę dietę dla schorzenia medycznego, otwórz zwierzę i zaznacz dietę jako przepisaną, aby rozluźnić elastyczne kontrole.",
+      "editPet": "Edytuj zwierzę",
+      "vetOverrideHint": "Można rozluźnić odpowiednią receptą weterynaryjną.",
+      "severity": {
+        "absolute": "Absolutna",
+        "overridable": "Można pominąć"
+      },
+      "rule": {
+        "zero_protein": "Dieta ma 0% białka — każdy pies potrzebuje białka pokarmowego.",
+        "protein_below_nrc_min": "Białko wynosi {{value}}% — poniżej minimum FEDIAF/NRC dla utrzymania dorosłych {{threshold}}%.",
+        "cooked_bone": "Dieta zawiera gotowaną kość, która pęka i może powodować zadławienie lub perforację przewodu pokarmowego. Zmień sposób przygotowania na surowy lub usuń kość ze składu białka.",
+        "high_phosphorus_ckd": "Fosfor przekracza limit dla PChN.",
+        "ca_p_inverted": "Stosunek Ca:P {{value}}:1 jest poza bezpiecznym zakresem AAFCO od {{threshold}}:1 do 2:1.",
+        "high_fat_pancreatitis": "Tłuszcz wynosi {{value}}% — powyżej bezpiecznego limitu dla zapalenia trzustki {{threshold}}%.",
+        "expired_vet_review": "Data przeglądu recepty weterynaryjnej minęła. Potwierdź plan z weterynarzem przed wygenerowaniem nowych planów."
+      }
     }
   },
   "condition": {
@@ -479,14 +499,14 @@
       "lactating": "Karmiący"
     },
     "diets": {
-      "balanced_cooked": "Gotowane zrównoważone (zalecane przez weterynarza) — 40% białko / 50% warzywa / 10% skrobia",
+      "balanced_cooked": "Chuda gotowana (zalecana baza weterynaryjna) — 50% białko / 30% warzywa / 20% skrobia",
       "high_protein": "Gotowane wysokobiałkowe — 50% białko / 30% warzywa / 15% skrobia",
       "pmr": "PMR 80-10-10 (zaawansowane)"
     },
     "vetDisclaimer": "To narzędzie dostarcza jedynie ogólnych wskazówek. Skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (ACVN) w sprawie długotrwałego karmienia domowego.",
     "profileSection": "Profil psa",
     "dietShort": {
-      "balanced_cooked": "Zbilansowana",
+      "balanced_cooked": "Chuda Gotowana",
       "high_protein": "Wysokobiałkowa",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -495,19 +515,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Cała ofiara",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Mięsożerca gotowany"
+      "cat_cooked_carnivore": "Mięsożerca gotowany",
+      "custom": "+ Niestandardowa"
     },
     "dietSub": {
-      "balanced_cooked": "40% białko / 50% warzywa",
-      "high_protein": "55% białko / 30% warzywa",
-      "pmr": "Surowo 80-10-10",
-      "barf": "Surowo + warzywa + nasiona",
-      "real_ancestral": "Surowo + ryba + błonnik",
+      "balanced_cooked": "50% białko / 30% warzywa / 20% skrobia",
+      "high_protein": "55% białko / 30% warzywa / 15% skrobia",
+      "pmr": "80% mięso / 10% kość / 10% narząd — bez warzyw",
+      "barf": "70% mięso-kość-narząd / 30% warzywa i dodatki",
+      "real_ancestral": "64% mięsień / 11% kość / 10% ryba / 10% narząd / 5% błonnik",
       "cat_pmr": "Model ofiary surowy",
       "cat_frankenprey": "Złożone surowe kawałki",
       "cat_whole_prey": "Myszy, przepiórki, pisklęta",
       "cat_barf_lite": "Surowe + odrobina warzyw",
-      "cat_cooked_carnivore": "+ suplement tauryny"
+      "cat_cooked_carnivore": "+ suplement tauryny",
+      "custom": "Stwórz własną"
+    },
+    "custom": {
+      "title": "Twoja niestandardowa mieszanka",
+      "expandAdvanced": "Pokaż zaawansowane",
+      "collapseAdvanced": "Ukryj zaawansowane",
+      "nearest": "Najbliżej:",
+      "sumLabel": "Suma makro",
+      "compositionLabel": "Skład białka (mięsień / narząd / kość)",
+      "compositionHelp": "Pod-udział porcji białkowej. Przydatne przy proporcjach stylu PMR.",
+      "calciumLabel": "Źródło wapnia",
+      "supplementsLabel": "Sugerowane suplementy",
+      "pills": {
+        "lean": "Chuda gotowana",
+        "protein": "Wysokobiałkowa",
+        "meat90": "90/10 mięso"
+      },
+      "calcium": {
+        "bone_in": "Surowa kość",
+        "eggshell": "Skorupki jaj",
+        "supplement": "Suplement wapnia",
+        "none": "Brak / nie dodano"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Wit E",
+        "taurine": "Tauryna",
+        "multivitamin": "Multiwit"
+      },
+      "summary": {
+        "meatHeavy": "Głównie mięso. Dodaj źródło wapnia — w tej mieszance nie ma kości.",
+        "highMeat": "Mięso jako baza, z małą porcją warzyw. Częsty wzorzec gotowany przepisywany przez weterynarzy.",
+        "balancedMeat": "Zrównoważony podział mięsa i warzyw — środkowa droga dla dorosłych psów.",
+        "vegHeavy": "Dużo warzyw. Upewnij się, że białko jest wystarczająco gęste, aby pokryć dzienne potrzeby.",
+        "mixed": "Mieszany talerz. Sprawdź, czy sumy dają 100%."
+      },
+      "warn": {
+        "lowProtein": "Białko jest poniżej minimum FEDIAF/NRC dla dorosłych (~18%). Potwierdź z weterynarzem.",
+        "noCalcium": "Brak źródła wapnia w planie samo-mięsnym. Dodaj kość, skorupki jaj lub suplement.",
+        "highBone": "Ponad 15% kości może powodować zaparcia."
+      },
+      "vetPrescribed": "Ta dieta jest przepisana przez weterynarza",
+      "vetPrescribedHelp": "Oznaczenie diety jako przepisanej pozwala planiście rozluźnić kontrole bezpieczeństwa, które normalnie blokowałyby plany (np. niskie białko w zaawansowanej PChN). Zasady toksykologiczne (gotowane kości, allium, ksylitol itp.) pozostają aktywne.",
+      "vetName": "Lekarz weterynarii (opcjonalnie)",
+      "condition": "Schorzenie",
+      "reviewDate": "Następna data przeglądu",
+      "conditions": {
+        "renal_ckd": "Przewlekła choroba nerek",
+        "hepatic": "Choroba wątroby",
+        "pancreatitis": "Zapalenie trzustki",
+        "ibd": "ChZJ / przewlekła enteropatia",
+        "food_allergy": "Alergia pokarmowa (dieta eliminacyjna)",
+        "urolithiasis_struvite": "Kamica moczowa — struwit",
+        "urolithiasis_calcium_oxalate": "Kamica moczowa — szczawian wapnia",
+        "urolithiasis_urate": "Kamica moczowa — moczany",
+        "diabetes": "Cukrzyca",
+        "obesity": "Otyłość (utrata wagi)",
+        "cardiac": "Sercowa",
+        "epi": "NZT (niewydolność trzustki)",
+        "cancer_cachexia": "Nowotwór / kacheksja",
+        "other": "Inna"
+      }
+    },
+    "cooking": {
+      "raw": "Surowe",
+      "lightly_cooked": "Lekko gotowane",
+      "fully_cooked": "W pełni ugotowane",
+      "nonCanonical": "{{preset}} jest tradycyjnie podawany na surowo — upewnij się, że Twój gotowany przepis nadal zapewnia pełnowartościowe odżywianie (szczególnie wapń).",
+      "pmrLockTitle": "PMR nie może być gotowane",
+      "pmrLockBody": "Wapń w PMR pochodzi z surowej kości (10% diety). Gotowane kości pękają i mogą powodować zadławienie lub perforację przewodu pokarmowego. Przełącz na gotowane BARF lub stwórz dietę niestandardową z suplementem wapnia.",
+      "pmrLockSwitchBarf": "Przełącz na BARF (gotowane)",
+      "pmrLockKeepRaw": "Zachowaj PMR na surowo"
     },
     "macroProtein": "białko",
     "macroVeg": "warzywa",
@@ -719,7 +812,7 @@
       "foodSafety": "Toksyczne pokarmy, bezpieczne mięsa, warzywa, owoce.",
       "supplements": "Cele AAFCO, suplementy bilansujące i 7-dniowa zmiana diety.",
       "dietsTitle": "5 profili diet",
-      "dietsDesc": "Gotowana zbilansowana · BARF · PMR · Wysokobiałkowa · Ancestralna.",
+      "dietsDesc": "Gotowana chuda · BARF · PMR · Wysokobiałkowa · Ancestralna.",
       "langTitle": "8 języków",
       "langDesc": "Pełne tłumaczenie, gdziekolwiek gotujesz.",
       "preview": {
@@ -746,7 +839,7 @@
       },
       "step2": {
         "title": "Wybierz dietę, której ufasz",
-        "desc": "Gotowana zbilansowana, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
+        "desc": "Gotowana chuda, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
         "title_cat": "Wybierz dietę bezpieczną dla kota",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, cała ofiara lub gotowany mięsożerca — wszystkie oparte na biologii bezwzględnych mięsożerców."
       },

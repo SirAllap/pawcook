@@ -84,6 +84,7 @@
       "reproStatus": "Reproductive status",
       "mealsPerDay": "Meals per day",
       "dietSection": "Diet approach",
+      "cookingMethod": "Cooking method",
       "notes": "Notes (optional)",
       "notesPlaceholder": "Anything else worth remembering about this pet.",
       "create": "Create pet",
@@ -339,6 +340,25 @@
     "toast": {
       "saved": "Saved \"{{name}}\".",
       "deleted": "Deleted \"{{name}}\"."
+    },
+    "refusal": {
+      "title": "Plan not generated",
+      "subtitle": "Fix these issues, then try again. If a vet has prescribed this diet for a medical condition, open the pet and mark the diet vet-prescribed to relax overridable checks.",
+      "editPet": "Edit pet",
+      "vetOverrideHint": "Can be relaxed with a matching vet prescription.",
+      "severity": {
+        "absolute": "Absolute",
+        "overridable": "Overridable"
+      },
+      "rule": {
+        "zero_protein": "Diet has 0% protein — every dog needs dietary protein.",
+        "protein_below_nrc_min": "Protein is {{value}}% — below the FEDIAF/NRC adult-maintenance minimum of {{threshold}}%.",
+        "cooked_bone": "Diet includes cooked bone, which splinters and can cause choking or GI perforation. Switch the cooking method to raw or remove bone from the protein composition.",
+        "high_phosphorus_ckd": "Phosphorus exceeds the CKD cap.",
+        "ca_p_inverted": "Ca:P ratio {{value}}:1 is outside the AAFCO safe range of {{threshold}}:1 to 2:1.",
+        "high_fat_pancreatitis": "Fat is {{value}}% — above the pancreatitis-safe ceiling of {{threshold}}%.",
+        "expired_vet_review": "The vet prescription's review date has passed. Re-confirm the plan with the vet before generating new plans."
+      }
     }
   },
   "condition": {
@@ -527,14 +547,14 @@
       "lactating": "Lactating"
     },
     "diets": {
-      "balanced_cooked": "Balanced cooked (vet-recommended) — 40% protein / 50% veg / 10% starch",
-      "high_protein": "High-protein cooked — 50% protein / 30% veg / 15% starch",
+      "balanced_cooked": "Lean cooked (vet-recommended baseline) — 50% protein / 30% veg / 20% starch",
+      "high_protein": "High-protein cooked — 55% protein / 30% veg / 15% starch",
       "pmr": "PMR 80-10-10 (advanced)"
     },
     "vetDisclaimer": "This tool provides general guidance only. Consult a board-certified veterinary nutritionist (ACVN) for long-term homemade feeding.",
     "profileSection": "Dog Profile",
     "dietShort": {
-      "balanced_cooked": "Balanced",
+      "balanced_cooked": "Lean Cooked",
       "high_protein": "High Protein",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -543,19 +563,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Whole prey",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Cooked carnivore"
+      "cat_cooked_carnivore": "Cooked carnivore",
+      "custom": "+ Custom"
     },
     "dietSub": {
-      "balanced_cooked": "40% protein / 50% veg",
-      "high_protein": "55% protein / 30% veg",
-      "pmr": "80-10-10 raw",
-      "barf": "Raw + veg + seeds",
-      "real_ancestral": "Raw + seafood + fiber",
+      "balanced_cooked": "50% protein / 30% veg / 20% starch",
+      "high_protein": "55% protein / 30% veg / 15% starch",
+      "pmr": "80% meat / 10% bone / 10% organ — no veg",
+      "barf": "70% meat-bone-organ / 30% veg & extras",
+      "real_ancestral": "64% muscle / 11% bone / 10% seafood / 10% organ / 5% fiber",
       "cat_pmr": "Prey-model raw",
       "cat_frankenprey": "Assembled raw cuts",
       "cat_whole_prey": "Mice, quail, chicks",
       "cat_barf_lite": "Raw + small veg",
-      "cat_cooked_carnivore": "+ taurine supplement"
+      "cat_cooked_carnivore": "+ taurine supplement",
+      "custom": "Build your own"
+    },
+    "custom": {
+      "title": "Your custom mix",
+      "expandAdvanced": "Show advanced",
+      "collapseAdvanced": "Hide advanced",
+      "nearest": "Nearest:",
+      "sumLabel": "Macros total",
+      "compositionLabel": "Protein composition (muscle / organ / bone)",
+      "compositionHelp": "Sub-share of the protein portion. Useful when following PMR-style ratios.",
+      "calciumLabel": "Calcium source",
+      "supplementsLabel": "Suggested supplements",
+      "pills": {
+        "lean": "Lean Cooked",
+        "protein": "High Protein",
+        "meat90": "90/10 meat"
+      },
+      "calcium": {
+        "bone_in": "Raw bone-in",
+        "eggshell": "Eggshell powder",
+        "supplement": "Calcium supplement",
+        "none": "None / not added"
+      },
+      "supplement": {
+        "omega3": "Omega-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Mostly meat. Add a calcium source — there's no bone in this mix.",
+        "highMeat": "Meat-led, with a small vegetable share. Common vet-prescribed cooked pattern.",
+        "balancedMeat": "Balanced meat-and-plant split — middle-of-the-road for adult dogs.",
+        "vegHeavy": "Vegetable-heavy. Make sure your protein is dense enough to meet daily needs.",
+        "mixed": "Mixed plate. Confirm the totals add up to 100%."
+      },
+      "warn": {
+        "lowProtein": "Protein is below the FEDIAF/NRC adult minimum (~18%). Confirm with your vet.",
+        "noCalcium": "No calcium source for an all-meat plan. Add bone, eggshell, or a supplement.",
+        "highBone": "Bone share above 15% may cause constipation."
+      },
+      "vetPrescribed": "This diet is vet-prescribed",
+      "vetPrescribedHelp": "Marking a diet vet-prescribed lets the planner relax overridable safety checks that would otherwise block plans (e.g. low protein in advanced CKD). Toxicology rules (cooked bone, allium, xylitol, etc.) stay enforced.",
+      "vetName": "Prescribing vet (optional)",
+      "condition": "Condition",
+      "reviewDate": "Next review date",
+      "conditions": {
+        "renal_ckd": "Chronic kidney disease",
+        "hepatic": "Liver disease",
+        "pancreatitis": "Pancreatitis",
+        "ibd": "IBD / chronic enteropathy",
+        "food_allergy": "Food allergy (elimination diet)",
+        "urolithiasis_struvite": "Urinary stones — struvite",
+        "urolithiasis_calcium_oxalate": "Urinary stones — calcium oxalate",
+        "urolithiasis_urate": "Urinary stones — urate",
+        "diabetes": "Diabetes",
+        "obesity": "Obesity (weight loss)",
+        "cardiac": "Cardiac",
+        "epi": "EPI (pancreatic insufficiency)",
+        "cancer_cachexia": "Cancer / cachexia",
+        "other": "Other"
+      }
+    },
+    "cooking": {
+      "raw": "Raw",
+      "lightly_cooked": "Lightly cooked",
+      "fully_cooked": "Fully cooked",
+      "nonCanonical": "{{preset}} is traditionally fed raw — make sure your cooked recipe still delivers complete nutrition (especially calcium).",
+      "pmrLockTitle": "PMR can't be cooked",
+      "pmrLockBody": "PMR's calcium comes from raw bone (10% of the diet). Cooked bones splinter and can cause choking or GI perforation. Switch to BARF cooked, or build a custom diet with a calcium supplement.",
+      "pmrLockSwitchBarf": "Switch to BARF (cooked)",
+      "pmrLockKeepRaw": "Keep PMR raw"
     },
     "macroProtein": "protein",
     "macroVeg": "veg",
@@ -767,7 +860,7 @@
       "foodSafety": "Toxic foods, safe meats, vegetables, fruits.",
       "supplements": "AAFCO targets, balancers and a 7-day transition.",
       "dietsTitle": "5 diet profiles",
-      "dietsDesc": "Balanced cooked · BARF · PMR · High protein · Ancestral.",
+      "dietsDesc": "Lean cooked · BARF · PMR · High protein · Ancestral.",
       "langTitle": "8 languages",
       "langDesc": "Fully translated, anywhere you cook.",
       "preview": {
@@ -794,7 +887,7 @@
       },
       "step2": {
         "title": "Pick a diet you trust",
-        "desc": "Balanced cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.",
+        "desc": "Lean cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.",
         "title_cat": "Pick a feline-safe diet",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, whole prey, or cooked carnivore — all built around obligate-carnivore biology."
       },

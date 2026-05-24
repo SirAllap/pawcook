@@ -84,6 +84,7 @@
       "reproStatus": "Statut reproductif",
       "mealsPerDay": "Repas par jour",
       "dietSection": "Approche alimentaire",
+      "cookingMethod": "Méthode de cuisson",
       "notes": "Notes (optionnel)",
       "notesPlaceholder": "Tout ce qui est utile à retenir sur cet animal.",
       "create": "Créer l'animal",
@@ -291,6 +292,25 @@
     "toast": {
       "saved": "« {{name}} » enregistré.",
       "deleted": "« {{name}} » supprimé."
+    },
+    "refusal": {
+      "title": "Plan non généré",
+      "subtitle": "Corrigez ces problèmes et réessayez. Si un vétérinaire a prescrit ce régime pour une condition médicale, ouvrez l'animal et marquez le régime comme prescrit pour assouplir les contrôles flexibles.",
+      "editPet": "Modifier l'animal",
+      "vetOverrideHint": "Peut être assoupli avec une prescription vétérinaire correspondante.",
+      "severity": {
+        "absolute": "Absolue",
+        "overridable": "Modifiable"
+      },
+      "rule": {
+        "zero_protein": "Le régime a 0% de protéine — chaque chien a besoin de protéines alimentaires.",
+        "protein_below_nrc_min": "La protéine est de {{value}}% — sous le minimum d'entretien adulte FEDIAF/NRC de {{threshold}}%.",
+        "cooked_bone": "Le régime inclut de l'os cuit, qui éclate et peut provoquer un étouffement ou une perforation gastro-intestinale. Passez la méthode de cuisson à cru ou retirez l'os de la composition protéique.",
+        "high_phosphorus_ckd": "Le phosphore dépasse le plafond pour IRC.",
+        "ca_p_inverted": "Le rapport Ca:P {{value}}:1 est hors de la plage sûre AAFCO de {{threshold}}:1 à 2:1.",
+        "high_fat_pancreatitis": "Le gras est de {{value}}% — au-dessus du plafond sûr pour pancréatite de {{threshold}}%.",
+        "expired_vet_review": "La date de revue de la prescription vétérinaire est dépassée. Re-confirmez le plan avec le vétérinaire avant de générer de nouveaux plans."
+      }
     }
   },
   "condition": {
@@ -479,14 +499,14 @@
       "lactating": "En lactation"
     },
     "diets": {
-      "balanced_cooked": "Cuit équilibré (recommandé par les vétérinaires) — 40% protéines / 50% légumes / 10% féculents",
+      "balanced_cooked": "Cuit maigre (base recommandée par les vétérinaires) — 50% protéines / 30% légumes / 20% féculents",
       "high_protein": "Cuit riche en protéines — 50% protéines / 30% légumes / 15% féculents",
       "pmr": "PMR 80-10-10 (avancé)"
     },
     "vetDisclaimer": "Cet outil fournit des conseils généraux uniquement. Consultez un nutritionniste vétérinaire certifié (ACVN) pour une alimentation maison à long terme.",
     "profileSection": "Profil du chien",
     "dietShort": {
-      "balanced_cooked": "Équilibré",
+      "balanced_cooked": "Cuit Maigre",
       "high_protein": "Riche en protéines",
       "pmr": "PMR 80/10/10",
       "barf": "BARF",
@@ -495,19 +515,92 @@
       "cat_frankenprey": "Frankenprey",
       "cat_whole_prey": "Proie entière",
       "cat_barf_lite": "BARF-lite",
-      "cat_cooked_carnivore": "Carnivore cuit"
+      "cat_cooked_carnivore": "Carnivore cuit",
+      "custom": "+ Personnalisé"
     },
     "dietSub": {
-      "balanced_cooked": "40% protéines / 50% légumes",
-      "high_protein": "55% protéines / 30% légumes",
-      "pmr": "Cru 80-10-10",
-      "barf": "Cru + légumes + graines",
-      "real_ancestral": "Cru + poisson + fibres",
+      "balanced_cooked": "50% protéines / 30% légumes / 20% féculents",
+      "high_protein": "55% protéines / 30% légumes / 15% féculents",
+      "pmr": "80% viande / 10% os / 10% organe — sans légumes",
+      "barf": "70% viande-os-organe / 30% légumes & extras",
+      "real_ancestral": "64% muscle / 11% os / 10% poisson / 10% organe / 5% fibre",
       "cat_pmr": "Modèle proie cru",
       "cat_frankenprey": "Morceaux crus assemblés",
       "cat_whole_prey": "Souris, cailles, poussins",
       "cat_barf_lite": "Cru + un peu de légumes",
-      "cat_cooked_carnivore": "+ supplément de taurine"
+      "cat_cooked_carnivore": "+ supplément de taurine",
+      "custom": "Construisez la vôtre"
+    },
+    "custom": {
+      "title": "Votre mélange personnalisé",
+      "expandAdvanced": "Afficher avancé",
+      "collapseAdvanced": "Masquer avancé",
+      "nearest": "Le plus proche :",
+      "sumLabel": "Total des macros",
+      "compositionLabel": "Composition des protéines (muscle / organe / os)",
+      "compositionHelp": "Sous-part de la portion protéique. Utile en suivant des ratios style PMR.",
+      "calciumLabel": "Source de calcium",
+      "supplementsLabel": "Suppléments suggérés",
+      "pills": {
+        "lean": "Cuit maigre",
+        "protein": "Hyperprotéiné",
+        "meat90": "90/10 viande"
+      },
+      "calcium": {
+        "bone_in": "Os cru",
+        "eggshell": "Coquille d'œuf",
+        "supplement": "Supplément de calcium",
+        "none": "Aucun / non ajouté"
+      },
+      "supplement": {
+        "omega3": "Oméga-3",
+        "vitaminE": "Vit E",
+        "taurine": "Taurine",
+        "multivitamin": "Multivit"
+      },
+      "summary": {
+        "meatHeavy": "Surtout de la viande. Ajoutez une source de calcium — ce mélange ne contient pas d'os.",
+        "highMeat": "Viande dominante, avec une petite part de légumes. Schéma cuit couramment prescrit par les vétérinaires.",
+        "balancedMeat": "Répartition équilibrée viande-végétal — un juste milieu pour le chien adulte.",
+        "vegHeavy": "Beaucoup de légumes. Assurez-vous que votre protéine soit assez dense pour couvrir les besoins quotidiens.",
+        "mixed": "Assiette mixte. Vérifiez que les totaux atteignent 100%."
+      },
+      "warn": {
+        "lowProtein": "La protéine est sous le minimum adulte FEDIAF/NRC (~18%). Confirmez avec votre vétérinaire.",
+        "noCalcium": "Pas de source de calcium pour un plan tout-viande. Ajoutez de l'os, de la coquille d'œuf ou un supplément.",
+        "highBone": "Plus de 15% d'os peut provoquer une constipation."
+      },
+      "vetPrescribed": "Ce régime est prescrit par un vétérinaire",
+      "vetPrescribedHelp": "Marquer un régime comme prescrit permet au planificateur d'assouplir les contrôles de sécurité qui bloqueraient normalement les plans (par exemple faible protéine en IRC avancée). Les règles de toxicologie (os cuits, allium, xylitol, etc.) restent appliquées.",
+      "vetName": "Vétérinaire prescripteur (optionnel)",
+      "condition": "Condition",
+      "reviewDate": "Date de prochaine revue",
+      "conditions": {
+        "renal_ckd": "Maladie rénale chronique",
+        "hepatic": "Maladie hépatique",
+        "pancreatitis": "Pancréatite",
+        "ibd": "MICI / entéropathie chronique",
+        "food_allergy": "Allergie alimentaire (régime d'éviction)",
+        "urolithiasis_struvite": "Calculs urinaires — struvite",
+        "urolithiasis_calcium_oxalate": "Calculs urinaires — oxalate de calcium",
+        "urolithiasis_urate": "Calculs urinaires — urate",
+        "diabetes": "Diabète",
+        "obesity": "Obésité (perte de poids)",
+        "cardiac": "Cardiaque",
+        "epi": "IPE (insuffisance pancréatique)",
+        "cancer_cachexia": "Cancer / cachexie",
+        "other": "Autre"
+      }
+    },
+    "cooking": {
+      "raw": "Cru",
+      "lightly_cooked": "Légèrement cuit",
+      "fully_cooked": "Bien cuit",
+      "nonCanonical": "{{preset}} est traditionnellement servi cru — assurez-vous que votre recette cuite apporte toujours une nutrition complète (surtout le calcium).",
+      "pmrLockTitle": "Le PMR ne peut pas être cuit",
+      "pmrLockBody": "Le calcium du PMR provient de l'os cru (10% de la ration). Les os cuits éclatent et peuvent provoquer un étouffement ou une perforation gastro-intestinale. Passez au BARF cuit, ou construisez une alimentation personnalisée avec un supplément de calcium.",
+      "pmrLockSwitchBarf": "Passer au BARF (cuit)",
+      "pmrLockKeepRaw": "Garder le PMR cru"
     },
     "macroProtein": "protéines",
     "macroVeg": "légumes",
@@ -719,7 +812,7 @@
       "foodSafety": "Aliments toxiques, viandes sûres, légumes, fruits.",
       "supplements": "Objectifs AAFCO, équilibrants et transition sur 7 jours.",
       "dietsTitle": "5 profils de régime",
-      "dietsDesc": "Cuit équilibré · BARF · PMR · Riche en protéines · Ancestral.",
+      "dietsDesc": "Cuit maigre · BARF · PMR · Riche en protéines · Ancestral.",
       "langTitle": "8 langues",
       "langDesc": "Entièrement traduit, où que vous cuisiniez.",
       "preview": {
@@ -746,7 +839,7 @@
       },
       "step2": {
         "title": "Choisissez une alimentation de confiance",
-        "desc": "Cuit équilibré, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
+        "desc": "Cuit maigre, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
         "title_cat": "Choisissez une alimentation féline sûre",
         "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, proie entière ou carnivore cuit — toutes fondées sur la biologie carnivore stricte."
       },
