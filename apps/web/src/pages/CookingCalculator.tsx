@@ -14,6 +14,7 @@ import {
 import vegCookingData from '@pawcook/data/vegetable-cooking';
 import { useSpecies } from '../lib/species';
 import { useSpeciesT } from '../lib/use-species-t';
+import { consumePendingCookingPrefill } from '../lib/cooking-prefill-bridge';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -128,26 +129,6 @@ function TempDial({ tempC, tempF, unit }: { tempC: number; tempF: number; unit: 
   );
 }
 
-const PREFILL_STORAGE_KEY = 'pawcook_cooking_prefill_v1';
-
-/**
- * Read-and-delete the prefill that ShoppingListView wrote to localStorage
- * before navigating here. Synchronous, doesn't depend on router state or
- * URL params surviving the navigation — works in every browser, in-app
- * webview, and through cache layers.
- */
-function consumePrefill(): CookingPrefill | null {
-  if (typeof localStorage === 'undefined') return null;
-  try {
-    const raw = localStorage.getItem(PREFILL_STORAGE_KEY);
-    if (!raw) return null;
-    localStorage.removeItem(PREFILL_STORAGE_KEY);
-    const parsed = JSON.parse(raw) as CookingPrefill;
-    return parsed && typeof parsed === 'object' ? parsed : null;
-  } catch {
-    return null;
-  }
-}
 
 export default function CookingCalculator() {
   const { t, i18n } = useTranslation();
@@ -158,7 +139,7 @@ export default function CookingCalculator() {
   // because React 18 may run the initializer twice; we just memo it).
   const prefillRef = useRef<CookingPrefill | null | undefined>(undefined);
   if (prefillRef.current === undefined) {
-    prefillRef.current = consumePrefill();
+    prefillRef.current = consumePendingCookingPrefill();
   }
   const prefill = prefillRef.current;
   const [prefillBanner, setPrefillBanner] = useState<CookingPrefill | null>(prefill ?? null);
@@ -189,7 +170,7 @@ export default function CookingCalculator() {
   // localStorage and then navigate() bumped location.key. Read-and-apply
   // here so the form rebinds without needing a remount.
   useEffect(() => {
-    const fresh = consumePrefill();
+    const fresh = consumePendingCookingPrefill();
     if (!fresh) return;
     reset(applyPrefill(loadSaved(), fresh));
     setPrefillBanner(fresh);

@@ -14,6 +14,7 @@ import { PetTag } from '../../components/meal-plan/PetTag';
 import { useRecipeExport } from '../../hooks/useRecipeExport';
 import { useShoppingChecks } from '../../contexts/ShoppingChecksContext';
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
+import { setPendingCookingPrefill } from '../../lib/cooking-prefill-bridge';
 import { cn } from '../../lib/cn';
 import type { CookingPrefill } from '../CookingCalculator';
 
@@ -36,12 +37,10 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       feedingDays: plan.durationDays,
       cookingMethod: plan.sourcing.preferredCookingMethod,
     };
-    // Persist the prefill to localStorage so it survives the navigation
-    // regardless of router state, hash routing, in-app browsers, etc.
-    // CookingCalculator reads-and-deletes this on mount.
-    try {
-      localStorage.setItem('pawcook_cooking_prefill_v1', JSON.stringify(prefill));
-    } catch { /* quota / private-mode — ignore */ }
+    // Hand off via the module-level bridge (in-memory, cannot fail) AND
+    // localStorage as a backup. CookingCalculator's consume reads both
+    // tiers so we cover lazy-load timing and storage-blocked browsers.
+    setPendingCookingPrefill(prefill);
     navigate('/cooking');
   }
 
