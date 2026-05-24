@@ -41,7 +41,8 @@
     "unsavedChanges": "Er zijn niet-opgeslagen wijzigingen. Weet je zeker dat je wilt vertrekken?",
     "calcFailed": "Kon niet berekenen — controleer de waarden.",
     "cancel": "Annuleren",
-    "dismiss": "Sluiten"
+    "dismiss": "Sluiten",
+    "close": "Sluiten"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Alles wat de moeite waard is om over dit dier te onthouden.",
       "create": "Huisdier aanmaken",
       "saveChanges": "Wijzigingen opslaan",
-      "delete": "Huisdier verwijderen"
+      "delete": "Huisdier verwijderen",
+      "noChanges": "Maak een wijziging om opslaan in te schakelen"
     },
     "species": {
       "dog": "Hond",
@@ -123,7 +125,8 @@
       "help": "Tik om eiwitten of ingrediënten te markeren waar je dier op reageert. De planner sluit ze uit.",
       "addOther": "Voeg toe",
       "pickOther": "Kies een ingrediënt",
-      "done": "Klaar"
+      "done": "Klaar",
+      "removeOne": "{{name}} verwijderen"
     },
     "conditions": {
       "label": "Chronische aandoeningen",
@@ -163,7 +166,8 @@
       "added": "{{name}} toegevoegd.",
       "updated": "{{name}} bijgewerkt.",
       "removed": "{{name}} verwijderd."
-    }
+    },
+    "confirmDeleteHelp": "Hiermee wordt het huisdier permanent verwijderd en losgekoppeld van alle maaltijdplannen."
   },
   "data": {
     "title": "Back-up & herstel",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Voorbeeld",
       "previewSubtitle": "{{days}} dagen · klaar om op te slaan",
       "defaultName": "{{names}} · {{days}} dagen",
-      "defaultNameEmpty": "Plan zonder titel"
+      "defaultNameEmpty": "Plan zonder titel",
+      "generateFirst": "Genereer eerst een plan"
     },
     "sourcing": {
       "varietyLabel": "Variatie",
@@ -250,7 +255,13 @@
       "methodLabel": "Bereidingswijze",
       "methodHelp": "We onthouden dit zodat de \"Koken\"-knoppen in de boodschappenlijst de calculator meteen op jouw manier openen.",
       "includeOrgans": "Voeg orgaanvlees toe (lever, nier, milt)",
-      "includeOrgansHelp": "Uit = geen orgaanvlees op de boodschappenlijst. Let op: rauwe diëten zijn afhankelijk van orgaanvlees voor vitamine A en (bij katten) taurine."
+      "includeOrgansHelp": "Uit = geen orgaanvlees op de boodschappenlijst. Let op: rauwe diëten zijn afhankelijk van orgaanvlees voor vitamine A en (bij katten) taurine.",
+      "bagSizeDays": "{{n}} dagen",
+      "bagSizeLabel": "Zakgrootte",
+      "bagSizeHelp": "Hoeveel dagen maaltijden er in elke sous-vide zak gaan. Grotere zakken = minder plastic en minder kooksessies, maar ze liggen langer in de vriezer.",
+      "bagSizeOpt": "{{n}} dagen",
+      "bagSizeCaption": "Eén eiwit per zak · groenten in eigen zakken",
+      "bagSizeWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — overweeg 2 of 3."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -269,7 +280,8 @@
       "delete": "Plan verwijderen",
       "subtitle": "{{days}} dagen · start op {{startDate}}",
       "tabMeals": "Maaltijden",
-      "tabShopping": "Boodschappen"
+      "tabShopping": "Boodschappen",
+      "tabCooking": "Kookplan"
     },
     "shopping": {
       "total": "Totale boodschappen",
@@ -286,12 +298,25 @@
         "online": "Online bestelling",
         "other": "Overig"
       },
-      "cookWith": "Kook {{name}} ({{qty}})"
+      "cookWith": "Kook {{name}} ({{qty}})",
+      "cookShort": "Koken",
+      "emptyTitle": "Nog niets te kopen",
+      "surplusFreeze": "{{need}} nodig – {{extra}} extra om in te vriezen",
+      "surplusDoNotFeed": "{{need}} nodig – {{extra}} niet voeren, invriezen voor volgend plan",
+      "unit": {
+        "piece": "{{qty}} st",
+        "fish": "{{qty}} vis",
+        "pack": "{{qty}} pak",
+        "punnet": "{{qty}} bakje",
+        "bunch": "{{qty}} bos",
+        "bottle": "{{qty}} fles"
+      }
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
       "saved": "\"{{name}}\" opgeslagen.",
-      "deleted": "\"{{name}}\" verwijderd."
+      "deleted": "\"{{name}}\" verwijderd.",
+      "generateFailed": "Kon het plan niet genereren — probeer andere instellingen."
     },
     "refusal": {
       "title": "Plan niet gegenereerd",
@@ -311,6 +336,39 @@
         "high_fat_pancreatitis": "Vet is {{value}}% — boven het pancreatitis-veilige plafond van {{threshold}}%.",
         "expired_vet_review": "De controledatum van het dierenartsvoorschrift is verstreken. Bevestig het plan opnieuw met de dierenarts voordat je nieuwe plannen genereert."
       }
+    },
+    "confirmDeleteHelp": "Een plan verwijderen kan niet ongedaan worden gemaakt. Je opgeslagen huisdierprofielen worden niet beïnvloed.",
+    "cookingPlan": {
+      "emptyTitle": "Kookplan alleen voor sous-vide",
+      "emptyHelp": "Zakken worden gegenereerd als het plan sous-vide gebruikt. Regenereer met sous-vide als kookmethode om het zakkenschema te zien.",
+      "noBagsTitle": "Niets om in te pakken",
+      "noBagsHelp": "Dit plan heeft geen batch-geschikte ingrediënten — alles wordt vers bereid.",
+      "summaryLabel": "Kookplan",
+      "summary": "{{bags}} zakken · {{days}} dagen per zak · één eiwit per zak",
+      "thawIcs": "Ontdooischema (.ics)",
+      "groupSummary": "{{bags}} zakken · {{grams}} g totaal",
+      "printLabels": "Labels afdrukken",
+      "bagN": "Zak {{n}} van {{total}}",
+      "thaw": "Ontdooien {{date}}",
+      "useBy": "Te gebruiken vóór {{date}}",
+      "rotationNote": "Eiwitten wisselen — zakkendata zijn mogelijk niet opeenvolgend.",
+      "freshLabel": "Vers koken (geen batch)",
+      "freshHelp": "Deze laten zich slecht in batch invriezen. Dagelijks of per recept verwerken.",
+      "freshReason": {
+        "perishable": "bederfelijk",
+        "no-batch-veg": "vers koken",
+        "organ": "kleine porties",
+        "supplement-equiv": "dagelijkse toevoeging"
+      }
+    },
+    "labels": {
+      "title": "{{count}} zaklabels — {{plan}}",
+      "bagN": "Zak {{n}}/{{total}}",
+      "cooked": "Gekookt",
+      "useBy": "Te gebruiken vóór",
+      "serves": "Porties",
+      "pets": "Huisdieren",
+      "weight": "Gewicht"
     }
   },
   "condition": {
@@ -358,7 +416,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Oven (laag)",
       "stovetop_low": "Fornuis op laag vuur",
-      "slow_cooker": "Slowcooker"
+      "slow_cooker": "Slowcooker",
+      "pressure_cooker": "Snelkookpan"
     },
     "forms": {
       "minced": "Gehakt",
@@ -400,7 +459,8 @@
       "sous_vide": "Seal het vlees in vacuümzakken. Verwarm het waterbad voor op 74 °C (165 °F). Dompel de zakken onder en kook voor de berekende tijd. Controleer de kerntemperatuur met een thermometer voor het serveren.",
       "oven": "Verwarm de oven voor op 120 °C (248 °F). Leg het vlees in een afgedekte schaal; voeg een scheutje water of bouillon toe om uitdrogen te voorkomen. Controleer met een thermometer — doel: 74 °C (165 °F) kerntemperatuur.",
       "stovetop_low": "Breng een pan water aan de kook op laag vuur (niet onstuimig koken). Voeg vlees toe en roer regelmatig — elke 2 min voor gehakt, elke 5 min voor blokjes. Haal van het vuur wanneer de kerntemperatuur 74 °C (165 °F) bereikt. Voeg het kookvocht toe aan de maaltijd.",
-      "slow_cooker": "Leg het vlees in de slowcooker en voeg ½ kopje water of bouillon toe. Stel in op LAAG — gebruik geen HOOG omdat snelle temperatuurwisselingen het bacterierisico verhogen. Controleer 74 °C (165 °F) kerntemperatuur voor het serveren."
+      "slow_cooker": "Leg het vlees in de slowcooker en voeg ½ kopje water of bouillon toe. Stel in op LAAG — gebruik geen HOOG omdat snelle temperatuurwisselingen het bacterierisico verhogen. Controleer 74 °C (165 °F) kerntemperatuur voor het serveren.",
+      "pressure_cooker": "Doe het vlees met ½ kop water of bouillon in de snelkookpan. Sluit het deksel en kook onder hoge druk gedurende de berekende tijd. Laat ten minste 10 minuten natuurlijk drukverlies vóór openen, controleer dan 74 °C (165 °F) kerntemperatuur. Voeg het kookvocht bij de maaltijd."
     },
     "store": {
       "refrigerated": "Gekookt, gekoeld: 3–4 dagen.",
@@ -418,7 +478,8 @@
       "sous_vide": "Sous-vide bewaart de meeste in water oplosbare vitamines (B-complex, Vit C). Voeg alle zakjussappen toe aan de maaltijd.",
       "oven": "Sommige B-vitamines gaan verloren in het braadvocht — voeg alle braadsappen toe aan de maaltijd.",
       "stovetop_low": "B-vitamines logen uit in het kookwater — voeg altijd de bouillon toe aan de maaltijd.",
-      "slow_cooker": "Langzaam, zacht garen houdt de meeste voedingsstoffen in de vloeistof — serveer de bouillon naast het vlees."
+      "slow_cooker": "Langzaam, zacht garen houdt de meeste voedingsstoffen in de vloeistof — serveer de bouillon naast het vlees.",
+      "pressure_cooker": "Drukgaren behoudt meer wateroplosbare vitamines dan open koken en breekt bindweefsel af. Voeg het kookvocht altijd bij de maaltijd."
     },
     "eyebrow": "Koken",
     "toastReady": "Recept klaar.",
@@ -435,7 +496,8 @@
       "steam": "Stoom",
       "bake": "Oven",
       "blanch": "Blancheren",
-      "raw": "Rauw"
+      "raw": "Rauw",
+      "boil": "Koken"
     },
     "prefilledContext": "{{pets}} huisdier(en) · {{days}} dagen voeding",
     "bagStrategy": {
@@ -445,7 +507,23 @@
       "day": "dag",
       "days": "dagen",
       "result": "Verdeling",
-      "help": "Voert {{pets}} huisdier(en) gedurende {{days}} dagen totaal. Na koken 1 zak in de koelkast bewaren (binnen {{fridge}} dagen gebruiken) en de andere {{frozen}} invriezen. Ontdooi een zak de avond ervoor."
+      "help": "Voert {{pets}} huisdier(en) gedurende {{days}} dagen totaal. Na koken 1 zak in de koelkast bewaren (binnen {{fridge}} dagen gebruiken) en de andere {{frozen}} invriezen. Ontdooi een zak de avond ervoor.",
+      "runtTip": "{{days}} dagen per zak zou je {{bags}} zakken geven in plaats van {{current}} — zelfde voedsel, minder plastic. Tik om te wisselen.",
+      "floorReason": "Minimum {{bags}} zakken voor {{days}} dagen — gekookt vlees blijft na ontdooien maar {{fridge}} dagen goed."
+    },
+    "exportFooter": "PawCook — geen veterinair advies. Gebruik een vleesthermometer om een veilige kerntemperatuur te controleren.",
+    "meatSwitcher": {
+      "label": "Een ander vlees uit dit plan koken"
+    },
+    "prefilledDaysShort": "dagen",
+    "prefilledPetsShort": "huisdieren",
+    "vegGuide": {
+      "help": "Kies het apparaat dat je echt gebruikt — we vertalen de aanbeveling naar jouw methode en geven aan wanneer iets een andere aanpak nodig heeft.",
+      "selectorLabel": "Bereid ze als:",
+      "sousVideBathNote": "Groenten hebben een heter bad nodig dan vlees. Bereid ze eerst op 85 °C en verlaag dan de temperatuur voor je eiwit — één apparaat, twee stappen.",
+      "recCaption": "aanb.: {{method}}",
+      "pillAria": "Toont {{active}}; aanbevolen methode is {{recommended}}",
+      "fellBackTo": "gehouden als {{method}} — {{appliance}} niet geschikt voor deze groente"
     }
   },
   "nutrition": {
@@ -657,7 +735,8 @@
     "weight_cat": "Gewicht van de kat (kg)",
     "profileSection_cat": "Kat-profiel",
     "placeholder_cat": "Vul het profiel van je kat in en tik op",
-    "placeholderHint_cat": "Voer het profiel van je kat in en tik op Bereken."
+    "placeholderHint_cat": "Voer het profiel van je kat in en tik op Bereken.",
+    "exportFooter": "PawCook — geen veterinair advies. Raadpleeg je dierenarts voor grote dieetwijzigingen."
   },
   "foodSafety": {
     "title": "Voedselveiligheidsreferentie",
@@ -679,7 +758,8 @@
     "noResults": "Geen resultaten voor",
     "noResultsHint": "Probeer een andere zoekterm",
     "eyebrow": "Voedselveiligheid",
-    "subtitle_cat": "Zoek veilige en giftige voedingsmiddelen voor katten. Katten zijn gevoeliger dan honden voor veel stoffen."
+    "subtitle_cat": "Zoek veilige en giftige voedingsmiddelen voor katten. Katten zijn gevoeliger dan honden voor veel stoffen.",
+    "clearSearch": "Zoekopdracht wissen"
   },
   "supplements": {
     "title": "Supplementengids",
@@ -1248,7 +1328,20 @@
       "body": "Katten en honden hebben verschillende voedingsbehoeften. Kies er een om te starten — je kunt altijd wisselen via de bovenste balk.",
       "dogDesc": "Honden zijn flexibele omnivoren met matige eiwitbehoefte.",
       "catDesc": "Katten zijn strikte carnivoren. Hun plannen zijn strenger.",
-      "footnote": "PawCook is geen diergeneeskundig advies. Raadpleeg een veterinair voedingsdeskundige voor chronische aandoeningen of groei."
+      "footnote": "PawCook is geen diergeneeskundig advies. Raadpleeg een veterinair voedingsdeskundige voor chronische aandoeningen of groei.",
+      "decideLater": "Later beslissen — toon me de app"
     }
+  },
+  "errorBoundary": {
+    "title": "Er is iets misgegaan",
+    "description": "De pagina kon niet worden geladen. Herlaad om opnieuw te proberen, of reset lokaal opgeslagen gegevens als het probleem aanhoudt.",
+    "retry": "Opnieuw proberen",
+    "resetData": "Lokale gegevens resetten"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "home": "Terug naar start"
   }
 }

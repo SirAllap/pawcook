@@ -41,7 +41,8 @@
     "unsavedChanges": "Masz niezapisane zmiany. Na pewno chcesz wyjść?",
     "calcFailed": "Nie można obliczyć — sprawdź dane.",
     "cancel": "Anuluj",
-    "dismiss": "Zamknij"
+    "dismiss": "Zamknij",
+    "close": "Zamknij"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Cokolwiek warto zapamiętać o tym zwierzęciu.",
       "create": "Utwórz zwierzę",
       "saveChanges": "Zapisz zmiany",
-      "delete": "Usuń zwierzę"
+      "delete": "Usuń zwierzę",
+      "noChanges": "Wprowadź zmianę, aby włączyć zapis"
     },
     "species": {
       "dog": "Pies",
@@ -123,7 +125,8 @@
       "help": "Dotknij, by oznaczyć białka lub składniki, na które reaguje. Planer je wykluczy.",
       "addOther": "Dodaj kolejny",
       "pickOther": "Wybierz składnik",
-      "done": "Gotowe"
+      "done": "Gotowe",
+      "removeOne": "Usuń {{name}}"
     },
     "conditions": {
       "label": "Choroby przewlekłe",
@@ -163,7 +166,8 @@
       "added": "Dodano {{name}}.",
       "updated": "Zaktualizowano {{name}}.",
       "removed": "Usunięto {{name}}."
-    }
+    },
+    "confirmDeleteHelp": "Trwale usuwa zwierzę i odłącza je od wszelkich planów żywienia."
   },
   "data": {
     "title": "Kopia zapasowa i przywracanie",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Podgląd",
       "previewSubtitle": "{{days}} dni · gotowe do zapisania",
       "defaultName": "{{names}} · {{days}} dni",
-      "defaultNameEmpty": "Plan bez nazwy"
+      "defaultNameEmpty": "Plan bez nazwy",
+      "generateFirst": "Najpierw wygeneruj plan"
     },
     "sourcing": {
       "varietyLabel": "Różnorodność",
@@ -250,7 +255,13 @@
       "methodLabel": "Metoda gotowania",
       "methodHelp": "Zapamiętujemy to, aby przycisk \"Gotuj\" na liście zakupów otwierał kalkulator już ustawiony pod ciebie.",
       "includeOrgans": "Uwzględnij podroby (wątroba, nerka, śledziona)",
-      "includeOrgansHelp": "Wyłączone = brak podrobów na liście zakupów. Uwaga: diety surowe wymagają podrobów dla witaminy A i (u kotów) tauryny."
+      "includeOrgansHelp": "Wyłączone = brak podrobów na liście zakupów. Uwaga: diety surowe wymagają podrobów dla witaminy A i (u kotów) tauryny.",
+      "bagSizeDays": "{{n}} dni",
+      "bagSizeLabel": "Rozmiar woreczka",
+      "bagSizeHelp": "Ile dni posiłków trafia do każdego woreczka sous-vide. Większe woreczki = mniej plastiku i mniej sesji gotowania, ale dłużej leżą w zamrażarce.",
+      "bagSizeOpt": "{{n}} dni",
+      "bagSizeCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
+      "bagSizeWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak się pogarsza — rozważ 2 lub 3."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -269,7 +280,8 @@
       "delete": "Usuń plan",
       "subtitle": "{{days}} dni · start {{startDate}}",
       "tabMeals": "Posiłki",
-      "tabShopping": "Zakupy"
+      "tabShopping": "Zakupy",
+      "tabCooking": "Plan gotowania"
     },
     "shopping": {
       "total": "Razem zakupów",
@@ -286,12 +298,25 @@
         "online": "Zamówienie online",
         "other": "Inne"
       },
-      "cookWith": "Gotuj {{name}} ({{qty}})"
+      "cookWith": "Gotuj {{name}} ({{qty}})",
+      "cookShort": "Ugotuj",
+      "emptyTitle": "Nic do kupienia",
+      "surplusFreeze": "{{need}} potrzebne – {{extra}} dodatkowo do zamrożenia",
+      "surplusDoNotFeed": "{{need}} potrzebne – {{extra}} nie karmić, zamrozić na kolejny plan",
+      "unit": {
+        "piece": "{{qty}} szt",
+        "fish": "{{qty}} ryba",
+        "pack": "{{qty}} opak.",
+        "punnet": "{{qty}} łubianka",
+        "bunch": "{{qty}} pęczek",
+        "bottle": "{{qty}} butelka"
+      }
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
       "saved": "Zapisano „{{name}}\".",
-      "deleted": "Usunięto „{{name}}\"."
+      "deleted": "Usunięto „{{name}}\".",
+      "generateFailed": "Nie udało się wygenerować planu — spróbuj innych ustawień."
     },
     "refusal": {
       "title": "Plan nie został wygenerowany",
@@ -311,6 +336,39 @@
         "high_fat_pancreatitis": "Tłuszcz wynosi {{value}}% — powyżej bezpiecznego limitu dla zapalenia trzustki {{threshold}}%.",
         "expired_vet_review": "Data przeglądu recepty weterynaryjnej minęła. Potwierdź plan z weterynarzem przed wygenerowaniem nowych planów."
       }
+    },
+    "confirmDeleteHelp": "Usunięcia planu nie można cofnąć. Zapisane profile zwierząt nie zostaną naruszone.",
+    "cookingPlan": {
+      "emptyTitle": "Plan gotowania tylko dla sous-vide",
+      "emptyHelp": "Woreczki są generowane, gdy plan korzysta z sous-vide. Wygeneruj plan ponownie z sous-vide jako metodą gotowania, aby zobaczyć harmonogram woreczków.",
+      "noBagsTitle": "Nic do pakowania",
+      "noBagsHelp": "Ten plan nie zawiera składników do partii — wszystko będzie gotowane na świeżo.",
+      "summaryLabel": "Plan gotowania",
+      "summary": "{{bags}} woreczków · {{days}} dni na woreczek · jedno białko na woreczek",
+      "thawIcs": "Harmonogram rozmrażania (.ics)",
+      "groupSummary": "{{bags}} woreczków · łącznie {{grams}} g",
+      "printLabels": "Drukuj etykiety",
+      "bagN": "Woreczek {{n}} z {{total}}",
+      "thaw": "Rozmroź {{date}}",
+      "useBy": "Zużyć do {{date}}",
+      "rotationNote": "Białka się zmieniają — daty woreczków mogą nie być kolejne.",
+      "freshLabel": "Gotuj na świeżo (nie partiami)",
+      "freshHelp": "Te produkty źle znoszą mrożenie partiami. Przygotowuj codziennie lub według przepisu.",
+      "freshReason": {
+        "perishable": "nietrwałe",
+        "no-batch-veg": "gotuj na świeżo",
+        "organ": "małe porcje",
+        "supplement-equiv": "codzienny dodatek"
+      }
+    },
+    "labels": {
+      "title": "{{count}} etykiet woreczków — {{plan}}",
+      "bagN": "Woreczek {{n}}/{{total}}",
+      "cooked": "Ugotowane",
+      "useBy": "Zużyć do",
+      "serves": "Porcje",
+      "pets": "Zwierzęta",
+      "weight": "Waga"
     }
   },
   "condition": {
@@ -358,7 +416,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Piekarnik (niski)",
       "stovetop_low": "Kuchenka na małym ogniu",
-      "slow_cooker": "Wolnowar"
+      "slow_cooker": "Wolnowar",
+      "pressure_cooker": "Szybkowar"
     },
     "forms": {
       "minced": "Mielone",
@@ -400,7 +459,8 @@
       "sous_vide": "Zaplombuj mięso w woreczkach próżniowych. Podgrzej kąpiel wodną do 74 °C (165 °F). Zanurz woreczki i gotuj przez obliczony czas. Przed podaniem sprawdź temperaturę wewnętrzną termometrem.",
       "oven": "Rozgrzej piekarnik do 120 °C (248 °F). Umieść mięso w przykrytym naczyniu; dodaj odrobinę wody lub bulionu, aby zapobiec wysychaniu. Sprawdź termometrem — cel: 74 °C (165 °F) wewnętrznie.",
       "stovetop_low": "Doprowadź garnek wody do delikatnego wrzenia (nie gwałtownego). Dodaj mięso i mieszaj regularnie — co 2 min dla mielonego, co 5 min dla kostek. Zdejmij z ognia gdy temperatura wewnętrzna osiągnie 74 °C (165 °F). Włącz wywar do posiłku.",
-      "slow_cooker": "Umieść mięso w wolnowarze i dodaj ½ szklanki wody lub bulionu. Ustaw na NISKI — nie używaj WYSOKIEGO, gdyż gwałtowne zmiany temperatury zwiększają ryzyko bakteryjne. Sprawdź 74 °C (165 °F) wewnętrznie przed podaniem."
+      "slow_cooker": "Umieść mięso w wolnowarze i dodaj ½ szklanki wody lub bulionu. Ustaw na NISKI — nie używaj WYSOKIEGO, gdyż gwałtowne zmiany temperatury zwiększają ryzyko bakteryjne. Sprawdź 74 °C (165 °F) wewnętrznie przed podaniem.",
+      "pressure_cooker": "Włóż mięso do szybkowaru z ½ szklanki wody lub bulionu. Zamknij pokrywę i gotuj pod wysokim ciśnieniem przez obliczony czas. Pozwól na naturalne uwolnienie pary przez co najmniej 10 minut przed otwarciem, a następnie sprawdź temperaturę wewnętrzną 74 °C (165 °F). Dołącz płyn z gotowania do posiłku."
     },
     "store": {
       "refrigerated": "Ugotowane, w lodówce: 3–4 dni.",
@@ -418,7 +478,8 @@
       "sous_vide": "Sous-vide najlepiej zachowuje witaminy rozpuszczalne w wodzie (kompleks B, Vit C). Dodaj wszystkie soki z woreczków do posiłku.",
       "oven": "Niektóre witaminy z grupy B przechodzą do soków — dodaj wszystkie soki z pieczenia do posiłku.",
       "stovetop_low": "Witaminy B przenikają do wody gotowania — zawsze dodaj wywar do posiłku.",
-      "slow_cooker": "Wolne, delikatne gotowanie zachowuje większość składników odżywczych w płynie — podaj wywar razem z mięsem."
+      "slow_cooker": "Wolne, delikatne gotowanie zachowuje większość składników odżywczych w płynie — podaj wywar razem z mięsem.",
+      "pressure_cooker": "Gotowanie pod ciśnieniem zachowuje więcej witamin rozpuszczalnych w wodzie niż gotowanie otwarte i rozkłada tkankę łączną. Zawsze dołączaj płyn z gotowania do posiłku."
     },
     "eyebrow": "Gotowanie",
     "toastReady": "Przepis gotowy.",
@@ -435,7 +496,8 @@
       "steam": "Para",
       "bake": "Piekarnik",
       "blanch": "Blanszuj",
-      "raw": "Surowe"
+      "raw": "Surowe",
+      "boil": "Gotuj"
     },
     "prefilledContext": "{{pets}} zwierz(ąt) · {{days}} dni karmienia",
     "bagStrategy": {
@@ -445,7 +507,23 @@
       "day": "dzień",
       "days": "dni",
       "result": "Podział",
-      "help": "Wyżywi {{pets}} zwierz(ąt) przez {{days}} dni. Po ugotowaniu trzymaj 1 woreczek w lodówce (zużyj w ciągu {{fridge}} dni), a {{frozen}} zamroź. Rozmroź woreczek noc wcześniej."
+      "help": "Wyżywi {{pets}} zwierz(ąt) przez {{days}} dni. Po ugotowaniu trzymaj 1 woreczek w lodówce (zużyj w ciągu {{fridge}} dni), a {{frozen}} zamroź. Rozmroź woreczek noc wcześniej.",
+      "runtTip": "{{days}} dni na woreczek dałoby Ci {{bags}} woreczków zamiast {{current}} — to samo jedzenie, mniej plastiku. Dotknij, aby zmienić.",
+      "floorReason": "Minimum {{bags}} woreczków na {{days}} dni — ugotowane mięso wytrzymuje tylko {{fridge}} dni po rozmrożeniu."
+    },
+    "exportFooter": "PawCook — to nie jest porada weterynaryjna. Użyj termometru do mięsa, aby zweryfikować bezpieczną temperaturę wewnętrzną.",
+    "meatSwitcher": {
+      "label": "Ugotuj inne mięso z tego planu"
+    },
+    "prefilledDaysShort": "dni",
+    "prefilledPetsShort": "zwierzęta",
+    "vegGuide": {
+      "help": "Wybierz urządzenie, którego naprawdę używasz — przekładamy zalecenie na Twoją metodę i ostrzegamy, gdy coś wymaga innego podejścia.",
+      "selectorLabel": "Gotuj je jak:",
+      "sousVideBathNote": "Warzywa potrzebują gorętszej kąpieli niż mięso. Najpierw gotuj je w 85 °C, a potem obniż temperaturę dla białka — jedno urządzenie, dwa etapy.",
+      "recCaption": "zal.: {{method}}",
+      "pillAria": "Pokazuję {{active}}; zalecana metoda to {{recommended}}",
+      "fellBackTo": "pozostawiono jako {{method}} — {{appliance}} nieodpowiednie dla tego warzywa"
     }
   },
   "nutrition": {
@@ -657,7 +735,8 @@
     "weight_cat": "Waga kota (kg)",
     "profileSection_cat": "Profil kota",
     "placeholder_cat": "Wypełnij profil swojego kota i naciśnij",
-    "placeholderHint_cat": "Wprowadź profil swojego kota i naciśnij Oblicz."
+    "placeholderHint_cat": "Wprowadź profil swojego kota i naciśnij Oblicz.",
+    "exportFooter": "PawCook — to nie jest porada weterynaryjna. Skonsultuj się z weterynarzem przed większymi zmianami w diecie."
   },
   "foodSafety": {
     "title": "Informacje o bezpieczeństwie żywności",
@@ -679,7 +758,8 @@
     "noResults": "Brak wyników dla",
     "noResultsHint": "Spróbuj innego terminu wyszukiwania",
     "eyebrow": "Bezpieczeństwo żywności",
-    "subtitle_cat": "Wyszukaj bezpieczne i toksyczne produkty dla kotów. Koty są bardziej wrażliwe niż psy na wiele związków."
+    "subtitle_cat": "Wyszukaj bezpieczne i toksyczne produkty dla kotów. Koty są bardziej wrażliwe niż psy na wiele związków.",
+    "clearSearch": "Wyczyść wyszukiwanie"
   },
   "supplements": {
     "title": "Przewodnik po suplementach",
@@ -1248,7 +1328,20 @@
       "body": "Koty i psy mają różne potrzeby żywieniowe. Wybierz, aby zacząć — możesz przełączać w dowolnym momencie z górnego paska.",
       "dogDesc": "Psy są elastycznymi wszystkożercami o umiarkowanym zapotrzebowaniu na białko.",
       "catDesc": "Koty są bezwzględnymi mięsożercami. Ich plany są bardziej rygorystyczne.",
-      "footnote": "PawCook nie zastępuje porady weterynaryjnej. W przypadku chorób przewlekłych lub wzrostu skonsultuj się ze specjalistą żywienia zwierząt."
+      "footnote": "PawCook nie zastępuje porady weterynaryjnej. W przypadku chorób przewlekłych lub wzrostu skonsultuj się ze specjalistą żywienia zwierząt.",
+      "decideLater": "Zdecyduję później — pokaż mi aplikację"
     }
+  },
+  "errorBoundary": {
+    "title": "Coś poszło nie tak",
+    "description": "Nie udało się załadować strony. Odśwież, aby spróbować ponownie, lub zresetuj lokalnie zapisane dane, jeśli problem nadal występuje.",
+    "retry": "Spróbuj ponownie",
+    "resetData": "Zresetuj dane lokalne"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Nie znaleziono strony",
+    "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "home": "Powrót do strony głównej"
   }
 }

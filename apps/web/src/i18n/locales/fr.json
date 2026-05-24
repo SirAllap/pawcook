@@ -41,7 +41,8 @@
     "unsavedChanges": "Modifications non enregistrées. Voulez-vous vraiment quitter ?",
     "calcFailed": "Calcul impossible : vérifiez les valeurs.",
     "cancel": "Annuler",
-    "dismiss": "Fermer"
+    "dismiss": "Fermer",
+    "close": "Fermer"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Tout ce qui est utile à retenir sur cet animal.",
       "create": "Créer l'animal",
       "saveChanges": "Enregistrer",
-      "delete": "Supprimer l'animal"
+      "delete": "Supprimer l'animal",
+      "noChanges": "Modifiez quelque chose pour activer l’enregistrement"
     },
     "species": {
       "dog": "Chien",
@@ -123,7 +125,8 @@
       "help": "Touchez pour marquer les protéines ou ingrédients à exclure. Le planificateur les évitera.",
       "addOther": "Ajouter un autre",
       "pickOther": "Choisir un ingrédient",
-      "done": "Terminé"
+      "done": "Terminé",
+      "removeOne": "Supprimer {{name}}"
     },
     "conditions": {
       "label": "Conditions chroniques",
@@ -163,7 +166,8 @@
       "added": "{{name}} ajouté.",
       "updated": "{{name}} mis à jour.",
       "removed": "{{name}} supprimé."
-    }
+    },
+    "confirmDeleteHelp": "Cette action supprime définitivement l’animal et le dissocie de tous les plans de repas."
   },
   "data": {
     "title": "Sauvegarde et restauration",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Aperçu",
       "previewSubtitle": "{{days}} jours · prêt à enregistrer",
       "defaultName": "{{names}} · {{days}} jours",
-      "defaultNameEmpty": "Plan sans titre"
+      "defaultNameEmpty": "Plan sans titre",
+      "generateFirst": "Générez d’abord un plan"
     },
     "sourcing": {
       "varietyLabel": "Variété",
@@ -250,7 +255,13 @@
       "methodLabel": "Méthode de cuisson",
       "methodHelp": "Nous mémorisons ce choix pour que le bouton « Cuire » de la liste de courses ouvre la calculatrice déjà configurée comme vous le souhaitez.",
       "includeOrgans": "Inclure les abats (foie, rognon, rate)",
-      "includeOrgansHelp": "Désactivé = pas d'abats dans la liste. Attention : les régimes crus dépendent des abats pour la vitamine A et (pour les chats) la taurine."
+      "includeOrgansHelp": "Désactivé = pas d'abats dans la liste. Attention : les régimes crus dépendent des abats pour la vitamine A et (pour les chats) la taurine.",
+      "bagSizeDays": "{{n}} jours",
+      "bagSizeLabel": "Taille du sachet",
+      "bagSizeHelp": "Combien de jours de repas dans chaque sachet sous-vide. Sachets plus grands = moins de plastique et moins de sessions de cuisson, mais plus longtemps au congélateur.",
+      "bagSizeOpt": "{{n}} jours",
+      "bagSizeCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
+      "bagSizeWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur se dégrade — envisagez 2 ou 3."
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -269,7 +280,8 @@
       "delete": "Supprimer le plan",
       "subtitle": "{{days}} jours · démarre le {{startDate}}",
       "tabMeals": "Repas",
-      "tabShopping": "Courses"
+      "tabShopping": "Courses",
+      "tabCooking": "Plan de cuisson"
     },
     "shopping": {
       "total": "Total des courses",
@@ -286,12 +298,25 @@
         "online": "Commande en ligne",
         "other": "Autres"
       },
-      "cookWith": "Cuire {{name}} ({{qty}})"
+      "cookWith": "Cuire {{name}} ({{qty}})",
+      "cookShort": "Cuisiner",
+      "emptyTitle": "Rien à acheter pour l’instant",
+      "surplusFreeze": "{{need}} nécessaire – {{extra}} en plus à congeler",
+      "surplusDoNotFeed": "{{need}} nécessaire – {{extra}} ne pas donner, congeler pour le prochain plan",
+      "unit": {
+        "piece": "{{qty}} pcs",
+        "fish": "{{qty}} poisson",
+        "pack": "{{qty}} paquet",
+        "punnet": "{{qty}} barquette",
+        "bunch": "{{qty}} botte",
+        "bottle": "{{qty}} bouteille"
+      }
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
       "saved": "« {{name}} » enregistré.",
-      "deleted": "« {{name}} » supprimé."
+      "deleted": "« {{name}} » supprimé.",
+      "generateFailed": "Impossible de générer le plan — essayez d’autres réglages."
     },
     "refusal": {
       "title": "Plan non généré",
@@ -311,6 +336,39 @@
         "high_fat_pancreatitis": "Le gras est de {{value}}% — au-dessus du plafond sûr pour pancréatite de {{threshold}}%.",
         "expired_vet_review": "La date de revue de la prescription vétérinaire est dépassée. Re-confirmez le plan avec le vétérinaire avant de générer de nouveaux plans."
       }
+    },
+    "confirmDeleteHelp": "La suppression d’un plan est irréversible. Vos profils d’animaux enregistrés ne seront pas affectés.",
+    "cookingPlan": {
+      "emptyTitle": "Plan de cuisson uniquement pour le sous-vide",
+      "emptyHelp": "Les sachets sont générés lorsque le plan utilise le sous-vide. Régénérez en choisissant le sous-vide comme méthode pour voir le calendrier des sachets.",
+      "noBagsTitle": "Rien à mettre en sachet",
+      "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
+      "summaryLabel": "Plan de cuisson",
+      "summary": "{{bags}} sachets · {{days}} jours par sachet · une protéine par sachet",
+      "thawIcs": "Calendrier de décongélation (.ics)",
+      "groupSummary": "{{bags}} sachets · {{grams}} g au total",
+      "printLabels": "Imprimer les étiquettes",
+      "bagN": "Sachet {{n}} sur {{total}}",
+      "thaw": "Décongeler {{date}}",
+      "useBy": "À consommer avant le {{date}}",
+      "rotationNote": "Les protéines tournent — les dates des sachets peuvent ne pas être consécutives.",
+      "freshLabel": "Cuire frais (pas en lot)",
+      "freshHelp": "Ces aliments ne se congèlent pas bien en lot. Traitez-les chaque jour ou par recette.",
+      "freshReason": {
+        "perishable": "périssable",
+        "no-batch-veg": "cuire frais",
+        "organ": "petites portions",
+        "supplement-equiv": "ajout quotidien"
+      }
+    },
+    "labels": {
+      "title": "{{count}} étiquettes de sachet — {{plan}}",
+      "bagN": "Sachet {{n}}/{{total}}",
+      "cooked": "Cuit",
+      "useBy": "À consommer avant le",
+      "serves": "Portions",
+      "pets": "Animaux",
+      "weight": "Poids"
     }
   },
   "condition": {
@@ -358,7 +416,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Four (doux)",
       "stovetop_low": "Cuisinière à feu doux",
-      "slow_cooker": "Mijoteuse"
+      "slow_cooker": "Mijoteuse",
+      "pressure_cooker": "Autocuiseur"
     },
     "forms": {
       "minced": "Haché",
@@ -400,7 +459,8 @@
       "sous_vide": "Scellez la viande dans des sacs sous vide. Préchauffez le bain-marie à 74 °C (165 °F). Immergez les sacs et cuisez pendant la durée calculée. Vérifiez la température interne avec un thermomètre à sonde avant de servir.",
       "oven": "Préchauffez le four à 120 °C (248 °F). Placez la viande dans un plat couvert ; ajoutez un peu d'eau ou de bouillon pour éviter le dessèchement. Vérifiez avec un thermomètre à sonde — objectif : 74 °C (165 °F) à cœur.",
       "stovetop_low": "Portez une casserole d'eau à frémissement doux (pas à ébullition vive). Ajoutez la viande et remuez régulièrement — toutes les 2 min pour la viande hachée, toutes les 5 min pour les morceaux. Retirez du feu quand la température interne atteint 74 °C (165 °F). Incorporez le bouillon de cuisson dans le repas.",
-      "slow_cooker": "Placez la viande dans la mijoteuse et ajoutez ½ tasse d'eau ou de bouillon. Réglez sur BAS — n'utilisez pas FORT car les variations rapides de température augmentent le risque bactérien. Vérifiez 74 °C (165 °F) à cœur avant de servir."
+      "slow_cooker": "Placez la viande dans la mijoteuse et ajoutez ½ tasse d'eau ou de bouillon. Réglez sur BAS — n'utilisez pas FORT car les variations rapides de température augmentent le risque bactérien. Vérifiez 74 °C (165 °F) à cœur avant de servir.",
+      "pressure_cooker": "Placez la viande dans l’autocuiseur avec ½ tasse d’eau ou de bouillon. Verrouillez le couvercle et faites cuire à haute pression pendant le temps calculé. Effectuez un relâchement naturel d’au moins 10 minutes avant d’ouvrir, puis vérifiez la température interne de 74 °C (165 °F). Incluez le liquide de cuisson dans le repas."
     },
     "store": {
       "refrigerated": "Cuit, réfrigéré : 3–4 jours.",
@@ -418,7 +478,8 @@
       "sous_vide": "Le sous-vide préserve le plus de vitamines hydrosolubles (complexe B, Vit C). Incorporez tous les jus des sacs dans le repas.",
       "oven": "Certaines vitamines B sont perdues dans le jus de rôtissage — incorporez tous les jus de cuisson dans le repas.",
       "stovetop_low": "Les vitamines B migrent dans l'eau de cuisson — incorporez toujours le bouillon dans le repas.",
-      "slow_cooker": "La cuisson lente et douce conserve la plupart des nutriments dans le liquide — servez le bouillon avec la viande."
+      "slow_cooker": "La cuisson lente et douce conserve la plupart des nutriments dans le liquide — servez le bouillon avec la viande.",
+      "pressure_cooker": "La cuisson sous pression préserve plus de vitamines hydrosolubles que l’ébullition à l’air libre et dégrade le tissu conjonctif. Incluez toujours le liquide de cuisson dans le repas."
     },
     "eyebrow": "Cuisine",
     "toastReady": "Recette prête.",
@@ -435,7 +496,8 @@
       "steam": "Vapeur",
       "bake": "Four",
       "blanch": "Blanchir",
-      "raw": "Cru"
+      "raw": "Cru",
+      "boil": "Bouillir"
     },
     "prefilledContext": "{{pets}} animal(aux) · {{days}} jours de repas",
     "bagStrategy": {
@@ -445,7 +507,23 @@
       "day": "jour",
       "days": "jours",
       "result": "Répartition",
-      "help": "Nourrit {{pets}} animal(aux) pendant {{days}} jours. Après cuisson, gardez 1 sachet au frigo (à consommer sous {{fridge}} jours) et congelez les {{frozen}} autres. Décongelez un sachet la veille."
+      "help": "Nourrit {{pets}} animal(aux) pendant {{days}} jours. Après cuisson, gardez 1 sachet au frigo (à consommer sous {{fridge}} jours) et congelez les {{frozen}} autres. Décongelez un sachet la veille.",
+      "runtTip": "{{days}} jours par sachet vous donneraient {{bags}} sachets au lieu de {{current}} — même quantité, moins de plastique. Touchez pour changer.",
+      "floorReason": "Minimum {{bags}} sachets pour {{days}} jours — la viande cuite ne se conserve que {{fridge}} jours une fois décongelée."
+    },
+    "exportFooter": "PawCook — pas un conseil vétérinaire. Utilisez un thermomètre à viande pour vérifier la température interne sécuritaire.",
+    "meatSwitcher": {
+      "label": "Cuisiner une autre viande de ce plan"
+    },
+    "prefilledDaysShort": "jours",
+    "prefilledPetsShort": "animaux",
+    "vegGuide": {
+      "help": "Choisissez l’appareil que vous utilisez vraiment — nous traduisons la recommandation pour votre méthode et vous indiquons quand un aliment demande une autre approche.",
+      "selectorLabel": "Cuisinez-les comme :",
+      "sousVideBathNote": "Les légumes ont besoin d’un bain plus chaud que la viande. Cuisez-les d’abord à 85 °C, puis baissez la température pour votre protéine — un appareil, deux étapes.",
+      "recCaption": "reco : {{method}}",
+      "pillAria": "Affichage de {{active}} ; méthode recommandée : {{recommended}}",
+      "fellBackTo": "conservé en {{method}} — {{appliance}} ne convient pas pour ce légume"
     }
   },
   "nutrition": {
@@ -657,7 +735,8 @@
     "weight_cat": "Poids du chat (kg)",
     "profileSection_cat": "Profil du chat",
     "placeholder_cat": "Remplissez le profil de votre chat puis appuyez sur",
-    "placeholderHint_cat": "Saisissez le profil de votre chat puis appuyez sur Calculer."
+    "placeholderHint_cat": "Saisissez le profil de votre chat puis appuyez sur Calculer.",
+    "exportFooter": "PawCook — pas un conseil vétérinaire. Consultez votre vétérinaire avant tout changement majeur de régime."
   },
   "foodSafety": {
     "title": "Référence sécurité alimentaire",
@@ -679,7 +758,8 @@
     "noResults": "Aucun résultat pour",
     "noResultsHint": "Essayez un autre terme de recherche",
     "eyebrow": "Sécurité alimentaire",
-    "subtitle_cat": "Recherchez les aliments sûrs et toxiques pour chats. Les chats sont plus sensibles que les chiens à de nombreux composés."
+    "subtitle_cat": "Recherchez les aliments sûrs et toxiques pour chats. Les chats sont plus sensibles que les chiens à de nombreux composés.",
+    "clearSearch": "Effacer la recherche"
   },
   "supplements": {
     "title": "Guide des suppléments",
@@ -1248,7 +1328,20 @@
       "body": "Chats et chiens ont des besoins nutritionnels différents. Choisissez pour commencer — vous pouvez changer à tout moment depuis la barre du haut.",
       "dogDesc": "Les chiens sont des omnivores flexibles aux besoins protéiques modérés.",
       "catDesc": "Les chats sont des carnivores stricts. Leurs plans sont plus rigoureux.",
-      "footnote": "PawCook n'est pas un avis vétérinaire. Consultez un nutritionniste vétérinaire pour les maladies chroniques ou la croissance."
+      "footnote": "PawCook n'est pas un avis vétérinaire. Consultez un nutritionniste vétérinaire pour les maladies chroniques ou la croissance.",
+      "decideLater": "Décider plus tard — voir l’app"
     }
+  },
+  "errorBoundary": {
+    "title": "Une erreur est survenue",
+    "description": "La page n’a pas pu se charger. Rechargez pour réessayer, ou réinitialisez les données enregistrées localement si le problème persiste.",
+    "retry": "Réessayer",
+    "resetData": "Réinitialiser les données locales"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n’existe pas ou a été déplacée.",
+    "home": "Retour à l’accueil"
   }
 }

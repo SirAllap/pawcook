@@ -41,7 +41,8 @@
     "unsavedChanges": "Es gibt ungespeicherte Änderungen. Wirklich verlassen?",
     "calcFailed": "Berechnung fehlgeschlagen — bitte Eingaben prüfen.",
     "cancel": "Abbrechen",
-    "dismiss": "Schließen"
+    "dismiss": "Schließen",
+    "close": "Schließen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Was sonst noch wichtig ist über dieses Tier.",
       "create": "Tier anlegen",
       "saveChanges": "Änderungen speichern",
-      "delete": "Tier löschen"
+      "delete": "Tier löschen",
+      "noChanges": "Eine Änderung vornehmen, um Speichern zu aktivieren"
     },
     "species": {
       "dog": "Hund",
@@ -123,7 +125,8 @@
       "help": "Tippe Proteine oder Zutaten an, auf die dein Tier reagiert. Der Planer schließt sie aus.",
       "addOther": "Weitere hinzufügen",
       "pickOther": "Zutat wählen",
-      "done": "Fertig"
+      "done": "Fertig",
+      "removeOne": "{{name}} entfernen"
     },
     "conditions": {
       "label": "Chronische Beschwerden",
@@ -163,7 +166,8 @@
       "added": "{{name}} hinzugefügt.",
       "updated": "{{name}} aktualisiert.",
       "removed": "{{name}} entfernt."
-    }
+    },
+    "confirmDeleteHelp": "Damit wird das Tier dauerhaft entfernt und von allen Ernährungsplänen getrennt."
   },
   "data": {
     "title": "Sicherung & Wiederherstellung",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Vorschau",
       "previewSubtitle": "{{days}} Tage · bereit zum Speichern",
       "defaultName": "{{names}} · {{days}} Tage",
-      "defaultNameEmpty": "Unbenannter Plan"
+      "defaultNameEmpty": "Unbenannter Plan",
+      "generateFirst": "Erst einen Plan generieren"
     },
     "sourcing": {
       "varietyLabel": "Vielfalt",
@@ -250,7 +255,13 @@
       "methodLabel": "Garmethode",
       "methodHelp": "Wir merken uns das, damit die \"Kochen\"-Buttons in der Einkaufsliste den Rechner schon nach deinem Workflow eingestellt öffnen.",
       "includeOrgans": "Innereien einbeziehen (Leber, Niere, Milz)",
-      "includeOrgansHelp": "Aus = keine Innereien auf der Einkaufsliste. Achtung: Rohfütterung ist auf Innereien angewiesen für Vitamin A und (bei Katzen) Taurin."
+      "includeOrgansHelp": "Aus = keine Innereien auf der Einkaufsliste. Achtung: Rohfütterung ist auf Innereien angewiesen für Vitamin A und (bei Katzen) Taurin.",
+      "bagSizeDays": "{{n}} Tage",
+      "bagSizeLabel": "Beutelgröße",
+      "bagSizeHelp": "Wie viele Tage Mahlzeiten in jeden Sous-vide-Beutel kommen. Größere Beutel = weniger Plastik und weniger Kochsitzungen, aber sie liegen länger im Gefrierfach.",
+      "bagSizeOpt": "{{n}} Tage",
+      "bagSizeCaption": "Ein Protein pro Beutel · Gemüse in eigenen Beuteln",
+      "bagSizeWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — überlegen Sie 2 oder 3."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -269,7 +280,8 @@
       "delete": "Plan löschen",
       "subtitle": "{{days}} Tage · ab {{startDate}}",
       "tabMeals": "Mahlzeiten",
-      "tabShopping": "Einkauf"
+      "tabShopping": "Einkauf",
+      "tabCooking": "Kochplan"
     },
     "shopping": {
       "total": "Einkauf gesamt",
@@ -286,12 +298,25 @@
         "online": "Online-Bestellung",
         "other": "Sonstiges"
       },
-      "cookWith": "{{name}} kochen ({{qty}})"
+      "cookWith": "{{name}} kochen ({{qty}})",
+      "cookShort": "Kochen",
+      "emptyTitle": "Noch nichts zu kaufen",
+      "surplusFreeze": "{{need}} benötigt – {{extra}} extra zum Einfrieren",
+      "surplusDoNotFeed": "{{need}} benötigt – {{extra}} nicht füttern, für den nächsten Plan einfrieren",
+      "unit": {
+        "piece": "{{qty}} Stk",
+        "fish": "{{qty}} Fisch",
+        "pack": "{{qty}} Packung",
+        "punnet": "{{qty}} Schale",
+        "bunch": "{{qty}} Bund",
+        "bottle": "{{qty}} Flasche"
+      }
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
       "saved": "„{{name}}\" gespeichert.",
-      "deleted": "„{{name}}\" gelöscht."
+      "deleted": "„{{name}}\" gelöscht.",
+      "generateFailed": "Plan konnte nicht erstellt werden — bitte andere Einstellungen versuchen."
     },
     "refusal": {
       "title": "Plan nicht erstellt",
@@ -311,6 +336,39 @@
         "high_fat_pancreatitis": "Fett liegt bei {{value}}% — über der pankreatitis-sicheren Obergrenze von {{threshold}}%.",
         "expired_vet_review": "Der Überprüfungstermin der tierärztlichen Verordnung ist abgelaufen. Bestätige den Plan erneut mit dem Tierarzt, bevor du neue Pläne erstellst."
       }
+    },
+    "confirmDeleteHelp": "Das Löschen eines Plans kann nicht rückgängig gemacht werden. Ihre gespeicherten Tierprofile bleiben unberührt.",
+    "cookingPlan": {
+      "emptyTitle": "Kochplan nur für Sous-vide",
+      "emptyHelp": "Beutel werden erzeugt, wenn der Plan Sous-vide verwendet. Plan mit Sous-vide als Garmethode neu erstellen, um den Beutelzeitplan zu sehen.",
+      "noBagsTitle": "Nichts zum Verpacken",
+      "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
+      "summaryLabel": "Kochplan",
+      "summary": "{{bags}} Beutel · {{days}} Tage pro Beutel · ein Protein pro Beutel",
+      "thawIcs": "Auftauplan (.ics)",
+      "groupSummary": "{{bags}} Beutel · {{grams}} g insgesamt",
+      "printLabels": "Etiketten drucken",
+      "bagN": "Beutel {{n}} von {{total}}",
+      "thaw": "Auftauen {{date}}",
+      "useBy": "Verbrauchen bis {{date}}",
+      "rotationNote": "Die Proteine rotieren — die Beuteldaten können nicht aufeinanderfolgen.",
+      "freshLabel": "Frisch kochen (nicht im Vorrat)",
+      "freshHelp": "Diese lassen sich nicht gut im Vorrat einfrieren. Täglich oder pro Rezept zubereiten.",
+      "freshReason": {
+        "perishable": "verderblich",
+        "no-batch-veg": "frisch kochen",
+        "organ": "kleine Portionen",
+        "supplement-equiv": "tägliche Beigabe"
+      }
+    },
+    "labels": {
+      "title": "{{count}} Beuteletiketten — {{plan}}",
+      "bagN": "Beutel {{n}}/{{total}}",
+      "cooked": "Gekocht",
+      "useBy": "Verbrauchen bis",
+      "serves": "Portionen",
+      "pets": "Tiere",
+      "weight": "Gewicht"
     }
   },
   "condition": {
@@ -358,7 +416,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Backofen (niedrig)",
       "stovetop_low": "Herd bei niedriger Hitze",
-      "slow_cooker": "Schongarer"
+      "slow_cooker": "Schongarer",
+      "pressure_cooker": "Schnellkochtopf"
     },
     "forms": {
       "minced": "Gehackt",
@@ -400,7 +459,8 @@
       "sous_vide": "Fleisch in Vakuumbeuteln einschweißen. Wasserbad auf 74 °C (165 °F) vorheizen. Beutel eintauchen und die berechnete Zeit garen. Vor dem Servieren die Kerntemperatur mit einem Thermometer prüfen.",
       "oven": "Backofen auf 120 °C (248 °F) vorheizen. Fleisch in einem abgedeckten Bräter mit etwas Wasser oder Brühe garen. Mit einem Thermometer prüfen — Zieltemperatur: 74 °C (165 °F) Kerntemperatur.",
       "stovetop_low": "Einen Topf Wasser zum leichten Simmern bringen (kein kräftiges Kochen). Fleisch hinzufügen und regelmäßig rühren — alle 2 Min. bei Hackfleisch, alle 5 Min. bei Würfeln. Vom Herd nehmen, wenn die Kerntemperatur 74 °C (165 °F) erreicht. Kochbrühe in die Mahlzeit einbeziehen.",
-      "slow_cooker": "Fleisch in den Slow Cooker legen und ½ Tasse Wasser oder Brühe hinzufügen. Auf NIEDRIG stellen — nicht auf HOCH, da schnelle Temperaturschwankungen das Bakterienrisiko erhöhen. Vor dem Servieren 74 °C (165 °F) Kerntemperatur prüfen."
+      "slow_cooker": "Fleisch in den Slow Cooker legen und ½ Tasse Wasser oder Brühe hinzufügen. Auf NIEDRIG stellen — nicht auf HOCH, da schnelle Temperaturschwankungen das Bakterienrisiko erhöhen. Vor dem Servieren 74 °C (165 °F) Kerntemperatur prüfen.",
+      "pressure_cooker": "Fleisch mit ½ Tasse Wasser oder Brühe in den Schnellkochtopf geben. Deckel verschließen und für die berechnete Zeit unter hohem Druck garen. Vor dem Öffnen mindestens 10 Minuten natürlich entspannen lassen und 74 °C (165 °F) Kerntemperatur prüfen. Den Garsud in die Mahlzeit einbeziehen."
     },
     "store": {
       "refrigerated": "Gegart, gekühlt: 3–4 Tage.",
@@ -418,7 +478,8 @@
       "sous_vide": "Sous-vide bewahrt die meisten wasserlöslichen Vitamine (B-Komplex, Vit C). Alle Beutelsäfte in die Mahlzeit einbeziehen.",
       "oven": "Einige B-Vitamine gehen in den Bratensaft über — alle Bratensäfte für den vollen Nährwert in die Mahlzeit einbeziehen.",
       "stovetop_low": "B-Vitamine gehen ins Kochwasser über — Brühe immer in die Mahlzeit einbeziehen.",
-      "slow_cooker": "Langsames, schonendes Garen erhält die meisten Nährstoffe in der Flüssigkeit — Brühe zusammen mit dem Fleisch servieren."
+      "slow_cooker": "Langsames, schonendes Garen erhält die meisten Nährstoffe in der Flüssigkeit — Brühe zusammen mit dem Fleisch servieren.",
+      "pressure_cooker": "Druckkochen bewahrt mehr wasserlösliche Vitamine als offenes Kochen und baut Bindegewebe ab. Den Garsud immer in die Mahlzeit einbeziehen."
     },
     "eyebrow": "Kochen",
     "toastReady": "Rezept fertig.",
@@ -435,7 +496,8 @@
       "steam": "Dampf",
       "bake": "Backofen",
       "blanch": "Blanchieren",
-      "raw": "Roh"
+      "raw": "Roh",
+      "boil": "Kochen"
     },
     "prefilledContext": "{{pets}} Tier(e) · {{days}} Tage Fütterung",
     "bagStrategy": {
@@ -445,7 +507,23 @@
       "day": "Tag",
       "days": "Tage",
       "result": "Aufteilung",
-      "help": "Reicht für {{pets}} Tier(e) über {{days}} Tage. Nach dem Garen 1 Beutel kühl lagern (innerhalb {{fridge}} Tagen verbrauchen) und die restlichen {{frozen}} einfrieren. Beutel über Nacht auftauen."
+      "help": "Reicht für {{pets}} Tier(e) über {{days}} Tage. Nach dem Garen 1 Beutel kühl lagern (innerhalb {{fridge}} Tagen verbrauchen) und die restlichen {{frozen}} einfrieren. Beutel über Nacht auftauen.",
+      "runtTip": "{{days}} Tage pro Beutel ergäben {{bags}} Beutel statt {{current}} — gleiche Menge, weniger Plastik. Tippen zum Wechseln.",
+      "floorReason": "Mindestens {{bags}} Beutel für {{days}} Tage — gegartes Fleisch hält aufgetaut nur {{fridge}} Tage."
+    },
+    "exportFooter": "PawCook — kein tierärztlicher Rat. Verwenden Sie ein Fleischthermometer, um eine sichere Kerntemperatur zu prüfen.",
+    "meatSwitcher": {
+      "label": "Ein anderes Fleisch aus diesem Plan kochen"
+    },
+    "prefilledDaysShort": "Tage",
+    "prefilledPetsShort": "Tiere",
+    "vegGuide": {
+      "help": "Wählen Sie das Gerät, das Sie tatsächlich nutzen — wir übertragen die Empfehlung auf Ihre Methode und weisen darauf hin, wenn etwas eine andere Vorgehensweise benötigt.",
+      "selectorLabel": "Garen Sie sie wie:",
+      "sousVideBathNote": "Gemüse braucht ein heißeres Bad als Fleisch. Erst bei 85 °C garen, dann die Temperatur für das Protein senken — ein Gerät, zwei Stufen.",
+      "recCaption": "Empf.: {{method}}",
+      "pillAria": "Zeigt {{active}}; empfohlene Methode ist {{recommended}}",
+      "fellBackTo": "als {{method}} beibehalten — {{appliance}} ist für dieses Gemüse nicht geeignet"
     }
   },
   "nutrition": {
@@ -657,7 +735,8 @@
     "weight_cat": "Gewicht der Katze (kg)",
     "profileSection_cat": "Katzenprofil",
     "placeholder_cat": "Füllen Sie das Profil Ihrer Katze aus und tippen Sie auf",
-    "placeholderHint_cat": "Geben Sie das Profil Ihrer Katze ein und tippen Sie auf Berechnen."
+    "placeholderHint_cat": "Geben Sie das Profil Ihrer Katze ein und tippen Sie auf Berechnen.",
+    "exportFooter": "PawCook — kein tierärztlicher Rat. Konsultieren Sie Ihren Tierarzt vor größeren Ernährungsumstellungen."
   },
   "foodSafety": {
     "title": "Lebensmittelsicherheits-Referenz",
@@ -679,7 +758,8 @@
     "noResults": "Keine Ergebnisse für",
     "noResultsHint": "Anderen Suchbegriff versuchen",
     "eyebrow": "Lebensmittelsicherheit",
-    "subtitle_cat": "Suchen Sie nach sicheren und giftigen Lebensmitteln für Katzen. Katzen reagieren empfindlicher als Hunde auf viele Stoffe."
+    "subtitle_cat": "Suchen Sie nach sicheren und giftigen Lebensmitteln für Katzen. Katzen reagieren empfindlicher als Hunde auf viele Stoffe.",
+    "clearSearch": "Suche löschen"
   },
   "supplements": {
     "title": "Nahrungsergänzungs-Leitfaden",
@@ -1248,7 +1328,20 @@
       "body": "Katzen und Hunde haben unterschiedliche Ernährungsbedürfnisse. Wählen Sie zum Start — Sie können jederzeit oben in der Leiste wechseln.",
       "dogDesc": "Hunde sind flexible Allesfresser mit moderatem Proteinbedarf.",
       "catDesc": "Katzen sind strikte Karnivoren. Ihre Pläne sind strenger.",
-      "footnote": "PawCook ersetzt keine tierärztliche Beratung. Bei chronischen Erkrankungen oder Wachstum konsultieren Sie eine Tierernährungsfachkraft."
+      "footnote": "PawCook ersetzt keine tierärztliche Beratung. Bei chronischen Erkrankungen oder Wachstum konsultieren Sie eine Tierernährungsfachkraft.",
+      "decideLater": "Später entscheiden — zeig mir die App"
     }
+  },
+  "errorBoundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Die Seite konnte nicht geladen werden. Neu laden, um es erneut zu versuchen, oder lokal gespeicherte Daten zurücksetzen, falls das Problem weiterhin besteht.",
+    "retry": "Erneut versuchen",
+    "resetData": "Lokale Daten zurücksetzen"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "home": "Zurück zur Startseite"
   }
 }

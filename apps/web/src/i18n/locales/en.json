@@ -41,7 +41,8 @@
     "preferences": "Preferences",
     "brandHome": "PawCook home",
     "catFoodCalc": "Cat Food Calculator",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "close": "Close"
   },
   "pets": {
     "eyebrow": "Pets",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Anything else worth remembering about this pet.",
       "create": "Create pet",
       "saveChanges": "Save changes",
-      "delete": "Delete pet"
+      "delete": "Delete pet",
+      "noChanges": "Make a change to enable save"
     },
     "species": {
       "dog": "Dog",
@@ -123,7 +125,8 @@
       "help": "Tap to mark proteins or ingredients your pet reacts to. Planner will exclude them.",
       "addOther": "Add another",
       "pickOther": "Pick an ingredient",
-      "done": "Done"
+      "done": "Done",
+      "removeOne": "Remove {{name}}"
     },
     "conditions": {
       "label": "Chronic conditions",
@@ -163,7 +166,8 @@
       "added": "{{name}} added.",
       "updated": "{{name}} updated.",
       "removed": "{{name}} removed."
-    }
+    },
+    "confirmDeleteHelp": "This permanently removes the pet and unlinks them from any meal plans."
   },
   "data": {
     "title": "Backup & restore",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Preview",
       "previewSubtitle": "{{days}} days · ready to save",
       "defaultName": "{{names}} · {{days}} days",
-      "defaultNameEmpty": "Untitled plan"
+      "defaultNameEmpty": "Untitled plan",
+      "generateFirst": "Generate a plan first"
     },
     "sourcing": {
       "varietyLabel": "Variety",
@@ -255,7 +260,8 @@
       "bagSizeHelp": "How many days of meals go in each sous-vide bag. Bigger bags = less plastic and fewer cook sessions, but they sit in the freezer longer.",
       "bagSizeOpt": "{{n}} days",
       "bagSizeCaption": "One protein per bag · veggies in their own bags",
-      "bagSizeWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3."
+      "bagSizeWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3.",
+      "bagSizeDays": "{{n}} days"
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -302,7 +308,9 @@
         "punnet": "{{qty}} punnet",
         "bunch": "{{qty}} bunch",
         "bottle": "{{qty}} bottle"
-      }
+      },
+      "cookShort": "Cook",
+      "emptyTitle": "Nothing to buy yet"
     },
     "cookingPlan": {
       "emptyTitle": "Cooking plan only for sous-vide",
@@ -339,7 +347,8 @@
     "confirmDelete": "Delete plan \"{{name}}\"? This can't be undone.",
     "toast": {
       "saved": "Saved \"{{name}}\".",
-      "deleted": "Deleted \"{{name}}\"."
+      "deleted": "Deleted \"{{name}}\".",
+      "generateFailed": "Could not generate the plan — try different settings."
     },
     "refusal": {
       "title": "Plan not generated",
@@ -359,7 +368,8 @@
         "high_fat_pancreatitis": "Fat is {{value}}% — above the pancreatitis-safe ceiling of {{threshold}}%.",
         "expired_vet_review": "The vet prescription's review date has passed. Re-confirm the plan with the vet before generating new plans."
       }
-    }
+    },
+    "confirmDeleteHelp": "Deleting a plan can’t be undone. Your saved pet profiles will not be affected."
   },
   "condition": {
     "kidney": {
@@ -508,7 +518,13 @@
       "help": "Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.",
       "runtTip": "{{days}} days per bag would give you {{bags}} bags instead of {{current}} — same food, less plastic. Tap to switch.",
       "floorReason": "Minimum {{bags}} bags for {{days}} days — cooked meat only keeps {{fridge}} days thawed."
-    }
+    },
+    "exportFooter": "PawCook — not veterinary advice. Use a meat thermometer to verify safe internal temperature.",
+    "meatSwitcher": {
+      "label": "Cook a different meat from this plan"
+    },
+    "prefilledDaysShort": "days",
+    "prefilledPetsShort": "pets"
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -719,7 +735,8 @@
     "weight_cat": "Cat weight (kg)",
     "profileSection_cat": "Cat profile",
     "placeholder_cat": "Fill in your cat's profile and tap",
-    "placeholderHint_cat": "Enter your cat's profile and tap Calculate."
+    "placeholderHint_cat": "Enter your cat's profile and tap Calculate.",
+    "exportFooter": "PawCook — not veterinary advice. Consult your veterinarian before major diet changes."
   },
   "foodSafety": {
     "title": "Food Safety Reference",
@@ -741,7 +758,8 @@
     "noResults": "No results for",
     "noResultsHint": "Try a different search term",
     "eyebrow": "Food safety",
-    "subtitle_cat": "Search safe and toxic foods for cats. Cats are more sensitive than dogs to many compounds."
+    "subtitle_cat": "Search safe and toxic foods for cats. Cats are more sensitive than dogs to many compounds.",
+    "clearSearch": "Clear search"
   },
   "supplements": {
     "title": "Supplement Guide",
@@ -1310,7 +1328,20 @@
       "body": "Cats and dogs need different nutrition. Pick one to start — you can switch any time from the top bar.",
       "dogDesc": "Dogs are flexible omnivores with moderate protein needs.",
       "catDesc": "Cats are obligate carnivores. Their plans are stricter.",
-      "footnote": "PawCook is not veterinary advice. Consult a vet nutritionist for chronic conditions or growth."
+      "footnote": "PawCook is not veterinary advice. Consult a vet nutritionist for chronic conditions or growth.",
+      "decideLater": "Decide later — show me the app"
     }
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "description": "The page failed to load. Reload to try again, or reset locally-stored data if the problem persists.",
+    "retry": "Try again",
+    "resetData": "Reset local data"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Page not found",
+    "description": "The page you’re looking for doesn’t exist or was moved.",
+    "home": "Back to home"
   }
 }
