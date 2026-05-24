@@ -273,7 +273,9 @@
       "cookAheadCaption": "Ein Protein pro Beutel · Gemüse in eigenen Beuteln",
       "cookAheadWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — wählen Sie ein kürzeres Fenster.",
       "cookAheadStats": "{{bags}} Beutel · {{sessions}} Kochsitzung(en)",
-      "cookAheadStatsSaving": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · spart {{saved}} ggü. täglich"
+      "cookAheadStatsSaving": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · spart {{saved}} ggü. täglich",
+      "simpleMeals": "Einfache Mahlzeiten",
+      "simpleMealsHelp": "Ein Protein pro Mahlzeit — derselbe Beutel für den ganzen Haushalt. Katzen erhalten eine tägliche Empfehlung für Taurin + Lebertran, um die Lücke zu schließen. Deaktivieren für das vollständige Mehrkomponenten-Rezept (Innereien, Meeresfrüchte-Zusätze, Makros pro Tier)."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",

@@ -304,6 +304,91 @@ describe('generateMealPlan', () => {
     }
   });
 
+  it('simpleMeals collapses a cooked-carnivore cat plan to just protein + veg', () => {
+    // Followability Mandate (/CLAUDE.md): cat_cooked_carnivore has 5
+    // components (protein 70 / organ 15 / liver 5 / veg 5 / seafood 5).
+    // With simpleMeals=ON, organ + liver + seafood are dropped and their
+    // mass redistributes to protein — same daily kcal/grams, no daily
+    // 3 g sprinkles of liver and seafood.
+    const blacky: PetProfile = {
+      ...cat,
+      nutrition: {
+        ...cat.nutrition,
+        weightKg: 4.5,
+        macroProfile: 'cat_cooked_carnivore',
+      },
+    };
+    const sourcing = SourcingPrefsSchema.parse({
+      simpleMeals: true,
+      meatIds: ['beef', 'chicken'],
+      vegIds: ['carrots'],
+    });
+    const plan = generateMealPlan({
+      name: 'Simple cat',
+      pets: [blacky],
+      durationDays: 7,
+      startDate: '2026-06-01',
+      sourcing,
+    });
+    const usedComponentKeys = new Set<string>();
+    for (const day of plan.days) {
+      for (const meal of day.petPlans[0].meals) {
+        for (const c of meal.components) usedComponentKeys.add(c.componentKey);
+      }
+    }
+    // organ, liver, seafood: must be gone.
+    expect(usedComponentKeys.has('organ')).toBe(false);
+    expect(usedComponentKeys.has('liver')).toBe(false);
+    expect(usedComponentKeys.has('seafood')).toBe(false);
+    // protein: must be present (the collapsed slot).
+    expect(usedComponentKeys.has('protein')).toBe(true);
+  });
+
+  it('simpleMeals + multi-species: cat and dog share the same protein per block', () => {
+    // Household-as-unit (CLAUDE.md sub-principle 2). With simpleMeals
+    // and bagDays=2, all pets that use the 'protein' component key
+    // pick the same ingredient on the same block — one bag per
+    // household per protein-day, instead of per-pet rotation.
+    const sourcing = SourcingPrefsSchema.parse({
+      simpleMeals: true,
+      meatIds: ['beef', 'chicken', 'salmon'],
+      bagDays: 2,
+    });
+    const plan = generateMealPlan({
+      name: 'Shared household', pets: [dog, cat], durationDays: 7,
+      startDate: '2026-06-01', sourcing,
+    });
+    for (const day of plan.days) {
+      const dogProtein = day.petPlans[0].meals[0].components
+        .find((c) => c.componentKey === 'protein')?.ingredientId;
+      const catProtein = day.petPlans[1].meals[0].components
+        .find((c) => c.componentKey === 'protein')?.ingredientId;
+      expect(dogProtein).toBeDefined();
+      expect(catProtein).toBeDefined();
+      expect(dogProtein).toBe(catProtein);
+    }
+  });
+
+  it('simpleMeals does not silently drop the cat warning load', () => {
+    // Deficits surface as warnings, not by silent omission (CLAUDE.md
+    // sub-principle 4). The cooked-carnivore profile already emits a
+    // taurine warning that must keep firing when simpleMeals collapses
+    // the meal to protein-only — otherwise the user has no signal that
+    // they need a supplement.
+    const blacky: PetProfile = {
+      ...cat,
+      nutrition: { ...cat.nutrition, macroProfile: 'cat_cooked_carnivore' },
+    };
+    const sourcing = SourcingPrefsSchema.parse({ simpleMeals: true });
+    const plan = generateMealPlan({
+      name: 'Warning check', pets: [blacky], durationDays: 7,
+      startDate: '2026-06-01', sourcing,
+    });
+    const warningIds = new Set(plan.days[0].petPlans[0].warnings.map((w) => w.id));
+    // The cooked-cat taurine warning must still fire.
+    expect(warningIds.has('lowTaurine')).toBe(true);
+  });
+
   it('regenerating with the same name+pets+seed reproduces ingredient picks', () => {
     // Determinism is plan-id-seeded — same input, same plan id, same picks.
     // We assert the picks are stable across two generations *of the same

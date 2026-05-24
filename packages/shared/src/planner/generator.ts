@@ -84,13 +84,23 @@ function buildPetDay(
   const nutrition = calculateNutrition(pet.nutrition);
   const dislikedSet = new Set(sourcing.dislikedIngredientIds);
 
-  // When the user opted out of organs, redistribute that mass onto the
-  // muscle/protein slot instead of dropping it: the user chose not to
-  // *buy* organ, not to feed less food. Nutritional cost (no pre-formed
-  // vitamin A, no organ-sourced taurine) is still flagged via warnings.
-  const componentsForAllocation = sourcing.includeOrgans
-    ? nutrition.components
-    : redistributeOrganMass(nutrition.components);
+  // Component reshape order matters:
+  //  1. simpleMeals (Followability Mandate, /CLAUDE.md): drop every
+  //     add-in component (organ, liver, seafood, fiber) — these are
+  //     daily supplement-sized portions the owner won't realistically
+  //     maintain. Their mass redistributes onto muscle/protein so the
+  //     pet still hits the kcal + gram target. Deficits (taurine,
+  //     pre-formed vitamin A, omega-3) are flagged via warnings and
+  //     surfaced as supplement recommendations in the UI.
+  //  2. includeOrgans (legacy toggle): if simpleMeals is OFF and the
+  //     user explicitly excluded organs, drop liver + organ slots and
+  //     redistribute that mass to protein.
+  let componentsForAllocation = nutrition.components;
+  if (sourcing.simpleMeals) {
+    componentsForAllocation = collapseToSimpleMeal(componentsForAllocation);
+  } else if (!sourcing.includeOrgans) {
+    componentsForAllocation = redistributeOrganMass(componentsForAllocation);
+  }
 
   const allocations: PlannedComponent[] = componentsForAllocation
     .filter((c) => c.grams > 0)
@@ -128,6 +138,47 @@ function redistributeOrganMass(components: DietComponent[]): DietComponent[] {
   const target = kept.find((c) => c.key === 'protein') ?? kept.find((c) => c.key === 'muscle') ?? kept[0];
   if (!target) return kept;
   return kept.map((c) => (c === target ? { ...c, grams: c.grams + dropped } : c));
+}
+
+/**
+ * Followability Mandate (see /CLAUDE.md): collapse the diet profile into
+ * a single muscle-protein slot plus optional veg / starch. Add-in
+ * components (organ, liver, seafood, fiber, bone) are removed and their
+ * grams redistributed to the muscle/protein slot so totalGrams and kcal
+ * stay on target. Result: the pet eats the same single protein as the
+ * rest of the household with a small veg side — no daily 3 g organ
+ * sprinkles, no 6 g salmon-as-supplement.
+ *
+ * Nutritional deficits (taurine, pre-formed vit A, omega-3) are still
+ * flagged via the engine's warnings; the UI surfaces them as supplement
+ * cards.
+ */
+const SIMPLE_MEAL_KEEP_KEYS = new Set(['protein', 'muscle', 'veg', 'starch']);
+function collapseToSimpleMeal(components: DietComponent[]): DietComponent[] {
+  const dropped = components
+    .filter((c) => !SIMPLE_MEAL_KEEP_KEYS.has(c.key))
+    .reduce((s, c) => s + c.grams, 0);
+  const kept = components.filter((c) => SIMPLE_MEAL_KEEP_KEYS.has(c.key));
+  if (kept.length === 0) return kept;
+  // Canonicalize muscle → protein so multi-species households share the
+  // rotation key. Without this, a cat profile that uses 'muscle' and a
+  // dog profile that uses 'protein' would hash to different rotation
+  // seeds and end up cooking different proteins on the same day —
+  // violating the "household is the unit" sub-principle (/CLAUDE.md #2).
+  const normalized: DietComponent[] = kept.map((c) =>
+    c.key === 'muscle' ? { ...c, key: 'protein' as const } : c,
+  );
+  // Merge any duplicate 'protein' entries that resulted from the rename
+  // (rare, but possible if a profile listed both 'protein' and 'muscle').
+  const merged: DietComponent[] = [];
+  for (const c of normalized) {
+    const existing = merged.find((m) => m.key === c.key);
+    if (existing) existing.pct += c.pct, existing.grams += c.grams;
+    else merged.push({ ...c });
+  }
+  if (dropped <= 0) return merged;
+  const target = merged.find((c) => c.key === 'protein') ?? merged[0]!;
+  return merged.map((c) => (c === target ? { ...c, grams: c.grams + dropped } : c));
 }
 
 function pickIngredientForComponent(

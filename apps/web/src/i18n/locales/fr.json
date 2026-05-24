@@ -273,7 +273,9 @@
       "cookAheadCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
       "cookAheadWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur s’altère — essayez une fenêtre plus courte.",
       "cookAheadStats": "{{bags}} sachets · {{sessions}} session(s) de cuisson",
-      "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne"
+      "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne",
+      "simpleMeals": "Repas simples",
+      "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal)."
     },
     "coverage": {
       "passed": "Semble équilibré",

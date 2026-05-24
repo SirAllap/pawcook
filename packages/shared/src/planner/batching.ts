@@ -15,6 +15,14 @@ const FROZEN_SHELF_LIFE_DAYS = 60;
 // How long before the first serve date a bag moves from freezer to
 // fridge. 24h is the standard guideline for cooked-then-frozen meat.
 const THAW_LEAD_HOURS = 24;
+// Followability Mandate (see /CLAUDE.md sub-principle 3): anything in
+// the add-in classes (seafood, organ, liver, fiber) producing less than
+// this many grams per pet per day is treated as a supplement, not an
+// ingredient — it gets routed to cookFresh regardless of what
+// policy.maxBagDays says. This is the structural fix that makes the
+// salmon-as-6g-supplement-in-7-bags bug impossible to reintroduce.
+const SUPPLEMENT_GRAM_THRESHOLD = 20;
+const ADD_IN_COMPONENT_ROLES = new Set(['seafood', 'organ', 'liver', 'fiber']);
 
 interface IngredientUsage {
   date: string;
@@ -74,11 +82,25 @@ function buildBatches(
     if (!ingredient) continue;
     const policy = ingredient.policy;
 
-    if (policy.maxBagDays <= 0) {
+    // Followability gate: an add-in-class ingredient producing tiny
+    // per-pet-per-day quantities is a supplement, not a meal. Route to
+    // cookFresh ahead of the policy.maxBagDays check so a stale
+    // per-ingredient override can't accidentally re-bag a 6 g/day cat
+    // omega-3 portion. See /CLAUDE.md sub-principle 3.
+    const isAddIn = ingredient.componentRoles.some((r) => ADD_IN_COMPONENT_ROLES.has(r));
+    const petIdSet = collectPetIds(usages, petOrder);
+    const totalGrams = usages.reduce((s, u) => s + u.grams, 0);
+    const days = usages.length;
+    const perPetPerDayGrams = days > 0 && petIdSet.length > 0
+      ? totalGrams / days / petIdSet.length
+      : 0;
+    const supplementSized = isAddIn && perPetPerDayGrams < SUPPLEMENT_GRAM_THRESHOLD;
+
+    if (policy.maxBagDays <= 0 || supplementSized) {
       cookFresh.push({
         ingredientId,
         reason: classifyCookFresh(ingredient),
-        forPetIds: collectPetIds(usages, petOrder),
+        forPetIds: petIdSet,
       });
       continue;
     }

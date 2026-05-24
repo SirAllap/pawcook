@@ -273,7 +273,9 @@
       "cookAheadCaption": "Una proteína por bolsa · verduras en sus propias bolsas",
       "cookAheadWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor decae — prueba con una ventana más corta.",
       "cookAheadStats": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción",
-      "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria"
+      "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria",
+      "simpleMeals": "Comidas simples",
+      "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota)."
     },
     "coverage": {
       "passed": "Parece equilibrado",

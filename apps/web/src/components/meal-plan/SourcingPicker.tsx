@@ -275,12 +275,21 @@ export function SourcingPicker({
       <div className="space-y-2.5">
         <SectionLabel>{t('mealPlan.sourcing.prefsLabel')}</SectionLabel>
         <SourcingFlag
-          label={t('mealPlan.sourcing.includeOrgans', { defaultValue: 'Include organ meats (liver, kidney, spleen)' })}
-          help={t('mealPlan.sourcing.includeOrgansHelp', {
-            defaultValue: 'Off = no organs in the shopping list. Heads up: raw-style diets rely on organs for vitamin A and (for cats) taurine.',
+          label={t('mealPlan.sourcing.simpleMeals', { defaultValue: 'Simple meals' })}
+          help={t('mealPlan.sourcing.simpleMealsHelp', {
+            defaultValue:
+              'One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).',
           })}
-          checked={value.includeOrgans}
-          onChange={(v) => onChange({ ...value, includeOrgans: v })}
+          checked={value.simpleMeals}
+          onChange={(v) => onChange({
+            ...value,
+            simpleMeals: v,
+            // Keep the legacy includeOrgans flag in sync so plans saved
+            // with the new schema still serialise sensibly for older
+            // tooling that reads it. When simpleMeals is ON, organs are
+            // already collapsed into protein, so includeOrgans is moot.
+            includeOrgans: v ? false : true,
+          })}
         />
         <SourcingFlag
           label={t('mealPlan.sourcing.preferWildFish')}
