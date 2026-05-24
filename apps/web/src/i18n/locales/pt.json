@@ -41,7 +41,8 @@
     "unsavedChanges": "Há alterações não salvas. Tem certeza de que quer sair?",
     "calcFailed": "Não foi possível calcular — verifique os valores.",
     "cancel": "Cancelar",
-    "dismiss": "Dispensar"
+    "dismiss": "Dispensar",
+    "close": "Fechar"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -89,7 +90,8 @@
       "notesPlaceholder": "Tudo o que vale a pena lembrar sobre este animal.",
       "create": "Criar animal",
       "saveChanges": "Guardar alterações",
-      "delete": "Eliminar animal"
+      "delete": "Eliminar animal",
+      "noChanges": "Faça uma alteração para habilitar salvar"
     },
     "species": {
       "dog": "Cão",
@@ -123,7 +125,8 @@
       "help": "Toca para marcar proteínas ou ingredientes a que o teu animal reage. O planeador irá excluí-los.",
       "addOther": "Adicionar outro",
       "pickOther": "Escolhe um ingrediente",
-      "done": "Pronto"
+      "done": "Pronto",
+      "removeOne": "Remover {{name}}"
     },
     "conditions": {
       "label": "Condições crónicas",
@@ -163,7 +166,8 @@
       "added": "{{name}} adicionado.",
       "updated": "{{name}} atualizado.",
       "removed": "{{name}} removido."
-    }
+    },
+    "confirmDeleteHelp": "Isso remove permanentemente o pet e o desvincula de qualquer plano de refeições."
   },
   "data": {
     "title": "Cópia & restauro",
@@ -221,7 +225,8 @@
       "previewEyebrow": "Pré-visualização",
       "previewSubtitle": "{{days}} dias · pronto para guardar",
       "defaultName": "{{names}} · {{days}} dias",
-      "defaultNameEmpty": "Plano sem título"
+      "defaultNameEmpty": "Plano sem título",
+      "generateFirst": "Gere um plano primeiro"
     },
     "sourcing": {
       "varietyLabel": "Variedade",
@@ -250,7 +255,13 @@
       "methodLabel": "Método de cocção",
       "methodHelp": "Lembramos disso para que o botão \"Cozinhar\" da lista de compras abra a calculadora já configurada do seu jeito.",
       "includeOrgans": "Incluir vísceras (fígado, rim, baço)",
-      "includeOrgansHelp": "Desligado = sem vísceras na lista de compras. Atenção: dietas cruas dependem das vísceras para vitamina A e (para gatos) taurina."
+      "includeOrgansHelp": "Desligado = sem vísceras na lista de compras. Atenção: dietas cruas dependem das vísceras para vitamina A e (para gatos) taurina.",
+      "bagSizeDays": "{{n}} dias",
+      "bagSizeLabel": "Tamanho do saco",
+      "bagSizeHelp": "Quantos dias de refeições vão em cada saco de sous-vide. Sacos maiores = menos plástico e menos sessões de cozimento, mas ficam mais tempo no congelador.",
+      "bagSizeOpt": "{{n}} dias",
+      "bagSizeCaption": "Uma proteína por saco · vegetais em seus próprios sacos",
+      "bagSizeWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se degrada — considere 2 ou 3."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -269,7 +280,8 @@
       "delete": "Eliminar plano",
       "subtitle": "{{days}} dias · começa a {{startDate}}",
       "tabMeals": "Refeições",
-      "tabShopping": "Compras"
+      "tabShopping": "Compras",
+      "tabCooking": "Plano de cozimento"
     },
     "shopping": {
       "total": "Total da compra",
@@ -286,12 +298,25 @@
         "online": "Encomenda online",
         "other": "Outros"
       },
-      "cookWith": "Cozinhar {{name}} ({{qty}})"
+      "cookWith": "Cozinhar {{name}} ({{qty}})",
+      "cookShort": "Cozinhar",
+      "emptyTitle": "Nada para comprar ainda",
+      "surplusFreeze": "{{need}} necessário – {{extra}} extra para congelar",
+      "surplusDoNotFeed": "{{need}} necessário – {{extra}} não alimentar, congelar para o próximo plano",
+      "unit": {
+        "piece": "{{qty}} un",
+        "fish": "{{qty}} peixe",
+        "pack": "{{qty}} pacote",
+        "punnet": "{{qty}} cestinha",
+        "bunch": "{{qty}} maço",
+        "bottle": "{{qty}} garrafa"
+      }
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
       "saved": "«{{name}}» guardado.",
-      "deleted": "«{{name}}» eliminado."
+      "deleted": "«{{name}}» eliminado.",
+      "generateFailed": "Não foi possível gerar o plano — tente outras configurações."
     },
     "refusal": {
       "title": "Plano não gerado",
@@ -311,6 +336,39 @@
         "high_fat_pancreatitis": "A gordura é {{value}}% — acima do limite seguro para pancreatite de {{threshold}}%.",
         "expired_vet_review": "A data de revisão da receita veterinária passou. Re-confirme o plano com o veterinário antes de gerar novos planos."
       }
+    },
+    "confirmDeleteHelp": "Excluir um plano não pode ser desfeito. Os perfis de pets salvos não serão afetados.",
+    "cookingPlan": {
+      "emptyTitle": "Plano de cozimento apenas para sous-vide",
+      "emptyHelp": "Os sacos são gerados quando o plano usa sous-vide. Gere novamente com sous-vide como método de cozimento para ver o cronograma dos sacos.",
+      "noBagsTitle": "Nada para ensacar",
+      "noBagsHelp": "Este plano não tem ingredientes para lote — tudo será cozido fresco.",
+      "summaryLabel": "Plano de cozimento",
+      "summary": "{{bags}} sacos · {{days}} dias por saco · uma proteína por saco",
+      "thawIcs": "Cronograma de descongelamento (.ics)",
+      "groupSummary": "{{bags}} sacos · {{grams}} g no total",
+      "printLabels": "Imprimir etiquetas",
+      "bagN": "Saco {{n}} de {{total}}",
+      "thaw": "Descongelar {{date}}",
+      "useBy": "Consumir até {{date}}",
+      "rotationNote": "As proteínas se alternam — as datas dos sacos podem não ser consecutivas.",
+      "freshLabel": "Cozinhar fresco (não em lote)",
+      "freshHelp": "Estes não congelam bem em lote. Prepare diariamente ou por receita.",
+      "freshReason": {
+        "perishable": "perecível",
+        "no-batch-veg": "cozinhar fresco",
+        "organ": "porções pequenas",
+        "supplement-equiv": "adição diária"
+      }
+    },
+    "labels": {
+      "title": "{{count}} etiquetas de saco — {{plan}}",
+      "bagN": "Saco {{n}}/{{total}}",
+      "cooked": "Cozido",
+      "useBy": "Consumir até",
+      "serves": "Porções",
+      "pets": "Pets",
+      "weight": "Peso"
     }
   },
   "condition": {
@@ -358,7 +416,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Forno (baixo)",
       "stovetop_low": "Fogão em fogo baixo",
-      "slow_cooker": "Panela de cocção lenta"
+      "slow_cooker": "Panela de cocção lenta",
+      "pressure_cooker": "Panela de pressão"
     },
     "forms": {
       "minced": "Moído",
@@ -400,7 +459,8 @@
       "sous_vide": "Sele a carne em sacos a vácuo. Pré-aqueça o banho-maria a 74 °C (165 °F). Mergulhe os sacos e cozinhe pelo tempo calculado. Verifique a temperatura interna com um termómetro de sonda antes de servir.",
       "oven": "Pré-aqueça o forno a 120 °C (248 °F). Coloque a carne num recipiente tapado; adicione um pouco de água ou caldo para evitar que seque. Verifique com um termómetro — objetivo: 74 °C (165 °F) de temperatura interna.",
       "stovetop_low": "Leve uma panela de água a um leve frémito (não a fervura intensa). Adicione a carne e mexa regularmente — a cada 2 min para picada, a cada 5 min para cubos. Retire do lume quando a temperatura interna atingir 74 °C (165 °F). Inclua o caldo de cozedura na refeição.",
-      "slow_cooker": "Coloque a carne na panela de cocção lenta e adicione ½ chávena de água ou caldo. Use a temperatura BAIXA — não use ALTA pois as variações bruscas aumentam o risco bacteriano. Verifique 74 °C (165 °F) de temperatura interna antes de servir."
+      "slow_cooker": "Coloque a carne na panela de cocção lenta e adicione ½ chávena de água ou caldo. Use a temperatura BAIXA — não use ALTA pois as variações bruscas aumentam o risco bacteriano. Verifique 74 °C (165 °F) de temperatura interna antes de servir.",
+      "pressure_cooker": "Coloque a carne na panela de pressão com ½ xícara de água ou caldo. Trave a tampa e cozinhe em pressão alta pelo tempo calculado. Faça liberação natural de pelo menos 10 minutos antes de abrir, e verifique 74 °C (165 °F) de temperatura interna. Inclua o líquido de cozimento na refeição."
     },
     "store": {
       "refrigerated": "Cozinhado, refrigerado: 3–4 dias.",
@@ -418,7 +478,8 @@
       "sous_vide": "O sous-vide preserva mais vitaminas hidrossolúveis (complexo B, Vit C). Inclua todos os sucos dos sacos na refeição.",
       "oven": "Algumas vitaminas B perdem-se nos sucos do assado — inclua todos os sucos da assadeira na refeição.",
       "stovetop_low": "As vitaminas B migram para a água de cozedura — inclua sempre o caldo na refeição.",
-      "slow_cooker": "A cozedura lenta e suave retém a maioria dos nutrientes no líquido — sirva o caldo juntamente com a carne."
+      "slow_cooker": "A cozedura lenta e suave retém a maioria dos nutrientes no líquido — sirva o caldo juntamente com a carne.",
+      "pressure_cooker": "O cozimento sob pressão retém mais vitaminas hidrossolúveis que a fervura aberta e quebra o tecido conjuntivo. Inclua sempre o líquido de cozimento na refeição."
     },
     "eyebrow": "Cozinha",
     "toastReady": "Receita pronta.",
@@ -435,7 +496,8 @@
       "steam": "Vapor",
       "bake": "Forno",
       "blanch": "Branquear",
-      "raw": "Cru"
+      "raw": "Cru",
+      "boil": "Ferver"
     },
     "prefilledContext": "{{pets}} pet(s) · {{days}} dias de alimentação",
     "bagStrategy": {
@@ -445,7 +507,23 @@
       "day": "dia",
       "days": "dias",
       "result": "Divisão",
-      "help": "Alimenta {{pets}} pet(s) por {{days}} dias no total. Após cozinhar, mantenha 1 saco na geladeira (consuma em {{fridge}} dias) e congele os outros {{frozen}}. Descongele um saco na noite anterior."
+      "help": "Alimenta {{pets}} pet(s) por {{days}} dias no total. Após cozinhar, mantenha 1 saco na geladeira (consuma em {{fridge}} dias) e congele os outros {{frozen}}. Descongele um saco na noite anterior.",
+      "runtTip": "{{days}} dias por saco dariam {{bags}} sacos em vez de {{current}} — mesma comida, menos plástico. Toque para alterar.",
+      "floorReason": "Mínimo {{bags}} sacos para {{days}} dias — carne cozida só dura {{fridge}} dias após descongelada."
+    },
+    "exportFooter": "PawCook — não é aconselhamento veterinário. Use um termômetro de carne para verificar a temperatura interna segura.",
+    "meatSwitcher": {
+      "label": "Cozinhar outra carne deste plano"
+    },
+    "prefilledDaysShort": "dias",
+    "prefilledPetsShort": "pets",
+    "vegGuide": {
+      "help": "Escolha o aparelho que você realmente usa — traduzimos a recomendação para o seu método e avisamos quando algo precisa de uma abordagem diferente.",
+      "selectorLabel": "Cozinhe-os como:",
+      "sousVideBathNote": "Os vegetais precisam de um banho mais quente que a carne. Cozinhe-os primeiro a 85 °C e depois reduza a temperatura para a proteína — um aparelho, duas etapas.",
+      "recCaption": "rec: {{method}}",
+      "pillAria": "Mostrando {{active}}; método recomendado é {{recommended}}",
+      "fellBackTo": "mantido como {{method}} — {{appliance}} não é adequado para este vegetal"
     }
   },
   "nutrition": {
@@ -657,7 +735,8 @@
     "weight_cat": "Peso do gato (kg)",
     "profileSection_cat": "Perfil do gato",
     "placeholder_cat": "Preencha o perfil do seu gato e toque em",
-    "placeholderHint_cat": "Insira o perfil do seu gato e toque em Calcular."
+    "placeholderHint_cat": "Insira o perfil do seu gato e toque em Calcular.",
+    "exportFooter": "PawCook — não é aconselhamento veterinário. Consulte seu veterinário antes de grandes mudanças na dieta."
   },
   "foodSafety": {
     "title": "Referência de segurança alimentar",
@@ -679,7 +758,8 @@
     "noResults": "Sem resultados para",
     "noResultsHint": "Tente outro termo de pesquisa",
     "eyebrow": "Segurança alimentar",
-    "subtitle_cat": "Pesquise alimentos seguros e tóxicos para gatos. Os gatos são mais sensíveis que os cães a muitos compostos."
+    "subtitle_cat": "Pesquise alimentos seguros e tóxicos para gatos. Os gatos são mais sensíveis que os cães a muitos compostos.",
+    "clearSearch": "Limpar pesquisa"
   },
   "supplements": {
     "title": "Guia de suplementos",
@@ -1248,7 +1328,20 @@
       "body": "Gatos e cães têm necessidades nutricionais diferentes. Escolha para começar — pode mudar a qualquer momento na barra superior.",
       "dogDesc": "Cães são onívoros flexíveis com necessidades proteicas moderadas.",
       "catDesc": "Gatos são carnívoros obrigatórios. Os planos são mais rígidos.",
-      "footnote": "PawCook não substitui orientação veterinária. Consulte um nutricionista veterinário para doenças crônicas ou crescimento."
+      "footnote": "PawCook não substitui orientação veterinária. Consulte um nutricionista veterinário para doenças crônicas ou crescimento.",
+      "decideLater": "Decidir depois — mostre-me o app"
     }
+  },
+  "errorBoundary": {
+    "title": "Algo deu errado",
+    "description": "A página não carregou. Recarregue para tentar novamente, ou redefina os dados salvos localmente se o problema persistir.",
+    "retry": "Tentar novamente",
+    "resetData": "Redefinir dados locais"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Página não encontrada",
+    "description": "A página que você procura não existe ou foi movida.",
+    "home": "Voltar ao início"
   }
 }
