@@ -406,7 +406,8 @@
       "sous_vide": "Sous-vide",
       "oven": "Oven (low)",
       "stovetop_low": "Stovetop low",
-      "slow_cooker": "Slow cooker"
+      "slow_cooker": "Slow cooker",
+      "pressure_cooker": "Pressure cooker"
     },
     "forms": {
       "minced": "Minced",
@@ -448,7 +449,8 @@
       "sous_vide": "Seal meat in vacuum bags. Preheat water bath to 74 °C (165 °F). Submerge bags and cook for the full calculated time. Verify internal temperature with a probe thermometer before serving.",
       "oven": "Preheat oven to 120 °C (248 °F). Place meat in a covered roasting dish; add a splash of water or broth to prevent drying. Check with a probe thermometer — target 74 °C (165 °F) internal temperature.",
       "stovetop_low": "Bring a pot of water to a gentle simmer (not a rolling boil). Add meat and stir regularly — every 2 min for minced, every 5 min for cubed or larger cuts. Remove from heat when internal temperature reaches 74 °C (165 °F). Include the cooking broth in the meal.",
-      "slow_cooker": "Place meat in the slow cooker and add ½ cup water or broth. Set to LOW — do not use HIGH as rapid temperature swings increase bacterial risk. Verify 74 °C (165 °F) internal temperature before serving."
+      "slow_cooker": "Place meat in the slow cooker and add ½ cup water or broth. Set to LOW — do not use HIGH as rapid temperature swings increase bacterial risk. Verify 74 °C (165 °F) internal temperature before serving.",
+      "pressure_cooker": "Place meat in the pressure cooker with ½ cup water or broth. Lock the lid and cook at high pressure for the calculated time. Use a natural release of at least 10 minutes before opening, then verify 74 °C (165 °F) internal temperature. Include the cooking liquid in the meal."
     },
     "store": {
       "refrigerated": "Cooked, refrigerated: 3–4 days.",
@@ -466,7 +468,8 @@
       "sous_vide": "Sous-vide preserves the most water-soluble vitamins (B-complex, Vit C). Include all bag juices in the meal.",
       "oven": "Some B vitamins are lost to pan drippings — include all pan juices in the meal for full nutritional value.",
       "stovetop_low": "B vitamins leach into the cooking water — always include the broth in the meal.",
-      "slow_cooker": "Long, gentle cooking retains most nutrients in the liquid — serve the broth alongside the meat."
+      "slow_cooker": "Long, gentle cooking retains most nutrients in the liquid — serve the broth alongside the meat.",
+      "pressure_cooker": "Pressure cooking retains more water-soluble vitamins than open boiling and breaks down connective tissue. Always include the cooking liquid in the meal."
     },
     "eyebrow": "Cooking",
     "toastReady": "Recipe ready.",
@@ -483,7 +486,16 @@
       "steam": "Steam",
       "bake": "Bake",
       "blanch": "Blanch",
-      "raw": "Raw"
+      "raw": "Raw",
+      "boil": "Boil"
+    },
+    "vegGuide": {
+      "help": "Pick the appliance you actually use — we translate the recommendation to your method and tell you when something needs a different approach.",
+      "selectorLabel": "Cook them like:",
+      "sousVideBathNote": "Vegetables need a hotter bath than meat. Cook them first at 85 °C, then drop the temperature for your protein — one appliance, two stages.",
+      "recCaption": "rec: {{method}}",
+      "pillAria": "Showing {{active}}; recommended method is {{recommended}}",
+      "fellBackTo": "kept as {{method}} — {{appliance}} not suitable for this veg"
     },
     "prefilledContext": "{{pets}} pet(s) · {{days}} days of feeding",
     "bagStrategy": {

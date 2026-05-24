@@ -5,11 +5,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
-import { Flame, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles, ClipboardList, X } from 'lucide-react';
+import { Flame, ChefHat, Snowflake, AlertTriangle, Clock, Thermometer, Sparkles, ClipboardList, X, Info } from 'lucide-react';
 import {
   CookingInputSchema, type CookingInput,
   calculateCookingTime, type CookingResult,
   MeatTypeSchema, CookingMethodSchema,
+  type CookingMethod,
 } from '@pawcook/shared';
 import vegCookingData from '@pawcook/data/vegetable-cooking';
 import { useSpecies } from '../lib/species';
@@ -23,6 +24,7 @@ import { Input } from '../components/ui/input';
 import { Select } from '../components/ui/select';
 import { SectionLabel } from '../components/ui/section-label';
 import { EmptyState } from '../components/ui/empty-state';
+import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
 import { DownloadMenu } from '../components/recipe/DownloadMenu';
 import { useRecipeExport } from '../hooks/useRecipeExport';
 import { useDebouncedEffect } from '../lib/use-debounced-effect';
@@ -41,7 +43,7 @@ const DEFAULT_VALUES: CookingInput = {
 const MEAT_KEYS = ['beef','chicken','turkey','lamb','pork','duck','rabbit','venison','salmon','mackerel','sardines','whitefish'] as const;
 
 const YIELD_PCT: Record<string, number> = {
-  sous_vide: 0.97, oven: 0.82, stovetop_low: 0.90, slow_cooker: 0.88,
+  sous_vide: 0.97, oven: 0.82, stovetop_low: 0.90, slow_cooker: 0.88, pressure_cooker: 0.91,
 };
 
 function loadSaved(): CookingInput {
@@ -334,6 +336,7 @@ export default function CookingCalculator() {
             <option value="oven">🍲 {t('cooking.methods.oven')}</option>
             <option value="stovetop_low">🫕 {t('cooking.methods.stovetop_low')}</option>
             <option value="slow_cooker">🥘 {t('cooking.methods.slow_cooker')}</option>
+            <option value="pressure_cooker">⏲️ {t('cooking.methods.pressure_cooker')}</option>
           </Select>
 
           <AnimatePresence mode="wait">
@@ -553,7 +556,7 @@ export default function CookingCalculator() {
         )}
       </AnimatePresence>
 
-      <VegCookingGuide unit={values.temperatureUnit} />
+      <VegCookingGuide unit={values.temperatureUnit} meatMethod={values.cookingMethod} />
     </div>
   );
 }
@@ -752,66 +755,290 @@ function BagStrategyPanel({
   );
 }
 
-const VEG_COOKING = vegCookingData as Array<{
-  id: string;
-  method: 'steam' | 'bake' | 'blanch' | 'raw';
+type RecMethod = 'steam' | 'bake' | 'blanch' | 'raw' | 'boil';
+type MethodSpec = {
   tempC: number;
   minutes: { min: number; max: number };
-  notes: string;
-}>;
+  notes?: string;
+  warning?: string;
+};
+type VegEntry = {
+  id: string;
+  recommendedMethod: RecMethod;
+  recommendedTempC: number;
+  recommendedMinutes: { min: number; max: number };
+  recommendedNotes: string;
+  recommendedReason: string;
+  speciesNotes?: { cat?: string; dog?: string };
+  rawBlocked?: boolean;
+  rawBlockedReason?: string;
+  cookingBlocked?: boolean;
+  cookingBlockedReason?: string;
+  methods: Partial<Record<CookingMethod, MethodSpec | null>>;
+};
 
-function VegCookingGuide({ unit }: { unit: 'celsius' | 'fahrenheit' }) {
+const VEG_COOKING = vegCookingData as VegEntry[];
+
+const VEG_GUIDE_STORAGE_KEY = 'pawcook_veg_guide_method';
+const VEG_METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker'];
+const VEG_METHOD_EMOJI: Record<CookingMethod, string> = {
+  sous_vide: '🛁',
+  oven: '🍲',
+  stovetop_low: '🫕',
+  slow_cooker: '🥘',
+  pressure_cooker: '⏲️',
+};
+
+function isMethodSpec(v: MethodSpec | null | undefined): v is MethodSpec {
+  return v != null && typeof v === 'object';
+}
+
+function VegCookingGuide({
+  unit,
+  meatMethod,
+}: {
+  unit: 'celsius' | 'fahrenheit';
+  meatMethod: CookingMethod;
+}) {
   const { t, i18n } = useTranslation();
+  const { species } = useSpecies();
+  const [selected, setSelected] = useState<CookingMethod>(() => {
+    if (typeof window === 'undefined') return meatMethod;
+    const stored = window.localStorage.getItem(VEG_GUIDE_STORAGE_KEY);
+    if (stored && (VEG_METHOD_OPTIONS as string[]).includes(stored)) {
+      return stored as CookingMethod;
+    }
+    return meatMethod;
+  });
+  const userHasChosen = useRef<boolean>(
+    typeof window !== 'undefined' && window.localStorage.getItem(VEG_GUIDE_STORAGE_KEY) != null,
+  );
+
+  // Mirror the meat method until the user explicitly picks one for the veg guide.
+  useEffect(() => {
+    if (!userHasChosen.current) setSelected(meatMethod);
+  }, [meatMethod]);
+
+  const onMethodChange = (next: string) => {
+    if (!next) return;
+    const m = next as CookingMethod;
+    setSelected(m);
+    userHasChosen.current = true;
+    try { window.localStorage.setItem(VEG_GUIDE_STORAGE_KEY, m); } catch { /* ignore */ }
+  };
+
   const fmt = (n: number) => n.toLocaleString(i18n.language);
   const fmtTemp = (c: number) => {
     if (c <= 0) return '—';
     if (unit === 'fahrenheit') return `${fmt(Math.round(c * 9 / 5 + 32))} °F`;
     return `${fmt(c)} °C`;
   };
+  const fmtMinutes = (m: { min: number; max: number }) =>
+    m.max === 0
+      ? t('cooking.vegMethod.raw', { defaultValue: 'raw' })
+      : `${fmt(m.min)}–${fmt(m.max)} ${t('cooking.minutes', { defaultValue: 'min' })}`;
+
+  // The bath-temperature warning — show only when the user picked sous-vide
+  // AND the meat side is also on sous-vide at a different (typically lower)
+  // temperature. The meat bath runs at 74 °C; vegetables need ≥85 °C.
+  const showBathWarning = selected === 'sous_vide';
+
   return (
     <Card padding="none" variant="elevated" className="overflow-hidden">
-      <header className="flex items-center gap-2 px-5 py-4 border-b border-border">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-success/15 text-success">
+      <header className="flex items-start gap-3 px-5 py-4 border-b border-border">
+        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-success/15 text-success">
           <Sparkles className="h-4 w-4" aria-hidden />
         </span>
-        <div>
+        <div className="min-w-0 flex-1">
           <h2 className="font-black text-base tracking-tight">
             {t('cooking.veggieGuideTitle', { defaultValue: 'Vegetable cooking guide' })}
           </h2>
-          <p className="text-xs text-muted-fg mt-0.5">
-            {t('cooking.veggieGuideHelp', {
-              defaultValue: 'Quick reference for cooking the produce side of the meal — same temp/time as a thermometer-verified meat batch.',
+          <p className="text-xs text-muted-fg mt-0.5 leading-relaxed">
+            {t('cooking.vegGuide.help', {
+              defaultValue: 'Pick the appliance you actually use — we translate the recommendation to your method and tell you when something needs a different approach.',
             })}
           </p>
         </div>
       </header>
+
+      <div className="px-5 py-3 border-b border-border bg-surface-2/40">
+        <p className="text-[11px] font-bold uppercase tracking-wider text-muted-fg mb-2">
+          {t('cooking.vegGuide.selectorLabel', { defaultValue: 'Cook them like:' })}
+        </p>
+        <ToggleGroup
+          type="single"
+          value={selected}
+          onValueChange={onMethodChange}
+          aria-label={t('cooking.vegGuide.selectorLabel', { defaultValue: 'Cook them like:' })}
+          className="grid grid-cols-5 w-full gap-0.5"
+        >
+          {VEG_METHOD_OPTIONS.map((opt) => (
+            <ToggleGroupItem
+              key={opt}
+              value={opt}
+              aria-label={t(`cooking.methods.${opt}`)}
+              className="flex-col gap-0.5 px-1 py-2 text-[10px] leading-tight"
+            >
+              <span aria-hidden className="text-base">{VEG_METHOD_EMOJI[opt]}</span>
+              <span className="truncate w-full text-center">{t(`cooking.methods.${opt}`)}</span>
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+
+        {showBathWarning && (
+          <p className="mt-3 flex items-start gap-2 text-[11px] leading-relaxed text-foreground/80">
+            <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-warning" aria-hidden />
+            <span>
+              {t('cooking.vegGuide.sousVideBathNote', {
+                defaultValue: 'Vegetables need a hotter bath than meat. Cook them first at 85 °C, then drop the temperature for your protein — one appliance, two stages.',
+              })}
+            </span>
+          </p>
+        )}
+      </div>
+
       <ul className="divide-y divide-border/60">
         {VEG_COOKING.map((v) => (
-          <li key={v.id} className="px-5 py-3 flex items-start gap-3">
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-black text-foreground">
-                {t(`vegData.${v.id}.label`, { defaultValue: v.id })}
-              </p>
-              <p className="text-xs text-muted-fg mt-0.5 leading-relaxed">
-                {t(`vegCookingData.${v.id}.notes`, { defaultValue: v.notes })}
-              </p>
-            </div>
-            <div className="shrink-0 flex flex-col items-end gap-1 min-w-[6.5rem]">
-              <span className="inline-flex items-center gap-1 rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-fg">
-                {t(`cooking.vegMethod.${v.method}`, { defaultValue: v.method })}
-              </span>
-              <span className="text-xs font-mono font-bold tabular-nums text-foreground">
-                {fmtTemp(v.tempC)}
-              </span>
-              <span className="text-[11px] font-mono tabular-nums text-muted-fg">
-                {v.minutes.max === 0
-                  ? t('cooking.vegMethod.raw', { defaultValue: 'raw' })
-                  : `${fmt(v.minutes.min)}–${fmt(v.minutes.max)} ${t('cooking.minutes', { defaultValue: 'min' })}`}
-              </span>
-            </div>
-          </li>
+          <VegGuideRow
+            key={v.id}
+            entry={v}
+            selectedMethod={selected}
+            species={species}
+            fmtTemp={fmtTemp}
+            fmtMinutes={fmtMinutes}
+          />
         ))}
       </ul>
     </Card>
+  );
+}
+
+function VegGuideRow({
+  entry,
+  selectedMethod,
+  species,
+  fmtTemp,
+  fmtMinutes,
+}: {
+  entry: VegEntry;
+  selectedMethod: CookingMethod;
+  species: 'dog' | 'cat';
+  fmtTemp: (c: number) => string;
+  fmtMinutes: (m: { min: number; max: number }) => string;
+}) {
+  const { t } = useTranslation();
+
+  // Resolve what to display in the row.
+  // 1. Cucumber (cookingBlocked) — always show recommended (raw), with explainer.
+  // 2. methods[selectedMethod] is a valid spec → use it.
+  // 3. methods[selectedMethod] is null → silent fallback to recommended, amber explainer.
+  const spec = entry.methods?.[selectedMethod];
+  const isCookingBlocked = entry.cookingBlocked === true;
+  const useOverride = !isCookingBlocked && isMethodSpec(spec);
+  const fellBack = !isCookingBlocked && !useOverride;
+
+  const displayMethodLabel = useOverride
+    ? t(`cooking.methods.${selectedMethod}`)
+    : t(`cooking.vegMethod.${entry.recommendedMethod}`, { defaultValue: entry.recommendedMethod });
+  const displayTempC = useOverride ? spec!.tempC : entry.recommendedTempC;
+  const displayMinutes = useOverride ? spec!.minutes : entry.recommendedMinutes;
+
+  const recI18nKey = `cooking.vegMethod.${entry.recommendedMethod}`;
+  const recLabel = t(recI18nKey, { defaultValue: entry.recommendedMethod });
+
+  // Appliances and recommended techniques are disjoint enums — any
+  // active override is by definition different from the recommendation.
+  const showRecCitation = useOverride;
+
+  const noteText = useOverride && spec!.notes ? spec!.notes : entry.recommendedNotes;
+  const warningText = useOverride ? spec!.warning : undefined;
+  const speciesNote = species === 'cat' ? entry.speciesNotes?.cat : entry.speciesNotes?.dog;
+
+  const fallbackReason = fellBack
+    ? t('cooking.vegGuide.fellBackTo', {
+        defaultValue: 'kept as {{method}} — {{appliance}} not suitable for this veg',
+        method: recLabel,
+        appliance: t(`cooking.methods.${selectedMethod}`),
+      })
+    : null;
+
+  const blockedReason = isCookingBlocked
+    ? t(`cooking.vegGuide.cookingBlocked.${entry.id}`, {
+        defaultValue: entry.cookingBlockedReason ?? 'Cooking not recommended for this item.',
+      })
+    : null;
+
+  return (
+    <li
+      className={cn(
+        'px-5 py-3 flex items-start gap-3',
+        fellBack && 'border-l-2 border-l-warning/60',
+      )}
+    >
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-black text-foreground">
+          {t(`vegData.${entry.id}.label`, { defaultValue: entry.id })}
+        </p>
+        <p className="text-xs text-muted-fg mt-0.5 leading-relaxed">
+          {noteText}
+        </p>
+        {warningText && (
+          <p className="text-[11px] text-warning mt-1 leading-relaxed flex items-start gap-1">
+            <AlertTriangle className="h-3 w-3 mt-0.5 shrink-0" aria-hidden />
+            <span>{warningText}</span>
+          </p>
+        )}
+        {fallbackReason && (
+          <p className="text-[11px] text-warning mt-1 leading-relaxed flex items-start gap-1">
+            <Info className="h-3 w-3 mt-0.5 shrink-0" aria-hidden />
+            <span>{fallbackReason}</span>
+          </p>
+        )}
+        {blockedReason && (
+          <p className="text-[11px] text-muted-fg mt-1 leading-relaxed flex items-start gap-1">
+            <Info className="h-3 w-3 mt-0.5 shrink-0" aria-hidden />
+            <span>{blockedReason}</span>
+          </p>
+        )}
+        {speciesNote && (
+          <p className="text-[11px] text-foreground/70 mt-1 leading-relaxed italic">
+            {speciesNote}
+          </p>
+        )}
+      </div>
+      <div className="shrink-0 flex flex-col items-end gap-1 min-w-[6.5rem]">
+        <span
+          className="inline-flex items-center gap-1 rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-foreground"
+          aria-label={
+            showRecCitation
+              ? t('cooking.vegGuide.pillAria', {
+                  defaultValue: 'Showing {{active}}; recommended method is {{recommended}}',
+                  active: displayMethodLabel,
+                  recommended: recLabel,
+                })
+              : undefined
+          }
+        >
+          {displayMethodLabel}
+        </span>
+        <span className="text-xs font-mono font-bold tabular-nums text-foreground">
+          {fmtTemp(displayTempC)}
+        </span>
+        <span className="text-[11px] font-mono tabular-nums text-muted-fg">
+          {fmtMinutes(displayMinutes)}
+        </span>
+        {showRecCitation && (
+          <span
+            className="text-[10px] text-muted-fg leading-tight text-right"
+            title={entry.recommendedReason}
+          >
+            {t('cooking.vegGuide.recCaption', {
+              defaultValue: 'rec: {{method}}',
+              method: recLabel,
+            })}
+          </span>
+        )}
+      </div>
+    </li>
   );
 }
