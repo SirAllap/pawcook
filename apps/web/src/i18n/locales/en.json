@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "Cooked meat keeps 3 days after thaw.",
       "cookAheadCaption": "One protein per bag · veggies in their own bags",
-      "cookAheadWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour fades — try a shorter window."
+      "cookAheadWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour fades — try a shorter window.",
+      "cookAheadStats": "{{bags}} bags · {{sessions}} cook session(s)",
+      "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily"
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -535,7 +537,13 @@
       "bagRowLabel": "Bag {{n}}",
       "bagRow": "serves {{serveDates}} · use by {{useBy}}",
       "helpPlan": "{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pet(s). Cook all {{totalKg}} kg at once — fridge 1 bag (use within {{fridge}} days of thaw), freeze the rest. Thaw each bag the night before its serve day.",
-      "helpStandalone": "{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use."
+      "helpStandalone": "{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use.",
+      "mergeLabel": "Combine bags",
+      "mergePerServe": "Per serve",
+      "mergeFewer": "Fewer bags",
+      "mergeAll": "One bag",
+      "mergeBagCount": "{{n}} bag(s)",
+      "mergeHint": "Saves {{saved}} cook session(s) — adjacent serves fit within the {{fridge}}-day fridge window after thaw."
     },
     "exportFooter": "PawCook — not veterinary advice. Use a meat thermometer to verify safe internal temperature.",
     "meatSwitcher": {

@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "La viande cuite se conserve 3 jours après décongélation.",
       "cookAheadCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
-      "cookAheadWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur s’altère — essayez une fenêtre plus courte."
+      "cookAheadWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur s’altère — essayez une fenêtre plus courte.",
+      "cookAheadStats": "{{bags}} sachets · {{sessions}} session(s) de cuisson",
+      "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne"
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Sachet {{n}}",
       "bagRow": "sert {{serveDates}} · à consommer avant le {{useBy}}",
       "helpPlan": "{{bags}} sachet(s) de {{meat}} sur {{days}} jours pour {{pets}} animal(aux). Cuisez les {{totalKg}} kg en une fois — gardez 1 sachet au frigo (à consommer dans les {{fridge}} jours après décongélation) et congelez le reste. Décongelez chaque sachet la veille de la portion.",
-      "helpStandalone": "{{bags}} sachet(s) de {{kg}} kg pour {{pets}} animal(aux). Frigo pour 1, congelez les autres. Décongelez chaque sachet la veille."
+      "helpStandalone": "{{bags}} sachet(s) de {{kg}} kg pour {{pets}} animal(aux). Frigo pour 1, congelez les autres. Décongelez chaque sachet la veille.",
+      "mergeLabel": "Combiner les sachets",
+      "mergePerServe": "Par portion",
+      "mergeFewer": "Moins de sachets",
+      "mergeAll": "Un sachet",
+      "mergeBagCount": "{{n}} sachet(s)",
+      "mergeHint": "Économise {{saved}} session(s) de cuisson — les portions adjacentes tiennent dans la fenêtre de {{fridge}} jours au frigo après décongélation."
     },
     "exportFooter": "PawCook — pas un conseil vétérinaire. Utilisez un thermomètre à viande pour vérifier la température interne sécuritaire.",
     "meatSwitcher": {

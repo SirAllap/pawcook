@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "Ugotowane mięso wytrzymuje 3 dni po rozmrożeniu.",
       "cookAheadCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
-      "cookAheadWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak słabnie — spróbuj krótszego okna."
+      "cookAheadWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak słabnie — spróbuj krótszego okna.",
+      "cookAheadStats": "{{bags}} woreczków · {{sessions}} sesja/i gotowania",
+      "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna"
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Woreczek {{n}}",
       "bagRow": "na {{serveDates}} · zużyć do {{useBy}}",
       "helpPlan": "{{bags}} woreczek/woreczków {{meat}} przez {{days}} dni dla {{pets}} zwierząt. Ugotuj wszystkie {{totalKg}} kg naraz — 1 woreczek do lodówki (zużyć w ciągu {{fridge}} dni po rozmrożeniu), resztę zamroź. Rozmrażaj każdy woreczek wieczorem przed porcją.",
-      "helpStandalone": "{{bags}} woreczek/woreczków po {{kg}} kg dla {{pets}} zwierząt. 1 do lodówki, resztę zamroź. Rozmrażaj każdy woreczek na noc."
+      "helpStandalone": "{{bags}} woreczek/woreczków po {{kg}} kg dla {{pets}} zwierząt. 1 do lodówki, resztę zamroź. Rozmrażaj każdy woreczek na noc.",
+      "mergeLabel": "Połącz woreczki",
+      "mergePerServe": "Na porcję",
+      "mergeFewer": "Mniej woreczków",
+      "mergeAll": "Jeden woreczek",
+      "mergeBagCount": "{{n}} woreczek/woreczków",
+      "mergeHint": "Oszczędza {{saved}} sesję/sesje gotowania — sąsiednie porcje mieszczą się w {{fridge}}-dniowym oknie lodówki po rozmrożeniu."
     },
     "exportFooter": "PawCook — to nie jest porada weterynaryjna. Użyj termometru do mięsa, aby zweryfikować bezpieczną temperaturę wewnętrzną.",
     "meatSwitcher": {

@@ -727,10 +727,11 @@ function BagStrategyPanel({
 /**
  * Plan-aware bag strategy. Renders the actual schedule the planner
  * produced — one row per real bag with its cook date, serve days, and
- * use-by date. Pushes the bag-count and per-bag weight back into the
- * form so the rest of the calculator (cook time, thickness) stays in
- * sync. No slider — the schedule is authoritative; users who want to
- * change the cadence go back to the wizard.
+ * use-by date. Optional merge stepper lets the user combine adjacent
+ * batches whose total span fits within FRIDGE_SAFE_DAYS — same food,
+ * fewer cook sessions, less plastic. Pushes the bag-count and per-bag
+ * weight back into the form so the rest of the calculator (cook time,
+ * thickness) stays in sync.
  */
 function PlanAwareBagPanel({
   batches, feedingDays, petCount, meatLabel, onApply,
@@ -742,8 +743,20 @@ function PlanAwareBagPanel({
   onApply: (next: { bagSizeKg: number; bagCount: number }) => void;
 }) {
   const { t, i18n } = useTranslation();
-  const bagCount = batches.length;
-  const totalGrams = batches.reduce((s, b) => s + b.totalGrams, 0);
+
+  // Compute achievable groupings via greedy left-to-right merging:
+  // start at one group per batch, then attempt each merge level by
+  // collapsing the smallest-gap adjacent pair while the resulting
+  // group's calendar span stays within FRIDGE_SAFE_DAYS.
+  const groupings = useMemo(
+    () => computeGroupings(batches),
+    [batches],
+  );
+  const [groupingIndex, setGroupingIndex] = useState(0);
+  const grouping = groupings[Math.min(groupingIndex, groupings.length - 1)] ?? groupings[0]!;
+
+  const bagCount = grouping.bags.length;
+  const totalGrams = grouping.bags.reduce((s, b) => s + b.totalGrams, 0);
   const avgKg = Math.round((totalGrams / 1000 / bagCount) * 100) / 100;
 
   useEffect(() => {
@@ -762,6 +775,11 @@ function PlanAwareBagPanel({
     });
   const fmtDates = (dates: string[]) =>
     dates.length <= 1 ? fmtDate(dates[0]!) : dates.map(fmtDate).join(' · ');
+
+  // Only surface the stepper when merging would actually change the bag
+  // count. Single-bag plans and plans where every adjacent gap exceeds
+  // FRIDGE_SAFE_DAYS hide it entirely.
+  const showStepper = groupings.length > 1;
 
   return (
     <Card padding="md" variant="muted" className="space-y-3 border-primary/30 bg-primary/5">
@@ -785,24 +803,80 @@ function PlanAwareBagPanel({
         </p>
       </div>
 
+      {showStepper && (
+        <div className="space-y-1.5">
+          <p className="text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+            {t('cooking.bagStrategy.mergeLabel', { defaultValue: 'Combine bags' })}
+          </p>
+          <ToggleGroup
+            type="single"
+            value={String(groupingIndex)}
+            onValueChange={(v) => {
+              if (!v) return;
+              const n = Number(v);
+              if (Number.isFinite(n) && n >= 0 && n < groupings.length) {
+                setGroupingIndex(n);
+              }
+            }}
+            aria-label={t('cooking.bagStrategy.mergeLabel', { defaultValue: 'Combine bags' })}
+            className={cn(
+              'grid w-full gap-0.5',
+              groupings.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
+            )}
+          >
+            {groupings.map((g, i) => (
+              <ToggleGroupItem
+                key={i}
+                value={String(i)}
+                className="flex-col gap-0 py-2"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-wider">
+                  {i === 0
+                    ? t('cooking.bagStrategy.mergePerServe', { defaultValue: 'Per serve' })
+                    : i === groupings.length - 1 && g.bags.length === 1
+                      ? t('cooking.bagStrategy.mergeAll', { defaultValue: 'One bag' })
+                      : t('cooking.bagStrategy.mergeFewer', { defaultValue: 'Fewer bags' })}
+                </span>
+                <span className="text-[11px] font-mono tabular-nums text-muted-fg">
+                  {t('cooking.bagStrategy.mergeBagCount', {
+                    defaultValue: '{{n}} bag(s)',
+                    n: g.bags.length,
+                  })}
+                </span>
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+          {groupingIndex > 0 && (
+            <p className="text-[11px] text-muted-fg leading-snug">
+              {t('cooking.bagStrategy.mergeHint', {
+                defaultValue:
+                  'Saves {{saved}} cook session(s) — adjacent serves fit within the {{fridge}}-day fridge window after thaw.',
+                saved: groupings[0]!.bags.length - bagCount,
+                fridge: FRIDGE_SAFE_DAYS,
+              })}
+            </p>
+          )}
+        </div>
+      )}
+
       <ul className="rounded-lg border border-primary/20 bg-surface divide-y divide-border/50 text-[11px]">
-        {batches.map((batch) => (
-          <li key={batch.id} className="flex items-center justify-between gap-2 px-3 py-1.5">
+        {grouping.bags.map((bag, i) => (
+          <li key={i} className="flex items-center justify-between gap-2 px-3 py-1.5">
             <span className="font-bold text-foreground">
               {t('cooking.bagStrategy.bagRowLabel', {
                 defaultValue: 'Bag {{n}}',
-                n: batch.sequence,
+                n: i + 1,
               })}
             </span>
             <span className="text-muted-fg text-right truncate">
               {t('cooking.bagStrategy.bagRow', {
                 defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
-                serveDates: fmtDates(batch.dates),
-                useBy: fmtDate(batch.useByDate),
+                serveDates: fmtDates(bag.dates),
+                useBy: fmtDate(bag.useByDate),
               })}
             </span>
             <span className="font-mono tabular-nums text-foreground shrink-0">
-              {batch.totalGrams} g
+              {bag.totalGrams} g
             </span>
           </li>
         ))}
@@ -822,6 +896,73 @@ function PlanAwareBagPanel({
       </p>
     </Card>
   );
+}
+
+/** Convenience shape for a merged bag — keeps the per-row UI identical
+ * across the merge stepper levels. */
+type MergedBag = {
+  dates: string[];
+  totalGrams: number;
+  useByDate: string;
+};
+
+/**
+ * Compute the achievable merge groupings, from "per serve" (one row per
+ * planner-batch) down to whatever the fridge-safety constraint allows.
+ * Greedy left-to-right: at each level, find the adjacent pair whose
+ * combined calendar span is smallest and still ≤ FRIDGE_SAFE_DAYS, then
+ * merge it. Repeat until no more merges are feasible.
+ *
+ * Returns the chain of groupings — index 0 is "per serve", the last is
+ * the most merged. Each group's `useByDate` is the merged bag's effective
+ * fridge use-by (last serve day + thaw allowance).
+ */
+function computeGroupings(
+  batches: import('@pawcook/shared').CookingBatch[],
+): { bags: MergedBag[] }[] {
+  if (batches.length === 0) return [{ bags: [] }];
+  const sorted = [...batches].sort((a, b) => a.dates[0]!.localeCompare(b.dates[0]!));
+  const initial: MergedBag[] = sorted.map((b) => ({
+    dates: [...b.dates].sort(),
+    totalGrams: b.totalGrams,
+    useByDate: b.useByDate,
+  }));
+  const levels: { bags: MergedBag[] }[] = [{ bags: initial }];
+
+  let current = initial;
+  while (true) {
+    // Try to merge the adjacent pair with the smallest span that fits.
+    let bestIdx = -1;
+    let bestSpan = Infinity;
+    for (let i = 0; i < current.length - 1; i++) {
+      const a = current[i]!;
+      const b = current[i + 1]!;
+      const firstDate = a.dates[0]!;
+      const lastDate = b.dates[b.dates.length - 1]!;
+      const span = isoDaysBetween(firstDate, lastDate) + 1;
+      if (span <= FRIDGE_SAFE_DAYS && span < bestSpan) {
+        bestSpan = span;
+        bestIdx = i;
+      }
+    }
+    if (bestIdx < 0) break;
+    const a = current[bestIdx]!;
+    const b = current[bestIdx + 1]!;
+    const merged: MergedBag = {
+      dates: [...a.dates, ...b.dates].sort(),
+      totalGrams: a.totalGrams + b.totalGrams,
+      useByDate: a.useByDate < b.useByDate ? b.useByDate : a.useByDate,
+    };
+    current = [...current.slice(0, bestIdx), merged, ...current.slice(bestIdx + 2)];
+    levels.push({ bags: current });
+  }
+  return levels;
+}
+
+function isoDaysBetween(a: string, b: string): number {
+  const da = new Date(a + 'T00:00:00Z').getTime();
+  const db = new Date(b + 'T00:00:00Z').getTime();
+  return Math.round((db - da) / 86_400_000);
 }
 
 /**

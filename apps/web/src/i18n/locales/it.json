@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "La carne cucinata si conserva 3 giorni dopo lo scongelamento.",
       "cookAheadCaption": "Una proteina per sacchetto · verdure nei loro sacchetti",
-      "cookAheadWarn": "Alcuni sacchetti resteranno congelati ~3 settimane. Sicuro, ma il sapore cala — prova una finestra più corta."
+      "cookAheadWarn": "Alcuni sacchetti resteranno congelati ~3 settimane. Sicuro, ma il sapore cala — prova una finestra più corta.",
+      "cookAheadStats": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura",
+      "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera"
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Sacchetto {{n}}",
       "bagRow": "serve {{serveDates}} · consumare entro {{useBy}}",
       "helpPlan": "{{bags}} sacchetto/i di {{meat}} su {{days}} giorni per {{pets}} animale/i. Cuoci tutti i {{totalKg}} kg in una volta — 1 sacchetto in frigo (consumare entro {{fridge}} giorni dallo scongelamento), il resto in freezer. Scongela ogni sacchetto la sera prima della porzione.",
-      "helpStandalone": "{{bags}} sacchetto/i da {{kg}} kg per {{pets}} animale/i. 1 in frigo, gli altri in freezer. Scongela ogni sacchetto la notte prima."
+      "helpStandalone": "{{bags}} sacchetto/i da {{kg}} kg per {{pets}} animale/i. 1 in frigo, gli altri in freezer. Scongela ogni sacchetto la notte prima.",
+      "mergeLabel": "Combina sacchetti",
+      "mergePerServe": "Per porzione",
+      "mergeFewer": "Meno sacchetti",
+      "mergeAll": "Un sacchetto",
+      "mergeBagCount": "{{n}} sacchetto/i",
+      "mergeHint": "Risparmia {{saved}} sessione/i di cottura — le porzioni adiacenti rientrano nella finestra di {{fridge}} giorni in frigo dopo lo scongelamento."
     },
     "exportFooter": "PawCook — non è un consiglio veterinario. Usa un termometro per carne per verificare una temperatura interna sicura.",
     "meatSwitcher": {

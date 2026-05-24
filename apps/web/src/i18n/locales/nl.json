@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "Gekookt vlees blijft 3 dagen goed na ontdooien.",
       "cookAheadCaption": "Eén eiwit per zak · groenten in eigen zakken",
-      "cookAheadWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — kies een korter venster."
+      "cookAheadWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — kies een korter venster.",
+      "cookAheadStats": "{{bags}} zakken · {{sessions}} kooksessie(s)",
+      "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks"
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Zak {{n}}",
       "bagRow": "voor {{serveDates}} · te gebruiken vóór {{useBy}}",
       "helpPlan": "{{bags}} {{meat}}-zak(ken) over {{days}} dagen voor {{pets}} huisdier(en). Kook alle {{totalKg}} kg in één keer — 1 zak in de koelkast (binnen {{fridge}} dagen na ontdooien gebruiken), de rest invriezen. Ontdooi elke zak de avond ervoor.",
-      "helpStandalone": "{{bags}} zak(ken) van {{kg}} kg voor {{pets}} huisdier(en). 1 in de koelkast, rest invriezen. Ontdooi elke zak een nacht van tevoren."
+      "helpStandalone": "{{bags}} zak(ken) van {{kg}} kg voor {{pets}} huisdier(en). 1 in de koelkast, rest invriezen. Ontdooi elke zak een nacht van tevoren.",
+      "mergeLabel": "Zakken combineren",
+      "mergePerServe": "Per portie",
+      "mergeFewer": "Minder zakken",
+      "mergeAll": "Eén zak",
+      "mergeBagCount": "{{n}} zak(ken)",
+      "mergeHint": "Bespaart {{saved}} kooksessie(s) — aangrenzende porties passen binnen het {{fridge}}-daagse koelvenster na ontdooien."
     },
     "exportFooter": "PawCook — geen veterinair advies. Gebruik een vleesthermometer om een veilige kerntemperatuur te controleren.",
     "meatSwitcher": {
