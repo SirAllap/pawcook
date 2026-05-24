@@ -19,6 +19,7 @@ import {
   type PlanDuration,
 } from './schemas.js';
 import { buildShoppingList } from './shopping.js';
+import { buildCookingPlan } from './batching.js';
 
 export interface GeneratePlanInput {
   name: string;
@@ -50,6 +51,13 @@ export function generateMealPlan(input: GeneratePlanInput): MealPlan {
   }
 
   const shoppingList = buildShoppingList(days, input.pets);
+  // Only build the cooking plan for sous-vide. Other methods (oven,
+  // stovetop, slow cooker) are governed by tray/pot size, not batch
+  // days — generating bags for them would imply a workflow we don't
+  // actually support.
+  const cookingPlan = input.sourcing.preferredCookingMethod === 'sous_vide'
+    ? buildCookingPlan(days, input.pets, input.sourcing)
+    : undefined;
 
   return {
     id: planId,
@@ -60,6 +68,7 @@ export function generateMealPlan(input: GeneratePlanInput): MealPlan {
     sourcing: input.sourcing,
     days,
     shoppingList,
+    cookingPlan,
     createdAt: nowIso,
     updatedAt: nowIso,
   };
@@ -107,10 +116,15 @@ function pickIngredientForComponent(
   dislikedSet: Set<string>,
 ): PlannedComponent {
   const species = pet.nutrition.species;
+  // Per-pet exclude set = plan-level dislikes + this pet's allergies.
+  // Without this, an allergic pet would silently get the offending
+  // ingredient via the shared rotation.
+  const excludeForPet = new Set(dislikedSet);
+  for (const a of pet.allergies) excludeForPet.add(a);
   const candidates = findIngredientsForComponent(
     component.key,
     species,
-    dislikedSet,
+    excludeForPet,
     pet.conditions,
   );
 

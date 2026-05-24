@@ -45,8 +45,17 @@ export const SourcingPrefsSchema = z.object({
    * prefer to source these separately or don't buy them at all.
    */
   includeOrgans: z.boolean().default(true),
+  /**
+   * Days of meals each sous-vide bag should cover. Only used when
+   * preferredCookingMethod === 'sous_vide'. Default 2 — one bag of meat
+   * and one of veg lasts two days across all pets.
+   */
+  bagDays: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).default(2),
 });
 export type SourcingPrefs = z.infer<typeof SourcingPrefsSchema>;
+
+// Shared ISO date primitive. Hoisted so cooking-batch schemas can use it.
+const ISO_DATE = z.string();
 
 // ─── Plan structure ──────────────────────────────────────────────────
 export const PlanDurationSchema = z.union([
@@ -96,14 +105,46 @@ export const PlanDaySchema = z.object({
 export type PlanDay = z.infer<typeof PlanDaySchema>;
 
 // ─── Shopping list ───────────────────────────────────────────────────
-export const ShoppingItemSchema = z.object({
+const PurchaseUnitSchema = z.enum([
+  'g', 'piece', 'pack', 'bunch', 'punnet', 'fish', 'bottle',
+]);
+const SurplusBehaviorSchema = z.enum(['freeze', 'do-not-feed', 'discard', 'none']);
+
+// Inner shape — required fields only. Defaults for the new (post-rounding)
+// columns are applied in the .transform below so plans saved before the
+// feature shipped still parse.
+const ShoppingItemBaseSchema = z.object({
   ingredientId: z.string(),
   componentKey: ComponentKeySchema,
+  // Kept for backward compatibility with the calorie-summing UI and
+  // downstream consumers (Cook button) that pass grams to the calculator.
   totalGrams: z.number().nonnegative(),
+  // Precise grams needed across all pets and days (yield-adjusted).
+  // Optional for plans saved before this feature shipped.
+  neededGrams: z.number().nonnegative().optional(),
+  // After rounding/unit conversion — the amount the user actually buys,
+  // expressed in grams. Falls back to totalGrams for legacy plans.
+  purchaseGrams: z.number().nonnegative().optional(),
+  purchaseQty: z.number().nonnegative().optional(),
+  purchaseUnit: PurchaseUnitSchema.optional(),
+  surplusGrams: z.number().optional(),
+  surplusBehavior: SurplusBehaviorSchema.optional(),
+  showSurplus: z.boolean().optional(),
   storeSection: z.string(),
   forPetIds: z.array(z.string()),
   variantTags: z.array(z.string()).default([]),
 });
+
+export const ShoppingItemSchema = ShoppingItemBaseSchema.transform((item) => ({
+  ...item,
+  neededGrams: item.neededGrams ?? item.totalGrams,
+  purchaseGrams: item.purchaseGrams ?? item.totalGrams,
+  purchaseQty: item.purchaseQty ?? item.totalGrams,
+  purchaseUnit: item.purchaseUnit ?? ('g' as const),
+  surplusGrams: item.surplusGrams ?? 0,
+  surplusBehavior: item.surplusBehavior ?? ('none' as const),
+  showSurplus: item.showSurplus ?? false,
+}));
 export type ShoppingItem = z.infer<typeof ShoppingItemSchema>;
 
 export const ShoppingSectionSchema = z.object({
@@ -122,9 +163,47 @@ export const ShoppingListSchema = z.object({
 });
 export type ShoppingList = z.infer<typeof ShoppingListSchema>;
 
-// ─── Meal plan (root) ────────────────────────────────────────────────
-const ISO_DATE = z.string();
+// ─── Cooking batches (sous-vide bags) ────────────────────────────────
+// One bag = one ingredient, covering N usage-days for the pets that eat
+// from it. Dates may be non-consecutive when proteins rotate; the UI
+// surfaces that via `rotationGap` and the bag's `dates` array.
+export const CookingBatchSchema = z.object({
+  id: z.string(),
+  ingredientId: z.string(),
+  // 'protein' (butcher/fish) vs 'veg' — keeps grouping headers tidy.
+  kind: z.enum(['protein', 'veg']),
+  sequence: z.number().int().positive(),
+  totalInSequence: z.number().int().positive(),
+  // Calendar dates the bag's meals fall on. Length matches usage-days
+  // for this ingredient inside the bag's window; not always consecutive.
+  dates: z.array(ISO_DATE).min(1),
+  forPetIds: z.array(z.string()).min(1),
+  totalGrams: z.number().positive(),
+  cookDate: ISO_DATE,
+  thawDate: ISO_DATE,
+  useByDate: ISO_DATE,
+  rotationGap: z.boolean(),
+});
+export type CookingBatch = z.infer<typeof CookingBatchSchema>;
 
+// Ingredients excluded from batching (cook-fresh items: organs, raw fish,
+// leafy greens, oils). Surfaced as a list under the bag groups so the
+// user knows what they still have to handle ad-hoc.
+export const CookFreshItemSchema = z.object({
+  ingredientId: z.string(),
+  reason: z.enum(['perishable', 'no-batch-veg', 'organ', 'supplement-equiv']),
+  forPetIds: z.array(z.string()),
+});
+export type CookFreshItem = z.infer<typeof CookFreshItemSchema>;
+
+export const CookingPlanSchema = z.object({
+  bagDays: z.number().int().min(1).max(4),
+  batches: z.array(CookingBatchSchema),
+  cookFresh: z.array(CookFreshItemSchema),
+});
+export type CookingPlan = z.infer<typeof CookingPlanSchema>;
+
+// ─── Meal plan (root) ────────────────────────────────────────────────
 export const MealPlanSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1).max(64),
@@ -134,6 +213,12 @@ export const MealPlanSchema = z.object({
   sourcing: SourcingPrefsSchema,
   days: z.array(PlanDaySchema),
   shoppingList: ShoppingListSchema,
+  /**
+   * Optional — only generated when preferredCookingMethod === 'sous_vide'.
+   * Older saved plans won't have it; the Cooking plan tab degrades to a
+   * hint pointing the user at the wizard.
+   */
+  cookingPlan: CookingPlanSchema.optional(),
   createdAt: ISO_DATE,
   updatedAt: ISO_DATE,
 });

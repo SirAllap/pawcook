@@ -2,7 +2,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { ArrowLeft, ShoppingBag, CalendarDays, Info, Trash2, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Info, Trash2, AlertTriangle } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -13,6 +13,7 @@ import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
 import { NutrientCoverageCard } from '../../components/meal-plan/NutrientCoverageCard';
 import { PetTag } from '../../components/meal-plan/PetTag';
 import { ShoppingListView } from './ShoppingListView';
+import { CookingPlanView } from './CookingPlanView';
 import { useMealPlans } from '../../contexts/MealPlansContext';
 import { usePets } from '../../contexts/PetProfilesContext';
 
@@ -102,6 +103,15 @@ export default function PlanView() {
             <ShoppingBag className="h-4 w-4" aria-hidden />
             {t('mealPlan.view.tabShopping')}
           </TabsTrigger>
+          {plan.cookingPlan && (
+            <TabsTrigger
+              value="cooking"
+              aria-label={t('mealPlan.view.tabCooking', { defaultValue: 'Cooking plan' })}
+            >
+              <ChefHat className="h-4 w-4" aria-hidden />
+              {t('mealPlan.view.tabCooking', { defaultValue: 'Cooking plan' })}
+            </TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="meals" className="space-y-4">
@@ -114,6 +124,12 @@ export default function PlanView() {
         <TabsContent value="shopping" forceMount className="space-y-4 data-[state=inactive]:hidden">
           <ShoppingListView plan={plan} pets={planPets} />
         </TabsContent>
+
+        {plan.cookingPlan && (
+          <TabsContent value="cooking" className="space-y-4">
+            <CookingPlanView plan={plan} pets={planPets} />
+          </TabsContent>
+        )}
       </Tabs>
 
       <Card padding="md" className="bg-info/5 border-info/30 mt-8 sm:mt-10">

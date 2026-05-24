@@ -20,11 +20,14 @@ const METHOD_EMOJI: Record<CookingMethod, string> = {
   stovetop_low: '🫕',
   slow_cooker: '🥘',
 };
+const BAG_DAY_OPTIONS = [1, 2, 3, 4] as const;
+type BagDays = (typeof BAG_DAY_OPTIONS)[number];
 
 export function SourcingPicker({
   value,
   onChange,
   species,
+  durationDays,
 }: {
   value: SourcingPrefs;
   onChange: (next: SourcingPrefs) => void;
@@ -34,12 +37,24 @@ export function SourcingPicker({
    * proteins as picks would be confusing.
    */
   species: Species;
+  /**
+   * Plan duration in days. Used to cap the bag-size selector so the user
+   * can't pick a bag that covers more than half the plan, which would
+   * defeat the rotation benefit.
+   */
+  durationDays: number;
 }) {
   const { t } = useTranslation();
   const translateIngredient = useTranslateIngredient();
 
   const meats = useMemo(() => getMeatIngredients(species), [species]);
   const veggies = useMemo(() => getVegIngredients(species), [species]);
+
+  // Dynamic cap: bag must not cover more than half the plan. 7-day plans
+  // therefore only offer 1/2/3 days, never 4.
+  const maxBagDays = Math.min(4, Math.max(1, Math.floor(durationDays / 2))) as BagDays;
+  const showBagSize = value.preferredCookingMethod === 'sous_vide';
+  const bagWarning = value.bagDays === 4 && durationDays >= 30;
 
   const meatSet = useMemo(() => new Set(value.meatIds), [value.meatIds]);
   const vegSet = useMemo(() => new Set(value.vegIds), [value.vegIds]);
@@ -127,6 +142,64 @@ export function SourcingPicker({
           ))}
         </ToggleGroup>
       </div>
+
+      {showBagSize && (
+        <div className="space-y-2">
+          <SectionLabel>
+            {t('mealPlan.sourcing.bagSizeLabel', { defaultValue: 'Bag size' })}
+          </SectionLabel>
+          <p className="text-xs text-muted-fg leading-relaxed">
+            {t('mealPlan.sourcing.bagSizeHelp', {
+              defaultValue:
+                'How many days of meals go in each sous-vide bag. Bigger bags = less plastic and fewer cook sessions, but they sit in the freezer longer.',
+            })}
+          </p>
+          <ToggleGroup
+            type="single"
+            value={String(value.bagDays)}
+            onValueChange={(v) => {
+              if (!v) return;
+              const next = Number(v) as BagDays;
+              onChange({ ...value, bagDays: next });
+            }}
+            aria-label={t('mealPlan.sourcing.bagSizeLabel', { defaultValue: 'Bag size' })}
+            className="grid grid-cols-4 w-full"
+          >
+            {BAG_DAY_OPTIONS.map((opt) => {
+              const disabled = opt > maxBagDays;
+              return (
+                <ToggleGroupItem
+                  key={opt}
+                  value={String(opt)}
+                  disabled={disabled}
+                  aria-label={t('mealPlan.sourcing.bagSizeDays', {
+                    defaultValue: '{{n}} days',
+                    n: opt,
+                  })}
+                >
+                  {t('mealPlan.sourcing.bagSizeOpt', {
+                    defaultValue: opt === 1 ? '1 day' : `${opt} days`,
+                    n: opt,
+                  })}
+                </ToggleGroupItem>
+              );
+            })}
+          </ToggleGroup>
+          <p className="text-[11px] text-muted-fg leading-relaxed">
+            {t('mealPlan.sourcing.bagSizeCaption', {
+              defaultValue: 'One protein per bag · veggies in their own bags',
+            })}
+          </p>
+          {bagWarning && (
+            <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
+              {t('mealPlan.sourcing.bagSizeWarn', {
+                defaultValue:
+                  'Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3.',
+              })}
+            </p>
+          )}
+        </div>
+      )}
 
       <IngredientChips
         eyebrow={<Beef className="h-3.5 w-3.5" aria-hidden />}

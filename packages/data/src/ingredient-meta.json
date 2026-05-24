@@ -83,7 +83,17 @@
       "accessibility": "easy",
       "storeSection": "fish-counter",
       "tags": ["omega-3", "wild-available"],
-      "rotation": { "everyDays": 3 }
+      "rotation": { "everyDays": 3 },
+      "policy": {
+        "roundingStepGrams": 250,
+        "roundDirection": "up",
+        "maxBagDays": 2,
+        "maxBagWeightG": 1500,
+        "maxFridgeHoursPostThaw": 48,
+        "surplusBehavior": "freeze",
+        "surplusDisplayThresholdPct": 0.1,
+        "allowCrossPetBatching": true
+      }
     },
     {
       "id": "mackerel",
@@ -92,9 +102,10 @@
       "varietyTier": "diverse",
       "accessibility": "easy",
       "storeSection": "fish-counter",
-      "tags": ["omega-3", "high-pufa"],
+      "tags": ["omega-3", "high-pufa", "whole-fish"],
       "catMaxPctDaily": 0.10,
-      "rotation": { "everyDays": 3 }
+      "rotation": { "everyDays": 3 },
+      "policy": { "purchaseUnit": "fish", "gramsPerUnit": 300 }
     },
     {
       "id": "sardines",
@@ -105,7 +116,8 @@
       "storeSection": "pantry",
       "tags": ["omega-3", "whole-fish", "low-mercury"],
       "rotation": { "everyDays": 3 },
-      "avoidForConditions": ["kidney"]
+      "avoidForConditions": ["kidney"],
+      "policy": { "purchaseUnit": "pack", "gramsPerUnit": 120 }
     },
     {
       "id": "whitefish",
