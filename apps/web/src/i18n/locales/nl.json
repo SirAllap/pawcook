@@ -261,7 +261,17 @@
       "bagSizeHelp": "Hoeveel dagen maaltijden er in elke sous-vide zak gaan. Grotere zakken = minder plastic en minder kooksessies, maar ze liggen langer in de vriezer.",
       "bagSizeOpt": "{{n}} dagen",
       "bagSizeCaption": "Eén eiwit per zak · groenten in eigen zakken",
-      "bagSizeWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — overweeg 2 of 3."
+      "bagSizeWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — overweeg 2 of 3.",
+      "cookAheadLabel": "Vooruitkoken",
+      "cookAheadHelp": "Hoeveel dagen elke eiwit-batch moet dekken. Grotere vensters = minder kooksessies en minder plastic; de planner groepeert opeenvolgende dagen van hetzelfde eiwit zodat elke zak vol is.",
+      "cookAhead": {
+        "perServe": "Per portie",
+        "upTo2": "Tot 2 dagen",
+        "upTo3": "Tot 3 dagen"
+      },
+      "cookAheadCapSafety": "Gekookt vlees blijft 3 dagen goed na ontdooien.",
+      "cookAheadCaption": "Eén eiwit per zak · groenten in eigen zakken",
+      "cookAheadWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — kies een korter venster."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Niets om in te pakken",
       "noBagsHelp": "Dit plan heeft geen batch-geschikte ingrediënten — alles wordt vers bereid.",
       "summaryLabel": "Kookplan",
-      "summary": "{{bags}} zakken · {{days}} dagen per zak · één eiwit per zak",
+      "summary": "{{bags}} zakken · {{sessions}} kooksessie(s) · één eiwit per zak",
       "thawIcs": "Ontdooischema (.ics)",
       "groupSummary": "{{bags}} zakken · {{grams}} g totaal",
       "printLabels": "Labels afdrukken",
@@ -359,7 +369,8 @@
         "no-batch-veg": "vers koken",
         "organ": "kleine porties",
         "supplement-equiv": "dagelijkse toevoeging"
-      }
+      },
+      "frozenQuality": "Bevroren ~{{days}} dagen — veilig, maar de smaak vermindert. Overweeg een korter vooruitkoken in het volgende plan."
     },
     "labels": {
       "title": "{{count}} zaklabels — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "Verdeling",
       "help": "Voert {{pets}} huisdier(en) gedurende {{days}} dagen totaal. Na koken 1 zak in de koelkast bewaren (binnen {{fridge}} dagen gebruiken) en de andere {{frozen}} invriezen. Ontdooi een zak de avond ervoor.",
       "runtTip": "{{days}} dagen per zak zou je {{bags}} zakken geven in plaats van {{current}} — zelfde voedsel, minder plastic. Tik om te wisselen.",
-      "floorReason": "Minimum {{bags}} zakken voor {{days}} dagen — gekookt vlees blijft na ontdooien maar {{fridge}} dagen goed."
+      "floorReason": "Minimum {{bags}} zakken voor {{days}} dagen — gekookt vlees blijft na ontdooien maar {{fridge}} dagen goed.",
+      "cookAhead": "Vooruitkoken",
+      "hero": "{{bags}} zakken × {{kg}} kg — één zak per portie {{meat}}",
+      "heroMeatFallback": "eiwit",
+      "bagRowLabel": "Zak {{n}}",
+      "bagRow": "voor {{serveDates}} · te gebruiken vóór {{useBy}}",
+      "helpPlan": "{{bags}} {{meat}}-zak(ken) over {{days}} dagen voor {{pets}} huisdier(en). Kook alle {{totalKg}} kg in één keer — 1 zak in de koelkast (binnen {{fridge}} dagen na ontdooien gebruiken), de rest invriezen. Ontdooi elke zak de avond ervoor.",
+      "helpStandalone": "{{bags}} zak(ken) van {{kg}} kg voor {{pets}} huisdier(en). 1 in de koelkast, rest invriezen. Ontdooi elke zak een nacht van tevoren."
     },
     "exportFooter": "PawCook — geen veterinair advies. Gebruik een vleesthermometer om een veilige kerntemperatuur te controleren.",
     "meatSwitcher": {

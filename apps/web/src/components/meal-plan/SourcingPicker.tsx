@@ -21,8 +21,13 @@ const METHOD_EMOJI: Record<CookingMethod, string> = {
   slow_cooker: '🥘',
   pressure_cooker: '⏲️',
 };
-const BAG_DAY_OPTIONS = [1, 2, 3, 4] as const;
-type BagDays = (typeof BAG_DAY_OPTIONS)[number];
+// User-facing options. "Whole plan" maps to bagDays=durationDays at
+// commit-time, but only when durationDays <= FRIDGE_SAFE_DAYS (3) — for
+// longer plans the option is disabled (cooked meat keeps 3 days post-
+// thaw, so a bag covering more would breach food-safety).
+const COOK_AHEAD_OPTIONS = [1, 2, 3] as const;
+type CookAheadDays = (typeof COOK_AHEAD_OPTIONS)[number];
+const FRIDGE_SAFE_DAYS = 3;
 
 export function SourcingPicker({
   value,
@@ -51,11 +56,13 @@ export function SourcingPicker({
   const meats = useMemo(() => getMeatIngredients(species), [species]);
   const veggies = useMemo(() => getVegIngredients(species), [species]);
 
-  // Dynamic cap: bag must not cover more than half the plan. 7-day plans
-  // therefore only offer 1/2/3 days, never 4.
-  const maxBagDays = Math.min(4, Math.max(1, Math.floor(durationDays / 2))) as BagDays;
-  const showBagSize = value.preferredCookingMethod === 'sous_vide';
-  const bagWarning = value.bagDays === 4 && durationDays >= 30;
+  // Hard cap by food safety: cooked-then-thawed meat keeps 3 days in
+  // the fridge. Longer windows are never offered, even on 30-day plans.
+  const maxCookAhead = Math.min(FRIDGE_SAFE_DAYS, Math.max(1, durationDays)) as CookAheadDays;
+  const showCookAhead = value.preferredCookingMethod === 'sous_vide';
+  // Warning fires when a bag would sit frozen for ~3+ weeks before its
+  // last serve day. Most pronounced on long plans with large windows.
+  const cookAheadWarning = value.bagDays >= 3 && durationDays >= 30;
 
   const meatSet = useMemo(() => new Set(value.meatIds), [value.meatIds]);
   const vegSet = useMemo(() => new Set(value.vegIds), [value.vegIds]);
@@ -144,15 +151,15 @@ export function SourcingPicker({
         </ToggleGroup>
       </div>
 
-      {showBagSize && (
+      {showCookAhead && (
         <div className="space-y-2">
           <SectionLabel>
-            {t('mealPlan.sourcing.bagSizeLabel', { defaultValue: 'Bag size' })}
+            {t('mealPlan.sourcing.cookAheadLabel', { defaultValue: 'Cook ahead' })}
           </SectionLabel>
           <p className="text-xs text-muted-fg leading-relaxed">
-            {t('mealPlan.sourcing.bagSizeHelp', {
+            {t('mealPlan.sourcing.cookAheadHelp', {
               defaultValue:
-                'How many days of meals go in each sous-vide bag. Bigger bags = less plastic and fewer cook sessions, but they sit in the freezer longer.',
+                'How many days each protein-batch should cover. Bigger windows = fewer cook sessions and less plastic; the planner groups consecutive days of the same protein so each bag is full.',
             })}
           </p>
           <ToggleGroup
@@ -160,42 +167,50 @@ export function SourcingPicker({
             value={String(value.bagDays)}
             onValueChange={(v) => {
               if (!v) return;
-              const next = Number(v) as BagDays;
-              onChange({ ...value, bagDays: next });
+              const n = Number(v);
+              if (!Number.isFinite(n) || n < 1 || n > 3) return;
+              onChange({ ...value, bagDays: n as 1 | 2 | 3 });
             }}
-            aria-label={t('mealPlan.sourcing.bagSizeLabel', { defaultValue: 'Bag size' })}
-            className="grid grid-cols-4 w-full"
+            aria-label={t('mealPlan.sourcing.cookAheadLabel', { defaultValue: 'Cook ahead' })}
+            className="grid grid-cols-3 w-full"
           >
-            {BAG_DAY_OPTIONS.map((opt) => {
-              const disabled = opt > maxBagDays;
+            {COOK_AHEAD_OPTIONS.map((opt) => {
+              const disabled = opt > maxCookAhead;
+              const labelKey =
+                opt === 1 ? 'mealPlan.sourcing.cookAhead.perServe'
+                : opt === 2 ? 'mealPlan.sourcing.cookAhead.upTo2'
+                : 'mealPlan.sourcing.cookAhead.upTo3';
+              const defaultLabel =
+                opt === 1 ? 'Per serve'
+                : opt === 2 ? 'Up to 2 days'
+                : 'Up to 3 days';
               return (
                 <ToggleGroupItem
                   key={opt}
                   value={String(opt)}
                   disabled={disabled}
-                  aria-label={t('mealPlan.sourcing.bagSizeDays', {
-                    defaultValue: '{{n}} days',
-                    n: opt,
-                  })}
+                  title={disabled
+                    ? t('mealPlan.sourcing.cookAheadCapSafety', {
+                        defaultValue: 'Cooked meat keeps 3 days after thaw.',
+                      })
+                    : undefined}
+                  aria-label={t(labelKey, { defaultValue: defaultLabel })}
                 >
-                  {t('mealPlan.sourcing.bagSizeOpt', {
-                    defaultValue: opt === 1 ? '1 day' : `${opt} days`,
-                    n: opt,
-                  })}
+                  {t(labelKey, { defaultValue: defaultLabel })}
                 </ToggleGroupItem>
               );
             })}
           </ToggleGroup>
           <p className="text-[11px] text-muted-fg leading-relaxed">
-            {t('mealPlan.sourcing.bagSizeCaption', {
+            {t('mealPlan.sourcing.cookAheadCaption', {
               defaultValue: 'One protein per bag · veggies in their own bags',
             })}
           </p>
-          {bagWarning && (
+          {cookAheadWarning && (
             <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
-              {t('mealPlan.sourcing.bagSizeWarn', {
+              {t('mealPlan.sourcing.cookAheadWarn', {
                 defaultValue:
-                  'Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3.',
+                  'Some bags will sit frozen for ~3 weeks. Safe, but flavour fades — try a shorter window.',
               })}
             </p>
           )}

@@ -86,6 +86,12 @@ export function CookingPlanView({ plan, pets }: { plan: MealPlan; pets: PetProfi
     return sorted.map(fmtDate).join(', ');
   }
 
+  function daysBetweenIso(a: string, b: string): number {
+    const da = new Date(a + 'T00:00:00Z').getTime();
+    const db = new Date(b + 'T00:00:00Z').getTime();
+    return Math.round((db - da) / 86_400_000);
+  }
+
   function downloadIcs() {
     const ics = buildThawCalendar(plan);
     const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
@@ -120,9 +126,9 @@ export function CookingPlanView({ plan, pets }: { plan: MealPlan; pets: PetProfi
           <p className="text-sm font-bold text-foreground mt-0.5">
             {t('mealPlan.cookingPlan.summary', {
               defaultValue:
-                '{{bags}} bags · {{days}} days per bag · one protein per bag',
+                '{{bags}} bags · {{sessions}} cook session(s) · one protein per bag',
               bags: plan.cookingPlan.batches.length,
-              days: plan.cookingPlan.bagDays,
+              sessions: new Set(plan.cookingPlan.batches.map((b) => b.cookDate)).size,
             })}
           </p>
         </div>
@@ -168,6 +174,10 @@ export function CookingPlanView({ plan, pets }: { plan: MealPlan; pets: PetProfi
             <ul className="divide-y divide-border/50">
               {group.batches.map((batch) => {
                 const itemPets = pets.filter((p) => batch.forPetIds.includes(p.id));
+                // Frozen quality starts to fade after ~30 days for cooked
+                // sous-vide. Surface a hint when a bag would sit longer.
+                const frozenDays = Math.max(0, daysBetweenIso(batch.cookDate, batch.dates[0]!));
+                const showFrozenHint = frozenDays >= 30;
                 return (
                   <li key={batch.id} className="p-3 space-y-1.5">
                     <div className="flex items-center justify-between gap-3">
@@ -201,6 +211,15 @@ export function CookingPlanView({ plan, pets }: { plan: MealPlan; pets: PetProfi
                       </Badge>
                       {itemPets.map((p) => <PetTag key={p.id} pet={p} />)}
                     </div>
+                    {showFrozenHint && (
+                      <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-snug">
+                        {t('mealPlan.cookingPlan.frozenQuality', {
+                          defaultValue:
+                            'Frozen ~{{days}} days — safe, but flavour starts fading. Consider a shorter cook-ahead next plan.',
+                          days: frozenDays,
+                        })}
+                      </p>
+                    )}
                   </li>
                 );
               })}

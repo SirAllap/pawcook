@@ -261,7 +261,17 @@
       "bagSizeHelp": "Wie viele Tage Mahlzeiten in jeden Sous-vide-Beutel kommen. Größere Beutel = weniger Plastik und weniger Kochsitzungen, aber sie liegen länger im Gefrierfach.",
       "bagSizeOpt": "{{n}} Tage",
       "bagSizeCaption": "Ein Protein pro Beutel · Gemüse in eigenen Beuteln",
-      "bagSizeWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — überlegen Sie 2 oder 3."
+      "bagSizeWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — überlegen Sie 2 oder 3.",
+      "cookAheadLabel": "Vorkochen",
+      "cookAheadHelp": "Wie viele Tage jede Protein-Charge abdecken soll. Größere Fenster = weniger Kochsitzungen und weniger Plastik; der Planer gruppiert aufeinanderfolgende Tage desselben Proteins, damit jeder Beutel voll ist.",
+      "cookAhead": {
+        "perServe": "Pro Portion",
+        "upTo2": "Bis 2 Tage",
+        "upTo3": "Bis 3 Tage"
+      },
+      "cookAheadCapSafety": "Gegartes Fleisch hält nach dem Auftauen 3 Tage.",
+      "cookAheadCaption": "Ein Protein pro Beutel · Gemüse in eigenen Beuteln",
+      "cookAheadWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — wählen Sie ein kürzeres Fenster."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Nichts zum Verpacken",
       "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
       "summaryLabel": "Kochplan",
-      "summary": "{{bags}} Beutel · {{days}} Tage pro Beutel · ein Protein pro Beutel",
+      "summary": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · ein Protein pro Beutel",
       "thawIcs": "Auftauplan (.ics)",
       "groupSummary": "{{bags}} Beutel · {{grams}} g insgesamt",
       "printLabels": "Etiketten drucken",
@@ -359,7 +369,8 @@
         "no-batch-veg": "frisch kochen",
         "organ": "kleine Portionen",
         "supplement-equiv": "tägliche Beigabe"
-      }
+      },
+      "frozenQuality": "Tiefgefroren ~{{days}} Tage — sicher, aber das Aroma lässt nach. Beim nächsten Plan kürzer vorkochen."
     },
     "labels": {
       "title": "{{count}} Beuteletiketten — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "Aufteilung",
       "help": "Reicht für {{pets}} Tier(e) über {{days}} Tage. Nach dem Garen 1 Beutel kühl lagern (innerhalb {{fridge}} Tagen verbrauchen) und die restlichen {{frozen}} einfrieren. Beutel über Nacht auftauen.",
       "runtTip": "{{days}} Tage pro Beutel ergäben {{bags}} Beutel statt {{current}} — gleiche Menge, weniger Plastik. Tippen zum Wechseln.",
-      "floorReason": "Mindestens {{bags}} Beutel für {{days}} Tage — gegartes Fleisch hält aufgetaut nur {{fridge}} Tage."
+      "floorReason": "Mindestens {{bags}} Beutel für {{days}} Tage — gegartes Fleisch hält aufgetaut nur {{fridge}} Tage.",
+      "cookAhead": "Vorkochen",
+      "hero": "{{bags}} Beutel × {{kg}} kg — ein Beutel pro {{meat}}-Portion",
+      "heroMeatFallback": "Protein",
+      "bagRowLabel": "Beutel {{n}}",
+      "bagRow": "für {{serveDates}} · verbrauchen bis {{useBy}}",
+      "helpPlan": "{{bags}} {{meat}}-Beutel über {{days}} Tage für {{pets}} Tier(e). {{totalKg}} kg auf einmal garen — 1 Beutel in den Kühlschrank ({{fridge}} Tage nach dem Auftauen verbrauchen), Rest einfrieren. Jeden Beutel am Vorabend der Portion auftauen.",
+      "helpStandalone": "{{bags}} Beutel à {{kg}} kg für {{pets}} Tier(e). 1 in den Kühlschrank, Rest einfrieren. Jeden Beutel über Nacht auftauen."
     },
     "exportFooter": "PawCook — kein tierärztlicher Rat. Verwenden Sie ein Fleischthermometer, um eine sichere Kerntemperatur zu prüfen.",
     "meatSwitcher": {

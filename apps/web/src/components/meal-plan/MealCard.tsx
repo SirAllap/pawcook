@@ -7,6 +7,8 @@ export function MealCard({ meal }: { meal: PlannedMeal }) {
   const { t, i18n } = useTranslation();
   const translateIngredient = useTranslateIngredient();
 
+  const mealGrams = meal.components.reduce((s, c) => s + c.grams, 0);
+
   return (
     <Card variant="muted" padding="md" className="space-y-2">
       <div className="flex items-baseline justify-between gap-2">
@@ -14,7 +16,7 @@ export function MealCard({ meal }: { meal: PlannedMeal }) {
           {t(`mealPlan.slot.${meal.slot}`, { defaultValue: meal.slot })}
         </p>
         <span className="text-[10px] font-mono font-bold text-muted-fg tabular-nums">
-          {meal.kcal.toLocaleString(i18n.language)} kcal
+          {mealGrams.toLocaleString(i18n.language)} g · {meal.kcal.toLocaleString(i18n.language)} kcal
         </span>
       </div>
       <ul className="space-y-1">

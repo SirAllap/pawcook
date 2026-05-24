@@ -261,7 +261,17 @@
       "bagSizeHelp": "Combien de jours de repas dans chaque sachet sous-vide. Sachets plus grands = moins de plastique et moins de sessions de cuisson, mais plus longtemps au congélateur.",
       "bagSizeOpt": "{{n}} jours",
       "bagSizeCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
-      "bagSizeWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur se dégrade — envisagez 2 ou 3."
+      "bagSizeWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur se dégrade — envisagez 2 ou 3.",
+      "cookAheadLabel": "Cuisiner à l’avance",
+      "cookAheadHelp": "Combien de jours chaque lot de protéine doit couvrir. Fenêtres plus grandes = moins de sessions de cuisson et moins de plastique ; le planificateur regroupe les jours consécutifs d’une même protéine pour que chaque sachet soit plein.",
+      "cookAhead": {
+        "perServe": "Par portion",
+        "upTo2": "Jusqu’à 2 jours",
+        "upTo3": "Jusqu’à 3 jours"
+      },
+      "cookAheadCapSafety": "La viande cuite se conserve 3 jours après décongélation.",
+      "cookAheadCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
+      "cookAheadWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur s’altère — essayez une fenêtre plus courte."
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Rien à mettre en sachet",
       "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
       "summaryLabel": "Plan de cuisson",
-      "summary": "{{bags}} sachets · {{days}} jours par sachet · une protéine par sachet",
+      "summary": "{{bags}} sachets · {{sessions}} session(s) de cuisson · une protéine par sachet",
       "thawIcs": "Calendrier de décongélation (.ics)",
       "groupSummary": "{{bags}} sachets · {{grams}} g au total",
       "printLabels": "Imprimer les étiquettes",
@@ -359,7 +369,8 @@
         "no-batch-veg": "cuire frais",
         "organ": "petites portions",
         "supplement-equiv": "ajout quotidien"
-      }
+      },
+      "frozenQuality": "Congelé ~{{days}} jours — sûr, mais la saveur commence à s’altérer. Envisagez une cuisson anticipée plus courte au prochain plan."
     },
     "labels": {
       "title": "{{count}} étiquettes de sachet — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "Répartition",
       "help": "Nourrit {{pets}} animal(aux) pendant {{days}} jours. Après cuisson, gardez 1 sachet au frigo (à consommer sous {{fridge}} jours) et congelez les {{frozen}} autres. Décongelez un sachet la veille.",
       "runtTip": "{{days}} jours par sachet vous donneraient {{bags}} sachets au lieu de {{current}} — même quantité, moins de plastique. Touchez pour changer.",
-      "floorReason": "Minimum {{bags}} sachets pour {{days}} jours — la viande cuite ne se conserve que {{fridge}} jours une fois décongelée."
+      "floorReason": "Minimum {{bags}} sachets pour {{days}} jours — la viande cuite ne se conserve que {{fridge}} jours une fois décongelée.",
+      "cookAhead": "Cuisiner à l’avance",
+      "hero": "{{bags}} sachets × {{kg}} kg — un sachet par portion de {{meat}}",
+      "heroMeatFallback": "protéine",
+      "bagRowLabel": "Sachet {{n}}",
+      "bagRow": "sert {{serveDates}} · à consommer avant le {{useBy}}",
+      "helpPlan": "{{bags}} sachet(s) de {{meat}} sur {{days}} jours pour {{pets}} animal(aux). Cuisez les {{totalKg}} kg en une fois — gardez 1 sachet au frigo (à consommer dans les {{fridge}} jours après décongélation) et congelez le reste. Décongelez chaque sachet la veille de la portion.",
+      "helpStandalone": "{{bags}} sachet(s) de {{kg}} kg pour {{pets}} animal(aux). Frigo pour 1, congelez les autres. Décongelez chaque sachet la veille."
     },
     "exportFooter": "PawCook — pas un conseil vétérinaire. Utilisez un thermomètre à viande pour vérifier la température interne sécuritaire.",
     "meatSwitcher": {

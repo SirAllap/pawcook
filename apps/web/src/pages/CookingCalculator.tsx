@@ -75,6 +75,15 @@ export type CookingPrefill = {
    * list. Optional; legacy URLs without it still work.
    */
   planId?: string;
+  /**
+   * Ingredient ID for the meat being cooked. When set alongside planId,
+   * the Bag Strategy panel switches into "plan-aware" mode: it reads the
+   * plan's actual cooking batches (one row per real bag, with cook/thaw/
+   * use-by dates) instead of dividing total weight by an abstract
+   * days-per-bag setting. Legacy URLs without it fall back to the
+   * free-standing computation.
+   */
+  ingredientId?: string;
 };
 
 // Default refrigerator life of a cooked, sealed bag. Three days is the
@@ -357,6 +366,12 @@ export default function CookingCalculator() {
                     totalWeightKg={prefillBanner.totalWeightKg}
                     feedingDays={prefillBanner.feedingDays}
                     petCount={prefillBanner.petCount ?? 1}
+                    planId={prefillBanner.planId}
+                    ingredientId={prefillBanner.ingredientId}
+                    meatLabel={prefillBanner.meatType
+                      ? t(`cooking.meats.${prefillBanner.meatType}`, { defaultValue: prefillBanner.meatType })
+                      : undefined}
+                    getPlan={getPlan}
                     onApply={({ bagSizeKg, bagCount }) => {
                       setValue('weightKg',     bagSizeKg, { shouldDirty: true });
                       setValue('numberOfBags', bagCount,  { shouldDirty: true });
@@ -633,6 +648,7 @@ function PlanMeatSwitcher({
                 feedingDays: plan.durationDays,
                 cookingMethod: plan.sourcing.preferredCookingMethod,
                 planId: plan.id,
+                ingredientId: row.meatType,
               })}
               aria-pressed={isActive}
               className={cn(
@@ -663,6 +679,158 @@ function PlanMeatSwitcher({
 }
 
 function BagStrategyPanel({
+  totalWeightKg, feedingDays, petCount, planId, ingredientId, meatLabel, getPlan, onApply,
+}: {
+  totalWeightKg: number;
+  feedingDays: number;
+  petCount: number;
+  planId?: string;
+  ingredientId?: string;
+  meatLabel?: string;
+  getPlan: (id: string) => import('@pawcook/shared').MealPlan | undefined;
+  onApply: (next: { bagSizeKg: number; bagCount: number }) => void;
+}) {
+  // Plan-aware mode: look up the actual cooking batches for this
+  // ingredient. When present, the panel renders the real schedule (one
+  // row per bag, with cook/serve/use-by dates) instead of fabricating a
+  // split from totalWeight + feedingDays.
+  const planBatches = useMemo(() => {
+    if (!planId || !ingredientId) return null;
+    const plan = getPlan(planId);
+    if (!plan?.cookingPlan) return null;
+    const batches = plan.cookingPlan.batches.filter((b) => b.ingredientId === ingredientId);
+    return batches.length > 0 ? batches : null;
+  }, [planId, ingredientId, getPlan]);
+
+  if (planBatches) {
+    return (
+      <PlanAwareBagPanel
+        batches={planBatches}
+        feedingDays={feedingDays}
+        petCount={petCount}
+        meatLabel={meatLabel}
+        onApply={onApply}
+      />
+    );
+  }
+
+  return (
+    <FreestandingBagPanel
+      totalWeightKg={totalWeightKg}
+      feedingDays={feedingDays}
+      petCount={petCount}
+      onApply={onApply}
+    />
+  );
+}
+
+/**
+ * Plan-aware bag strategy. Renders the actual schedule the planner
+ * produced — one row per real bag with its cook date, serve days, and
+ * use-by date. Pushes the bag-count and per-bag weight back into the
+ * form so the rest of the calculator (cook time, thickness) stays in
+ * sync. No slider — the schedule is authoritative; users who want to
+ * change the cadence go back to the wizard.
+ */
+function PlanAwareBagPanel({
+  batches, feedingDays, petCount, meatLabel, onApply,
+}: {
+  batches: import('@pawcook/shared').CookingBatch[];
+  feedingDays: number;
+  petCount: number;
+  meatLabel?: string;
+  onApply: (next: { bagSizeKg: number; bagCount: number }) => void;
+}) {
+  const { t, i18n } = useTranslation();
+  const bagCount = batches.length;
+  const totalGrams = batches.reduce((s, b) => s + b.totalGrams, 0);
+  const avgKg = Math.round((totalGrams / 1000 / bagCount) * 100) / 100;
+
+  useEffect(() => {
+    onApply({
+      bagSizeKg: Math.min(5, Math.max(0.1, avgKg)),
+      bagCount: Math.min(20, Math.max(1, bagCount)),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bagCount, avgKg]);
+
+  const fmt = (n: number) => n.toLocaleString(i18n.language);
+  const fmtDate = (iso: string) =>
+    new Date(iso + 'T00:00:00Z').toLocaleDateString(i18n.language, {
+      day: 'numeric',
+      month: 'short',
+    });
+  const fmtDates = (dates: string[]) =>
+    dates.length <= 1 ? fmtDate(dates[0]!) : dates.map(fmtDate).join(' · ');
+
+  return (
+    <Card padding="md" variant="muted" className="space-y-3 border-primary/30 bg-primary/5">
+      <div className="flex items-center gap-2">
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary">
+          <Snowflake className="h-3.5 w-3.5" aria-hidden />
+        </span>
+        <p className="text-[11px] font-black uppercase tracking-wider text-primary">
+          {t('cooking.bagStrategy.title', { defaultValue: 'Bag strategy' })}
+        </p>
+      </div>
+
+      <div>
+        <p className="text-base font-black text-foreground">
+          {t('cooking.bagStrategy.hero', {
+            defaultValue: '{{bags}} bags × {{kg}} kg — one bag per {{meat}} serve',
+            bags: fmt(bagCount),
+            kg: fmt(avgKg),
+            meat: meatLabel ?? t('cooking.bagStrategy.heroMeatFallback', { defaultValue: 'protein' }),
+          })}
+        </p>
+      </div>
+
+      <ul className="rounded-lg border border-primary/20 bg-surface divide-y divide-border/50 text-[11px]">
+        {batches.map((batch) => (
+          <li key={batch.id} className="flex items-center justify-between gap-2 px-3 py-1.5">
+            <span className="font-bold text-foreground">
+              {t('cooking.bagStrategy.bagRowLabel', {
+                defaultValue: 'Bag {{n}}',
+                n: batch.sequence,
+              })}
+            </span>
+            <span className="text-muted-fg text-right truncate">
+              {t('cooking.bagStrategy.bagRow', {
+                defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
+                serveDates: fmtDates(batch.dates),
+                useBy: fmtDate(batch.useByDate),
+              })}
+            </span>
+            <span className="font-mono tabular-nums text-foreground shrink-0">
+              {batch.totalGrams} g
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="text-xs text-foreground/90 leading-relaxed">
+        {t('cooking.bagStrategy.helpPlan', {
+          defaultValue:
+            '{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pet(s). Cook all {{totalKg}} kg at once — fridge 1 bag (use within {{fridge}} days of thaw), freeze the rest. Thaw each bag the night before its serve day.',
+          bags: bagCount,
+          meat: meatLabel ?? t('cooking.bagStrategy.heroMeatFallback', { defaultValue: 'protein' }),
+          days: feedingDays,
+          pets: petCount,
+          totalKg: fmt(Math.round((totalGrams / 1000) * 100) / 100),
+          fridge: FRIDGE_SAFE_DAYS,
+        })}
+      </p>
+    </Card>
+  );
+}
+
+/**
+ * Free-standing bag strategy. Used when the calculator is opened
+ * directly (not via "Cook" from a shopping list) so we don't have the
+ * plan's actual schedule. Falls back to the prior totalWeight / bagCount
+ * math — the user picks how many days each bag should cover.
+ */
+function FreestandingBagPanel({
   totalWeightKg, feedingDays, petCount, onApply,
 }: {
   totalWeightKg: number;
@@ -675,8 +843,6 @@ function BagStrategyPanel({
     Math.min(DEFAULT_DAYS_PER_BAG, Math.max(1, feedingDays)),
   );
 
-  // The form values that drop out of "I want X days per bag" — rounded to
-  // values the schema will accept (numberOfBags 1-20, weightKg 0.1-5).
   const { bagCount, bagSizeKg } = useMemo(() => {
     const safeDays = Math.max(1, Math.min(feedingDays, daysPerBag));
     const rawBagCount = Math.max(1, Math.ceil(feedingDays / safeDays));
@@ -685,8 +851,6 @@ function BagStrategyPanel({
     return { bagCount: count, bagSizeKg: Math.round(size * 100) / 100 };
   }, [feedingDays, daysPerBag, totalWeightKg]);
 
-  // Whenever the user nudges daysPerBag, push the computed values back into
-  // the parent form so the standard inputs stay in sync.
   useEffect(() => {
     onApply({ bagSizeKg, bagCount });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -695,10 +859,6 @@ function BagStrategyPanel({
   const fmt = (n: number) => n.toLocaleString(i18n.language);
   const maxDays = Math.min(FRIDGE_SAFE_DAYS, feedingDays);
 
-  // Runt detection: when the user picks a shorter `daysPerBag`, the last
-  // bag often covers a fraction of a window (4 bags for 7 days at 2/bag =
-  // 2+2+2+1). If a higher `daysPerBag` would produce a strictly smaller
-  // bag count and stays within the safety cap, offer it as a tap target.
   const upgrade = useMemo(() => {
     if (daysPerBag >= maxDays) return null;
     const next = daysPerBag + 1;
@@ -707,9 +867,6 @@ function BagStrategyPanel({
     return { days: next, bags: nextBagCount };
   }, [daysPerBag, maxDays, feedingDays, bagCount]);
 
-  // True when the user is already at the safety floor — the bag count
-  // can't be reduced without breaking the 3-day fridge rule. Used to
-  // surface the reason inline so they don't keep nudging the slider.
   const atFloor = bagCount === Math.ceil(feedingDays / FRIDGE_SAFE_DAYS)
     && feedingDays > FRIDGE_SAFE_DAYS;
 
@@ -727,7 +884,7 @@ function BagStrategyPanel({
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 items-end">
         <div>
           <label htmlFor="bag-days" className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em] mb-1.5">
-            {t('cooking.bagStrategy.daysPerBag', { defaultValue: 'Days each cooked bag covers' })}
+            {t('cooking.bagStrategy.cookAhead', { defaultValue: 'Cook ahead' })}
           </label>
           <input
             id="bag-days"
@@ -780,12 +937,12 @@ function BagStrategyPanel({
       )}
 
       <p className="text-xs text-foreground/90 leading-relaxed">
-        {t('cooking.bagStrategy.help', {
-          defaultValue: 'Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.',
+        {t('cooking.bagStrategy.helpStandalone', {
+          defaultValue:
+            '{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use.',
+          bags: bagCount,
+          kg: fmt(bagSizeKg),
           pets: petCount,
-          days: feedingDays,
-          fridge: FRIDGE_SAFE_DAYS,
-          frozen: Math.max(0, bagCount - 1),
         })}
       </p>
 

@@ -261,7 +261,17 @@
       "bagSizeHelp": "Ile dni posiłków trafia do każdego woreczka sous-vide. Większe woreczki = mniej plastiku i mniej sesji gotowania, ale dłużej leżą w zamrażarce.",
       "bagSizeOpt": "{{n}} dni",
       "bagSizeCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
-      "bagSizeWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak się pogarsza — rozważ 2 lub 3."
+      "bagSizeWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak się pogarsza — rozważ 2 lub 3.",
+      "cookAheadLabel": "Gotuj z wyprzedzeniem",
+      "cookAheadHelp": "Ile dni ma obejmować każda partia białka. Większe okna = mniej sesji gotowania i mniej plastiku; planer grupuje kolejne dni tego samego białka, aby każdy woreczek był pełny.",
+      "cookAhead": {
+        "perServe": "Na porcję",
+        "upTo2": "Do 2 dni",
+        "upTo3": "Do 3 dni"
+      },
+      "cookAheadCapSafety": "Ugotowane mięso wytrzymuje 3 dni po rozmrożeniu.",
+      "cookAheadCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
+      "cookAheadWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak słabnie — spróbuj krótszego okna."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Nic do pakowania",
       "noBagsHelp": "Ten plan nie zawiera składników do partii — wszystko będzie gotowane na świeżo.",
       "summaryLabel": "Plan gotowania",
-      "summary": "{{bags}} woreczków · {{days}} dni na woreczek · jedno białko na woreczek",
+      "summary": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · jedno białko na woreczek",
       "thawIcs": "Harmonogram rozmrażania (.ics)",
       "groupSummary": "{{bags}} woreczków · łącznie {{grams}} g",
       "printLabels": "Drukuj etykiety",
@@ -359,7 +369,8 @@
         "no-batch-veg": "gotuj na świeżo",
         "organ": "małe porcje",
         "supplement-equiv": "codzienny dodatek"
-      }
+      },
+      "frozenQuality": "Zamrożone ~{{days}} dni — bezpiecznie, ale smak zaczyna słabnąć. W kolejnym planie rozważ krótsze gotowanie z wyprzedzeniem."
     },
     "labels": {
       "title": "{{count}} etykiet woreczków — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "Podział",
       "help": "Wyżywi {{pets}} zwierz(ąt) przez {{days}} dni. Po ugotowaniu trzymaj 1 woreczek w lodówce (zużyj w ciągu {{fridge}} dni), a {{frozen}} zamroź. Rozmroź woreczek noc wcześniej.",
       "runtTip": "{{days}} dni na woreczek dałoby Ci {{bags}} woreczków zamiast {{current}} — to samo jedzenie, mniej plastiku. Dotknij, aby zmienić.",
-      "floorReason": "Minimum {{bags}} woreczków na {{days}} dni — ugotowane mięso wytrzymuje tylko {{fridge}} dni po rozmrożeniu."
+      "floorReason": "Minimum {{bags}} woreczków na {{days}} dni — ugotowane mięso wytrzymuje tylko {{fridge}} dni po rozmrożeniu.",
+      "cookAhead": "Gotuj z wyprzedzeniem",
+      "hero": "{{bags}} woreczków × {{kg}} kg — jeden woreczek na porcję {{meat}}",
+      "heroMeatFallback": "białka",
+      "bagRowLabel": "Woreczek {{n}}",
+      "bagRow": "na {{serveDates}} · zużyć do {{useBy}}",
+      "helpPlan": "{{bags}} woreczek/woreczków {{meat}} przez {{days}} dni dla {{pets}} zwierząt. Ugotuj wszystkie {{totalKg}} kg naraz — 1 woreczek do lodówki (zużyć w ciągu {{fridge}} dni po rozmrożeniu), resztę zamroź. Rozmrażaj każdy woreczek wieczorem przed porcją.",
+      "helpStandalone": "{{bags}} woreczek/woreczków po {{kg}} kg dla {{pets}} zwierząt. 1 do lodówki, resztę zamroź. Rozmrażaj każdy woreczek na noc."
     },
     "exportFooter": "PawCook — to nie jest porada weterynaryjna. Użyj termometru do mięsa, aby zweryfikować bezpieczną temperaturę wewnętrzną.",
     "meatSwitcher": {
