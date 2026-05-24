@@ -261,7 +261,17 @@
       "bagSizeHelp": "Quantos dias de refeições vão em cada saco de sous-vide. Sacos maiores = menos plástico e menos sessões de cozimento, mas ficam mais tempo no congelador.",
       "bagSizeOpt": "{{n}} dias",
       "bagSizeCaption": "Uma proteína por saco · vegetais em seus próprios sacos",
-      "bagSizeWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se degrada — considere 2 ou 3."
+      "bagSizeWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se degrada — considere 2 ou 3.",
+      "cookAheadLabel": "Cozinhar com antecedência",
+      "cookAheadHelp": "Quantos dias cada lote de proteína deve cobrir. Janelas maiores = menos sessões de cozimento e menos plástico; o planejador agrupa dias consecutivos da mesma proteína para que cada saco fique cheio.",
+      "cookAhead": {
+        "perServe": "Por porção",
+        "upTo2": "Até 2 dias",
+        "upTo3": "Até 3 dias"
+      },
+      "cookAheadCapSafety": "A carne cozida se mantém 3 dias após descongelar.",
+      "cookAheadCaption": "Uma proteína por saco · vegetais em seus próprios sacos",
+      "cookAheadWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se perde — tente uma janela menor."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Nada para ensacar",
       "noBagsHelp": "Este plano não tem ingredientes para lote — tudo será cozido fresco.",
       "summaryLabel": "Plano de cozimento",
-      "summary": "{{bags}} sacos · {{days}} dias por saco · uma proteína por saco",
+      "summary": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · uma proteína por saco",
       "thawIcs": "Cronograma de descongelamento (.ics)",
       "groupSummary": "{{bags}} sacos · {{grams}} g no total",
       "printLabels": "Imprimir etiquetas",
@@ -359,7 +369,8 @@
         "no-batch-veg": "cozinhar fresco",
         "organ": "porções pequenas",
         "supplement-equiv": "adição diária"
-      }
+      },
+      "frozenQuality": "Congelado ~{{days}} dias — seguro, mas o sabor começa a perder. Considere um cozimento antecipado menor no próximo plano."
     },
     "labels": {
       "title": "{{count}} etiquetas de saco — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "Divisão",
       "help": "Alimenta {{pets}} pet(s) por {{days}} dias no total. Após cozinhar, mantenha 1 saco na geladeira (consuma em {{fridge}} dias) e congele os outros {{frozen}}. Descongele um saco na noite anterior.",
       "runtTip": "{{days}} dias por saco dariam {{bags}} sacos em vez de {{current}} — mesma comida, menos plástico. Toque para alterar.",
-      "floorReason": "Mínimo {{bags}} sacos para {{days}} dias — carne cozida só dura {{fridge}} dias após descongelada."
+      "floorReason": "Mínimo {{bags}} sacos para {{days}} dias — carne cozida só dura {{fridge}} dias após descongelada.",
+      "cookAhead": "Cozinhar com antecedência",
+      "hero": "{{bags}} sacos × {{kg}} kg — um saco por porção de {{meat}}",
+      "heroMeatFallback": "proteína",
+      "bagRowLabel": "Saco {{n}}",
+      "bagRow": "serve {{serveDates}} · consumir até {{useBy}}",
+      "helpPlan": "{{bags}} saco(s) de {{meat}} ao longo de {{days}} dias para {{pets}} pet(s). Cozinhe os {{totalKg}} kg de uma vez — guarde 1 saco na geladeira (consumir em {{fridge}} dias após descongelar) e congele o resto. Descongele cada saco na noite anterior à porção.",
+      "helpStandalone": "{{bags}} saco(s) de {{kg}} kg para {{pets}} pet(s). Geladeira 1, congela o resto. Descongele cada saco na noite anterior."
     },
     "exportFooter": "PawCook — não é aconselhamento veterinário. Use um termômetro de carne para verificar a temperatura interna segura.",
     "meatSwitcher": {

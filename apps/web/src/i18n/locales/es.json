@@ -261,7 +261,17 @@
       "bagSizeHelp": "Cuántos días de comida van en cada bolsa de sous-vide. Bolsas más grandes = menos plástico y menos sesiones de cocción, pero permanecen más tiempo en el congelador.",
       "bagSizeOpt": "{{n}} días",
       "bagSizeCaption": "Una proteína por bolsa · verduras en sus propias bolsas",
-      "bagSizeWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor se degrada — considera 2 o 3."
+      "bagSizeWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor se degrada — considera 2 o 3.",
+      "cookAheadLabel": "Cocinar por adelantado",
+      "cookAheadHelp": "Cuántos días debe cubrir cada lote de proteína. Ventanas más grandes = menos sesiones de cocción y menos plástico; el planificador agrupa días consecutivos de la misma proteína para que cada bolsa esté llena.",
+      "cookAhead": {
+        "perServe": "Por ración",
+        "upTo2": "Hasta 2 días",
+        "upTo3": "Hasta 3 días"
+      },
+      "cookAheadCapSafety": "La carne cocinada se conserva 3 días tras descongelar.",
+      "cookAheadCaption": "Una proteína por bolsa · verduras en sus propias bolsas",
+      "cookAheadWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor decae — prueba con una ventana más corta."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -344,7 +354,7 @@
       "noBagsTitle": "Nada para embolsar",
       "noBagsHelp": "Este plan no tiene ingredientes aptos para lote — todo se cocinará fresco.",
       "summaryLabel": "Plan de cocción",
-      "summary": "{{bags}} bolsas · {{days}} días por bolsa · una proteína por bolsa",
+      "summary": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · una proteína por bolsa",
       "thawIcs": "Calendario de descongelación (.ics)",
       "groupSummary": "{{bags}} bolsas · {{grams}} g en total",
       "printLabels": "Imprimir etiquetas",
@@ -359,7 +369,8 @@
         "no-batch-veg": "cocinar fresco",
         "organ": "porciones pequeñas",
         "supplement-equiv": "añadido diario"
-      }
+      },
+      "frozenQuality": "Congelado ~{{days}} días — seguro, pero el sabor empieza a decaer. Considera un cocinado por adelantado más corto en el próximo plan."
     },
     "labels": {
       "title": "{{count}} etiquetas de bolsa — {{plan}}",
@@ -509,7 +520,14 @@
       "result": "División",
       "help": "Alimenta a {{pets}} mascota(s) durante {{days}} días en total. Tras cocinar, guarda 1 bolsa en la nevera (consúmela en {{fridge}} días) y congela las {{frozen}} restantes. Descongela una bolsa la noche anterior.",
       "runtTip": "{{days}} días por bolsa te darían {{bags}} bolsas en vez de {{current}} — la misma comida, menos plástico. Toca para cambiar.",
-      "floorReason": "Mínimo {{bags}} bolsas para {{days}} días — la carne cocinada solo dura {{fridge}} días una vez descongelada."
+      "floorReason": "Mínimo {{bags}} bolsas para {{days}} días — la carne cocinada solo dura {{fridge}} días una vez descongelada.",
+      "cookAhead": "Cocinar por adelantado",
+      "hero": "{{bags}} bolsas × {{kg}} kg — una bolsa por ración de {{meat}}",
+      "heroMeatFallback": "proteína",
+      "bagRowLabel": "Bolsa {{n}}",
+      "bagRow": "sirve {{serveDates}} · consumir antes del {{useBy}}",
+      "helpPlan": "{{bags}} bolsa(s) de {{meat}} a lo largo de {{days}} días para {{pets}} mascota(s). Cocina los {{totalKg}} kg de una vez — refrigera 1 bolsa (consume en {{fridge}} días tras descongelar) y congela el resto. Descongela cada bolsa la noche antes de servirla.",
+      "helpStandalone": "{{bags}} bolsa(s) de {{kg}} kg para {{pets}} mascota(s). Refrigera 1, congela el resto. Descongela cada bolsa la noche antes."
     },
     "exportFooter": "PawCook — no es asesoramiento veterinario. Usa un termómetro de carne para verificar una temperatura interna segura.",
     "meatSwitcher": {

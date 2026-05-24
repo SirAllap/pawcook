@@ -261,7 +261,17 @@
       "bagSizeOpt": "{{n}} days",
       "bagSizeCaption": "One protein per bag · veggies in their own bags",
       "bagSizeWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3.",
-      "bagSizeDays": "{{n}} days"
+      "bagSizeDays": "{{n}} days",
+      "cookAheadLabel": "Cook ahead",
+      "cookAheadHelp": "How many days each protein-batch should cover. Bigger windows = fewer cook sessions and less plastic; the planner groups consecutive days of the same protein so each bag is full.",
+      "cookAhead": {
+        "perServe": "Per serve",
+        "upTo2": "Up to 2 days",
+        "upTo3": "Up to 3 days"
+      },
+      "cookAheadCapSafety": "Cooked meat keeps 3 days after thaw.",
+      "cookAheadCaption": "One protein per bag · veggies in their own bags",
+      "cookAheadWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour fades — try a shorter window."
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -318,7 +328,7 @@
       "noBagsTitle": "Nothing to bag",
       "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
       "summaryLabel": "Cooking plan",
-      "summary": "{{bags}} bags · {{days}} days per bag · one protein per bag",
+      "summary": "{{bags}} bags · {{sessions}} cook session(s) · one protein per bag",
       "thawIcs": "Thaw schedule (.ics)",
       "groupSummary": "{{bags}} bags · {{grams}} g total",
       "printLabels": "Print labels",
@@ -333,7 +343,8 @@
         "no-batch-veg": "cook fresh",
         "organ": "small portions",
         "supplement-equiv": "daily add-in"
-      }
+      },
+      "frozenQuality": "Frozen ~{{days}} days — safe, but flavour starts fading. Consider a shorter cook-ahead next plan."
     },
     "labels": {
       "title": "{{count}} bag labels — {{plan}}",
@@ -517,7 +528,14 @@
       "result": "Split",
       "help": "Feeds {{pets}} pet(s) for {{days}} days total. After cooking, keep 1 bag in the fridge (use within {{fridge}} days) and freeze the other {{frozen}}. Thaw a bag overnight before serving.",
       "runtTip": "{{days}} days per bag would give you {{bags}} bags instead of {{current}} — same food, less plastic. Tap to switch.",
-      "floorReason": "Minimum {{bags}} bags for {{days}} days — cooked meat only keeps {{fridge}} days thawed."
+      "floorReason": "Minimum {{bags}} bags for {{days}} days — cooked meat only keeps {{fridge}} days thawed.",
+      "cookAhead": "Cook ahead",
+      "hero": "{{bags}} bags × {{kg}} kg — one bag per {{meat}} serve",
+      "heroMeatFallback": "protein",
+      "bagRowLabel": "Bag {{n}}",
+      "bagRow": "serves {{serveDates}} · use by {{useBy}}",
+      "helpPlan": "{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pet(s). Cook all {{totalKg}} kg at once — fridge 1 bag (use within {{fridge}} days of thaw), freeze the rest. Thaw each bag the night before its serve day.",
+      "helpStandalone": "{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use."
     },
     "exportFooter": "PawCook — not veterinary advice. Use a meat thermometer to verify safe internal temperature.",
     "meatSwitcher": {
