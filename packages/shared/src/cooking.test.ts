@@ -41,4 +41,16 @@ describe('calculateCookingTime', () => {
     const slow = calculateCookingTime({ ...davidScenario, cookingMethod: 'slow_cooker' });
     expect(slow.cookingTimeMinutes.min).toBeGreaterThan(sous.cookingTimeMinutes.min);
   });
+
+  it('pressure cooker is shorter than slow cooker for the same input', () => {
+    const slow     = calculateCookingTime({ ...davidScenario, cookingMethod: 'slow_cooker' });
+    const pressure = calculateCookingTime({ ...davidScenario, cookingMethod: 'pressure_cooker' });
+    expect(pressure.cookingTimeMinutes.min).toBeLessThan(slow.cookingTimeMinutes.min);
+  });
+
+  it('pressure cooker exposes nutrient and method instructions', () => {
+    const result = calculateCookingTime({ ...davidScenario, cookingMethod: 'pressure_cooker' });
+    expect(result.methodInstructions).toMatch(/pressure cooker/i);
+    expect(result.nutrientNotes.length).toBeGreaterThan(0);
+  });
 });

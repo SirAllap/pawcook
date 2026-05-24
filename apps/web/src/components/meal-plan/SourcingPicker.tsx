@@ -13,12 +13,13 @@ import { cn } from '../../lib/cn';
 
 const VARIETY_OPTIONS: VarietyTier[] = ['standard', 'diverse', 'novel'];
 const ACCESS_OPTIONS: AccessibilityTier[] = ['easy', 'specialty'];
-const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker'];
+const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker'];
 const METHOD_EMOJI: Record<CookingMethod, string> = {
   sous_vide: '🛁',
   oven: '🍲',
   stovetop_low: '🫕',
   slow_cooker: '🥘',
+  pressure_cooker: '⏲️',
 };
 
 export function SourcingPicker({
@@ -117,7 +118,7 @@ export function SourcingPicker({
           value={value.preferredCookingMethod}
           onValueChange={(v) => v && onChange({ ...value, preferredCookingMethod: v as CookingMethod })}
           aria-label={t('mealPlan.sourcing.methodLabel', { defaultValue: 'Cooking method' })}
-          className="grid grid-cols-2 sm:grid-cols-4 w-full"
+          className="grid grid-cols-2 sm:grid-cols-5 w-full"
         >
           {METHOD_OPTIONS.map((opt) => (
             <ToggleGroupItem key={opt} value={opt} aria-label={t(`cooking.methods.${opt}`)}>

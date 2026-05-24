@@ -9,7 +9,7 @@ export const MeatTypeSchema = z.enum([
 export const MeatFormSchema = z.enum(['minced', 'cubed', 'whole_cut', 'fillet']);
 
 export const CookingMethodSchema = z.enum([
-  'sous_vide', 'oven', 'stovetop_low', 'slow_cooker',
+  'sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker',
 ]);
 export type CookingMethod = z.infer<typeof CookingMethodSchema>;
 
