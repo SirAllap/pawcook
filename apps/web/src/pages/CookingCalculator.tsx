@@ -415,7 +415,11 @@ export default function CookingCalculator() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label={t('cooking.weightPerBag')}
-                    type="number" step="0.1" min={0.1} max={5} inputMode="decimal"
+                    // step=0.01 because the plan-aware Bag Strategy rounds
+                    // average kg per bag to two decimals (e.g. 1.29 kg).
+                    // A coarser step would trigger HTML5 validation on
+                    // values like 0.67 or 1.29 the user never typed.
+                    type="number" step="0.01" min={0.1} max={5} inputMode="decimal"
                     onKeyDown={blockBadNumberKeys}
                     {...register('weightKg', { valueAsNumber: true })}
                     error={errors.weightKg?.message}
