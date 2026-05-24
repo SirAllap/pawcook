@@ -53,6 +53,43 @@ export default function PlanWizard() {
     return 'dog' as const;
   }, [selectedPets]);
 
+  // Live cook-ahead stats: dry-run the planner under the chosen bagDays
+  // and again under daily rotation, then compare the resulting cook-
+  // session counts so the wizard can show what the user actually saves
+  // by picking a longer cook-ahead window. Runs only when sous-vide is
+  // selected and at least one pet is picked; the planner is fast enough
+  // (<1ms for 7-day plans) that we don't bother debouncing.
+  const cookAheadStats = useMemo(() => {
+    if (selectedPets.length === 0) return null;
+    if (sourcing.preferredCookingMethod !== 'sous_vide') return null;
+    const startDate = new Date().toISOString().slice(0, 10);
+    try {
+      const chosen = generateMealPlan({
+        name: 'preview',
+        pets: selectedPets,
+        durationDays: duration,
+        startDate,
+        sourcing,
+      });
+      const daily = generateMealPlan({
+        name: 'preview-daily',
+        pets: selectedPets,
+        durationDays: duration,
+        startDate,
+        sourcing: { ...sourcing, bagDays: 1 },
+      });
+      const chosenSessions = new Set((chosen.cookingPlan?.batches ?? []).map((b) => b.cookDate)).size;
+      const dailySessions = new Set((daily.cookingPlan?.batches ?? []).map((b) => b.cookDate)).size;
+      return {
+        bags: chosen.cookingPlan?.batches.length ?? 0,
+        sessions: chosenSessions,
+        sessionsSaved: Math.max(0, dailySessions - chosenSessions),
+      };
+    } catch {
+      return null;
+    }
+  }, [selectedPets, duration, sourcing]);
+
   function togglePet(id: string) {
     setSelectedPetIds((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
@@ -225,6 +262,7 @@ export default function PlanWizard() {
           onChange={setSourcing}
           species={sourcingSpecies}
           durationDays={duration}
+          cookAheadStats={cookAheadStats}
         />
       </Card>
 

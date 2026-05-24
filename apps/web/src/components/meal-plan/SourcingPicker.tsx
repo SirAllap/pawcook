@@ -34,6 +34,7 @@ export function SourcingPicker({
   onChange,
   species,
   durationDays,
+  cookAheadStats,
 }: {
   value: SourcingPrefs;
   onChange: (next: SourcingPrefs) => void;
@@ -49,6 +50,17 @@ export function SourcingPicker({
    * defeat the rotation benefit.
    */
   durationDays: number;
+  /**
+   * Live cook-ahead stats from the wizard. When present, the Cook ahead
+   * step shows the resulting bag count and how many cook sessions the
+   * current setting saves vs daily rotation — so the user can see the
+   * frugal payoff before they generate.
+   */
+  cookAheadStats?: {
+    bags: number;
+    sessions: number;
+    sessionsSaved: number;
+  } | null;
 }) {
   const { t } = useTranslation();
   const translateIngredient = useTranslateIngredient();
@@ -206,6 +218,23 @@ export function SourcingPicker({
               defaultValue: 'One protein per bag · veggies in their own bags',
             })}
           </p>
+          {cookAheadStats && cookAheadStats.bags > 0 && (
+            <p className="text-[11px] font-mono tabular-nums text-foreground/80 leading-relaxed">
+              {cookAheadStats.sessionsSaved > 0
+                ? t('mealPlan.sourcing.cookAheadStatsSaving', {
+                    defaultValue:
+                      '{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily',
+                    bags: cookAheadStats.bags,
+                    sessions: cookAheadStats.sessions,
+                    saved: cookAheadStats.sessionsSaved,
+                  })
+                : t('mealPlan.sourcing.cookAheadStats', {
+                    defaultValue: '{{bags}} bags · {{sessions}} cook session(s)',
+                    bags: cookAheadStats.bags,
+                    sessions: cookAheadStats.sessions,
+                  })}
+            </p>
+          )}
           {cookAheadWarning && (
             <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
               {t('mealPlan.sourcing.cookAheadWarn', {

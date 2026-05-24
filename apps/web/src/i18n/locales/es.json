@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "La carne cocinada se conserva 3 días tras descongelar.",
       "cookAheadCaption": "Una proteína por bolsa · verduras en sus propias bolsas",
-      "cookAheadWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor decae — prueba con una ventana más corta."
+      "cookAheadWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor decae — prueba con una ventana más corta.",
+      "cookAheadStats": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción",
+      "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Bolsa {{n}}",
       "bagRow": "sirve {{serveDates}} · consumir antes del {{useBy}}",
       "helpPlan": "{{bags}} bolsa(s) de {{meat}} a lo largo de {{days}} días para {{pets}} mascota(s). Cocina los {{totalKg}} kg de una vez — refrigera 1 bolsa (consume en {{fridge}} días tras descongelar) y congela el resto. Descongela cada bolsa la noche antes de servirla.",
-      "helpStandalone": "{{bags}} bolsa(s) de {{kg}} kg para {{pets}} mascota(s). Refrigera 1, congela el resto. Descongela cada bolsa la noche antes."
+      "helpStandalone": "{{bags}} bolsa(s) de {{kg}} kg para {{pets}} mascota(s). Refrigera 1, congela el resto. Descongela cada bolsa la noche antes.",
+      "mergeLabel": "Combinar bolsas",
+      "mergePerServe": "Por ración",
+      "mergeFewer": "Menos bolsas",
+      "mergeAll": "Una bolsa",
+      "mergeBagCount": "{{n}} bolsa(s)",
+      "mergeHint": "Ahorra {{saved}} sesión(es) de cocción — las raciones adyacentes caben en la ventana de {{fridge}} días en la nevera tras descongelar."
     },
     "exportFooter": "PawCook — no es asesoramiento veterinario. Usa un termómetro de carne para verificar una temperatura interna segura.",
     "meatSwitcher": {

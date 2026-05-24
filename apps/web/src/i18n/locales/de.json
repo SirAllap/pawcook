@@ -271,7 +271,9 @@
       },
       "cookAheadCapSafety": "Gegartes Fleisch hält nach dem Auftauen 3 Tage.",
       "cookAheadCaption": "Ein Protein pro Beutel · Gemüse in eigenen Beuteln",
-      "cookAheadWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — wählen Sie ein kürzeres Fenster."
+      "cookAheadWarn": "Manche Beutel liegen ~3 Wochen tiefgefroren. Sicher, aber das Aroma leidet — wählen Sie ein kürzeres Fenster.",
+      "cookAheadStats": "{{bags}} Beutel · {{sessions}} Kochsitzung(en)",
+      "cookAheadStatsSaving": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · spart {{saved}} ggü. täglich"
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -527,7 +529,13 @@
       "bagRowLabel": "Beutel {{n}}",
       "bagRow": "für {{serveDates}} · verbrauchen bis {{useBy}}",
       "helpPlan": "{{bags}} {{meat}}-Beutel über {{days}} Tage für {{pets}} Tier(e). {{totalKg}} kg auf einmal garen — 1 Beutel in den Kühlschrank ({{fridge}} Tage nach dem Auftauen verbrauchen), Rest einfrieren. Jeden Beutel am Vorabend der Portion auftauen.",
-      "helpStandalone": "{{bags}} Beutel à {{kg}} kg für {{pets}} Tier(e). 1 in den Kühlschrank, Rest einfrieren. Jeden Beutel über Nacht auftauen."
+      "helpStandalone": "{{bags}} Beutel à {{kg}} kg für {{pets}} Tier(e). 1 in den Kühlschrank, Rest einfrieren. Jeden Beutel über Nacht auftauen.",
+      "mergeLabel": "Beutel zusammenfassen",
+      "mergePerServe": "Pro Portion",
+      "mergeFewer": "Weniger Beutel",
+      "mergeAll": "Ein Beutel",
+      "mergeBagCount": "{{n}} Beutel",
+      "mergeHint": "Spart {{saved}} Kochsitzung(en) — benachbarte Portionen passen ins {{fridge}}-Tage-Kühlfenster nach dem Auftauen."
     },
     "exportFooter": "PawCook — kein tierärztlicher Rat. Verwenden Sie ein Fleischthermometer, um eine sichere Kerntemperatur zu prüfen.",
     "meatSwitcher": {
