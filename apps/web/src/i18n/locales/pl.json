@@ -1310,6 +1310,33 @@
         "eyebrow": "Kreator",
         "caption": "„Gotuj z wyprzedzeniem\" z statystykami na żywo: woreczki · sesje gotowania · zaoszczędzone sesje vs codzienna. Widzisz oszczędność przed wygenerowaniem.",
         "principle": "Wykonalność to wkład żywieniowy, a nie kosmetyka UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Codzienne suplementy",
+          "taurine": "Tauryna w proszku",
+          "taurineDose": "250 mg/dzień",
+          "codLiver": "Tran z dorsza",
+          "codLiverDose": "1 mL, 3×/tydzień",
+          "calcium": "Cytrynian wapnia",
+          "calciumDose": "287 mg/dzień",
+          "dayLabel": "Dzień 1 · Pon 25 maj",
+          "beefDay": "Dzień wołowiny",
+          "mainGrams": "{{g}}g wołowiny"
+        },
+        "cooking": {
+          "title": "Plan gotowania",
+          "summary": "4 woreczki · 4 sesje gotowania · jedno białko na woreczek",
+          "groupTotal": "{{bags}} woreczków · {{g}} g łącznie",
+          "bagRow": "{{dates}} · zużyć do {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} woreczek/ków {{meat}} przez {{days}} dni dla {{pets}} zwierząt. Ugotuj wszystkie {{kg}} kg naraz — 1 do lodówki, resztę zamroź."
+        },
+        "wizard": {
+          "simpleMealsShort": "Jedno białko na posiłek · codzienna karta suplementów uzupełnia braki",
+          "summary": "7 dni · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Nie znaleziono strony",
     "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
     "home": "Powrót do strony głównej"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

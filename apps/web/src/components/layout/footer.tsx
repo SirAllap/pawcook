@@ -57,7 +57,9 @@ export function Footer() {
                 {t('common.privacy')}
               </Link>
             </div>
-            <p className="text-xs text-muted-fg mt-3">MIT · Open source</p>
+            <p className="text-xs text-muted-fg mt-3">
+              {t('footer.license', { defaultValue: 'MIT · Open source' })}
+            </p>
           </div>
 
           <div className="flex flex-col gap-3 items-start">

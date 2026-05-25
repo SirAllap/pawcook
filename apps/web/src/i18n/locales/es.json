@@ -1310,6 +1310,33 @@
         "eyebrow": "Asistente",
         "caption": "\"Cocinar por adelantado\" con estadísticas en vivo: bolsas · sesiones · ahorro frente a la rotación diaria. Ves el beneficio antes de generar.",
         "principle": "La seguibilidad es un insumo nutricional, no un detalle de UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suplementos diarios",
+          "taurine": "Taurina en polvo",
+          "taurineDose": "250 mg/día",
+          "codLiver": "Aceite de hígado de bacalao",
+          "codLiverDose": "1 mL, 3×/semana",
+          "calcium": "Citrato de calcio",
+          "calciumDose": "287 mg/día",
+          "dayLabel": "Día 1 · Lun 25 may",
+          "beefDay": "Día de ternera",
+          "mainGrams": "{{g}}g ternera"
+        },
+        "cooking": {
+          "title": "Plan de cocción",
+          "summary": "4 bolsas · 4 sesiones de cocción · una proteína por bolsa",
+          "groupTotal": "{{bags}} bolsas · {{g}} g total",
+          "bagRow": "{{dates}} · consumir antes del {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} bolsa(s) de {{meat}} en {{days}} días para {{pets}} mascotas. Cocina los {{kg}} kg de una vez — refrigera 1 bolsa, congela el resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Una proteína por comida · la tarjeta diaria de suplementos cubre la diferencia",
+          "summary": "7 días · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o ha sido movida.",
     "home": "Volver al inicio"
+  },
+  "footer": {
+    "license": "MIT · Código abierto"
   }
 }

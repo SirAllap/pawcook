@@ -1310,6 +1310,33 @@
         "eyebrow": "Wizard",
         "caption": "\"Vooruitkoken\" met live statistieken: zakken · kooksessies · bespaarde sessies t.o.v. dagelijks. Zie het voordeel vóór genereren.",
         "principle": "Followability is een voedingsinput, geen UX-luxe."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Dagelijkse supplementen",
+          "taurine": "Taurine poeder",
+          "taurineDose": "250 mg/dag",
+          "codLiver": "Levertraan",
+          "codLiverDose": "1 mL, 3×/week",
+          "calcium": "Calciumcitraat",
+          "calciumDose": "287 mg/dag",
+          "dayLabel": "Dag 1 · Ma 25 mei",
+          "beefDay": "Rundvlees-dag",
+          "mainGrams": "{{g}}g rundvlees"
+        },
+        "cooking": {
+          "title": "Kookplan",
+          "summary": "4 zakken · 4 kooksessies · één eiwit per zak",
+          "groupTotal": "{{bags}} zakken · {{g}} g totaal",
+          "bagRow": "{{dates}} · te gebruiken vóór {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} {{meat}}-zak(ken) over {{days}} dagen voor {{pets}} huisdieren. Kook alle {{kg}} kg in één keer — 1 zak in de koelkast, rest invriezen."
+        },
+        "wizard": {
+          "simpleMealsShort": "Eén eiwit per maaltijd · dagelijkse supplementkaart dekt het tekort",
+          "summary": "7 dagen · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Pagina niet gevonden",
     "description": "De pagina die je zoekt bestaat niet of is verplaatst.",
     "home": "Terug naar start"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }
