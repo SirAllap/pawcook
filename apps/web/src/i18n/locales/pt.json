@@ -997,10 +997,40 @@
       "heading_cat": "Sua casa, alimentada em três passos"
     },
     "diets": {
-      "eyebrow": "Perfis de dieta",
-      "heading": "Cinco abordagens confiáveis",
+      "eyebrow": "Modo avançado",
+      "heading": "Ou escolha sua própria dieta",
       "sub": "Cada perfil de macronutrientes corresponde às metas AAFCO e à fase de vida do seu cão.",
-      "sub_cat": "Cada perfil felino corresponde às metas AAFCO para gatos e à fase de vida do seu gato. Taurina não é negociável."
+      "sub_cat": "Cada perfil felino corresponde às metas AAFCO para gatos e à fase de vida do seu gato. Taurina não é negociável.",
+      "subPower": "Refeições simples é o padrão. Desative e você obtém cinco perfis por espécie, todos alinhados com AAFCO, acessíveis por um único interruptor."
+    },
+    "mantra": {
+      "body": "O plano que você realmente vai cozinhar supera o plano perfeitamente equilibrado no papel.",
+      "elab": "O papel do PawCook é tornar fácil colocar comida nutricionalmente adequada no chão — não fazer comida nutricionalmente ótima que o dono abandona na segunda semana.",
+      "attribution": "O Princípio da Seguibilidade"
+    },
+    "story": {
+      "eyebrow": "Casa → Saco → Suplementos",
+      "heading": "Um plano que uma cozinha real consegue executar",
+      "sub": "O motor nutricional completo continua lá. Apenas deixa de ser o padrão. O que você obtém é um plano que sobrevive a uma terça-feira às 7h.",
+      "col1": {
+        "eyebrow": "Sua casa",
+        "body": "2 cães + 1 gato. A mesma carne no dia da carne.",
+        "caption": "A casa é a unidade, não o pet."
+      },
+      "col2": {
+        "eyebrow": "Um saco",
+        "body": "Uma proteína, uma sessão de cozimento, uma janela na geladeira.",
+        "caption": "O fluxo de cozimento guia o plano, não o contrário."
+      },
+      "col3": {
+        "eyebrow": "Suplementos diários",
+        "body": "Taurina + óleo de fígado de bacalhau cobrem o que o saco não cobre.",
+        "caption": "Sinalize os déficits claramente; nunca os simule em silêncio."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Lançado recentemente",
+      "list": "Princípio da seguibilidade · Rotação em blocos · Refeições simples · Cartão de suplementos · Cozimento ciente do plano · Editar e renomear planos"
     }
   },
   "about": {

@@ -997,10 +997,40 @@
       "heading_cat": "Tu hogar, alimentado en tres pasos"
     },
     "diets": {
-      "eyebrow": "Perfiles de dieta",
-      "heading": "Cinco enfoques de confianza",
+      "eyebrow": "Modo avanzado",
+      "heading": "O elige tu propia dieta",
       "sub": "Cada perfil de macronutrientes se alinea con los objetivos AAFCO y la etapa vital de tu perro.",
-      "sub_cat": "Cada perfil felino se alinea con los objetivos AAFCO para gatos y la etapa vital de tu gato. La taurina no es negociable."
+      "sub_cat": "Cada perfil felino se alinea con los objetivos AAFCO para gatos y la etapa vital de tu gato. La taurina no es negociable.",
+      "subPower": "Comidas simples es lo predeterminado. Desactívalo y obtendrás cinco perfiles por especie, todos alineados con AAFCO, accesibles desde un solo interruptor."
+    },
+    "mantra": {
+      "body": "El plan que realmente cocinarás supera al plan perfectamente equilibrado sobre el papel.",
+      "elab": "El trabajo de PawCook es facilitar poner comida nutricionalmente adecuada en el suelo — no hacer comida nutricionalmente óptima que el dueño abandone en la segunda semana.",
+      "attribution": "El Principio de Seguibilidad"
+    },
+    "story": {
+      "eyebrow": "Hogar → Bolsa → Suplementos",
+      "heading": "Un plan que una cocina real puede ejecutar",
+      "sub": "El motor nutricional completo sigue ahí. Solo deja de ser el predeterminado. Lo que obtienes es un plan que sobrevive a un martes a las 7 de la mañana.",
+      "col1": {
+        "eyebrow": "Tu hogar",
+        "body": "2 perros + 1 gato. La misma ternera el día de ternera.",
+        "caption": "El hogar es la unidad, no la mascota."
+      },
+      "col2": {
+        "eyebrow": "Una bolsa",
+        "body": "Una proteína, una sesión de cocción, una ventana en la nevera.",
+        "caption": "El flujo de cocción guía el plan, no al revés."
+      },
+      "col3": {
+        "eyebrow": "Suplementos diarios",
+        "body": "Taurina + aceite de hígado de bacalao cubren lo que la bolsa no.",
+        "caption": "Saca los déficits a la luz; nunca los simules en silencio."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Recién publicado",
+      "list": "Principio de seguibilidad · Rotación en bloques · Comidas simples · Tarjeta de suplementos · Cocción consciente del plan · Editar y renombrar planes"
     }
   },
   "about": {

@@ -997,10 +997,40 @@
       "heading_cat": "Ihr Haushalt, in drei Schritten gefüttert"
     },
     "diets": {
-      "eyebrow": "Ernährungsprofile",
-      "heading": "Fünf bewährte Ansätze",
+      "eyebrow": "Power-User-Modus",
+      "heading": "Oder wählen Sie Ihre eigene Diät",
       "sub": "Jedes Makronährstoffprofil ist auf die AAFCO-Ziele und die Lebensphase Ihres Hundes abgestimmt.",
-      "sub_cat": "Jedes Katzenprofil bildet die AAFCO-Katzenziele und die Lebensphase Ihrer Katze ab. Taurin ist nicht verhandelbar."
+      "sub_cat": "Jedes Katzenprofil bildet die AAFCO-Katzenziele und die Lebensphase Ihrer Katze ab. Taurin ist nicht verhandelbar.",
+      "subPower": "Einfache Mahlzeiten ist Standard. Deaktivieren Sie es und Sie bekommen fünf Profile pro Tierart, alle AAFCO-konform, hinter einem einzigen Schalter."
+    },
+    "mantra": {
+      "body": "Der Plan, den Sie tatsächlich kochen, schlägt den Plan, der auf dem Papier perfekt ausgewogen ist.",
+      "elab": "PawCooks Aufgabe ist es, nährstoffgerechtes Futter einfach servierbar zu machen — nicht nährstoffoptimales Futter zu produzieren, das der Halter in Woche zwei aufgibt.",
+      "attribution": "Das Followability-Prinzip"
+    },
+    "story": {
+      "eyebrow": "Haushalt → Beutel → Ergänzungen",
+      "heading": "Ein Plan, den eine echte Küche umsetzen kann",
+      "sub": "Die volle Ernährungs-Engine ist weiterhin vorhanden. Sie ist nur nicht mehr Standard. Was Sie bekommen, ist ein Plan, der einen Dienstag um 7 Uhr morgens überlebt.",
+      "col1": {
+        "eyebrow": "Ihr Haushalt",
+        "body": "2 Hunde + 1 Katze. Dasselbe Rindfleisch am Rindfleischtag.",
+        "caption": "Der Haushalt ist die Einheit, nicht das einzelne Tier."
+      },
+      "col2": {
+        "eyebrow": "Ein Beutel",
+        "body": "Ein Protein, eine Kochsitzung, ein Kühlfenster.",
+        "caption": "Der Kochablauf bestimmt den Plan, nicht umgekehrt."
+      },
+      "col3": {
+        "eyebrow": "Tägliche Ergänzungen",
+        "body": "Taurin + Lebertran decken, was der Beutel nicht abdeckt.",
+        "caption": "Defizite laut sichtbar machen; niemals stillschweigend simulieren."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Kürzlich ausgeliefert",
+      "list": "Followability-Prinzip · Blockrotation · Einfache Mahlzeiten · Ergänzungskarte · Planbewusstes Kochen · Pläne bearbeiten + umbenennen"
     }
   },
   "about": {

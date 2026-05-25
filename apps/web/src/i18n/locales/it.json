@@ -997,10 +997,40 @@
       "heading_cat": "La tua famiglia, nutrita in tre passi"
     },
     "diets": {
-      "eyebrow": "Profili dietetici",
-      "heading": "Cinque approcci affidabili",
+      "eyebrow": "Modalità avanzata",
+      "heading": "Oppure scegli la tua dieta",
       "sub": "Ogni profilo di macronutrienti rispetta i target AAFCO e la fase di vita del tuo cane.",
-      "sub_cat": "Ogni profilo felino corrisponde ai target AAFCO per gatti e alla fase di vita del tuo gatto. La taurina non è negoziabile."
+      "sub_cat": "Ogni profilo felino corrisponde ai target AAFCO per gatti e alla fase di vita del tuo gatto. La taurina non è negoziabile.",
+      "subPower": "Pasti semplici è il default. Disattivalo e ottieni cinque profili per specie, tutti allineati AAFCO, dietro un singolo interruttore."
+    },
+    "mantra": {
+      "body": "Il piano che cucinerai davvero batte il piano perfettamente bilanciato sulla carta.",
+      "elab": "Il compito di PawCook è rendere facile mettere a terra cibo nutrizionalmente adeguato — non produrre cibo nutrizionalmente ottimale che il proprietario abbandona dalla seconda settimana.",
+      "attribution": "Il Principio di Seguibilità"
+    },
+    "story": {
+      "eyebrow": "Famiglia → Sacchetto → Integratori",
+      "heading": "Un piano che una cucina vera può eseguire",
+      "sub": "Il motore nutrizionale completo è ancora lì. Smette solo di essere il default. Quello che ottieni è un piano che sopravvive a un martedì alle 7 del mattino.",
+      "col1": {
+        "eyebrow": "La tua famiglia",
+        "body": "2 cani + 1 gatto. Lo stesso manzo nel giorno del manzo.",
+        "caption": "La famiglia è l’unità, non il singolo animale."
+      },
+      "col2": {
+        "eyebrow": "Un sacchetto",
+        "body": "Una proteina, una sessione di cottura, una finestra in frigo.",
+        "caption": "Il flusso di cottura guida il piano, non il contrario."
+      },
+      "col3": {
+        "eyebrow": "Integratori giornalieri",
+        "body": "Taurina + olio di fegato di merluzzo coprono ciò che il sacchetto non copre.",
+        "caption": "Mostra apertamente i deficit; non simularli mai in silenzio."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Pubblicato di recente",
+      "list": "Principio di seguibilità · Rotazione a blocchi · Pasti semplici · Scheda integratori · Cottura consapevole del piano · Modifica e rinomina piani"
     }
   },
   "about": {

@@ -14,20 +14,23 @@ type Diet = {
   glow: string;
 };
 
-// Macros = visual approximation (protein / fat / veg-or-other) for the ring.
+// Macros are a visual approximation tied to nutrition.ts profiles.
+// (p) muscle/protein, (f) bone+organ+liver+seafood combined as "raw add-ins",
+// (v) veg+starch+fiber+seeds+fruit. Numbers track the actual profile
+// component percentages in packages/shared/src/nutrition*.ts.
 const DOG_DIETS: Diet[] = [
-  { key: 'balanced_cooked', emoji: '⚖️', macros: { p: 40, f: 30, v: 30 }, glow: 'from-primary/30' },
-  { key: 'high_protein',    emoji: '💪', macros: { p: 55, f: 25, v: 20 }, glow: 'from-danger/25' },
-  { key: 'pmr',             emoji: '🦴', macros: { p: 80, f: 10, v: 10 }, glow: 'from-warning/30' },
-  { key: 'barf',            emoji: '🌿', macros: { p: 60, f: 15, v: 25 }, glow: 'from-success/30' },
-  { key: 'real_ancestral',  emoji: '🐺', macros: { p: 70, f: 15, v: 15 }, glow: 'from-info/25' },
+  { key: 'balanced_cooked', emoji: '⚖️', macros: { p: 50, f: 0,  v: 50 }, glow: 'from-primary/30' },
+  { key: 'high_protein',    emoji: '💪', macros: { p: 55, f: 0,  v: 45 }, glow: 'from-danger/25' },
+  { key: 'pmr',             emoji: '🦴', macros: { p: 80, f: 20, v: 0  }, glow: 'from-warning/30' },
+  { key: 'barf',            emoji: '🌿', macros: { p: 70, f: 20, v: 10 }, glow: 'from-success/30' },
+  { key: 'real_ancestral',  emoji: '🐺', macros: { p: 64, f: 26, v: 10 }, glow: 'from-info/25' },
 ];
 
 const CAT_DIETS: Diet[] = [
-  { key: 'cat_pmr',              emoji: '🦴', macros: { p: 84, f: 6,  v: 10 }, glow: 'from-warning/30' },
-  { key: 'cat_frankenprey',      emoji: '🥩', macros: { p: 84, f: 6,  v: 10 }, glow: 'from-primary/30' },
-  { key: 'cat_whole_prey',       emoji: '🐭', macros: { p: 80, f: 8,  v: 12 }, glow: 'from-info/25' },
-  { key: 'cat_barf_lite',        emoji: '🌿', macros: { p: 75, f: 5,  v: 20 }, glow: 'from-success/30' },
+  { key: 'cat_pmr',              emoji: '🦴', macros: { p: 84, f: 16, v: 0  }, glow: 'from-warning/30' },
+  { key: 'cat_frankenprey',      emoji: '🥩', macros: { p: 84, f: 16, v: 0  }, glow: 'from-primary/30' },
+  { key: 'cat_whole_prey',       emoji: '🐭', macros: { p: 80, f: 12, v: 8  }, glow: 'from-info/25' },
+  { key: 'cat_barf_lite',        emoji: '🌿', macros: { p: 75, f: 10, v: 15 }, glow: 'from-success/30' },
   { key: 'cat_cooked_carnivore', emoji: '🍳', macros: { p: 70, f: 25, v: 5  }, glow: 'from-danger/25' },
 ];
 
@@ -42,13 +45,16 @@ export function DietsShowcase() {
     <FadeIn className="space-y-8">
       <div className="text-center max-w-2xl mx-auto">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-primary">
-          {t('landing.diets.eyebrow', { defaultValue: 'Diet profiles' })}
+          {t('landing.diets.eyebrow', { defaultValue: 'Power-user mode' })}
         </p>
         <h2 className="mt-3 text-3xl sm:text-4xl font-black tracking-tight">
-          {t('landing.diets.heading', { defaultValue: 'Five trusted approaches' })}
+          {t('landing.diets.heading', { defaultValue: 'Or pick your own diet' })}
         </h2>
         <p className="mt-3 text-muted-fg">
-          {tS('landing.diets.sub')}
+          {t('landing.diets.subPower', {
+            defaultValue:
+              'Simple meals is the default. Turn it off and you get five profiles per species, all AAFCO-aligned, all surfaced behind a single toggle.',
+          })}
         </p>
       </div>
 
