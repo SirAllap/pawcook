@@ -6,13 +6,11 @@ import { PawMark } from '../brand/logo';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/cn';
 import { useSpecies } from '../../lib/species';
-import { useSpeciesT } from '../../lib/use-species-t';
 
 const SOURCES = ['AAFCO', 'NRC', 'FEDIAF', 'WSAVA', 'ACVN'];
 
 export function Hero() {
   const { t } = useTranslation();
-  const tS = useSpeciesT();
   const { species } = useSpecies();
   const reduced = useReducedMotion();
 
