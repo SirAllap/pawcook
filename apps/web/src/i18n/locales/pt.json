@@ -916,7 +916,13 @@
       "headlineB": "Para o seu cão de verdade.",
       "headlineB_cat": "Para o seu gato de verdade.",
       "tagline_cat": "Alimente bem o seu gato.",
-      "subtitle_cat": "Ferramentas open source para quem cozinha em casa para o seu gato — planos nutricionais com foco em taurina, cozimento seguro, guias de segurança alimentar e o stack de suplementos que os gatos precisam."
+      "subtitle_cat": "Ferramentas open source para quem cozinha em casa para o seu gato — planos nutricionais com foco em taurina, cozimento seguro, guias de segurança alimentar e o stack de suplementos que os gatos precisam.",
+      "subtitleHousehold": "Cães e gatos. Um saco, uma sessão de cozimento, um plano que você vai realmente seguir. Cuidamos dos macros, das temperaturas e dos suplementos.",
+      "ctaPrimary": "Criar um plano",
+      "ctaSecondary": "Como funciona",
+      "chipDogs": "Cães",
+      "chipCats": "Gatos",
+      "chipBoth": "Ambos, compartilhando um saco"
     },
     "features": {
       "heading": "Tudo o que precisa",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "Como funciona",
-      "heading": "Do cão ao jantar em três passos",
+      "heading": "Sua casa, alimentada em três passos",
       "step1": {
-        "title": "Conte-nos sobre o seu cão",
-        "desc": "Peso, idade, atividade, condição corporal — os dados que o seu veterinário pediria.",
-        "title_cat": "Conte-nos sobre o seu gato",
-        "desc_cat": "Peso, idade, atividade, condição corporal, castração — os dados que o seu veterinário pediria."
+        "title": "Adicione sua casa",
+        "desc": "Um perfil por pet — cães, gatos ou ambos. Peso, idade, atividade, alergias.",
+        "title_cat": "Adicione sua casa",
+        "desc_cat": "Um perfil por pet — cães, gatos ou ambos. Peso, idade, atividade, alergias."
       },
       "step2": {
-        "title": "Escolha uma dieta confiável",
-        "desc": "Cozinhado magro, BARF, PMR, alto em proteína ou ancestral — todos baseados nas metas AAFCO.",
-        "title_cat": "Escolha uma dieta felina segura",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, presa inteira ou carnívoro cozido — todas baseadas na biologia do carnívoro estrito."
+        "title": "Gere um plano",
+        "desc": "Refeições simples por padrão: uma proteína por dia, compartilhada entre os pets. Sous-vide, forno, fogão — você escolhe.",
+        "title_cat": "Gere um plano",
+        "desc_cat": "Refeições simples por padrão: uma proteína por dia, compartilhada entre os pets. Sous-vide, forno, fogão — você escolhe."
       },
       "step3": {
-        "title": "Cozinhe com confiança",
-        "desc": "Obtenha gramas exatos, temperaturas seguras e uma ficha de receita imprimível para a semana.",
-        "title_cat": "Alimente com confiança",
-        "desc_cat": "Gramas exatos, lembretes de taurina, faixa Ca:P, teto de vitamina A — cada plano felino traz seus avisos de segurança."
+        "title": "Cozinhe um saco, dose o resto",
+        "desc": "Cozinhe sous-vide um único saco para a casa; siga o cartão de suplementos diários para o que o saco não cobre.",
+        "title_cat": "Cozinhe um saco, dose o resto",
+        "desc_cat": "Cozinhe sous-vide um único saco para a casa; siga o cartão de suplementos diários (taurina + óleo de fígado de bacalhau) para o que o saco não cobre."
       },
-      "heading_cat": "Do gato à tigela em três passos"
+      "heading_cat": "Sua casa, alimentada em três passos"
     },
     "diets": {
       "eyebrow": "Perfis de dieta",

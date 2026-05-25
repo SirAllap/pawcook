@@ -2,9 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { NumberFlow } from '../motion/number-flow';
 import { FadeIn } from '../motion/fade-in';
 
+// Stats reflect what's actually in the codebase. Diet count = 5 dog
+// profiles (nutrition.ts) + 5 cat profiles (nutrition-cat.ts) = 10.
+// Foods is the rounded sum of ingredient-meta (29) + toxic.json (30) +
+// vegetable-cooking (16), which lands above 60.
 const STATS = [
   { value: 8,   labelKey: 'landing.stats.languages',   suffix: '' },
-  { value: 5,   labelKey: 'landing.stats.diets',       suffix: '' },
+  { value: 10,  labelKey: 'landing.stats.diets',       suffix: '' },
   { value: 60,  labelKey: 'landing.stats.foods',       suffix: '+' },
   { value: 100, labelKey: 'landing.stats.openSource',  suffix: '%' },
 ];

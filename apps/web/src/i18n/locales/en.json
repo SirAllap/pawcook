@@ -916,7 +916,13 @@
       "headlineB": "For your real dog.",
       "headlineB_cat": "For your real cat.",
       "tagline_cat": "Feed your cat right.",
-      "subtitle_cat": "Open-source tools for home-cooking cat owners — taurine-aware nutrition plans, safe cooking, food safety guides, and the supplement stack cats need."
+      "subtitle_cat": "Open-source tools for home-cooking cat owners — taurine-aware nutrition plans, safe cooking, food safety guides, and the supplement stack cats need.",
+      "subtitleHousehold": "Dogs and cats. One bag, one cook session, one plan you'll actually follow. We handle the macros, the safety temps, and the supplements.",
+      "ctaPrimary": "Start a plan",
+      "ctaSecondary": "How it works",
+      "chipDogs": "Dogs",
+      "chipCats": "Cats",
+      "chipBoth": "Both, sharing one bag"
     },
     "features": {
       "heading": "Everything you need",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "How it works",
-      "heading": "From dog to dinner in three steps",
+      "heading": "Your household, fed in three steps",
       "step1": {
-        "title": "Tell us about your dog",
-        "desc": "Weight, age, activity, body condition — the inputs your vet would ask for.",
-        "title_cat": "Tell us about your cat",
-        "desc_cat": "Weight, age, activity, body condition, neuter status — the inputs your vet would ask for."
+        "title": "Add your household",
+        "desc": "One profile per pet — dogs, cats, or both. Weight, age, activity, allergies.",
+        "title_cat": "Add your household",
+        "desc_cat": "One profile per pet — dogs, cats, or both. Weight, age, activity, allergies."
       },
       "step2": {
-        "title": "Pick a diet you trust",
-        "desc": "Lean cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.",
-        "title_cat": "Pick a feline-safe diet",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, whole prey, or cooked carnivore — all built around obligate-carnivore biology."
+        "title": "Generate one plan",
+        "desc": "Simple meals by default: one protein per day, shared across pets. Sous-vide, oven, stovetop — your pick.",
+        "title_cat": "Generate one plan",
+        "desc_cat": "Simple meals by default: one protein per day, shared across pets. Sous-vide, oven, stovetop — your pick."
       },
       "step3": {
-        "title": "Cook with confidence",
-        "desc": "Get exact grams, safe temperatures and a printable recipe card for the week.",
-        "title_cat": "Feed with confidence",
-        "desc_cat": "Exact grams, taurine reminders, Ca:P band, vitamin A ceiling — every cat plan ships with the safety guardrails."
+        "title": "Cook one bag, dose the rest",
+        "desc": "Sous-vide a single household bag; follow the daily supplement card for what the bag doesn't cover.",
+        "title_cat": "Cook one bag, dose the rest",
+        "desc_cat": "Sous-vide a single household bag; follow the daily supplement card (taurine + cod liver oil) for what the bag doesn't cover."
       },
-      "heading_cat": "From cat to bowl in three steps"
+      "heading_cat": "Your household, fed in three steps"
     },
     "diets": {
       "eyebrow": "Diet profiles",

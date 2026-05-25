@@ -916,7 +916,13 @@
       "headlineB": "Pour votre vrai chien.",
       "headlineB_cat": "Pour votre vrai chat.",
       "tagline_cat": "Nourrissez bien votre chat.",
-      "subtitle_cat": "Outils open source pour qui cuisine maison pour son chat — plans nutritionnels axés taurine, cuisson sûre, guides de sécurité alimentaire et le stack de suppléments dont les chats ont besoin."
+      "subtitle_cat": "Outils open source pour qui cuisine maison pour son chat — plans nutritionnels axés taurine, cuisson sûre, guides de sécurité alimentaire et le stack de suppléments dont les chats ont besoin.",
+      "subtitleHousehold": "Chiens et chats. Un sachet, une session de cuisson, un plan que vous suivrez vraiment. Nous gérons les macros, les températures et les suppléments.",
+      "ctaPrimary": "Démarrer un plan",
+      "ctaSecondary": "Comment ça marche",
+      "chipDogs": "Chiens",
+      "chipCats": "Chats",
+      "chipBoth": "Les deux, dans un seul sachet"
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "Comment ça marche",
-      "heading": "Du chien au repas en trois étapes",
+      "heading": "Votre foyer, nourri en trois étapes",
       "step1": {
-        "title": "Parlez-nous de votre chien",
-        "desc": "Poids, âge, activité, condition physique — les éléments que votre vétérinaire demanderait.",
-        "title_cat": "Parlez-nous de votre chat",
-        "desc_cat": "Poids, âge, activité, condition corporelle, stérilisation — les éléments que votre vétérinaire demanderait."
+        "title": "Ajoutez votre foyer",
+        "desc": "Un profil par animal — chiens, chats ou les deux. Poids, âge, activité, allergies.",
+        "title_cat": "Ajoutez votre foyer",
+        "desc_cat": "Un profil par animal — chiens, chats ou les deux. Poids, âge, activité, allergies."
       },
       "step2": {
-        "title": "Choisissez une alimentation de confiance",
-        "desc": "Cuit maigre, BARF, PMR, hyperprotéiné ou ancestral — chacun fondé sur les cibles AAFCO.",
-        "title_cat": "Choisissez une alimentation féline sûre",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, proie entière ou carnivore cuit — toutes fondées sur la biologie carnivore stricte."
+        "title": "Générez un plan",
+        "desc": "Repas simples par défaut : une protéine par jour, partagée entre les animaux. Sous-vide, four, plaque — votre choix.",
+        "title_cat": "Générez un plan",
+        "desc_cat": "Repas simples par défaut : une protéine par jour, partagée entre les animaux. Sous-vide, four, plaque — votre choix."
       },
       "step3": {
-        "title": "Cuisinez en toute confiance",
-        "desc": "Obtenez les grammes exacts, les températures sûres et une fiche recette imprimable pour la semaine.",
-        "title_cat": "Nourrissez en toute confiance",
-        "desc_cat": "Grammes exacts, rappels de taurine, plage Ca:P, plafond vitamine A — chaque plan félin embarque ses garde-fous."
+        "title": "Cuisez un sachet, dosez le reste",
+        "desc": "Cuire sous-vide un seul sachet pour la maisonnée ; suivez la carte de suppléments quotidiens pour ce que le sachet ne couvre pas.",
+        "title_cat": "Cuisez un sachet, dosez le reste",
+        "desc_cat": "Cuire sous-vide un seul sachet pour la maisonnée ; suivez la carte de suppléments quotidiens (taurine + huile de foie de morue) pour ce que le sachet ne couvre pas."
       },
-      "heading_cat": "Du chat à la gamelle en trois étapes"
+      "heading_cat": "Votre foyer, nourri en trois étapes"
     },
     "diets": {
       "eyebrow": "Profils de régime",

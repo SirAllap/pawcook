@@ -916,7 +916,13 @@
       "headlineB": "Voor je echte hond.",
       "headlineB_cat": "Voor je echte kat.",
       "tagline_cat": "Voer je kat goed.",
-      "subtitle_cat": "Open source tools voor wie thuis voor zijn kat kookt — taurinebewuste voedingsplannen, veilige bereiding, voedselveiligheidsgidsen en de supplementstack die katten nodig hebben."
+      "subtitle_cat": "Open source tools voor wie thuis voor zijn kat kookt — taurinebewuste voedingsplannen, veilige bereiding, voedselveiligheidsgidsen en de supplementstack die katten nodig hebben.",
+      "subtitleHousehold": "Honden en katten. Eén zak, één kooksessie, één plan dat je echt volgt. Wij regelen de macro's, de veilige temperaturen en de supplementen.",
+      "ctaPrimary": "Start een plan",
+      "ctaSecondary": "Hoe het werkt",
+      "chipDogs": "Honden",
+      "chipCats": "Katten",
+      "chipBoth": "Beide, uit één zak"
     },
     "features": {
       "heading": "Alles wat je nodig hebt",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "Hoe het werkt",
-      "heading": "Van hond tot maaltijd in drie stappen",
+      "heading": "Je huishouden, gevoed in drie stappen",
       "step1": {
-        "title": "Vertel ons over je hond",
-        "desc": "Gewicht, leeftijd, activiteit, lichaamsconditie — wat je dierenarts zou vragen.",
-        "title_cat": "Vertel ons over je kat",
-        "desc_cat": "Gewicht, leeftijd, activiteit, lichaamsconditie, sterilisatie — wat je dierenarts zou vragen."
+        "title": "Voeg je huishouden toe",
+        "desc": "Eén profiel per huisdier — honden, katten of beide. Gewicht, leeftijd, activiteit, allergieën.",
+        "title_cat": "Voeg je huishouden toe",
+        "desc_cat": "Eén profiel per huisdier — honden, katten of beide. Gewicht, leeftijd, activiteit, allergieën."
       },
       "step2": {
-        "title": "Kies een dieet dat je vertrouwt",
-        "desc": "Mager gekookt, BARF, PMR, eiwitrijk of ancestral — allemaal volgens AAFCO-doelen.",
-        "title_cat": "Kies een kat-veilig dieet",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, hele prooi of gekookte carnivoor — allemaal gebouwd op strikt-carnivore biologie."
+        "title": "Genereer één plan",
+        "desc": "Standaard eenvoudige maaltijden: één eiwit per dag, gedeeld door alle huisdieren. Sous-vide, oven, fornuis — jouw keuze.",
+        "title_cat": "Genereer één plan",
+        "desc_cat": "Standaard eenvoudige maaltijden: één eiwit per dag, gedeeld door alle huisdieren. Sous-vide, oven, fornuis — jouw keuze."
       },
       "step3": {
-        "title": "Kook met vertrouwen",
-        "desc": "Krijg exacte grammen, veilige temperaturen en een afdrukbare receptkaart voor de week.",
-        "title_cat": "Voer met vertrouwen",
-        "desc_cat": "Exacte grammen, taurine-herinneringen, Ca:P-band, vitamine A-plafond — elk kattenplan komt met zijn vangrails."
+        "title": "Kook één zak, doseer de rest",
+        "desc": "Sous-vide één huishoudzak; volg de dagelijkse supplementkaart voor wat de zak niet dekt.",
+        "title_cat": "Kook één zak, doseer de rest",
+        "desc_cat": "Sous-vide één huishoudzak; volg de dagelijkse supplementkaart (taurine + levertraan) voor wat de zak niet dekt."
       },
-      "heading_cat": "Van kat tot bakje in drie stappen"
+      "heading_cat": "Je huishouden, gevoed in drie stappen"
     },
     "diets": {
       "eyebrow": "Dieetprofielen",
