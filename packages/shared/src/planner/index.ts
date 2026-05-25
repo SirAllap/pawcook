@@ -12,3 +12,14 @@ export { buildCookingPlan, COOKING_CONSTANTS } from './batching.js';
 export * from './recommendations.js';
 export * from './safety.js';
 export { buildThawCalendar } from './reminders.js';
+export { migratePlan } from './migrations.js';
+export {
+  getVegCookingEntry,
+  listVegCookingIds,
+  selectCutMethodSpec,
+  yieldForCut,
+  applicableCutsFor,
+  defaultCutFor,
+  type VegCookingEntry,
+  type VegMethodSpec,
+} from './veg-data.js';

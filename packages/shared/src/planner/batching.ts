@@ -1,11 +1,20 @@
 import type { PetProfile } from '../pets.js';
 import { getIngredient, type Ingredient } from './catalog.js';
+import {
+  getVegCookingEntry,
+  selectCutMethodSpec,
+  yieldForCut,
+} from './veg-data.js';
+import { planMixedSession, canCoCook } from '../cooking-veg.js';
 import type {
   CookFreshItem,
   CookingBatch,
   CookingPlan,
+  CookSpec,
   PlanDay,
   SourcingPrefs,
+  SupplementCardItem,
+  VeggieSession,
 } from './schemas.js';
 
 // Absolute frozen shelf life for cooked sous-vide. Beyond this, fat
@@ -33,6 +42,7 @@ interface IngredientUsage {
 interface BatchingResult {
   batches: CookingBatch[];
   cookFresh: CookFreshItem[];
+  supplementCards: SupplementCardItem[];
   /**
    * Bag windows that would violate the 60-day frozen-shelf-life rule.
    * Surfaced to the caller as a warning rather than throwing so the plan
@@ -57,24 +67,28 @@ export function buildCookingPlan(
   pets: PetProfile[],
   prefs: SourcingPrefs,
 ): CookingPlan {
-  const result = buildBatches(days, pets, prefs.bagDays);
+  const result = buildBatches(days, pets, prefs);
   return {
     bagDays: prefs.bagDays,
     batches: result.batches,
     cookFresh: result.cookFresh,
+    supplementCards: result.supplementCards,
+    veggieSessions: buildVeggieSessions(result.batches, prefs),
   };
 }
 
 function buildBatches(
   days: PlanDay[],
   pets: PetProfile[],
-  bagDays: 1 | 2 | 3 | 4,
+  prefs: SourcingPrefs,
 ): BatchingResult {
+  const bagDays = prefs.bagDays;
   const usageByIngredient = collectUsage(days);
   const petOrder = new Map(pets.map((p, i) => [p.id, i]));
 
   const batches: CookingBatch[] = [];
   const cookFresh: CookFreshItem[] = [];
+  const supplementCards: SupplementCardItem[] = [];
   const warnings: string[] = [];
 
   for (const [ingredientId, usages] of usageByIngredient) {
@@ -95,6 +109,26 @@ function buildBatches(
       ? totalGrams / days / petIdSet.length
       : 0;
     const supplementSized = isAddIn && perPetPerDayGrams < SUPPLEMENT_GRAM_THRESHOLD;
+
+    // Veg-specific sub-threshold check uses HOUSEHOLD-total daily grams
+    // (not per-pet) per CLAUDE.md sub-principle 2 (household-as-unit)
+    // + sub-principle 3 (sub-threshold = supplement). Cat-only household
+    // with 12 g/day carrot → supplement card, not a bag the user opens
+    // 20 times to spoon out 12 g.
+    const isVeg = ingredient.componentRoles.some((r) => r === 'veg' || r === 'starch');
+    const householdPerDayGrams = days > 0 ? totalGrams / days : 0;
+    const vegSubThreshold = isVeg && householdPerDayGrams < SUPPLEMENT_GRAM_THRESHOLD;
+
+    if (vegSubThreshold) {
+      supplementCards.push({
+        ingredientId,
+        reason: 'sub-threshold-veg',
+        forPetIds: petIdSet,
+        dailyDoseG: Math.round(householdPerDayGrams),
+        noteI18nKey: 'supplement.subThresholdVeg.note',
+      });
+      continue;
+    }
 
     if (policy.maxBagDays <= 0 || supplementSized) {
       cookFresh.push({
@@ -135,19 +169,24 @@ function buildBatches(
         const totalGrams = window.reduce((s, u) => s + u.grams, 0);
         const petIds = collectPetIds(window, petOrder);
         const dates = sortedDates;
+        const kind = ingredientKind(ingredient);
+        const roundedGrams = Math.round(totalGrams);
         batches.push({
           id: `bag_${ingredientId}_${idx + 1}_${first}`,
           ingredientId,
-          kind: ingredientKind(ingredient),
+          kind,
           sequence: idx + 1,
           totalInSequence: total,
           dates,
           forPetIds: petIds,
-          totalGrams: Math.round(totalGrams),
+          totalGrams: roundedGrams,
           cookDate: cook,
           thawDate: thaw,
           useByDate: useBy,
           rotationGap: hasGap(dates),
+          cookSpec: kind === 'veg'
+            ? buildVegCookSpec(ingredient, roundedGrams, prefs)
+            : undefined,
         });
       });
     }
@@ -160,7 +199,208 @@ function buildBatches(
     return a.sequence - b.sequence;
   });
 
-  return { batches, cookFresh, warnings };
+  return { batches, cookFresh, supplementCards, warnings };
+}
+
+// ─── Veg cookSpec ────────────────────────────────────────────────
+
+/**
+ * Build a CookSpec for a veg batch. Uses the veggie's defaultCut and
+ * the user's preferredCookingMethod; falls back to the recommended
+ * (steam/bake/blanch) preparation when the preferred method is not
+ * supported for this veggie (e.g. spinach + sous_vide).
+ *
+ * Returns undefined for veggies with no cooking entry in
+ * vegetable-cooking.json — the bag still serializes, the UI just
+ * shows it without a cook-time row.
+ */
+function buildVegCookSpec(
+  ing: Ingredient,
+  totalCookedGrams: number,
+  prefs: SourcingPrefs,
+): CookSpec | undefined {
+  const entry = getVegCookingEntry(ing.id);
+  if (!entry) return undefined;
+
+  const cut = entry.defaultCut;
+  const method = prefs.preferredCookingMethod;
+  const packaging = prefs.packagingDefault;
+  // The user's hero workflow: vacuum_seal + sous_vide implies cooking
+  // straight from frozen. The bag planner exposes a manual override
+  // — this is just the sensible default to start with.
+  const fromFrozen = method === 'sous_vide' && packaging === 'vacuum_seal';
+
+  const spec = selectCutMethodSpec(ing.id, cut, method);
+  const yieldRatio = yieldForCut(ing.id, cut);
+  const rawWeightG = yieldRatio > 0
+    ? Math.round(totalCookedGrams / yieldRatio)
+    : totalCookedGrams;
+
+  if (!spec) {
+    // Preferred method not supported — surface the recommended fallback
+    // so the UI has something to display. Bag planner lets the user
+    // pick a different method.
+    return {
+      method,
+      tempC: entry.recommendedTempC,
+      minutes: entry.recommendedMinutes,
+      cut,
+      packaging,
+      fromFrozen: false,
+      fromFrozenAddMin: 0,
+      rawWeightG,
+      notes: 'Preferred method not supported — using the veggie\'s recommended preparation instead.',
+    };
+  }
+
+  return {
+    method,
+    tempC: spec.tempC,
+    minutes: spec.minutes,
+    cut,
+    packaging,
+    fromFrozen,
+    fromFrozenAddMin: fromFrozen ? spec.fromFrozenAddMin ?? 0 : 0,
+    rawWeightG,
+    notes: spec.notes,
+  };
+}
+
+// ─── Veggie session grouping ─────────────────────────────────────
+
+/**
+ * Group veg batches that share a cook day into VeggieSession cards.
+ *
+ * Default mode (veggieDetail=false): all co-cookable veg on the same
+ * cook day collapse into ONE mixed session — "Sunday: steam carrots
+ * + sweet potato + green beans, total 22 min." Leafy / cruciferous /
+ * shredded cuts can't co-cook and get their own single-veg sessions.
+ *
+ * Rigor mode (veggieDetail=true): one session per veg per cook day,
+ * regardless of cut. User explicitly opted into the precision.
+ */
+function buildVeggieSessions(
+  batches: CookingBatch[],
+  prefs: SourcingPrefs,
+): VeggieSession[] {
+  const vegBatches = batches.filter(
+    (b): b is CookingBatch & { cookSpec: CookSpec } =>
+      b.kind === 'veg' && Boolean(b.cookSpec),
+  );
+  if (vegBatches.length === 0) return [];
+
+  const byCookDate = new Map<string, typeof vegBatches>();
+  for (const b of vegBatches) {
+    const list = byCookDate.get(b.cookDate) ?? [];
+    list.push(b);
+    byCookDate.set(b.cookDate, list);
+  }
+
+  const sessions: VeggieSession[] = [];
+  for (const [cookDate, dayBatches] of byCookDate) {
+    if (prefs.veggieDetail) {
+      for (const b of dayBatches) {
+        const s = sessionFromSingleBatch(cookDate, b);
+        if (s) sessions.push(s);
+      }
+      continue;
+    }
+
+    // Default: mix co-cookables into one session; anything else gets
+    // its own. Mixed session must share a method — group by method
+    // first, then mix within each.
+    const coCook = dayBatches.filter((b) => b.cookSpec.cut && canCoCook(b.cookSpec.cut));
+    const single = dayBatches.filter((b) => !b.cookSpec.cut || !canCoCook(b.cookSpec.cut));
+
+    const byMethod = new Map<string, typeof vegBatches>();
+    for (const b of coCook) {
+      const key = b.cookSpec.method;
+      const list = byMethod.get(key) ?? [];
+      list.push(b);
+      byMethod.set(key, list);
+    }
+    for (const [, group] of byMethod) {
+      if (group.length === 1) {
+        const s = sessionFromSingleBatch(cookDate, group[0]!);
+        if (s) sessions.push(s);
+      } else {
+        const s = sessionFromMixedBatches(cookDate, group);
+        if (s) sessions.push(s);
+      }
+    }
+    for (const b of single) {
+      const s = sessionFromSingleBatch(cookDate, b);
+      if (s) sessions.push(s);
+    }
+  }
+
+  sessions.sort((a, b) =>
+    a.cookDate.localeCompare(b.cookDate) || a.id.localeCompare(b.id),
+  );
+  return sessions;
+}
+
+function sessionFromSingleBatch(
+  cookDate: string,
+  batch: CookingBatch & { cookSpec: CookSpec },
+): VeggieSession | null {
+  const spec = batch.cookSpec;
+  if (!spec.cut) return null;
+
+  const yieldRatio = yieldForCut(batch.ingredientId, spec.cut);
+  const rawG = spec.rawWeightG ?? batch.totalGrams;
+  const cookedG = Math.round(rawG * yieldRatio);
+  const cookMinutes = spec.minutes.max + spec.fromFrozenAddMin;
+
+  return {
+    id: `vegsession_${cookDate}_${batch.ingredientId}`,
+    cookDate,
+    method: spec.method,
+    tempC: spec.tempC,
+    packaging: spec.packaging ?? 'freezer_bag',
+    fromFrozen: spec.fromFrozen,
+    totalMinutes: cookMinutes,
+    steps: [{
+      ingredientId: batch.ingredientId,
+      cut: spec.cut,
+      rawGrams: rawG,
+      cookedGrams: cookedG,
+      cookMinutes,
+      addAtMinute: 0,
+    }],
+    batchIds: [batch.id],
+  };
+}
+
+function sessionFromMixedBatches(
+  cookDate: string,
+  batches: ReadonlyArray<CookingBatch & { cookSpec: CookSpec }>,
+): VeggieSession | null {
+  const first = batches[0]!;
+  const method = first.cookSpec.method;
+  const fromFrozen = first.cookSpec.fromFrozen;
+  const packaging = first.cookSpec.packaging ?? 'freezer_bag';
+
+  const veggies = batches.map((b) => ({
+    ingredientId: b.ingredientId,
+    cut: b.cookSpec.cut!,
+    rawG: b.cookSpec.rawWeightG ?? b.totalGrams,
+  }));
+
+  const result = planMixedSession({ veggies, method, fromFrozen });
+  if (!result) return null;
+
+  return {
+    id: `vegsession_${cookDate}_mixed_${method}`,
+    cookDate,
+    method: result.method,
+    tempC: result.tempC,
+    packaging,
+    fromFrozen,
+    totalMinutes: result.totalMinutes,
+    steps: result.steps,
+    batchIds: batches.map((b) => b.id),
+  };
 }
 
 function collectUsage(days: PlanDay[]): Map<string, IngredientUsage[]> {

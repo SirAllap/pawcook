@@ -2,7 +2,7 @@ import {
   createContext, useCallback, useContext, useEffect, useMemo, useState,
   type ReactNode,
 } from 'react';
-import { MealPlanSchema, type MealPlan } from '@pawcook/shared';
+import { MealPlanSchema, migratePlan, type MealPlan } from '@pawcook/shared';
 
 const STORAGE_KEY = 'pawcook_meal_plans_v1';
 
@@ -35,7 +35,10 @@ function loadStore(): Store {
     if (parsed && typeof parsed === 'object' && 'plans' in parsed && Array.isArray((parsed as Store).plans)) {
       const validPlans: MealPlan[] = [];
       for (const candidate of (parsed as Store).plans) {
-        const result = MealPlanSchema.safeParse(candidate);
+        // Run migrations before Zod parse — older saved plans are
+        // missing v2 fields and would otherwise be silently dropped.
+        const migrated = migratePlan(candidate) ?? candidate;
+        const result = MealPlanSchema.safeParse(migrated);
         if (result.success) validPlans.push(result.data);
       }
       return { version: 1, plans: validPlans };

@@ -1,6 +1,7 @@
 import type { PetProfile } from '../pets.js';
 import { getIngredient, getStoreSection, STORE_SECTIONS, type Ingredient } from './catalog.js';
 import type { IngredientPolicy, PurchaseUnit, SurplusBehavior } from './policy.js';
+import { defaultCutFor, yieldForCut } from './veg-data.js';
 import type {
   MealPlan,
   PlanDay,
@@ -44,7 +45,26 @@ export function buildShoppingList(days: PlanDay[], pets: PetProfile[]): Shopping
   for (const [ingredientId, bucket] of byIngredient) {
     const ingredient = getIngredient(ingredientId);
     const sectionId = ingredient?.storeSection ?? 'other';
-    const purchase = computePurchase(bucket.totalGrams, ingredient);
+
+    // Veg cooking shrinkage adjustment: spinach loses ~85%, so a
+    // 100 g cooked meal target needs ~556 g raw to actually fill the
+    // bowl. Uses defaultCut for this shopping-list-time estimate;
+    // the per-batch VegBagPlanner UI computes exact figures from
+    // the user-chosen cut.
+    let cookedYield = 1;
+    let yieldAdjusted = false;
+    if (ingredient) {
+      const cut = defaultCutFor(ingredient.id);
+      if (cut) {
+        const y = yieldForCut(ingredient.id, cut);
+        if (y > 0 && y < 1) {
+          cookedYield = y;
+          yieldAdjusted = true;
+        }
+      }
+    }
+
+    const purchase = computePurchase(bucket.totalGrams, ingredient, cookedYield);
 
     const item: ShoppingItem = {
       ingredientId,
@@ -63,6 +83,7 @@ export function buildShoppingList(days: PlanDay[], pets: PetProfile[]): Shopping
       storeSection: sectionId,
       forPetIds: orderPetIds(Array.from(bucket.petIds), pets),
       variantTags: ingredient?.tags ?? [],
+      yieldAdjusted,
     };
 
     const list = bySection.get(sectionId) ?? [];
@@ -105,7 +126,15 @@ interface PurchaseCalc {
 // independently. Falls back to the legacy "round to nearest gram" when an
 // ingredient is missing from the catalog so the shopping list never
 // crashes on unknown ids.
-export function computePurchase(rawNeedG: number, ingredient: Ingredient | undefined): PurchaseCalc {
+//
+// cookedYield (default 1) is veg-specific cooking shrinkage — e.g. 0.18
+// for spinach. Pre-existing callers (and the meat path generally) leave
+// it at 1; buildShoppingList passes the per-veg figure from veg-data.
+export function computePurchase(
+  rawNeedG: number,
+  ingredient: Ingredient | undefined,
+  cookedYield = 1,
+): PurchaseCalc {
   if (!ingredient) {
     const g = Math.max(0, Math.round(rawNeedG));
     return {
@@ -120,9 +149,11 @@ export function computePurchase(rawNeedG: number, ingredient: Ingredient | undef
   }
 
   const policy: IngredientPolicy = ingredient.policy;
-  // Bone-in adjustment: meals are in edible grams, the butcher sells the
-  // bone too. Dividing by yield bumps the buy amount up to compensate.
-  const yieldAdj = rawNeedG / Math.max(policy.edibleYield, 0.01);
+  // Bone-in adjustment AND cooking shrinkage — both multiplied because
+  // they stack: a fictional bone-in veggie at 0.7 edible × 0.9 cooked
+  // would need 1 / 0.63 ≈ 1.59× raw to yield meal-target grams.
+  const effectiveYield = Math.max(policy.edibleYield * cookedYield, 0.01);
+  const yieldAdj = rawNeedG / effectiveYield;
 
   let purchaseGrams: number;
   let purchaseQty: number;

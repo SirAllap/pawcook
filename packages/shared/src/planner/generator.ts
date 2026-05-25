@@ -60,6 +60,7 @@ export function generateMealPlan(input: GeneratePlanInput): MealPlan {
     : undefined;
 
   return {
+    schemaVersion: 2,
     id: planId,
     name: input.name,
     petIds: input.pets.map((p) => p.id),
@@ -69,6 +70,11 @@ export function generateMealPlan(input: GeneratePlanInput): MealPlan {
     days,
     shoppingList,
     cookingPlan,
+    // New plans always apply veg cooking-shrinkage to the shopping
+    // list. v1 plans on migration keep appliesCookYield=false so
+    // their saved shopping lists don't suddenly change shape.
+    appliesCookYield: true,
+    pantry: [],
     createdAt: nowIso,
     updatedAt: nowIso,
   };

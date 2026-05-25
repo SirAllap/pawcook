@@ -186,6 +186,14 @@ function ShoppingRow({
               {formatSurplus(item, lang, t)}
             </p>
           )}
+          {item.yieldAdjusted && (
+            <p className="text-[11px] text-info leading-snug mt-0.5">
+              {t('mealPlan.shopping.yieldAdjustedHint', {
+                defaultValue: 'Buy includes cooking shrinkage — yields ~{{c}} g cooked.',
+                c: item.neededGrams,
+              })}
+            </p>
+          )}
           {!allPets && itemPets.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-1">
               {itemPets.map((p) => <PetTag key={p.id} pet={p} />)}
