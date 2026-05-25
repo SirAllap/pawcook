@@ -939,7 +939,8 @@
       "eyebrow": "100% open source",
       "starUs": "Dodaj gwiazdkę na GitHubie",
       "fork": "Forkuj",
-      "text_cat": "Licencja MIT. Stworzone przez osoby gotujące dla psów i kotów."
+      "text_cat": "Licencja MIT. Stworzone przez osoby gotujące dla psów i kotów.",
+      "starsWithCount": "{{n}} gwiazdek"
     },
     "trustedBy": "Metodologia oparta na",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Niedawno wydane",
       "list": "Zasada wykonalności · Rotacja blokowa · Proste posiłki · Karta suplementów · Gotowanie świadome planu · Edycja i zmiana nazwy planów"
+    },
+    "preview": {
+      "eyebrow": "Co dostajesz",
+      "heading": "Prawdziwy produkt, nie marketingowy render",
+      "sub": "Cztery wycinki aplikacji — zbudowane z tych samych komponentów, których używasz po zalogowaniu. Bez fałszywych zrzutów.",
+      "prev": "Poprzedni slajd",
+      "next": "Następny slajd",
+      "plan": {
+        "eyebrow": "Widok planu",
+        "caption": "Każda karta posiłku pokazuje gramy + kcal. Karta suplementów jest na górze — każdy niedobór nazwany, każda dawka dokładna.",
+        "principle": "Pokazuj braki głośno; nigdy ich cicho nie symuluj."
+      },
+      "cooking": {
+        "eyebrow": "Plan gotowania",
+        "caption": "Jeden woreczek na porcję białka. Data gotowania · dni serwowania · zużyć do · tagi zwierząt — wszystko wynika z planu, nic nie jest zmyślone.",
+        "principle": "Przepływ gotowania prowadzi plan, a nie odwrotnie."
+      },
+      "bag": {
+        "eyebrow": "Strategia woreczków",
+        "caption": "„3 woreczki × 0,66 kg — jeden woreczek na porcję kurczaka.\" Łącz sąsiednie porcje, gdy są bezpieczne dla lodówki, aby pominąć sesje gotowania.",
+        "principle": "Dodatki poniżej progu to pigułki, nie składniki."
+      },
+      "wizard": {
+        "eyebrow": "Kreator",
+        "caption": "„Gotuj z wyprzedzeniem\" z statystykami na żywo: woreczki · sesje gotowania · zaoszczędzone sesje vs codzienna. Widzisz oszczędność przed wygenerowaniem.",
+        "principle": "Wykonalność to wkład żywieniowy, a nie kosmetyka UX."
+      }
     }
   },
   "about": {

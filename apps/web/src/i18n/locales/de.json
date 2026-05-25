@@ -939,7 +939,8 @@
       "eyebrow": "100% Open Source",
       "starUs": "Auf GitHub mit Stern markieren",
       "fork": "Forken",
-      "text_cat": "MIT-Lizenz. Gebaut von Menschen, die für Hunde und Katzen kochen."
+      "text_cat": "MIT-Lizenz. Gebaut von Menschen, die für Hunde und Katzen kochen.",
+      "starsWithCount": "{{n}} Sterne"
     },
     "trustedBy": "Methodik basiert auf",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Kürzlich ausgeliefert",
       "list": "Followability-Prinzip · Blockrotation · Einfache Mahlzeiten · Ergänzungskarte · Planbewusstes Kochen · Pläne bearbeiten + umbenennen"
+    },
+    "preview": {
+      "eyebrow": "Was Sie bekommen",
+      "heading": "Das echte Produkt, kein Marketing-Render",
+      "sub": "Vier Ausschnitte der App — gebaut aus denselben Komponenten, die Sie nach dem Anmelden nutzen. Keine gefälschten Screenshots.",
+      "prev": "Vorheriges Slide",
+      "next": "Nächstes Slide",
+      "plan": {
+        "eyebrow": "Planansicht",
+        "caption": "Jede Mahlzeitenkarte zeigt Gramm + kcal. Die Ergänzungskarte steht oben — jedes Defizit benannt, jede Dosis exakt.",
+        "principle": "Defizite laut sichtbar machen; niemals stillschweigend simulieren."
+      },
+      "cooking": {
+        "eyebrow": "Kochplan",
+        "caption": "Ein Beutel pro Protein-Portion. Kochdatum · Serviertage · verbrauchen bis · Tier-Tags — alles aus dem Plan abgeleitet, nichts erfunden.",
+        "principle": "Der Kochablauf bestimmt den Plan, nicht umgekehrt."
+      },
+      "bag": {
+        "eyebrow": "Beutel-Strategie",
+        "caption": "„3 Beutel × 0,66 kg — ein Beutel pro Hähnchen-Portion.“ Benachbarte Portionen zusammenführen, wenn kühlfächersicher, um Kochsitzungen zu sparen.",
+        "principle": "Unterschwellige Zusätze sind Pillen, keine Zutaten."
+      },
+      "wizard": {
+        "eyebrow": "Assistent",
+        "caption": "„Vorkochen\" mit Live-Stats: Beutel · Kochsitzungen · gesparte Sitzungen ggü. täglich. Den frugalen Vorteil sehen, bevor man generiert.",
+        "principle": "Followability ist ein nährstoffrelevanter Faktor, keine UX-Spielerei."
+      }
     }
   },
   "about": {

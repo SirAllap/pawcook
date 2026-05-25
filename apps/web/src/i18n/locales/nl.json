@@ -939,7 +939,8 @@
       "eyebrow": "100% open source",
       "starUs": "Geef een ster op GitHub",
       "fork": "Forken",
-      "text_cat": "MIT-licentie. Gebouwd door mensen die koken voor honden en katten."
+      "text_cat": "MIT-licentie. Gebouwd door mensen die koken voor honden en katten.",
+      "starsWithCount": "{{n}} sterren"
     },
     "trustedBy": "Methodologie gebaseerd op",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Recent uitgebracht",
       "list": "Followability-principe · Blokrotatie · Eenvoudige maaltijden · Supplementkaart · Plan-bewust koken · Plannen bewerken en hernoemen"
+    },
+    "preview": {
+      "eyebrow": "Wat je krijgt",
+      "heading": "Het echte product, geen marketingrender",
+      "sub": "Vier doorsnedes van de app — gebouwd met dezelfde componenten die je na inloggen gebruikt. Geen nepscreenshots.",
+      "prev": "Vorige slide",
+      "next": "Volgende slide",
+      "plan": {
+        "eyebrow": "Planweergave",
+        "caption": "Elke maaltijdkaart toont gram + kcal. De supplementkaart staat bovenaan — elk tekort benoemd, elke dosis exact.",
+        "principle": "Toon tekorten luid; simuleer ze nooit stilletjes."
+      },
+      "cooking": {
+        "eyebrow": "Kookplan",
+        "caption": "Eén zak per eiwit-portie. Kookdatum · serveerdagen · te gebruiken vóór · huisdier-tags — alles afgeleid van het plan, niets verzonnen.",
+        "principle": "Het kookproces stuurt het maaltijdplan, niet andersom."
+      },
+      "bag": {
+        "eyebrow": "Zak-strategie",
+        "caption": "\"3 zakken × 0,66 kg — één zak per kippenportie.\" Combineer aangrenzende porties wanneer veilig voor de koelkast om kooksessies over te slaan.",
+        "principle": "Sub-drempel toevoegingen zijn pillen, geen ingrediënten."
+      },
+      "wizard": {
+        "eyebrow": "Wizard",
+        "caption": "\"Vooruitkoken\" met live statistieken: zakken · kooksessies · bespaarde sessies t.o.v. dagelijks. Zie het voordeel vóór genereren.",
+        "principle": "Followability is een voedingsinput, geen UX-luxe."
+      }
     }
   },
   "about": {

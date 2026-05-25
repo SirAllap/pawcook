@@ -939,7 +939,8 @@
       "eyebrow": "100% open source",
       "starUs": "Star on GitHub",
       "fork": "Fork",
-      "text_cat": "MIT licensed. Built by people who cook for both dogs and cats."
+      "text_cat": "MIT licensed. Built by people who cook for both dogs and cats.",
+      "starsWithCount": "{{n}} stars"
     },
     "trustedBy": "Methodology grounded in",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Recently shipped",
       "list": "Followability Mandate · Block rotation · Simple meals · Supplement card · Plan-aware cooking · Edit + rename plans"
+    },
+    "preview": {
+      "eyebrow": "What you get",
+      "heading": "The actual product, not a marketing render",
+      "sub": "Four slices of the app — built from the same components you use after signing in. No fake screenshots.",
+      "prev": "Previous slide",
+      "next": "Next slide",
+      "plan": {
+        "eyebrow": "Plan view",
+        "caption": "Each meal card shows grams + kcal. Supplement card sits up top — every deficit is named, every dose is exact.",
+        "principle": "Surface deficits loudly; never simulate them silently."
+      },
+      "cooking": {
+        "eyebrow": "Cooking plan",
+        "caption": "One bag per protein serve. Cook date · serve days · use by · pet tags — all derived from the plan, not fabricated.",
+        "principle": "The cook flow drives the meal plan, not the reverse."
+      },
+      "bag": {
+        "eyebrow": "Bag strategy",
+        "caption": "\"3 bags × 0.66 kg — one bag per chicken serve.\" Merge adjacent serves when fridge-safe to skip cook sessions.",
+        "principle": "Sub-threshold add-ins are pills, not ingredients."
+      },
+      "wizard": {
+        "eyebrow": "Wizard",
+        "caption": "\"Cook ahead\" with live stats: bags · cook sessions · sessions saved vs daily. See the frugal payoff before you generate.",
+        "principle": "Followability is a nutritional input, not a UX nicety."
+      }
     }
   },
   "about": {
