@@ -13,6 +13,34 @@ export const CookingMethodSchema = z.enum([
 ]);
 export type CookingMethod = z.infer<typeof CookingMethodSchema>;
 
+// ─── Vegetable cut form ──────────────────────────────────────────
+// Analog of MeatFormSchema. Cut drives cook time, yield, packaging
+// fit, and pet-servability advisories. The same carrot at 2 mm
+// mandolin vs 3 cm chunk is two different cook problems.
+export const VegCutSchema = z.enum([
+  'whole',           // whole carrot, halved pumpkin
+  'large_chunks',    // 3–4 cm cubes
+  'cubed',           // 1–2 cm cubes
+  'coins',           // 6–10 mm rounds
+  'mandolin_thin',   // 2–4 mm slices — vacuum-seal-friendly
+  'sticks',          // batons / matchsticks
+  'shredded',        // grated
+  'florets',         // cruciferous only
+  'leaves_whole',
+  'leaves_shredded',
+]);
+export type VegCut = z.infer<typeof VegCutSchema>;
+
+// How portioned veg is packaged. Affects bag-life, label format,
+// and unlocks the cook-from-frozen sous-vide path when vacuum_seal.
+export const VegPackagingSchema = z.enum([
+  'vacuum_seal',
+  'freezer_bag',
+  'silicone_tray',
+  'rigid_container',
+]);
+export type VegPackaging = z.infer<typeof VegPackagingSchema>;
+
 export const FatContentSchema = z.enum(['lean', 'medium', 'fatty']);
 
 export const TemperatureUnitSchema = z.enum(['celsius', 'fahrenheit']);

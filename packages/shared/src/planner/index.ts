@@ -12,3 +12,4 @@ export { buildCookingPlan, COOKING_CONSTANTS } from './batching.js';
 export * from './recommendations.js';
 export * from './safety.js';
 export { buildThawCalendar } from './reminders.js';
+export { migratePlan } from './migrations.js';

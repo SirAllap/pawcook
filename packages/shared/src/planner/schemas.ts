@@ -1,5 +1,11 @@
 import { z } from 'zod';
-import { CookingMethodSchema } from '../schemas.js';
+import { CookingMethodSchema, VegCutSchema, VegPackagingSchema } from '../schemas.js';
+
+// Bump when MealPlan shape changes in a way migrations care about.
+// 1 → pre-veg-cooking
+// 2 → veg cookSpec, pantry, sub-threshold supplement cards, sourcing
+//     veggieDetail / packagingDefault / cutRotation
+export const CURRENT_PLAN_SCHEMA_VERSION = 2 as const;
 
 // ─── Sourcing preferences ────────────────────────────────────────────
 // Pricing-free framing — these flags drive which ingredients the
@@ -71,6 +77,24 @@ export const SourcingPrefsSchema = z.object({
    * and one of veg lasts two days across all pets.
    */
   bagDays: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).default(2),
+  /**
+   * Off (default) = one mixed veggie batch per household per cook day.
+   * On = per-veggie cook sessions with staggered schedule and per-cut
+   * rotation. Rigor lives behind a switch (CLAUDE.md sub-principle 7).
+   */
+  veggieDetail: z.boolean().default(false),
+  /**
+   * Default packaging when portioning veg bags. The user can override
+   * per batch in the bag planner; this just seeds the default.
+   */
+  packagingDefault: VegPackagingSchema.default('freezer_bag'),
+  /**
+   * Optional cut rotation (rigor mode only). When non-empty and
+   * `veggieDetail === true`, the generator block-rotates cut form
+   * across days the same way it rotates ingredients. Empty = single
+   * default cut from each veggie's metadata.
+   */
+  cutRotation: z.array(VegCutSchema).default([]),
 });
 export type SourcingPrefs = z.infer<typeof SourcingPrefsSchema>;
 
@@ -187,6 +211,35 @@ export type ShoppingList = z.infer<typeof ShoppingListSchema>;
 // One bag = one ingredient, covering N usage-days for the pets that eat
 // from it. Dates may be non-consecutive when proteins rotate; the UI
 // surfaces that via `rotationGap` and the bag's `dates` array.
+
+// Per-batch cooking spec. Optional today (older plans don't have it,
+// proteins get it populated in a follow-up commit). For veg batches the
+// generator fills it in from vegetable-cooking.json keyed by (id, cut,
+// method). Sub-fields cut/packaging are veg-only; protein leaves them
+// undefined.
+export const CookSpecSchema = z.object({
+  method: CookingMethodSchema,
+  tempC: z.number(),
+  minutes: z.object({
+    min: z.number().nonnegative(),
+    max: z.number().nonnegative(),
+  }),
+  cut: VegCutSchema.optional(),
+  packaging: VegPackagingSchema.optional(),
+  fromFrozen: z.boolean().default(false),
+  fromFrozenAddMin: z.number().nonnegative().default(0),
+  // Cooked-yield back-calc. For veg with cookedYield < 1, this is the
+  // raw weight to buy/prep before cooking. Optional so protein and v1
+  // veg batches that haven't been re-saved don't fail validation.
+  rawWeightG: z.number().positive().optional(),
+  // When multiple veg batches share a cook session (mixed mode), they
+  // carry the same sessionGroupId so the UI can render them as one
+  // "Sunday cook" card.
+  sessionGroupId: z.string().optional(),
+  notes: z.string().optional(),
+});
+export type CookSpec = z.infer<typeof CookSpecSchema>;
+
 export const CookingBatchSchema = z.object({
   id: z.string(),
   ingredientId: z.string(),
@@ -203,6 +256,7 @@ export const CookingBatchSchema = z.object({
   thawDate: ISO_DATE,
   useByDate: ISO_DATE,
   rotationGap: z.boolean(),
+  cookSpec: CookSpecSchema.optional(),
 });
 export type CookingBatch = z.infer<typeof CookingBatchSchema>;
 
@@ -211,20 +265,86 @@ export type CookingBatch = z.infer<typeof CookingBatchSchema>;
 // user knows what they still have to handle ad-hoc.
 export const CookFreshItemSchema = z.object({
   ingredientId: z.string(),
-  reason: z.enum(['perishable', 'no-batch-veg', 'organ', 'supplement-equiv']),
+  reason: z.enum([
+    'perishable', 'no-batch-veg', 'organ', 'supplement-equiv',
+    // New v2 reason — emitted when a veg's household total falls below
+    // SUPPLEMENT_GRAM_THRESHOLD on a per-day basis (CLAUDE.md sub-#3).
+    'sub-threshold-veg',
+  ]),
   forPetIds: z.array(z.string()),
 });
 export type CookFreshItem = z.infer<typeof CookFreshItemSchema>;
+
+// Sub-threshold ingredients surfaced as supplement-card rows rather
+// than cook steps. Currently only fed by the veg sub-threshold check
+// in batching.ts; future flows (taurine, omega3) can reuse the shape.
+export const SupplementCardItemSchema = z.object({
+  ingredientId: z.string(),
+  reason: z.enum(['sub-threshold-veg', 'taurine', 'omega3', 'multivit']),
+  forPetIds: z.array(z.string()),
+  // Suggested daily dose for the supplement card. Optional because
+  // not every reason needs a numeric — taurine has a fixed mg dose
+  // surfaced via i18n.
+  dailyDoseG: z.number().nonnegative().optional(),
+  // i18n key for the card body text. Resolved in the web layer.
+  noteI18nKey: z.string().optional(),
+});
+export type SupplementCardItem = z.infer<typeof SupplementCardItemSchema>;
+
+// A cook session groups veg batches that share a cook day, method,
+// temperature — the "Sunday cook" card in the UI. One step per veg
+// in the session; order driven by addAtMinute.
+export const VeggieSessionStepSchema = z.object({
+  ingredientId: z.string(),
+  cut: VegCutSchema,
+  // Minutes from session start when this veg goes in the pot. 0 = first.
+  addAtMinute: z.number().nonnegative(),
+  cookMinutes: z.number().positive(),
+  rawGrams: z.number().nonnegative(),
+  cookedGrams: z.number().nonnegative(),
+});
+export type VeggieSessionStep = z.infer<typeof VeggieSessionStepSchema>;
+
+export const VeggieSessionSchema = z.object({
+  id: z.string(),
+  cookDate: ISO_DATE,
+  method: CookingMethodSchema,
+  tempC: z.number(),
+  packaging: VegPackagingSchema,
+  fromFrozen: z.boolean().default(false),
+  totalMinutes: z.number().positive(),
+  steps: z.array(VeggieSessionStepSchema).min(1),
+  // Which batches this session produces — referenced back into
+  // CookingBatch.id for label/calendar printing.
+  batchIds: z.array(z.string()).min(1),
+});
+export type VeggieSession = z.infer<typeof VeggieSessionSchema>;
 
 export const CookingPlanSchema = z.object({
   bagDays: z.number().int().min(1).max(4),
   batches: z.array(CookingBatchSchema),
   cookFresh: z.array(CookFreshItemSchema),
+  // Both optional so older plans keep parsing. Default empty when read.
+  supplementCards: z.array(SupplementCardItemSchema).optional(),
+  veggieSessions: z.array(VeggieSessionSchema).optional(),
 });
 export type CookingPlan = z.infer<typeof CookingPlanSchema>;
 
+// Cooked-veg the user has frozen and saved for next week. Subtracted
+// from next week's shopping list when the plan is regenerated.
+export const PantryItemSchema = z.object({
+  ingredientId: z.string(),
+  cut: VegCutSchema.optional(),
+  cookedGramsFrozen: z.number().nonnegative(),
+  asOf: ISO_DATE,
+});
+export type PantryItem = z.infer<typeof PantryItemSchema>;
+
 // ─── Meal plan (root) ────────────────────────────────────────────────
 export const MealPlanSchema = z.object({
+  // Per-plan schema version. Missing = v1 (legacy, pre-veg-cooking).
+  // Migrations in planner/migrations.ts bump this on load.
+  schemaVersion: z.literal(1).or(z.literal(2)).optional(),
   id: z.string().min(1),
   name: z.string().min(1).max(64),
   petIds: z.array(z.string()).min(1),
@@ -239,6 +359,14 @@ export const MealPlanSchema = z.object({
    * hint pointing the user at the wizard.
    */
   cookingPlan: CookingPlanSchema.optional(),
+  // Whether the shopping list applies raw→cooked yield correction.
+  // v1 plans default to false on migration so existing lists do not
+  // suddenly demand 6× more spinach. v2 plans set it true on regen.
+  appliesCookYield: z.boolean().optional(),
+  // User-saved frozen veg cubes carried into next plan. Empty on a
+  // freshly-generated plan; populated by "Save for next week" in the
+  // VegBagPlanner UI.
+  pantry: z.array(PantryItemSchema).optional(),
   createdAt: ISO_DATE,
   updatedAt: ISO_DATE,
 });
