@@ -177,6 +177,11 @@ const ShoppingItemBaseSchema = z.object({
   storeSection: z.string(),
   forPetIds: z.array(z.string()),
   variantTags: z.array(z.string()).default([]),
+  // True when the purchase amount was bumped to compensate for veg
+  // cooking shrinkage (e.g. raw spinach → cooked weight). UI shows
+  // a tooltip on these rows so the user understands why they're
+  // buying 670 g raw spinach for a 100 g cooked target.
+  yieldAdjusted: z.boolean().optional(),
 });
 
 export const ShoppingItemSchema = ShoppingItemBaseSchema.transform((item) => ({
@@ -188,6 +193,7 @@ export const ShoppingItemSchema = ShoppingItemBaseSchema.transform((item) => ({
   surplusGrams: item.surplusGrams ?? 0,
   surplusBehavior: item.surplusBehavior ?? ('none' as const),
   showSurplus: item.showSurplus ?? false,
+  yieldAdjusted: item.yieldAdjusted ?? false,
 }));
 export type ShoppingItem = z.infer<typeof ShoppingItemSchema>;
 
