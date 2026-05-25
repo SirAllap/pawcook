@@ -1349,9 +1349,24 @@ function VegGuideRow({
   // active override is by definition different from the recommendation.
   const showRecCitation = useOverride;
 
-  const noteText = useOverride && spec!.notes ? spec!.notes : entry.recommendedNotes;
-  const warningText = useOverride ? spec!.warning : undefined;
-  const speciesNote = species === 'cat' ? entry.speciesNotes?.cat : entry.speciesNotes?.dog;
+  // Resolve every visible text via i18n. The data file (`vegetable-
+  // cooking.json`) keeps the canonical English as the defaultValue so
+  // nothing renders blank if a locale is missing a key — but translated
+  // locales override per-veg copy via the `cooking.vegData.{id}.*`
+  // namespace. Without this lookup the veggie guide leaked English
+  // notes/warnings into every non-English locale.
+  const overrideNotes = useOverride && spec!.notes ? spec!.notes : undefined;
+  const noteText = useOverride && overrideNotes
+    ? t(`cooking.vegData.${entry.id}.methods.${selectedMethod}.notes`, { defaultValue: overrideNotes })
+    : t(`cooking.vegData.${entry.id}.recommendedNotes`, { defaultValue: entry.recommendedNotes });
+  const warningSrc = useOverride ? spec!.warning : undefined;
+  const warningText = warningSrc
+    ? t(`cooking.vegData.${entry.id}.methods.${selectedMethod}.warning`, { defaultValue: warningSrc })
+    : undefined;
+  const speciesNoteSrc = species === 'cat' ? entry.speciesNotes?.cat : entry.speciesNotes?.dog;
+  const speciesNote = speciesNoteSrc
+    ? t(`cooking.vegData.${entry.id}.speciesNotes.${species}`, { defaultValue: speciesNoteSrc })
+    : undefined;
 
   const fallbackReason = fellBack
     ? t('cooking.vegGuide.fellBackTo', {
@@ -1362,7 +1377,7 @@ function VegGuideRow({
     : null;
 
   const blockedReason = isCookingBlocked
-    ? t(`cooking.vegGuide.cookingBlocked.${entry.id}`, {
+    ? t(`cooking.vegData.${entry.id}.cookingBlockedReason`, {
         defaultValue: entry.cookingBlockedReason ?? 'Cooking not recommended for this item.',
       })
     : null;
@@ -1429,7 +1444,7 @@ function VegGuideRow({
         {showRecCitation && (
           <span
             className="text-[10px] text-muted-fg leading-tight text-right"
-            title={entry.recommendedReason}
+            title={t(`cooking.vegData.${entry.id}.recommendedReason`, { defaultValue: entry.recommendedReason })}
           >
             {t('cooking.vegGuide.recCaption', {
               defaultValue: 'rec: {{method}}',

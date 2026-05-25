@@ -583,6 +583,258 @@
       "recCaption": "zal.: {{method}}",
       "pillAria": "Pokazuję {{active}}; zalecana metoda to {{recommended}}",
       "fellBackTo": "pozostawiono jako {{method}} — {{appliance}} nieodpowiednie dla tego warzywa"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Pokrój na plastry 1 cm. Gotuj na parze do miękkości; lepiej zachowuje beta-karoten niż gotowanie w wodzie.",
+        "recommendedReason": "Para zachowuje beta-karoten i witaminę C, jednocześnie rozkładając ściany komórkowe, których psy nie trawią na surowo.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Pokrój na plastry 3–5 mm, by woreczek przylegał. Użyj osobnej kąpieli 85 °C — warzywa nie miękną w temperaturach mięsa."
+          },
+          "oven": {
+            "notes": "Kostka 2 cm z odrobiną oleju. Pieczenie koncentruje beta-karoten mocniej niż gotowanie na parze."
+          },
+          "slow_cooker": {
+            "warning": "Wolnowary zmieniają marchew w papkę — ok do gulaszu, gorzej jako dodatek."
+          },
+          "pressure_cooker": {
+            "notes": "Kawałki 1 cm, wysokie ciśnienie, 1 szklanka wody, szybkie uwolnienie."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Kostka 2–3 cm. Piecz na sucho — bez cukru, bez przypraw. Rozgnieć przed podaniem.",
+        "recommendedReason": "Pieczenie odparowuje wodę i koncentruje rozpuszczalny błonnik, który reguluje stolec — główny powód, dla którego dynia jest w misce.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Kostka 2–3 cm, osobna kąpiel 85 °C."
+          },
+          "stovetop_low": {
+            "notes": "Gotuj na parze nad sitkiem; gotowanie w wodzie nasącza i osłabia działanie błonnika."
+          },
+          "slow_cooker": {
+            "warning": "Będzie bardzo mokra — odcedź lub odparuj płyn przed rozgnieceniem."
+          },
+          "pressure_cooker": {
+            "notes": "Kawałki 2 cm, wysokie ciśnienie, naturalne uwolnienie."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Zawsze gotowana — surowy batat jest ciężko strawny. Pokrój w kostkę lub upiecz w całości i rozgnieć.",
+        "recommendedReason": "Pieczenie karmelizuje skrobię w łatwo strawne cukry i daje najbardziej apetyczne efekty. Sous-vide daje słodszy efekt dzięki powolnej konwersji enzymatycznej, jeśli masz czas.",
+        "rawBlockedReason": "Surowy batat zawiera inhibitory trypsyny i jest praktycznie niestrawny.",
+        "speciesNotes": {
+          "cat": "Gotowana i w bardzo małej ilości dla kotów — węglowodany nie są niezbędne w ich diecie."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Kostka 1 cm, osobna kąpiel 85 °C. Beta-amylaza zamienia skrobię w maltozę — wychodzi zauważalnie słodszy niż pieczony."
+          },
+          "stovetop_low": {
+            "notes": "Gotuj w kostkach na parze; gotowanie w wodzie zwiększa ładunek glikemiczny."
+          },
+          "pressure_cooker": {
+            "notes": "Kawałki 2 cm, wysokie ciśnienie, naturalne uwolnienie."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Tylko różyczki, bez grubych łodyg. Trzymaj al dente — przegotowanie niszczy witaminę C.",
+        "recommendedReason": "Krótkie gotowanie na parze zachowuje witaminę C i sulforafan, jednocześnie zmiękczając różyczki na tyle, by były strawne dla psa.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Małe różyczki, pojedyncza warstwa w woreczku. Zapach siarki przy otwieraniu będzie intensywny — to normalne.",
+            "warning": "Różyczki przybierają oliwkowy kolor w zamkniętym woreczku; pod względem odżywczym ok, wizualnie nieapetyczne."
+          },
+          "oven": {
+            "warning": "Niektóre psy odrzucają zbrązowienie Maillarda na warzywach kapustnych — najpierw przetestuj na małej porcji."
+          },
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie — narastanie już je gotuje. Natychmiastowe szybkie uwolnienie, inaczej zamieniają się w papkę."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Krótko zblanszuj we wrzątku, odcedź, posiekaj. Lekko zmniejsza zawartość szczawianów.",
+        "recommendedReason": "Krótkie zagotowanie i odcedzenie zmniejsza szczawiany blokujące wchłanianie wapnia, zachowując folian i żelazo.",
+        "speciesNotes": {
+          "cat": "Unikaj u kotów z problemami moczowymi — szczawiany mogą nasilać tworzenie kryształów."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Krótko zblanszuj, dokładnie odcedź."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Odetnij końcówki. Gotuj na parze, aż będą jaskrawo zielone i jędrne. Można też podawać surowe.",
+        "recommendedReason": "Para zmiękcza włókno strąka bez wypłukiwania witaminy K i manganu — składników, dzięki którym fasolka szparagowa jest podstawą diet odchudzających.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Odetnij końcówki, zostaw w całości — pięknie trzymają kształt."
+          },
+          "oven": {
+            "warning": "Bywa, że je wysusza — zwierzęta zwykle wolą na parze."
+          },
+          "slow_cooker": {
+            "warning": "Będą miękkie, nie jędrne."
+          },
+          "pressure_cooker": {
+            "notes": "Wysokie ciśnienie, szybkie uwolnienie."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Pokrój w plastry lub kostkę. Bezpieczna na surowo — gotowanie jedynie zmiękcza dla wybrednych zwierząt.",
+        "recommendedReason": "Para zmiękcza ją na tyle, by mogły jeść bezzębne lub wybredne zwierzęta, zachowując wodę — idealny nawadniający dodatek.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Wypuszcza dużo wody do woreczka — odsącz przed podaniem."
+          },
+          "slow_cooker": {
+            "warning": "Zamienia się w papkę — ok do gulaszu, nie jako dodatek."
+          },
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie, szybkie uwolnienie — natychmiast się rozgotowuje."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Świeży lub mrożony (najpierw rozmroź). Nigdy z puszki (dodatek sodu).",
+        "recommendedReason": "Krótkie gotowanie na parze zachowuje witaminę K i białko strączków, unikając rozgotowania.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie, szybkie uwolnienie. Mrożony groszek wystarczy rozmrozić."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Oderwij liście od twardych łodyg, drobno posiekaj. Z umiarem — szczawiany + tiocyjaniany.",
+        "recommendedReason": "Para zachowuje wapń, żelazo i sulforafan, jednocześnie zmiękczając twarde włókna — podawaj tylko w małych ilościach z powodu tiocyjanianów.",
+        "rawBlockedReason": "Enzymy w surowym jarmużu aktywują wolotwórcze tiocyjaniany i zwiększają biodostępność szczawianów.",
+        "speciesNotes": {
+          "cat": "Koty: unikać przy lekach na tarczycę. W innym wypadku tylko okazjonalnie."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "Tekstura staje się śliska w zamkniętym woreczku — większość zwierząt woli na parze."
+          },
+          "oven": {
+            "warning": "To w zasadzie przepis na chipsy z jarmużu — porcja przekąski, nie dodatek."
+          },
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie — najlepsza metoda redukcji szczawianów w jarmużu, burakach i szpinaku."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Kawałki 1–2 cm. Poniżej 85 °C pozostają włókniste — użyj wyższej temperatury kąpieli \"twardy korzeń\".",
+        "recommendedReason": "Para zmiękcza je na tyle, by można było je gryźć, zachowując słodki smak i dostarczając błonnik prebiotyczny dla zdrowia jelit.",
+        "rawBlockedReason": "Surowy pasternak zawiera furanokumaryny (psoraleny) — fototoksyczne i drażniące przewód pokarmowy.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Kawałki 1–2 cm. Poniżej 85 °C są włókniste — użyj wyższej temperatury kąpieli \"twardy korzeń\"."
+          },
+          "pressure_cooker": {
+            "notes": "Kawałki 2 cm, wysokie ciśnienie, naturalne uwolnienie."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "W całości 2–3 h (skórka zejdzie potem), lub kostka 2 cm na 90 min. Najlepsza metoda zachowania betalain.",
+        "recommendedReason": "Pieczenie koncentruje ziemiste związki i betalainy — okazjonalny, kolorowy zastrzyk antyoksydantów, a nie codzienny składnik.",
+        "speciesNotes": {
+          "cat": "Koty: unikać — wysoki ładunek szczawianów jest problemem u ras podatnych na kamicę."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "W całości 2–3 h (skórka zejdzie potem), lub kostka 2 cm na 90 min. Najlepsza metoda zachowania betalain."
+          },
+          "oven": {
+            "notes": "Owiń całe w folii aluminiowej z odrobiną wody. Koncentruje smak."
+          },
+          "stovetop_low": {
+            "warning": "Jeśli gotujesz, dodaj wodę z gotowania do miski — tam trafiły antyoksydanty z betalain."
+          },
+          "pressure_cooker": {
+            "notes": "W całości, wysokie ciśnienie, naturalne uwolnienie. Ciśnienie rozkłada szczawiany lepiej niż para."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Kostka 2 cm, pojedyncza warstwa. Wychodzi aksamitnie.",
+        "recommendedReason": "Pieczenie odparowuje wodę i koncentruje orzechowy smak oraz karotenoidy — najsmaczniejsza forma.",
+        "speciesNotes": {
+          "cat": "Koty: maks. 1 łyżka stołowa na posiłek — wysoki indeks skrobi."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Kostka 2 cm, pojedyncza warstwa. Wychodzi aksamitnie."
+          },
+          "stovetop_low": {
+            "notes": "Gotuj w kostkach na parze; gotowanie w wodzie zalewa miąższ."
+          },
+          "slow_cooker": {
+            "warning": "Będzie bardzo mokra — odcedź lub odparuj płyn przed rozgnieceniem."
+          },
+          "pressure_cooker": {
+            "notes": "Kawałki 2 cm, wysokie ciśnienie, naturalne uwolnienie."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Podawaj na surowo — duża zawartość wody. Pokrój w słupki; gotowanie niszczy konsystencję.",
+        "recommendedReason": "Ogórek to warzywo do podawania na surowo — daje tylko nawodnienie i chrupkość, a gotowanie niszczy oba.",
+        "cookingBlockedReason": "Gotowanie zmienia ogórek w przezroczystą śluzowatą papkę, której zwierzęta nie chcą jeść — surowy to jedyna sensowna forma."
+      },
+      "celery": {
+        "recommendedNotes": "Zmiękcza włókna, które inaczej przeszłyby w całości.",
+        "recommendedReason": "Surowy jest bezpieczny i daje chrupiącą fakturę, którą oferuje seler — zwierzęta z wrażliwymi nerkami powinny unikać z powodu szczawianów.",
+        "speciesNotes": {
+          "cat": "Małe koty i psy poniżej 10 kg: lepiej na parze — drobniejsze siekanie zmniejsza ryzyko zadławienia."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Zmiękcza włókna, które inaczej przeszłyby w całości."
+          },
+          "oven": {
+            "warning": "Wysycha — nieidealne."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Ułóż na płasko w woreczku, pojedyncza warstwa.",
+        "recommendedReason": "Para zachowuje foliany i rutynę, zmiękczając łodygi na tyle, by były wygodnie strawne.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Ułóż na płasko w woreczku, pojedyncza warstwa."
+          },
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie, szybkie uwolnienie."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Przekrój na pół przez łodygę.",
+        "recommendedReason": "Para zachowuje sulforafan i witaminę K w warzywie kapustnym bogatym w składniki odżywcze — podawaj z umiarem ze względu na związki siarki.",
+        "speciesNotes": {
+          "cat": "Koty: unikać przy lekach na tarczycę."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Przekrój na pół przez łodygę.",
+            "warning": "Zapach siarki gromadzi się w zamkniętym woreczku — otwieraj z pokrywką skierowaną od siebie."
+          },
+          "oven": {
+            "notes": "Przekrój na pół, stroną cięcia w dół. Wiele psów woli tę karmelizowaną formę od gotowanej na parze."
+          },
+          "pressure_cooker": {
+            "notes": "Niskie ciśnienie, szybkie uwolnienie. Dłużej i zmienią się w papkę."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1374,6 +1626,36 @@
       "label": "Porzeczki / rodzynki koryntyjskie",
       "compound": "Jak winogrona",
       "effect": "Ostra niewydolność nerek"
+    },
+    "raw_freshwater_fish": {
+      "label": "Surowa ryba słodkowodna (jako baza)",
+      "compound": "Tiaminaza",
+      "effect": "Niszczy tiaminę (B1) → uszkodzenia neurologiczne, drgawki. Gotowanie dezaktywuje enzym. Sporadyczne małe porcje gotowanej ryby słodkowodnej są ok."
+    },
+    "tuna_staple": {
+      "label": "Tuńczyk jako podstawa diety",
+      "compound": "Rtęć + WNKT bez witaminy E",
+      "effect": "Akumulacja rtęci; steatitis (choroba żółtego tłuszczu) z powodu kwasów wielonienasyconych bez wystarczającej witaminy E. Ogranicz do ≤ 10% spożycia i rotuj."
+    },
+    "liver_excess_cat": {
+      "label": "Wątroba w nadmiarze",
+      "compound": "Preformowana witamina A",
+      "effect": "Toksyczność witaminy A (hiperwitaminoza A) — deformacja kości, choroby stawów. Ogranicz wątrobę do 5–10 g/dzień dla 4-kg kota. Koty są szczególnie wrażliwe."
+    },
+    "dog_food_for_cat": {
+      "label": "Karma dla psa długoterminowo",
+      "compound": "Brak tauryny + kwasu arachidonowego + preformowanej witaminy A",
+      "effect": "Nie jest ostro toksyczna, ale śmiertelnie nieadekwatna w skali miesięcy. Koty karmione karmą dla psa rozwijają kardiomiopatię rozstrzeniową, zwyrodnienie siatkówki i stłuszczenie wątroby."
+    },
+    "lilies_environment": {
+      "label": "Lilie (wszystkie części, otoczenie)",
+      "compound": "Nieznana nefrotoksyna",
+      "effect": "To nie pożywienie, ale wystarczy kontakt domowy — nawet pyłek na sierści, zlizany podczas pielęgnacji, powoduje ostrą niewydolność nerek w 36–72 h. Usuń wszystkie lilie (Lilium i Hemerocallis) z każdego domu z kotem."
+    },
+    "vegan_diet_cat": {
+      "label": "Dieta wyłącznie roślinna / wegańska",
+      "compound": "Niezgodność fizjologiczna",
+      "effect": "Koty nie mają enzymów do pozyskiwania kwasu arachidonowego, tauryny, witaminy A, D i argininy ze źródeł roślinnych. Wegańskie diety dla kotów nie są bezpieczne w żadnej długości."
     }
   },
   "suppData": {
