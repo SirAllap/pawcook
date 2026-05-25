@@ -14,6 +14,7 @@
     "./cat-supplements": "./src/cat-supplements.json",
     "./transition": "./src/transition.json",
     "./cat-transition": "./src/cat-transition.json",
-    "./ingredient-meta": "./src/ingredient-meta.json"
+    "./ingredient-meta": "./src/ingredient-meta.json",
+    "./cooked-yield": "./src/cooked-yield.json"
   }
 }

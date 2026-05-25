@@ -6,12 +6,37 @@
     "recommendedMinutes": { "min": 8, "max": 12 },
     "recommendedNotes": "Slice 1 cm thick. Steam until fork-tender; retains beta-carotene better than boiling.",
     "recommendedReason": "Steaming preserves beta-carotene and vitamin C while fully breaking down cell walls dogs can't digest raw.",
+    "applicableCuts": ["whole", "large_chunks", "cubed", "coins", "mandolin_thin", "sticks", "shredded"],
+    "defaultCut": "coins",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 60, "max": 90 }, "notes": "Slice 3–5 mm so the bag conforms. Use a dedicated 85 °C bath — vegetables will not soften at meat-cooking temperatures." },
       "oven":            { "tempC": 200, "minutes": { "min": 25, "max": 35 }, "notes": "Cube 2 cm and toss in a little oil. Roasting concentrates beta-carotene more than steam." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 8, "max": 12 } },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 60, "max": 90 }, "warning": "Slow cookers turn carrots mushy — fine for a stew, less ideal as a standalone side." },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 4, "max": 5 }, "notes": "1 cm chunks, high pressure with 1 cup water, quick release." }
+    },
+    "specsByCut": {
+      "mandolin_thin": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 25, "max": 35 }, "fromFrozenAddMin": 10, "notes": "Vacuum-seal flat in a single layer; ideal for mandolin coins. Cook straight from frozen." },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 2, "max": 4 }, "notes": "Steam — they turn tender almost immediately." }
+      },
+      "whole": {
+        "oven":            { "tempC": 200, "minutes": { "min": 45, "max": 60 }, "notes": "Whole baby carrots or split a large carrot lengthwise." },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 25, "max": 35 }, "notes": "Steam in a colander; takes 4× longer than coins." },
+        "pressure_cooker": { "tempC": 115, "minutes": { "min": 8, "max": 12 }, "notes": "High pressure, natural release." }
+      },
+      "large_chunks": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 75, "max": 105 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 30, "max": 40 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 12, "max": 16 } }
+      },
+      "sticks": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 5, "max": 8 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 20, "max": 28 }, "notes": "Carrot fries — kid- and dog-friendly shape." }
+      },
+      "shredded": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 2, "max": 3 }, "notes": "Wilts in seconds; watch closely." }
+      }
     }
   },
   {
@@ -21,12 +46,25 @@
     "recommendedMinutes": { "min": 30, "max": 40 },
     "recommendedNotes": "Cube 2–3 cm. Roast plain — no sugar, no spice. Mash before serving.",
     "recommendedReason": "Roasting drives off water and concentrates the soluble fiber that regulates stool — the main reason pumpkin is in the bowl.",
+    "applicableCuts": ["whole", "large_chunks", "cubed"],
+    "defaultCut": "large_chunks",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 90, "max": 120 }, "notes": "2–3 cm cubes, dedicated 85 °C bath." },
       "oven":            { "tempC": 180, "minutes": { "min": 30, "max": 40 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 15, "max": 20 }, "notes": "Steam over a colander; boiling waterlogs it and dilutes the fiber benefit." },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 120, "max": 180 }, "warning": "Will be very wet — drain or reduce liquid before mashing." },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 8, "max": 10 }, "notes": "2 cm chunks, high pressure, natural release." }
+    },
+    "specsByCut": {
+      "cubed": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 60, "max": 80 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 25, "max": 35 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 10, "max": 15 } },
+        "pressure_cooker": { "tempC": 115, "minutes": { "min": 6, "max": 8 } }
+      },
+      "whole": {
+        "oven":            { "tempC": 180, "minutes": { "min": 60, "max": 90 }, "notes": "Halve, scoop seeds, place cut-side down on parchment." }
+      }
     }
   },
   {
@@ -41,12 +79,37 @@
     },
     "rawBlocked": true,
     "rawBlockedReason": "Raw sweet potato contains trypsin inhibitors and is essentially indigestible.",
+    "applicableCuts": ["whole", "large_chunks", "cubed", "coins", "mandolin_thin", "sticks"],
+    "defaultCut": "cubed",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 75, "max": 90 }, "notes": "1 cm cubes, dedicated 85 °C bath. Beta-amylase converts starch to maltose — comes out noticeably sweeter than baked." },
       "oven":            { "tempC": 200, "minutes": { "min": 35, "max": 45 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 15, "max": 20 }, "notes": "Steam cubed; boiling raises the glycemic load." },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 180, "max": 240 } },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 8, "max": 10 }, "notes": "2 cm chunks, high pressure, natural release." }
+    },
+    "specsByCut": {
+      "mandolin_thin": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 25, "max": 30 }, "fromFrozenAddMin": 10, "notes": "Vacuum-seal flat. Cooks fastest of all sweet-potato preps." },
+        "oven":            { "tempC": 200, "minutes": { "min": 12, "max": 18 }, "notes": "Single layer on parchment; flip halfway." }
+      },
+      "coins": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 60, "max": 75 }, "fromFrozenAddMin": 15 },
+        "oven":            { "tempC": 200, "minutes": { "min": 25, "max": 35 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 12, "max": 15 } }
+      },
+      "sticks": {
+        "oven":            { "tempC": 200, "minutes": { "min": 25, "max": 35 }, "notes": "Sweet-potato fries — pet-favourite shape, easy to grab." },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 12, "max": 15 } }
+      },
+      "large_chunks": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 90, "max": 105 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 40, "max": 50 } }
+      },
+      "whole": {
+        "oven":            { "tempC": 200, "minutes": { "min": 45, "max": 60 }, "notes": "Prick all over with a fork; sheet-pan, single rack, no rotation needed." },
+        "pressure_cooker": { "tempC": 115, "minutes": { "min": 18, "max": 25 } }
+      }
     }
   },
   {
@@ -56,13 +119,16 @@
     "recommendedMinutes": { "min": 5, "max": 7 },
     "recommendedNotes": "Florets only, no thick stems. Keep al dente — overcooking destroys vitamin C.",
     "recommendedReason": "Short steaming keeps vitamin C and sulforaphane intact while softening the florets enough for canine digestion.",
+    "applicableCuts": ["florets"],
+    "defaultCut": "florets",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 15, "max": 20 }, "notes": "Small florets, single layer in the bag. Sulfur smell will be intense on opening — this is normal.", "warning": "Florets go olive-drab in a sealed bag; nutritionally fine, just visually unappealing." },
       "oven":            { "tempC": 200, "minutes": { "min": 15, "max": 20 }, "warning": "Some dogs refuse the Maillard browning on brassicas — try a small batch first." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 5, "max": 7 } },
       "slow_cooker":     null,
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 0, "max": 1 }, "notes": "Low pressure — the come-up cooks them. Quick-release immediately or they turn to mush." }
-    }
+    },
+    "specsByCut": {}
   },
   {
     "id": "spinach",
@@ -74,12 +140,19 @@
     "speciesNotes": {
       "cat": "Cats: avoid, or limit to a teaspoon weekly — oxalate load is a concern for stone-prone breeds (Burmese, Persian, Himalayan)."
     },
+    "applicableCuts": ["leaves_whole", "leaves_shredded"],
+    "defaultCut": "leaves_whole",
     "methods": {
       "sous_vide":       null,
       "oven":            null,
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 1, "max": 2 }, "notes": "Wilt briefly, drain hard." },
       "slow_cooker":     null,
       "pressure_cooker": null
+    },
+    "specsByCut": {
+      "leaves_shredded": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 0, "max": 1 }, "notes": "Pre-chopped wilts almost instantly — pull the second it turns dark." }
+      }
     }
   },
   {
@@ -89,12 +162,19 @@
     "recommendedMinutes": { "min": 4, "max": 6 },
     "recommendedNotes": "Trim ends. Steam until bright green and tender-crisp. Can be served raw too.",
     "recommendedReason": "Steaming softens the pod fiber without leaching vitamin K and manganese — the nutrients that make green beans a go-to filler for weight-loss diets.",
+    "applicableCuts": ["whole", "sticks"],
+    "defaultCut": "whole",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 30, "max": 40 }, "notes": "Trim ends, keep whole — they hold shape beautifully." },
       "oven":            { "tempC": 200, "minutes": { "min": 12, "max": 15 }, "warning": "Tends to dry them out — pets usually prefer steamed." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 } },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 90, "max": 120 }, "warning": "Will be soft, not tender-crisp." },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 2, "max": 3 }, "notes": "High pressure, quick release." }
+    },
+    "specsByCut": {
+      "sticks": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 3, "max": 5 }, "notes": "Cut into 2 cm bites first — faster, easier for small dogs." }
+      }
     }
   },
   {
@@ -104,12 +184,24 @@
     "recommendedMinutes": { "min": 4, "max": 6 },
     "recommendedNotes": "Slice or cube. Safe raw — cooking only softens for picky eaters.",
     "recommendedReason": "Light steaming softens for picky eaters without destroying the high water content that helps hydration.",
+    "applicableCuts": ["coins", "cubed", "sticks"],
+    "defaultCut": "coins",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 20, "max": 30 }, "warning": "Releases a lot of water into the bag — drain before serving." },
       "oven":            { "tempC": 200, "minutes": { "min": 15, "max": 20 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 } },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 60, "max": 90 }, "warning": "Turns to mush — fine in a stew, not as a side." },
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 0, "max": 1 }, "notes": "Low pressure, quick release — overcooks instantly." }
+    },
+    "specsByCut": {
+      "cubed": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 15, "max": 20 } }
+      },
+      "sticks": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 3, "max": 5 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 12, "max": 15 } }
+      }
     }
   },
   {
@@ -119,13 +211,16 @@
     "recommendedMinutes": { "min": 2, "max": 4 },
     "recommendedNotes": "Fresh or frozen (thaw first). Never use canned (added sodium).",
     "recommendedReason": "Quick steam preserves lutein and B-vitamins that boiling leaches out.",
+    "applicableCuts": ["whole"],
+    "defaultCut": "whole",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 10, "max": 15 } },
       "oven":            null,
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 2, "max": 4 } },
       "slow_cooker":     null,
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 0, "max": 1 }, "notes": "Low pressure, quick release. Frozen peas only need to thaw." }
-    }
+    },
+    "specsByCut": {}
   },
   {
     "id": "kale",
@@ -139,12 +234,19 @@
     },
     "rawBlocked": true,
     "rawBlockedReason": "Raw kale's enzymes activate goitrogenic thiocyanates and make oxalate more bioavailable.",
+    "applicableCuts": ["leaves_whole", "leaves_shredded"],
+    "defaultCut": "leaves_shredded",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 15, "max": 20 }, "warning": "Texture goes slick in a sealed bag — most pets prefer it steamed." },
       "oven":            { "tempC": 150, "minutes": { "min": 18, "max": 25 }, "warning": "This is effectively a kale-chip prep — treat-portion, not a side." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 3, "max": 5 } },
       "slow_cooker":     null,
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 1, "max": 2 }, "notes": "Low pressure — best method for reducing oxalates in kale, beets and spinach." }
+    },
+    "specsByCut": {
+      "leaves_whole": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 5, "max": 7 }, "notes": "Whole leaves take longer than shredded; strip the central rib first." }
+      }
     }
   },
   {
@@ -156,12 +258,24 @@
     "recommendedReason": "Steam fully softens the dense fiber and breaks down furanocoumarins that irritate the gut when raw.",
     "rawBlocked": true,
     "rawBlockedReason": "Raw parsnips contain furanocoumarins (psoralens) — phototoxic and GI-irritating.",
+    "applicableCuts": ["large_chunks", "cubed", "coins"],
+    "defaultCut": "cubed",
     "methods": {
       "sous_vide":       { "tempC": 88, "minutes": { "min": 60, "max": 90 }, "notes": "1–2 cm chunks. Below 85 °C they stay fibrous — use the higher 'firm root' bath temperature." },
       "oven":            { "tempC": 200, "minutes": { "min": 30, "max": 40 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 10, "max": 14 } },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 120, "max": 180 } },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 5, "max": 6 }, "notes": "2 cm chunks, high pressure, natural release." }
+    },
+    "specsByCut": {
+      "coins": {
+        "sous_vide":       { "tempC": 88, "minutes": { "min": 40, "max": 55 }, "fromFrozenAddMin": 12 },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 6, "max": 9 } }
+      },
+      "large_chunks": {
+        "sous_vide":       { "tempC": 88, "minutes": { "min": 75, "max": 105 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 35, "max": 45 } }
+      }
     }
   },
   {
@@ -174,12 +288,25 @@
     "speciesNotes": {
       "cat": "Cats: avoid — high oxalate load is a concern for stone-prone breeds."
     },
+    "applicableCuts": ["whole", "large_chunks", "cubed"],
+    "defaultCut": "whole",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 90, "max": 180 }, "notes": "Whole at 2–3 hr (skin slips off after), or 2 cm cubes at 90 min. Best method for retaining betalains." },
       "oven":            { "tempC": 200, "minutes": { "min": 60, "max": 75 }, "notes": "Wrap whole in foil with a splash of water. Concentrates flavor." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 25, "max": 35 }, "warning": "If you boil, include the cooking water in the bowl — that's where the betalain antioxidants ended up." },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 240, "max": 360 } },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 15, "max": 20 }, "notes": "Whole, high pressure, natural release. Pressure breaks down oxalates better than steaming." }
+    },
+    "specsByCut": {
+      "cubed": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 75, "max": 90 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 30, "max": 40 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 15, "max": 20 } }
+      },
+      "large_chunks": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 90, "max": 120 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 40, "max": 50 } }
+      }
     }
   },
   {
@@ -192,12 +319,21 @@
     "speciesNotes": {
       "cat": "Cats: cap at 1 tablespoon per meal — high starch."
     },
+    "applicableCuts": ["large_chunks", "cubed"],
+    "defaultCut": "large_chunks",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 75, "max": 90 }, "notes": "2 cm cubes, single layer. Comes out silky." },
       "oven":            { "tempC": 200, "minutes": { "min": 35, "max": 45 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 15, "max": 20 }, "notes": "Steam cubed; boiling waterlogs the flesh." },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 180, "max": 240 }, "warning": "Will be very wet — drain or reduce liquid before mashing." },
       "pressure_cooker": { "tempC": 115, "minutes": { "min": 8, "max": 10 }, "notes": "2 cm chunks, high pressure, natural release." }
+    },
+    "specsByCut": {
+      "cubed": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 60, "max": 75 } },
+        "oven":            { "tempC": 200, "minutes": { "min": 25, "max": 35 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 10, "max": 15 } }
+      }
     }
   },
   {
@@ -209,13 +345,16 @@
     "recommendedReason": "Cucumber is 95% water — cooking serves no purpose and destroys the hydration and crunch that are its only contribution.",
     "cookingBlocked": true,
     "cookingBlockedReason": "Cooking turns cucumber into a translucent slime pets refuse — raw is the only sensible preparation.",
+    "applicableCuts": ["coins", "sticks"],
+    "defaultCut": "coins",
     "methods": {
       "sous_vide":       null,
       "oven":            null,
       "stovetop_low":    null,
       "slow_cooker":     null,
       "pressure_cooker": null
-    }
+    },
+    "specsByCut": {}
   },
   {
     "id": "celery",
@@ -227,12 +366,20 @@
     "speciesNotes": {
       "cat": "Small cats and dogs under 10 kg: consider steamed instead — finer chop reduces choking risk."
     },
+    "applicableCuts": ["sticks", "shredded"],
+    "defaultCut": "shredded",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 25, "max": 35 }, "notes": "Softens the strings that otherwise pass through whole." },
       "oven":            { "tempC": 200, "minutes": { "min": 15, "max": 20 }, "warning": "Dries out — not ideal." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 } },
       "slow_cooker":     { "tempC": 95, "minutes": { "min": 60, "max": 90 } },
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 1, "max": 2 } }
+    },
+    "specsByCut": {
+      "sticks": {
+        "sous_vide":       { "tempC": 85, "minutes": { "min": 30, "max": 40 } },
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 5, "max": 7 } }
+      }
     }
   },
   {
@@ -242,12 +389,20 @@
     "recommendedMinutes": { "min": 4, "max": 6 },
     "recommendedNotes": "Trim woody ends. Steam until tender. Slice into bite-size pieces before serving.",
     "recommendedReason": "Steam softens the woody fibers while preserving folate — folate is asparagus's main nutritional contribution.",
+    "applicableCuts": ["whole", "large_chunks"],
+    "defaultCut": "whole",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 12, "max": 15 }, "notes": "Lay flat in the bag, single layer." },
       "oven":            { "tempC": 200, "minutes": { "min": 12, "max": 15 } },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 } },
       "slow_cooker":     null,
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 1, "max": 2 }, "notes": "Low pressure, quick release." }
+    },
+    "specsByCut": {
+      "large_chunks": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 3, "max": 5 }, "notes": "2 cm pieces — quicker than whole spears." },
+        "oven":            { "tempC": 200, "minutes": { "min": 10, "max": 12 } }
+      }
     }
   },
   {
@@ -260,12 +415,20 @@
     "speciesNotes": {
       "cat": "Cats: avoid if on thyroid medication."
     },
+    "applicableCuts": ["whole", "large_chunks"],
+    "defaultCut": "whole",
     "methods": {
       "sous_vide":       { "tempC": 85, "minutes": { "min": 30, "max": 40 }, "notes": "Halve through the stem.", "warning": "Sulfur smell concentrates in a sealed bag — open with the lid pointed away." },
       "oven":            { "tempC": 200, "minutes": { "min": 20, "max": 25 }, "notes": "Halve, cut-side down. Many dogs prefer this caramelized form to steamed." },
       "stovetop_low":    { "tempC": 100, "minutes": { "min": 6, "max": 8 } },
       "slow_cooker":     null,
       "pressure_cooker": { "tempC": 110, "minutes": { "min": 1, "max": 2 }, "notes": "Low pressure, quick release. Longer and they turn to mush." }
+    },
+    "specsByCut": {
+      "large_chunks": {
+        "stovetop_low":    { "tempC": 100, "minutes": { "min": 4, "max": 6 }, "notes": "Quartered sprouts cook faster than halves." },
+        "oven":            { "tempC": 200, "minutes": { "min": 15, "max": 20 } }
+      }
     }
   }
 ]

@@ -1,0 +1,21 @@
+{
+  "$comment": "Raw → cooked weight yield, keyed by ingredient id then VegCut. Value = cookedG / rawG. Used by shopping.ts to size raw purchases when appliesCookYield is true, and by the VegBagPlanner to convert cooked-weight bag targets back to raw on-hand prep. Surface area drives most differences: more cuts → more water loss for leafy/cruciferous, similar for root veg. Sources: USDA, UMN Extension, FreeFoodTips, plus the domain research brief in CLAUDE-side notes.",
+  "yields": {
+    "carrots":          { "whole": 0.92, "large_chunks": 0.90, "cubed": 0.89, "coins": 0.88, "mandolin_thin": 0.78, "sticks": 0.86, "shredded": 0.75 },
+    "pumpkin":          { "whole": 0.88, "large_chunks": 0.85, "cubed": 0.82 },
+    "sweet_potato":     { "whole": 0.95, "large_chunks": 0.92, "cubed": 0.90 },
+    "broccoli":         { "florets": 0.90 },
+    "spinach":          { "leaves_whole": 0.18, "leaves_shredded": 0.15 },
+    "green_beans":      { "whole": 0.95, "sticks": 0.93 },
+    "zucchini":         { "coins": 0.70, "cubed": 0.72, "sticks": 0.70 },
+    "peas":             { "whole": 1.00 },
+    "kale":             { "leaves_whole": 0.35, "leaves_shredded": 0.30 },
+    "parsnips":         { "large_chunks": 0.92, "cubed": 0.90, "coins": 0.88 },
+    "beets":            { "whole": 0.95, "large_chunks": 0.92, "cubed": 0.90 },
+    "butternut_squash": { "large_chunks": 0.85, "cubed": 0.82 },
+    "cucumber":         { "coins": 1.00, "sticks": 1.00 },
+    "celery":           { "sticks": 1.00, "shredded": 0.95 },
+    "asparagus":        { "whole": 0.90, "large_chunks": 0.88 },
+    "brussels_sprouts": { "whole": 0.92, "large_chunks": 0.90 }
+  }
+}

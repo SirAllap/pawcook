@@ -275,6 +275,85 @@
       "tags": ["protein", "fiber"]
     },
     {
+      "id": "kale",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["leafy", "iron", "oxalates"],
+      "dogMaxPctDaily": 0.10,
+      "avoidForConditions": ["kidney"],
+      "catNotes": "Avoid for cats — high oxalates + goitrogens not worth the small nutritional gain for an obligate carnivore."
+    },
+    {
+      "id": "parsnips",
+      "componentRoles": ["veg", "starch"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["sweet-root", "complex-carb"]
+    },
+    {
+      "id": "beets",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["betalains", "folate", "oxalates"],
+      "avoidForConditions": ["urolithiasis_calcium_oxalate"],
+      "catNotes": "Avoid for cats — oxalate load is a concern for stone-prone breeds."
+    },
+    {
+      "id": "butternut_squash",
+      "componentRoles": ["starch"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["beta-carotene", "complex-carb"],
+      "avoidForConditions": ["diabetes"]
+    },
+    {
+      "id": "cucumber",
+      "componentRoles": ["veg"],
+      "species": ["dog", "cat"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["hydration", "raw-only"]
+    },
+    {
+      "id": "celery",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "standard",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["fiber", "hydration"]
+    },
+    {
+      "id": "asparagus",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["folate"]
+    },
+    {
+      "id": "brussels_sprouts",
+      "componentRoles": ["veg"],
+      "species": ["dog"],
+      "varietyTier": "diverse",
+      "accessibility": "easy",
+      "storeSection": "produce",
+      "tags": ["cruciferous"],
+      "dogMaxPctDaily": 0.10
+    },
+    {
       "id": "blueberries",
       "componentRoles": ["fruit"],
       "species": ["dog"],
