@@ -1,7 +1,9 @@
 import { Link, useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
-import { Pencil, ArrowLeft, AlertTriangle, Info, ClipboardList, ChevronRight, Plus } from 'lucide-react';
+import { Pencil, ArrowLeft, ClipboardList, ChevronRight, Plus } from 'lucide-react';
+import { AccentTile } from '../../components/ui/accent-tile';
+import { Callout } from '../../components/ui/callout';
 import { calculateNutrition, recommendForPet } from '@pawcook/shared';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
@@ -39,12 +41,13 @@ export default function PetDetail() {
 
   return (
     <div className="space-y-6">
+      {/* Breadcrumb pill — see PlanView for the design rationale. */}
       <button
         type="button"
         onClick={() => navigate('/pets')}
-        className="inline-flex items-center gap-1 text-xs font-bold text-muted-fg hover:text-foreground transition-colors min-h-[44px] pr-2"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/70 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-muted-fg hover:text-foreground hover:bg-surface-2 transition-colors min-h-[36px]"
       >
-        <ArrowLeft className="h-3 w-3" aria-hidden />
+        <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         {t('pets.detail.back')}
       </button>
 
@@ -111,11 +114,7 @@ export default function PetDetail() {
       </Card>
 
       {findings.length > 0 && (
-        <Card padding="md" className="bg-warning/5 border-warning/30">
-          <p className="text-[10px] font-black uppercase tracking-wider text-warning mb-2 flex items-center gap-1.5">
-            <AlertTriangle className="h-3 w-3" aria-hidden />
-            {t('pets.detail.findings')}
-          </p>
+        <Callout tone="warning" eyebrow={t('pets.detail.findings')}>
           <ul className="space-y-1.5">
             {findings.slice(0, 6).map((f, i) => (
               <li key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed">
@@ -124,7 +123,7 @@ export default function PetDetail() {
               </li>
             ))}
           </ul>
-        </Card>
+        </Callout>
       )}
 
       <Card padding="none" className="overflow-hidden">
@@ -150,15 +149,16 @@ export default function PetDetail() {
               <li key={plan.id}>
                 <Link
                   to={`/meal-plan/${plan.id}`}
-                  className="flex items-center gap-3 p-4 hover:bg-surface-2 transition-colors"
+                  className="flex items-center gap-3 p-4 hover:bg-surface-2 transition-colors group"
                 >
+                  <AccentTile Icon={ClipboardList} accent="primary" size="md" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold truncate">{plan.name}</p>
                     <p className="text-[11px] text-muted-fg mt-0.5">
                       {plan.durationDays} {t('mealPlan.wizard.days')}
                     </p>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-muted-fg shrink-0" aria-hidden />
+                  <ChevronRight className="h-4 w-4 text-muted-fg shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
                 </Link>
               </li>
             ))}
@@ -166,15 +166,12 @@ export default function PetDetail() {
         )}
       </Card>
 
-      <Card padding="md" className="bg-info/5 border-info/30">
-        <p className="text-[10px] font-black uppercase tracking-wider text-info mb-2 flex items-center gap-1.5">
-          <Info className="h-3 w-3" aria-hidden />
-          {t('common.disclaimerLabel', { defaultValue: 'Note' })}
-        </p>
-        <p className="text-sm text-foreground/90 leading-relaxed">
-          {t('common.disclaimer')}
-        </p>
-      </Card>
+      <Callout
+        tone="info"
+        eyebrow={t('common.disclaimerLabel', { defaultValue: 'Note' })}
+      >
+        {t('common.disclaimer')}
+      </Callout>
     </div>
   );
 }

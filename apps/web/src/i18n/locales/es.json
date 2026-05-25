@@ -51,8 +51,8 @@
       "title": "Tus mascotas",
       "subtitle": "Añade un perfil para cada animal que alimentas para que los planes se ajusten a su especie, edad y condiciones.",
       "addPet": "Añadir mascota",
-      "emptyTitle": "Aún no hay mascotas",
-      "emptyDescription": "Añade tu primera mascota para desbloquear planes de comida y listas de compra hechos a su medida."
+      "emptyTitle": "Tu hogar empieza aquí.",
+      "emptyDescription": "Añade una mascota y generaremos un plan que sí encaja en tu cocina."
     },
     "new": {
       "title": "Añadir mascota",
@@ -199,16 +199,16 @@
       "title": "Planes de comidas",
       "subtitle": "Genera un plan semanal, quincenal o mensual y la lista de la compra para llevar a la tienda.",
       "create": "Crear plan",
-      "emptyTitle": "Aún no hay planes",
-      "emptyDescription": "Crea tu primer plan para generar menús y listas de compra a partir de tus mascotas."
+      "emptyTitle": "Aún no hay plan.",
+      "emptyDescription": "Un plan por hogar. Cocina una vez, alimenta a todos, dosifica el resto."
     },
     "new": {
       "title": "Nuevo plan",
       "subtitle": "Elige tus mascotas y los días a planificar. Nos ocupamos del resto."
     },
     "needPet": {
-      "title": "Añade primero una mascota",
-      "description": "Los planes usan el perfil de cada mascota para calcular menús. Añade una para empezar.",
+      "title": "Añade una mascota primero.",
+      "description": "Necesitamos al menos una boca que alimentar.",
       "cta": "Añadir mascota"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Total de la compra",
       "totalSummary": "{{items}} artículos · {{grams}} g en todas las secciones",
-      "empty": "Nada que comprar — tu despensa ya cubre este plan.",
+      "empty": "Genera un plan y construiremos la lista de la bolsa.",
       "exportFooter": "Lista de compras PawCook — no es asesoramiento veterinario.",
       "section": {
         "butcher": "Carnicería",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Eliminar un plan no se puede deshacer. Tus perfiles de mascotas guardados no se verán afectados.",
     "cookingPlan": {
-      "emptyTitle": "Plan de cocción solo para sous-vide",
-      "emptyHelp": "Las bolsas se generan cuando el plan usa sous-vide. Regenera con sous-vide como método de cocción para ver el calendario de bolsas.",
+      "emptyTitle": "El calendario de bolsas va con sous-vide.",
+      "emptyHelp": "Cambia el plan a sous-vide y construiremos un calendario de bolsas con fechas.",
       "noBagsTitle": "Nada para embolsar",
       "noBagsHelp": "Este plan no tiene ingredientes aptos para lote — todo se cocinará fresco.",
       "summaryLabel": "Plan de cocción",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cocina",
     "toastReady": "¡Receta lista!",
-    "placeholderHint": "Elige una carne y un método, luego pulsa Calcular.",
+    "placeholderHint": "Elige una carne. Elige un método. Nosotros hacemos los cálculos.",
     "catSupplementsTitle": "Suplementos para gato tras cocinar",
     "catSupplementsBody": "El calor destruye la taurina, las vitaminas B (tiamina, niacina) y parte de la vitamina E. Añade el stack felino — taurina 250–500 mg, complejo B, vitamina E — una vez enfriado el plato.",
     "subtitle_cat": "Tiempo y temperatura seguros para la comida de tu gato. Recuerda añadir taurina + complejo B tras cocinar.",
@@ -583,6 +583,258 @@
       "recCaption": "rec: {{method}}",
       "pillAria": "Mostrando {{active}}; el método recomendado es {{recommended}}",
       "fellBackTo": "mantenido como {{method}} — {{appliance}} no es adecuado para esta verdura"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Cortar en rodajas de 1 cm. Cocer al vapor hasta que estén tiernas; conserva mejor el betacaroteno que hervir.",
+        "recommendedReason": "El vapor conserva el betacaroteno y la vitamina C mientras rompe las paredes celulares que los perros no digieren crudas.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cortar en lonchas de 3–5 mm para que se ajusten a la bolsa. Usa un baño dedicado a 85 °C — las verduras no se ablandan a temperaturas de cocción de la carne."
+          },
+          "oven": {
+            "notes": "Cubos de 2 cm con un poco de aceite. Asar concentra el betacaroteno más que el vapor."
+          },
+          "slow_cooker": {
+            "warning": "Las ollas de cocción lenta dejan la zanahoria blanda — bien para un guiso, menos ideal como guarnición."
+          },
+          "pressure_cooker": {
+            "notes": "Trozos de 1 cm, alta presión con 1 taza de agua, liberación rápida."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Cubos de 2–3 cm. Asar al natural — sin azúcar ni especias. Triturar antes de servir.",
+        "recommendedReason": "Asar elimina agua y concentra la fibra soluble que regula las heces — la razón principal por la que la calabaza está en el cuenco.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 2–3 cm, baño dedicado a 85 °C."
+          },
+          "stovetop_low": {
+            "notes": "Cocer al vapor sobre un colador; hervirla la satura de agua y diluye el beneficio de la fibra."
+          },
+          "slow_cooker": {
+            "warning": "Quedará muy mojada — escurre o reduce el líquido antes de triturar."
+          },
+          "pressure_cooker": {
+            "notes": "Trozos de 2 cm, alta presión, liberación natural."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Siempre cocinada — el boniato crudo es difícil de digerir. Cortar en cubos o hornear entero y triturar.",
+        "recommendedReason": "Asar caramelize el almidón en azúcares fácilmente digeribles y es la preparación más palatable. El sous-vide produce un resultado más dulce gracias a la conversión enzimática lenta, si tienes tiempo.",
+        "rawBlockedReason": "El boniato crudo contiene inhibidores de tripsina y es prácticamente indigesto.",
+        "speciesNotes": {
+          "cat": "Cocinada y en muy poca cantidad para gatos — los carbohidratos no son esenciales en su dieta."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 1 cm, baño dedicado a 85 °C. La beta-amilasa convierte el almidón en maltosa — sale notablemente más dulce que al horno."
+          },
+          "stovetop_low": {
+            "notes": "Vaporizar en cubos; hervir aumenta la carga glucémica."
+          },
+          "pressure_cooker": {
+            "notes": "Trozos de 2 cm, alta presión, liberación natural."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Solo floretes, sin tallos gruesos. Mantén al dente — sobrecocer destruye la vitamina C.",
+        "recommendedReason": "Vaporizar brevemente conserva la vitamina C y el sulforafano mientras ablanda los floretes lo suficiente para la digestión canina.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Floretes pequeños, una sola capa en la bolsa. El olor a azufre será intenso al abrir — es normal.",
+            "warning": "Los floretes adquieren un color verde oliva en bolsa sellada; nutricionalmente bien, solo visualmente poco apetecible."
+          },
+          "oven": {
+            "warning": "Algunos perros rechazan el dorado Maillard en brásicas — prueba con una pequeña cantidad primero."
+          },
+          "pressure_cooker": {
+            "notes": "Baja presión — la subida ya los cocina. Liberación rápida inmediata o se vuelven puré."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Marchitar brevemente en agua hirviendo, escurrir, picar. Reduce ligeramente los oxalatos.",
+        "recommendedReason": "Un breve hervor y escurrido reduce los oxalatos que interfieren con la absorción de calcio, mientras preserva folato y hierro.",
+        "speciesNotes": {
+          "cat": "Evita en gatos con problemas urinarios — los oxalatos pueden agravar la formación de cristales."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Marchitar brevemente, escurrir bien."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Quitar las puntas. Vaporizar hasta verde brillante y tiernas pero crujientes. También se pueden servir crudas.",
+        "recommendedReason": "Vaporizar ablanda la fibra de la vaina sin lavar la vitamina K ni el manganeso — los nutrientes que hacen de las judías verdes un relleno ideal para dietas de pérdida de peso.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Quita las puntas, déjalas enteras — mantienen la forma maravillosamente."
+          },
+          "oven": {
+            "warning": "Tiende a secarlas — los animales suelen preferirlas al vapor."
+          },
+          "slow_cooker": {
+            "warning": "Quedarán blandas, no crujientes."
+          },
+          "pressure_cooker": {
+            "notes": "Alta presión, liberación rápida."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Cortar en rodajas o cubos. Segura cruda — la cocción solo la ablanda para animales exigentes.",
+        "recommendedReason": "Vaporizar la ablanda lo suficiente para animales sin dientes o exigentes mientras conserva su contenido de agua — una guarnición ideal de hidratación.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Suelta mucha agua en la bolsa — escurre antes de servir."
+          },
+          "slow_cooker": {
+            "warning": "Se vuelve puré — bien en un guiso, no como guarnición."
+          },
+          "pressure_cooker": {
+            "notes": "Baja presión, liberación rápida — se cuece de más al instante."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Frescos o congelados (descongelar primero). Nunca uses los enlatados (sodio añadido).",
+        "recommendedReason": "Una vaporización breve preserva la vitamina K y la proteína de las legumbres mientras evita la blandura excesiva.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Baja presión, liberación rápida. Los guisantes congelados solo necesitan descongelarse."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Desprende las hojas de los tallos duros, pica fina. Con moderación — oxalatos + tiocianatos.",
+        "recommendedReason": "Vaporizar conserva el calcio, el hierro y el sulforafano mientras ablanda las fibras duras — sirve solo en pequeñas cantidades por los tiocianatos.",
+        "rawBlockedReason": "Las enzimas de la col rizada cruda activan los tiocianatos goitrógenos y hacen que el oxalato sea más biodisponible.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar si toman medicación tiroidea. Por lo demás, solo de forma ocasional."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "La textura se vuelve viscosa en bolsa sellada — la mayoría de los animales la prefiere al vapor."
+          },
+          "oven": {
+            "warning": "Esto es efectivamente una preparación tipo chip de col rizada — porción de premio, no de guarnición."
+          },
+          "pressure_cooker": {
+            "notes": "Baja presión — el mejor método para reducir oxalatos en la col rizada, la remolacha y las espinacas."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Trozos de 1–2 cm. Por debajo de 85 °C quedan fibrosas — usa la temperatura de baño \"raíz firme\" más alta.",
+        "recommendedReason": "Vaporizar las ablanda lo suficiente para masticar mientras conserva su sabor dulce y aporta fibra prebiótica para la salud intestinal.",
+        "rawBlockedReason": "Las chirivías crudas contienen furanocumarinas (psoralenos) — fototóxicas e irritantes gastrointestinales.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Trozos de 1–2 cm. Por debajo de 85 °C quedan fibrosos — usa la temperatura más alta de baño \"raíz firme\"."
+          },
+          "pressure_cooker": {
+            "notes": "Trozos de 2 cm, alta presión, liberación natural."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Enteras 2–3 h (la piel sale después), o cubos de 2 cm a 90 min. Mejor método para conservar las betalaínas.",
+        "recommendedReason": "Asar concentra los compuestos terrosos y las betalaínas — un colorido empujón ocasional de antioxidantes, no un alimento básico.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar — la alta carga de oxalatos preocupa en razas propensas a cálculos."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Enteras 2–3 h (la piel se desprende después), o cubos de 2 cm a 90 min. El mejor método para conservar betalaínas."
+          },
+          "oven": {
+            "notes": "Envuelve enteras en papel de aluminio con un chorrito de agua. Concentra el sabor."
+          },
+          "stovetop_low": {
+            "warning": "Si las hierves, incluye el agua de cocción en el cuenco — ahí han ido los antioxidantes de betalaína."
+          },
+          "pressure_cooker": {
+            "notes": "Enteras, alta presión, liberación natural. La presión descompone los oxalatos mejor que el vapor."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Cubos de 2 cm, una sola capa. Sale sedoso.",
+        "recommendedReason": "Asar concentra el sabor a fruto seco y los carotenoides al evaporar el agua — la preparación más palatable.",
+        "speciesNotes": {
+          "cat": "Gatos: máximo 1 cucharada por comida — alto en almidón."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 2 cm, una sola capa. Sale sedoso."
+          },
+          "stovetop_low": {
+            "notes": "Vaporiza en cubos; hervir empapa la pulpa."
+          },
+          "slow_cooker": {
+            "warning": "Quedará muy mojada — escurre o reduce el líquido antes de triturar."
+          },
+          "pressure_cooker": {
+            "notes": "Trozos de 2 cm, alta presión, liberación natural."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Servir crudo — alto contenido en agua. Cortar en bastones; cocinar arruina la textura.",
+        "recommendedReason": "El pepino es una verdura para servir cruda — todo lo que aporta es hidratación y crujido, y la cocción destruye ambas cosas.",
+        "cookingBlockedReason": "Cocinar convierte al pepino en una sustancia translúcida y viscosa que los animales rechazan — crudo es la única preparación sensata."
+      },
+      "celery": {
+        "recommendedNotes": "Ablanda las fibras que de otro modo pasarían enteras.",
+        "recommendedReason": "Crudo es seguro y ofrece la masticación crujiente que aporta el apio — los animales con riñones sensibles deben evitarlo por el contenido alto en oxalatos.",
+        "speciesNotes": {
+          "cat": "Gatos pequeños y perros bajo 10 kg: considera al vapor en su lugar — picar más fino reduce el riesgo de atragantamiento."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Ablanda los hilos que de otro modo pasarían enteros."
+          },
+          "oven": {
+            "warning": "Se seca — no es ideal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Coloca plano en la bolsa, en una sola capa.",
+        "recommendedReason": "Vaporizar conserva los folatos y la rutina mientras ablanda los tallos lo justo para una digestión cómoda.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Coloca plano en la bolsa, en una sola capa."
+          },
+          "pressure_cooker": {
+            "notes": "Baja presión, liberación rápida."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Cortar por la mitad a través del tallo.",
+        "recommendedReason": "Vaporizar conserva el sulforafano y la vitamina K en una verdura crucífera densa en nutrientes — sirve con moderación por los compuestos sulfurosos.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar si toman medicación tiroidea."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cortar por la mitad a través del tallo.",
+            "warning": "El olor a azufre se concentra en bolsa sellada — abre con la tapa apuntando lejos."
+          },
+          "oven": {
+            "notes": "Córtalas por la mitad, lado cortado hacia abajo. Muchos perros prefieren esta forma caramelizada al vapor."
+          },
+          "pressure_cooker": {
+            "notes": "Baja presión, liberación rápida. Más tiempo y se vuelven puré."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1058,6 +1310,33 @@
         "eyebrow": "Asistente",
         "caption": "\"Cocinar por adelantado\" con estadísticas en vivo: bolsas · sesiones · ahorro frente a la rotación diaria. Ves el beneficio antes de generar.",
         "principle": "La seguibilidad es un insumo nutricional, no un detalle de UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suplementos diarios",
+          "taurine": "Taurina en polvo",
+          "taurineDose": "250 mg/día",
+          "codLiver": "Aceite de hígado de bacalao",
+          "codLiverDose": "1 mL, 3×/semana",
+          "calcium": "Citrato de calcio",
+          "calciumDose": "287 mg/día",
+          "dayLabel": "Día 1 · Lun 25 may",
+          "beefDay": "Día de ternera",
+          "mainGrams": "{{g}}g ternera"
+        },
+        "cooking": {
+          "title": "Plan de cocción",
+          "summary": "4 bolsas · 4 sesiones de cocción · una proteína por bolsa",
+          "groupTotal": "{{bags}} bolsas · {{g}} g total",
+          "bagRow": "{{dates}} · consumir antes del {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} bolsa(s) de {{meat}} en {{days}} días para {{pets}} mascotas. Cocina los {{kg}} kg de una vez — refrigera 1 bolsa, congela el resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Una proteína por comida · la tarjeta diaria de suplementos cubre la diferencia",
+          "summary": "7 días · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Grosellas / pasas de Corinto",
       "compound": "Igual que las uvas",
       "effect": "Insuficiencia renal aguda"
+    },
+    "raw_freshwater_fish": {
+      "label": "Pescado de agua dulce crudo (como base)",
+      "compound": "Tiaminasa",
+      "effect": "Destruye la tiamina (B1) → daño neurológico, convulsiones. La cocción inactiva la enzima. Pequeñas cantidades ocasionales de pescado de agua dulce cocinado son aceptables."
+    },
+    "tuna_staple": {
+      "label": "Atún como base de la dieta",
+      "compound": "Mercurio + AGPI sin vitamina E",
+      "effect": "Acumulación de mercurio; esteatitis (enfermedad de la grasa amarilla) por grasas poliinsaturadas sin vitamina E suficiente. Limita al ≤ 10% de la ingesta y rota."
+    },
+    "liver_excess_cat": {
+      "label": "Hígado en exceso",
+      "compound": "Vitamina A preformada",
+      "effect": "Toxicidad por vitamina A (hipervitaminosis A) — deformación ósea, enfermedad articular. Limita el hígado a 5–10 g/día para un gato de 4 kg. Los gatos son particularmente sensibles."
+    },
+    "dog_food_for_cat": {
+      "label": "Comida para perros a largo plazo",
+      "compound": "Falta taurina + ácido araquidónico + vitamina A preformada",
+      "effect": "No es agudamente tóxica, pero es mortalmente inadecuada a los pocos meses. Los gatos alimentados con comida para perros desarrollan cardiomiopatía dilatada, degeneración retiniana e hígado graso."
+    },
+    "lilies_environment": {
+      "label": "Lirios (todas las partes, en el entorno)",
+      "compound": "Nefrotoxina desconocida",
+      "effect": "No es un alimento, pero el contacto doméstico basta — incluso el polen en el pelaje, ingerido al acicalarse, provoca insuficiencia renal aguda en 36–72 h. Retira todos los lirios (Lilium y Hemerocallis) de cualquier hogar con un gato."
+    },
+    "vegan_diet_cat": {
+      "label": "Dieta solo vegetal / vegana",
+      "compound": "Incompatibilidad fisiológica",
+      "effect": "Los gatos carecen de las enzimas para obtener ácido araquidónico, taurina, vitamina A, vitamina D y arginina de fuentes vegetales. Las dietas veganas para gatos no son seguras en ninguna duración."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o ha sido movida.",
     "home": "Volver al inicio"
+  },
+  "footer": {
+    "license": "MIT · Código abierto"
   }
 }

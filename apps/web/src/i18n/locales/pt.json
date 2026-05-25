@@ -51,8 +51,8 @@
       "title": "Os teus animais",
       "subtitle": "Adiciona um perfil para cada animal que alimentas para que os planos correspondam à espécie, idade e condições.",
       "addPet": "Adicionar animal",
-      "emptyTitle": "Ainda sem animais",
-      "emptyDescription": "Adiciona o teu primeiro animal para desbloquear planos e listas de compras à medida."
+      "emptyTitle": "Sua casa começa aqui.",
+      "emptyDescription": "Adicione um pet e vamos gerar um plano que realmente cabe na sua cozinha."
     },
     "new": {
       "title": "Adicionar animal",
@@ -199,16 +199,16 @@
       "title": "Planos de refeições",
       "subtitle": "Gera um plano semanal, quinzenal ou mensal e a lista de compras para a loja.",
       "create": "Criar plano",
-      "emptyTitle": "Ainda sem planos",
-      "emptyDescription": "Cria o teu primeiro plano para gerar menus e listas de compras a partir dos teus animais."
+      "emptyTitle": "Ainda sem plano.",
+      "emptyDescription": "Um plano por casa. Cozinhe uma vez, alimente todos, dose o resto."
     },
     "new": {
       "title": "Novo plano",
       "subtitle": "Escolhe os teus animais e quantos dias planear. Cuidamos do resto."
     },
     "needPet": {
-      "title": "Adiciona primeiro um animal",
-      "description": "Os planos usam o perfil de cada animal para calcular os menus. Adiciona um para começar.",
+      "title": "Adicione um pet primeiro.",
+      "description": "Precisamos de pelo menos uma boca para alimentar.",
       "cta": "Adicionar animal"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Total da compra",
       "totalSummary": "{{items}} itens · {{grams}} g em todas as secções",
-      "empty": "Nada para comprar — a tua despensa já cobre este plano.",
+      "empty": "Gere um plano e vamos montar a lista de compras.",
       "exportFooter": "Lista de compras PawCook — não é aconselhamento veterinário.",
       "section": {
         "butcher": "Talho",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Excluir um plano não pode ser desfeito. Os perfis de pets salvos não serão afetados.",
     "cookingPlan": {
-      "emptyTitle": "Plano de cozimento apenas para sous-vide",
-      "emptyHelp": "Os sacos são gerados quando o plano usa sous-vide. Gere novamente com sous-vide como método de cozimento para ver o cronograma dos sacos.",
+      "emptyTitle": "O cronograma de sacos fica com sous-vide.",
+      "emptyHelp": "Mude o plano para sous-vide e vamos montar um cronograma de sacos com datas.",
       "noBagsTitle": "Nada para ensacar",
       "noBagsHelp": "Este plano não tem ingredientes para lote — tudo será cozido fresco.",
       "summaryLabel": "Plano de cozimento",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cozinha",
     "toastReady": "Receita pronta.",
-    "placeholderHint": "Escolha uma carne e um método, depois toque em Calcular.",
+    "placeholderHint": "Escolha uma carne. Escolha um método. Nós cuidamos das contas.",
     "catSupplementsTitle": "Suplementos para gato após cozinhar",
     "catSupplementsBody": "O calor destrói a taurina, vitaminas B (tiamina, niacina) e parte da vitamina E. Adicione o stack felino — taurina 250–500 mg, complexo B, vitamina E — depois do prato esfriar.",
     "subtitle_cat": "Tempo e temperatura de cozimento seguros para a comida do seu gato. Lembre-se de adicionar taurina + complexo B após cozinhar.",
@@ -583,6 +583,258 @@
       "recCaption": "rec: {{method}}",
       "pillAria": "Mostrando {{active}}; método recomendado é {{recommended}}",
       "fellBackTo": "mantido como {{method}} — {{appliance}} não é adequado para este vegetal"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Fatiar em 1 cm. Cozinhar no vapor até ficarem macias; preserva o betacaroteno melhor que ferver.",
+        "recommendedReason": "Cozinhar no vapor preserva o betacaroteno e a vitamina C enquanto quebra as paredes celulares que os cães não digerem cruas.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Fatiar 3–5 mm para o saco se ajustar. Use um banho dedicado a 85 °C — vegetais não amolecem em temperaturas de cocção de carne."
+          },
+          "oven": {
+            "notes": "Cubos de 2 cm com um pouco de óleo. Assar concentra mais betacaroteno que o vapor."
+          },
+          "slow_cooker": {
+            "warning": "Panelas de cocção lenta deixam a cenoura mole — bom para um ensopado, menos ideal como acompanhamento."
+          },
+          "pressure_cooker": {
+            "notes": "Pedaços de 1 cm, alta pressão com 1 xícara de água, liberação rápida."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Cubos de 2–3 cm. Assar puro — sem açúcar, sem temperos. Amassar antes de servir.",
+        "recommendedReason": "Assar elimina água e concentra a fibra solúvel que regula as fezes — a razão principal para a abóbora estar na tigela.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 2–3 cm, banho dedicado a 85 °C."
+          },
+          "stovetop_low": {
+            "notes": "Cozinhar no vapor sobre um escorredor; ferver encharca e dilui o benefício da fibra."
+          },
+          "slow_cooker": {
+            "warning": "Ficará bem molhada — escorra ou reduza o líquido antes de amassar."
+          },
+          "pressure_cooker": {
+            "notes": "Pedaços de 2 cm, alta pressão, liberação natural."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Sempre cozida — batata-doce crua é difícil de digerir. Cortar em cubos ou assar inteira e amassar.",
+        "recommendedReason": "Assar caramelize o amido em açúcares facilmente digeríveis e é o preparo mais palatável. O sous-vide produz um resultado mais doce graças à conversão enzimática lenta, se tiver tempo.",
+        "rawBlockedReason": "Batata-doce crua contém inibidores de tripsina e é essencialmente indigesta.",
+        "speciesNotes": {
+          "cat": "Cozida e em quantidade muito pequena para gatos — carboidratos não são essenciais na dieta felina."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 1 cm, banho dedicado a 85 °C. A beta-amilase converte amido em maltose — sai notavelmente mais doce que assado."
+          },
+          "stovetop_low": {
+            "notes": "Cozinhar no vapor em cubos; ferver aumenta a carga glicêmica."
+          },
+          "pressure_cooker": {
+            "notes": "Pedaços de 2 cm, alta pressão, liberação natural."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Apenas floretes, sem talos grossos. Mantenha al dente — cozinhar demais destrói a vitamina C.",
+        "recommendedReason": "Vaporizar brevemente preserva a vitamina C e o sulforafano enquanto amolece os floretes o suficiente para a digestão canina.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Floretes pequenos, em camada única no saco. O cheiro de enxofre será intenso ao abrir — é normal.",
+            "warning": "Os floretes ficam verde-oliva no saco selado; nutricionalmente bem, apenas visualmente pouco atraente."
+          },
+          "oven": {
+            "warning": "Alguns cães recusam o dourado Maillard em brássicas — teste com uma pequena quantidade primeiro."
+          },
+          "pressure_cooker": {
+            "notes": "Baixa pressão — a subida já os cozinha. Liberação rápida imediata ou viram purê."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Murchar brevemente em água fervente, escorrer, picar. Reduz ligeiramente os oxalatos.",
+        "recommendedReason": "Uma fervura breve seguida de escorrer reduz os oxalatos que interferem na absorção de cálcio, preservando folato e ferro.",
+        "speciesNotes": {
+          "cat": "Evite em gatos com problemas urinários — os oxalatos podem agravar a formação de cristais."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Murchar brevemente, escorrer bem."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Tirar as pontas. Cozinhar no vapor até ficarem verde-vivo e macias mas crocantes. Também podem ser servidas cruas.",
+        "recommendedReason": "Vaporizar amolece a fibra da vagem sem perder vitamina K e manganês — os nutrientes que tornam o feijão-verde um saciante ideal para dietas de perda de peso.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Tire as pontas, mantenha inteiras — mantêm o formato lindamente."
+          },
+          "oven": {
+            "warning": "Tende a ressecá-las — os animais geralmente preferem ao vapor."
+          },
+          "slow_cooker": {
+            "warning": "Ficarão moles, não tenras-crocantes."
+          },
+          "pressure_cooker": {
+            "notes": "Alta pressão, liberação rápida."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Fatiar ou cortar em cubos. Segura crua — cozinhar apenas amolece para animais exigentes.",
+        "recommendedReason": "Vaporizar amolece o suficiente para animais sem dentes ou exigentes, preservando o teor de água — ótima guarnição hidratante.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Solta muita água no saco — escorra antes de servir."
+          },
+          "slow_cooker": {
+            "warning": "Vira purê — bom em ensopado, não como acompanhamento."
+          },
+          "pressure_cooker": {
+            "notes": "Baixa pressão, liberação rápida — cozinha demais num instante."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Frescas ou congeladas (descongelar primeiro). Nunca enlatadas (sódio adicionado).",
+        "recommendedReason": "Vaporizar brevemente preserva a vitamina K e a proteína da leguminosa, evitando ficar muito mole.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Baixa pressão, liberação rápida. Ervilhas congeladas só precisam descongelar."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Tire as folhas dos talos duros, pique fino. Com moderação — oxalatos + tiocianatos.",
+        "recommendedReason": "Vaporizar preserva cálcio, ferro e sulforafano enquanto amolece as fibras duras — sirva apenas em pequenas quantidades pelos tiocianatos.",
+        "rawBlockedReason": "As enzimas da couve crua ativam os tiocianatos goitrogênicos e tornam o oxalato mais biodisponível.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar se em medicação para tireoide. Caso contrário, apenas ocasional."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "A textura fica viscosa no saco selado — a maioria dos animais prefere ao vapor."
+          },
+          "oven": {
+            "warning": "Isto é basicamente uma preparação tipo chips de couve — porção de petisco, não de acompanhamento."
+          },
+          "pressure_cooker": {
+            "notes": "Baixa pressão — melhor método para reduzir oxalatos em couve, beterraba e espinafre."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Pedaços de 1–2 cm. Abaixo de 85 °C ficam fibrosas — use a temperatura de banho \"raiz firme\" mais alta.",
+        "recommendedReason": "Vaporizar amolece o suficiente para mastigar enquanto preserva o sabor doce e fornece fibra prebiótica para a saúde intestinal.",
+        "rawBlockedReason": "Pastinacas cruas contêm furanocumarinas (psoralenos) — fototóxicas e irritantes gastrointestinais.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Pedaços de 1–2 cm. Abaixo de 85 °C ficam fibrosos — use a temperatura de banho \"raiz firme\" mais alta."
+          },
+          "pressure_cooker": {
+            "notes": "Pedaços de 2 cm, alta pressão, liberação natural."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Inteiras por 2–3 h (a casca sai depois) ou cubos de 2 cm por 90 min. Melhor método para preservar as betalaínas.",
+        "recommendedReason": "Assar concentra os compostos terrosos e as betalaínas — um empurrão antioxidante colorido ocasional, não um alimento de base.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar — alta carga de oxalatos é preocupação em raças propensas a cálculos."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Inteiras 2–3 h (a casca sai depois), ou cubos de 2 cm por 90 min. Melhor método para preservar betalaínas."
+          },
+          "oven": {
+            "notes": "Embrulhe inteiras em papel-alumínio com um fio de água. Concentra o sabor."
+          },
+          "stovetop_low": {
+            "warning": "Se ferver, inclua a água de cozimento na tigela — é onde foram os antioxidantes da betalaína."
+          },
+          "pressure_cooker": {
+            "notes": "Inteiras, alta pressão, liberação natural. A pressão decompõe os oxalatos melhor que o vapor."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Cubos de 2 cm, camada única. Sai sedoso.",
+        "recommendedReason": "Assar concentra o sabor amendoado e os carotenoides ao evaporar a água — o preparo mais palatável.",
+        "speciesNotes": {
+          "cat": "Gatos: limite 1 colher de sopa por refeição — alto em amido."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubos de 2 cm, camada única. Sai sedoso."
+          },
+          "stovetop_low": {
+            "notes": "Cozinhar em cubos no vapor; ferver encharca a polpa."
+          },
+          "slow_cooker": {
+            "warning": "Ficará bem molhada — escorra ou reduza o líquido antes de amassar."
+          },
+          "pressure_cooker": {
+            "notes": "Pedaços de 2 cm, alta pressão, liberação natural."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Servir cru — alto teor de água. Cortar em palitos; cozinhar arruína a textura.",
+        "recommendedReason": "Pepino é um vegetal para servir cru — tudo o que oferece é hidratação e crocância, e cozinhar destrói ambos.",
+        "cookingBlockedReason": "Cozinhar transforma o pepino numa massa translúcida e viscosa que os animais recusam — cru é a única preparação sensata."
+      },
+      "celery": {
+        "recommendedNotes": "Amolece as fibras que de outra forma passariam inteiras.",
+        "recommendedReason": "Cru é seguro e oferece a mastigação crocante que o aipo dá — animais com rins sensíveis devem evitar pelos oxalatos.",
+        "speciesNotes": {
+          "cat": "Gatos pequenos e cães abaixo de 10 kg: considere ao vapor — picar mais fino reduz o risco de engasgo."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Amolece os fios que de outra forma passariam inteiros."
+          },
+          "oven": {
+            "warning": "Resseca — não é ideal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Coloque deitado no saco, em camada única.",
+        "recommendedReason": "Vaporizar preserva os folatos e a rutina enquanto amolece os talos o suficiente para uma digestão confortável.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Coloque deitado no saco, em camada única."
+          },
+          "pressure_cooker": {
+            "notes": "Baixa pressão, liberação rápida."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Cortar ao meio através do talo.",
+        "recommendedReason": "Vaporizar preserva o sulforafano e a vitamina K numa brássica densa em nutrientes — sirva com moderação pelos compostos sulfurosos.",
+        "speciesNotes": {
+          "cat": "Gatos: evitar se em medicação para tireoide."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cortar ao meio através do talo.",
+            "warning": "O cheiro de enxofre concentra-se no saco selado — abra com a tampa apontando para longe."
+          },
+          "oven": {
+            "notes": "Corte ao meio, lado cortado para baixo. Muitos cães preferem essa forma caramelizada ao vapor."
+          },
+          "pressure_cooker": {
+            "notes": "Baixa pressão, liberação rápida. Mais tempo e viram purê."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1058,6 +1310,33 @@
         "eyebrow": "Assistente",
         "caption": "\"Cozinhar com antecedência\" com estatísticas ao vivo: sacos · sessões · sessões economizadas vs diária. Veja o ganho antes de gerar.",
         "principle": "A seguibilidade é um insumo nutricional, não um detalhe de UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suplementos diários",
+          "taurine": "Taurina em pó",
+          "taurineDose": "250 mg/dia",
+          "codLiver": "Óleo de fígado de bacalhau",
+          "codLiverDose": "1 mL, 3×/semana",
+          "calcium": "Citrato de cálcio",
+          "calciumDose": "287 mg/dia",
+          "dayLabel": "Dia 1 · Seg 25 mai",
+          "beefDay": "Dia de carne",
+          "mainGrams": "{{g}}g carne"
+        },
+        "cooking": {
+          "title": "Plano de cozimento",
+          "summary": "4 sacos · 4 sessões de cozimento · uma proteína por saco",
+          "groupTotal": "{{bags}} sacos · {{g}} g no total",
+          "bagRow": "{{dates}} · consumir até {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} saco(s) de {{meat}} ao longo de {{days}} dias para {{pets}} pets. Cozinhe os {{kg}} kg de uma vez — geladeira 1 saco, congele o resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Uma proteína por refeição · o cartão diário de suplementos cobre a lacuna",
+          "summary": "7 dias · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Groselhas / passas de Corinto",
       "compound": "Igual às uvas",
       "effect": "Insuficiência renal aguda"
+    },
+    "raw_freshwater_fish": {
+      "label": "Peixe de água doce cru (como base)",
+      "compound": "Tiaminase",
+      "effect": "Destrói a tiamina (B1) → dano neurológico, convulsões. Cozinhar inativa a enzima. Pequenas quantidades ocasionais de peixe de água doce cozido são aceitáveis."
+    },
+    "tuna_staple": {
+      "label": "Atum como base da dieta",
+      "compound": "Mercúrio + AGPI sem vitamina E",
+      "effect": "Acúmulo de mercúrio; esteatite (doença da gordura amarela) por gorduras poli-insaturadas sem vitamina E suficiente. Limite a ≤ 10% da ingestão e revize."
+    },
+    "liver_excess_cat": {
+      "label": "Fígado em excesso",
+      "compound": "Vitamina A pré-formada",
+      "effect": "Toxicidade por vitamina A (hipervitaminose A) — deformação óssea, doença articular. Limite o fígado a 5–10 g/dia para um gato de 4 kg. Gatos são especialmente sensíveis."
+    },
+    "dog_food_for_cat": {
+      "label": "Ração de cachorro a longo prazo",
+      "compound": "Falta taurina + ácido araquidônico + vitamina A pré-formada",
+      "effect": "Não é tóxica agudamente, mas é mortalmente inadequada em alguns meses. Gatos alimentados com ração de cachorro desenvolvem cardiomiopatia dilatada, degeneração retiniana e fígado gorduroso."
+    },
+    "lilies_environment": {
+      "label": "Lírios (todas as partes, ambiente)",
+      "compound": "Nefrotoxina desconhecida",
+      "effect": "Não é um alimento, mas o contato doméstico já basta — até o pólen no pelo, ingerido ao se lamber, causa insuficiência renal aguda em 36–72 h. Retire todos os lírios (Lilium e Hemerocallis) de qualquer casa com gato."
+    },
+    "vegan_diet_cat": {
+      "label": "Dieta apenas vegetal / vegana",
+      "compound": "Incompatibilidade fisiológica",
+      "effect": "Gatos não têm as enzimas para obter ácido araquidônico, taurina, vitamina A, vitamina D e arginina de fontes vegetais. Dietas veganas para gatos não são seguras em qualquer duração."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Página não encontrada",
     "description": "A página que você procura não existe ou foi movida.",
     "home": "Voltar ao início"
+  },
+  "footer": {
+    "license": "MIT · Código aberto"
   }
 }

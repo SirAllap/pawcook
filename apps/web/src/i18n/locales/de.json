@@ -51,8 +51,8 @@
       "title": "Deine Tiere",
       "subtitle": "Lege für jedes Tier ein Profil an, damit Pläne zu Art, Alter und Bedingungen passen.",
       "addPet": "Tier hinzufügen",
-      "emptyTitle": "Noch keine Tiere",
-      "emptyDescription": "Füge dein erstes Tier hinzu, um maßgeschneiderte Pläne und Einkaufslisten freizuschalten."
+      "emptyTitle": "Ihr Haushalt beginnt hier.",
+      "emptyDescription": "Tier hinzufügen — wir bauen einen Plan, der wirklich in Ihre Küche passt."
     },
     "new": {
       "title": "Tier hinzufügen",
@@ -199,16 +199,16 @@
       "title": "Mahlzeitenpläne",
       "subtitle": "Erstelle einen Wochen-, Zweiwochen- oder Monatsplan mit der Einkaufsliste fürs Geschäft.",
       "create": "Plan erstellen",
-      "emptyTitle": "Noch keine Pläne",
-      "emptyDescription": "Erstelle deinen ersten Plan, um Menüs und Einkaufslisten aus deinen Tieren zu erzeugen."
+      "emptyTitle": "Noch kein Plan.",
+      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren."
     },
     "new": {
       "title": "Neuer Plan",
       "subtitle": "Wähle deine Tiere und die Tage. Wir kümmern uns um den Rest."
     },
     "needPet": {
-      "title": "Zuerst ein Tier hinzufügen",
-      "description": "Pläne nutzen das Profil jedes Tieres zur Menüberechnung. Lege eines an, um zu beginnen.",
+      "title": "Zuerst ein Tier anlegen.",
+      "description": "Wir brauchen mindestens ein Maul zum Füttern.",
       "cta": "Tier hinzufügen"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Einkauf gesamt",
       "totalSummary": "{{items}} Artikel · {{grams}} g in allen Bereichen",
-      "empty": "Nichts zu kaufen — deine Vorräte decken diesen Plan ab.",
+      "empty": "Plan generieren — wir bauen die Einkaufsliste.",
       "exportFooter": "PawCook Einkaufsliste — kein tierärztlicher Rat.",
       "section": {
         "butcher": "Metzger",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Das Löschen eines Plans kann nicht rückgängig gemacht werden. Ihre gespeicherten Tierprofile bleiben unberührt.",
     "cookingPlan": {
-      "emptyTitle": "Kochplan nur für Sous-vide",
-      "emptyHelp": "Beutel werden erzeugt, wenn der Plan Sous-vide verwendet. Plan mit Sous-vide als Garmethode neu erstellen, um den Beutelzeitplan zu sehen.",
+      "emptyTitle": "Der Beutel-Zeitplan lebt mit Sous-vide.",
+      "emptyHelp": "Plan auf Sous-vide umstellen — wir bauen einen Beutel-Zeitplan mit Daten.",
       "noBagsTitle": "Nichts zum Verpacken",
       "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
       "summaryLabel": "Kochplan",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Kochen",
     "toastReady": "Rezept fertig.",
-    "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen.",
+    "placeholderHint": "Fleisch wählen. Methode wählen. Wir rechnen.",
     "catSupplementsTitle": "Katzen-Supplemente nach dem Kochen",
     "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist.",
     "subtitle_cat": "Sichere Garzeit und -temperatur für das Futter Ihrer Katze. Vergessen Sie nicht, Taurin + B-Komplex nach dem Kochen hinzuzufügen.",
@@ -583,6 +583,258 @@
       "recCaption": "Empf.: {{method}}",
       "pillAria": "Zeigt {{active}}; empfohlene Methode ist {{recommended}}",
       "fellBackTo": "als {{method}} beibehalten — {{appliance}} ist für dieses Gemüse nicht geeignet"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "1 cm dick schneiden. Bissfest dämpfen; bewahrt Beta-Carotin besser als Kochen.",
+        "recommendedReason": "Dämpfen bewahrt Beta-Carotin und Vitamin C und baut die Zellwände ab, die Hunde roh nicht verdauen können.",
+        "methods": {
+          "sous_vide": {
+            "notes": "3–5 mm dünn schneiden, damit der Beutel sich anschmiegt. Eigenes 85 °C-Bad — Gemüse wird bei Fleisch-Temperaturen nicht weich."
+          },
+          "oven": {
+            "notes": "2 cm Würfel mit etwas Öl wenden. Rösten konzentriert Beta-Carotin stärker als Dämpfen."
+          },
+          "slow_cooker": {
+            "warning": "Im Slow Cooker werden Karotten matschig — okay im Eintopf, weniger als Beilage."
+          },
+          "pressure_cooker": {
+            "notes": "1 cm Stücke, Hochdruck mit 1 Tasse Wasser, schnelle Entlüftung."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "2–3 cm Würfel. Pur backen — kein Zucker, keine Gewürze. Vor dem Servieren zerdrücken.",
+        "recommendedReason": "Backen treibt Wasser aus und konzentriert die löslichen Ballaststoffe, die den Stuhl regulieren — der Hauptgrund, warum Kürbis im Napf ist.",
+        "methods": {
+          "sous_vide": {
+            "notes": "2–3 cm Würfel, eigenes 85 °C-Bad."
+          },
+          "stovetop_low": {
+            "notes": "Über einem Sieb dämpfen; Kochen wässert ihn aus und verdünnt den Ballaststoff-Effekt."
+          },
+          "slow_cooker": {
+            "warning": "Wird sehr wässrig — vor dem Stampfen abgießen oder Flüssigkeit reduzieren."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm Stücke, Hochdruck, natürliche Entspannung."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Immer gegart — rohe Süßkartoffel ist schwer verdaulich. Würfeln oder ganz backen und zerdrücken.",
+        "recommendedReason": "Backen karamellisiert die Stärke zu leicht verdaulichen Zuckern und ist die schmackhafteste Zubereitung. Sous-vide ergibt durch langsame enzymatische Umwandlung ein noch süßeres Ergebnis, wenn Zeit ist.",
+        "rawBlockedReason": "Rohe Süßkartoffel enthält Trypsin-Hemmer und ist im Wesentlichen unverdaulich.",
+        "speciesNotes": {
+          "cat": "Gegart und nur in sehr kleinen Mengen für Katzen — Kohlenhydrate sind in ihrer Ernährung nicht essenziell."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "1 cm Würfel, eigenes 85 °C-Bad. Beta-Amylase wandelt Stärke in Maltose um — deutlich süßer als gebacken."
+          },
+          "stovetop_low": {
+            "notes": "In Würfeln dämpfen; Kochen erhöht die glykämische Last."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm Stücke, Hochdruck, natürliche Entspannung."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Nur Röschen, keine dicken Strünke. Bissfest halten — Überkochen zerstört Vitamin C.",
+        "recommendedReason": "Kurzes Dämpfen bewahrt Vitamin C und Sulforaphan und macht die Röschen für die Hundeverdauung weich genug.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Kleine Röschen, einlagig im Beutel. Schwefelgeruch beim Öffnen wird intensiv sein — das ist normal.",
+            "warning": "Röschen werden im verschlossenen Beutel olivgrün; nährstofflich okay, optisch wenig appetitlich."
+          },
+          "oven": {
+            "warning": "Manche Hunde lehnen die Maillard-Bräunung bei Kreuzblütlern ab — erst eine kleine Menge testen."
+          },
+          "pressure_cooker": {
+            "notes": "Niederdruck — der Druckaufbau gart sie schon. Sofort schnell entlüften, sonst werden sie matschig."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Kurz in kochendem Wasser zusammenfallen lassen, abgießen, hacken. Reduziert Oxalate leicht.",
+        "recommendedReason": "Kurzes Aufkochen und Abgießen reduziert Oxalate, die die Calcium-Aufnahme stören, und bewahrt Folat und Eisen.",
+        "speciesNotes": {
+          "cat": "Bei Katzen mit Harnwegsproblemen meiden — Oxalate können Kristallbildung verstärken."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Kurz zusammenfallen lassen, gut abtropfen."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Enden abschneiden. Bissfest dämpfen, bis sie leuchtend grün sind. Können auch roh serviert werden.",
+        "recommendedReason": "Dämpfen macht die Hülsenfasern weich, ohne Vitamin K und Mangan auszuwaschen — die Nährstoffe, die grüne Bohnen zum Standard-Sattmacher in Abnehm-Diäten machen.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Enden abschneiden, ganz lassen — sie behalten ihre Form wunderbar."
+          },
+          "oven": {
+            "warning": "Trocknet sie tendenziell aus — Tiere bevorzugen meist gedämpft."
+          },
+          "slow_cooker": {
+            "warning": "Werden weich, nicht bissfest."
+          },
+          "pressure_cooker": {
+            "notes": "Hochdruck, schnelle Entlüftung."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "In Scheiben oder Würfel schneiden. Roh sicher — Garen macht sie nur weich für mäkelige Tiere.",
+        "recommendedReason": "Dämpfen macht sie weich genug für zahnlose oder mäkelige Tiere und bewahrt den Wassergehalt — eine ideale Hydrations-Beilage.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Gibt viel Wasser in den Beutel ab — vor dem Servieren abgießen."
+          },
+          "slow_cooker": {
+            "warning": "Wird matschig — okay im Eintopf, nicht als Beilage."
+          },
+          "pressure_cooker": {
+            "notes": "Niederdruck, schnelle Entlüftung — kocht sofort über."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Frisch oder gefroren (zuerst auftauen). Niemals aus der Dose (zugesetztes Natrium).",
+        "recommendedReason": "Kurzes Dämpfen bewahrt Vitamin K und das Hülsenfrüchte-Eiweiß und vermeidet matschige Konsistenz.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Niederdruck, schnelle Entlüftung. Gefrorene Erbsen müssen nur auftauen."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Blätter von zähen Stielen lösen, fein hacken. In Maßen — Oxalate + Thiocyanate.",
+        "recommendedReason": "Dämpfen bewahrt Calcium, Eisen und Sulforaphan und macht die zähen Fasern weich — nur in kleinen Mengen wegen der Thiocyanate.",
+        "rawBlockedReason": "Die Enzyme im rohen Grünkohl aktivieren goitrogene Thiocyanate und machen Oxalat besser bioverfügbar.",
+        "speciesNotes": {
+          "cat": "Katzen: bei Schilddrüsen-Medikation meiden. Sonst nur gelegentlich."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "Textur wird im verschlossenen Beutel schleimig — die meisten Tiere bevorzugen gedämpft."
+          },
+          "oven": {
+            "warning": "Das ist im Grunde eine Grünkohl-Chips-Zubereitung — Leckerli-Portion, keine Beilage."
+          },
+          "pressure_cooker": {
+            "notes": "Niederdruck — die beste Methode, um Oxalate in Grünkohl, Rote Bete und Spinat zu reduzieren."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "1–2 cm Stücke. Unter 85 °C bleiben sie faserig — höhere \"feste Wurzel\"-Bad-Temperatur nutzen.",
+        "recommendedReason": "Dämpfen macht sie weich genug zum Kauen und bewahrt den süßen Geschmack — liefert präbiotische Ballaststoffe für die Darmflora.",
+        "rawBlockedReason": "Rohe Pastinaken enthalten Furanocumarine (Psoralene) — phototoxisch und magen-darm-reizend.",
+        "methods": {
+          "sous_vide": {
+            "notes": "1–2 cm Stücke. Unter 85 °C bleiben sie faserig — die höhere \"feste Wurzel\"-Bad-Temperatur nutzen."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm Stücke, Hochdruck, natürliche Entspannung."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Ganz 2–3 Stunden (Schale lässt sich danach abziehen) oder 2 cm Würfel 90 Min. Beste Methode zum Erhalt der Betalaine.",
+        "recommendedReason": "Backen konzentriert die erdigen Verbindungen und Betalaine — ein bunter Antioxidans-Schub, kein Grundnahrungsmittel.",
+        "speciesNotes": {
+          "cat": "Katzen: meiden — hohe Oxalat-Last bedenklich bei steinanfälligen Rassen."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Ganz 2–3 Stunden (Schale lässt sich danach abziehen), oder 2 cm Würfel 90 Min. Beste Methode für Betalain-Erhalt."
+          },
+          "oven": {
+            "notes": "Ganz in Folie wickeln, mit einem Spritzer Wasser. Konzentriert das Aroma."
+          },
+          "stovetop_low": {
+            "warning": "Beim Kochen das Kochwasser in den Napf geben — dort sind die Betalain-Antioxidantien."
+          },
+          "pressure_cooker": {
+            "notes": "Ganz, Hochdruck, natürliche Entspannung. Druck baut Oxalate besser ab als Dämpfen."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "2 cm Würfel, einlagig. Wird seidig.",
+        "recommendedReason": "Backen konzentriert die nussige Note und die Carotinoide durch Verdampfen — die schmackhafteste Zubereitung.",
+        "speciesNotes": {
+          "cat": "Katzen: max. 1 EL pro Mahlzeit — stärkereich."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "2 cm Würfel, einlagig. Wird seidig."
+          },
+          "stovetop_low": {
+            "notes": "In Würfeln dämpfen; Kochen wässert das Fruchtfleisch aus."
+          },
+          "slow_cooker": {
+            "warning": "Wird sehr wässrig — vor dem Stampfen abgießen oder Flüssigkeit reduzieren."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm Stücke, Hochdruck, natürliche Entspannung."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Roh servieren — hoher Wassergehalt. In Sticks schneiden; Garen ruiniert die Textur.",
+        "recommendedReason": "Gurke ist ein Rohgemüse — sie liefert Hydration und Biss, beides zerstört das Garen.",
+        "cookingBlockedReason": "Garen verwandelt Gurke in einen durchsichtigen, glibberigen Brei, den Tiere ablehnen — roh ist die einzige sinnvolle Zubereitung."
+      },
+      "celery": {
+        "recommendedNotes": "Macht die Fasern weich, die sonst unverdaut passieren würden.",
+        "recommendedReason": "Roh sicher und liefert den Knack, den Sellerie eben mitbringt — Tiere mit empfindlichen Nieren wegen der Oxalate meiden.",
+        "speciesNotes": {
+          "cat": "Kleine Katzen und Hunde unter 10 kg: lieber dämpfen — feineres Hacken senkt das Erstickungsrisiko."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Macht die Fasern weich, die sonst unverdaut passieren würden."
+          },
+          "oven": {
+            "warning": "Trocknet aus — nicht ideal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Flach in den Beutel legen, einlagig.",
+        "recommendedReason": "Dämpfen bewahrt Folate und Rutin und macht die Stangen gerade genug weich für eine bequeme Verdauung.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Flach in den Beutel legen, einlagig."
+          },
+          "pressure_cooker": {
+            "notes": "Niederdruck, schnelle Entlüftung."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Längs durch den Stiel halbieren.",
+        "recommendedReason": "Dämpfen bewahrt Sulforaphan und Vitamin K in einem nährstoffdichten Kreuzblütler — wegen der Schwefelverbindungen mit Maß servieren.",
+        "speciesNotes": {
+          "cat": "Katzen: bei Schilddrüsen-Medikation meiden."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Längs durch den Stiel halbieren.",
+            "warning": "Schwefelgeruch konzentriert sich im verschlossenen Beutel — beim Öffnen Deckel weg vom Gesicht halten."
+          },
+          "oven": {
+            "notes": "Halbieren, Schnittseite nach unten. Viele Hunde bevorzugen diese karamellisierte Form gegenüber gedämpft."
+          },
+          "pressure_cooker": {
+            "notes": "Niederdruck, schnelle Entlüftung. Länger und sie werden matschig."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1058,6 +1310,33 @@
         "eyebrow": "Assistent",
         "caption": "„Vorkochen\" mit Live-Stats: Beutel · Kochsitzungen · gesparte Sitzungen ggü. täglich. Den frugalen Vorteil sehen, bevor man generiert.",
         "principle": "Followability ist ein nährstoffrelevanter Faktor, keine UX-Spielerei."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Tägliche Ergänzungen",
+          "taurine": "Taurin-Pulver",
+          "taurineDose": "250 mg/Tag",
+          "codLiver": "Lebertran",
+          "codLiverDose": "1 mL, 3×/Woche",
+          "calcium": "Calciumcitrat",
+          "calciumDose": "287 mg/Tag",
+          "dayLabel": "Tag 1 · Mo 25. Mai",
+          "beefDay": "Rindfleisch-Tag",
+          "mainGrams": "{{g}}g Rind"
+        },
+        "cooking": {
+          "title": "Kochplan",
+          "summary": "4 Beutel · 4 Kochsitzungen · ein Protein pro Beutel",
+          "groupTotal": "{{bags}} Beutel · {{g}} g insgesamt",
+          "bagRow": "{{dates}} · verbrauchen bis {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} {{meat}}-Beutel über {{days}} Tage für {{pets}} Tiere. {{kg}} kg auf einmal garen — 1 Beutel in den Kühlschrank, Rest einfrieren."
+        },
+        "wizard": {
+          "simpleMealsShort": "Ein Protein pro Mahlzeit · die tägliche Ergänzungskarte deckt die Lücke",
+          "summary": "7 Tage · Luna · Dora · Blacky · Sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Johannisbeeren / Korinthen",
       "compound": "Wie Trauben",
       "effect": "Akutes Nierenversagen"
+    },
+    "raw_freshwater_fish": {
+      "label": "Roher Süßwasserfisch (als Grundnahrung)",
+      "compound": "Thiaminase",
+      "effect": "Zerstört Thiamin (B1) → neurologische Schäden, Krämpfe. Garen inaktiviert das Enzym. Gelegentlich kleine Mengen gegarter Süßwasserfisch sind okay."
+    },
+    "tuna_staple": {
+      "label": "Thunfisch als Grundnahrung",
+      "compound": "Quecksilber + PUFA ohne Vitamin E",
+      "effect": "Quecksilber-Anreicherung; Steatitis (Gelbfettkrankheit) durch mehrfach ungesättigte Fettsäuren ohne ausreichendes Vitamin E. Auf ≤ 10 % der Aufnahme begrenzen und rotieren."
+    },
+    "liver_excess_cat": {
+      "label": "Leber im Übermaß",
+      "compound": "Vorgeformtes Vitamin A",
+      "effect": "Vitamin-A-Toxizität (Hypervitaminose A) — Knochendeformation, Gelenkerkrankung. Leber auf 5–10 g/Tag bei einer 4-kg-Katze begrenzen. Katzen sind besonders empfindlich."
+    },
+    "dog_food_for_cat": {
+      "label": "Hundefutter langfristig",
+      "compound": "Fehlt: Taurin + Arachidonsäure + vorgeformtes Vitamin A",
+      "effect": "Akut nicht toxisch, aber über Monate tödlich unzureichend. Mit Hundefutter ernährte Katzen entwickeln dilatative Kardiomyopathie, Netzhautdegeneration und Fettleber."
+    },
+    "lilies_environment": {
+      "label": "Lilien (alle Teile, Umfeld)",
+      "compound": "Unbekanntes Nephrotoxin",
+      "effect": "Kein Futter, aber häuslicher Kontakt reicht — selbst Pollen im Fell, beim Putzen aufgenommen, verursachen akutes Nierenversagen innerhalb 36–72 Std. Entfernen Sie alle Lilien (Lilium und Hemerocallis) aus jedem Haushalt mit Katze."
+    },
+    "vegan_diet_cat": {
+      "label": "Rein pflanzliche / vegane Ernährung",
+      "compound": "Physiologische Unverträglichkeit",
+      "effect": "Katzen fehlen die Enzyme, um Arachidonsäure, Taurin, Vitamin A, Vitamin D und Arginin aus pflanzlichen Quellen zu gewinnen. Vegane Katzen-Diäten sind in keiner Dauer sicher."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
     "home": "Zurück zur Startseite"
+  },
+  "footer": {
+    "license": "MIT · Open Source"
   }
 }

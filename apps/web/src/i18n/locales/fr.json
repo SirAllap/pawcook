@@ -51,8 +51,8 @@
       "title": "Vos animaux",
       "subtitle": "Ajoutez un profil pour chaque animal nourri afin que les plans correspondent à leur espèce, âge et conditions.",
       "addPet": "Ajouter un animal",
-      "emptyTitle": "Pas encore d'animal",
-      "emptyDescription": "Ajoutez votre premier animal pour débloquer des plans et listes de courses sur mesure."
+      "emptyTitle": "Votre foyer commence ici.",
+      "emptyDescription": "Ajoutez un animal et nous générerons un plan qui tient vraiment dans votre cuisine."
     },
     "new": {
       "title": "Ajouter un animal",
@@ -199,16 +199,16 @@
       "title": "Plans de repas",
       "subtitle": "Génère un plan hebdomadaire, bihebdomadaire ou mensuel et la liste de courses à emporter.",
       "create": "Créer un plan",
-      "emptyTitle": "Pas encore de plan",
-      "emptyDescription": "Crée ton premier plan pour générer menus et listes de courses depuis tes animaux."
+      "emptyTitle": "Pas encore de plan.",
+      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste."
     },
     "new": {
       "title": "Nouveau plan",
       "subtitle": "Choisis tes animaux et le nombre de jours. On s'occupe du reste."
     },
     "needPet": {
-      "title": "Ajoute d'abord un animal",
-      "description": "Les plans utilisent le profil de chaque animal pour calculer les menus. Ajoute-en un pour commencer.",
+      "title": "Ajoutez d’abord un animal.",
+      "description": "Il nous faut au moins une bouche à nourrir.",
       "cta": "Ajouter un animal"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Total des courses",
       "totalSummary": "{{items}} articles · {{grams}} g toutes sections confondues",
-      "empty": "Rien à acheter — votre garde-manger couvre ce plan.",
+      "empty": "Générez un plan et nous construirons la liste de courses.",
       "exportFooter": "Liste de courses PawCook — pas un conseil vétérinaire.",
       "section": {
         "butcher": "Boucher",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "La suppression d’un plan est irréversible. Vos profils d’animaux enregistrés ne seront pas affectés.",
     "cookingPlan": {
-      "emptyTitle": "Plan de cuisson uniquement pour le sous-vide",
-      "emptyHelp": "Les sachets sont générés lorsque le plan utilise le sous-vide. Régénérez en choisissant le sous-vide comme méthode pour voir le calendrier des sachets.",
+      "emptyTitle": "Le calendrier de sachets vit avec le sous-vide.",
+      "emptyHelp": "Passez le plan en sous-vide et nous construirons un calendrier de sachets daté.",
       "noBagsTitle": "Rien à mettre en sachet",
       "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
       "summaryLabel": "Plan de cuisson",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cuisine",
     "toastReady": "Recette prête.",
-    "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer.",
+    "placeholderHint": "Choisissez une viande. Choisissez une méthode. On s’occupe des calculs.",
     "catSupplementsTitle": "Suppléments félins après cuisson",
     "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi.",
     "subtitle_cat": "Temps et température de cuisson sûrs pour la nourriture de votre chat. Pensez à ajouter taurine + complexe B après cuisson.",
@@ -583,6 +583,258 @@
       "recCaption": "reco : {{method}}",
       "pillAria": "Affichage de {{active}} ; méthode recommandée : {{recommended}}",
       "fellBackTo": "conservé en {{method}} — {{appliance}} ne convient pas pour ce légume"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Trancher à 1 cm. Cuire à la vapeur jusqu’à ce qu’elles soient tendres ; conserve mieux le bêta-carotène que l’ébullition.",
+        "recommendedReason": "La vapeur préserve le bêta-carotène et la vitamine C tout en cassant les parois cellulaires que les chiens ne digèrent pas crues.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Trancher à 3–5 mm pour que ça épouse le sachet. Utilisez un bain dédié à 85 °C — les légumes ne ramollissent pas aux températures de la viande."
+          },
+          "oven": {
+            "notes": "Cubes de 2 cm avec un peu d’huile. Le rôtissage concentre plus de bêta-carotène que la vapeur."
+          },
+          "slow_cooker": {
+            "warning": "Les mijoteuses ramollissent trop les carottes — ok pour un ragoût, moins idéal en accompagnement."
+          },
+          "pressure_cooker": {
+            "notes": "Morceaux de 1 cm, haute pression avec 1 tasse d’eau, libération rapide."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Cubes de 2–3 cm. Rôtir nature — sans sucre ni épices. Écraser avant de servir.",
+        "recommendedReason": "Le rôtissage évacue l’eau et concentre les fibres solubles qui régulent les selles — la raison principale pour laquelle la citrouille est dans la gamelle.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubes de 2–3 cm, bain dédié à 85 °C."
+          },
+          "stovetop_low": {
+            "notes": "Cuire à la vapeur sur une passoire ; l’ébullition la gorge d’eau et dilue le bénéfice des fibres."
+          },
+          "slow_cooker": {
+            "warning": "Sera très humide — égouttez ou réduisez le liquide avant d’écraser."
+          },
+          "pressure_cooker": {
+            "notes": "Morceaux de 2 cm, haute pression, libération naturelle."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Toujours cuite — la patate douce crue est difficile à digérer. Cuber ou cuire entière puis écraser.",
+        "recommendedReason": "Le rôtissage caramélise l’amidon en sucres facilement digestibles et donne la préparation la plus appétente. Le sous-vide donne un résultat plus sucré grâce à la conversion enzymatique lente, si vous avez le temps.",
+        "rawBlockedReason": "La patate douce crue contient des inhibiteurs de trypsine et est essentiellement indigeste.",
+        "speciesNotes": {
+          "cat": "Cuite et en très petite quantité pour les chats — les glucides ne sont pas essentiels dans leur alimentation."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubes de 1 cm, bain dédié à 85 °C. La bêta-amylase convertit l’amidon en maltose — résultat sensiblement plus sucré que cuit au four."
+          },
+          "stovetop_low": {
+            "notes": "Cuire en cubes à la vapeur ; l’ébullition augmente la charge glycémique."
+          },
+          "pressure_cooker": {
+            "notes": "Morceaux de 2 cm, haute pression, libération naturelle."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Uniquement les fleurettes, pas de gros tiges. Garder al dente — la surcuisson détruit la vitamine C.",
+        "recommendedReason": "Une cuisson vapeur brève préserve la vitamine C et le sulforaphane tout en ramollissant les fleurettes pour la digestion canine.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Petites fleurettes, en une seule couche dans le sachet. L’odeur soufrée sera forte à l’ouverture — c’est normal.",
+            "warning": "Les fleurettes virent au vert olive dans un sachet scellé ; nutritionnellement ok, juste visuellement peu engageant."
+          },
+          "oven": {
+            "warning": "Certains chiens refusent le brunissement de Maillard sur les brassicacées — testez en petite quantité d’abord."
+          },
+          "pressure_cooker": {
+            "notes": "Basse pression — la montée les cuit déjà. Libération rapide immédiate ou ils tournent en purée."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Faire tomber brièvement dans l’eau bouillante, égoutter, hacher. Réduit légèrement les oxalates.",
+        "recommendedReason": "Un bref ébouillantage + égouttage réduit les oxalates qui freinent l’absorption du calcium, tout en préservant le folate et le fer.",
+        "speciesNotes": {
+          "cat": "À éviter chez les chats à problèmes urinaires — les oxalates peuvent aggraver les cristaux."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Faire tomber brièvement, bien égoutter."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Équeuter. Cuire à la vapeur jusqu’à vert vif et tendres-croquantes. Peuvent aussi être servies crues.",
+        "recommendedReason": "La vapeur ramollit les fibres de la cosse sans lessiver la vitamine K et le manganèse — les nutriments qui font des haricots verts un coupe-faim privilégié pour les régimes amaigrissants.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Équeutez, gardez entières — elles tiennent magnifiquement leur forme."
+          },
+          "oven": {
+            "warning": "A tendance à les dessécher — les animaux préfèrent généralement la vapeur."
+          },
+          "slow_cooker": {
+            "warning": "Seront molles, pas tendres-croquantes."
+          },
+          "pressure_cooker": {
+            "notes": "Haute pression, libération rapide."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Trancher ou cuber. Sûre crue — la cuisson ne fait que la ramollir pour les animaux difficiles.",
+        "recommendedReason": "La vapeur la ramollit suffisamment pour les animaux édentés ou difficiles tout en préservant sa teneur en eau — un excellent accompagnement hydratant.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Libère beaucoup d’eau dans le sachet — égouttez avant de servir."
+          },
+          "slow_cooker": {
+            "warning": "Tourne en purée — ok dans un ragoût, pas en accompagnement."
+          },
+          "pressure_cooker": {
+            "notes": "Basse pression, libération rapide — surcuit instantanément."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Frais ou surgelés (décongeler d’abord). Jamais en conserve (sodium ajouté).",
+        "recommendedReason": "Une cuisson vapeur brève préserve la vitamine K et les protéines des légumineuses sans ramollir à l’excès.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Basse pression, libération rapide. Les petits pois surgelés n’ont qu’à décongeler."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Détachez les feuilles des tiges dures, hachez fin. Avec modération — oxalates + thiocyanates.",
+        "recommendedReason": "La vapeur préserve calcium, fer et sulforaphane tout en ramollissant les fibres dures — ne servez qu’en petites quantités à cause des thiocyanates.",
+        "rawBlockedReason": "Les enzymes du chou frisé cru activent les thiocyanates goitrogènes et augmentent la biodisponibilité de l’oxalate.",
+        "speciesNotes": {
+          "cat": "Chats : à éviter si sous traitement thyroïdien. Sinon, occasionnellement seulement."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "La texture devient gluante dans un sachet scellé — la plupart des animaux préfèrent la vapeur."
+          },
+          "oven": {
+            "warning": "C’est essentiellement une préparation de chips de chou frisé — portion friandise, pas accompagnement."
+          },
+          "pressure_cooker": {
+            "notes": "Basse pression — meilleure méthode pour réduire les oxalates dans le chou frisé, la betterave et l’épinard."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Morceaux de 1–2 cm. En dessous de 85 °C elles restent fibreuses — utilisez la température de bain « racine ferme » plus élevée.",
+        "recommendedReason": "La vapeur les ramollit suffisamment pour la mastication tout en préservant leur douceur et leurs fibres prébiotiques utiles à la flore intestinale.",
+        "rawBlockedReason": "Les panais crus contiennent des furanocoumarines (psoralènes) — phototoxiques et irritants gastro-intestinaux.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Morceaux de 1–2 cm. En dessous de 85 °C ils restent fibreux — utilisez la température de bain « racine ferme » plus élevée."
+          },
+          "pressure_cooker": {
+            "notes": "Morceaux de 2 cm, haute pression, libération naturelle."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Entières 2–3 h (la peau se retire après), ou cubes de 2 cm pendant 90 min. Meilleure méthode pour préserver les bétalaïnes.",
+        "recommendedReason": "Le rôtissage concentre les composés terreux et les bétalaïnes — un coup de pouce antioxydant coloré occasionnel, pas un aliment de base.",
+        "speciesNotes": {
+          "cat": "Chats : à éviter — forte charge en oxalates problématique pour les races sujettes aux calculs."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Entières 2–3 h (la peau se retire après), ou cubes de 2 cm pendant 90 min. Meilleure méthode pour préserver les bétalaïnes."
+          },
+          "oven": {
+            "notes": "Enveloppez entières dans du papier d’aluminium avec un filet d’eau. Concentre la saveur."
+          },
+          "stovetop_low": {
+            "warning": "Si vous bouillez, incluez l’eau de cuisson dans la gamelle — c’est là que sont les antioxydants bétalaïnes."
+          },
+          "pressure_cooker": {
+            "notes": "Entières, haute pression, libération naturelle. La pression dégrade les oxalates mieux que la vapeur."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Cubes de 2 cm, en une seule couche. Sort soyeux.",
+        "recommendedReason": "Le rôtissage concentre la saveur de noisette et les caroténoïdes en évaporant l’eau — la préparation la plus appétente.",
+        "speciesNotes": {
+          "cat": "Chats : limiter à 1 cuillère à soupe par repas — riche en amidon."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubes de 2 cm, en une seule couche. Sort soyeux."
+          },
+          "stovetop_low": {
+            "notes": "Cuire en cubes à la vapeur ; l’ébullition gorge la chair d’eau."
+          },
+          "slow_cooker": {
+            "warning": "Sera très humide — égouttez ou réduisez le liquide avant d’écraser."
+          },
+          "pressure_cooker": {
+            "notes": "Morceaux de 2 cm, haute pression, libération naturelle."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Servir cru — forte teneur en eau. Couper en bâtonnets ; la cuisson ruine la texture.",
+        "recommendedReason": "Le concombre est un légume cru — tout ce qu’il apporte, c’est l’hydratation et le croquant, et la cuisson détruit les deux.",
+        "cookingBlockedReason": "La cuisson transforme le concombre en une masse translucide et gluante que les animaux refusent — cru est la seule préparation sensée."
+      },
+      "celery": {
+        "recommendedNotes": "Ramollit les fibres qui sinon passeraient entières.",
+        "recommendedReason": "Cru, c’est sûr et cela offre le croquant qu’apporte le céleri — les animaux aux reins sensibles doivent l’éviter à cause des oxalates.",
+        "speciesNotes": {
+          "cat": "Petits chats et chiens de moins de 10 kg : préférez à la vapeur — un haché plus fin réduit le risque d’étouffement."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Ramollit les fibres qui sinon passeraient entières."
+          },
+          "oven": {
+            "warning": "Se dessèche — pas idéal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Disposez à plat dans le sachet, en une seule couche.",
+        "recommendedReason": "La vapeur préserve les folates et la rutine tout en ramollissant les tiges juste assez pour une digestion confortable.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Disposez à plat dans le sachet, en une seule couche."
+          },
+          "pressure_cooker": {
+            "notes": "Basse pression, libération rapide."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Couper en deux à travers la tige.",
+        "recommendedReason": "La vapeur préserve le sulforaphane et la vitamine K dans un légume crucifère dense en nutriments — à servir avec modération à cause des composés soufrés.",
+        "speciesNotes": {
+          "cat": "Chats : à éviter si sous traitement thyroïdien."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Couper en deux à travers la tige.",
+            "warning": "L’odeur soufrée se concentre dans le sachet scellé — ouvrez avec le couvercle pointé à l’opposé."
+          },
+          "oven": {
+            "notes": "Coupez en deux, face coupée vers le bas. Beaucoup de chiens préfèrent cette forme caramélisée à la vapeur."
+          },
+          "pressure_cooker": {
+            "notes": "Basse pression, libération rapide. Plus longtemps et ça tourne en purée."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1058,6 +1310,33 @@
         "eyebrow": "Assistant",
         "caption": "« Cuisiner à l’avance » avec stats en direct : sachets · sessions · sessions économisées vs quotidien. Vous voyez le gain avant de générer.",
         "principle": "La suivabilité est un apport nutritionnel, pas une coquetterie UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suppléments quotidiens",
+          "taurine": "Taurine en poudre",
+          "taurineDose": "250 mg/jour",
+          "codLiver": "Huile de foie de morue",
+          "codLiverDose": "1 mL, 3×/semaine",
+          "calcium": "Citrate de calcium",
+          "calciumDose": "287 mg/jour",
+          "dayLabel": "Jour 1 · lun. 25 mai",
+          "beefDay": "Jour bœuf",
+          "mainGrams": "{{g}}g bœuf"
+        },
+        "cooking": {
+          "title": "Plan de cuisson",
+          "summary": "4 sachets · 4 sessions de cuisson · une protéine par sachet",
+          "groupTotal": "{{bags}} sachets · {{g}} g au total",
+          "bagRow": "{{dates}} · à consommer avant le {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} sachet(s) de {{meat}} sur {{days}} jours pour {{pets}} animaux. Cuisez les {{kg}} kg en une fois — gardez 1 sachet au frigo, congelez le reste."
+        },
+        "wizard": {
+          "simpleMealsShort": "Une protéine par repas · la carte quotidienne de suppléments comble le manque",
+          "summary": "7 jours · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Groseilles / raisins de Corinthe",
       "compound": "Comme les raisins",
       "effect": "Insuffisance rénale aiguë"
+    },
+    "raw_freshwater_fish": {
+      "label": "Poisson d’eau douce cru (en base)",
+      "compound": "Thiaminase",
+      "effect": "Détruit la thiamine (B1) → dommages neurologiques, convulsions. La cuisson inactive l’enzyme. De petites quantités occasionnelles de poisson d’eau douce cuit sont acceptables."
+    },
+    "tuna_staple": {
+      "label": "Thon comme base alimentaire",
+      "compound": "Mercure + AGPI sans vitamine E",
+      "effect": "Accumulation de mercure ; stéatite (maladie de la graisse jaune) due aux acides gras polyinsaturés sans vitamine E suffisante. Limiter à ≤ 10 % de l’apport et faire tourner."
+    },
+    "liver_excess_cat": {
+      "label": "Foie en excès",
+      "compound": "Vitamine A préformée",
+      "effect": "Toxicité de la vitamine A (hypervitaminose A) — déformation osseuse, atteinte articulaire. Limiter le foie à 5–10 g/jour pour un chat de 4 kg. Les chats y sont particulièrement sensibles."
+    },
+    "dog_food_for_cat": {
+      "label": "Aliments pour chien à long terme",
+      "compound": "Manque de taurine + acide arachidonique + vitamine A préformée",
+      "effect": "Non toxique en aigu, mais mortellement insuffisante sur quelques mois. Les chats nourris avec des aliments pour chien développent cardiomyopathie dilatée, dégénérescence rétinienne et stéatose hépatique."
+    },
+    "lilies_environment": {
+      "label": "Lis (toutes les parties, environnement)",
+      "compound": "Néphrotoxine inconnue",
+      "effect": "Ce n’est pas un aliment, mais le simple contact à la maison suffit — même le pollen sur le pelage, ingéré pendant la toilette, provoque une insuffisance rénale aiguë en 36–72 h. Retirez tous les lis (Lilium et Hemerocallis) de tout foyer avec un chat."
+    },
+    "vegan_diet_cat": {
+      "label": "Régime tout-végétal / végan",
+      "compound": "Incompatibilité physiologique",
+      "effect": "Les chats n’ont pas les enzymes pour produire l’acide arachidonique, la taurine, la vitamine A, la vitamine D et l’arginine à partir de sources végétales. Les régimes végans pour chats ne sont sûrs à aucune durée."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Page introuvable",
     "description": "La page que vous cherchez n’existe pas ou a été déplacée.",
     "home": "Retour à l’accueil"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

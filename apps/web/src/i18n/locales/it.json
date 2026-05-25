@@ -51,8 +51,8 @@
       "title": "I tuoi animali",
       "subtitle": "Aggiungi un profilo per ogni animale che nutri, così i piani saranno adatti a specie, età e condizioni.",
       "addPet": "Aggiungi animale",
-      "emptyTitle": "Nessun animale",
-      "emptyDescription": "Aggiungi il tuo primo animale per sbloccare piani e liste della spesa su misura."
+      "emptyTitle": "La tua famiglia inizia qui.",
+      "emptyDescription": "Aggiungi un animale e genereremo un piano che entra davvero nella tua cucina."
     },
     "new": {
       "title": "Aggiungi animale",
@@ -199,16 +199,16 @@
       "title": "Piani pasti",
       "subtitle": "Genera un piano settimanale, quindicinale o mensile con la lista della spesa da portare al negozio.",
       "create": "Crea piano",
-      "emptyTitle": "Ancora nessun piano",
-      "emptyDescription": "Crea il tuo primo piano per generare menu e liste della spesa dai tuoi animali."
+      "emptyTitle": "Nessun piano ancora.",
+      "emptyDescription": "Un piano per famiglia. Cuoci una volta, nutri tutti, dosa il resto."
     },
     "new": {
       "title": "Nuovo piano",
       "subtitle": "Scegli gli animali e i giorni. Pensiamo a tutto il resto."
     },
     "needPet": {
-      "title": "Aggiungi prima un animale",
-      "description": "I piani usano il profilo di ogni animale per calcolare i menu. Aggiungine uno per iniziare.",
+      "title": "Aggiungi prima un animale.",
+      "description": "Ci serve almeno una bocca da sfamare.",
       "cta": "Aggiungi animale"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Totale spesa",
       "totalSummary": "{{items}} articoli · {{grams}} g in tutte le sezioni",
-      "empty": "Nulla da comprare — la dispensa copre già il piano.",
+      "empty": "Genera un piano e costruiremo la lista della spesa.",
       "exportFooter": "Lista della spesa PawCook — non è un consiglio veterinario.",
       "section": {
         "butcher": "Macelleria",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "L’eliminazione di un piano non può essere annullata. I profili dei tuoi animali salvati non saranno interessati.",
     "cookingPlan": {
-      "emptyTitle": "Piano di cottura solo per sous-vide",
-      "emptyHelp": "I sacchetti vengono generati quando il piano usa il sous-vide. Rigenera con il sous-vide come metodo di cottura per vedere il calendario dei sacchetti.",
+      "emptyTitle": "Il calendario sacchetti vive con il sous-vide.",
+      "emptyHelp": "Imposta il piano su sous-vide e costruiremo un calendario sacchetti con date.",
       "noBagsTitle": "Niente da insacchettare",
       "noBagsHelp": "Questo piano non ha ingredienti adatti al lotto — tutto sarà cucinato fresco.",
       "summaryLabel": "Piano di cottura",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cottura",
     "toastReady": "Ricetta pronta.",
-    "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola.",
+    "placeholderHint": "Scegli una carne. Scegli un metodo. Ai conti pensiamo noi.",
     "catSupplementsTitle": "Integratori per gatto dopo la cottura",
     "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto.",
     "subtitle_cat": "Tempo e temperatura di cottura sicuri per il cibo del tuo gatto. Ricorda di aggiungere taurina + complesso B dopo la cottura.",
@@ -583,6 +583,258 @@
       "recCaption": "cons.: {{method}}",
       "pillAria": "Mostro {{active}}; il metodo consigliato è {{recommended}}",
       "fellBackTo": "mantenuto come {{method}} — {{appliance}} non adatto per questa verdura"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Affettare a 1 cm. Cuocere al vapore finché sono tenere; conserva il beta-carotene meglio della bollitura.",
+        "recommendedReason": "Il vapore preserva il beta-carotene e la vitamina C mentre rompe le pareti cellulari che i cani non digeriscono crude.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Affettare 3–5 mm in modo che si adatti al sacchetto. Usa un bagno dedicato a 85 °C — le verdure non si ammorbidiscono alle temperature della carne."
+          },
+          "oven": {
+            "notes": "Cubi da 2 cm con un filo d’olio. La cottura al forno concentra il beta-carotene più del vapore."
+          },
+          "slow_cooker": {
+            "warning": "Le slow cooker rendono le carote molli — ok in stufato, meno ideali come contorno."
+          },
+          "pressure_cooker": {
+            "notes": "Pezzi da 1 cm, alta pressione con 1 tazza di acqua, rilascio rapido."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Cubi da 2–3 cm. Arrostire al naturale — niente zucchero, niente spezie. Schiacciare prima di servire.",
+        "recommendedReason": "La cottura al forno elimina acqua e concentra le fibre solubili che regolano le feci — il motivo principale per cui la zucca è nella ciotola.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubi da 2–3 cm, bagno dedicato a 85 °C."
+          },
+          "stovetop_low": {
+            "notes": "Cuocere al vapore su uno scolapasta; bollirla la inzuppa e diluisce il beneficio delle fibre."
+          },
+          "slow_cooker": {
+            "warning": "Risulterà molto bagnata — scolare o ridurre il liquido prima di schiacciare."
+          },
+          "pressure_cooker": {
+            "notes": "Pezzi da 2 cm, alta pressione, rilascio naturale."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Sempre cotta — la patata dolce cruda è difficile da digerire. Cubare o cuocere intera e schiacciare.",
+        "recommendedReason": "La cottura al forno caramellizza l’amido in zuccheri facilmente digeribili ed è la preparazione più appetibile. Il sous-vide dà un risultato più dolce grazie alla lenta conversione enzimatica, se hai tempo.",
+        "rawBlockedReason": "La patata dolce cruda contiene inibitori della tripsina ed è essenzialmente indigeribile.",
+        "speciesNotes": {
+          "cat": "Cotta e in quantità molto piccola per i gatti — i carboidrati non sono essenziali nella loro dieta."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubi da 1 cm, bagno dedicato a 85 °C. La beta-amilasi converte l’amido in maltosio — risulta nettamente più dolce della cottura al forno."
+          },
+          "stovetop_low": {
+            "notes": "Cuocere a cubetti al vapore; bollire aumenta il carico glicemico."
+          },
+          "pressure_cooker": {
+            "notes": "Pezzi da 2 cm, alta pressione, rilascio naturale."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Solo cimette, niente steli grossi. Mantenere al dente — la cottura eccessiva distrugge la vitamina C.",
+        "recommendedReason": "Una breve cottura al vapore preserva vitamina C e sulforafano ammorbidendo le cimette quanto basta per la digestione canina.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Cimette piccole, singolo strato nel sacchetto. L’odore di zolfo sarà intenso all’apertura — è normale.",
+            "warning": "Le cimette diventano verde oliva nel sacchetto sigillato; nutrizionalmente bene, solo visivamente poco invitante."
+          },
+          "oven": {
+            "warning": "Alcuni cani rifiutano la doratura Maillard sulle brassicacee — prova prima con una piccola quantità."
+          },
+          "pressure_cooker": {
+            "notes": "Bassa pressione — la salita li cuoce già. Rilascio rapido immediato o diventano poltiglia."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Far appassire brevemente in acqua bollente, scolare, tritare. Riduce leggermente gli ossalati.",
+        "recommendedReason": "Una breve bollitura e sgocciolamento riduce gli ossalati che interferiscono con l’assorbimento del calcio, preservando folato e ferro.",
+        "speciesNotes": {
+          "cat": "Da evitare nei gatti con problemi urinari — gli ossalati possono aggravare la formazione di cristalli."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Far appassire brevemente, scolare bene."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Spuntare. Cuocere al vapore fino a verde brillante e tenere-croccanti. Possono essere servite anche crude.",
+        "recommendedReason": "Il vapore ammorbidisce la fibra del baccello senza dilavare vitamina K e manganese — i nutrienti che rendono i fagiolini il riempitivo principe nelle diete dimagranti.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Spunta, lascia intero — mantengono perfettamente la forma."
+          },
+          "oven": {
+            "warning": "Tende a seccarli — gli animali di solito preferiscono al vapore."
+          },
+          "slow_cooker": {
+            "warning": "Saranno molli, non tenere-croccanti."
+          },
+          "pressure_cooker": {
+            "notes": "Alta pressione, rilascio rapido."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Affettare o cubare. Sicura cruda — la cottura serve solo ad ammorbidirla per animali schizzinosi.",
+        "recommendedReason": "Il vapore la ammorbidisce abbastanza per animali sdentati o schizzinosi mantenendo il contenuto d’acqua — un contorno ideale per l’idratazione.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Rilascia molta acqua nel sacchetto — scolare prima di servire."
+          },
+          "slow_cooker": {
+            "warning": "Diventa poltiglia — ok in stufato, non come contorno."
+          },
+          "pressure_cooker": {
+            "notes": "Bassa pressione, rilascio rapido — si cuoce troppo all’istante."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Freschi o surgelati (scongelare prima). Mai in scatola (sodio aggiunto).",
+        "recommendedReason": "Una breve cottura al vapore preserva vitamina K e proteine dei legumi evitando di renderli mollicci.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Bassa pressione, rilascio rapido. I piselli surgelati devono solo scongelarsi."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Stacca le foglie dai gambi duri, trita fine. Con moderazione — ossalati + tiocianati.",
+        "recommendedReason": "Il vapore preserva calcio, ferro e sulforafano ammorbidendo le fibre dure — servire solo in piccole quantità per i tiocianati.",
+        "rawBlockedReason": "Gli enzimi del cavolo riccio crudo attivano i tiocianati gozzigeni e rendono l’ossalato più biodisponibile.",
+        "speciesNotes": {
+          "cat": "Gatti: evitare se in terapia tiroidea. Altrimenti solo occasionalmente."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "La consistenza diventa viscida nel sacchetto sigillato — la maggior parte degli animali la preferisce al vapore."
+          },
+          "oven": {
+            "warning": "Questa è di fatto una preparazione tipo chips di cavolo — porzione snack, non contorno."
+          },
+          "pressure_cooker": {
+            "notes": "Bassa pressione — il metodo migliore per ridurre gli ossalati in cavolo riccio, barbabietola e spinaci."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Pezzi da 1–2 cm. Sotto gli 85 °C restano fibrose — usare la temperatura di bagno \"radice soda\" più alta.",
+        "recommendedReason": "Il vapore le ammorbidisce abbastanza per la masticazione mantenendo il sapore dolce e apportando fibra prebiotica per l’intestino.",
+        "rawBlockedReason": "Le pastinache crude contengono furanocumarine (psoraleni) — fototossiche e irritanti gastrointestinali.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Pezzi da 1–2 cm. Sotto 85 °C restano fibrose — usare la temperatura di bagno \"radice soda\" più alta."
+          },
+          "pressure_cooker": {
+            "notes": "Pezzi da 2 cm, alta pressione, rilascio naturale."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Intere 2–3 h (la buccia si stacca dopo), o cubi da 2 cm a 90 min. Metodo migliore per preservare le betalaine.",
+        "recommendedReason": "La cottura al forno concentra i composti terrosi e le betalaine — una spinta antiossidante colorata, occasionale, non un alimento base.",
+        "speciesNotes": {
+          "cat": "Gatti: evitare — l’elevato carico di ossalati è preoccupante nelle razze predisposte ai calcoli."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Intere 2–3 h (la buccia si stacca dopo), o cubi da 2 cm a 90 min. Metodo migliore per preservare le betalaine."
+          },
+          "oven": {
+            "notes": "Avvolgere intere nella carta d’alluminio con un po’ d’acqua. Concentra il sapore."
+          },
+          "stovetop_low": {
+            "warning": "Se bolli, includi l’acqua di cottura nella ciotola — è lì che sono finiti gli antiossidanti betalaine."
+          },
+          "pressure_cooker": {
+            "notes": "Intere, alta pressione, rilascio naturale. La pressione degrada gli ossalati meglio del vapore."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Cubi da 2 cm, singolo strato. Risulta vellutato.",
+        "recommendedReason": "La cottura al forno concentra il sapore nocciolato e i carotenoidi evaporando l’acqua — la preparazione più appetibile.",
+        "speciesNotes": {
+          "cat": "Gatti: massimo 1 cucchiaio per pasto — alta in amido."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Cubi da 2 cm, singolo strato. Risulta vellutato."
+          },
+          "stovetop_low": {
+            "notes": "Cuocere a cubetti al vapore; bollirla inzuppa la polpa."
+          },
+          "slow_cooker": {
+            "warning": "Risulterà molto bagnata — scolare o ridurre il liquido prima di schiacciare."
+          },
+          "pressure_cooker": {
+            "notes": "Pezzi da 2 cm, alta pressione, rilascio naturale."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Servire crudo — alto contenuto d’acqua. Tagliare a bastoncini; la cottura rovina la consistenza.",
+        "recommendedReason": "Il cetriolo è un ortaggio da consumare crudo — fornisce solo idratazione e croccantezza, e la cottura distrugge entrambe.",
+        "cookingBlockedReason": "La cottura trasforma il cetriolo in una poltiglia traslucida e viscida che gli animali rifiutano — crudo è l’unica preparazione sensata."
+      },
+      "celery": {
+        "recommendedNotes": "Ammorbidisce le fibre che altrimenti passerebbero intere.",
+        "recommendedReason": "Crudo è sicuro e offre la croccantezza tipica del sedano — animali con reni sensibili dovrebbero evitarlo per gli ossalati.",
+        "speciesNotes": {
+          "cat": "Gatti piccoli e cani sotto 10 kg: meglio al vapore — triturare più fine riduce il rischio di soffocamento."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Ammorbidisce i filamenti che altrimenti passerebbero interi."
+          },
+          "oven": {
+            "warning": "Si secca — non ideale."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Disporre piatto nel sacchetto, singolo strato.",
+        "recommendedReason": "Il vapore preserva i folati e la rutina ammorbidendo gli steli quanto basta per una digestione confortevole.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Disporre piatto nel sacchetto, singolo strato."
+          },
+          "pressure_cooker": {
+            "notes": "Bassa pressione, rilascio rapido."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Tagliare a metà attraverso il gambo.",
+        "recommendedReason": "Il vapore preserva sulforafano e vitamina K in una crucifera densa di nutrienti — servire con moderazione per i composti solforati.",
+        "speciesNotes": {
+          "cat": "Gatti: evitare se in terapia tiroidea."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Tagliare a metà attraverso il gambo.",
+            "warning": "L’odore di zolfo si concentra nel sacchetto sigillato — apri con il coperchio rivolto lontano da te."
+          },
+          "oven": {
+            "notes": "Tagliarli a metà, lato del taglio verso il basso. Molti cani preferiscono questa forma caramellata al vapore."
+          },
+          "pressure_cooker": {
+            "notes": "Bassa pressione, rilascio rapido. Più a lungo e diventano poltiglia."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1058,6 +1310,33 @@
         "eyebrow": "Procedura guidata",
         "caption": "\"Cucina in anticipo\" con statistiche live: sacchetti · sessioni · sessioni risparmiate vs giornaliera. Vedi il vantaggio prima di generare.",
         "principle": "La seguibilità è un input nutrizionale, non un dettaglio UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Integratori giornalieri",
+          "taurine": "Taurina in polvere",
+          "taurineDose": "250 mg/giorno",
+          "codLiver": "Olio di fegato di merluzzo",
+          "codLiverDose": "1 mL, 3×/settimana",
+          "calcium": "Citrato di calcio",
+          "calciumDose": "287 mg/giorno",
+          "dayLabel": "Giorno 1 · Lun 25 mag",
+          "beefDay": "Giorno manzo",
+          "mainGrams": "{{g}}g manzo"
+        },
+        "cooking": {
+          "title": "Piano di cottura",
+          "summary": "4 sacchetti · 4 sessioni di cottura · una proteina per sacchetto",
+          "groupTotal": "{{bags}} sacchetti · {{g}} g totali",
+          "bagRow": "{{dates}} · consumare entro {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} sacchetto/i di {{meat}} su {{days}} giorni per {{pets}} animali. Cuoci tutti i {{kg}} kg in una volta — frigo 1 sacchetto, freezer il resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Una proteina per pasto · la scheda integratori giornaliera copre il divario",
+          "summary": "7 giorni · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Ribes / uvetta di Corinto",
       "compound": "Come l'uva",
       "effect": "Insufficienza renale acuta"
+    },
+    "raw_freshwater_fish": {
+      "label": "Pesce d’acqua dolce crudo (come base)",
+      "compound": "Tiaminasi",
+      "effect": "Distrugge la tiamina (B1) → danno neurologico, convulsioni. La cottura inattiva l’enzima. Piccole quantità occasionali di pesce d’acqua dolce cotto vanno bene."
+    },
+    "tuna_staple": {
+      "label": "Tonno come base della dieta",
+      "compound": "Mercurio + PUFA senza vitamina E",
+      "effect": "Accumulo di mercurio; steatite (malattia del grasso giallo) da grassi polinsaturi senza vitamina E sufficiente. Limitare a ≤ 10% dell’apporto e ruotare."
+    },
+    "liver_excess_cat": {
+      "label": "Fegato in eccesso",
+      "compound": "Vitamina A preformata",
+      "effect": "Tossicità da vitamina A (ipervitaminosi A) — deformazione ossea, malattia articolare. Limitare il fegato a 5–10 g/giorno per un gatto di 4 kg. I gatti sono particolarmente sensibili."
+    },
+    "dog_food_for_cat": {
+      "label": "Cibo per cani a lungo termine",
+      "compound": "Manca taurina + acido arachidonico + vitamina A preformata",
+      "effect": "Non tossico in acuto, ma mortalmente inadeguato nell’arco di mesi. I gatti alimentati con cibo per cani sviluppano cardiomiopatia dilatativa, degenerazione retinica e fegato grasso."
+    },
+    "lilies_environment": {
+      "label": "Gigli (tutte le parti, ambiente)",
+      "compound": "Nefrotossina sconosciuta",
+      "effect": "Non è un alimento, ma il contatto domestico è sufficiente — anche il polline sul pelo, ingerito durante la toelettatura, causa insufficienza renale acuta in 36–72 h. Rimuovi tutti i gigli (Lilium e Hemerocallis) da qualsiasi casa con un gatto."
+    },
+    "vegan_diet_cat": {
+      "label": "Dieta solo vegetale / vegana",
+      "compound": "Incompatibilità fisiologica",
+      "effect": "I gatti non hanno gli enzimi per ricavare acido arachidonico, taurina, vitamina A, vitamina D e arginina da fonti vegetali. Le diete vegane per gatti non sono sicure a nessuna durata."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Pagina non trovata",
     "description": "La pagina che cerchi non esiste o è stata spostata.",
     "home": "Torna alla home"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

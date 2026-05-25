@@ -283,7 +283,7 @@ export default function PlanWizard() {
 
       {/* Step 1 — Pets */}
       <Card padding="md" className="space-y-3">
-        <SectionLabel>{t('mealPlan.wizard.pets')}</SectionLabel>
+        <StepHeader n={1} label={t('mealPlan.wizard.pets')} />
         <p className="text-xs text-muted-fg">{t('mealPlan.wizard.petsHelp')}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {pets.map((pet) => {
@@ -326,7 +326,7 @@ export default function PlanWizard() {
 
       {/* Step 2 — Duration */}
       <Card padding="md" className="space-y-3">
-        <SectionLabel>{t('mealPlan.wizard.duration')}</SectionLabel>
+        <StepHeader n={2} label={t('mealPlan.wizard.duration')} />
         <div role="radiogroup" aria-label={t('mealPlan.wizard.duration')} className="grid grid-cols-3 gap-2">
           {DURATIONS.map((d) => {
             const active = duration === d;
@@ -355,7 +355,8 @@ export default function PlanWizard() {
       </Card>
 
       {/* Step 3 — Sourcing */}
-      <Card padding="md">
+      <Card padding="md" className="space-y-4">
+        <StepHeader n={3} label={t('mealPlan.sourcing.prefsLabel', { defaultValue: 'Sourcing preferences' })} />
         <SourcingPicker
           value={sourcing}
           onChange={handleSourcingChange}
@@ -367,7 +368,8 @@ export default function PlanWizard() {
       </Card>
 
       {/* Step 4 — Name */}
-      <Card padding="md">
+      <Card padding="md" className="space-y-4">
+        <StepHeader n={4} label={t('mealPlan.wizard.nameLabel')} />
         <Input
           label={t('mealPlan.wizard.nameLabel')}
           placeholder={defaultName(selectedPets, duration, t)}
@@ -474,4 +476,21 @@ function defaultName(
   if (pets.length === 0) return t('mealPlan.wizard.defaultNameEmpty');
   const names = pets.map((p) => p.name).join(' & ');
   return t('mealPlan.wizard.defaultName', { names, days: duration });
+}
+
+/**
+ * Numbered step header. Mirrors the landing's HowItWorks pattern
+ * (font-mono 01, 02, 03 next to a bold label) so the wizard's four
+ * cards read as an explicit sequence rather than a stack of
+ * unconnected sections.
+ */
+function StepHeader({ n, label }: { n: number; label: string }) {
+  return (
+    <div className="flex items-baseline gap-2">
+      <span className="font-mono text-xs font-black text-muted-fg tabular-nums">
+        {n.toString().padStart(2, '0')}
+      </span>
+      <SectionLabel className="mb-0">{label}</SectionLabel>
+    </div>
+  );
 }

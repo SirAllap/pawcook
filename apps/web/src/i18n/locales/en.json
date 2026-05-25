@@ -51,8 +51,8 @@
       "title": "Your pets",
       "subtitle": "Add a profile for each animal you feed so meal plans match their species, age, and conditions.",
       "addPet": "Add pet",
-      "emptyTitle": "No pets yet",
-      "emptyDescription": "Add your first pet to unlock meal plans and shopping lists tailored to them."
+      "emptyTitle": "Your household starts here.",
+      "emptyDescription": "Add a pet and we'll generate a plan that actually fits your kitchen."
     },
     "new": {
       "title": "Add a pet",
@@ -199,16 +199,16 @@
       "title": "Meal plans",
       "subtitle": "Generate a weekly, biweekly, or monthly plan and the shopping list you can take to the store.",
       "create": "Create plan",
-      "emptyTitle": "No plans yet",
-      "emptyDescription": "Create your first plan to generate menus and shopping lists from your pets."
+      "emptyTitle": "No plan yet.",
+      "emptyDescription": "One plan per household. Cook once, feed everyone, dose the rest."
     },
     "new": {
       "title": "New plan",
       "subtitle": "Pick your pets and how many days you're planning for. We'll handle the rest."
     },
     "needPet": {
-      "title": "Add a pet first",
-      "description": "Plans use each pet's profile to calculate menus. Add one to get started.",
+      "title": "Add a pet first.",
+      "description": "We need at least one mouth to feed.",
       "cta": "Add a pet"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Shopping total",
       "totalSummary": "{{items}} items · {{grams}} g across all sections",
-      "empty": "No items to buy — your pantry already covers this plan.",
+      "empty": "Generate a plan and we'll build the bag list.",
       "exportFooter": "PawCook shopping list — not veterinary advice.",
       "section": {
         "butcher": "Butcher / meat",
@@ -334,8 +334,8 @@
       "emptyTitle": "Nothing to buy yet"
     },
     "cookingPlan": {
-      "emptyTitle": "Cooking plan only for sous-vide",
-      "emptyHelp": "Bags are generated when the plan uses sous-vide. Regenerate with sous-vide as the cooking method to see the bag schedule.",
+      "emptyTitle": "Bag schedule lives with sous-vide.",
+      "emptyHelp": "Switch the plan to sous-vide and we'll build a date-stamped bag schedule.",
       "noBagsTitle": "Nothing to bag",
       "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
       "summaryLabel": "Cooking plan",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cooking",
     "toastReady": "Recipe ready.",
-    "placeholderHint": "Choose a meat and method, then tap Calculate.",
+    "placeholderHint": "Pick a meat. Pick a method. We handle the math.",
     "catSupplementsTitle": "Cat supplements after cooking",
     "catSupplementsBody": "Heat destroys taurine, B-vitamins (thiamine, niacin) and some vitamin E. Add a feline supplement stack — taurine 250–500 mg, B-complex, vitamin E — after the meal cools.",
     "subtitle_cat": "Safe cooking time and temperature for your cat's food. Remember to add taurine + B-complex after cooking.",
@@ -583,7 +583,259 @@
       "label": "Cook a different meat from this plan"
     },
     "prefilledDaysShort": "days",
-    "prefilledPetsShort": "pets"
+    "prefilledPetsShort": "pets",
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "Slice 1 cm thick. Steam until fork-tender; retains beta-carotene better than boiling.",
+        "recommendedReason": "Steaming preserves beta-carotene and vitamin C while fully breaking down cell walls dogs can't digest raw.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Slice 3–5 mm so the bag conforms. Use a dedicated 85 °C bath — vegetables will not soften at meat-cooking temperatures."
+          },
+          "oven": {
+            "notes": "Cube 2 cm and toss in a little oil. Roasting concentrates beta-carotene more than steam."
+          },
+          "slow_cooker": {
+            "warning": "Slow cookers turn carrots mushy — fine for a stew, less ideal as a standalone side."
+          },
+          "pressure_cooker": {
+            "notes": "1 cm chunks, high pressure with 1 cup water, quick release."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Cube 2–3 cm. Roast plain — no sugar, no spice. Mash before serving.",
+        "recommendedReason": "Roasting drives off water and concentrates the soluble fiber that regulates stool — the main reason pumpkin is in the bowl.",
+        "methods": {
+          "sous_vide": {
+            "notes": "2–3 cm cubes, dedicated 85 °C bath."
+          },
+          "stovetop_low": {
+            "notes": "Steam over a colander; boiling waterlogs it and dilutes the fiber benefit."
+          },
+          "slow_cooker": {
+            "warning": "Will be very wet — drain or reduce liquid before mashing."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm chunks, high pressure, natural release."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Always cooked — raw sweet potato is hard to digest. Cube or bake whole and mash.",
+        "recommendedReason": "Roasting caramelizes starch into easily digestible sugars and is the most palatable preparation. Sous-vide produces a sweeter result thanks to slow enzymatic conversion, if you have the time.",
+        "rawBlockedReason": "Raw sweet potato contains trypsin inhibitors and is essentially indigestible.",
+        "speciesNotes": {
+          "cat": "Cats: cap at 1 tablespoon per meal — high starch."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "1 cm cubes, dedicated 85 °C bath. Beta-amylase converts starch to maltose — comes out noticeably sweeter than baked."
+          },
+          "stovetop_low": {
+            "notes": "Steam cubed; boiling raises the glycemic load."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm chunks, high pressure, natural release."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Florets only, no thick stems. Keep al dente — overcooking destroys vitamin C.",
+        "recommendedReason": "Short steaming keeps vitamin C and sulforaphane intact while softening the florets enough for canine digestion.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Small florets, single layer in the bag. Sulfur smell will be intense on opening — this is normal.",
+            "warning": "Florets go olive-drab in a sealed bag; nutritionally fine, just visually unappealing."
+          },
+          "oven": {
+            "warning": "Some dogs refuse the Maillard browning on brassicas — try a small batch first."
+          },
+          "pressure_cooker": {
+            "notes": "Low pressure — the come-up cooks them. Quick-release immediately or they turn to mush."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Wilt briefly in boiling water, drain, chop. Reduces oxalates slightly.",
+        "recommendedReason": "A brief boil-and-drain reduces oxalates that interfere with calcium absorption, while preserving folate and iron.",
+        "speciesNotes": {
+          "cat": "Cats: avoid, or limit to a teaspoon weekly — oxalate load is a concern for stone-prone breeds (Burmese, Persian, Himalayan)."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Wilt briefly, drain hard."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Trim ends. Steam until bright green and tender-crisp. Can be served raw too.",
+        "recommendedReason": "Steaming softens the pod fiber without leaching vitamin K and manganese — the nutrients that make green beans a go-to filler for weight-loss diets.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Trim ends, keep whole — they hold shape beautifully."
+          },
+          "oven": {
+            "warning": "Tends to dry them out — pets usually prefer steamed."
+          },
+          "slow_cooker": {
+            "warning": "Will be soft, not tender-crisp."
+          },
+          "pressure_cooker": {
+            "notes": "High pressure, quick release."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "Slice or cube. Safe raw — cooking only softens for picky eaters.",
+        "recommendedReason": "Light steaming softens for picky eaters without destroying the high water content that helps hydration.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Releases a lot of water into the bag — drain before serving."
+          },
+          "slow_cooker": {
+            "warning": "Turns to mush — fine in a stew, not as a side."
+          },
+          "pressure_cooker": {
+            "notes": "Low pressure, quick release — overcooks instantly."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Fresh or frozen (thaw first). Never use canned (added sodium).",
+        "recommendedReason": "Quick steam preserves lutein and B-vitamins that boiling leaches out.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Low pressure, quick release. Frozen peas only need to thaw."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Strip leaves from tough stems, chop fine. Sparingly — oxalates + thiocyanates.",
+        "recommendedReason": "Brief steaming deactivates the goitrogenic enzymes that interfere with thyroid function while keeping iron and vitamin K available.",
+        "rawBlockedReason": "Raw kale's enzymes activate goitrogenic thiocyanates and make oxalate more bioavailable.",
+        "speciesNotes": {
+          "cat": "Cats: avoid if on thyroid medication. Otherwise occasional only."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "Texture goes slick in a sealed bag — most pets prefer it steamed."
+          },
+          "oven": {
+            "warning": "This is effectively a kale-chip prep — treat-portion, not a side."
+          },
+          "pressure_cooker": {
+            "notes": "Low pressure — best method for reducing oxalates in kale, beets and spinach."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Peel and cube 2 cm. Cook fully — raw parsnips are very fibrous.",
+        "recommendedReason": "Steam fully softens the dense fiber and breaks down furanocoumarins that irritate the gut when raw.",
+        "rawBlockedReason": "Raw parsnips contain furanocoumarins (psoralens) — phototoxic and GI-irritating.",
+        "methods": {
+          "sous_vide": {
+            "notes": "1–2 cm chunks. Below 85 °C they stay fibrous — use the higher 'firm root' bath temperature."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm chunks, high pressure, natural release."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Trim greens, scrub. Cook whole then peel; expect colored stool — harmless.",
+        "recommendedReason": "Steaming retains betalains and folate that boiling washes away — these are the entire reason beets are in the bowl.",
+        "speciesNotes": {
+          "cat": "Cats: avoid — high oxalate load is a concern for stone-prone breeds."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Whole at 2–3 hr (skin slips off after), or 2 cm cubes at 90 min. Best method for retaining betalains."
+          },
+          "oven": {
+            "notes": "Wrap whole in foil with a splash of water. Concentrates flavor."
+          },
+          "stovetop_low": {
+            "warning": "If you boil, include the cooking water in the bowl — that's where the betalain antioxidants ended up."
+          },
+          "pressure_cooker": {
+            "notes": "Whole, high pressure, natural release. Pressure breaks down oxalates better than steaming."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Halve, scoop seeds. Roast cut-side down on parchment. Mash flesh.",
+        "recommendedReason": "Roasting concentrates the beta-carotene and produces the sweetness that makes squash one of the most palatable veg additions.",
+        "speciesNotes": {
+          "cat": "Cats: cap at 1 tablespoon per meal — high starch."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "2 cm cubes, single layer. Comes out silky."
+          },
+          "stovetop_low": {
+            "notes": "Steam cubed; boiling waterlogs the flesh."
+          },
+          "slow_cooker": {
+            "warning": "Will be very wet — drain or reduce liquid before mashing."
+          },
+          "pressure_cooker": {
+            "notes": "2 cm chunks, high pressure, natural release."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Serve raw — high water content. Slice into sticks; cooking ruins texture.",
+        "recommendedReason": "Cucumber is 95% water — cooking serves no purpose and destroys the hydration and crunch that are its only contribution.",
+        "cookingBlockedReason": "Cooking turns cucumber into a translucent slime pets refuse — raw is the only sensible preparation."
+      },
+      "celery": {
+        "recommendedNotes": "Chop finely into 5 mm pieces to prevent choking. Strings are hard to digest.",
+        "recommendedReason": "Raw celery preserves apigenin and its mild diuretic effect — just chop fine to avoid string-related choking.",
+        "speciesNotes": {
+          "cat": "Small cats and dogs under 10 kg: consider steamed instead — finer chop reduces choking risk."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Softens the strings that otherwise pass through whole."
+          },
+          "oven": {
+            "warning": "Dries out — not ideal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Trim woody ends. Steam until tender. Slice into bite-size pieces before serving.",
+        "recommendedReason": "Steam softens the woody fibers while preserving folate — folate is asparagus's main nutritional contribution.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Lay flat in the bag, single layer."
+          },
+          "pressure_cooker": {
+            "notes": "Low pressure, quick release."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Halve sprouts, steam until tender. Limit portion size — known to cause gas.",
+        "recommendedReason": "Steaming deactivates the thiocyanates that suppress thyroid function while keeping the texture pets actually eat.",
+        "speciesNotes": {
+          "cat": "Cats: avoid if on thyroid medication."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Halve through the stem.",
+            "warning": "Sulfur smell concentrates in a sealed bag — open with the lid pointed away."
+          },
+          "oven": {
+            "notes": "Halve, cut-side down. Many dogs prefer this caramelized form to steamed."
+          },
+          "pressure_cooker": {
+            "notes": "Low pressure, quick release. Longer and they turn to mush."
+          }
+        }
+      }
+    }
   },
   "nutrition": {
     "title": "Nutrition Calculator",
@@ -1058,6 +1310,33 @@
         "eyebrow": "Wizard",
         "caption": "\"Cook ahead\" with live stats: bags · cook sessions · sessions saved vs daily. See the frugal payoff before you generate.",
         "principle": "Followability is a nutritional input, not a UX nicety."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Daily supplements",
+          "taurine": "Taurine powder",
+          "taurineDose": "250 mg/day",
+          "codLiver": "Cod liver oil",
+          "codLiverDose": "1 mL, 3×/week",
+          "calcium": "Calcium citrate",
+          "calciumDose": "287 mg/day",
+          "dayLabel": "Day 1 · Mon May 25",
+          "beefDay": "Beef day",
+          "mainGrams": "{{g}}g beef"
+        },
+        "cooking": {
+          "title": "Cooking plan",
+          "summary": "4 bags · 4 cook sessions · one protein per bag",
+          "groupTotal": "{{bags}} bags · {{g}} g total",
+          "bagRow": "{{dates}} · use by {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pets. Cook all {{kg}} kg at once — fridge 1 bag, freeze the rest."
+        },
+        "wizard": {
+          "simpleMealsShort": "One protein per meal · daily supplement card covers the gap",
+          "summary": "7 days · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1374,6 +1653,36 @@
       "label": "Currants",
       "compound": "Same as grapes",
       "effect": "Acute kidney failure"
+    },
+    "raw_freshwater_fish": {
+      "label": "Raw Freshwater Fish (staple)",
+      "compound": "Thiaminase",
+      "effect": "Destroys thiamine (B1) → neurological damage, seizures. Cooking inactivates the enzyme. Occasional small amounts of cooked freshwater fish are OK."
+    },
+    "tuna_staple": {
+      "label": "Tuna as a Staple",
+      "compound": "Mercury + PUFA without Vit E",
+      "effect": "Mercury accumulation; steatitis (yellow fat disease) from polyunsaturated fats without sufficient vitamin E. Cap at ≤ 10% of intake and rotate."
+    },
+    "liver_excess_cat": {
+      "label": "Liver in Excess",
+      "compound": "Pre-formed vitamin A",
+      "effect": "Vitamin A toxicity (hypervitaminosis A) — bone deformation, joint disease. Cap liver at 5–10 g/day for a 4 kg cat. Cats are uniquely sensitive."
+    },
+    "dog_food_for_cat": {
+      "label": "Dog Food Long-Term",
+      "compound": "Missing taurine + arachidonic acid + preformed vitamin A",
+      "effect": "Not acutely toxic, but lethally inadequate over months. Cats fed dog food develop dilated cardiomyopathy, retinal degeneration, and fatty liver."
+    },
+    "lilies_environment": {
+      "label": "Lilies (all parts, environment)",
+      "compound": "Unknown nephrotoxin",
+      "effect": "Not a food, but household contact is enough — even pollen on fur, ingested while grooming, causes acute kidney failure within 36–72h. Remove all lilies (Lilium and Hemerocallis) from any home with a cat."
+    },
+    "vegan_diet_cat": {
+      "label": "Plant-Only / Vegan Diet",
+      "compound": "Physiological incompatibility",
+      "effect": "Cats lack the enzymes to derive arachidonic acid, taurine, vitamin A, vitamin D, and arginine from plant sources. Vegan cat diets are not safe at any duration."
     }
   },
   "suppData": {
@@ -1466,5 +1775,8 @@
     "title": "Page not found",
     "description": "The page you’re looking for doesn’t exist or was moved.",
     "home": "Back to home"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }
