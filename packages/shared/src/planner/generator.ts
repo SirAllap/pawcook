@@ -230,12 +230,13 @@ function pickIngredientForComponent(
     .find((p): p is Ingredient => Boolean(p));
 
   // Block size for rotation = bagDays for protein-side components (so each
-  // protein bag covers N consecutive days of the same protein), and 1 for
-  // veg-side components (we still want daily veg variety even when the
-  // protein blocks). Without this alignment, sous-vide bags can never be
-  // filled with N usage-days of the same ingredient — the wizard's
-  // "Cook ahead" choice would be cosmetic.
-  const blockSize = isMeatComponent(component.key) ? sourcing.bagDays : 1;
+  // Block size = bagDays for every component (meat AND veg) so each bag
+  // can hold N consecutive days of the same ingredient. Daily rotation
+  // of veggies would leave veg bags partially filled with one day's
+  // worth even though the user picked "Cook ahead = 2 days." One veggie
+  // per bag is the companion rule to one protein per bag (see /CLAUDE.md
+  // sub-principle 6: the cook flow drives the meal plan).
+  const blockSize = sourcing.bagDays;
   const pick = mustInclude
     ?? pool[rotationIndex(component.key, dayIndex, seed, pool.length, blockSize, durationDays)]
     // last-resort fallback so the type is always defined

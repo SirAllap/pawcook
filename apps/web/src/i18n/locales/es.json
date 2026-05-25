@@ -263,7 +263,7 @@
       "bagSizeCaption": "Una proteína por bolsa · verduras en sus propias bolsas",
       "bagSizeWarn": "Algunas bolsas estarán congeladas ~3 semanas. Es seguro, pero el sabor se degrada — considera 2 o 3.",
       "cookAheadLabel": "Cocinar por adelantado",
-      "cookAheadHelp": "Cuántos días debe cubrir cada lote de proteína. Ventanas más grandes = menos sesiones de cocción y menos plástico; el planificador agrupa días consecutivos de la misma proteína para que cada bolsa esté llena.",
+      "cookAheadHelp": "Cuántos días debe cubrir cada lote. Ventanas más grandes = menos sesiones de cocción y menos plástico; el planificador agrupa días consecutivos de la misma proteína y verdura para que cada bolsa esté llena.",
       "cookAhead": {
         "perServe": "Por ración",
         "upTo2": "Hasta 2 días",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción",
       "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria",
       "simpleMeals": "Comidas simples",
-      "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota)."
+      "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota).",
+      "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -537,7 +538,8 @@
       "mergeFewer": "Menos bolsas",
       "mergeAll": "Una bolsa",
       "mergeBagCount": "{{n}} bolsa(s)",
-      "mergeHint": "Ahorra {{saved}} sesión(es) de cocción — las raciones adyacentes caben en la ventana de {{fridge}} días en la nevera tras descongelar."
+      "mergeHint": "Ahorra {{saved}} sesión(es) de cocción — las raciones adyacentes caben en la ventana de {{fridge}} días en la nevera tras descongelar.",
+      "bagRowSupplement": "sirve {{serveDates}} · cocínalo fresco, sin bolsa"
     },
     "exportFooter": "PawCook — no es asesoramiento veterinario. Usa un termómetro de carne para verificar una temperatura interna segura.",
     "meatSwitcher": {

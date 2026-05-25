@@ -263,7 +263,7 @@
       "bagSizeCaption": "Eén eiwit per zak · groenten in eigen zakken",
       "bagSizeWarn": "Sommige zakken liggen ~3 weken in de vriezer. Veilig, maar de smaak gaat achteruit — overweeg 2 of 3.",
       "cookAheadLabel": "Vooruitkoken",
-      "cookAheadHelp": "Hoeveel dagen elke eiwit-batch moet dekken. Grotere vensters = minder kooksessies en minder plastic; de planner groepeert opeenvolgende dagen van hetzelfde eiwit zodat elke zak vol is.",
+      "cookAheadHelp": "Hoeveel dagen elke batch moet dekken. Grotere vensters = minder kooksessies en minder plastic; de planner groepeert opeenvolgende dagen van hetzelfde eiwit en dezelfde groente zodat elke zak vol is.",
       "cookAhead": {
         "perServe": "Per portie",
         "upTo2": "Tot 2 dagen",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} zakken · {{sessions}} kooksessie(s)",
       "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks",
       "simpleMeals": "Eenvoudige maaltijden",
-      "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier)."
+      "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier).",
+      "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -537,7 +538,8 @@
       "mergeFewer": "Minder zakken",
       "mergeAll": "Eén zak",
       "mergeBagCount": "{{n}} zak(ken)",
-      "mergeHint": "Bespaart {{saved}} kooksessie(s) — aangrenzende porties passen binnen het {{fridge}}-daagse koelvenster na ontdooien."
+      "mergeHint": "Bespaart {{saved}} kooksessie(s) — aangrenzende porties passen binnen het {{fridge}}-daagse koelvenster na ontdooien.",
+      "bagRowSupplement": "voor {{serveDates}} · vers koken, geen zak"
     },
     "exportFooter": "PawCook — geen veterinair advies. Gebruik een vleesthermometer om een veilige kerntemperatuur te controleren.",
     "meatSwitcher": {

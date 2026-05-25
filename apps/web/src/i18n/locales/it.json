@@ -263,7 +263,7 @@
       "bagSizeCaption": "Una proteina per sacchetto · verdure nei loro sacchetti",
       "bagSizeWarn": "Alcuni sacchetti resteranno congelati ~3 settimane. Sicuro, ma il sapore peggiora — valuta 2 o 3.",
       "cookAheadLabel": "Cucina in anticipo",
-      "cookAheadHelp": "Quanti giorni deve coprire ogni lotto di proteine. Finestre più ampie = meno sessioni di cottura e meno plastica; il pianificatore raggruppa giorni consecutivi della stessa proteina per riempire ogni sacchetto.",
+      "cookAheadHelp": "Quanti giorni deve coprire ogni lotto. Finestre più ampie = meno sessioni di cottura e meno plastica; il pianificatore raggruppa giorni consecutivi della stessa proteina e dello stesso ortaggio per riempire ogni sacchetto.",
       "cookAhead": {
         "perServe": "Per porzione",
         "upTo2": "Fino a 2 giorni",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura",
       "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera",
       "simpleMeals": "Pasti semplici",
-      "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale)."
+      "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale).",
+      "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli."
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -537,7 +538,8 @@
       "mergeFewer": "Meno sacchetti",
       "mergeAll": "Un sacchetto",
       "mergeBagCount": "{{n}} sacchetto/i",
-      "mergeHint": "Risparmia {{saved}} sessione/i di cottura — le porzioni adiacenti rientrano nella finestra di {{fridge}} giorni in frigo dopo lo scongelamento."
+      "mergeHint": "Risparmia {{saved}} sessione/i di cottura — le porzioni adiacenti rientrano nella finestra di {{fridge}} giorni in frigo dopo lo scongelamento.",
+      "bagRowSupplement": "serve {{serveDates}} · cucina fresco, niente sacchetto"
     },
     "exportFooter": "PawCook — non è un consiglio veterinario. Usa un termometro per carne per verificare una temperatura interna sicura.",
     "meatSwitcher": {

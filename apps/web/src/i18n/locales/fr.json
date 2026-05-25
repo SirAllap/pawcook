@@ -263,7 +263,7 @@
       "bagSizeCaption": "Une protéine par sachet · légumes dans leurs propres sachets",
       "bagSizeWarn": "Certains sachets resteront congelés environ 3 semaines. Sûr, mais la saveur se dégrade — envisagez 2 ou 3.",
       "cookAheadLabel": "Cuisiner à l’avance",
-      "cookAheadHelp": "Combien de jours chaque lot de protéine doit couvrir. Fenêtres plus grandes = moins de sessions de cuisson et moins de plastique ; le planificateur regroupe les jours consécutifs d’une même protéine pour que chaque sachet soit plein.",
+      "cookAheadHelp": "Combien de jours chaque lot doit couvrir. Fenêtres plus grandes = moins de sessions de cuisson et moins de plastique ; le planificateur regroupe les jours consécutifs d’une même protéine et d’un même légume pour que chaque sachet soit plein.",
       "cookAhead": {
         "perServe": "Par portion",
         "upTo2": "Jusqu’à 2 jours",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} sachets · {{sessions}} session(s) de cuisson",
       "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne",
       "simpleMeals": "Repas simples",
-      "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal)."
+      "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal).",
+      "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits."
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -537,7 +538,8 @@
       "mergeFewer": "Moins de sachets",
       "mergeAll": "Un sachet",
       "mergeBagCount": "{{n}} sachet(s)",
-      "mergeHint": "Économise {{saved}} session(s) de cuisson — les portions adjacentes tiennent dans la fenêtre de {{fridge}} jours au frigo après décongélation."
+      "mergeHint": "Économise {{saved}} session(s) de cuisson — les portions adjacentes tiennent dans la fenêtre de {{fridge}} jours au frigo après décongélation.",
+      "bagRowSupplement": "sert {{serveDates}} · cuire frais, sans sachet"
     },
     "exportFooter": "PawCook — pas un conseil vétérinaire. Utilisez un thermomètre à viande pour vérifier la température interne sécuritaire.",
     "meatSwitcher": {

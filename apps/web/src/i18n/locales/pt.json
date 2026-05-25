@@ -263,7 +263,7 @@
       "bagSizeCaption": "Uma proteína por saco · vegetais em seus próprios sacos",
       "bagSizeWarn": "Alguns sacos ficarão congelados por ~3 semanas. Seguro, mas o sabor se degrada — considere 2 ou 3.",
       "cookAheadLabel": "Cozinhar com antecedência",
-      "cookAheadHelp": "Quantos dias cada lote de proteína deve cobrir. Janelas maiores = menos sessões de cozimento e menos plástico; o planejador agrupa dias consecutivos da mesma proteína para que cada saco fique cheio.",
+      "cookAheadHelp": "Quantos dias cada lote deve cobrir. Janelas maiores = menos sessões de cozimento e menos plástico; o planejador agrupa dias consecutivos da mesma proteína e do mesmo vegetal para que cada saco fique cheio.",
       "cookAhead": {
         "perServe": "Por porção",
         "upTo2": "Até 2 dias",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento",
       "cookAheadStatsSaving": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · economiza {{saved}} vs diária",
       "simpleMeals": "Refeições simples",
-      "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet)."
+      "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet).",
+      "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -537,7 +538,8 @@
       "mergeFewer": "Menos sacos",
       "mergeAll": "Um saco",
       "mergeBagCount": "{{n}} saco(s)",
-      "mergeHint": "Economiza {{saved}} sessão(ões) de cozimento — porções adjacentes cabem na janela de {{fridge}} dias na geladeira após descongelar."
+      "mergeHint": "Economiza {{saved}} sessão(ões) de cozimento — porções adjacentes cabem na janela de {{fridge}} dias na geladeira após descongelar.",
+      "bagRowSupplement": "serve {{serveDates}} · cozinhe fresco, sem saco"
     },
     "exportFooter": "PawCook — não é aconselhamento veterinário. Use um termômetro de carne para verificar a temperatura interna segura.",
     "meatSwitcher": {

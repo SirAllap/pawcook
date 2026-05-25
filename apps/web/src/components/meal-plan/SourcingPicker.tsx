@@ -35,6 +35,7 @@ export function SourcingPicker({
   species,
   durationDays,
   cookAheadStats,
+  householdHints,
 }: {
   value: SourcingPrefs;
   onChange: (next: SourcingPrefs) => void;
@@ -60,6 +61,15 @@ export function SourcingPicker({
     bags: number;
     sessions: number;
     sessionsSaved: number;
+  } | null;
+  /**
+   * Household-derived hints. Surfaces a "tiny-household: consider longer
+   * Cook ahead" nudge when total daily intake is low enough that smaller
+   * windows produce runt-sized bags. See `recommendDefaultBagDays`.
+   */
+  householdHints?: {
+    recommendedBagDays: 1 | 2 | 3;
+    estimatedDailyGrams: number;
   } | null;
 }) {
   const { t } = useTranslation();
@@ -235,6 +245,17 @@ export function SourcingPicker({
                   })}
             </p>
           )}
+          {householdHints
+            && householdHints.recommendedBagDays > value.bagDays
+            && value.bagDays < 3 && (
+              <p className="text-[11px] text-info dark:text-info leading-relaxed">
+                {t('mealPlan.sourcing.tinyHouseholdHint', {
+                  defaultValue:
+                    'Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags.',
+                  grams: householdHints.estimatedDailyGrams,
+                })}
+              </p>
+            )}
           {cookAheadWarning && (
             <p className="text-[11px] text-amber-600 dark:text-amber-400 leading-relaxed">
               {t('mealPlan.sourcing.cookAheadWarn', {
