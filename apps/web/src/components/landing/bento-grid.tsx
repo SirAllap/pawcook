@@ -181,7 +181,12 @@ export function BentoGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 sm:auto-rows-[100px] gap-3">
+      {/* auto-rows is intentionally absent: tiles have their own
+          min-h-* values (180–260 px). A fixed `auto-rows-[100px]`
+          track was clipping every tile and the overflow rendered on
+          top of the next-row tiles. Letting the grid auto-size each
+          row to its tallest content prevents the overlap. */}
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
         {tiles.map((tile, i) => (
           <BentoTile key={tile.titleKey + i} tile={tile} index={i} />
         ))}
