@@ -313,6 +313,15 @@ export function SourcingPicker({
           })}
         />
         <SourcingFlag
+          label={t('mealPlan.sourcing.veggieDetail', { defaultValue: 'Cook each veggie separately' })}
+          help={t('mealPlan.sourcing.veggieDetailHelp', {
+            defaultValue:
+              'Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule.',
+          })}
+          checked={value.veggieDetail ?? false}
+          onChange={(v) => onChange({ ...value, veggieDetail: v })}
+        />
+        <SourcingFlag
           label={t('mealPlan.sourcing.preferWildFish')}
           checked={value.preferWildFish}
           onChange={(v) => onChange({ ...value, preferWildFish: v })}
