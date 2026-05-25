@@ -997,10 +997,40 @@
       "heading_cat": "Twój dom, nakarmiony w trzech krokach"
     },
     "diets": {
-      "eyebrow": "Profile diet",
-      "heading": "Pięć sprawdzonych podejść",
+      "eyebrow": "Tryb zaawansowany",
+      "heading": "Albo wybierz własną dietę",
       "sub": "Każdy profil makroskładników odpowiada celom AAFCO i etapowi życia Twojego psa.",
-      "sub_cat": "Każdy profil felinarny odpowiada celom AAFCO dla kotów i etapowi życia Twojego kota. Tauryna nie podlega negocjacji."
+      "sub_cat": "Każdy profil felinarny odpowiada celom AAFCO dla kotów i etapowi życia Twojego kota. Tauryna nie podlega negocjacji.",
+      "subPower": "Proste posiłki to ustawienie domyślne. Wyłącz je i otrzymasz pięć profili na gatunek, wszystkie zgodne z AAFCO, dostępne za jednym przełącznikiem."
+    },
+    "mantra": {
+      "body": "Plan, który naprawdę ugotujesz, bije plan idealnie zbilansowany na papierze.",
+      "elab": "Zadaniem PawCook jest sprawić, by jedzenie odżywczo wystarczające było łatwe do podania — a nie produkować odżywczo optymalne jedzenie, które właściciel porzuca w drugim tygodniu.",
+      "attribution": "Zasada Wykonalności"
+    },
+    "story": {
+      "eyebrow": "Dom → Woreczek → Suplementy",
+      "heading": "Plan, który prawdziwa kuchnia może wykonać",
+      "sub": "Pełny silnik żywieniowy nadal działa. Po prostu przestaje być domyślny. Dostajesz plan, który przeżyje wtorek o 7 rano.",
+      "col1": {
+        "eyebrow": "Twój dom",
+        "body": "2 psy + 1 kot. Ta sama wołowina w dniu wołowiny.",
+        "caption": "Jednostką jest dom, nie pojedyncze zwierzę."
+      },
+      "col2": {
+        "eyebrow": "Jeden woreczek",
+        "body": "Jedno białko, jedna sesja gotowania, jedno okno w lodówce.",
+        "caption": "Przepływ gotowania prowadzi plan, a nie odwrotnie."
+      },
+      "col3": {
+        "eyebrow": "Codzienne suplementy",
+        "body": "Tauryna + tran z dorsza pokrywają to, czego woreczek nie pokrywa.",
+        "caption": "Pokazuj braki głośno; nigdy ich cicho nie symuluj."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Niedawno wydane",
+      "list": "Zasada wykonalności · Rotacja blokowa · Proste posiłki · Karta suplementów · Gotowanie świadome planu · Edycja i zmiana nazwy planów"
     }
   },
   "about": {

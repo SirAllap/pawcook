@@ -997,10 +997,40 @@
       "heading_cat": "Votre foyer, nourri en trois étapes"
     },
     "diets": {
-      "eyebrow": "Profils de régime",
-      "heading": "Cinq approches éprouvées",
+      "eyebrow": "Mode expert",
+      "heading": "Ou choisissez votre propre régime",
       "sub": "Chaque profil de macronutriments correspond aux cibles AAFCO et à l'étape de vie de votre chien.",
-      "sub_cat": "Chaque profil félin correspond aux cibles AAFCO chat et à l'étape de vie de votre chat. La taurine n'est pas négociable."
+      "sub_cat": "Chaque profil félin correspond aux cibles AAFCO chat et à l'étape de vie de votre chat. La taurine n'est pas négociable.",
+      "subPower": "Repas simples par défaut. Désactivez-le et vous obtenez cinq profils par espèce, tous alignés AAFCO, derrière un seul interrupteur."
+    },
+    "mantra": {
+      "body": "Le plan que vous cuisinerez vraiment vaut mieux que celui parfaitement équilibré sur le papier.",
+      "elab": "Le rôle de PawCook est de rendre facile à servir une nourriture nutritionnellement adéquate — pas de produire une nourriture nutritionnellement optimale que le propriétaire abandonne dès la deuxième semaine.",
+      "attribution": "Le Principe de Suivabilité"
+    },
+    "story": {
+      "eyebrow": "Foyer → Sachet → Suppléments",
+      "heading": "Un plan qu’une vraie cuisine peut exécuter",
+      "sub": "Le moteur nutritionnel complet est toujours là. Il cesse simplement d’être par défaut. Ce que vous obtenez, c’est un plan qui survit à un mardi à 7 h.",
+      "col1": {
+        "eyebrow": "Votre foyer",
+        "body": "2 chiens + 1 chat. Le même bœuf le jour du bœuf.",
+        "caption": "Le foyer est l’unité, pas l’animal."
+      },
+      "col2": {
+        "eyebrow": "Un sachet",
+        "body": "Une protéine, une session de cuisson, une fenêtre au frigo.",
+        "caption": "Le flux de cuisson guide le plan, pas l’inverse."
+      },
+      "col3": {
+        "eyebrow": "Suppléments quotidiens",
+        "body": "Taurine + huile de foie de morue couvrent ce que le sachet ne fait pas.",
+        "caption": "Affichez les déficits clairement ; ne les simulez jamais en silence."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Récemment livré",
+      "list": "Principe de suivabilité · Rotation en blocs · Repas simples · Carte de suppléments · Cuisson sensible au plan · Modifier et renommer les plans"
     }
   },
   "about": {

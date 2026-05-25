@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import type { ReactNode } from 'react';
 import {
-  Dog, Flame, ShieldAlert, Pill, Sparkles, PawPrint, ClipboardList, ArrowUpRight,
+  Dog, Flame, ShieldAlert, Pill, PawPrint, ClipboardList, ArrowUpRight,
   type LucideIcon,
 } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
@@ -95,14 +95,20 @@ function SearchFeature() {
 export function BentoGrid() {
   const { t } = useTranslation();
 
+  // Tile order reflects the user journey: Meal plans is the flagship
+  // (largest tile, leading slot), Pet profiles is the data prerequisite,
+  // Cooking + Nutrition + Food safety + Supplements are the deep-dive
+  // tools. The standalone "5 diet profiles" tile is gone — diet choice
+  // is now subsumed by the simple-meals default, and the DietsShowcase
+  // section below covers it for users who want the explicit grid.
   const tiles: Tile[] = [
     {
-      to: '/nutrition',
-      titleKey: 'nav.nutrition',
-      titleDefault: 'Nutrition',
-      descKey: 'landing.bento.nutrition',
-      descDefault: 'Daily macros, calories and Ca:P balance, tuned to your dog.',
-      Icon: Dog,
+      to: '/meal-plan',
+      titleKey: 'landing.bento.planTitle',
+      titleDefault: 'Meal plans',
+      descKey: 'landing.bento.planDesc',
+      descDefault: 'One plan per household. Calendar, shopping list, sous-vide bag schedule, daily supplement card.',
+      Icon: ClipboardList,
       accent: 'primary',
       className: 'sm:col-span-2 sm:row-span-2 min-h-[260px]',
       feature: <MacroBarsFeature />,
@@ -122,19 +128,19 @@ export function BentoGrid() {
       titleKey: 'nav.cooking',
       titleDefault: 'Cooking',
       descKey: 'landing.bento.cooking',
-      descDefault: 'Safe time & temperature for every meat.',
+      descDefault: 'Safe time & temperature for every meat. Plan-aware bag strategy.',
       Icon: Flame,
       accent: 'warning',
       className: 'sm:col-span-2 min-h-[200px]',
       feature: <ThermometerFeature />,
     },
     {
-      to: '/meal-plan',
-      titleKey: 'landing.bento.planTitle',
-      titleDefault: 'Meal plans',
-      descKey: 'landing.bento.planDesc',
-      descDefault: '7, 14, or 30-day plans with a shopping list.',
-      Icon: ClipboardList,
+      to: '/nutrition',
+      titleKey: 'nav.nutrition',
+      titleDefault: 'Nutrition',
+      descKey: 'landing.bento.nutrition',
+      descDefault: 'Daily macros, kcal and Ca:P band. Five diet profiles per species behind a single toggle.',
+      Icon: Dog,
       accent: 'accent',
       className: 'sm:col-span-2 min-h-[200px]',
     },
@@ -146,7 +152,7 @@ export function BentoGrid() {
       descDefault: 'Toxic foods, safe meats, vegetables, fruits.',
       Icon: ShieldAlert,
       accent: 'danger',
-      className: 'sm:col-span-2 min-h-[200px]',
+      className: 'sm:col-span-2 min-h-[180px]',
       feature: <SearchFeature />,
     },
     {
@@ -154,19 +160,9 @@ export function BentoGrid() {
       titleKey: 'nav.supplements',
       titleDefault: 'Supplements',
       descKey: 'landing.bento.supplements',
-      descDefault: 'AAFCO targets, balancers and a 7-day transition.',
+      descDefault: 'AAFCO targets, balancers and a 7-day transition guide.',
       Icon: Pill,
       accent: 'success',
-      className: 'sm:col-span-2 min-h-[180px]',
-    },
-    {
-      to: '/nutrition',
-      titleKey: 'landing.bento.dietsTitle',
-      titleDefault: '5 diet profiles',
-      descKey: 'landing.bento.dietsDesc',
-      descDefault: 'Balanced cooked · BARF · PMR · High protein · Ancestral.',
-      Icon: Sparkles,
-      accent: 'accent',
       className: 'sm:col-span-2 min-h-[180px]',
     },
   ];

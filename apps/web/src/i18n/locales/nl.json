@@ -997,10 +997,40 @@
       "heading_cat": "Je huishouden, gevoed in drie stappen"
     },
     "diets": {
-      "eyebrow": "Dieetprofielen",
-      "heading": "Vijf vertrouwde benaderingen",
+      "eyebrow": "Power-user modus",
+      "heading": "Of kies je eigen dieet",
       "sub": "Elk macronutriëntenprofiel sluit aan op AAFCO-doelen en de levensfase van je hond.",
-      "sub_cat": "Elk kat-profiel komt overeen met AAFCO-doelen voor katten en de levensfase van je kat. Taurine is niet onderhandelbaar."
+      "sub_cat": "Elk kat-profiel komt overeen met AAFCO-doelen voor katten en de levensfase van je kat. Taurine is niet onderhandelbaar.",
+      "subPower": "Eenvoudige maaltijden is de standaard. Schakel het uit en je krijgt vijf profielen per soort, allemaal AAFCO-conform, allemaal achter één schakelaar."
+    },
+    "mantra": {
+      "body": "Het plan dat je echt kookt verslaat het plan dat op papier perfect in balans is.",
+      "elab": "PawCook's taak is om voedzaam-adequaat voedsel makkelijk op de vloer te krijgen — niet om voedzaam-optimaal voedsel te maken dat de eigenaar in week twee al opgeeft.",
+      "attribution": "Het Followability-principe"
+    },
+    "story": {
+      "eyebrow": "Huishouden → Zak → Supplementen",
+      "heading": "Eén plan dat een echte keuken kan uitvoeren",
+      "sub": "De volledige voedingsengine is er nog. Hij is alleen niet meer standaard. Wat je krijgt is een plan dat een dinsdag om 7 uur ’s ochtends overleeft.",
+      "col1": {
+        "eyebrow": "Je huishouden",
+        "body": "2 honden + 1 kat. Hetzelfde rundvlees op rundvlees-dag.",
+        "caption": "Het huishouden is de eenheid, niet het huisdier."
+      },
+      "col2": {
+        "eyebrow": "Eén zak",
+        "body": "Eén eiwit, één kooksessie, één koelraam.",
+        "caption": "Het kookproces stuurt het maaltijdplan, niet andersom."
+      },
+      "col3": {
+        "eyebrow": "Dagelijkse supplementen",
+        "body": "Taurine + levertraan dekken wat de zak niet dekt.",
+        "caption": "Toon tekorten luid; simuleer ze nooit stilletjes."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Recent uitgebracht",
+      "list": "Followability-principe · Blokrotatie · Eenvoudige maaltijden · Supplementkaart · Plan-bewust koken · Plannen bewerken en hernoemen"
     }
   },
   "about": {

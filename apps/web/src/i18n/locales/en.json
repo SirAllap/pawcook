@@ -997,10 +997,40 @@
       "heading_cat": "Your household, fed in three steps"
     },
     "diets": {
-      "eyebrow": "Diet profiles",
-      "heading": "Five trusted approaches",
+      "eyebrow": "Power-user mode",
+      "heading": "Or pick your own diet",
       "sub": "Every macronutrient profile maps to AAFCO targets and your dog's life stage.",
-      "sub_cat": "Every cat profile maps to AAFCO feline targets and your cat's life stage. Taurine is non-negotiable."
+      "sub_cat": "Every cat profile maps to AAFCO feline targets and your cat's life stage. Taurine is non-negotiable.",
+      "subPower": "Simple meals is the default. Turn it off and you get five profiles per species, all AAFCO-aligned, all surfaced behind a single toggle."
+    },
+    "mantra": {
+      "body": "The plan you'll actually cook beats the plan that's perfectly balanced on paper.",
+      "elab": "PawCook's job is to make nutritionally adequate food easy to put on the floor — not to make nutritionally optimal food the owner abandons by week two.",
+      "attribution": "The Followability Mandate"
+    },
+    "story": {
+      "eyebrow": "Household → Bag → Supplements",
+      "heading": "One plan a real kitchen can execute",
+      "sub": "The full nutritional engine is still there. It just stops being the default. What you get is a plan that survives Tuesday at 7 a.m.",
+      "col1": {
+        "eyebrow": "Your household",
+        "body": "2 dogs + 1 cat. Same beef on beef day.",
+        "caption": "The household is the unit, not the pet."
+      },
+      "col2": {
+        "eyebrow": "One bag",
+        "body": "One protein, one cook session, one fridge window.",
+        "caption": "The cook flow drives the meal plan, not the reverse."
+      },
+      "col3": {
+        "eyebrow": "Daily supplements",
+        "body": "Taurine + cod liver oil cover what the bag doesn't.",
+        "caption": "Surface deficits loudly; never simulate them silently."
+      }
+    },
+    "whatsNew": {
+      "eyebrow": "Recently shipped",
+      "list": "Followability Mandate · Block rotation · Simple meals · Supplement card · Plan-aware cooking · Edit + rename plans"
     }
   },
   "about": {
