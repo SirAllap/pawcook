@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { Pencil, ArrowLeft, AlertTriangle, Info, ClipboardList, ChevronRight, Plus } from 'lucide-react';
+import { AccentTile } from '../../components/ui/accent-tile';
 import { calculateNutrition, recommendForPet } from '@pawcook/shared';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
@@ -39,12 +40,13 @@ export default function PetDetail() {
 
   return (
     <div className="space-y-6">
+      {/* Breadcrumb pill — see PlanView for the design rationale. */}
       <button
         type="button"
         onClick={() => navigate('/pets')}
-        className="inline-flex items-center gap-1 text-xs font-bold text-muted-fg hover:text-foreground transition-colors min-h-[44px] pr-2"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/70 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-muted-fg hover:text-foreground hover:bg-surface-2 transition-colors min-h-[36px]"
       >
-        <ArrowLeft className="h-3 w-3" aria-hidden />
+        <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         {t('pets.detail.back')}
       </button>
 
@@ -150,15 +152,16 @@ export default function PetDetail() {
               <li key={plan.id}>
                 <Link
                   to={`/meal-plan/${plan.id}`}
-                  className="flex items-center gap-3 p-4 hover:bg-surface-2 transition-colors"
+                  className="flex items-center gap-3 p-4 hover:bg-surface-2 transition-colors group"
                 >
+                  <AccentTile Icon={ClipboardList} accent="primary" size="md" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold truncate">{plan.name}</p>
                     <p className="text-[11px] text-muted-fg mt-0.5">
                       {plan.durationDays} {t('mealPlan.wizard.days')}
                     </p>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-muted-fg shrink-0" aria-hidden />
+                  <ChevronRight className="h-4 w-4 text-muted-fg shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
                 </Link>
               </li>
             ))}

@@ -51,8 +51,8 @@
       "title": "Deine Tiere",
       "subtitle": "Lege für jedes Tier ein Profil an, damit Pläne zu Art, Alter und Bedingungen passen.",
       "addPet": "Tier hinzufügen",
-      "emptyTitle": "Noch keine Tiere",
-      "emptyDescription": "Füge dein erstes Tier hinzu, um maßgeschneiderte Pläne und Einkaufslisten freizuschalten."
+      "emptyTitle": "Ihr Haushalt beginnt hier.",
+      "emptyDescription": "Tier hinzufügen — wir bauen einen Plan, der wirklich in Ihre Küche passt."
     },
     "new": {
       "title": "Tier hinzufügen",
@@ -199,16 +199,16 @@
       "title": "Mahlzeitenpläne",
       "subtitle": "Erstelle einen Wochen-, Zweiwochen- oder Monatsplan mit der Einkaufsliste fürs Geschäft.",
       "create": "Plan erstellen",
-      "emptyTitle": "Noch keine Pläne",
-      "emptyDescription": "Erstelle deinen ersten Plan, um Menüs und Einkaufslisten aus deinen Tieren zu erzeugen."
+      "emptyTitle": "Noch kein Plan.",
+      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren."
     },
     "new": {
       "title": "Neuer Plan",
       "subtitle": "Wähle deine Tiere und die Tage. Wir kümmern uns um den Rest."
     },
     "needPet": {
-      "title": "Zuerst ein Tier hinzufügen",
-      "description": "Pläne nutzen das Profil jedes Tieres zur Menüberechnung. Lege eines an, um zu beginnen.",
+      "title": "Zuerst ein Tier anlegen.",
+      "description": "Wir brauchen mindestens ein Maul zum Füttern.",
       "cta": "Tier hinzufügen"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Einkauf gesamt",
       "totalSummary": "{{items}} Artikel · {{grams}} g in allen Bereichen",
-      "empty": "Nichts zu kaufen — deine Vorräte decken diesen Plan ab.",
+      "empty": "Plan generieren — wir bauen die Einkaufsliste.",
       "exportFooter": "PawCook Einkaufsliste — kein tierärztlicher Rat.",
       "section": {
         "butcher": "Metzger",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Das Löschen eines Plans kann nicht rückgängig gemacht werden. Ihre gespeicherten Tierprofile bleiben unberührt.",
     "cookingPlan": {
-      "emptyTitle": "Kochplan nur für Sous-vide",
-      "emptyHelp": "Beutel werden erzeugt, wenn der Plan Sous-vide verwendet. Plan mit Sous-vide als Garmethode neu erstellen, um den Beutelzeitplan zu sehen.",
+      "emptyTitle": "Der Beutel-Zeitplan lebt mit Sous-vide.",
+      "emptyHelp": "Plan auf Sous-vide umstellen — wir bauen einen Beutel-Zeitplan mit Daten.",
       "noBagsTitle": "Nichts zum Verpacken",
       "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
       "summaryLabel": "Kochplan",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Kochen",
     "toastReady": "Rezept fertig.",
-    "placeholderHint": "Wähle ein Fleisch und eine Methode und tippe dann auf Berechnen.",
+    "placeholderHint": "Fleisch wählen. Methode wählen. Wir rechnen.",
     "catSupplementsTitle": "Katzen-Supplemente nach dem Kochen",
     "catSupplementsBody": "Hitze zerstört Taurin, B-Vitamine (Thiamin, Niacin) und einen Teil des Vitamin E. Ergänzen Sie das Katzen-Stack — Taurin 250–500 mg, B-Komplex, Vitamin E — nachdem das Essen abgekühlt ist.",
     "subtitle_cat": "Sichere Garzeit und -temperatur für das Futter Ihrer Katze. Vergessen Sie nicht, Taurin + B-Komplex nach dem Kochen hinzuzufügen.",

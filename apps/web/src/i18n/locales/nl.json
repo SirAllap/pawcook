@@ -51,8 +51,8 @@
       "title": "Je huisdieren",
       "subtitle": "Voeg een profiel toe voor elk dier dat je voert zodat plannen passen bij soort, leeftijd en conditie.",
       "addPet": "Huisdier toevoegen",
-      "emptyTitle": "Nog geen huisdieren",
-      "emptyDescription": "Voeg je eerste huisdier toe om plannen en boodschappenlijsten op maat te krijgen."
+      "emptyTitle": "Je huishouden begint hier.",
+      "emptyDescription": "Voeg een huisdier toe en we maken een plan dat echt in jouw keuken past."
     },
     "new": {
       "title": "Huisdier toevoegen",
@@ -199,16 +199,16 @@
       "title": "Maaltijdplannen",
       "subtitle": "Maak een week-, tweeweek- of maandplan met de boodschappenlijst voor de winkel.",
       "create": "Plan maken",
-      "emptyTitle": "Nog geen plannen",
-      "emptyDescription": "Maak je eerste plan om menu's en boodschappenlijsten op basis van je huisdieren te genereren."
+      "emptyTitle": "Nog geen plan.",
+      "emptyDescription": "Eén plan per huishouden. Eén keer koken, iedereen voeren, de rest doseren."
     },
     "new": {
       "title": "Nieuw plan",
       "subtitle": "Kies je huisdieren en het aantal dagen. Wij regelen de rest."
     },
     "needPet": {
-      "title": "Voeg eerst een huisdier toe",
-      "description": "Plannen gebruiken het profiel van elk huisdier voor de menu's. Voeg er een toe om te starten.",
+      "title": "Voeg eerst een huisdier toe.",
+      "description": "We hebben minstens één mond nodig om te voeren.",
       "cta": "Huisdier toevoegen"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Totale boodschappen",
       "totalSummary": "{{items}} items · {{grams}} g over alle secties",
-      "empty": "Niks te kopen — je voorraadkast dekt dit plan al.",
+      "empty": "Genereer een plan en we bouwen de boodschappenlijst.",
       "exportFooter": "PawCook boodschappenlijst — geen veterinair advies.",
       "section": {
         "butcher": "Slager",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Een plan verwijderen kan niet ongedaan worden gemaakt. Je opgeslagen huisdierprofielen worden niet beïnvloed.",
     "cookingPlan": {
-      "emptyTitle": "Kookplan alleen voor sous-vide",
-      "emptyHelp": "Zakken worden gegenereerd als het plan sous-vide gebruikt. Regenereer met sous-vide als kookmethode om het zakkenschema te zien.",
+      "emptyTitle": "Het zakkenschema hoort bij sous-vide.",
+      "emptyHelp": "Zet het plan op sous-vide en we bouwen een zakkenschema met datums.",
       "noBagsTitle": "Niets om in te pakken",
       "noBagsHelp": "Dit plan heeft geen batch-geschikte ingrediënten — alles wordt vers bereid.",
       "summaryLabel": "Kookplan",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Koken",
     "toastReady": "Recept klaar.",
-    "placeholderHint": "Kies een vlees en methode, tik dan op Bereken.",
+    "placeholderHint": "Kies een vlees. Kies een methode. Wij rekenen.",
     "catSupplementsTitle": "Kat-supplementen na het koken",
     "catSupplementsBody": "Warmte vernietigt taurine, B-vitamines (thiamine, niacine) en een deel van vitamine E. Voeg de kattenstapel toe — taurine 250–500 mg, B-complex, vitamine E — nadat het gerecht is afgekoeld.",
     "subtitle_cat": "Veilige bereidingstijd en -temperatuur voor het eten van je kat. Vergeet niet om taurine + B-complex na het koken toe te voegen.",

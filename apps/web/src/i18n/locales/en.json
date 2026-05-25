@@ -51,8 +51,8 @@
       "title": "Your pets",
       "subtitle": "Add a profile for each animal you feed so meal plans match their species, age, and conditions.",
       "addPet": "Add pet",
-      "emptyTitle": "No pets yet",
-      "emptyDescription": "Add your first pet to unlock meal plans and shopping lists tailored to them."
+      "emptyTitle": "Your household starts here.",
+      "emptyDescription": "Add a pet and we'll generate a plan that actually fits your kitchen."
     },
     "new": {
       "title": "Add a pet",
@@ -199,16 +199,16 @@
       "title": "Meal plans",
       "subtitle": "Generate a weekly, biweekly, or monthly plan and the shopping list you can take to the store.",
       "create": "Create plan",
-      "emptyTitle": "No plans yet",
-      "emptyDescription": "Create your first plan to generate menus and shopping lists from your pets."
+      "emptyTitle": "No plan yet.",
+      "emptyDescription": "One plan per household. Cook once, feed everyone, dose the rest."
     },
     "new": {
       "title": "New plan",
       "subtitle": "Pick your pets and how many days you're planning for. We'll handle the rest."
     },
     "needPet": {
-      "title": "Add a pet first",
-      "description": "Plans use each pet's profile to calculate menus. Add one to get started.",
+      "title": "Add a pet first.",
+      "description": "We need at least one mouth to feed.",
       "cta": "Add a pet"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Shopping total",
       "totalSummary": "{{items}} items · {{grams}} g across all sections",
-      "empty": "No items to buy — your pantry already covers this plan.",
+      "empty": "Generate a plan and we'll build the bag list.",
       "exportFooter": "PawCook shopping list — not veterinary advice.",
       "section": {
         "butcher": "Butcher / meat",
@@ -334,8 +334,8 @@
       "emptyTitle": "Nothing to buy yet"
     },
     "cookingPlan": {
-      "emptyTitle": "Cooking plan only for sous-vide",
-      "emptyHelp": "Bags are generated when the plan uses sous-vide. Regenerate with sous-vide as the cooking method to see the bag schedule.",
+      "emptyTitle": "Bag schedule lives with sous-vide.",
+      "emptyHelp": "Switch the plan to sous-vide and we'll build a date-stamped bag schedule.",
       "noBagsTitle": "Nothing to bag",
       "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
       "summaryLabel": "Cooking plan",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cooking",
     "toastReady": "Recipe ready.",
-    "placeholderHint": "Choose a meat and method, then tap Calculate.",
+    "placeholderHint": "Pick a meat. Pick a method. We handle the math.",
     "catSupplementsTitle": "Cat supplements after cooking",
     "catSupplementsBody": "Heat destroys taurine, B-vitamins (thiamine, niacin) and some vitamin E. Add a feline supplement stack — taurine 250–500 mg, B-complex, vitamin E — after the meal cools.",
     "subtitle_cat": "Safe cooking time and temperature for your cat's food. Remember to add taurine + B-complex after cooking.",

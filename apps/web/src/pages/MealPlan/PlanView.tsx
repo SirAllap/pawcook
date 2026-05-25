@@ -48,12 +48,16 @@ export default function PlanView() {
 
   return (
     <div className="space-y-6">
+      {/* Breadcrumb pill — matches the landing's species-chip styling
+         (rounded-full + border + tinted bg) so the back-button reads as
+         a deliberate wayfinding element rather than 2022 admin-panel
+         minimalism. */}
       <button
         type="button"
         onClick={() => navigate('/meal-plan')}
-        className="inline-flex items-center gap-1 text-xs font-bold text-muted-fg hover:text-foreground transition-colors min-h-[44px] pr-2"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/70 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-muted-fg hover:text-foreground hover:bg-surface-2 transition-colors min-h-[36px]"
       >
-        <ArrowLeft className="h-3 w-3" aria-hidden />
+        <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         {t('mealPlan.view.back')}
       </button>
 
