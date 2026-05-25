@@ -385,6 +385,28 @@
       "serves": "Porções",
       "pets": "Pets",
       "weight": "Peso"
+    },
+    "supplements": {
+      "title": "Suplementos diários",
+      "help": "O que o plano de refeições simples não cobre. Configure uma vez e administre no café da manhã.",
+      "dismiss": "Entendi",
+      "undo": "Mostrar novamente",
+      "dismissedLabel": "Suplementos diários confirmados.",
+      "taurine": {
+        "label": "Taurina em pó",
+        "dose": "{{mg}} mg por dia (cerca de ¼ colher de chá)",
+        "rationale": "O cozimento destrói ~20% da taurina. A deficiência causa cegueira irreversível e cardiomiopatia dilatada."
+      },
+      "codLiver": {
+        "label": "Óleo de fígado de bacalhau",
+        "dose": "~{{ml}} mL, 3× por semana",
+        "rationale": "Cobre vitamina A pré-formada e ômega-3 (EPA/DHA) em uma dose — o que as vísceras e frutos do mar removidos não fornecem mais."
+      },
+      "calcium": {
+        "label": "Citrato de cálcio (ou casca de ovo moída)",
+        "dose": "{{mg}} mg por dia (~½ colher de chá de casca moída por ~454 g de carne)",
+        "rationale": "Refeições cozidas são deficientes em cálcio sem osso — isso fecha a lacuna."
+      }
     }
   },
   "condition": {

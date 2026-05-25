@@ -385,6 +385,28 @@
       "serves": "Portions",
       "pets": "Animaux",
       "weight": "Poids"
+    },
+    "supplements": {
+      "title": "Suppléments quotidiens",
+      "help": "Ce que le plan repas simples ne couvre pas. Configurez-les une fois et dosez au petit-déjeuner.",
+      "dismiss": "Compris",
+      "undo": "Afficher à nouveau",
+      "dismissedLabel": "Suppléments quotidiens confirmés.",
+      "taurine": {
+        "label": "Taurine en poudre",
+        "dose": "{{mg}} mg par jour (env. ¼ cuillère à café)",
+        "rationale": "La cuisson détruit ~20% de la taurine. La carence provoque cécité irréversible et cardiomyopathie dilatée."
+      },
+      "codLiver": {
+        "label": "Huile de foie de morue",
+        "dose": "~{{ml}} mL, 3× par semaine",
+        "rationale": "Couvre la vitamine A préformée et les oméga-3 (EPA/DHA) en une seule dose — ce que les abats et le poisson supprimés n’apportent plus."
+      },
+      "calcium": {
+        "label": "Citrate de calcium (ou coquille d’œuf moulue)",
+        "dose": "{{mg}} mg par jour (~½ c. à café de coquille moulue par ~454 g de viande)",
+        "rationale": "Les repas cuits manquent de calcium sans os — ceci comble l’écart."
+      }
     }
   },
   "condition": {

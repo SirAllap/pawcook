@@ -385,6 +385,28 @@
       "serves": "Porzioni",
       "pets": "Animali",
       "weight": "Peso"
+    },
+    "supplements": {
+      "title": "Integratori giornalieri",
+      "help": "Ciò che il piano pasti semplici non copre. Imposta una volta e somministra a colazione.",
+      "dismiss": "Capito",
+      "undo": "Mostra di nuovo",
+      "dismissedLabel": "Integratori giornalieri confermati.",
+      "taurine": {
+        "label": "Taurina in polvere",
+        "dose": "{{mg}} mg al giorno (circa ¼ cucchiaino)",
+        "rationale": "La cottura distrugge ~20% della taurina. La carenza causa cecità irreversibile e cardiomiopatia dilatativa."
+      },
+      "codLiver": {
+        "label": "Olio di fegato di merluzzo",
+        "dose": "~{{ml}} mL, 3× alla settimana",
+        "rationale": "Copre vitamina A preformata e omega-3 (EPA/DHA) in una sola dose — ciò che le frattaglie e il pesce eliminati non forniscono più."
+      },
+      "calcium": {
+        "label": "Citrato di calcio (o guscio d’uovo macinato)",
+        "dose": "{{mg}} mg al giorno (~½ cucchiaino di guscio macinato per ~454 g di carne)",
+        "rationale": "I pasti cucinati sono carenti di calcio senza osso — questo colma il divario."
+      }
     }
   },
   "condition": {

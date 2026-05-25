@@ -385,6 +385,28 @@
       "serves": "Raciones",
       "pets": "Mascotas",
       "weight": "Peso"
+    },
+    "supplements": {
+      "title": "Suplementos diarios",
+      "help": "Lo que el plan de comidas simples no cubre. Configúralos una vez y dosifica con el desayuno.",
+      "dismiss": "Entendido",
+      "undo": "Mostrar otra vez",
+      "dismissedLabel": "Suplementos diarios confirmados.",
+      "taurine": {
+        "label": "Taurina en polvo",
+        "dose": "{{mg}} mg por día (aprox. ¼ cucharadita)",
+        "rationale": "La cocción destruye ~20% de la taurina. La deficiencia causa ceguera irreversible y cardiomiopatía dilatada."
+      },
+      "codLiver": {
+        "label": "Aceite de hígado de bacalao",
+        "dose": "~{{ml}} mL, 3× por semana",
+        "rationale": "Cubre vitamina A preformada y omega-3 (EPA/DHA) en una sola dosis — lo que las vísceras y el pescado eliminados ya no aportan."
+      },
+      "calcium": {
+        "label": "Citrato de calcio (o cáscara de huevo molida)",
+        "dose": "{{mg}} mg por día (~½ cucharadita de cáscara molida por ~454 g de carne)",
+        "rationale": "Las comidas cocinadas son deficientes en calcio sin hueso — esto cierra la brecha."
+      }
     }
   },
   "condition": {

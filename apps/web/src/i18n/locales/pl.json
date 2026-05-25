@@ -385,6 +385,28 @@
       "serves": "Porcje",
       "pets": "Zwierzęta",
       "weight": "Waga"
+    },
+    "supplements": {
+      "title": "Codzienne suplementy",
+      "help": "Czego nie pokrywa plan prostych posiłków. Skonfiguruj raz i podawaj ze śniadaniem.",
+      "dismiss": "Rozumiem",
+      "undo": "Pokaż ponownie",
+      "dismissedLabel": "Codzienne suplementy potwierdzone.",
+      "taurine": {
+        "label": "Tauryna w proszku",
+        "dose": "{{mg}} mg dziennie (około ¼ łyżeczki)",
+        "rationale": "Gotowanie niszczy ~20% tauryny. Niedobór powoduje nieodwracalną ślepotę i kardiomiopatię rozstrzeniową."
+      },
+      "codLiver": {
+        "label": "Tran z dorsza",
+        "dose": "~{{ml}} mL, 3× w tygodniu",
+        "rationale": "Pokrywa preformowaną witaminę A i omega-3 (EPA/DHA) w jednej dawce — to, czego nie dostarczają już usunięte podroby i ryby."
+      },
+      "calcium": {
+        "label": "Cytrynian wapnia (lub mielona skorupka jaja)",
+        "dose": "{{mg}} mg dziennie (~½ łyżeczki mielonej skorupki na ~454 g mięsa)",
+        "rationale": "Gotowane posiłki są ubogie w wapń bez kości — to wypełnia lukę."
+      }
     }
   },
   "condition": {

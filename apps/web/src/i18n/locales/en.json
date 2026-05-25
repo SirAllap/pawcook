@@ -385,7 +385,29 @@
         "expired_vet_review": "The vet prescription's review date has passed. Re-confirm the plan with the vet before generating new plans."
       }
     },
-    "confirmDeleteHelp": "Deleting a plan can’t be undone. Your saved pet profiles will not be affected."
+    "confirmDeleteHelp": "Deleting a plan can’t be undone. Your saved pet profiles will not be affected.",
+    "supplements": {
+      "title": "Daily supplements",
+      "help": "What the simple-meals plan doesn't cover. Set these up once and dose with breakfast.",
+      "dismiss": "Got it",
+      "undo": "Show again",
+      "dismissedLabel": "Daily supplements acknowledged.",
+      "taurine": {
+        "label": "Taurine powder",
+        "dose": "{{mg}} mg per day (about ¼ tsp)",
+        "rationale": "Cooking destroys ~20% of taurine. Deficit causes irreversible blindness + dilated cardiomyopathy."
+      },
+      "codLiver": {
+        "label": "Cod liver oil",
+        "dose": "~{{ml}} mL, 3× per week",
+        "rationale": "Covers pre-formed vitamin A and omega-3 (EPA/DHA) in one dose — what the dropped organ + seafood slots no longer provide."
+      },
+      "calcium": {
+        "label": "Calcium citrate (or ground eggshell)",
+        "dose": "{{mg}} mg per day (~½ tsp ground eggshell per ~454 g meat)",
+        "rationale": "Cooked meals are calcium-deficient without bone — this closes the gap."
+      }
+    }
   },
   "condition": {
     "kidney": {

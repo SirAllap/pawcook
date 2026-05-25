@@ -4,6 +4,7 @@ import type { MealPlan, PetProfile } from '@pawcook/shared';
 import { nutrientCoverage } from '@pawcook/shared';
 import { Card } from '../ui/card';
 import { PetTag } from './PetTag';
+import { dismissedSupplementCoveredWarnings } from './SupplementCard';
 
 export function NutrientCoverageCard({
   plan, pets,
@@ -12,8 +13,20 @@ export function NutrientCoverageCard({
   pets: PetProfile[];
 }) {
   const { t } = useTranslation();
-  const findings = nutrientCoverage(plan);
+  const rawFindings = nutrientCoverage(plan);
   const petById = new Map(pets.map((p) => [p.id, p]));
+
+  // Hide warnings that the SupplementCard has explicitly covered. Stops
+  // the user from seeing "low taurine" forever after they've already
+  // committed to the supplement workflow. The bare id matches both the
+  // raw warning id and the i18n-key form.
+  const dismissed = dismissedSupplementCoveredWarnings(plan.id);
+  const findings = dismissed.size === 0
+    ? rawFindings
+    : rawFindings.filter((f) => {
+        const bare = f.id.replace(/^nutrition\.warnings\./, '');
+        return !dismissed.has(f.id) && !dismissed.has(bare);
+      });
 
   if (findings.length === 0) {
     return (
