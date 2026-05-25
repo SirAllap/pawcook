@@ -42,7 +42,8 @@
     "calcFailed": "Berechnung fehlgeschlagen — bitte Eingaben prüfen.",
     "cancel": "Abbrechen",
     "dismiss": "Schließen",
-    "close": "Schließen"
+    "close": "Schließen",
+    "confirm": "Bestätigen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} Tage · bereit zum Speichern",
       "defaultName": "{{names}} · {{days}} Tage",
       "defaultNameEmpty": "Unbenannter Plan",
-      "generateFirst": "Erst einen Plan generieren"
+      "generateFirst": "Erst einen Plan generieren",
+      "editTitle": "Plan bearbeiten",
+      "editSubtitle": "Beliebig anpassen und speichern, um zu überschreiben — Ihre Einkaufs-Häkchen bleiben.",
+      "petRemoved": "{{count}} Tier(e) wurden aus diesem Plan entfernt, da das Profil nicht mehr existiert."
     },
     "sourcing": {
       "varietyLabel": "Vielfalt",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} Tage · ab {{startDate}}",
       "tabMeals": "Mahlzeiten",
       "tabShopping": "Einkauf",
-      "tabCooking": "Kochplan"
+      "tabCooking": "Kochplan",
+      "edit": "Bearbeiten",
+      "renameAria": "Plan umbenennen"
     },
     "shopping": {
       "total": "Einkauf gesamt",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "„{{name}}\" gespeichert.",
       "deleted": "„{{name}}\" gelöscht.",
-      "generateFailed": "Plan konnte nicht erstellt werden — bitte andere Einstellungen versuchen."
+      "generateFailed": "Plan konnte nicht erstellt werden — bitte andere Einstellungen versuchen.",
+      "updated": "{{name}} aktualisiert."
     },
     "refusal": {
       "title": "Plan nicht erstellt",

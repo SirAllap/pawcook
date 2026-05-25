@@ -1,8 +1,8 @@
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Info, Trash2, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Info, Trash2, Pencil, AlertTriangle, Check, X } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -58,19 +58,32 @@ export default function PlanView() {
 
       <PageHeader
         eyebrow={t('mealPlan.eyebrow')}
-        title={plan.name}
+        title={<RenamablePlanTitle plan={plan} />}
         description={t('mealPlan.view.subtitle', { days: plan.durationDays, startDate })}
         actions={
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => setConfirmDelete(true)}
-            className="text-danger border-danger/30 hover:bg-danger/5 self-start"
-          >
-            <Trash2 className="h-4 w-4" aria-hidden />
-            {t('mealPlan.view.delete')}
-          </Button>
+          <div className="flex flex-wrap gap-2 self-start">
+            <Button
+              asChild
+              type="button"
+              variant="outline"
+              size="sm"
+            >
+              <Link to={`/meal-plan/${plan.id}/edit`}>
+                <Pencil className="h-4 w-4" aria-hidden />
+                {t('mealPlan.view.edit', { defaultValue: 'Edit' })}
+              </Link>
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setConfirmDelete(true)}
+              className="text-danger border-danger/30 hover:bg-danger/5"
+            >
+              <Trash2 className="h-4 w-4" aria-hidden />
+              {t('mealPlan.view.delete')}
+            </Button>
+          </div>
         }
       />
 
@@ -169,5 +182,93 @@ export default function PlanView() {
         </div>
       </Sheet>
     </div>
+  );
+}
+
+/**
+ * Click-to-edit plan title. Reads from + writes to MealPlansContext via
+ * updatePlan({ name }). No regeneration — just renames. Enter saves,
+ * Escape cancels, blur saves. Empty-string saves are rejected (revert
+ * to the current name).
+ */
+function RenamablePlanTitle({ plan }: { plan: import('@pawcook/shared').MealPlan }) {
+  const { t } = useTranslation();
+  const { updatePlan } = useMealPlans();
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(plan.name);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => { setDraft(plan.name); }, [plan.name]);
+  useEffect(() => {
+    if (editing) inputRef.current?.select();
+  }, [editing]);
+
+  function commit() {
+    const next = draft.trim();
+    setEditing(false);
+    if (!next || next === plan.name) {
+      setDraft(plan.name);
+      return;
+    }
+    updatePlan(plan.id, { name: next });
+    toast.success(t('mealPlan.toast.updated', { defaultValue: '{{name}} updated.', name: next }));
+  }
+
+  function cancel() {
+    setDraft(plan.name);
+    setEditing(false);
+  }
+
+  if (editing) {
+    return (
+      <span className="inline-flex items-center gap-1.5 w-full">
+        <input
+          ref={inputRef}
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          onBlur={commit}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+          }}
+          maxLength={64}
+          aria-label={t('mealPlan.view.renameAria', { defaultValue: 'Rename plan' })}
+          className="flex-1 min-w-0 bg-transparent border-b border-primary outline-none text-2xl sm:text-3xl font-black tracking-tight text-balance"
+        />
+        <button
+          type="button"
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={commit}
+          aria-label={t('common.confirm', { defaultValue: 'Confirm' })}
+          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-primary hover:bg-primary/10"
+        >
+          <Check className="h-4 w-4" aria-hidden />
+        </button>
+        <button
+          type="button"
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={cancel}
+          aria-label={t('common.cancel', { defaultValue: 'Cancel' })}
+          className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted-fg hover:bg-surface-2"
+        >
+          <X className="h-4 w-4" aria-hidden />
+        </button>
+      </span>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setEditing(true)}
+      title={t('mealPlan.view.renameAria', { defaultValue: 'Rename plan' })}
+      className="group inline-flex items-baseline gap-2 max-w-full text-left hover:opacity-90 transition-opacity"
+    >
+      <span className="truncate">{plan.name}</span>
+      <Pencil
+        className="h-4 w-4 shrink-0 text-muted-fg opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity"
+        aria-hidden
+      />
+    </button>
   );
 }

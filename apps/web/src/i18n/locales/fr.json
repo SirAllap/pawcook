@@ -42,7 +42,8 @@
     "calcFailed": "Calcul impossible : vérifiez les valeurs.",
     "cancel": "Annuler",
     "dismiss": "Fermer",
-    "close": "Fermer"
+    "close": "Fermer",
+    "confirm": "Confirmer"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} jours · prêt à enregistrer",
       "defaultName": "{{names}} · {{days}} jours",
       "defaultNameEmpty": "Plan sans titre",
-      "generateFirst": "Générez d’abord un plan"
+      "generateFirst": "Générez d’abord un plan",
+      "editTitle": "Modifier le plan",
+      "editSubtitle": "Modifiez ce que vous voulez et enregistrez pour écraser — vos cases cochées dans la liste de courses restent.",
+      "petRemoved": "{{count}} animal(aux) ont été retiré(s) du plan car leur profil n’existe plus."
     },
     "sourcing": {
       "varietyLabel": "Variété",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} jours · démarre le {{startDate}}",
       "tabMeals": "Repas",
       "tabShopping": "Courses",
-      "tabCooking": "Plan de cuisson"
+      "tabCooking": "Plan de cuisson",
+      "edit": "Modifier",
+      "renameAria": "Renommer le plan"
     },
     "shopping": {
       "total": "Total des courses",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "« {{name}} » enregistré.",
       "deleted": "« {{name}} » supprimé.",
-      "generateFailed": "Impossible de générer le plan — essayez d’autres réglages."
+      "generateFailed": "Impossible de générer le plan — essayez d’autres réglages.",
+      "updated": "{{name}} mis à jour."
     },
     "refusal": {
       "title": "Plan non généré",

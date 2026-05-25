@@ -42,7 +42,8 @@
     "calcFailed": "Impossibile calcolare — controlla i valori.",
     "cancel": "Annulla",
     "dismiss": "Chiudi",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "confirm": "Conferma"
   },
   "pets": {
     "eyebrow": "Animali",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} giorni · pronto da salvare",
       "defaultName": "{{names}} · {{days}} giorni",
       "defaultNameEmpty": "Piano senza titolo",
-      "generateFirst": "Genera prima un piano"
+      "generateFirst": "Genera prima un piano",
+      "editTitle": "Modifica piano",
+      "editSubtitle": "Modifica ciò che vuoi e salva per sovrascrivere — i tuoi segni di spunta della lista spesa restano.",
+      "petRemoved": "{{count}} animale/i sono stati rimossi dal piano perché il profilo non esiste più."
     },
     "sourcing": {
       "varietyLabel": "Varietà",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} giorni · parte il {{startDate}}",
       "tabMeals": "Pasti",
       "tabShopping": "Spesa",
-      "tabCooking": "Piano di cottura"
+      "tabCooking": "Piano di cottura",
+      "edit": "Modifica",
+      "renameAria": "Rinomina piano"
     },
     "shopping": {
       "total": "Totale spesa",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "«{{name}}» salvato.",
       "deleted": "«{{name}}» eliminato.",
-      "generateFailed": "Impossibile generare il piano — prova impostazioni diverse."
+      "generateFailed": "Impossibile generare il piano — prova impostazioni diverse.",
+      "updated": "{{name}} aggiornato."
     },
     "refusal": {
       "title": "Piano non generato",

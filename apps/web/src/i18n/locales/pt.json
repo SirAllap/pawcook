@@ -42,7 +42,8 @@
     "calcFailed": "Não foi possível calcular — verifique os valores.",
     "cancel": "Cancelar",
     "dismiss": "Dispensar",
-    "close": "Fechar"
+    "close": "Fechar",
+    "confirm": "Confirmar"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} dias · pronto para guardar",
       "defaultName": "{{names}} · {{days}} dias",
       "defaultNameEmpty": "Plano sem título",
-      "generateFirst": "Gere um plano primeiro"
+      "generateFirst": "Gere um plano primeiro",
+      "editTitle": "Editar plano",
+      "editSubtitle": "Ajuste o que quiser e salve para sobrescrever — suas marcações de compra ficam.",
+      "petRemoved": "{{count}} pet(s) foi/foram removido(s) do plano porque o perfil não existe mais."
     },
     "sourcing": {
       "varietyLabel": "Variedade",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} dias · começa a {{startDate}}",
       "tabMeals": "Refeições",
       "tabShopping": "Compras",
-      "tabCooking": "Plano de cozimento"
+      "tabCooking": "Plano de cozimento",
+      "edit": "Editar",
+      "renameAria": "Renomear plano"
     },
     "shopping": {
       "total": "Total da compra",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "«{{name}}» guardado.",
       "deleted": "«{{name}}» eliminado.",
-      "generateFailed": "Não foi possível gerar o plano — tente outras configurações."
+      "generateFailed": "Não foi possível gerar o plano — tente outras configurações.",
+      "updated": "{{name}} atualizado."
     },
     "refusal": {
       "title": "Plano não gerado",
