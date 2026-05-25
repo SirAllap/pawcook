@@ -570,12 +570,20 @@ function PerVegCard({
   const yieldRatio = yieldForCut(row.id, row.cut);
   const cookedG = Math.round(row.rawG * yieldRatio);
 
-  // Recompute bagSizeRawG from the chosen plan since planVegBags
-  // works on cooked grams; back-convert via the same yield ratio.
-  const bagRawG = yieldRatio > 0 ? Math.round(chosen.bagSizeCookedG / yieldRatio) : chosen.bagSizeCookedG;
+  // Per-bag "contents" — i.e. what actually goes IN each bag. This is
+  // not always equal to bagSizeCookedG: for a 1-bag plan the contents
+  // are the user's full cookedG amount (the rounded-up bag size is
+  // just the container label), and for an uneven multi-bag split the
+  // last bag holds the remainder. Showing contents rather than the
+  // container label avoids the confusing "1 × 1000 g (1282 g raw)"
+  // when the user only has 1200 g raw.
+  const singleBag = chosen.bagCount === 1;
+  const evenBags = chosen.bagCount > 1 && chosen.lastBagCookedG === chosen.bagSizeCookedG;
+  const fullBagCookedG = chosen.bagSizeCookedG;
+  const fullBagRawG = yieldRatio > 0 ? Math.round(fullBagCookedG / yieldRatio) : fullBagCookedG;
   // Last-bag raw view: scale proportional to the cooked last-bag fraction.
-  const lastBagRawG = chosen.bagSizeCookedG > 0
-    ? Math.round((chosen.lastBagCookedG / chosen.bagSizeCookedG) * bagRawG)
+  const lastBagRawG = fullBagCookedG > 0
+    ? Math.round((chosen.lastBagCookedG / fullBagCookedG) * fullBagRawG)
     : 0;
 
   const cookMinutesMax = spec
@@ -608,6 +616,15 @@ function PerVegCard({
         {(['recommended', 'bigger', 'smaller'] as const).map((key) => {
           const a = alts[key];
           const active = pick === key;
+          // When the plan packs into a single bag whose container size
+          // exceeds the user's actual cooked amount, show contents to
+          // avoid the misleading "1 × 1000 g" when they only have ~936 g
+          // cooked. Multi-bag plans show the labeled size — every bag
+          // but the last fills it.
+          const oneBag = a.bagCount === 1;
+          const sizeLabel = oneBag && a.bagSizeCookedG !== cookedG
+            ? `${cookedG} g`
+            : `${a.bagSizeCookedG} g`;
           return (
             <button
               key={key}
@@ -626,7 +643,7 @@ function PerVegCard({
                 })}
               </p>
               <p className="text-sm font-bold text-foreground mt-1">
-                {a.bagCount} × {a.bagSizeCookedG} g
+                {a.bagCount} × {sizeLabel}
               </p>
               <p className="text-[11px] text-muted-fg">
                 {t('cooking.veg.bagPlanner.coversDaysShort', {
@@ -645,20 +662,37 @@ function PerVegCard({
           {t('cooking.veg.bagPlanner.workflowLabel', { defaultValue: 'Workflow' })}
         </SectionLabel>
         <ol className="text-sm text-foreground space-y-1 list-decimal list-inside">
-          <li>
-            {t('cooking.veg.bagPlanner.stepPortion', {
-              defaultValue: 'Portion {{n}} bags of ~{{cooked}} g cooked ({{raw}} g raw each){{last}}',
-              n: chosen.bagCount,
-              cooked: chosen.bagSizeCookedG,
-              raw: bagRawG,
-              last: chosen.bagCount > 1 && chosen.lastBagCookedG !== chosen.bagSizeCookedG
-                ? t('cooking.veg.bagPlanner.lastBagAddendum', {
-                    defaultValue: ' (last bag ~{{c}} g cooked / {{r}} g raw)',
-                    c: chosen.lastBagCookedG, r: lastBagRawG,
-                  })
-                : '',
-            })}
-          </li>
+          {singleBag ? (
+            <li>
+              {t('cooking.veg.bagPlanner.stepPortionSingle', {
+                defaultValue: 'Portion all {{raw}} g raw ({{cooked}} g cooked) into 1 bag (fits ~{{size}} g container).',
+                raw: row.rawG,
+                cooked: cookedG,
+                size: chosen.bagSizeCookedG,
+              })}
+            </li>
+          ) : evenBags ? (
+            <li>
+              {t('cooking.veg.bagPlanner.stepPortionEven', {
+                defaultValue: 'Portion into {{n}} bags of {{cooked}} g cooked (~{{raw}} g raw each).',
+                n: chosen.bagCount,
+                cooked: fullBagCookedG,
+                raw: fullBagRawG,
+              })}
+            </li>
+          ) : (
+            <li>
+              {t('cooking.veg.bagPlanner.stepPortionUneven', {
+                defaultValue: 'Portion into {{n}} bags: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cooked (~{{raw}} g raw per full bag, {{lastRaw}} g raw for the last).',
+                n: chosen.bagCount,
+                full: chosen.bagCount - 1,
+                cooked: fullBagCookedG,
+                lastCooked: chosen.lastBagCookedG,
+                raw: fullBagRawG,
+                lastRaw: lastBagRawG,
+              })}
+            </li>
+          )}
           {packaging === 'vacuum_seal' && (
             <li>{t('cooking.veg.bagPlanner.stepVacuumSeal', { defaultValue: 'Vacuum-seal each bag flat in a single layer; freeze immediately.' })}</li>
           )}
