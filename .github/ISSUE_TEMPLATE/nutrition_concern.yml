@@ -1,0 +1,113 @@
+name: Nutritional concern
+description: You think the engine is computing wrong portions, kcal, or AAFCO targets for your pet.
+title: "nutrition: "
+labels: ["nutrition", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for flagging this. Nutritional accuracy is the spine of
+        the app — when the engine is wrong, it's a priority. To help
+        us reproduce and assess, please fill in **all** fields below.
+
+        ⚠️ **PawCook is not a substitute for veterinary nutritional
+        advice.** If your pet has a medical condition, please consult
+        a veterinary nutritionist (ACVN or ECVCN diplomate) before
+        acting on engine output.
+
+  - type: dropdown
+    id: species
+    attributes:
+      label: Species
+      options:
+        - Dog
+        - Cat
+    validations:
+      required: true
+
+  - type: input
+    id: weight
+    attributes:
+      label: Current weight (kg)
+      placeholder: e.g. 20
+    validations:
+      required: true
+
+  - type: input
+    id: ideal-weight
+    attributes:
+      label: Ideal weight (kg, if different from current)
+
+  - type: dropdown
+    id: age
+    attributes:
+      label: Life stage
+      options:
+        - Puppy / Kitten
+        - Adult
+        - Senior
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity
+    attributes:
+      label: Activity level
+      options:
+        - Sedentary
+        - Moderate
+        - Active
+        - Working
+    validations:
+      required: true
+
+  - type: dropdown
+    id: body-condition
+    attributes:
+      label: Body condition
+      options:
+        - Underweight
+        - Ideal
+        - Overweight
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reproductive
+    attributes:
+      label: Reproductive status
+      options:
+        - Intact
+        - Neutered / Spayed
+        - Pregnant
+        - Lactating
+    validations:
+      required: true
+
+  - type: input
+    id: profile
+    attributes:
+      label: Diet profile selected
+      placeholder: e.g. balanced_cooked / barf / cat_pmr / cat_cooked_carnivore / custom
+
+  - type: textarea
+    id: what-engine-says
+    attributes:
+      label: What does the engine report?
+      description: kcal/day, daily grams, macro breakdown, ingredient component breakdown — paste numbers exactly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-you-expect
+    attributes:
+      label: What do you expect instead — and why?
+      description: Cite a source where possible (NRC, AAFCO, FEDIAF, your vet, a published study). "It just feels off" is fine to start a discussion but harder to act on.
+    validations:
+      required: true
+
+  - type: textarea
+    id: special
+    attributes:
+      label: Health conditions, allergies, vet prescriptions
+      description: Anything that might affect how the engine is supposed to behave (renal CKD, pancreatitis, hepatic, IBD, food allergies, etc.).

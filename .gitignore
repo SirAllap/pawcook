@@ -5,3 +5,17 @@ dist/
 .env
 coverage/
 playwright-report/
+
+# TypeScript incremental build cache — regenerable, should not be
+# committed (it caused merge conflicts during PR #41).
+*.tsbuildinfo
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Test / debug artefacts
+*.log
+.vitest-cache/
