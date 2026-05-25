@@ -263,7 +263,7 @@
       "bagSizeWarn": "Some bags will sit frozen for ~3 weeks. Safe, but flavour degrades — consider 2 or 3.",
       "bagSizeDays": "{{n}} days",
       "cookAheadLabel": "Cook ahead",
-      "cookAheadHelp": "How many days each protein-batch should cover. Bigger windows = fewer cook sessions and less plastic; the planner groups consecutive days of the same protein so each bag is full.",
+      "cookAheadHelp": "How many days each batch should cover. Bigger windows = fewer cook sessions and less plastic; the planner groups consecutive days of the same protein and same veggie so each bag is full.",
       "cookAhead": {
         "perServe": "Per serve",
         "upTo2": "Up to 2 days",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} bags · {{sessions}} cook session(s)",
       "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily",
       "simpleMeals": "Simple meals",
-      "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros)."
+      "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).",
+      "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags."
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -545,7 +546,8 @@
       "mergeFewer": "Fewer bags",
       "mergeAll": "One bag",
       "mergeBagCount": "{{n}} bag(s)",
-      "mergeHint": "Saves {{saved}} cook session(s) — adjacent serves fit within the {{fridge}}-day fridge window after thaw."
+      "mergeHint": "Saves {{saved}} cook session(s) — adjacent serves fit within the {{fridge}}-day fridge window after thaw.",
+      "bagRowSupplement": "serves {{serveDates}} · cook fresh, skip the bag"
     },
     "exportFooter": "PawCook — not veterinary advice. Use a meat thermometer to verify safe internal temperature.",
     "meatSwitcher": {

@@ -263,7 +263,7 @@
       "bagSizeCaption": "Jedno białko na woreczek · warzywa w osobnych woreczkach",
       "bagSizeWarn": "Niektóre woreczki będą zamrożone ~3 tygodnie. Bezpiecznie, ale smak się pogarsza — rozważ 2 lub 3.",
       "cookAheadLabel": "Gotuj z wyprzedzeniem",
-      "cookAheadHelp": "Ile dni ma obejmować każda partia białka. Większe okna = mniej sesji gotowania i mniej plastiku; planer grupuje kolejne dni tego samego białka, aby każdy woreczek był pełny.",
+      "cookAheadHelp": "Ile dni ma obejmować każda partia. Większe okna = mniej sesji gotowania i mniej plastiku; planer grupuje kolejne dni tego samego białka i tego samego warzywa, aby każdy woreczek był pełny.",
       "cookAhead": {
         "perServe": "Na porcję",
         "upTo2": "Do 2 dni",
@@ -275,7 +275,8 @@
       "cookAheadStats": "{{bags}} woreczków · {{sessions}} sesja/i gotowania",
       "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna",
       "simpleMeals": "Proste posiłki",
-      "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet)."
+      "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet).",
+      "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -537,7 +538,8 @@
       "mergeFewer": "Mniej woreczków",
       "mergeAll": "Jeden woreczek",
       "mergeBagCount": "{{n}} woreczek/woreczków",
-      "mergeHint": "Oszczędza {{saved}} sesję/sesje gotowania — sąsiednie porcje mieszczą się w {{fridge}}-dniowym oknie lodówki po rozmrożeniu."
+      "mergeHint": "Oszczędza {{saved}} sesję/sesje gotowania — sąsiednie porcje mieszczą się w {{fridge}}-dniowym oknie lodówki po rozmrożeniu.",
+      "bagRowSupplement": "na {{serveDates}} · ugotuj na świeżo, bez woreczka"
     },
     "exportFooter": "PawCook — to nie jest porada weterynaryjna. Użyj termometru do mięsa, aby zweryfikować bezpieczną temperaturę wewnętrzną.",
     "meatSwitcher": {

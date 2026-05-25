@@ -229,6 +229,33 @@ describe('generateMealPlan', () => {
     expect(proteinPerDay[4]).toBe(proteinPerDay[5]);
   });
 
+  it('block rotation applies to veggies too: bagDays=2 holds same veg for 2 consecutive days', () => {
+    // Followability companion rule (/CLAUDE.md sub-principle 6): the
+    // "one ingredient per bag for N days" contract applies to veg the
+    // same way it applies to meat. Without this, the veg bag stays
+    // partially filled because the rotation picks a different veg the
+    // next day.
+    const sourcing = SourcingPrefsSchema.parse({
+      vegIds: ['carrots', 'sweet_potato'],
+      meatIds: ['beef'],
+      bagDays: 2,
+      simpleMeals: false, // keep the veg slot in the plan
+    });
+    const plan = generateMealPlan({
+      name: 'Veg blocks', pets: [dog], durationDays: 7,
+      startDate: '2026-06-01', sourcing,
+    });
+    const vegPerDay = plan.days.map((d) => {
+      const meal = d.petPlans[0].meals[0];
+      const c = meal.components.find((c) => c.componentKey === 'veg');
+      return c?.ingredientId;
+    });
+    expect(vegPerDay[0]).toBeDefined();
+    expect(vegPerDay[0]).toBe(vegPerDay[1]);
+    expect(vegPerDay[2]).toBe(vegPerDay[3]);
+    expect(vegPerDay[4]).toBe(vegPerDay[5]);
+  });
+
   it('bagDays=1 preserves the prior daily rotation behaviour', () => {
     const sourcing = SourcingPrefsSchema.parse({
       meatIds: ['beef', 'chicken', 'salmon'],

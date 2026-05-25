@@ -143,3 +143,31 @@ function stringifyValues(
 
 // Re-export PlanDay for any callers that traverse a plan in their own code.
 export type { PlanDay };
+
+/**
+ * Heuristic estimate of total daily food (g) the household will cook.
+ * Uses 2.5% of body weight per pet — the conservative low end of the
+ * cooked-diet daily-food band (see nutrition.ts). Used by
+ * `recommendDefaultBagDays` to bias toward fewer, fuller bags for tiny
+ * households (Followability Mandate sub-principle 5).
+ */
+export function estimateDailyFoodGrams(pets: PetProfile[]): number {
+  return pets.reduce((s, p) => s + p.nutrition.weightKg * 0.025 * 1000, 0);
+}
+
+/**
+ * Recommend a sensible default `bagDays` for the household. Small
+ * households (single cat, senior cat) eat < 60 g/day — at bagDays=1 or 2
+ * they end up cooking sessions every 2-3 days for under 200 g of food,
+ * which is the runt-bag pattern the Followability Mandate guards
+ * against. Default to bagDays=3 for them; medium-and-up households keep
+ * the standard 2-day default.
+ */
+export function recommendDefaultBagDays(pets: PetProfile[]): 1 | 2 | 3 {
+  if (pets.length === 0) return 2;
+  const daily = estimateDailyFoodGrams(pets);
+  // Tiny households (≤ ~1 small cat, or a small senior cat) save
+  // meaningful cook overhead with the longer window.
+  if (daily < 200) return 3;
+  return 2;
+}

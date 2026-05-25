@@ -898,26 +898,40 @@ function PlanAwareBagPanel({
       )}
 
       <ul className="rounded-lg border border-primary/20 bg-surface divide-y divide-border/50 text-[11px]">
-        {grouping.bags.map((bag, i) => (
-          <li key={i} className="flex items-center justify-between gap-2 px-3 py-1.5">
-            <span className="font-bold text-foreground">
-              {t('cooking.bagStrategy.bagRowLabel', {
-                defaultValue: 'Bag {{n}}',
-                n: i + 1,
-              })}
-            </span>
-            <span className="text-muted-fg text-right truncate">
-              {t('cooking.bagStrategy.bagRow', {
-                defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
-                serveDates: fmtDates(bag.dates),
-                useBy: fmtDate(bag.useByDate),
-              })}
-            </span>
-            <span className="font-mono tabular-nums text-foreground shrink-0">
-              {bag.totalGrams} g
-            </span>
-          </li>
-        ))}
+        {grouping.bags.map((bag, i) => {
+          // Runt-sized bags signal the Followability Mandate's
+          // sub-threshold rule (CLAUDE.md #3): under 100 g cooked
+          // weight, the bag is closer to a supplement than a meal. We
+          // still render it (the planner produced it for a reason) but
+          // tag it visually so the user knows they can skip sous-vide
+          // for that one and cook fresh.
+          const isSupplementSized = bag.totalGrams < 100;
+          return (
+            <li key={i} className="flex items-center justify-between gap-2 px-3 py-1.5">
+              <span className="font-bold text-foreground">
+                {t('cooking.bagStrategy.bagRowLabel', {
+                  defaultValue: 'Bag {{n}}',
+                  n: i + 1,
+                })}
+              </span>
+              <span className="text-muted-fg text-right truncate">
+                {isSupplementSized
+                  ? t('cooking.bagStrategy.bagRowSupplement', {
+                      defaultValue: 'serves {{serveDates}} · cook fresh, skip the bag',
+                      serveDates: fmtDates(bag.dates),
+                    })
+                  : t('cooking.bagStrategy.bagRow', {
+                      defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
+                      serveDates: fmtDates(bag.dates),
+                      useBy: fmtDate(bag.useByDate),
+                    })}
+              </span>
+              <span className="font-mono tabular-nums text-foreground shrink-0">
+                {bag.totalGrams} g
+              </span>
+            </li>
+          );
+        })}
       </ul>
 
       <p className="text-xs text-foreground/90 leading-relaxed">

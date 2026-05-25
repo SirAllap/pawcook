@@ -1,10 +1,11 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Check, Calendar, Sparkles, RotateCcw, Save, ShieldAlert } from 'lucide-react';
 import {
   generateMealPlan, SourcingPrefsSchema, checkPlanSafety, hasBlockingRefusals,
+  recommendDefaultBagDays, estimateDailyFoodGrams,
   type MealPlan, type PetProfile, type PlanDuration, type SourcingPrefs,
   type PlannerRefusal,
 } from '@pawcook/shared';
@@ -37,11 +38,41 @@ export default function PlanWizard() {
   const [name, setName] = useState('');
   const [preview, setPreview] = useState<MealPlan | null>(null);
   const [refusals, setRefusals] = useState<PlannerRefusal[]>([]);
+  // Track whether the user explicitly picked a Cook-ahead value. While
+  // they haven't, picking pets quietly auto-adjusts `bagDays` to the
+  // household-appropriate default — tiny households (single cat) get
+  // bagDays=3 so the cook-once-per-3-days cadence avoids runt bags
+  // (Followability Mandate sub-principle 5).
+  const userTouchedBagDaysRef = useRef(false);
 
   const selectedPets = useMemo(
     () => pets.filter((p) => selectedPetIds.includes(p.id)),
     [pets, selectedPetIds],
   );
+
+  // Recompute the recommended default whenever the pet set changes.
+  // Only applies when the user hasn't manually picked a different value.
+  useEffect(() => {
+    if (userTouchedBagDaysRef.current) return;
+    if (selectedPets.length === 0) return;
+    const rec = recommendDefaultBagDays(selectedPets);
+    setSourcing((s) => (s.bagDays === rec ? s : { ...s, bagDays: rec }));
+  }, [selectedPets]);
+
+  // Household hints for the wizard's Cook ahead step (drives the
+  // "tiny-household consider 3 days" copy).
+  const householdHints = useMemo(() => {
+    if (selectedPets.length === 0) return null;
+    return {
+      recommendedBagDays: recommendDefaultBagDays(selectedPets),
+      estimatedDailyGrams: Math.round(estimateDailyFoodGrams(selectedPets)),
+    };
+  }, [selectedPets]);
+
+  function handleSourcingChange(next: SourcingPrefs) {
+    if (next.bagDays !== sourcing.bagDays) userTouchedBagDaysRef.current = true;
+    setSourcing(next);
+  }
 
   // Scope the ingredient picker to whatever species is selected. If only cats
   // are picked, only show cat-safe meats/veggies; otherwise default to dog
@@ -259,10 +290,11 @@ export default function PlanWizard() {
       <Card padding="md">
         <SourcingPicker
           value={sourcing}
-          onChange={setSourcing}
+          onChange={handleSourcingChange}
           species={sourcingSpecies}
           durationDays={duration}
           cookAheadStats={cookAheadStats}
+          householdHints={householdHints}
         />
       </Card>
 
