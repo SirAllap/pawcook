@@ -583,6 +583,258 @@
       "recCaption": "aanb.: {{method}}",
       "pillAria": "Toont {{active}}; aanbevolen methode is {{recommended}}",
       "fellBackTo": "gehouden als {{method}} — {{appliance}} niet geschikt voor deze groente"
+    },
+    "vegData": {
+      "carrots": {
+        "recommendedNotes": "In plakken van 1 cm snijden. Stomen tot beetgaar; behoudt bètacaroteen beter dan koken.",
+        "recommendedReason": "Stomen behoudt bètacaroteen en vitamine C en breekt celwanden af die honden rauw niet verteren.",
+        "methods": {
+          "sous_vide": {
+            "notes": "In plakken van 3–5 mm snijden zodat de zak goed sluit. Gebruik een apart 85 °C-bad — groenten worden niet zacht bij vleestemperaturen."
+          },
+          "oven": {
+            "notes": "Blokjes van 2 cm met een beetje olie. Roosteren concentreert bètacaroteen meer dan stomen."
+          },
+          "slow_cooker": {
+            "warning": "Slow cookers maken wortels papperig — goed in stoofpot, minder als bijgerecht."
+          },
+          "pressure_cooker": {
+            "notes": "Stukken van 1 cm, hoge druk met 1 kop water, snelle drukverlaging."
+          }
+        }
+      },
+      "pumpkin": {
+        "recommendedNotes": "Blokjes van 2–3 cm. Puur roosteren — geen suiker, geen kruiden. Pureren voor het serveren.",
+        "recommendedReason": "Roosteren drijft water uit en concentreert de oplosbare vezels die de ontlasting reguleren — de hoofdreden dat pompoen in de bak ligt.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Blokjes van 2–3 cm, apart 85 °C-bad."
+          },
+          "stovetop_low": {
+            "notes": "Boven een vergiet stomen; koken doordrenkt het en verdunt het vezeleffect."
+          },
+          "slow_cooker": {
+            "warning": "Wordt erg nat — afgieten of vocht inkoken voor het pureren."
+          },
+          "pressure_cooker": {
+            "notes": "Stukken van 2 cm, hoge druk, natuurlijke drukverlaging."
+          }
+        }
+      },
+      "sweet_potato": {
+        "recommendedNotes": "Altijd gaar — rauwe zoete aardappel is moeilijk verteerbaar. In blokjes snijden of heel bakken en prakken.",
+        "recommendedReason": "Roosteren karameliseert het zetmeel tot makkelijk verteerbare suikers en is de meest smakelijke bereiding. Sous-vide geeft een zoeter resultaat dankzij de trage enzymatische omzetting, als je tijd hebt.",
+        "rawBlockedReason": "Rauwe zoete aardappel bevat trypsineremmers en is in wezen onverteerbaar.",
+        "speciesNotes": {
+          "cat": "Gaar en in zeer kleine hoeveelheid voor katten — koolhydraten zijn niet essentieel in hun voeding."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Blokjes van 1 cm, apart 85 °C-bad. Bèta-amylase zet zetmeel om in maltose — komt merkbaar zoeter uit dan gebakken."
+          },
+          "stovetop_low": {
+            "notes": "In blokjes stomen; koken verhoogt de glycemische last."
+          },
+          "pressure_cooker": {
+            "notes": "Stukken van 2 cm, hoge druk, natuurlijke drukverlaging."
+          }
+        }
+      },
+      "broccoli": {
+        "recommendedNotes": "Alleen roosjes, geen dikke stelen. Beetgaar houden — overgaring vernietigt vitamine C.",
+        "recommendedReason": "Kort stomen behoudt vitamine C en sulforafaan en maakt de roosjes net zacht genoeg voor hondenvertering.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Kleine roosjes, één laag in de zak. Zwavellucht is heftig bij openen — dat is normaal.",
+            "warning": "Roosjes worden olijfgroen in een gesloten zak; voedingskundig prima, alleen visueel onaantrekkelijk."
+          },
+          "oven": {
+            "warning": "Sommige honden weigeren Maillard-bruining op kruisbloemigen — test eerst een kleine portie."
+          },
+          "pressure_cooker": {
+            "notes": "Lage druk — de opbouw kookt ze al. Onmiddellijk snel drukverlies, anders worden ze pap."
+          }
+        }
+      },
+      "spinach": {
+        "recommendedNotes": "Kort laten slinken in kokend water, uitlekken, hakken. Vermindert oxalaten licht.",
+        "recommendedReason": "Kort koken en uitlekken vermindert oxalaten die calciumopname remmen, terwijl folaat en ijzer behouden blijven.",
+        "speciesNotes": {
+          "cat": "Vermijd bij katten met urinewegproblemen — oxalaten kunnen kristalvorming verergeren."
+        },
+        "methods": {
+          "stovetop_low": {
+            "notes": "Kort laten slinken, goed uitlekken."
+          }
+        }
+      },
+      "green_beans": {
+        "recommendedNotes": "Uiteinden afsnijden. Stomen tot helder groen en beetgaar. Mogen ook rauw worden geserveerd.",
+        "recommendedReason": "Stomen verzacht het vezels in de peul zonder vitamine K en mangaan te verliezen — de voedingsstoffen die sperziebonen tot dieet-vuller maken.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Uiteinden afsnijden, heel laten — ze behouden hun vorm prachtig."
+          },
+          "oven": {
+            "warning": "Maakt ze snel droog — dieren prefereren meestal gestoomd."
+          },
+          "slow_cooker": {
+            "warning": "Worden zacht, niet beetgaar."
+          },
+          "pressure_cooker": {
+            "notes": "Hoge druk, snelle drukverlaging."
+          }
+        }
+      },
+      "zucchini": {
+        "recommendedNotes": "In plakken of blokjes snijden. Veilig rauw — koken maakt het alleen zachter voor kieskeurige dieren.",
+        "recommendedReason": "Stomen maakt het zacht genoeg voor tandeloze of kieskeurige dieren en behoudt het watergehalte — ideale hydraterende bijschotel.",
+        "methods": {
+          "sous_vide": {
+            "warning": "Geeft veel water af in de zak — afgieten voor het serveren."
+          },
+          "slow_cooker": {
+            "warning": "Wordt pap — goed in stoofpot, niet als bijgerecht."
+          },
+          "pressure_cooker": {
+            "notes": "Lage druk, snelle drukverlaging — kookt direct te ver."
+          }
+        }
+      },
+      "peas": {
+        "recommendedNotes": "Vers of bevroren (eerst ontdooien). Nooit uit blik (toegevoegd natrium).",
+        "recommendedReason": "Kort stomen behoudt vitamine K en de peulvrucht-eiwitten zonder dat het papperig wordt.",
+        "methods": {
+          "pressure_cooker": {
+            "notes": "Lage druk, snelle drukverlaging. Bevroren erwten hoeven alleen te ontdooien."
+          }
+        }
+      },
+      "kale": {
+        "recommendedNotes": "Blaadjes van taaie stelen halen, fijn hakken. Met mate — oxalaten + thiocyanaten.",
+        "recommendedReason": "Stomen behoudt calcium, ijzer en sulforafaan en verzacht de taaie vezels — alleen kleine hoeveelheden serveren vanwege thiocyanaten.",
+        "rawBlockedReason": "Enzymen in rauwe boerenkool activeren goitrogene thiocyanaten en maken oxalaat beter biobeschikbaar.",
+        "speciesNotes": {
+          "cat": "Katten: vermijden bij schildklier-medicatie. Anders alleen incidenteel."
+        },
+        "methods": {
+          "sous_vide": {
+            "warning": "Textuur wordt slijmerig in een gesloten zak — de meeste dieren prefereren gestoomd."
+          },
+          "oven": {
+            "warning": "Dit is in feite een boerenkool-chips bereiding — snackportie, geen bijgerecht."
+          },
+          "pressure_cooker": {
+            "notes": "Lage druk — beste methode om oxalaten in boerenkool, biet en spinazie te verminderen."
+          }
+        }
+      },
+      "parsnips": {
+        "recommendedNotes": "Stukken van 1–2 cm. Onder 85 °C blijven ze vezelig — gebruik de hogere \"stevige wortel\"-badtemperatuur.",
+        "recommendedReason": "Stomen maakt ze zacht genoeg om te kauwen, behoudt de zoete smaak en levert prebiotische vezels voor de darmen.",
+        "rawBlockedReason": "Rauwe pastinaak bevat furanocumarines (psoralenen) — fototoxisch en GI-irriterend.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Stukken van 1–2 cm. Onder 85 °C blijven ze vezelig — gebruik de hogere \"stevige wortel\"-badtemperatuur."
+          },
+          "pressure_cooker": {
+            "notes": "Stukken van 2 cm, hoge druk, natuurlijke drukverlaging."
+          }
+        }
+      },
+      "beets": {
+        "recommendedNotes": "Heel 2–3 uur (schil glipt er daarna af), of blokjes van 2 cm op 90 min. Beste methode om betalainen te behouden.",
+        "recommendedReason": "Roosteren concentreert de aardse verbindingen en betalainen — een kleurrijke antioxidant-boost af en toe, geen basisvoedsel.",
+        "speciesNotes": {
+          "cat": "Katten: vermijden — hoge oxalaatbelasting is een zorg bij stenenvatbare rassen."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Heel 2–3 uur (schil glipt er daarna af), of blokjes van 2 cm op 90 min. Beste methode voor betalainebehoud."
+          },
+          "oven": {
+            "notes": "Heel in folie wikkelen met een scheutje water. Concentreert smaak."
+          },
+          "stovetop_low": {
+            "warning": "Als je kookt, gooi het kookvocht in de bak — daar zijn de betalaine-antioxidanten beland."
+          },
+          "pressure_cooker": {
+            "notes": "Heel, hoge druk, natuurlijke drukverlaging. Druk breekt oxalaten beter af dan stomen."
+          }
+        }
+      },
+      "butternut_squash": {
+        "recommendedNotes": "Blokjes van 2 cm, één laag. Wordt zijdezacht.",
+        "recommendedReason": "Roosteren concentreert de nootachtige smaak en carotenoïden door verdamping — de smakelijkste bereiding.",
+        "speciesNotes": {
+          "cat": "Katten: max 1 eetlepel per maaltijd — zetmeelrijk."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Blokjes van 2 cm, één laag. Wordt zijdezacht."
+          },
+          "stovetop_low": {
+            "notes": "In blokjes stomen; koken doorweekt het vruchtvlees."
+          },
+          "slow_cooker": {
+            "warning": "Wordt erg nat — afgieten of vocht inkoken voor het pureren."
+          },
+          "pressure_cooker": {
+            "notes": "Stukken van 2 cm, hoge druk, natuurlijke drukverlaging."
+          }
+        }
+      },
+      "cucumber": {
+        "recommendedNotes": "Rauw serveren — hoog watergehalte. In reepjes snijden; koken verpest de textuur.",
+        "recommendedReason": "Komkommer is een rauw-eet groente — alles wat het levert is hydratatie en knapperigheid, beide gaan verloren bij koken.",
+        "cookingBlockedReason": "Koken verandert komkommer in een doorzichtige, slijmerige massa die dieren weigeren — rauw is de enige zinnige bereiding."
+      },
+      "celery": {
+        "recommendedNotes": "Verzacht de vezels die anders heel zouden passeren.",
+        "recommendedReason": "Rauw is veilig en biedt de knapperige bite die selderij meebrengt — dieren met nieren-gevoeligheid moeten het vermijden wegens oxalaten.",
+        "speciesNotes": {
+          "cat": "Kleine katten en honden onder 10 kg: liever gestoomd — fijner hakken vermindert verstikkingsgevaar."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Verzacht de vezels die anders heel zouden passeren."
+          },
+          "oven": {
+            "warning": "Droogt uit — niet ideaal."
+          }
+        }
+      },
+      "asparagus": {
+        "recommendedNotes": "Plat in de zak leggen, één laag.",
+        "recommendedReason": "Stomen behoudt folaten en rutine en maakt de stengels net zacht genoeg voor comfortabele vertering.",
+        "methods": {
+          "sous_vide": {
+            "notes": "Plat in de zak leggen, één laag."
+          },
+          "pressure_cooker": {
+            "notes": "Lage druk, snelle drukverlaging."
+          }
+        }
+      },
+      "brussels_sprouts": {
+        "recommendedNotes": "Doormidden snijden door de steel.",
+        "recommendedReason": "Stomen behoudt sulforafaan en vitamine K in een voedingsrijke kruisbloemige groente — met mate serveren vanwege zwavelverbindingen.",
+        "speciesNotes": {
+          "cat": "Katten: vermijden bij schildklier-medicatie."
+        },
+        "methods": {
+          "sous_vide": {
+            "notes": "Doormidden snijden door de steel.",
+            "warning": "Zwavellucht hoopt zich op in een gesloten zak — open met het deksel van je af."
+          },
+          "oven": {
+            "notes": "Doormidden snijden, snijkant naar beneden. Veel honden geven de voorkeur aan deze gekaramelliseerde vorm boven gestoomd."
+          },
+          "pressure_cooker": {
+            "notes": "Lage druk, snelle drukverlaging. Langer en het wordt pap."
+          }
+        }
+      }
     }
   },
   "nutrition": {
@@ -1374,6 +1626,36 @@
       "label": "Bessen / krenten",
       "compound": "Net als druiven",
       "effect": "Acuut nierfalen"
+    },
+    "raw_freshwater_fish": {
+      "label": "Rauwe zoetwatervis (als basis)",
+      "compound": "Thiaminase",
+      "effect": "Vernietigt thiamine (B1) → neurologische schade, stuipen. Koken deactiveert het enzym. Af en toe kleine hoeveelheden gekookte zoetwatervis is ok."
+    },
+    "tuna_staple": {
+      "label": "Tonijn als basis",
+      "compound": "Kwik + PUFA zonder vitamine E",
+      "effect": "Kwikophoping; steatitis (geelvetziekte) door meervoudig onverzadigde vetten zonder voldoende vitamine E. Beperk tot ≤ 10% van de inname en wissel af."
+    },
+    "liver_excess_cat": {
+      "label": "Lever in overmaat",
+      "compound": "Geprevormde vitamine A",
+      "effect": "Vitamine-A-toxiciteit (hypervitaminose A) — botvervorming, gewrichtsziekte. Beperk lever tot 5–10 g/dag voor een kat van 4 kg. Katten zijn extra gevoelig."
+    },
+    "dog_food_for_cat": {
+      "label": "Hondenvoer langdurig",
+      "compound": "Mist taurine + arachidonzuur + geprevormde vitamine A",
+      "effect": "Niet acuut toxisch, maar dodelijk ontoereikend over maanden. Katten gevoerd met hondenvoer ontwikkelen verwijde cardiomyopathie, retinadegeneratie en leververvetting."
+    },
+    "lilies_environment": {
+      "label": "Lelies (alle delen, omgeving)",
+      "compound": "Onbekend nefrotoxine",
+      "effect": "Geen voedsel, maar huishoudelijk contact is genoeg — zelfs stuifmeel in de vacht, ingeslikt tijdens het wassen, veroorzaakt acuut nierfalen binnen 36–72 u. Verwijder alle lelies (Lilium en Hemerocallis) uit elk huis met een kat."
+    },
+    "vegan_diet_cat": {
+      "label": "Plantaardig / veganistisch dieet",
+      "compound": "Fysiologische onverenigbaarheid",
+      "effect": "Katten missen de enzymen om arachidonzuur, taurine, vitamine A, vitamine D en arginine uit plantaardige bronnen te halen. Veganistische kattendiëten zijn in geen enkele duur veilig."
     }
   },
   "suppData": {
