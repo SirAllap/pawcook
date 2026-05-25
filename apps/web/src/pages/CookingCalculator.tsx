@@ -26,6 +26,7 @@ import { SectionLabel } from '../components/ui/section-label';
 import { EmptyState } from '../components/ui/empty-state';
 import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
 import { DownloadMenu } from '../components/recipe/DownloadMenu';
+import { VegBagPlanner } from '../components/cooking/VegBagPlanner';
 import { useRecipeExport } from '../hooks/useRecipeExport';
 import { useDebouncedEffect } from '../lib/use-debounced-effect';
 import { blockBadNumberKeys } from '../lib/number-input';
@@ -611,6 +612,8 @@ export default function CookingCalculator() {
           />
         )}
       </AnimatePresence>
+
+      <VegBagPlanner />
 
       <VegCookingGuide unit={values.temperatureUnit} meatMethod={values.cookingMethod} />
     </div>
