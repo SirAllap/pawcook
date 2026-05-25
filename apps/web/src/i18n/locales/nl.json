@@ -385,6 +385,28 @@
       "serves": "Porties",
       "pets": "Huisdieren",
       "weight": "Gewicht"
+    },
+    "supplements": {
+      "title": "Dagelijkse supplementen",
+      "help": "Wat het eenvoudige-maaltijden-plan niet dekt. Stel ze één keer in en doseer bij het ontbijt.",
+      "dismiss": "Begrepen",
+      "undo": "Opnieuw tonen",
+      "dismissedLabel": "Dagelijkse supplementen bevestigd.",
+      "taurine": {
+        "label": "Taurine poeder",
+        "dose": "{{mg}} mg per dag (ongeveer ¼ tl)",
+        "rationale": "Koken vernietigt ~20% van het taurine. Tekort veroorzaakt onomkeerbare blindheid + verwijde cardiomyopathie."
+      },
+      "codLiver": {
+        "label": "Levertraan",
+        "dose": "~{{ml}} mL, 3× per week",
+        "rationale": "Dekt geprevormde vitamine A en omega-3 (EPA/DHA) in één dosis — wat de weggelaten orgaan- en visslots niet meer leveren."
+      },
+      "calcium": {
+        "label": "Calciumcitraat (of gemalen eierschaal)",
+        "dose": "{{mg}} mg per dag (~½ tl gemalen eierschaal per ~454 g vlees)",
+        "rationale": "Gekookte maaltijden zijn calciumarm zonder bot — dit vult het gat."
+      }
     }
   },
   "condition": {

@@ -385,6 +385,28 @@
       "serves": "Portionen",
       "pets": "Tiere",
       "weight": "Gewicht"
+    },
+    "supplements": {
+      "title": "Tägliche Ergänzungen",
+      "help": "Was der Einfache-Mahlzeiten-Plan nicht abdeckt. Einmal einrichten und beim Frühstück dosieren.",
+      "dismiss": "Verstanden",
+      "undo": "Wieder anzeigen",
+      "dismissedLabel": "Tägliche Ergänzungen bestätigt.",
+      "taurine": {
+        "label": "Taurin-Pulver",
+        "dose": "{{mg}} mg pro Tag (etwa ¼ TL)",
+        "rationale": "Beim Garen gehen ~20% des Taurins verloren. Mangel führt zu irreversibler Erblindung + dilatativer Kardiomyopathie."
+      },
+      "codLiver": {
+        "label": "Lebertran",
+        "dose": "~{{ml}} mL, 3× pro Woche",
+        "rationale": "Deckt vorgeformtes Vitamin A und Omega-3 (EPA/DHA) in einer Dosis ab — was die weggelassenen Organ- und Meeresfrüchte-Slots nicht mehr liefern."
+      },
+      "calcium": {
+        "label": "Calciumcitrat (oder gemahlene Eierschale)",
+        "dose": "{{mg}} mg pro Tag (~½ TL gemahlene Eierschale pro ~454 g Fleisch)",
+        "rationale": "Gegarte Mahlzeiten sind ohne Knochen calciumdefizitär — das schließt die Lücke."
+      }
     }
   },
   "condition": {

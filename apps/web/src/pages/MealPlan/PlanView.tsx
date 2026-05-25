@@ -11,6 +11,7 @@ import { Sheet } from '../../components/ui/sheet';
 import { PageFallback } from '../../components/ui/page-fallback';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
 import { NutrientCoverageCard } from '../../components/meal-plan/NutrientCoverageCard';
+import { SupplementCard } from '../../components/meal-plan/SupplementCard';
 import { PetTag } from '../../components/meal-plan/PetTag';
 import { ShoppingListView } from './ShoppingListView';
 import { CookingPlanView } from './CookingPlanView';
@@ -115,6 +116,7 @@ export default function PlanView() {
         </TabsList>
 
         <TabsContent value="meals" className="space-y-4">
+          <SupplementCard plan={plan} pets={planPets} />
           <NutrientCoverageCard plan={plan} pets={planPets} />
           <CalendarGrid plan={plan} pets={planPets} />
         </TabsContent>
