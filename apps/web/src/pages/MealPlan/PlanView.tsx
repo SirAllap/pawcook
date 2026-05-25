@@ -7,6 +7,7 @@ import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { FadeIn } from '../../components/motion/fade-in';
 import { Sheet } from '../../components/ui/sheet';
 import { PageFallback } from '../../components/ui/page-fallback';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
@@ -129,20 +130,26 @@ export default function PlanView() {
         </TabsList>
 
         <TabsContent value="meals" className="space-y-4">
-          <SupplementCard plan={plan} pets={planPets} />
-          <NutrientCoverageCard plan={plan} pets={planPets} />
-          <CalendarGrid plan={plan} pets={planPets} />
+          <FadeIn className="space-y-4">
+            <SupplementCard plan={plan} pets={planPets} />
+            <NutrientCoverageCard plan={plan} pets={planPets} />
+            <CalendarGrid plan={plan} pets={planPets} />
+          </FadeIn>
         </TabsContent>
 
         {/* forceMount keeps the shopping list mounted so its checkmarks don't
             reset when the user toggles tabs. */}
         <TabsContent value="shopping" forceMount className="space-y-4 data-[state=inactive]:hidden">
-          <ShoppingListView plan={plan} pets={planPets} />
+          <FadeIn className="space-y-4">
+            <ShoppingListView plan={plan} pets={planPets} />
+          </FadeIn>
         </TabsContent>
 
         {plan.cookingPlan && (
           <TabsContent value="cooking" className="space-y-4">
-            <CookingPlanView plan={plan} pets={planPets} />
+            <FadeIn className="space-y-4">
+              <CookingPlanView plan={plan} pets={planPets} />
+            </FadeIn>
           </TabsContent>
         )}
       </Tabs>
