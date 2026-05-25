@@ -1310,6 +1310,33 @@
         "eyebrow": "Assistente",
         "caption": "\"Cozinhar com antecedência\" com estatísticas ao vivo: sacos · sessões · sessões economizadas vs diária. Veja o ganho antes de gerar.",
         "principle": "A seguibilidade é um insumo nutricional, não um detalhe de UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suplementos diários",
+          "taurine": "Taurina em pó",
+          "taurineDose": "250 mg/dia",
+          "codLiver": "Óleo de fígado de bacalhau",
+          "codLiverDose": "1 mL, 3×/semana",
+          "calcium": "Citrato de cálcio",
+          "calciumDose": "287 mg/dia",
+          "dayLabel": "Dia 1 · Seg 25 mai",
+          "beefDay": "Dia de carne",
+          "mainGrams": "{{g}}g carne"
+        },
+        "cooking": {
+          "title": "Plano de cozimento",
+          "summary": "4 sacos · 4 sessões de cozimento · uma proteína por saco",
+          "groupTotal": "{{bags}} sacos · {{g}} g no total",
+          "bagRow": "{{dates}} · consumir até {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} saco(s) de {{meat}} ao longo de {{days}} dias para {{pets}} pets. Cozinhe os {{kg}} kg de uma vez — geladeira 1 saco, congele o resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Uma proteína por refeição · o cartão diário de suplementos cobre a lacuna",
+          "summary": "7 dias · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Página não encontrada",
     "description": "A página que você procura não existe ou foi movida.",
     "home": "Voltar ao início"
+  },
+  "footer": {
+    "license": "MIT · Código aberto"
   }
 }

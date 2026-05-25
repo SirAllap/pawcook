@@ -1310,6 +1310,33 @@
         "eyebrow": "Wizard",
         "caption": "\"Cook ahead\" with live stats: bags · cook sessions · sessions saved vs daily. See the frugal payoff before you generate.",
         "principle": "Followability is a nutritional input, not a UX nicety."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Daily supplements",
+          "taurine": "Taurine powder",
+          "taurineDose": "250 mg/day",
+          "codLiver": "Cod liver oil",
+          "codLiverDose": "1 mL, 3×/week",
+          "calcium": "Calcium citrate",
+          "calciumDose": "287 mg/day",
+          "dayLabel": "Day 1 · Mon May 25",
+          "beefDay": "Beef day",
+          "mainGrams": "{{g}}g beef"
+        },
+        "cooking": {
+          "title": "Cooking plan",
+          "summary": "4 bags · 4 cook sessions · one protein per bag",
+          "groupTotal": "{{bags}} bags · {{g}} g total",
+          "bagRow": "{{dates}} · use by {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pets. Cook all {{kg}} kg at once — fridge 1 bag, freeze the rest."
+        },
+        "wizard": {
+          "simpleMealsShort": "One protein per meal · daily supplement card covers the gap",
+          "summary": "7 days · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Page not found",
     "description": "The page you’re looking for doesn’t exist or was moved.",
     "home": "Back to home"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

@@ -1310,6 +1310,33 @@
         "eyebrow": "Assistant",
         "caption": "« Cuisiner à l’avance » avec stats en direct : sachets · sessions · sessions économisées vs quotidien. Vous voyez le gain avant de générer.",
         "principle": "La suivabilité est un apport nutritionnel, pas une coquetterie UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Suppléments quotidiens",
+          "taurine": "Taurine en poudre",
+          "taurineDose": "250 mg/jour",
+          "codLiver": "Huile de foie de morue",
+          "codLiverDose": "1 mL, 3×/semaine",
+          "calcium": "Citrate de calcium",
+          "calciumDose": "287 mg/jour",
+          "dayLabel": "Jour 1 · lun. 25 mai",
+          "beefDay": "Jour bœuf",
+          "mainGrams": "{{g}}g bœuf"
+        },
+        "cooking": {
+          "title": "Plan de cuisson",
+          "summary": "4 sachets · 4 sessions de cuisson · une protéine par sachet",
+          "groupTotal": "{{bags}} sachets · {{g}} g au total",
+          "bagRow": "{{dates}} · à consommer avant le {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} sachet(s) de {{meat}} sur {{days}} jours pour {{pets}} animaux. Cuisez les {{kg}} kg en une fois — gardez 1 sachet au frigo, congelez le reste."
+        },
+        "wizard": {
+          "simpleMealsShort": "Une protéine par repas · la carte quotidienne de suppléments comble le manque",
+          "summary": "7 jours · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Page introuvable",
     "description": "La page que vous cherchez n’existe pas ou a été déplacée.",
     "home": "Retour à l’accueil"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

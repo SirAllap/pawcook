@@ -1310,6 +1310,33 @@
         "eyebrow": "Assistent",
         "caption": "„Vorkochen\" mit Live-Stats: Beutel · Kochsitzungen · gesparte Sitzungen ggü. täglich. Den frugalen Vorteil sehen, bevor man generiert.",
         "principle": "Followability ist ein nährstoffrelevanter Faktor, keine UX-Spielerei."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Tägliche Ergänzungen",
+          "taurine": "Taurin-Pulver",
+          "taurineDose": "250 mg/Tag",
+          "codLiver": "Lebertran",
+          "codLiverDose": "1 mL, 3×/Woche",
+          "calcium": "Calciumcitrat",
+          "calciumDose": "287 mg/Tag",
+          "dayLabel": "Tag 1 · Mo 25. Mai",
+          "beefDay": "Rindfleisch-Tag",
+          "mainGrams": "{{g}}g Rind"
+        },
+        "cooking": {
+          "title": "Kochplan",
+          "summary": "4 Beutel · 4 Kochsitzungen · ein Protein pro Beutel",
+          "groupTotal": "{{bags}} Beutel · {{g}} g insgesamt",
+          "bagRow": "{{dates}} · verbrauchen bis {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} {{meat}}-Beutel über {{days}} Tage für {{pets}} Tiere. {{kg}} kg auf einmal garen — 1 Beutel in den Kühlschrank, Rest einfrieren."
+        },
+        "wizard": {
+          "simpleMealsShort": "Ein Protein pro Mahlzeit · die tägliche Ergänzungskarte deckt die Lücke",
+          "summary": "7 Tage · Luna · Dora · Blacky · Sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
     "home": "Zurück zur Startseite"
+  },
+  "footer": {
+    "license": "MIT · Open Source"
   }
 }

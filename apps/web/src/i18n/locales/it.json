@@ -1310,6 +1310,33 @@
         "eyebrow": "Procedura guidata",
         "caption": "\"Cucina in anticipo\" con statistiche live: sacchetti · sessioni · sessioni risparmiate vs giornaliera. Vedi il vantaggio prima di generare.",
         "principle": "La seguibilità è un input nutrizionale, non un dettaglio UX."
+      },
+      "mock": {
+        "plan": {
+          "supplementsTitle": "Integratori giornalieri",
+          "taurine": "Taurina in polvere",
+          "taurineDose": "250 mg/giorno",
+          "codLiver": "Olio di fegato di merluzzo",
+          "codLiverDose": "1 mL, 3×/settimana",
+          "calcium": "Citrato di calcio",
+          "calciumDose": "287 mg/giorno",
+          "dayLabel": "Giorno 1 · Lun 25 mag",
+          "beefDay": "Giorno manzo",
+          "mainGrams": "{{g}}g manzo"
+        },
+        "cooking": {
+          "title": "Piano di cottura",
+          "summary": "4 sacchetti · 4 sessioni di cottura · una proteina per sacchetto",
+          "groupTotal": "{{bags}} sacchetti · {{g}} g totali",
+          "bagRow": "{{dates}} · consumare entro {{useBy}}"
+        },
+        "bag": {
+          "summary": "{{bags}} sacchetto/i di {{meat}} su {{days}} giorni per {{pets}} animali. Cuoci tutti i {{kg}} kg in una volta — frigo 1 sacchetto, freezer il resto."
+        },
+        "wizard": {
+          "simpleMealsShort": "Una proteina per pasto · la scheda integratori giornaliera copre il divario",
+          "summary": "7 giorni · Luna · Dora · Blacky · sous-vide"
+        }
       }
     }
   },
@@ -1748,5 +1775,8 @@
     "title": "Pagina non trovata",
     "description": "La pagina che cerchi non esiste o è stata spostata.",
     "home": "Torna alla home"
+  },
+  "footer": {
+    "license": "MIT · Open source"
   }
 }

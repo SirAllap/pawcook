@@ -211,6 +211,7 @@ function DeviceFrame({ children }: { children: ReactNode }) {
    ────────────────────────────────────────────────────────────────── */
 
 function PlanMock() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       {/* Supplement card */}
@@ -220,26 +221,39 @@ function PlanMock() {
             <Pill className="h-3 w-3" />
           </span>
           <span className="text-[10px] font-black uppercase tracking-wider text-primary">
-            Daily supplements
+            {t('landing.preview.mock.plan.supplementsTitle', { defaultValue: 'Daily supplements' })}
           </span>
         </div>
         <div className="space-y-1.5 pl-1">
-          <Row name="Taurine powder" dose="250 mg/day" />
-          <Row name="Cod liver oil" dose="1 mL, 3×/week" />
-          <Row name="Calcium citrate" dose="287 mg/day" />
+          <Row
+            name={t('landing.preview.mock.plan.taurine', { defaultValue: 'Taurine powder' })}
+            dose={t('landing.preview.mock.plan.taurineDose', { defaultValue: '250 mg/day' })}
+          />
+          <Row
+            name={t('landing.preview.mock.plan.codLiver', { defaultValue: 'Cod liver oil' })}
+            dose={t('landing.preview.mock.plan.codLiverDose', { defaultValue: '1 mL, 3×/week' })}
+          />
+          <Row
+            name={t('landing.preview.mock.plan.calcium', { defaultValue: 'Calcium citrate' })}
+            dose={t('landing.preview.mock.plan.calciumDose', { defaultValue: '287 mg/day' })}
+          />
         </div>
       </div>
 
       {/* Day card */}
       <div className="rounded-2xl border border-border bg-surface-2 p-3 space-y-2">
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-black tracking-tight">Day 1 · Mon May 25</span>
-          <span className="text-[10px] font-mono text-muted-fg">Beef day</span>
+          <span className="text-xs font-black tracking-tight">
+            {t('landing.preview.mock.plan.dayLabel', { defaultValue: 'Day 1 · Mon May 25' })}
+          </span>
+          <span className="text-[10px] font-mono text-muted-fg">
+            {t('landing.preview.mock.plan.beefDay', { defaultValue: 'Beef day' })}
+          </span>
         </div>
         <div className="space-y-1.5">
-          <MealRow pet="Luna · dog" grams={150} kcal={304} mainGrams={68} />
-          <MealRow pet="Dora · dog" grams={466} kcal={766} mainGrams={210} />
-          <MealRow pet="Blacky · cat" grams={128} kcal={224} mainGrams={62} />
+          <MealRow species="dog" pet="Luna" grams={150} kcal={304} mainGrams={68} />
+          <MealRow species="dog" pet="Dora" grams={466} kcal={766} mainGrams={210} />
+          <MealRow species="cat" pet="Blacky" grams={128} kcal={224} mainGrams={62} />
         </div>
       </div>
     </div>
@@ -255,19 +269,21 @@ function Row({ name, dose }: { name: string; dose: string }) {
   );
 }
 
-function MealRow({ pet, grams, kcal, mainGrams }: { pet: string; grams: number; kcal: number; mainGrams: number }) {
+function MealRow({ species, pet, grams, kcal, mainGrams }: { species: 'dog' | 'cat'; pet: string; grams: number; kcal: number; mainGrams: number }) {
+  const { t } = useTranslation();
+  const speciesLabel = t(`pets.species.${species}`, { defaultValue: species });
   return (
     <div className="rounded-lg bg-surface px-2.5 py-2 flex items-center justify-between gap-2 text-[11px]">
       <div className="flex items-center gap-1.5 min-w-0">
-        {pet.includes('cat')
+        {species === 'cat'
           ? <Cat className="h-3 w-3 text-info shrink-0" aria-hidden />
           : <Dog className="h-3 w-3 text-primary shrink-0" aria-hidden />}
-        <span className="font-bold truncate">{pet}</span>
+        <span className="font-bold truncate">{pet} · {speciesLabel}</span>
       </div>
       <div className="flex items-center gap-2 shrink-0">
         <span className="text-muted-fg font-mono tabular-nums">{grams} g · {kcal} kcal</span>
         <span className="rounded-md bg-primary/10 text-primary px-1.5 py-0.5 font-mono text-[10px]">
-          {mainGrams}g beef
+          {t('landing.preview.mock.plan.mainGrams', { defaultValue: '{{g}}g beef', g: mainGrams })}
         </span>
       </div>
     </div>
@@ -275,19 +291,34 @@ function MealRow({ pet, grams, kcal, mainGrams }: { pet: string; grams: number; 
 }
 
 function CookingMock() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       {/* Summary card */}
       <div className="rounded-2xl border border-border bg-surface-2 p-3">
-        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">Cooking plan</p>
-        <p className="text-xs font-bold mt-0.5">4 bags · 4 cook sessions · one protein per bag</p>
+        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">
+          {t('landing.preview.mock.cooking.title', { defaultValue: 'Cooking plan' })}
+        </p>
+        <p className="text-xs font-bold mt-0.5">
+          {t('landing.preview.mock.cooking.summary', {
+            defaultValue: '4 bags · 4 cook sessions · one protein per bag',
+          })}
+        </p>
       </div>
 
       {/* Bag group: Beef */}
       <div className="rounded-2xl border border-border overflow-hidden">
         <div className="flex items-center justify-between gap-2 px-3 py-2 bg-surface-2 border-b border-border">
-          <span className="text-xs font-black">Beef</span>
-          <span className="text-[10px] text-muted-fg font-mono">2 bags · 2,580 g total</span>
+          <span className="text-xs font-black">
+            {t('cooking.meats.beef', { defaultValue: 'Beef' })}
+          </span>
+          <span className="text-[10px] text-muted-fg font-mono">
+            {t('landing.preview.mock.cooking.groupTotal', {
+              defaultValue: '{{bags}} bags · {{g}} g total',
+              bags: 2,
+              g: '2,580',
+            })}
+          </span>
         </div>
         <ul className="divide-y divide-border/50">
           <BagRow n={1} total={2} dates="May 25 · 26" useBy="May 29" grams={1290} />
@@ -298,8 +329,16 @@ function CookingMock() {
       {/* Bag group: Chicken */}
       <div className="rounded-2xl border border-border overflow-hidden">
         <div className="flex items-center justify-between gap-2 px-3 py-2 bg-surface-2 border-b border-border">
-          <span className="text-xs font-black">Chicken</span>
-          <span className="text-[10px] text-muted-fg font-mono">2 bags · 2,540 g total</span>
+          <span className="text-xs font-black">
+            {t('cooking.meats.chicken', { defaultValue: 'Chicken' })}
+          </span>
+          <span className="text-[10px] text-muted-fg font-mono">
+            {t('landing.preview.mock.cooking.groupTotal', {
+              defaultValue: '{{bags}} bags · {{g}} g total',
+              bags: 2,
+              g: '2,540',
+            })}
+          </span>
         </div>
         <ul className="divide-y divide-border/50">
           <BagRow n={1} total={2} dates="May 27 · 28" useBy="May 31" grams={1270} />
@@ -311,12 +350,19 @@ function CookingMock() {
 }
 
 function BagRow({ n, total, dates, useBy, grams }: { n: number; total: number; dates: string; useBy: string; grams: number }) {
+  const { t } = useTranslation();
   return (
     <li className="px-3 py-2 flex items-center justify-between gap-2 text-[11px]">
-      <span className="font-bold">Bag {n} of {total}</span>
+      <span className="font-bold">
+        {t('mealPlan.cookingPlan.bagN', { defaultValue: 'Bag {{n}} of {{total}}', n, total })}
+      </span>
       <span className="text-muted-fg flex items-center gap-1.5">
         <Snowflake className="h-3 w-3" aria-hidden />
-        {dates} · use by {useBy}
+        {t('landing.preview.mock.cooking.bagRow', {
+          defaultValue: '{{dates}} · use by {{useBy}}',
+          dates,
+          useBy,
+        })}
       </span>
       <span className="font-mono tabular-nums text-foreground shrink-0">{grams} g</span>
     </li>
@@ -324,6 +370,7 @@ function BagRow({ n, total, dates, useBy, grams }: { n: number; total: number; d
 }
 
 function BagMock() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-primary/30 bg-primary/5 p-3 space-y-3">
@@ -331,42 +378,73 @@ function BagMock() {
           <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary/15 text-primary">
             <Snowflake className="h-3 w-3" />
           </span>
-          <span className="text-[10px] font-black uppercase tracking-wider text-primary">Bag strategy</span>
+          <span className="text-[10px] font-black uppercase tracking-wider text-primary">
+            {t('cooking.bagStrategy.title', { defaultValue: 'Bag strategy' })}
+          </span>
         </div>
         <p className="text-sm font-black text-foreground">
-          3 bags × 0.66 kg — one bag per chicken serve
+          {t('cooking.bagStrategy.hero', {
+            defaultValue: '{{bags}} bags × {{kg}} kg — one bag per {{meat}} serve',
+            bags: 3,
+            kg: '0.66',
+            meat: t('cooking.meats.chicken', { defaultValue: 'chicken' }).toLowerCase(),
+          })}
         </p>
 
         {/* Merge stepper */}
         <div className="space-y-1.5">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">Combine bags</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-muted-fg">
+            {t('cooking.bagStrategy.mergeLabel', { defaultValue: 'Combine bags' })}
+          </p>
           <div className="grid grid-cols-3 gap-1">
-            <StepBtn label="Per serve" sub="3 bags" active />
-            <StepBtn label="Fewer bags" sub="2 bags" />
-            <StepBtn label="One bag" sub="1 bag" />
+            <StepBtn
+              label={t('cooking.bagStrategy.mergePerServe', { defaultValue: 'Per serve' })}
+              sub={t('cooking.bagStrategy.mergeBagCount', { defaultValue: '{{n}} bag(s)', n: 3 })}
+              active
+            />
+            <StepBtn
+              label={t('cooking.bagStrategy.mergeFewer', { defaultValue: 'Fewer bags' })}
+              sub={t('cooking.bagStrategy.mergeBagCount', { defaultValue: '{{n}} bag(s)', n: 2 })}
+            />
+            <StepBtn
+              label={t('cooking.bagStrategy.mergeAll', { defaultValue: 'One bag' })}
+              sub={t('cooking.bagStrategy.mergeBagCount', { defaultValue: '{{n}} bag(s)', n: 1 })}
+            />
           </div>
         </div>
 
         <ul className="rounded-lg border border-primary/20 bg-surface divide-y divide-border/50 text-[11px]">
-          <li className="flex items-center justify-between gap-2 px-3 py-1.5">
-            <span className="font-bold">Bag 1</span>
-            <span className="text-muted-fg text-right truncate">serves May 25 · use by May 28</span>
-            <span className="font-mono tabular-nums shrink-0">660 g</span>
-          </li>
-          <li className="flex items-center justify-between gap-2 px-3 py-1.5">
-            <span className="font-bold">Bag 2</span>
-            <span className="text-muted-fg text-right truncate">serves May 28 · use by May 31</span>
-            <span className="font-mono tabular-nums shrink-0">660 g</span>
-          </li>
-          <li className="flex items-center justify-between gap-2 px-3 py-1.5">
-            <span className="font-bold">Bag 3</span>
-            <span className="text-muted-fg text-right truncate">serves May 31 · use by Jun 3</span>
-            <span className="font-mono tabular-nums shrink-0">660 g</span>
-          </li>
+          {[
+            { n: 1, dates: 'May 25', useBy: 'May 28' },
+            { n: 2, dates: 'May 28', useBy: 'May 31' },
+            { n: 3, dates: 'May 31', useBy: 'Jun 3' },
+          ].map((b) => (
+            <li key={b.n} className="flex items-center justify-between gap-2 px-3 py-1.5">
+              <span className="font-bold">
+                {t('cooking.bagStrategy.bagRowLabel', { defaultValue: 'Bag {{n}}', n: b.n })}
+              </span>
+              <span className="text-muted-fg text-right truncate">
+                {t('cooking.bagStrategy.bagRow', {
+                  defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
+                  serveDates: b.dates,
+                  useBy: b.useBy,
+                })}
+              </span>
+              <span className="font-mono tabular-nums shrink-0">660 g</span>
+            </li>
+          ))}
         </ul>
 
         <p className="text-[11px] text-foreground/80 leading-snug">
-          3 chicken bag(s) across 7 days for 3 pets. Cook all 1.98 kg at once — fridge 1 bag, freeze the rest.
+          {t('landing.preview.mock.bag.summary', {
+            defaultValue:
+              '{{bags}} {{meat}} bag(s) across {{days}} days for {{pets}} pets. Cook all {{kg}} kg at once — fridge 1 bag, freeze the rest.',
+            bags: 3,
+            meat: t('cooking.meats.chicken', { defaultValue: 'chicken' }).toLowerCase(),
+            days: 7,
+            pets: 3,
+            kg: '1.98',
+          })}
         </p>
       </div>
     </div>
@@ -388,30 +466,46 @@ function StepBtn({ label, sub, active }: { label: string; sub: string; active?: 
 }
 
 function WizardMock() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-border bg-surface-2 p-3 space-y-3">
-        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">Cook ahead</p>
+        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">
+          {t('mealPlan.sourcing.cookAheadLabel', { defaultValue: 'Cook ahead' })}
+        </p>
         <div className="grid grid-cols-3 gap-1.5">
-          <WizardChip label="Per serve" />
-          <WizardChip label="Up to 2 days" active />
-          <WizardChip label="Up to 3 days" />
+          <WizardChip label={t('mealPlan.sourcing.cookAhead.perServe', { defaultValue: 'Per serve' })} />
+          <WizardChip label={t('mealPlan.sourcing.cookAhead.upTo2', { defaultValue: 'Up to 2 days' })} active />
+          <WizardChip label={t('mealPlan.sourcing.cookAhead.upTo3', { defaultValue: 'Up to 3 days' })} />
         </div>
-        <p className="text-[11px] text-muted-fg">One protein per bag · veggies in their own bags</p>
+        <p className="text-[11px] text-muted-fg">
+          {t('mealPlan.sourcing.cookAheadCaption', { defaultValue: 'One protein per bag · veggies in their own bags' })}
+        </p>
         <p className="text-[11px] font-mono tabular-nums text-foreground/80">
-          4 bags · 4 cook session(s) · saves 7 vs daily
+          {t('mealPlan.sourcing.cookAheadStatsSaving', {
+            defaultValue: '{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily',
+            bags: 4,
+            sessions: 4,
+            saved: 7,
+          })}
         </p>
       </div>
 
       <div className="rounded-2xl border border-border bg-surface-2 p-3 space-y-2">
-        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">Sourcing prefs</p>
+        <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">
+          {t('mealPlan.sourcing.prefsLabel', { defaultValue: 'Sourcing prefs' })}
+        </p>
         <div className="flex items-center justify-between rounded-lg border border-border bg-surface px-2.5 py-2">
           <div className="flex flex-col">
             <span className="text-xs font-bold flex items-center gap-1.5">
               <Sparkles className="h-3 w-3 text-primary" aria-hidden />
-              Simple meals
+              {t('mealPlan.sourcing.simpleMeals', { defaultValue: 'Simple meals' })}
             </span>
-            <span className="text-[10px] text-muted-fg">One protein per meal · daily supplement card covers the gap</span>
+            <span className="text-[10px] text-muted-fg">
+              {t('landing.preview.mock.wizard.simpleMealsShort', {
+                defaultValue: 'One protein per meal · daily supplement card covers the gap',
+              })}
+            </span>
           </div>
           <div className="h-5 w-9 rounded-full bg-primary flex items-center justify-end px-0.5">
             <span className="h-4 w-4 rounded-full bg-primary-fg" />
@@ -422,9 +516,13 @@ function WizardMock() {
       <div className="rounded-2xl border border-border bg-surface-2 p-3">
         <p className="text-xs font-bold flex items-center gap-1.5">
           <ChefHat className="h-3 w-3 text-primary" aria-hidden />
-          Generate plan
+          {t('mealPlan.wizard.generate', { defaultValue: 'Generate plan' })}
         </p>
-        <p className="text-[10px] text-muted-fg mt-0.5">7 days · Luna · Dora · Blacky · sous-vide</p>
+        <p className="text-[10px] text-muted-fg mt-0.5">
+          {t('landing.preview.mock.wizard.summary', {
+            defaultValue: '7 days · Luna · Dora · Blacky · sous-vide',
+          })}
+        </p>
       </div>
     </div>
   );
