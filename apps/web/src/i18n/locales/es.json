@@ -939,7 +939,8 @@
       "eyebrow": "100% código abierto",
       "starUs": "Marca con estrella en GitHub",
       "fork": "Bifurcar",
-      "text_cat": "Licencia MIT. Hecho por gente que cocina para perros y gatos."
+      "text_cat": "Licencia MIT. Hecho por gente que cocina para perros y gatos.",
+      "starsWithCount": "{{n}} estrellas"
     },
     "trustedBy": "Metodología basada en",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Recién publicado",
       "list": "Principio de seguibilidad · Rotación en bloques · Comidas simples · Tarjeta de suplementos · Cocción consciente del plan · Editar y renombrar planes"
+    },
+    "preview": {
+      "eyebrow": "Lo que obtienes",
+      "heading": "El producto real, no un render de marketing",
+      "sub": "Cuatro vistas de la app — construidas con los mismos componentes que verás al entrar. Sin capturas falsas.",
+      "prev": "Diapositiva anterior",
+      "next": "Diapositiva siguiente",
+      "plan": {
+        "eyebrow": "Vista del plan",
+        "caption": "Cada tarjeta de comida muestra gramos + kcal. La tarjeta de suplementos está arriba — cada déficit con nombre, cada dosis exacta.",
+        "principle": "Saca los déficits a la luz; nunca los simules en silencio."
+      },
+      "cooking": {
+        "eyebrow": "Plan de cocción",
+        "caption": "Una bolsa por ración de proteína. Fecha de cocción · días de servicio · consumir antes · etiquetas de mascotas — todo derivado del plan, no inventado.",
+        "principle": "El flujo de cocción guía el plan, no al revés."
+      },
+      "bag": {
+        "eyebrow": "Estrategia de bolsas",
+        "caption": "\"3 bolsas × 0,66 kg — una bolsa por ración de pollo.\" Combina raciones adyacentes cuando sea seguro para la nevera y ahorra sesiones de cocción.",
+        "principle": "Los añadidos por debajo del umbral son pastillas, no ingredientes."
+      },
+      "wizard": {
+        "eyebrow": "Asistente",
+        "caption": "\"Cocinar por adelantado\" con estadísticas en vivo: bolsas · sesiones · ahorro frente a la rotación diaria. Ves el beneficio antes de generar.",
+        "principle": "La seguibilidad es un insumo nutricional, no un detalle de UX."
+      }
     }
   },
   "about": {

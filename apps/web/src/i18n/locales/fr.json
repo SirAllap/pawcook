@@ -939,7 +939,8 @@
       "eyebrow": "100% open source",
       "starUs": "Mettre une étoile sur GitHub",
       "fork": "Forker",
-      "text_cat": "Licence MIT. Conçu par des gens qui cuisinent pour chiens et chats."
+      "text_cat": "Licence MIT. Conçu par des gens qui cuisinent pour chiens et chats.",
+      "starsWithCount": "{{n}} étoiles"
     },
     "trustedBy": "Méthodologie fondée sur",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Récemment livré",
       "list": "Principe de suivabilité · Rotation en blocs · Repas simples · Carte de suppléments · Cuisson sensible au plan · Modifier et renommer les plans"
+    },
+    "preview": {
+      "eyebrow": "Ce que vous obtenez",
+      "heading": "Le produit réel, pas un rendu marketing",
+      "sub": "Quatre extraits de l’app — construits avec les mêmes composants que vous utiliserez. Aucune fausse capture.",
+      "prev": "Diapo précédente",
+      "next": "Diapo suivante",
+      "plan": {
+        "eyebrow": "Vue du plan",
+        "caption": "Chaque carte repas affiche grammes + kcal. La carte de suppléments est en haut — chaque déficit nommé, chaque dose précise.",
+        "principle": "Affichez les déficits clairement ; ne les simulez jamais en silence."
+      },
+      "cooking": {
+        "eyebrow": "Plan de cuisson",
+        "caption": "Un sachet par portion de protéine. Date de cuisson · jours de service · à consommer avant · étiquettes des animaux — tout dérivé du plan, rien d’inventé.",
+        "principle": "Le flux de cuisson guide le plan, pas l’inverse."
+      },
+      "bag": {
+        "eyebrow": "Stratégie de sachets",
+        "caption": "« 3 sachets × 0,66 kg — un sachet par portion de poulet. » Combinez les portions adjacentes lorsque c’est sûr pour le frigo pour économiser des sessions de cuisson.",
+        "principle": "Les ajouts sous le seuil sont des comprimés, pas des ingrédients."
+      },
+      "wizard": {
+        "eyebrow": "Assistant",
+        "caption": "« Cuisiner à l’avance » avec stats en direct : sachets · sessions · sessions économisées vs quotidien. Vous voyez le gain avant de générer.",
+        "principle": "La suivabilité est un apport nutritionnel, pas une coquetterie UX."
+      }
     }
   },
   "about": {

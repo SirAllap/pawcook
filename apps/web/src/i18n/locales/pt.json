@@ -939,7 +939,8 @@
       "eyebrow": "100% código aberto",
       "starUs": "Dar estrela no GitHub",
       "fork": "Fazer fork",
-      "text_cat": "Licença MIT. Feito por pessoas que cozinham para cães e gatos."
+      "text_cat": "Licença MIT. Feito por pessoas que cozinham para cães e gatos.",
+      "starsWithCount": "{{n}} estrelas"
     },
     "trustedBy": "Metodologia baseada em",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Lançado recentemente",
       "list": "Princípio da seguibilidade · Rotação em blocos · Refeições simples · Cartão de suplementos · Cozimento ciente do plano · Editar e renomear planos"
+    },
+    "preview": {
+      "eyebrow": "O que você obtém",
+      "heading": "O produto real, não um render de marketing",
+      "sub": "Quatro fatias do app — construídas com os mesmos componentes que você usa depois de entrar. Sem capturas falsas.",
+      "prev": "Slide anterior",
+      "next": "Próximo slide",
+      "plan": {
+        "eyebrow": "Vista do plano",
+        "caption": "Cada cartão de refeição mostra gramas + kcal. O cartão de suplementos fica no topo — cada déficit nomeado, cada dose exata.",
+        "principle": "Sinalize os déficits claramente; nunca os simule em silêncio."
+      },
+      "cooking": {
+        "eyebrow": "Plano de cozimento",
+        "caption": "Um saco por porção de proteína. Data de cozimento · dias de serviço · consumir até · etiquetas de pets — tudo derivado do plano, nada inventado.",
+        "principle": "O fluxo de cozimento guia o plano, não o contrário."
+      },
+      "bag": {
+        "eyebrow": "Estratégia de sacos",
+        "caption": "\"3 sacos × 0,66 kg — um saco por porção de frango.\" Combine porções adjacentes quando seguro para a geladeira para pular sessões de cozimento.",
+        "principle": "Adições sub-limiar são pílulas, não ingredientes."
+      },
+      "wizard": {
+        "eyebrow": "Assistente",
+        "caption": "\"Cozinhar com antecedência\" com estatísticas ao vivo: sacos · sessões · sessões economizadas vs diária. Veja o ganho antes de gerar.",
+        "principle": "A seguibilidade é um insumo nutricional, não um detalhe de UX."
+      }
     }
   },
   "about": {

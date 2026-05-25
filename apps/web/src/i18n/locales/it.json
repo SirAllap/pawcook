@@ -939,7 +939,8 @@
       "eyebrow": "100% open source",
       "starUs": "Aggiungi una stella su GitHub",
       "fork": "Fai un fork",
-      "text_cat": "Licenza MIT. Costruito da persone che cucinano per cani e gatti."
+      "text_cat": "Licenza MIT. Costruito da persone che cucinano per cani e gatti.",
+      "starsWithCount": "{{n}} stelle"
     },
     "trustedBy": "Metodologia basata su",
     "stats": {
@@ -1031,6 +1032,33 @@
     "whatsNew": {
       "eyebrow": "Pubblicato di recente",
       "list": "Principio di seguibilità · Rotazione a blocchi · Pasti semplici · Scheda integratori · Cottura consapevole del piano · Modifica e rinomina piani"
+    },
+    "preview": {
+      "eyebrow": "Cosa ottieni",
+      "heading": "Il prodotto vero, non un render di marketing",
+      "sub": "Quattro fette dell’app — costruite con gli stessi componenti che usi dopo aver effettuato l’accesso. Niente screenshot falsi.",
+      "prev": "Slide precedente",
+      "next": "Slide successiva",
+      "plan": {
+        "eyebrow": "Vista del piano",
+        "caption": "Ogni scheda pasto mostra grammi + kcal. La scheda integratori è in alto — ogni deficit nominato, ogni dose esatta.",
+        "principle": "Mostra apertamente i deficit; non simularli mai in silenzio."
+      },
+      "cooking": {
+        "eyebrow": "Piano di cottura",
+        "caption": "Un sacchetto per porzione di proteina. Data di cottura · giorni di servizio · consumare entro · tag degli animali — tutto derivato dal piano, niente inventato.",
+        "principle": "Il flusso di cottura guida il piano, non il contrario."
+      },
+      "bag": {
+        "eyebrow": "Strategia sacchetti",
+        "caption": "\"3 sacchetti × 0,66 kg — un sacchetto per porzione di pollo.\" Unisci porzioni adiacenti quando sicuro per il frigo per saltare sessioni di cottura.",
+        "principle": "Le aggiunte sotto-soglia sono pillole, non ingredienti."
+      },
+      "wizard": {
+        "eyebrow": "Procedura guidata",
+        "caption": "\"Cucina in anticipo\" con statistiche live: sacchetti · sessioni · sessioni risparmiate vs giornaliera. Vedi il vantaggio prima di generare.",
+        "principle": "La seguibilità è un input nutrizionale, non un dettaglio UX."
+      }
     }
   },
   "about": {
