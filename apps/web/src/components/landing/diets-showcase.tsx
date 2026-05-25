@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
 import { useSpecies } from '../../lib/species';
-import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
 type Diet = {
@@ -36,7 +35,6 @@ const CAT_DIETS: Diet[] = [
 
 export function DietsShowcase() {
   const { t } = useTranslation();
-  const tS = useSpeciesT();
   const { species } = useSpecies();
 
   const diets = species === 'cat' ? CAT_DIETS : DOG_DIETS;

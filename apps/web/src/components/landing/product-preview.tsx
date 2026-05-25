@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -180,7 +180,7 @@ export function ProductPreview() {
   );
 }
 
-function DeviceFrame({ children }: { children: React.ReactNode }) {
+function DeviceFrame({ children }: { children: ReactNode }) {
   return (
     <div className="relative mx-auto w-full max-w-2xl">
       <div className="rounded-3xl border border-border bg-surface shadow-xl shadow-black/5 overflow-hidden">
