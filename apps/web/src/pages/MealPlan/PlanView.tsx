@@ -2,12 +2,12 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Info, Trash2, Pencil, AlertTriangle, Check, X } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Trash2, Pencil, AlertTriangle, Check, X } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
-import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { FadeIn } from '../../components/motion/fade-in';
+import { Callout } from '../../components/ui/callout';
 import { Sheet } from '../../components/ui/sheet';
 import { PageFallback } from '../../components/ui/page-fallback';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
@@ -158,15 +158,13 @@ export default function PlanView() {
         )}
       </Tabs>
 
-      <Card padding="md" className="bg-info/5 border-info/30 mt-8 sm:mt-10">
-        <p className="text-[10px] font-black uppercase tracking-wider text-info mb-2 flex items-center gap-1.5">
-          <Info className="h-3 w-3" aria-hidden />
-          {t('common.disclaimerLabel', { defaultValue: 'Note' })}
-        </p>
-        <p className="text-sm text-foreground/90 leading-relaxed">
-          {t('common.disclaimer')}
-        </p>
-      </Card>
+      <Callout
+        tone="info"
+        eyebrow={t('common.disclaimerLabel', { defaultValue: 'Note' })}
+        className="mt-8 sm:mt-10"
+      >
+        {t('common.disclaimer')}
+      </Callout>
 
       <Sheet
         open={confirmDelete}
