@@ -1,0 +1,60 @@
+name: Feature request
+description: Suggest a new capability or an improvement.
+title: "feat: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please run your idea through the
+        [CLAUDE.md decision shortcuts](https://github.com/SirAllap/pawcook/blob/main/CLAUDE.md#decision-shortcuts).
+        Features that add a sub-threshold ingredient, a duplicate toggle,
+        or a blocking-but-non-safety warning are likely to be re-shaped
+        rather than landed as proposed.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the user need, not the implementation. Who is this for, and what are they doing today instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you build?
+      description: High-level shape of the change. Wireframes / mockups welcome but optional.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: What else could solve the same problem? Why is this one better?
+
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who's this for?
+      multiple: true
+      options:
+        - Median home (one fridge, one sous-vide stick, Sunday batch cook)
+        - Raw feeder
+        - Vet-supervised / clinical condition
+        - Power user opting into rigor mode
+        - Translator / i18n
+        - Developer / contributor
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: followability
+    attributes:
+      label: Followability check
+      description: Per CLAUDE.md, every new feature is asked these questions during review. Pre-answering them speeds things up.
+      options:
+        - label: This does NOT add a new toggle that overlaps with an existing one.
+        - label: This does NOT ambush newcomers — rigor / opt-in is behind a switch with a sensible default.
+        - label: This does NOT propose a sub-20-g/day-per-pet ingredient (those route to supplement cards, not the cook flow).
