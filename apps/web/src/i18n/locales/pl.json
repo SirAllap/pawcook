@@ -51,8 +51,8 @@
       "title": "Twoje zwierzęta",
       "subtitle": "Dodaj profil dla każdego zwierzęcia, aby plany pasowały do jego gatunku, wieku i kondycji.",
       "addPet": "Dodaj zwierzę",
-      "emptyTitle": "Brak zwierząt",
-      "emptyDescription": "Dodaj pierwsze zwierzę, aby odblokować plany i listy zakupów skrojone na miarę."
+      "emptyTitle": "Twój dom zaczyna się tutaj.",
+      "emptyDescription": "Dodaj zwierzę, a wygenerujemy plan, który naprawdę pasuje do twojej kuchni."
     },
     "new": {
       "title": "Dodaj zwierzę",
@@ -199,16 +199,16 @@
       "title": "Plany posiłków",
       "subtitle": "Wygeneruj plan tygodniowy, dwutygodniowy lub miesięczny i listę zakupów na sklep.",
       "create": "Utwórz plan",
-      "emptyTitle": "Brak planów",
-      "emptyDescription": "Utwórz pierwszy plan, aby wygenerować menu i listy zakupów z Twoich zwierząt."
+      "emptyTitle": "Jeszcze nie ma planu.",
+      "emptyDescription": "Jeden plan na dom. Ugotuj raz, nakarm wszystkich, dawkuj resztę."
     },
     "new": {
       "title": "Nowy plan",
       "subtitle": "Wybierz zwierzęta i liczbę dni. Resztą się zajmiemy."
     },
     "needPet": {
-      "title": "Dodaj najpierw zwierzę",
-      "description": "Plany korzystają z profilu każdego zwierzęcia. Dodaj jedno, żeby zacząć.",
+      "title": "Najpierw dodaj zwierzę.",
+      "description": "Potrzebujemy chociaż jednej buzi do nakarmienia.",
       "cta": "Dodaj zwierzę"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Razem zakupów",
       "totalSummary": "{{items}} pozycji · {{grams}} g we wszystkich sekcjach",
-      "empty": "Nic do kupienia — Twoja spiżarnia już pokrywa ten plan.",
+      "empty": "Wygeneruj plan, a my zbudujemy listę zakupów.",
       "exportFooter": "Lista zakupów PawCook — to nie porada weterynaryjna.",
       "section": {
         "butcher": "Rzeźnik",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Usunięcia planu nie można cofnąć. Zapisane profile zwierząt nie zostaną naruszone.",
     "cookingPlan": {
-      "emptyTitle": "Plan gotowania tylko dla sous-vide",
-      "emptyHelp": "Woreczki są generowane, gdy plan korzysta z sous-vide. Wygeneruj plan ponownie z sous-vide jako metodą gotowania, aby zobaczyć harmonogram woreczków.",
+      "emptyTitle": "Harmonogram woreczków żyje z sous-vide.",
+      "emptyHelp": "Zmień plan na sous-vide, a my zbudujemy harmonogram woreczków z datami.",
       "noBagsTitle": "Nic do pakowania",
       "noBagsHelp": "Ten plan nie zawiera składników do partii — wszystko będzie gotowane na świeżo.",
       "summaryLabel": "Plan gotowania",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Gotowanie",
     "toastReady": "Przepis gotowy.",
-    "placeholderHint": "Wybierz mięso i metodę, a następnie naciśnij Oblicz.",
+    "placeholderHint": "Wybierz mięso. Wybierz metodę. Resztę policzymy my.",
     "catSupplementsTitle": "Suplementy dla kota po gotowaniu",
     "catSupplementsBody": "Ciepło niszczy taurynę, witaminy B (tiamina, niacyna) i część witaminy E. Dodaj zestaw dla kota — tauryna 250–500 mg, kompleks B, witamina E — po ostygnięciu posiłku.",
     "subtitle_cat": "Bezpieczny czas i temperatura gotowania jedzenia dla Twojego kota. Pamiętaj, aby dodać taurynę + kompleks B po ugotowaniu.",

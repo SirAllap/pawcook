@@ -51,8 +51,8 @@
       "title": "I tuoi animali",
       "subtitle": "Aggiungi un profilo per ogni animale che nutri, così i piani saranno adatti a specie, età e condizioni.",
       "addPet": "Aggiungi animale",
-      "emptyTitle": "Nessun animale",
-      "emptyDescription": "Aggiungi il tuo primo animale per sbloccare piani e liste della spesa su misura."
+      "emptyTitle": "La tua famiglia inizia qui.",
+      "emptyDescription": "Aggiungi un animale e genereremo un piano che entra davvero nella tua cucina."
     },
     "new": {
       "title": "Aggiungi animale",
@@ -199,16 +199,16 @@
       "title": "Piani pasti",
       "subtitle": "Genera un piano settimanale, quindicinale o mensile con la lista della spesa da portare al negozio.",
       "create": "Crea piano",
-      "emptyTitle": "Ancora nessun piano",
-      "emptyDescription": "Crea il tuo primo piano per generare menu e liste della spesa dai tuoi animali."
+      "emptyTitle": "Nessun piano ancora.",
+      "emptyDescription": "Un piano per famiglia. Cuoci una volta, nutri tutti, dosa il resto."
     },
     "new": {
       "title": "Nuovo piano",
       "subtitle": "Scegli gli animali e i giorni. Pensiamo a tutto il resto."
     },
     "needPet": {
-      "title": "Aggiungi prima un animale",
-      "description": "I piani usano il profilo di ogni animale per calcolare i menu. Aggiungine uno per iniziare.",
+      "title": "Aggiungi prima un animale.",
+      "description": "Ci serve almeno una bocca da sfamare.",
       "cta": "Aggiungi animale"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Totale spesa",
       "totalSummary": "{{items}} articoli · {{grams}} g in tutte le sezioni",
-      "empty": "Nulla da comprare — la dispensa copre già il piano.",
+      "empty": "Genera un piano e costruiremo la lista della spesa.",
       "exportFooter": "Lista della spesa PawCook — non è un consiglio veterinario.",
       "section": {
         "butcher": "Macelleria",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "L’eliminazione di un piano non può essere annullata. I profili dei tuoi animali salvati non saranno interessati.",
     "cookingPlan": {
-      "emptyTitle": "Piano di cottura solo per sous-vide",
-      "emptyHelp": "I sacchetti vengono generati quando il piano usa il sous-vide. Rigenera con il sous-vide come metodo di cottura per vedere il calendario dei sacchetti.",
+      "emptyTitle": "Il calendario sacchetti vive con il sous-vide.",
+      "emptyHelp": "Imposta il piano su sous-vide e costruiremo un calendario sacchetti con date.",
       "noBagsTitle": "Niente da insacchettare",
       "noBagsHelp": "Questo piano non ha ingredienti adatti al lotto — tutto sarà cucinato fresco.",
       "summaryLabel": "Piano di cottura",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cottura",
     "toastReady": "Ricetta pronta.",
-    "placeholderHint": "Scegli una carne e un metodo, poi tocca Calcola.",
+    "placeholderHint": "Scegli una carne. Scegli un metodo. Ai conti pensiamo noi.",
     "catSupplementsTitle": "Integratori per gatto dopo la cottura",
     "catSupplementsBody": "Il calore distrugge taurina, vitamine B (tiamina, niacina) e parte della vitamina E. Aggiungi lo stack felino — taurina 250–500 mg, complesso B, vitamina E — una volta raffreddato il pasto.",
     "subtitle_cat": "Tempo e temperatura di cottura sicuri per il cibo del tuo gatto. Ricorda di aggiungere taurina + complesso B dopo la cottura.",

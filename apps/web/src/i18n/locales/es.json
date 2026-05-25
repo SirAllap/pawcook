@@ -51,8 +51,8 @@
       "title": "Tus mascotas",
       "subtitle": "Añade un perfil para cada animal que alimentas para que los planes se ajusten a su especie, edad y condiciones.",
       "addPet": "Añadir mascota",
-      "emptyTitle": "Aún no hay mascotas",
-      "emptyDescription": "Añade tu primera mascota para desbloquear planes de comida y listas de compra hechos a su medida."
+      "emptyTitle": "Tu hogar empieza aquí.",
+      "emptyDescription": "Añade una mascota y generaremos un plan que sí encaja en tu cocina."
     },
     "new": {
       "title": "Añadir mascota",
@@ -199,16 +199,16 @@
       "title": "Planes de comidas",
       "subtitle": "Genera un plan semanal, quincenal o mensual y la lista de la compra para llevar a la tienda.",
       "create": "Crear plan",
-      "emptyTitle": "Aún no hay planes",
-      "emptyDescription": "Crea tu primer plan para generar menús y listas de compra a partir de tus mascotas."
+      "emptyTitle": "Aún no hay plan.",
+      "emptyDescription": "Un plan por hogar. Cocina una vez, alimenta a todos, dosifica el resto."
     },
     "new": {
       "title": "Nuevo plan",
       "subtitle": "Elige tus mascotas y los días a planificar. Nos ocupamos del resto."
     },
     "needPet": {
-      "title": "Añade primero una mascota",
-      "description": "Los planes usan el perfil de cada mascota para calcular menús. Añade una para empezar.",
+      "title": "Añade una mascota primero.",
+      "description": "Necesitamos al menos una boca que alimentar.",
       "cta": "Añadir mascota"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Total de la compra",
       "totalSummary": "{{items}} artículos · {{grams}} g en todas las secciones",
-      "empty": "Nada que comprar — tu despensa ya cubre este plan.",
+      "empty": "Genera un plan y construiremos la lista de la bolsa.",
       "exportFooter": "Lista de compras PawCook — no es asesoramiento veterinario.",
       "section": {
         "butcher": "Carnicería",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "Eliminar un plan no se puede deshacer. Tus perfiles de mascotas guardados no se verán afectados.",
     "cookingPlan": {
-      "emptyTitle": "Plan de cocción solo para sous-vide",
-      "emptyHelp": "Las bolsas se generan cuando el plan usa sous-vide. Regenera con sous-vide como método de cocción para ver el calendario de bolsas.",
+      "emptyTitle": "El calendario de bolsas va con sous-vide.",
+      "emptyHelp": "Cambia el plan a sous-vide y construiremos un calendario de bolsas con fechas.",
       "noBagsTitle": "Nada para embolsar",
       "noBagsHelp": "Este plan no tiene ingredientes aptos para lote — todo se cocinará fresco.",
       "summaryLabel": "Plan de cocción",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cocina",
     "toastReady": "¡Receta lista!",
-    "placeholderHint": "Elige una carne y un método, luego pulsa Calcular.",
+    "placeholderHint": "Elige una carne. Elige un método. Nosotros hacemos los cálculos.",
     "catSupplementsTitle": "Suplementos para gato tras cocinar",
     "catSupplementsBody": "El calor destruye la taurina, las vitaminas B (tiamina, niacina) y parte de la vitamina E. Añade el stack felino — taurina 250–500 mg, complejo B, vitamina E — una vez enfriado el plato.",
     "subtitle_cat": "Tiempo y temperatura seguros para la comida de tu gato. Recuerda añadir taurina + complejo B tras cocinar.",

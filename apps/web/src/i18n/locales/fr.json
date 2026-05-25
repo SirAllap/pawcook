@@ -51,8 +51,8 @@
       "title": "Vos animaux",
       "subtitle": "Ajoutez un profil pour chaque animal nourri afin que les plans correspondent à leur espèce, âge et conditions.",
       "addPet": "Ajouter un animal",
-      "emptyTitle": "Pas encore d'animal",
-      "emptyDescription": "Ajoutez votre premier animal pour débloquer des plans et listes de courses sur mesure."
+      "emptyTitle": "Votre foyer commence ici.",
+      "emptyDescription": "Ajoutez un animal et nous générerons un plan qui tient vraiment dans votre cuisine."
     },
     "new": {
       "title": "Ajouter un animal",
@@ -199,16 +199,16 @@
       "title": "Plans de repas",
       "subtitle": "Génère un plan hebdomadaire, bihebdomadaire ou mensuel et la liste de courses à emporter.",
       "create": "Créer un plan",
-      "emptyTitle": "Pas encore de plan",
-      "emptyDescription": "Crée ton premier plan pour générer menus et listes de courses depuis tes animaux."
+      "emptyTitle": "Pas encore de plan.",
+      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste."
     },
     "new": {
       "title": "Nouveau plan",
       "subtitle": "Choisis tes animaux et le nombre de jours. On s'occupe du reste."
     },
     "needPet": {
-      "title": "Ajoute d'abord un animal",
-      "description": "Les plans utilisent le profil de chaque animal pour calculer les menus. Ajoute-en un pour commencer.",
+      "title": "Ajoutez d’abord un animal.",
+      "description": "Il nous faut au moins une bouche à nourrir.",
       "cta": "Ajouter un animal"
     },
     "wizard": {
@@ -307,7 +307,7 @@
     "shopping": {
       "total": "Total des courses",
       "totalSummary": "{{items}} articles · {{grams}} g toutes sections confondues",
-      "empty": "Rien à acheter — votre garde-manger couvre ce plan.",
+      "empty": "Générez un plan et nous construirons la liste de courses.",
       "exportFooter": "Liste de courses PawCook — pas un conseil vétérinaire.",
       "section": {
         "butcher": "Boucher",
@@ -361,8 +361,8 @@
     },
     "confirmDeleteHelp": "La suppression d’un plan est irréversible. Vos profils d’animaux enregistrés ne seront pas affectés.",
     "cookingPlan": {
-      "emptyTitle": "Plan de cuisson uniquement pour le sous-vide",
-      "emptyHelp": "Les sachets sont générés lorsque le plan utilise le sous-vide. Régénérez en choisissant le sous-vide comme méthode pour voir le calendrier des sachets.",
+      "emptyTitle": "Le calendrier de sachets vit avec le sous-vide.",
+      "emptyHelp": "Passez le plan en sous-vide et nous construirons un calendrier de sachets daté.",
       "noBagsTitle": "Rien à mettre en sachet",
       "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
       "summaryLabel": "Plan de cuisson",
@@ -528,7 +528,7 @@
     },
     "eyebrow": "Cuisine",
     "toastReady": "Recette prête.",
-    "placeholderHint": "Choisissez une viande et une méthode, puis appuyez sur Calculer.",
+    "placeholderHint": "Choisissez une viande. Choisissez une méthode. On s’occupe des calculs.",
     "catSupplementsTitle": "Suppléments félins après cuisson",
     "catSupplementsBody": "La chaleur détruit la taurine, les vitamines B (thiamine, niacine) et une partie de la vitamine E. Ajoutez le stack félin — taurine 250–500 mg, complexe B, vitamine E — une fois le plat refroidi.",
     "subtitle_cat": "Temps et température de cuisson sûrs pour la nourriture de votre chat. Pensez à ajouter taurine + complexe B après cuisson.",
