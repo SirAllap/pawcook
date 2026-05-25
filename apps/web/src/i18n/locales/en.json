@@ -42,7 +42,8 @@
     "brandHome": "PawCook home",
     "catFoodCalc": "Cat Food Calculator",
     "dismiss": "Dismiss",
-    "close": "Close"
+    "close": "Close",
+    "confirm": "Confirm"
   },
   "pets": {
     "eyebrow": "Pets",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} days · ready to save",
       "defaultName": "{{names}} · {{days}} days",
       "defaultNameEmpty": "Untitled plan",
-      "generateFirst": "Generate a plan first"
+      "generateFirst": "Generate a plan first",
+      "editTitle": "Edit plan",
+      "editSubtitle": "Tweak anything and save to overwrite — your shopping check marks stay.",
+      "petRemoved": "{{count}} pet(s) were removed from this plan because their profile no longer exists."
     },
     "sourcing": {
       "varietyLabel": "Variety",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} days · starts {{startDate}}",
       "tabMeals": "Meals",
       "tabShopping": "Shopping",
-      "tabCooking": "Cooking plan"
+      "tabCooking": "Cooking plan",
+      "edit": "Edit",
+      "renameAria": "Rename plan"
     },
     "shopping": {
       "total": "Shopping total",
@@ -364,7 +370,8 @@
     "toast": {
       "saved": "Saved \"{{name}}\".",
       "deleted": "Deleted \"{{name}}\".",
-      "generateFailed": "Could not generate the plan — try different settings."
+      "generateFailed": "Could not generate the plan — try different settings.",
+      "updated": "{{name}} updated."
     },
     "refusal": {
       "title": "Plan not generated",

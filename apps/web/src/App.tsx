@@ -34,9 +34,10 @@ export default function App() {
             <Route path="/pets/new"      element={<PetNew />} />
             <Route path="/pets/:id"      element={<PetDetail />} />
             <Route path="/pets/:id/edit" element={<PetEdit />} />
-            <Route path="/meal-plan"     element={<PlanLanding />} />
-            <Route path="/meal-plan/new" element={<PlanWizard />} />
-            <Route path="/meal-plan/:id" element={<PlanView />} />
+            <Route path="/meal-plan"          element={<PlanLanding />} />
+            <Route path="/meal-plan/new"      element={<PlanWizard />} />
+            <Route path="/meal-plan/:id"      element={<PlanView />} />
+            <Route path="/meal-plan/:id/edit" element={<PlanWizard />} />
             <Route path="/about"       element={<About />} />
             <Route path="*"            element={<NotFound />} />
           </Routes>

@@ -42,7 +42,8 @@
     "calcFailed": "Nie można obliczyć — sprawdź dane.",
     "cancel": "Anuluj",
     "dismiss": "Zamknij",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "confirm": "Potwierdź"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} dni · gotowe do zapisania",
       "defaultName": "{{names}} · {{days}} dni",
       "defaultNameEmpty": "Plan bez nazwy",
-      "generateFirst": "Najpierw wygeneruj plan"
+      "generateFirst": "Najpierw wygeneruj plan",
+      "editTitle": "Edytuj plan",
+      "editSubtitle": "Zmień, co chcesz, i zapisz, aby nadpisać — twoje zaznaczenia z listy zakupów pozostają.",
+      "petRemoved": "{{count}} zwierzę(ta) zostały usunięte z planu, ponieważ profil już nie istnieje."
     },
     "sourcing": {
       "varietyLabel": "Różnorodność",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} dni · start {{startDate}}",
       "tabMeals": "Posiłki",
       "tabShopping": "Zakupy",
-      "tabCooking": "Plan gotowania"
+      "tabCooking": "Plan gotowania",
+      "edit": "Edytuj",
+      "renameAria": "Zmień nazwę planu"
     },
     "shopping": {
       "total": "Razem zakupów",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "Zapisano „{{name}}\".",
       "deleted": "Usunięto „{{name}}\".",
-      "generateFailed": "Nie udało się wygenerować planu — spróbuj innych ustawień."
+      "generateFailed": "Nie udało się wygenerować planu — spróbuj innych ustawień.",
+      "updated": "{{name}} zaktualizowano."
     },
     "refusal": {
       "title": "Plan nie został wygenerowany",

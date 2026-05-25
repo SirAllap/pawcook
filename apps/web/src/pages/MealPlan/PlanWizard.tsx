@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Check, Calendar, Sparkles, RotateCcw, Save, ShieldAlert } from 'lucide-react';
@@ -29,21 +29,55 @@ const DURATIONS: PlanDuration[] = [7, 14, 30];
 export default function PlanWizard() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { id: editId } = useParams<{ id?: string }>();
   const { pets, ready: petsReady } = usePets();
-  const { addPlan } = useMealPlans();
+  const { addPlan, updatePlan, getPlan, ready: plansReady } = useMealPlans();
 
-  const [selectedPetIds, setSelectedPetIds] = useState<string[]>([]);
-  const [duration, setDuration] = useState<PlanDuration>(7);
-  const [sourcing, setSourcing] = useState<SourcingPrefs>(() => SourcingPrefsSchema.parse({}));
-  const [name, setName] = useState('');
+  // Edit-mode prefill: when the route is /meal-plan/:id/edit, load the
+  // saved plan and pre-populate the wizard state with its sourcing,
+  // pets, duration, and name. Edits are committed back to the same
+  // plan id via updatePlan, preserving shopping-check history and the
+  // original createdAt timestamp.
+  const editingPlan = editId && plansReady ? getPlan(editId) : undefined;
+  const isEditMode = Boolean(editId);
+
+  const [selectedPetIds, setSelectedPetIds] = useState<string[]>(
+    () => (editingPlan ? editingPlan.petIds : []),
+  );
+  const [duration, setDuration] = useState<PlanDuration>(
+    () => (editingPlan ? editingPlan.durationDays : 7),
+  );
+  const [sourcing, setSourcing] = useState<SourcingPrefs>(
+    () => (editingPlan
+      ? SourcingPrefsSchema.parse(editingPlan.sourcing)
+      : SourcingPrefsSchema.parse({})),
+  );
+  const [name, setName] = useState<string>(() => (editingPlan ? editingPlan.name : ''));
   const [preview, setPreview] = useState<MealPlan | null>(null);
   const [refusals, setRefusals] = useState<PlannerRefusal[]>([]);
-  // Track whether the user explicitly picked a Cook-ahead value. While
-  // they haven't, picking pets quietly auto-adjusts `bagDays` to the
-  // household-appropriate default — tiny households (single cat) get
-  // bagDays=3 so the cook-once-per-3-days cadence avoids runt bags
-  // (Followability Mandate sub-principle 5).
-  const userTouchedBagDaysRef = useRef(false);
+  // In edit mode the user already picked a Cook-ahead value, so the
+  // tiny-household auto-adjust shouldn't fire. Mark as touched up front.
+  const userTouchedBagDaysRef = useRef(isEditMode);
+
+  // If a saved plan referenced pets that have since been deleted, drop
+  // them from the prefill and tell the user once. Avoids a confusing
+  // empty-selection state when the user navigates Pets → delete → back
+  // → edit plan.
+  useEffect(() => {
+    if (!editingPlan) return;
+    if (!petsReady) return;
+    const stillExist = new Set(pets.map((p) => p.id));
+    const dropped = editingPlan.petIds.filter((id) => !stillExist.has(id));
+    if (dropped.length === 0) return;
+    setSelectedPetIds((prev) => prev.filter((id) => stillExist.has(id)));
+    toast.info(
+      t('mealPlan.wizard.petRemoved', {
+        defaultValue: '{{count}} pet(s) were removed from this plan because their profile no longer exists.',
+        count: dropped.length,
+      }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editingPlan?.id, petsReady]);
 
   const selectedPets = useMemo(
     () => pets.filter((p) => selectedPetIds.includes(p.id)),
@@ -168,13 +202,41 @@ export default function PlanWizard() {
   function save() {
     if (!preview) return;
     const finalName = name || preview.name;
+    if (isEditMode && editingPlan) {
+      // Edit mode: overwrite the existing plan. Preserve the original
+      // id + createdAt so shopping-check history (keyed by plan id) and
+      // any external bookmarks survive. updatePlan refreshes updatedAt.
+      const next: MealPlan = {
+        ...preview,
+        id: editingPlan.id,
+        createdAt: editingPlan.createdAt,
+        name: finalName,
+      };
+      updatePlan(editingPlan.id, next);
+      toast.success(
+        t('mealPlan.toast.updated', {
+          defaultValue: '{{name}} updated.',
+          name: finalName,
+        }),
+      );
+      navigate(`/meal-plan/${editingPlan.id}`);
+      return;
+    }
     const toSave: MealPlan = { ...preview, name: finalName };
     addPlan(toSave);
     toast.success(t('mealPlan.toast.saved', { name: finalName }));
     navigate(`/meal-plan/${toSave.id}`);
   }
 
-  if (!petsReady) return <PageFallback />;
+  if (!petsReady || (isEditMode && !plansReady)) return <PageFallback />;
+
+  // If the user navigated to /meal-plan/:id/edit with a stale id (plan
+  // deleted from another tab, bookmarked link to a missing plan), send
+  // them back to the plans landing rather than render an empty wizard.
+  if (isEditMode && plansReady && !editingPlan) {
+    navigate('/meal-plan', { replace: true });
+    return <PageFallback />;
+  }
 
   if (pets.length === 0) {
     return (
@@ -209,8 +271,14 @@ export default function PlanWizard() {
     <form onSubmit={onFormSubmit} className="space-y-7">
       <PageHeader
         eyebrow={t('mealPlan.eyebrow')}
-        title={t('mealPlan.new.title')}
-        description={t('mealPlan.new.subtitle')}
+        title={isEditMode
+          ? t('mealPlan.wizard.editTitle', { defaultValue: 'Edit plan' })
+          : t('mealPlan.new.title')}
+        description={isEditMode
+          ? t('mealPlan.wizard.editSubtitle', {
+              defaultValue: 'Tweak anything and save to overwrite — your shopping check marks stay.',
+            })
+          : t('mealPlan.new.subtitle')}
       />
 
       {/* Step 1 — Pets */}

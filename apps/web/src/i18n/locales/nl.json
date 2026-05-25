@@ -42,7 +42,8 @@
     "calcFailed": "Kon niet berekenen — controleer de waarden.",
     "cancel": "Annuleren",
     "dismiss": "Sluiten",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "confirm": "Bevestigen"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -226,7 +227,10 @@
       "previewSubtitle": "{{days}} dagen · klaar om op te slaan",
       "defaultName": "{{names}} · {{days}} dagen",
       "defaultNameEmpty": "Plan zonder titel",
-      "generateFirst": "Genereer eerst een plan"
+      "generateFirst": "Genereer eerst een plan",
+      "editTitle": "Plan bewerken",
+      "editSubtitle": "Pas aan wat je wilt en sla op om te overschrijven — je vinkjes in de boodschappenlijst blijven.",
+      "petRemoved": "{{count}} huisdier(en) zijn uit dit plan verwijderd omdat het profiel niet meer bestaat."
     },
     "sourcing": {
       "varietyLabel": "Variatie",
@@ -296,7 +300,9 @@
       "subtitle": "{{days}} dagen · start op {{startDate}}",
       "tabMeals": "Maaltijden",
       "tabShopping": "Boodschappen",
-      "tabCooking": "Kookplan"
+      "tabCooking": "Kookplan",
+      "edit": "Bewerken",
+      "renameAria": "Plan hernoemen"
     },
     "shopping": {
       "total": "Totale boodschappen",
@@ -331,7 +337,8 @@
     "toast": {
       "saved": "\"{{name}}\" opgeslagen.",
       "deleted": "\"{{name}}\" verwijderd.",
-      "generateFailed": "Kon het plan niet genereren — probeer andere instellingen."
+      "generateFailed": "Kon het plan niet genereren — probeer andere instellingen.",
+      "updated": "{{name}} bijgewerkt."
     },
     "refusal": {
       "title": "Plan niet gegenereerd",
