@@ -1,33 +1,33 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { FadeIn } from '../motion/fade-in';
-import { Stethoscope, Salad, ChefHat } from 'lucide-react';
+import { Home, ClipboardList, ChefHat } from 'lucide-react';
 import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
 const STEPS = [
   {
-    Icon: Stethoscope,
+    Icon: Home,
     titleKey: 'landing.how.step1.title',
-    titleDefault: 'Tell us about your dog',
+    titleDefault: 'Add your household',
     descKey: 'landing.how.step1.desc',
-    descDefault: 'Weight, age, activity, body condition — the inputs your vet would ask for.',
+    descDefault: 'One profile per pet — dogs, cats, or both. Weight, age, activity, allergies.',
     accent: 'primary',
   },
   {
-    Icon: Salad,
+    Icon: ClipboardList,
     titleKey: 'landing.how.step2.title',
-    titleDefault: 'Pick a diet you trust',
+    titleDefault: 'Generate one plan',
     descKey: 'landing.how.step2.desc',
-    descDefault: 'Balanced cooked, BARF, PMR, high protein or ancestral — each grounded in AAFCO targets.',
+    descDefault: 'Simple meals by default: one protein per day, shared across pets. Sous-vide, oven, stovetop — your pick.',
     accent: 'accent',
   },
   {
     Icon: ChefHat,
     titleKey: 'landing.how.step3.title',
-    titleDefault: 'Cook with confidence',
+    titleDefault: 'Cook one bag, dose the rest',
     descKey: 'landing.how.step3.desc',
-    descDefault: 'Get exact grams, safe temperatures and a printable recipe card for the week.',
+    descDefault: 'Sous-vide a single household bag; follow the daily supplement card for what the bag doesn\'t cover.',
     accent: 'warning',
   },
 ] as const;
@@ -42,7 +42,7 @@ export function HowItWorks() {
   const { t } = useTranslation();
   const tS = useSpeciesT();
   return (
-    <FadeIn className="space-y-10">
+    <FadeIn className="space-y-10" id="how-it-works">
       <div className="text-center max-w-2xl mx-auto">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-primary">
           {t('landing.how.eyebrow', { defaultValue: 'How it works' })}

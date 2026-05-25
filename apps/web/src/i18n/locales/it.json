@@ -916,7 +916,13 @@
       "headlineB": "Per il tuo vero cane.",
       "headlineB_cat": "Per il tuo vero gatto.",
       "tagline_cat": "Nutri bene il tuo gatto.",
-      "subtitle_cat": "Strumenti open source per chi cucina in casa per il proprio gatto — piani nutrizionali con focus sulla taurina, cottura sicura, guide di sicurezza alimentare e lo stack di integratori di cui i gatti hanno bisogno."
+      "subtitle_cat": "Strumenti open source per chi cucina in casa per il proprio gatto — piani nutrizionali con focus sulla taurina, cottura sicura, guide di sicurezza alimentare e lo stack di integratori di cui i gatti hanno bisogno.",
+      "subtitleHousehold": "Cani e gatti. Un sacchetto, una sessione di cottura, un piano che seguirai davvero. Pensiamo a macro, temperature di sicurezza e integratori.",
+      "ctaPrimary": "Crea un piano",
+      "ctaSecondary": "Come funziona",
+      "chipDogs": "Cani",
+      "chipCats": "Gatti",
+      "chipBoth": "Entrambi, dallo stesso sacchetto"
     },
     "features": {
       "heading": "Tutto quello che ti serve",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "Come funziona",
-      "heading": "Dal cane alla ciotola in tre passi",
+      "heading": "La tua famiglia, nutrita in tre passi",
       "step1": {
-        "title": "Parlaci del tuo cane",
-        "desc": "Peso, età, attività, condizione corporea — i dati che ti chiederebbe il veterinario.",
-        "title_cat": "Parlaci del tuo gatto",
-        "desc_cat": "Peso, età, attività, condizione corporea, sterilizzazione — i dati che ti chiederebbe il veterinario."
+        "title": "Aggiungi la tua famiglia",
+        "desc": "Un profilo per animale — cani, gatti o entrambi. Peso, età, attività, allergie.",
+        "title_cat": "Aggiungi la tua famiglia",
+        "desc_cat": "Un profilo per animale — cani, gatti o entrambi. Peso, età, attività, allergie."
       },
       "step2": {
-        "title": "Scegli una dieta di cui ti fidi",
-        "desc": "Cotto magro, BARF, PMR, iperproteico o ancestrale — tutti basati sui target AAFCO.",
-        "title_cat": "Scegli una dieta felina sicura",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, preda intera o carnivoro cotto — tutte basate sulla biologia carnivora stretta."
+        "title": "Genera un piano",
+        "desc": "Pasti semplici di default: una proteina al giorno, condivisa tra gli animali. Sous-vide, forno, fornello — scegli tu.",
+        "title_cat": "Genera un piano",
+        "desc_cat": "Pasti semplici di default: una proteina al giorno, condivisa tra gli animali. Sous-vide, forno, fornello — scegli tu."
       },
       "step3": {
-        "title": "Cucina con sicurezza",
-        "desc": "Ottieni grammi esatti, temperature sicure e una ricetta stampabile per la settimana.",
-        "title_cat": "Nutri con sicurezza",
-        "desc_cat": "Grammi esatti, promemoria taurina, banda Ca:P, tetto di vitamina A — ogni piano felino include le sue salvaguardie."
+        "title": "Cuoci un sacchetto, dosa il resto",
+        "desc": "Cuoci sous-vide un solo sacchetto per la famiglia; segui la scheda di integratori giornalieri per ciò che il sacchetto non copre.",
+        "title_cat": "Cuoci un sacchetto, dosa il resto",
+        "desc_cat": "Cuoci sous-vide un solo sacchetto per la famiglia; segui la scheda di integratori giornalieri (taurina + olio di fegato di merluzzo) per ciò che il sacchetto non copre."
       },
-      "heading_cat": "Dal gatto alla ciotola in tre passi"
+      "heading_cat": "La tua famiglia, nutrita in tre passi"
     },
     "diets": {
       "eyebrow": "Profili dietetici",

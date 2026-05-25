@@ -916,7 +916,13 @@
       "headlineB": "Dla Twojego prawdziwego psa.",
       "headlineB_cat": "Dla Twojego prawdziwego kota.",
       "tagline_cat": "Karm swojego kota odpowiednio.",
-      "subtitle_cat": "Narzędzia open source dla osób gotujących w domu dla swojego kota — plany żywieniowe skupione na taurynie, bezpieczne gotowanie, przewodniki bezpieczeństwa żywności i zestaw suplementów, którego potrzebują koty."
+      "subtitle_cat": "Narzędzia open source dla osób gotujących w domu dla swojego kota — plany żywieniowe skupione na taurynie, bezpieczne gotowanie, przewodniki bezpieczeństwa żywności i zestaw suplementów, którego potrzebują koty.",
+      "subtitleHousehold": "Psy i koty. Jeden woreczek, jedna sesja gotowania, jeden plan, którego naprawdę będziesz przestrzegać. Zajmujemy się makrami, bezpiecznymi temperaturami i suplementami.",
+      "ctaPrimary": "Zacznij plan",
+      "ctaSecondary": "Jak to działa",
+      "chipDogs": "Psy",
+      "chipCats": "Koty",
+      "chipBoth": "Oba, z jednego woreczka"
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "Jak to działa",
-      "heading": "Od psa do posiłku w trzech krokach",
+      "heading": "Twój dom, nakarmiony w trzech krokach",
       "step1": {
-        "title": "Opowiedz nam o swoim psie",
-        "desc": "Waga, wiek, aktywność, kondycja — dane, o które zapyta weterynarz.",
-        "title_cat": "Opowiedz nam o swoim kocie",
-        "desc_cat": "Waga, wiek, aktywność, kondycja ciała, sterylizacja — dane, o które zapyta weterynarz."
+        "title": "Dodaj swój dom",
+        "desc": "Jeden profil na zwierzę — psy, koty lub jedne i drugie. Waga, wiek, aktywność, alergie.",
+        "title_cat": "Dodaj swój dom",
+        "desc_cat": "Jeden profil na zwierzę — psy, koty lub jedne i drugie. Waga, wiek, aktywność, alergie."
       },
       "step2": {
-        "title": "Wybierz dietę, której ufasz",
-        "desc": "Gotowana chuda, BARF, PMR, wysokobiałkowa lub ancestralna — wszystkie zgodne z celami AAFCO.",
-        "title_cat": "Wybierz dietę bezpieczną dla kota",
-        "desc_cat": "PMR 84/6/10, BARF-lite, frankenprey, cała ofiara lub gotowany mięsożerca — wszystkie oparte na biologii bezwzględnych mięsożerców."
+        "title": "Wygeneruj plan",
+        "desc": "Proste posiłki domyślnie: jedno białko dziennie, wspólne dla wszystkich zwierząt. Sous-vide, piekarnik, kuchenka — wybierasz Ty.",
+        "title_cat": "Wygeneruj plan",
+        "desc_cat": "Proste posiłki domyślnie: jedno białko dziennie, wspólne dla wszystkich zwierząt. Sous-vide, piekarnik, kuchenka — wybierasz Ty."
       },
       "step3": {
-        "title": "Gotuj z pewnością",
-        "desc": "Otrzymaj dokładne gramy, bezpieczne temperatury i przepis do druku na cały tydzień.",
-        "title_cat": "Karm z pewnością",
-        "desc_cat": "Dokładne gramy, przypomnienia o taurynie, zakres Ca:P, sufit witaminy A — każdy plan dla kota ma swoje zabezpieczenia."
+        "title": "Ugotuj jeden woreczek, dawkuj resztę",
+        "desc": "Ugotuj sous-vide jeden woreczek dla całego domu; postępuj zgodnie z codzienną kartą suplementów dla tego, czego woreczek nie pokrywa.",
+        "title_cat": "Ugotuj jeden woreczek, dawkuj resztę",
+        "desc_cat": "Ugotuj sous-vide jeden woreczek dla całego domu; postępuj zgodnie z codzienną kartą suplementów (tauryna + tran z dorsza) dla tego, czego woreczek nie pokrywa."
       },
-      "heading_cat": "Od kota do miski w trzech krokach"
+      "heading_cat": "Twój dom, nakarmiony w trzech krokach"
     },
     "diets": {
       "eyebrow": "Profile diet",

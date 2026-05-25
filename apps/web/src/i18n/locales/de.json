@@ -916,7 +916,13 @@
       "headlineB": "Für Ihren echten Hund.",
       "headlineB_cat": "Für Ihre echte Katze.",
       "tagline_cat": "Ernähren Sie Ihre Katze richtig.",
-      "subtitle_cat": "Open-Source-Tools für Selbstkocher — taurinbewusste Ernährungspläne, sicheres Garen, Lebensmittelsicherheit und der Supplement-Stack, den Katzen brauchen."
+      "subtitle_cat": "Open-Source-Tools für Selbstkocher — taurinbewusste Ernährungspläne, sicheres Garen, Lebensmittelsicherheit und der Supplement-Stack, den Katzen brauchen.",
+      "subtitleHousehold": "Hunde und Katzen. Ein Beutel, eine Kochsitzung, ein Plan, den Sie tatsächlich befolgen. Wir kümmern uns um Makros, Sicherheitstemperaturen und Ergänzungen.",
+      "ctaPrimary": "Plan starten",
+      "ctaSecondary": "So funktioniert es",
+      "chipDogs": "Hunde",
+      "chipCats": "Katzen",
+      "chipBoth": "Beide, ein Beutel für alle"
     },
     "features": {
       "heading": "Alles, was du brauchst",
@@ -969,26 +975,26 @@
     },
     "how": {
       "eyebrow": "So funktioniert es",
-      "heading": "Vom Hund zum Abendessen in drei Schritten",
+      "heading": "Ihr Haushalt, in drei Schritten gefüttert",
       "step1": {
-        "title": "Erzählen Sie uns von Ihrem Hund",
-        "desc": "Gewicht, Alter, Aktivität, Körperzustand — die Angaben, die Ihr Tierarzt verlangen würde.",
-        "title_cat": "Erzählen Sie uns von Ihrer Katze",
-        "desc_cat": "Gewicht, Alter, Aktivität, Körperzustand, Kastration — die Angaben, die Ihr Tierarzt verlangen würde."
+        "title": "Haushalt anlegen",
+        "desc": "Ein Profil pro Tier — Hunde, Katzen oder beides. Gewicht, Alter, Aktivität, Allergien.",
+        "title_cat": "Haushalt anlegen",
+        "desc_cat": "Ein Profil pro Tier — Hunde, Katzen oder beides. Gewicht, Alter, Aktivität, Allergien."
       },
       "step2": {
-        "title": "Wählen Sie eine vertrauenswürdige Diät",
-        "desc": "Mager gekocht, BARF, PMR, proteinreich oder Ancestral — alle nach AAFCO-Vorgaben.",
-        "title_cat": "Wählen Sie eine katzensichere Ernährung",
-        "desc_cat": "PMR 84/6/10, BARF-light, Frankenprey, Ganze Beute oder gekochter Karnivor — alle auf strikt-karnivorer Biologie aufgebaut."
+        "title": "Einen Plan generieren",
+        "desc": "Standardmäßig einfache Mahlzeiten: ein Protein pro Tag, geteilt unter den Tieren. Sous-vide, Ofen, Herd — Ihre Wahl.",
+        "title_cat": "Einen Plan generieren",
+        "desc_cat": "Standardmäßig einfache Mahlzeiten: ein Protein pro Tag, geteilt unter den Tieren. Sous-vide, Ofen, Herd — Ihre Wahl."
       },
       "step3": {
-        "title": "Mit Sicherheit kochen",
-        "desc": "Erhalten Sie exakte Gramm, sichere Temperaturen und eine druckbare Rezeptkarte für die Woche.",
-        "title_cat": "Mit Sicherheit füttern",
-        "desc_cat": "Exakte Gramm, Taurin-Erinnerungen, Ca:P-Band, Vitamin-A-Obergrenze — jeder Katzenplan kommt mit seinen Schutzlinien."
+        "title": "Einen Beutel kochen, den Rest dosieren",
+        "desc": "Sous-vide einen einzigen Haushaltsbeutel garen; folgen Sie der täglichen Ergänzungskarte für das, was der Beutel nicht abdeckt.",
+        "title_cat": "Einen Beutel kochen, den Rest dosieren",
+        "desc_cat": "Sous-vide einen einzigen Haushaltsbeutel garen; folgen Sie der täglichen Ergänzungskarte (Taurin + Lebertran) für das, was der Beutel nicht abdeckt."
       },
-      "heading_cat": "Von der Katze zum Napf in drei Schritten"
+      "heading_cat": "Ihr Haushalt, in drei Schritten gefüttert"
     },
     "diets": {
       "eyebrow": "Ernährungsprofile",

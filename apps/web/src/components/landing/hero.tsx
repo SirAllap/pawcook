@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Dog, Cat } from 'lucide-react';
 import { PawMark } from '../brand/logo';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/cn';
@@ -107,7 +107,10 @@ export function Hero() {
           transition={{ delay: reduced ? 0 : 0.4, duration: reduced ? 0 : 0.6 }}
           className="mt-5 mx-auto max-w-xl text-base sm:text-lg text-muted-fg text-pretty leading-relaxed"
         >
-          {tS('landing.hero.subtitle')}
+          {t('landing.hero.subtitleHousehold', {
+            defaultValue:
+              'Dogs and cats. One bag, one cook session, one plan you\'ll actually follow. We handle the macros, the safety temps, and the supplements.',
+          })}
         </motion.p>
 
         {/* CTAs */}
@@ -118,16 +121,39 @@ export function Hero() {
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <Button asChild variant="glow" size="lg" className="w-full sm:w-auto">
-            <Link to="/nutrition">
-              {t('landing.hero.cta', { defaultValue: 'Calculate nutrition' })}
+            <Link to="/meal-plan/new">
+              {t('landing.hero.ctaPrimary', { defaultValue: 'Start a plan' })}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </Button>
           <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-            <Link to="/food-safety">
-              {t('landing.hero.learnMore', { defaultValue: 'Browse safe foods' })}
-            </Link>
+            <a href="#how-it-works">
+              {t('landing.hero.ctaSecondary', { defaultValue: 'How it works' })}
+            </a>
           </Button>
+        </motion.div>
+
+        {/* Species chip row — visual cue that PawCook handles both species
+           and (after the household rollout) the multi-species case too. */}
+        <motion.div
+          initial={reduced ? false : { opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: reduced ? 0 : 0.7, duration: reduced ? 0 : 0.5 }}
+          className="mt-5 flex flex-wrap items-center justify-center gap-1.5"
+        >
+          {[
+            { Icon: Dog, key: 'landing.hero.chipDogs', def: 'Dogs' },
+            { Icon: Cat, key: 'landing.hero.chipCats', def: 'Cats' },
+            { Icon: null, key: 'landing.hero.chipBoth', def: 'Both, sharing one bag' },
+          ].map(({ Icon, key, def }, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/70 px-2.5 py-1 text-[10px] font-bold text-muted-fg"
+            >
+              {Icon && <Icon className="h-3 w-3 text-primary" aria-hidden />}
+              {t(key, { defaultValue: def })}
+            </span>
+          ))}
         </motion.div>
 
         {/* Trust strip */}
