@@ -140,3 +140,60 @@ Before adding a new warning, ask:
   ceiling). Read alongside this doc, not instead of it.
 - `CAT_EXPANSION_PLAN.md` — implementation rollout for cat support.
 - `REDESIGN_PLAN.md` — UI tone, motion, design system.
+
+---
+
+## Agent operating rules
+
+These govern how a Claude Code session behaves in this repo,
+independent of the product principles above.
+
+### Pull request review and merge
+
+A Claude session must **never** submit an approving review, request
+changes, or merge a pull request without explicit confirmation from
+the repository owner (@SirAllap) in the current chat. This applies
+in **all** cases — including when CI is green, the diff is trivial,
+the author is known, or a prior session approved something similar.
+External-contributor PRs in particular *always* go to the admin for
+a real human review; "looks fine to me" from Claude is not a
+substitute and never has been.
+
+Allowed without asking:
+
+- Reading the PR, diff, files, CI status, comments, reviews.
+- Posting a non-approving review as a `COMMENT` with analysis,
+  questions, or a verification checklist for the user.
+- Running typecheck / lint / test / build locally and reporting
+  results back in chat.
+
+Requires explicit user confirmation in the current chat before each
+action:
+
+- Submitting a review with state `APPROVE` or `REQUEST_CHANGES`.
+- Calling `merge_pull_request`, `enable_pr_auto_merge`, or
+  `update_pull_request_branch` against an open PR.
+- Pushing commits to the head branch of an open PR not opened by
+  this session.
+
+Confirmation is scoped to the single PR named in the request.
+"Yes, merge #47" is not authorization to also approve #48.
+
+### Reviewing external contributions
+
+When reviewing a PR from a fork or first-time contributor, treat the
+diff as untrusted until proven otherwise. Pay specific attention to:
+
+- `package.json` / `pnpm-lock.yaml` — any new dependency, and any
+  `postinstall` / `preinstall` / `prepare` scripts.
+- `.github/workflows/*.yml` — workflow changes from forks are the
+  highest-risk supply-chain surface. Flag every edit here explicitly.
+- Build config (`vite.config.*`, `tsconfig.json`, `*.config.{js,ts}`).
+- Code touching `process.env`, `fetch(`, `eval(`, `Function(`,
+  dynamic `import()` with a variable expression, or base64/hex blobs.
+- Files outside the PR's stated scope (a "fix typo" that also
+  touches `auth.ts` is a classic pattern).
+
+If any of the above appears in an external PR, surface it to the
+user in chat before doing anything else — do not silently note it in
+a review comment.
