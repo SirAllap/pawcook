@@ -12,6 +12,7 @@ export function FadeIn({
   preset = 'up',
   once = true,
   amount = 0.25,
+  eager = false,
   className,
   ...rest
 }: {
@@ -20,13 +21,27 @@ export function FadeIn({
   preset?: Preset;
   once?: boolean;
   amount?: number;
+  /**
+   * Animate on mount instead of waiting for the element to scroll into view.
+   * Use this when FadeIn lives inside a parent that is itself animating
+   * (e.g. PageTransition's AnimatePresence) — the whileInView observer
+   * races with the parent transform and can leave the element stuck at
+   * opacity 0. Scroll-reveal still defaults on for landing-style use.
+   */
+  eager?: boolean;
   className?: string;
 } & HTMLMotionProps<'div'>) {
+  const motionProps = eager
+    ? { initial: 'hidden' as const, animate: 'show' as const }
+    : {
+        initial: 'hidden' as const,
+        whileInView: 'show' as const,
+        viewport: { once, amount },
+      };
+
   return (
     <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount }}
+      {...motionProps}
       variants={variants[preset]}
       transition={{ delay }}
       className={className}

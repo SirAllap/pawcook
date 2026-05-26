@@ -134,7 +134,7 @@ export default function PlanView() {
         </TabsList>
 
         <TabsContent value="meals" className="space-y-4">
-          <FadeIn className="space-y-4">
+          <FadeIn eager className="space-y-4">
             <SupplementCard plan={plan} pets={planPets} />
             <NutrientCoverageCard plan={plan} pets={planPets} />
             <CalendarGrid plan={plan} pets={planPets} />
@@ -144,14 +144,14 @@ export default function PlanView() {
         {/* forceMount keeps the shopping list mounted so its checkmarks don't
             reset when the user toggles tabs. */}
         <TabsContent value="shopping" forceMount className="space-y-4 data-[state=inactive]:hidden">
-          <FadeIn className="space-y-4">
+          <FadeIn eager className="space-y-4">
             <ShoppingListView plan={plan} pets={planPets} />
           </FadeIn>
         </TabsContent>
 
         {plan.cookingPlan && (
           <TabsContent value="cooking" className="space-y-4">
-            <FadeIn className="space-y-4">
+            <FadeIn eager className="space-y-4">
               <CookingPlanView plan={plan} pets={planPets} />
             </FadeIn>
           </TabsContent>
