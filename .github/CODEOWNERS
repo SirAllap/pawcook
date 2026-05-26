@@ -1,0 +1,16 @@
+# CODEOWNERS — auto-requests review from the listed owners on every PR
+# that touches a matching path. Does NOT enforce review (the branch
+# ruleset sets required approvals to 0); it's purely a notification +
+# routing hint, surfaced via GitHub's "review requested" feed.
+#
+# Syntax: https://docs.github.com/en/repositories/managing-your-repositories-settings-and-customization/customizing-your-repository/about-code-owners
+# Order matters — later rules override earlier ones. The catch-all goes first.
+
+# Catch-all -----------------------------------------------------------
+*                           @SirAllap
+
+# Nutrition engine ----------------------------------------------------
+# Pinned separately so a future co-maintainer for engine work can be
+# added here without touching the catch-all above.
+/packages/shared/           @SirAllap
+/packages/data/             @SirAllap
