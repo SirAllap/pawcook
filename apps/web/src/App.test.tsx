@@ -39,7 +39,7 @@ describe('App', () => {
     setup('/about');
     await waitFor(() => {
       expect(screen.getAllByText('Pets').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Cooking').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Calculator').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Supplements').length).toBeGreaterThan(0);

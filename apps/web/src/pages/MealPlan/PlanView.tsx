@@ -25,7 +25,11 @@ export default function PlanView() {
   const { id } = useParams<{ id: string }>();
   const { getPlan, removePlan, ready: plansReady } = useMealPlans();
   const { pets, ready: petsReady } = usePets();
-  const [tab, setTab] = useState('meals');
+  // Default to cooking when the plan has a bag schedule — users open a
+  // saved plan to *do* something (cook, label, thaw), not re-read meals.
+  // Fall back to meals for plans without a cookingPlan (raw / no-bag).
+  const planForDefault = id ? getPlan(id) : undefined;
+  const [tab, setTab] = useState(planForDefault?.cookingPlan ? 'cooking' : 'meals');
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   if (!plansReady || !petsReady) return <PageFallback />;

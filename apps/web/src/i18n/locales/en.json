@@ -2,7 +2,7 @@
   "nav": {
     "pets": "Pets",
     "plan": "Plan",
-    "cooking": "Cooking",
+    "cooking": "Calculator",
     "nutrition": "Nutrition",
     "foodSafety": "Food Safety",
     "supplements": "Supplements",
@@ -336,18 +336,27 @@
     "cookingPlan": {
       "emptyTitle": "Bag schedule lives with sous-vide.",
       "emptyHelp": "Switch the plan to sous-vide and we'll build a date-stamped bag schedule.",
+      "emptyCta": "Edit plan",
       "noBagsTitle": "Nothing to bag",
       "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
       "summaryLabel": "Cooking plan",
-      "summary": "{{bags}} bags · {{sessions}} cook session(s) · one protein per bag",
-      "thawIcs": "Thaw schedule (.ics)",
-      "groupSummary": "{{bags}} bags · {{grams}} g total",
-      "printLabels": "Print labels",
+      "summary": "{{bags}} bags · {{sessions}} cook day(s) · one protein per bag",
+      "nextCookTitle": "Next cook day",
+      "nextCookCountGrams": "{{bags}} bag(s) · {{grams}} g",
+      "nextCookDone": "Week's cooking done. Next round: {{date}}.",
+      "nextCookAllDone": "All bags cooked.",
+      "thawIcs": "Thaw reminders (.ics)",
+      "groupSummary": "{{bags}} bag(s) · {{grams}} g total",
+      "printLabels": "Label bags",
+      "labelOne": "Label bag",
       "bagN": "Bag {{n}} of {{total}}",
+      "bagSolo": "Single bag",
       "thaw": "Thaw {{date}}",
+      "thawEve": "Move to fridge: {{date}} evening",
+      "readyAt": "Ready to serve: {{date}}",
       "useBy": "Use by {{date}}",
       "rotationNote": "Protein rotates — bag dates may be non-consecutive.",
-      "freshLabel": "Cook fresh (not batched)",
+      "freshLabel": "Cook on the day (not batched)",
       "freshHelp": "These don't freeze well batched. Handle daily or per recipe.",
       "freshReason": {
         "perishable": "perishable",
@@ -355,7 +364,20 @@
         "organ": "small portions",
         "supplement-equiv": "daily add-in"
       },
-      "frozenQuality": "Frozen ~{{days}} days — safe, but flavour starts fading. Consider a shorter cook-ahead next plan."
+      "frozenQualityGroup": "{{count}} bag(s) sit over 30 days frozen — safe, but flavour fades. Shorten the cook-ahead next plan.",
+      "perPetSplit": "Split: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g"
+    },
+    "sharpie": {
+      "title": "Label bag {{n}}/{{total}}",
+      "intro": "Copy this onto the bag with a permanent marker. One bag at a time.",
+      "copy": "Copy text",
+      "copied": "Copied",
+      "next": "Next bag",
+      "prev": "Previous bag",
+      "done": "Done",
+      "progress": "{{n}} of {{total}}",
+      "tipTape": "Reusable silicone bag? Stick a strip of masking tape on it and write on that."
     },
     "labels": {
       "title": "{{count}} bag labels — {{plan}}",
