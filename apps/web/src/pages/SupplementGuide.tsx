@@ -56,6 +56,15 @@ export default function SupplementGuide() {
   const aafco       = (species === 'cat' ? catAafcoData       : dogAafcoData)       as AafcoTable;
   const transition  = (species === 'cat' ? catTransitionData  : dogTransitionData)  as TransitionData;
   const balancers   =  species === 'cat' ? CAT_BALANCERS      : DOG_BALANCERS;
+
+  // The supplements i18n namespace (transition.*, aafcoTable.ratios.*.note,
+  // aafcoTable.nutrients.*) only contains dog copy — using t() with a cat
+  // dataset would silently render the wrong (dog) text in every locale.
+  // For cat mode, bypass i18n and show the cat data verbatim (English) so
+  // owners read the correct content; cat-specific translation keys can
+  // ship in a separate PR.
+  const tt = (key: string, fallback: string) =>
+    species === 'cat' ? fallback : t(key, { defaultValue: fallback });
   const calloutText = species === 'cat'
     ? t('supplements.taurineCallout', { defaultValue: 'Cats cannot synthesize taurine — supplementation is mandatory in cooked diets and strongly recommended in raw diets without hearts. Deficiency causes irreversible blindness and dilated cardiomyopathy.' })
     : t('supplements.caRatio');
@@ -104,7 +113,7 @@ export default function SupplementGuide() {
                 {aafco.nutrients.map((n, i) => (
                   <tr key={n.id} className={i % 2 ? 'bg-surface-2/30' : ''}>
                     <td className="px-4 py-2 font-semibold text-foreground">
-                      {t(`supplements.aafcoTable.nutrients.${n.id}`, { defaultValue: n.label })}
+                      {tt(`supplements.aafcoTable.nutrients.${n.id}`, n.label)}
                     </td>
                     <td className="px-3 py-2 text-right text-muted-fg font-mono">{n.unit}</td>
                     <td className="px-3 py-2 text-right font-mono font-bold text-primary tabular-nums">{fmt(n.adultMin)}</td>
@@ -119,11 +128,11 @@ export default function SupplementGuide() {
             {aafco.ratios.map((r) => (
               <div key={r.id} className="text-sm">
                 <span className="font-bold text-foreground">
-                  {t(`supplements.aafcoTable.ratios.${r.id}.label`, { defaultValue: r.label })}:
+                  {tt(`supplements.aafcoTable.ratios.${r.id}.label`, r.label)}:
                 </span>{' '}
                 <span className="text-success font-mono font-semibold">{r.min} – {r.max}</span>
                 <p className="text-xs text-muted-fg mt-0.5">
-                  {t(`supplements.aafcoTable.ratios.${r.id}.note`, { defaultValue: r.note })}
+                  {tt(`supplements.aafcoTable.ratios.${r.id}.note`, r.note)}
                 </p>
               </div>
             ))}
@@ -136,10 +145,10 @@ export default function SupplementGuide() {
           <header className="px-5 py-4 border-b border-border">
             <h2 className="font-black text-base flex items-center gap-2">
               <RefreshCw className="h-4 w-4 text-primary" />
-              {t('supplements.transition.title', { defaultValue: transition.title })}
+              {tt('supplements.transition.title', transition.title)}
             </h2>
             <p className="text-xs text-muted-fg mt-1 leading-relaxed">
-              {t('supplements.transition.summary', { defaultValue: transition.summary })}
+              {tt('supplements.transition.summary', transition.summary)}
             </p>
           </header>
           <div className="p-4 space-y-3">
@@ -154,7 +163,7 @@ export default function SupplementGuide() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-black text-primary">
-                    {t(`supplements.transition.days.${i}.label`, { defaultValue: d.days })}
+                    {tt(`supplements.transition.days.${i}.label`, d.days)}
                   </span>
                   <span className="text-[11px] font-bold text-muted-fg font-mono tabular-nums">
                     {t('supplements.transition.oldFresh', { old: d.oldPct, new: d.newPct, defaultValue: `${d.oldPct}% old · ${d.newPct}% new` })}
@@ -177,7 +186,7 @@ export default function SupplementGuide() {
                   />
                 </div>
                 <p className="text-xs text-muted-fg mt-2 leading-relaxed">
-                  {t(`supplements.transition.days.${i}.note`, { defaultValue: d.note })}
+                  {tt(`supplements.transition.days.${i}.note`, d.note)}
                 </p>
               </motion.div>
             ))}
@@ -189,7 +198,7 @@ export default function SupplementGuide() {
             {transition.tips.map((tip, i) => (
               <p key={i} className="text-xs text-muted-fg leading-relaxed flex gap-2">
                 <span className="text-primary font-black shrink-0">•</span>
-                {t(`supplements.transition.tips.${i}`, { defaultValue: tip })}
+                {tt(`supplements.transition.tips.${i}`, tip)}
               </p>
             ))}
           </div>

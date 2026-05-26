@@ -5,6 +5,7 @@
 // as backup tiers for the rare case the hash gets cleared (e.g. user hits
 // back, removing the hash from the URL but staying on the route).
 
+import { MeatTypeSchema, CookingMethodSchema } from '@pawcook/shared';
 import type { CookingPrefill } from '../pages/CookingCalculator';
 
 const STORAGE_KEY = 'pawcook_cooking_prefill_v1';
@@ -38,13 +39,27 @@ function parseHashPrefill(hash: string): CookingPrefill | null {
       const n = Number(v);
       return Number.isFinite(n) ? n : undefined;
     };
+    // Validate enums against their Zod schema rather than trust the raw
+    // hash. Hashes are user-controllable (shareable links, copy-paste),
+    // so a typo or malicious value would otherwise be rendered verbatim
+    // in the prefill banner (e.g. "lizard", "microwave"). Reject anything
+    // unknown so the banner only ever shows recognised meats/methods.
+    const meatRaw = params.get('meat');
+    const methodRaw = params.get('method');
+    const meatParsed = meatRaw ? MeatTypeSchema.safeParse(meatRaw) : null;
+    const methodParsed = methodRaw ? CookingMethodSchema.safeParse(methodRaw) : null;
+    const pets = num('pets');
+    const days = num('days');
     return {
-      meatType: (params.get('meat') as CookingPrefill['meatType']) ?? undefined,
-      cookingMethod: (params.get('method') as CookingPrefill['cookingMethod']) ?? undefined,
+      meatType: meatParsed?.success ? meatParsed.data : undefined,
+      cookingMethod: methodParsed?.success ? methodParsed.data : undefined,
       totalWeightKg: num('kg'),
-      petCount: num('pets'),
-      feedingDays: num('days'),
-      planName: params.get('plan') ?? undefined,
+      // Drop nonsensical pet/day counts (negatives, decimals from arbitrary
+      // hash crafting). The banner shows these unsanitised in chips.
+      petCount: pets != null && pets > 0 && Number.isInteger(pets) ? pets : undefined,
+      feedingDays: days != null && days > 0 && Number.isInteger(days) ? days : undefined,
+      // Plan name is free text; cap length to keep the banner shape sane.
+      planName: params.get('plan')?.slice(0, 80) ?? undefined,
       planId: params.get('planId') ?? undefined,
       ingredientId: params.get('ing') ?? undefined,
     };
