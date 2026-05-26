@@ -49,13 +49,18 @@ function loadSaved(species: 'dog' | 'cat'): NutritionInput {
   const defaults = species === 'dog' ? DOG_DEFAULTS : CAT_DEFAULTS;
   try {
     const saved = localStorage.getItem(STORAGE_KEY(species));
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Discard any stale species mismatch from migration.
-      if (parsed?.species === species) return { ...defaults, ...parsed };
-    }
-  } catch { /* ignore */ }
-  return defaults;
+    if (!saved) return defaults;
+    const parsed = JSON.parse(saved);
+    if (parsed?.species !== species) return defaults;
+    // Validate the full payload via Zod before trusting it. Shallow-merging
+    // an arbitrary saved blob over defaults used to let an `age:'kitten'`
+    // payload survive on the dog calculator (rendering an empty <select>),
+    // or a `macroProfile:'cat_pmr'` payload survive on dog (no diet button
+    // highlighted, calculator silently does nothing). safeParse drops the
+    // whole blob if anything is incoherent — defaults always render.
+    const result = NutritionInputSchema.safeParse({ ...defaults, ...parsed });
+    return result.success ? result.data : defaults;
+  } catch { return defaults; }
 }
 
 const DOG_DIET_KEYS = ['balanced_cooked', 'high_protein', 'pmr', 'barf', 'real_ancestral'] as const;
@@ -186,7 +191,16 @@ export default function NutritionCalculator() {
       />
 
       <Card padding="none" className="overflow-hidden">
-        <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-6 space-y-6">
+        <form
+          onSubmit={handleSubmit(onSubmit, () => {
+            // Validation failure: drop any stale result + success toast so
+            // the user doesn't see green "AAFCO compliant" next to a red
+            // field error from a previous calculation.
+            setResult(null);
+            setCalculating(false);
+          })}
+          className="p-5 sm:p-6 space-y-6"
+        >
           <SectionLabel>{tS('nutrition.profileSection')}</SectionLabel>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

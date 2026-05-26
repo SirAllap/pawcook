@@ -186,7 +186,12 @@ export function SourcingPicker({
           </p>
           <ToggleGroup
             type="single"
-            value={String(value.bagDays)}
+            // Schema allows bagDays 1|2|3|4 but the UI exposes only 1|2|3
+            // (4 was a transitional ceiling and is no longer offered).
+            // Clamp legacy saved plans with bagDays=4 down to 3 for the
+            // toggle's active state so the user sees a selected button
+            // instead of an apparently-blank picker.
+            value={String(Math.min(value.bagDays, 3))}
             onValueChange={(v) => {
               if (!v) return;
               const n = Number(v);

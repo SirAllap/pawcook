@@ -26,11 +26,13 @@ type Ctx = {
 
 const MealPlansContext = createContext<Ctx | null>(null);
 
-function loadStore(): Store {
-  if (typeof localStorage === 'undefined') return { version: 1, plans: [] };
+type LoadResult = { store: Store; ok: boolean };
+
+function loadStore(): LoadResult {
+  if (typeof localStorage === 'undefined') return { store: { version: 1, plans: [] }, ok: true };
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return { store: { version: 1, plans: [] }, ok: true };
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { version: 1, plans: [] };
     const parsed: unknown = JSON.parse(raw);
     if (parsed && typeof parsed === 'object' && 'plans' in parsed && Array.isArray((parsed as Store).plans)) {
       const validPlans: MealPlan[] = [];
@@ -41,12 +43,14 @@ function loadStore(): Store {
         const result = MealPlanSchema.safeParse(migrated);
         if (result.success) validPlans.push(result.data);
       }
-      return { version: 1, plans: validPlans };
+      return { store: { version: 1, plans: validPlans }, ok: true };
     }
-  } catch {
-    // fall through
-  }
-  return { version: 1, plans: [] };
+  } catch { /* fall through */ }
+  // Parse / shape failure: stash the raw bytes under a sibling key so the
+  // user has a recoverable copy when their next save effect would
+  // otherwise blow over the corrupt-but-present data with an empty array.
+  try { localStorage.setItem(`${STORAGE_KEY}_corrupt`, raw); } catch { /* ignore */ }
+  return { store: { version: 1, plans: [] }, ok: false };
 }
 
 function saveStore(store: Store) {
@@ -60,43 +64,62 @@ function saveStore(store: Store) {
 export function MealPlansProvider({ children }: { children: ReactNode }) {
   const [plans, setPlans] = useState<MealPlan[]>([]);
   const [ready, setReady] = useState(false);
+  // When loadStore() couldn't parse the saved blob we still hand the app an
+  // empty plans array so it renders, but we hold off auto-persisting that
+  // empty array — otherwise a transiently-corrupt file gets blown away on
+  // mount. The first real user action (add/update/remove) flips this and
+  // resumes normal persistence.
+  const [persistOk, setPersistOk] = useState(true);
 
   useEffect(() => {
-    setPlans(loadStore().plans);
+    const { store, ok } = loadStore();
+    setPlans(store.plans);
+    setPersistOk(ok);
     setReady(true);
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || !persistOk) return;
     saveStore({ version: 1, plans });
-  }, [plans, ready]);
+  }, [plans, ready, persistOk]);
 
   useEffect(() => {
     function onStorage(e: StorageEvent) {
       if (e.key !== STORAGE_KEY) return;
-      setPlans(loadStore().plans);
+      const { store, ok } = loadStore();
+      setPlans(store.plans);
+      setPersistOk(ok);
     }
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
+  // Any mutating callback below must re-enable persistence — the user has
+  // shown intent, so it's safe to overwrite the corrupt backup now.
+  const armPersist = useCallback(() => setPersistOk(true), []);
+
   const addPlan = useCallback((plan: MealPlan) => {
+    armPersist();
     setPlans((prev) => [plan, ...prev.filter((p) => p.id !== plan.id)]);
-  }, []);
+  }, [armPersist]);
 
   const updatePlan = useCallback((id: string, patch: Partial<MealPlan>) => {
+    armPersist();
     setPlans((prev) => prev.map((p) => (p.id === id ? { ...p, ...patch, updatedAt: new Date().toISOString() } : p)));
-  }, []);
+  }, [armPersist]);
 
   const replacePlan = useCallback((plan: MealPlan) => {
+    armPersist();
     setPlans((prev) => prev.map((p) => (p.id === plan.id ? plan : p)));
-  }, []);
+  }, [armPersist]);
 
   const removePlan = useCallback((id: string) => {
+    armPersist();
     setPlans((prev) => prev.filter((p) => p.id !== id));
-  }, []);
+  }, [armPersist]);
 
   const removePetReferences = useCallback((petId: string) => {
+    armPersist();
     setPlans((prev) =>
       prev
         .map((p) =>
@@ -106,7 +129,7 @@ export function MealPlansProvider({ children }: { children: ReactNode }) {
         )
         .filter((p) => p.petIds.length > 0),
     );
-  }, []);
+  }, [armPersist]);
 
   const getPlan = useCallback((id: string) => plans.find((p) => p.id === id), [plans]);
 

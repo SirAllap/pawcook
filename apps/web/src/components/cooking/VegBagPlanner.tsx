@@ -39,7 +39,22 @@ import { Select } from '../ui/select';
 import { Badge } from '../ui/badge';
 import { SectionLabel } from '../ui/section-label';
 import { Switch } from '../ui/switch';
+import { blockBadNumberKeys } from '../../lib/number-input';
 import { cn } from '../../lib/cn';
+
+// Per-input gram ceiling. The schema accepts any non-negative number, but
+// a runaway value like 1e10 g would render "10000000.00 kg raw total" and
+// drive `bagPlanAlternatives` into nonsense (~1056 day bags). Cap at a
+// pragmatic 200 kg per ingredient — a whole sous-vide bin's worth.
+const MAX_GRAMS_PER_ROW = 200_000;
+const MAX_HOUSEHOLD_DAILY_G = 50_000;
+const MAX_DAYS_PER_BAG = 14;
+
+function clampGrams(raw: unknown, max: number): number {
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return Math.min(Math.max(0, n), max);
+}
 
 // ─── Persistence ─────────────────────────────────────────────────
 
@@ -275,8 +290,10 @@ export function VegBagPlanner({
           type="number"
           inputMode="numeric"
           min={1}
+          max={MAX_HOUSEHOLD_DAILY_G}
+          onKeyDown={blockBadNumberKeys}
           value={dailyHouseholdG || ''}
-          onChange={(e) => setDailyHouseholdG(Number(e.target.value) || 0)}
+          onChange={(e) => setDailyHouseholdG(clampGrams(e.target.value, MAX_HOUSEHOLD_DAILY_G))}
           helper={t('cooking.veg.bagPlanner.householdHelper', {
             defaultValue: 'Total grams across all pets per day. Used to size bags.',
           })}
@@ -286,9 +303,10 @@ export function VegBagPlanner({
           type="number"
           inputMode="numeric"
           min={1}
-          max={14}
+          max={MAX_DAYS_PER_BAG}
+          onKeyDown={blockBadNumberKeys}
           value={prefBagDays}
-          onChange={(e) => setPrefBagDays(Math.max(1, Math.min(14, Number(e.target.value) || 1)))}
+          onChange={(e) => setPrefBagDays(Math.max(1, Math.min(MAX_DAYS_PER_BAG, Number(e.target.value) || 1)))}
         />
         <Select
           label={t('cooking.veg.bagPlanner.roundingLabel', { defaultValue: 'Bag size rounding' })}
@@ -420,10 +438,12 @@ function OnHandRow({
           type="number"
           inputMode="numeric"
           min={0}
+          max={MAX_GRAMS_PER_ROW}
           step={50}
           placeholder="g"
+          onKeyDown={blockBadNumberKeys}
           value={row.rawG || ''}
-          onChange={(e) => onChange({ rawG: Math.max(0, Number(e.target.value) || 0) })}
+          onChange={(e) => onChange({ rawG: clampGrams(e.target.value, MAX_GRAMS_PER_ROW) })}
         />
       </div>
       <div className="col-span-1 flex justify-end pt-2">

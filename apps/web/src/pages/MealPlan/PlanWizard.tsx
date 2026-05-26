@@ -228,15 +228,17 @@ export default function PlanWizard() {
     navigate(`/meal-plan/${toSave.id}`);
   }
 
-  if (!petsReady || (isEditMode && !plansReady)) return <PageFallback />;
-
   // If the user navigated to /meal-plan/:id/edit with a stale id (plan
   // deleted from another tab, bookmarked link to a missing plan), send
-  // them back to the plans landing rather than render an empty wizard.
-  if (isEditMode && plansReady && !editingPlan) {
-    navigate('/meal-plan', { replace: true });
-    return <PageFallback />;
-  }
+  // them back to the plans landing. The redirect runs in an effect — calling
+  // navigate during render leaves the wizard stuck on the loading spinner
+  // forever because React Router refuses the in-render navigation.
+  const staleEditId = isEditMode && plansReady && !editingPlan;
+  useEffect(() => {
+    if (staleEditId) navigate('/meal-plan', { replace: true });
+  }, [staleEditId, navigate]);
+
+  if (!petsReady || (isEditMode && !plansReady) || staleEditId) return <PageFallback />;
 
   if (pets.length === 0) {
     return (

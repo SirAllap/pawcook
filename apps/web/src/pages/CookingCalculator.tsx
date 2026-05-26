@@ -50,9 +50,26 @@ const YIELD_PCT: Record<string, number> = {
 function loadSaved(): CookingInput {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return { ...DEFAULT_VALUES, ...JSON.parse(saved) };
-  } catch { /* ignore */ }
-  return DEFAULT_VALUES;
+    if (!saved) return DEFAULT_VALUES;
+    const parsed = JSON.parse(saved);
+    // Strip non-finite numbers (NaN/null/Infinity) before merging. RHF's
+    // `valueAsNumber: true` produces NaN when the user clears a field, and
+    // JSON.stringify writes NaN→null; without this filter, the next reload
+    // hydrates the form with null and zod reports "Expected number,
+    // received null" until the user retypes every cleared field.
+    const cleaned: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(parsed ?? {})) {
+      if (typeof v === 'number' && !Number.isFinite(v)) continue;
+      if (v === null) continue;
+      cleaned[k] = v;
+    }
+    // Validate the merged result; if it's incoherent, fall back to defaults
+    // rather than hydrate the form with garbage and confuse the user with
+    // a sea of red error messages on first paint.
+    const merged = { ...DEFAULT_VALUES, ...cleaned };
+    const result = CookingInputSchema.safeParse(merged);
+    return result.success ? result.data : DEFAULT_VALUES;
+  } catch { return DEFAULT_VALUES; }
 }
 
 /**
@@ -361,7 +378,17 @@ export default function CookingCalculator() {
       )}
 
       <Card padding="none" className="overflow-hidden">
-        <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-6 space-y-6">
+        <form
+          onSubmit={handleSubmit(onSubmit, () => {
+            // Validation failure: clear any stale "Recipe ready" result so
+            // the user doesn't see an old success card sitting under fresh
+            // red field errors.
+            setResult(null);
+            setSubmittedData(null);
+            setCalculating(false);
+          })}
+          className="p-5 sm:p-6 space-y-6"
+        >
           <SectionLabel>{t('cooking.meatType')}</SectionLabel>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select label={t('cooking.meatType')} {...register('meatType')}>
