@@ -11,6 +11,10 @@ import it from './locales/it.json';
 import pl from './locales/pl.json';
 import nl from './locales/nl.json';
 
+export function normalizeDetectedLanguage(language: string): string {
+  return language.replace(/@.+$/, '');
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -26,6 +30,9 @@ i18n
       nl: { translation: nl },
     },
     fallbackLng: 'en',
+    detection: {
+      convertDetectedLanguage: normalizeDetectedLanguage,
+    },
     interpolation: { escapeValue: false },
   });
 
