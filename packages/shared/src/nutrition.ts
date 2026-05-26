@@ -211,7 +211,13 @@ export function getDietCookingDefaults(profile: DogMacroProfile): {
   if (profile === 'custom') {
     return { defaultCookingMethod: 'fully_cooked' };
   }
+  // Backstop: callers occasionally pass a stale profile id (e.g. a cat
+  // preset during a species-switch render) before their own guards
+  // converge. Falling back to fully_cooked keeps render alive instead of
+  // crashing the page; the form's useEffect resets the profile to a
+  // valid one on the next tick.
   const spec = DIET_PROFILES[profile];
+  if (!spec) return { defaultCookingMethod: 'fully_cooked' };
   return { defaultCookingMethod: spec.defaultCookingMethod, cookingLock: spec.cookingLock };
 }
 

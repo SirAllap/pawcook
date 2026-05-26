@@ -78,7 +78,12 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
   const dietKeys = species === 'cat' ? CAT_DIET_KEYS : DOG_DIET_KEYS;
   // Cooking method axis is dog-only in this phase; cats inherit their
   // preset's cooking convention until the feline custom creator ships.
-  const cookingDefaults = species === 'dog'
+  // Guard against the species-switch render gap where species has flipped
+  // to 'dog' but macroProfile is still a leftover cat preset (the reset
+  // useEffect hasn't fired yet) — calling getDietCookingDefaults with a
+  // cat profile id crashes the render.
+  const isDogProfile = (DOG_DIET_KEYS as readonly string[]).includes(macroProfile);
+  const cookingDefaults = species === 'dog' && isDogProfile
     ? getDietCookingDefaults(macroProfile as DogMacroProfile)
     : null;
   const effectiveCooking: CookingPreparation | undefined = cookingDefaults
