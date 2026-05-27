@@ -1,6 +1,6 @@
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Beef, Carrot } from 'lucide-react';
+import { Beef, Carrot, Settings2 } from 'lucide-react';
 import {
   getMeatIngredients, getVegIngredients,
   type AccessibilityTier, type CookingMethod, type Species, type SourcingPrefs, type VarietyTier,
@@ -8,6 +8,7 @@ import {
 import { SectionLabel } from '../ui/section-label';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 import { Switch } from '../ui/switch';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../ui/accordion';
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
 import { cn } from '../../lib/cn';
 
@@ -88,6 +89,22 @@ export function SourcingPicker({
 
   const meatSet = useMemo(() => new Set(value.meatIds), [value.meatIds]);
   const vegSet = useMemo(() => new Set(value.vegIds), [value.vegIds]);
+
+  // Progressive disclosure: meat/veg pickers + niche preference flags
+  // collapse into an "Advanced ingredients" accordion. New users see ~5
+  // controls; power users (edit mode, ingredient-customised templates,
+  // or anyone who explicitly opens the section) get the full surface.
+  // Auto-open when the value carries pre-populated meatIds/vegIds or
+  // when any preference flag is on — otherwise the accordion would hide
+  // the user's own prior choices behind a chevron.
+  const advancedFlagCount =
+    (value.veggieDetail ? 1 : 0)
+    + (value.preferWildFish ? 1 : 0)
+    + (value.preferGrassFed ? 1 : 0)
+    + (value.preferOrganic ? 1 : 0);
+  const advancedHasData =
+    value.meatIds.length > 0 || value.vegIds.length > 0 || advancedFlagCount > 0;
+  const [advancedOpen, setAdvancedOpen] = useState<boolean>(advancedHasData);
 
   function toggleMeat(id: string) {
     onChange({
@@ -272,32 +289,10 @@ export function SourcingPicker({
         </div>
       )}
 
-      <IngredientChips
-        eyebrow={<Beef className="h-3.5 w-3.5" aria-hidden />}
-        label={t('mealPlan.sourcing.meatsLabel', { defaultValue: 'Meats to include' })}
-        help={t('mealPlan.sourcing.meatsHelp', {
-          defaultValue: 'Pick the proteins you want — leave empty to let the planner choose any.',
-        })}
-        emptyHint={t('mealPlan.sourcing.anyMeats', { defaultValue: 'Any · planner picks' })}
-        ingredients={meats}
-        selected={meatSet}
-        onToggle={toggleMeat}
-        translate={translateIngredient}
-      />
-
-      <IngredientChips
-        eyebrow={<Carrot className="h-3.5 w-3.5" aria-hidden />}
-        label={t('mealPlan.sourcing.veggiesLabel', { defaultValue: 'Veggies to include' })}
-        help={t('mealPlan.sourcing.veggiesHelp', {
-          defaultValue: 'Pick the produce you want — leave empty to let the planner choose any.',
-        })}
-        emptyHint={t('mealPlan.sourcing.anyVeggies', { defaultValue: 'Any · planner picks' })}
-        ingredients={veggies}
-        selected={vegSet}
-        onToggle={toggleVeg}
-        translate={translateIngredient}
-      />
-
+      {/* Simple meals stays at the top level — it's the single toggle
+          that most defines what a user is cooking each day. The full
+          ingredient pickers and niche preference flags collapse below
+          per CLAUDE.md sub-principle 7 (rigor behind a switch). */}
       <div className="space-y-2.5">
         <SectionLabel>{t('mealPlan.sourcing.prefsLabel')}</SectionLabel>
         <SourcingFlag
@@ -317,32 +312,111 @@ export function SourcingPicker({
             includeOrgans: v ? false : true,
           })}
         />
-        <SourcingFlag
-          label={t('mealPlan.sourcing.veggieDetail', { defaultValue: 'Cook each veggie separately' })}
-          help={t('mealPlan.sourcing.veggieDetailHelp', {
-            defaultValue:
-              'Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule.',
-          })}
-          checked={value.veggieDetail ?? false}
-          onChange={(v) => onChange({ ...value, veggieDetail: v })}
-        />
-        <SourcingFlag
-          label={t('mealPlan.sourcing.preferWildFish')}
-          checked={value.preferWildFish}
-          onChange={(v) => onChange({ ...value, preferWildFish: v })}
-        />
-        <SourcingFlag
-          label={t('mealPlan.sourcing.preferGrassFed')}
-          checked={value.preferGrassFed}
-          onChange={(v) => onChange({ ...value, preferGrassFed: v })}
-        />
-        <SourcingFlag
-          label={t('mealPlan.sourcing.preferOrganic')}
-          checked={value.preferOrganic}
-          onChange={(v) => onChange({ ...value, preferOrganic: v })}
-        />
       </div>
+
+      <Accordion
+        type="single"
+        collapsible
+        value={advancedOpen ? 'advanced' : ''}
+        onValueChange={(v) => setAdvancedOpen(v === 'advanced')}
+        className="border border-border rounded-2xl bg-surface-2 px-4"
+      >
+        <AccordionItem value="advanced" className="border-none">
+          <AccordionTrigger className="py-3 text-sm font-black text-foreground hover:text-foreground hover:opacity-90">
+            <span className="flex items-center gap-2">
+              <Settings2 className="h-3.5 w-3.5 text-muted-fg" aria-hidden />
+              {t('mealPlan.sourcing.advancedLabel', { defaultValue: 'Advanced ingredients' })}
+              <AdvancedSummary
+                meats={value.meatIds.length}
+                vegs={value.vegIds.length}
+                flags={advancedFlagCount}
+                t={t}
+              />
+            </span>
+          </AccordionTrigger>
+          <AccordionContent className="text-foreground">
+            <div className="space-y-5 pt-1">
+              <IngredientChips
+                eyebrow={<Beef className="h-3.5 w-3.5" aria-hidden />}
+                label={t('mealPlan.sourcing.meatsLabel', { defaultValue: 'Meats to include' })}
+                help={t('mealPlan.sourcing.meatsHelp', {
+                  defaultValue: 'Pick the proteins you want — leave empty to let the planner choose any.',
+                })}
+                emptyHint={t('mealPlan.sourcing.anyMeats', { defaultValue: 'Any · planner picks' })}
+                ingredients={meats}
+                selected={meatSet}
+                onToggle={toggleMeat}
+                translate={translateIngredient}
+              />
+
+              <IngredientChips
+                eyebrow={<Carrot className="h-3.5 w-3.5" aria-hidden />}
+                label={t('mealPlan.sourcing.veggiesLabel', { defaultValue: 'Veggies to include' })}
+                help={t('mealPlan.sourcing.veggiesHelp', {
+                  defaultValue: 'Pick the produce you want — leave empty to let the planner choose any.',
+                })}
+                emptyHint={t('mealPlan.sourcing.anyVeggies', { defaultValue: 'Any · planner picks' })}
+                ingredients={veggies}
+                selected={vegSet}
+                onToggle={toggleVeg}
+                translate={translateIngredient}
+              />
+
+              <div className="space-y-2.5">
+                <SourcingFlag
+                  label={t('mealPlan.sourcing.veggieDetail', { defaultValue: 'Cook each veggie separately' })}
+                  help={t('mealPlan.sourcing.veggieDetailHelp', {
+                    defaultValue:
+                      'Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule.',
+                  })}
+                  checked={value.veggieDetail ?? false}
+                  onChange={(v) => onChange({ ...value, veggieDetail: v })}
+                />
+                <SourcingFlag
+                  label={t('mealPlan.sourcing.preferWildFish')}
+                  checked={value.preferWildFish}
+                  onChange={(v) => onChange({ ...value, preferWildFish: v })}
+                />
+                <SourcingFlag
+                  label={t('mealPlan.sourcing.preferGrassFed')}
+                  checked={value.preferGrassFed}
+                  onChange={(v) => onChange({ ...value, preferGrassFed: v })}
+                />
+                <SourcingFlag
+                  label={t('mealPlan.sourcing.preferOrganic')}
+                  checked={value.preferOrganic}
+                  onChange={(v) => onChange({ ...value, preferOrganic: v })}
+                />
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
+  );
+}
+
+// Small "X meats · Y veggies · Z flags" badge that sits next to the
+// accordion trigger so the collapsed state still tells the user what
+// they currently have set. Renders nothing when no advanced choices
+// are active — keeps the trigger row visually quiet by default.
+function AdvancedSummary({
+  meats, vegs, flags, t,
+}: {
+  meats: number;
+  vegs: number;
+  flags: number;
+  t: (k: string, vals?: Record<string, unknown>) => string;
+}) {
+  if (meats === 0 && vegs === 0 && flags === 0) return null;
+  const parts: string[] = [];
+  if (meats > 0) parts.push(t('mealPlan.sourcing.advancedSummaryMeats', { count: meats, defaultValue: '{{count}} meats' }));
+  if (vegs > 0) parts.push(t('mealPlan.sourcing.advancedSummaryVegs', { count: vegs, defaultValue: '{{count}} veggies' }));
+  if (flags > 0) parts.push(t('mealPlan.sourcing.advancedSummaryFlags', { count: flags, defaultValue: '{{count}} flag(s)' }));
+  return (
+    <span className="ml-1 inline-flex items-center rounded-full bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold tabular-nums">
+      {parts.join(' · ')}
+    </span>
   );
 }
 

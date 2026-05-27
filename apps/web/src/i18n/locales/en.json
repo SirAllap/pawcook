@@ -285,7 +285,11 @@
       "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).",
       "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags.",
       "veggieDetail": "Cook each veggie separately",
-      "veggieDetailHelp": "Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule."
+      "veggieDetailHelp": "Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule.",
+      "advancedLabel": "Advanced ingredients",
+      "advancedSummaryMeats": "{{count}} meats",
+      "advancedSummaryVegs": "{{count}} veggies",
+      "advancedSummaryFlags": "{{count}} flag(s)"
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -337,7 +341,8 @@
       },
       "cookShort": "Cook",
       "emptyTitle": "Nothing to buy yet",
-      "yieldAdjustedHint": "Buy includes cooking shrinkage — yields ~{{c}} g cooked."
+      "yieldAdjustedHint": "Buy includes cooking shrinkage — yields ~{{c}} g cooked.",
+      "emptyHelp": "This plan doesn't need a shopping list yet. Edit the plan to add batchable ingredients."
     },
     "cookingPlan": {
       "emptyTitle": "Bag schedule lives with sous-vide.",
@@ -493,6 +498,32 @@
         "title": "Senior dog, low activity",
         "tag": "Slow cooker, joint-friendly",
         "description": "Older dog with joint support. Slow-cooker prep for tender proteins, biweekly plan to keep cook days infrequent."
+      }
+    },
+    "tour": {
+      "skip": "Skip tour",
+      "next": "Next",
+      "back": "Back",
+      "done": "Done",
+      "welcome": {
+        "title": "Welcome to your plan",
+        "body": "Here's a 30-second tour of what's here. Skip any time."
+      },
+      "meals": {
+        "title": "Meals",
+        "body": "Day-by-day portions per pet — grams, kcal, and the protein for each meal."
+      },
+      "supplement": {
+        "title": "Daily supplement",
+        "body": "When the plan simplifies meals, dropped nutrients show up here as a named daily dose — not silently omitted."
+      },
+      "shopping": {
+        "title": "Shopping list",
+        "body": "Grouped by store section. Tap an item to check it off as you shop."
+      },
+      "cooking": {
+        "title": "Cooking plan",
+        "body": "Date-stamped bag schedule for sous-vide. Cook once, feed for days."
       }
     }
   },

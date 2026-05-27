@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet).",
       "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków.",
       "veggieDetail": "Gotuj każde warzywo osobno",
-      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków."
+      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków.",
+      "advancedLabel": "Zaawansowane składniki",
+      "advancedSummaryMeats": "{{count}} mięsa",
+      "advancedSummaryVegs": "{{count}} warzywa",
+      "advancedSummaryFlags": "{{count}} opcja(e)"
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} pęczek",
         "bottle": "{{qty}} butelka"
       },
-      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu."
+      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu.",
+      "emptyHelp": "Ten plan nie potrzebuje jeszcze listy zakupów. Edytuj plan, aby dodać składniki na zapas."
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Pies senior, niska aktywność",
         "tag": "Wolnowar, przyjazny stawom",
         "description": "Starszy pies z wsparciem stawów. Wolnowar dla delikatnego białka, plan dwutygodniowy, by ograniczyć dni gotowania."
+      }
+    },
+    "tour": {
+      "skip": "Pomiń tour",
+      "next": "Dalej",
+      "back": "Wstecz",
+      "done": "Gotowe",
+      "welcome": {
+        "title": "Witaj w swoim planie",
+        "body": "Oto 30-sekundowy przegląd tego, co tu jest. Pomiń w dowolnym momencie."
+      },
+      "meals": {
+        "title": "Posiłki",
+        "body": "Codzienne porcje na zwierzę — gramy, kcal i białko każdego posiłku."
+      },
+      "supplement": {
+        "title": "Codzienny suplement",
+        "body": "Gdy plan upraszcza posiłki, pominięte składniki pojawiają się tu jako nazwana dzienna dawka — nigdy nie są usuwane po cichu."
+      },
+      "shopping": {
+        "title": "Lista zakupów",
+        "body": "Pogrupowana według działów sklepu. Stuknij artykuł, by odhaczyć podczas zakupów."
+      },
+      "cooking": {
+        "title": "Plan gotowania",
+        "body": "Datowany harmonogram woreczków do sous-vide. Gotuj raz, karm przez kilka dni."
       }
     }
   },

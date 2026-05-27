@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet).",
       "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais.",
       "veggieDetail": "Cozinhar cada legume em separado",
-      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos."
+      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos.",
+      "advancedLabel": "Ingredientes avançados",
+      "advancedSummaryMeats": "{{count}} carnes",
+      "advancedSummaryVegs": "{{count}} vegetais",
+      "advancedSummaryFlags": "{{count}} opção(ões)"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} maço",
         "bottle": "{{qty}} garrafa"
       },
-      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados."
+      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados.",
+      "emptyHelp": "Este plano ainda não precisa de uma lista de compras. Edite o plano para adicionar ingredientes em lotes."
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Cão idoso, baixa atividade",
         "tag": "Panela elétrica, amiga das articulações",
         "description": "Cão mais velho com suporte articular. Panela elétrica para proteínas macias, plano quinzenal para reduzir os dias de cozimento."
+      }
+    },
+    "tour": {
+      "skip": "Pular tour",
+      "next": "Próximo",
+      "back": "Voltar",
+      "done": "Concluído",
+      "welcome": {
+        "title": "Bem-vindo ao seu plano",
+        "body": "Aqui está um tour de 30 segundos do que há aqui. Pule quando quiser."
+      },
+      "meals": {
+        "title": "Refeições",
+        "body": "Porções diárias por pet — gramas, kcal e a proteína de cada refeição."
+      },
+      "supplement": {
+        "title": "Suplemento diário",
+        "body": "Quando o plano simplifica refeições, os nutrientes removidos aparecem aqui como dose diária nomeada — nunca omitidos em silêncio."
+      },
+      "shopping": {
+        "title": "Lista de compras",
+        "body": "Agrupada por seção da loja. Toque em um item para marcá-lo enquanto faz compras."
+      },
+      "cooking": {
+        "title": "Plano de cozimento",
+        "body": "Cronograma de sacos datado para sous-vide. Cozinhe uma vez, alimente por dias."
       }
     }
   },

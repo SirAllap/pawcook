@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Ein Protein pro Mahlzeit — derselbe Beutel für den ganzen Haushalt. Katzen erhalten eine tägliche Empfehlung für Taurin + Lebertran, um die Lücke zu schließen. Deaktivieren für das vollständige Mehrkomponenten-Rezept (Innereien, Meeresfrüchte-Zusätze, Makros pro Tier).",
       "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden.",
       "veggieDetail": "Jedes Gemüse einzeln garen",
-      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan."
+      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan.",
+      "advancedLabel": "Zutaten (erweitert)",
+      "advancedSummaryMeats": "{{count}} Fleisch",
+      "advancedSummaryVegs": "{{count}} Gemüse",
+      "advancedSummaryFlags": "{{count}} Option(en)"
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} Bund",
         "bottle": "{{qty}} Flasche"
       },
-      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht."
+      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht.",
+      "emptyHelp": "Dieser Plan braucht noch keine Einkaufsliste. Bearbeite den Plan, um Zutaten zum Vorbereiten hinzuzufügen."
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Seniorhund, geringe Aktivität",
         "tag": "Slowcooker, gelenkschonend",
         "description": "Älterer Hund mit Gelenkunterstützung. Slowcooker für zartes Protein, vierzehntägiger Plan, um Kochtage selten zu halten."
+      }
+    },
+    "tour": {
+      "skip": "Tour überspringen",
+      "next": "Weiter",
+      "back": "Zurück",
+      "done": "Fertig",
+      "welcome": {
+        "title": "Willkommen bei deinem Plan",
+        "body": "Hier ist ein 30-Sekunden-Rundgang. Du kannst jederzeit überspringen."
+      },
+      "meals": {
+        "title": "Mahlzeiten",
+        "body": "Tägliche Portionen pro Tier — Gramm, kcal und das Protein für jede Mahlzeit."
+      },
+      "supplement": {
+        "title": "Tägliches Supplement",
+        "body": "Wenn der Plan Mahlzeiten vereinfacht, erscheinen entfernte Nährstoffe hier als benannte tägliche Dosis — nie still weggelassen."
+      },
+      "shopping": {
+        "title": "Einkaufsliste",
+        "body": "Nach Ladenbereich gruppiert. Tippe auf einen Artikel, um ihn beim Einkaufen abzuhaken."
+      },
+      "cooking": {
+        "title": "Kochplan",
+        "body": "Datierter Beutel-Zeitplan für Sous-vide. Einmal kochen, mehrere Tage füttern."
       }
     }
   },

@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota).",
       "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas.",
       "veggieDetail": "Cocinar cada verdura por separado",
-      "veggieDetailHelp": "Desactivado (recomendado): un lote mixto por día de cocina — zanahorias, batata y judías verdes todo en la misma olla. Activado: cada verdura tiene su propia sesión de cocción en el plan, con su propio calendario de bolsas."
+      "veggieDetailHelp": "Desactivado (recomendado): un lote mixto por día de cocina — zanahorias, batata y judías verdes todo en la misma olla. Activado: cada verdura tiene su propia sesión de cocción en el plan, con su propio calendario de bolsas.",
+      "advancedLabel": "Ingredientes avanzados",
+      "advancedSummaryMeats": "{{count}} carnes",
+      "advancedSummaryVegs": "{{count}} verduras",
+      "advancedSummaryFlags": "{{count}} ajuste(s)"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} manojo",
         "bottle": "{{qty}} botella"
       },
-      "yieldAdjustedHint": "Compra incluye merma de cocción — rinde ~{{c}} g cocidos."
+      "yieldAdjustedHint": "Compra incluye merma de cocción — rinde ~{{c}} g cocidos.",
+      "emptyHelp": "Este plan aún no necesita lista de la compra. Edita el plan para añadir ingredientes por lotes."
     },
     "confirmDelete": "¿Eliminar el plan «{{name}}»? Esta acción no se puede deshacer.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Perro sénior, baja actividad",
         "tag": "Olla lenta, amigable con las articulaciones",
         "description": "Perro mayor con apoyo articular. Olla lenta para proteínas tiernas, plan quincenal para reducir los días de cocción."
+      }
+    },
+    "tour": {
+      "skip": "Saltar tour",
+      "next": "Siguiente",
+      "back": "Atrás",
+      "done": "Listo",
+      "welcome": {
+        "title": "Bienvenido a tu plan",
+        "body": "Aquí tienes un recorrido de 30 segundos de lo que hay. Sáltatelo cuando quieras."
+      },
+      "meals": {
+        "title": "Comidas",
+        "body": "Raciones día a día por mascota — gramos, kcal y la proteína de cada comida."
+      },
+      "supplement": {
+        "title": "Suplemento diario",
+        "body": "Cuando el plan simplifica las comidas, los nutrientes que se omiten aparecen aquí como una dosis diaria con nombre — nunca se omiten en silencio."
+      },
+      "shopping": {
+        "title": "Lista de la compra",
+        "body": "Agrupada por sección de la tienda. Toca un artículo para marcarlo mientras compras."
+      },
+      "cooking": {
+        "title": "Plan de cocción",
+        "body": "Calendario de bolsas con fechas para sous-vide. Cocina una vez, alimenta varios días."
       }
     }
   },

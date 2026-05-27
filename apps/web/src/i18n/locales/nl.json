@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier).",
       "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden.",
       "veggieDetail": "Elke groente apart koken",
-      "veggieDetailHelp": "Uit (aanbevolen): één gemengde batch per kookdag — wortels, zoete aardappel en sperziebonen samen in één pan. Aan: elke groente krijgt zijn eigen kooksessie in het plan, met een eigen zakje-schema."
+      "veggieDetailHelp": "Uit (aanbevolen): één gemengde batch per kookdag — wortels, zoete aardappel en sperziebonen samen in één pan. Aan: elke groente krijgt zijn eigen kooksessie in het plan, met een eigen zakje-schema.",
+      "advancedLabel": "Geavanceerde ingrediënten",
+      "advancedSummaryMeats": "{{count}} vleeswaren",
+      "advancedSummaryVegs": "{{count}} groenten",
+      "advancedSummaryFlags": "{{count}} optie(s)"
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} bos",
         "bottle": "{{qty}} fles"
       },
-      "yieldAdjustedHint": "Inkoop omvat kookkrimp — levert ~{{c}} g gaar op."
+      "yieldAdjustedHint": "Inkoop omvat kookkrimp — levert ~{{c}} g gaar op.",
+      "emptyHelp": "Dit plan heeft nog geen boodschappenlijst nodig. Bewerk het plan om bulk-ingrediënten toe te voegen."
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Seniorhond, lage activiteit",
         "tag": "Slowcooker, gewrichtsvriendelijk",
         "description": "Oudere hond met gewrichtsondersteuning. Slowcooker voor mals eiwit, tweewekelijks plan om kookdagen schaars te houden."
+      }
+    },
+    "tour": {
+      "skip": "Tour overslaan",
+      "next": "Volgende",
+      "back": "Terug",
+      "done": "Klaar",
+      "welcome": {
+        "title": "Welkom bij je plan",
+        "body": "Hier is een rondleiding van 30 seconden. Sla op elk moment over."
+      },
+      "meals": {
+        "title": "Maaltijden",
+        "body": "Dagelijkse porties per huisdier — gram, kcal en het eiwit voor elke maaltijd."
+      },
+      "supplement": {
+        "title": "Dagelijks supplement",
+        "body": "Wanneer het plan maaltijden vereenvoudigt, verschijnen weggelaten voedingsstoffen hier als benoemde dagelijkse dosis — nooit stil weggelaten."
+      },
+      "shopping": {
+        "title": "Boodschappenlijst",
+        "body": "Gegroepeerd per winkelafdeling. Tik op een item om het af te vinken tijdens het winkelen."
+      },
+      "cooking": {
+        "title": "Kookplan",
+        "body": "Gedateerd zakjes-schema voor sous-vide. Eén keer koken, dagenlang voeren."
       }
     }
   },

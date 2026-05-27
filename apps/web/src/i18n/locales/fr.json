@@ -285,7 +285,11 @@
       "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal).",
       "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits.",
       "veggieDetail": "Cuire chaque légume séparément",
-      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets."
+      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets.",
+      "advancedLabel": "Ingrédients avancés",
+      "advancedSummaryMeats": "{{count}} viandes",
+      "advancedSummaryVegs": "{{count}} légumes",
+      "advancedSummaryFlags": "{{count}} option(s)"
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -337,7 +341,8 @@
         "bunch": "{{qty}} botte",
         "bottle": "{{qty}} bouteille"
       },
-      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit."
+      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit.",
+      "emptyHelp": "Ce plan n'a pas encore besoin de liste de courses. Modifiez le plan pour ajouter des ingrédients en lots."
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
@@ -493,6 +498,32 @@
         "title": "Chien sénior, faible activité",
         "tag": "Mijoteuse, bon pour les articulations",
         "description": "Chien âgé avec soutien articulaire. Préparation à la mijoteuse pour des protéines tendres, plan bimensuel pour limiter les jours de cuisson."
+      }
+    },
+    "tour": {
+      "skip": "Passer le tour",
+      "next": "Suivant",
+      "back": "Retour",
+      "done": "Terminé",
+      "welcome": {
+        "title": "Bienvenue dans votre plan",
+        "body": "Voici un tour de 30 secondes de ce qui se trouve ici. Vous pouvez passer à tout moment."
+      },
+      "meals": {
+        "title": "Repas",
+        "body": "Portions jour par jour pour chaque animal — grammes, kcal et la protéine de chaque repas."
+      },
+      "supplement": {
+        "title": "Supplément quotidien",
+        "body": "Quand le plan simplifie les repas, les nutriments retirés apparaissent ici sous forme de dose quotidienne nommée — jamais omis en silence."
+      },
+      "shopping": {
+        "title": "Liste de courses",
+        "body": "Groupée par rayon. Tapez un article pour le cocher pendant que vous faites les courses."
+      },
+      "cooking": {
+        "title": "Plan de cuisson",
+        "body": "Calendrier de sachets daté pour le sous-vide. Cuisez une fois, nourrissez pendant des jours."
       }
     }
   },

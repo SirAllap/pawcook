@@ -160,7 +160,7 @@ export function SupplementCard({ plan, pets }: { plan: MealPlan; pets: PetProfil
   }
 
   return (
-    <Card padding="md" className="bg-primary/5 border-primary/30 space-y-3">
+    <Card padding="md" data-tour="supplement-card" className="bg-primary/5 border-primary/30 space-y-3">
       <div className="flex items-center gap-2">
         <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary">
           <Pill className="h-3.5 w-3.5" aria-hidden />
