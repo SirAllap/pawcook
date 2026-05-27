@@ -1,13 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ChevronLeft, ChevronRight, Copy, Check, X, Info } from 'lucide-react';
 import type { CookingBatch, MealPlan, PetProfile } from '@pawcook/shared';
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
+import { computeBatchPortions } from '../../lib/batch-portions';
+import { Button } from '../ui/button';
 
 /**
- * Print-friendly label sheet for sous-vide bags. Renders one label per
- * batch in a grid that approximates Avery 5163 (2x4 inches, 10 per page).
- * Triggers window.print() on mount so the user gets the print dialog
- * straight away; closing it returns to the cooking plan view.
+ * Sharpie-this-bag stepper. One bag at a time, on-screen — no printing.
+ * Permanent marker on the bag (or a strip of painter's tape for silicone
+ * bags) is the median home's labelling channel; printer ownership is a
+ * showcase-home assumption (CLAUDE.md sub-#5).
  */
 export function BagLabelSheet({
   plan,
@@ -22,118 +25,195 @@ export function BagLabelSheet({
 }) {
   const { t, i18n } = useTranslation();
   const translateIngredient = useTranslateIngredient();
-  const printed = useRef(false);
+  const [index, setIndex] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const sorted = useMemo(
+    () => [...batches].sort((a, b) => a.sequence - b.sequence),
+    [batches],
+  );
+  const batch = sorted[index];
 
   useEffect(() => {
-    if (printed.current) return;
-    printed.current = true;
-    // Defer one frame so the labels paint before the dialog opens.
-    requestAnimationFrame(() => window.print());
-  }, []);
+    setCopied(false);
+  }, [index]);
 
   useEffect(() => {
-    function handler() {
-      onClose();
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft' && index > 0) setIndex(index - 1);
+      if (e.key === 'ArrowRight' && index < sorted.length - 1) setIndex(index + 1);
     }
-    window.addEventListener('afterprint', handler);
-    return () => window.removeEventListener('afterprint', handler);
-  }, [onClose]);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [index, sorted.length, onClose]);
 
-  function petNames(ids: string[]): string {
-    return pets
-      .filter((p) => ids.includes(p.id))
-      .map((p) => p.name)
-      .join(', ');
+  if (!batch) {
+    onClose();
+    return null;
   }
 
-  function fmtDate(iso: string): string {
-    return new Date(iso + 'T00:00:00Z').toLocaleDateString(i18n.language, {
-      day: 'numeric',
-      month: 'short',
-    });
+  const portions = computeBatchPortions(plan, batch);
+  const labelText = buildLabelText({
+    ingredient: translateIngredient(batch.ingredientId),
+    sequence: batch.sequence,
+    total: batch.totalInSequence,
+    grams: batch.totalGrams,
+    cookDate: fmtDate(batch.cookDate, i18n.language),
+    useByDate: fmtDate(batch.useByDate, i18n.language),
+    portions,
+    pets,
+  });
+
+  async function copyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(labelText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // Older Safari / non-secure contexts — fall through silently. The
+      // text is still visible on screen for the user to retype.
+    }
   }
+
+  const isLast = index === sorted.length - 1;
 
   return (
-    <div className="print-sheet bg-white text-black p-4">
-      <style>{`
-        @media print {
-          @page { size: letter; margin: 0.5in; }
-          body * { visibility: hidden; }
-          .print-sheet, .print-sheet * { visibility: visible; }
-          .print-sheet { position: absolute; left: 0; top: 0; width: 100%; }
-          .no-print { display: none !important; }
-        }
-      `}</style>
-      <div className="no-print mb-4 flex items-center justify-between gap-3 text-sm">
-        <p className="font-bold">
-          {t('mealPlan.labels.title', {
-            defaultValue: '{{count}} bag labels — {{plan}}',
-            count: batches.length,
-            plan: plan.name,
+    <div
+      className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
+    >
+      <div className="mx-auto max-w-md p-4 sm:p-6 space-y-4">
+        <header className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">
+              {t('sharpie.progress', { n: index + 1, total: sorted.length, defaultValue: '{{n}} of {{total}}' })}
+            </p>
+            <p className="text-base font-black text-foreground">
+              {t('sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t('common.close', { defaultValue: 'Close' })}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface/70 hover:bg-surface-2"
+          >
+            <X className="h-4 w-4" aria-hidden />
+          </button>
+        </header>
+
+        <p className="text-sm text-muted-fg">
+          {t('sharpie.intro', { defaultValue: 'Copy this onto the bag with a permanent marker. One bag at a time.' })}
+        </p>
+
+        {/* The label preview — big, monospace, mimics what the user writes
+            on the actual bag. Sized for legibility while standing at the
+            counter with wet hands. */}
+        <div className="rounded-2xl border-2 border-foreground bg-white text-black p-5 font-mono leading-tight whitespace-pre-line text-base sm:text-lg select-text">
+          {labelText}
+        </div>
+
+        <Button
+          type="button"
+          variant={copied ? 'secondary' : 'primary'}
+          onClick={copyToClipboard}
+          block
+        >
+          {copied ? (
+            <>
+              <Check className="h-4 w-4" aria-hidden />
+              {t('sharpie.copied', { defaultValue: 'Copied' })}
+            </>
+          ) : (
+            <>
+              <Copy className="h-4 w-4" aria-hidden />
+              {t('sharpie.copy', { defaultValue: 'Copy text' })}
+            </>
+          )}
+        </Button>
+
+        <p className="flex items-start gap-2 text-[11px] text-muted-fg">
+          <Info className="h-3 w-3 mt-0.5 shrink-0" aria-hidden />
+          {t('sharpie.tipTape', {
+            defaultValue: "Reusable silicone bag? Stick a strip of masking tape on it and write on that.",
           })}
         </p>
-        <button
-          type="button"
-          onClick={onClose}
-          className="rounded-md border border-gray-300 px-3 py-1 text-xs font-bold hover:bg-gray-100"
-        >
-          {t('common.close', { defaultValue: 'Close' })}
-        </button>
-      </div>
-      <div className="grid grid-cols-2 gap-2">
-        {batches.map((batch) => (
-          <div
-            key={batch.id}
-            className="border border-black p-2 break-inside-avoid"
-            style={{ minHeight: '2in' }}
+
+        <div className="flex items-center justify-between gap-2 pt-2">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setIndex((i) => Math.max(0, i - 1))}
+            disabled={index === 0}
           >
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-sm font-black uppercase leading-tight">
-                {translateIngredient(batch.ingredientId)}
-              </p>
-              <p className="text-xs font-bold tabular-nums">
-                {t('mealPlan.labels.bagN', {
-                  defaultValue: 'Bag {{n}}/{{total}}',
-                  n: batch.sequence,
-                  total: batch.totalInSequence,
-                })}
-              </p>
-            </div>
-            <dl className="mt-1.5 text-[11px] font-mono leading-snug space-y-0.5">
-              <div>
-                <dt className="inline font-bold">
-                  {t('mealPlan.labels.cooked', { defaultValue: 'Cooked' })}:
-                </dt>{' '}
-                <dd className="inline">{fmtDate(batch.cookDate)}</dd>
-              </div>
-              <div>
-                <dt className="inline font-bold">
-                  {t('mealPlan.labels.useBy', { defaultValue: 'Use by' })}:
-                </dt>{' '}
-                <dd className="inline">{fmtDate(batch.useByDate)}</dd>
-              </div>
-              <div>
-                <dt className="inline font-bold">
-                  {t('mealPlan.labels.serves', { defaultValue: 'Serves' })}:
-                </dt>{' '}
-                <dd className="inline">{batch.dates.map(fmtDate).join(', ')}</dd>
-              </div>
-              <div>
-                <dt className="inline font-bold">
-                  {t('mealPlan.labels.pets', { defaultValue: 'Pets' })}:
-                </dt>{' '}
-                <dd className="inline">{petNames(batch.forPetIds)}</dd>
-              </div>
-              <div>
-                <dt className="inline font-bold">
-                  {t('mealPlan.labels.weight', { defaultValue: 'Weight' })}:
-                </dt>{' '}
-                <dd className="inline">{batch.totalGrams} g</dd>
-              </div>
-            </dl>
-          </div>
-        ))}
+            <ChevronLeft className="h-4 w-4" aria-hidden />
+            {t('sharpie.prev', { defaultValue: 'Previous bag' })}
+          </Button>
+          {isLast ? (
+            <Button type="button" variant="primary" onClick={onClose}>
+              <Check className="h-4 w-4" aria-hidden />
+              {t('sharpie.done', { defaultValue: 'Done' })}
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              variant="primary"
+              onClick={() => setIndex((i) => Math.min(sorted.length - 1, i + 1))}
+            >
+              {t('sharpie.next', { defaultValue: 'Next bag' })}
+              <ChevronRight className="h-4 w-4" aria-hidden />
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
+}
+
+function fmtDate(iso: string, locale: string): string {
+  return new Date(iso + 'T00:00:00Z').toLocaleDateString(locale, {
+    day: 'numeric',
+    month: 'short',
+  });
+}
+
+function buildLabelText({
+  ingredient,
+  sequence,
+  total,
+  grams,
+  cookDate,
+  useByDate,
+  portions,
+  pets,
+}: {
+  ingredient: string;
+  sequence: number;
+  total: number;
+  grams: number;
+  cookDate: string;
+  useByDate: string;
+  portions: { petId: string; grams: number }[];
+  pets: PetProfile[];
+}): string {
+  const nameById = new Map(pets.map((p) => [p.id, p.name]));
+  const bagLine = total > 1 ? `${ingredient.toUpperCase()}  ${sequence}/${total}` : ingredient.toUpperCase();
+  const lines = [
+    bagLine,
+    `${grams} g · Cocido ${cookDate}`,
+    `Antes del ${useByDate}`,
+  ];
+  if (portions.length > 0) {
+    for (const p of portions) {
+      const name = nameById.get(p.petId);
+      if (name && p.grams > 0) lines.push(`  ${name}: ${p.grams} g`);
+    }
+  } else {
+    const names = pets.map((p) => p.name).join(', ');
+    if (names) lines.push(names);
+  }
+  return lines.join('\n');
 }
