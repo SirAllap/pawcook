@@ -201,7 +201,9 @@
       "subtitle": "Gera um plano semanal, quinzenal ou mensal e a lista de compras para a loja.",
       "create": "Criar plano",
       "emptyTitle": "Ainda sem plano.",
-      "emptyDescription": "Um plano por casa. Cozinhe uma vez, alimente todos, dose o resto."
+      "emptyDescription": "Um plano por casa. Cozinhe uma vez, alimente todos, dose o resto.",
+      "emptyNoPetsTitle": "Começar com um modelo",
+      "emptyNoPetsDescription": "Escolha um pacote inicial e nós configuramos seus pets e seu primeiro plano em poucos cliques."
     },
     "new": {
       "title": "Novo plano",
@@ -452,6 +454,46 @@
       "done": "Concluído",
       "progress": "{{n}} de {{total}}",
       "tipTape": "Saco de silicone reutilizável? Cola um pedaço de fita-cola de pintor e escreve por cima."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Começar com um modelo"
+    },
+    "starter": {
+      "eyebrow": "Início rápido",
+      "title": "Escolha um pacote inicial",
+      "subtitle": "Pule o formulário longo. Escolha o lar que combina com o seu e nós configuramos os pets e o plano — pode ajustar tudo depois.",
+      "manualTitle": "Prefere configurar tudo você mesmo?",
+      "manualDescription": "Adicione um pet do zero e percorra o assistente completo.",
+      "manualCta": "Adicionar pet manualmente",
+      "back": "Voltar aos planos"
+    },
+    "template": {
+      "petName": {
+        "dog": "Seu cão",
+        "cat": "Seu gato"
+      },
+      "single_adult_dog": {
+        "title": "Cão adulto único",
+        "tag": "Sous-vide de fim de semana, refeições simples",
+        "description": "Um cão adulto, proteínas fáceis de supermercado, sessão de cozimento no fim de semana. Ideal para lares ocupados começando."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Lar com cão e gato",
+        "tag": "Cozimento compartilhado, cartão de taurina",
+        "description": "Ambos os pets comem a mesma proteína cozida que você prepara uma vez. O gato recebe um cartão diário de taurina e óleo de fígado de bacalhau para manter o plano simples seguro."
+      },
+      "single_indoor_cat": {
+        "title": "Gato de interior único",
+        "tag": "Fogão, carnívoro cozido",
+        "description": "Um gato de interior em uma dieta carnívora cozida. Porções pequenas, cozimento no fogão durante a semana, suplemento de taurina incluído."
+      },
+      "senior_dog_low_activity": {
+        "title": "Cão idoso, baixa atividade",
+        "tag": "Panela elétrica, amiga das articulações",
+        "description": "Cão mais velho com suporte articular. Panela elétrica para proteínas macias, plano quinzenal para reduzir os dias de cozimento."
+      }
     }
   },
   "condition": {

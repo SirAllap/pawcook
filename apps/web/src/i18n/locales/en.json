@@ -201,7 +201,9 @@
       "subtitle": "Generate a weekly, biweekly, or monthly plan and the shopping list you can take to the store.",
       "create": "Create plan",
       "emptyTitle": "No plan yet.",
-      "emptyDescription": "One plan per household. Cook once, feed everyone, dose the rest."
+      "emptyDescription": "One plan per household. Cook once, feed everyone, dose the rest.",
+      "emptyNoPetsTitle": "Start from a template",
+      "emptyNoPetsDescription": "Pick a starter pack and we'll set up your pets and your first plan in a couple of clicks."
     },
     "new": {
       "title": "New plan",
@@ -451,6 +453,46 @@
         "label": "Calcium citrate (or ground eggshell)",
         "dose": "{{mg}} mg per day (~½ tsp ground eggshell per ~454 g meat)",
         "rationale": "Cooked meals are calcium-deficient without bone — this closes the gap."
+      }
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Start from a template"
+    },
+    "starter": {
+      "eyebrow": "Quick start",
+      "title": "Pick a starter pack",
+      "subtitle": "Skip the long form. Pick the household that matches yours and we'll seed the pets and the plan — you can tweak anything after.",
+      "manualTitle": "Prefer to set things up yourself?",
+      "manualDescription": "Add a pet from scratch and walk through the full wizard.",
+      "manualCta": "Add a pet manually",
+      "back": "Back to plans"
+    },
+    "template": {
+      "petName": {
+        "dog": "Your dog",
+        "cat": "Your cat"
+      },
+      "single_adult_dog": {
+        "title": "Single adult dog",
+        "tag": "Weekend sous-vide, simple meals",
+        "description": "One adult dog, easy supermarket proteins, weekend cook session. Best for busy households starting fresh."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Dog and cat household",
+        "tag": "Shared cook, taurine supplement card",
+        "description": "Both pets eat the same cooked protein you prep once. Cat gets a daily taurine and cod liver oil supplement card so the simple plan stays safe."
+      },
+      "single_indoor_cat": {
+        "title": "Single indoor cat",
+        "tag": "Stovetop, cooked carnivore",
+        "description": "One indoor cat on a cooked-carnivore diet. Small batches, weekday stovetop cook, taurine supplement included."
+      },
+      "senior_dog_low_activity": {
+        "title": "Senior dog, low activity",
+        "tag": "Slow cooker, joint-friendly",
+        "description": "Older dog with joint support. Slow-cooker prep for tender proteins, biweekly plan to keep cook days infrequent."
       }
     }
   },

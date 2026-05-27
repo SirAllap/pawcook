@@ -201,7 +201,9 @@
       "subtitle": "Erstelle einen Wochen-, Zweiwochen- oder Monatsplan mit der Einkaufsliste fürs Geschäft.",
       "create": "Plan erstellen",
       "emptyTitle": "Noch kein Plan.",
-      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren."
+      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren.",
+      "emptyNoPetsTitle": "Mit Vorlage starten",
+      "emptyNoPetsDescription": "Wähle ein Starterpaket und wir richten deine Tiere und deinen ersten Plan in wenigen Klicks ein."
     },
     "new": {
       "title": "Neuer Plan",
@@ -452,6 +454,46 @@
       "done": "Fertig",
       "progress": "{{n}} von {{total}}",
       "tipTape": "Wiederverwendbarer Silikonbeutel? Klebe einen Streifen Malerkrepp darauf und schreibe darauf."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Mit Vorlage starten"
+    },
+    "starter": {
+      "eyebrow": "Schnellstart",
+      "title": "Wähle ein Starterpaket",
+      "subtitle": "Überspringe das lange Formular. Wähle den Haushalt, der zu deinem passt, und wir richten Tiere und Plan ein — alles lässt sich später anpassen.",
+      "manualTitle": "Lieber alles selbst einrichten?",
+      "manualDescription": "Lege ein Tier von Grund auf an und durchlaufe den vollständigen Assistenten.",
+      "manualCta": "Tier manuell hinzufügen",
+      "back": "Zurück zu Plänen"
+    },
+    "template": {
+      "petName": {
+        "dog": "Dein Hund",
+        "cat": "Deine Katze"
+      },
+      "single_adult_dog": {
+        "title": "Einzelner erwachsener Hund",
+        "tag": "Sous-vide am Wochenende, einfache Mahlzeiten",
+        "description": "Ein erwachsener Hund, einfache Supermarkt-Proteine, Wochenend-Kochsession. Ideal für vielbeschäftigte Haushalte am Anfang."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Haushalt mit Hund und Katze",
+        "tag": "Geteilte Kochsession, Taurin-Karte",
+        "description": "Beide Tiere essen dasselbe gekochte Protein, das du einmal vorbereitest. Die Katze erhält eine tägliche Karte mit Taurin und Lebertran, damit der einfache Plan sicher bleibt."
+      },
+      "single_indoor_cat": {
+        "title": "Einzelne Wohnungskatze",
+        "tag": "Herd, gekochter Karnivore",
+        "description": "Eine Wohnungskatze auf einer gekochten Fleischfresser-Diät. Kleine Portionen, Werktags-Kochen am Herd, Taurin-Supplement inklusive."
+      },
+      "senior_dog_low_activity": {
+        "title": "Seniorhund, geringe Aktivität",
+        "tag": "Slowcooker, gelenkschonend",
+        "description": "Älterer Hund mit Gelenkunterstützung. Slowcooker für zartes Protein, vierzehntägiger Plan, um Kochtage selten zu halten."
+      }
     }
   },
   "condition": {

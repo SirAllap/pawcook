@@ -201,7 +201,9 @@
       "subtitle": "Maak een week-, tweeweek- of maandplan met de boodschappenlijst voor de winkel.",
       "create": "Plan maken",
       "emptyTitle": "Nog geen plan.",
-      "emptyDescription": "Eén plan per huishouden. Eén keer koken, iedereen voeren, de rest doseren."
+      "emptyDescription": "Eén plan per huishouden. Eén keer koken, iedereen voeren, de rest doseren.",
+      "emptyNoPetsTitle": "Begin met een sjabloon",
+      "emptyNoPetsDescription": "Kies een startpakket en wij stellen je huisdieren en eerste plan in een paar klikken in."
     },
     "new": {
       "title": "Nieuw plan",
@@ -452,6 +454,46 @@
       "done": "Klaar",
       "progress": "{{n}} van {{total}}",
       "tipTape": "Herbruikbaar siliconen zakje? Plak er een strookje schilderstape op en schrijf daarop."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Begin met een sjabloon"
+    },
+    "starter": {
+      "eyebrow": "Snelle start",
+      "title": "Kies een startpakket",
+      "subtitle": "Sla het lange formulier over. Kies het huishouden dat bij je past en wij zetten de huisdieren en het plan klaar — alles kan later aangepast worden.",
+      "manualTitle": "Liever zelf alles instellen?",
+      "manualDescription": "Voeg vanaf nul een huisdier toe en doorloop de volledige wizard.",
+      "manualCta": "Huisdier handmatig toevoegen",
+      "back": "Terug naar plannen"
+    },
+    "template": {
+      "petName": {
+        "dog": "Je hond",
+        "cat": "Je kat"
+      },
+      "single_adult_dog": {
+        "title": "Enkele volwassen hond",
+        "tag": "Sous-vide in het weekend, eenvoudige maaltijden",
+        "description": "Eén volwassen hond, eenvoudige supermarkteiwitten, kooksessie in het weekend. Ideaal voor drukke huishoudens die net starten."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Huishouden met hond en kat",
+        "tag": "Gedeelde kooksessie, taurine-kaart",
+        "description": "Beide huisdieren eten hetzelfde gekookte eiwit dat je één keer bereidt. De kat krijgt een dagelijkse taurine- en levertraan-kaart zodat het eenvoudige plan veilig blijft."
+      },
+      "single_indoor_cat": {
+        "title": "Enkele binnenkat",
+        "tag": "Kookplaat, gekookte carnivoor",
+        "description": "Eén binnenkat op een gekookt carnivoor dieet. Kleine porties, doordeweekse kookplaat-bereiding, taurine-supplement inbegrepen."
+      },
+      "senior_dog_low_activity": {
+        "title": "Seniorhond, lage activiteit",
+        "tag": "Slowcooker, gewrichtsvriendelijk",
+        "description": "Oudere hond met gewrichtsondersteuning. Slowcooker voor mals eiwit, tweewekelijks plan om kookdagen schaars te houden."
+      }
     }
   },
   "condition": {

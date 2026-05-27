@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { Plus, PawPrint } from 'lucide-react';
+import { Plus, PawPrint, Sparkles } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Button } from '../../components/ui/button';
 import { EmptyState } from '../../components/ui/empty-state';
@@ -41,12 +41,20 @@ export default function PetsList() {
             title={t('pets.list.emptyTitle')}
             description={t('pets.list.emptyDescription')}
             action={
-              <Button asChild variant="primary" size="md">
-                <Link to="/pets/new">
-                  <Plus className="h-4 w-4" aria-hidden />
-                  {t('pets.list.addPet')}
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-center">
+                <Button asChild variant="primary" size="md">
+                  <Link to="/meal-plan/start">
+                    <Sparkles className="h-4 w-4" aria-hidden />
+                    {t('onboarding.cta.useTemplate')}
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary" size="md">
+                  <Link to="/pets/new">
+                    <Plus className="h-4 w-4" aria-hidden />
+                    {t('pets.list.addPet')}
+                  </Link>
+                </Button>
+              </div>
             }
           />
         </FadeIn>

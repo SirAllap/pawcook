@@ -201,7 +201,9 @@
       "subtitle": "Genera un plan semanal, quincenal o mensual y la lista de la compra para llevar a la tienda.",
       "create": "Crear plan",
       "emptyTitle": "Aún no hay plan.",
-      "emptyDescription": "Un plan por hogar. Cocina una vez, alimenta a todos, dosifica el resto."
+      "emptyDescription": "Un plan por hogar. Cocina una vez, alimenta a todos, dosifica el resto.",
+      "emptyNoPetsTitle": "Empieza desde una plantilla",
+      "emptyNoPetsDescription": "Elige un pack de inicio y configuramos tus mascotas y tu primer plan en un par de clics."
     },
     "new": {
       "title": "Nuevo plan",
@@ -451,6 +453,46 @@
         "label": "Citrato de calcio (o cáscara de huevo molida)",
         "dose": "{{mg}} mg por día (~½ cucharadita de cáscara molida por ~454 g de carne)",
         "rationale": "Las comidas cocinadas son deficientes en calcio sin hueso — esto cierra la brecha."
+      }
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Empezar con una plantilla"
+    },
+    "starter": {
+      "eyebrow": "Inicio rápido",
+      "title": "Elige un pack de inicio",
+      "subtitle": "Sáltate el formulario largo. Elige el hogar que más se parezca al tuyo y dejamos las mascotas y el plan listos — luego puedes ajustar lo que quieras.",
+      "manualTitle": "¿Prefieres configurarlo tú mismo?",
+      "manualDescription": "Añade una mascota desde cero y recorre el asistente completo.",
+      "manualCta": "Añadir mascota manualmente",
+      "back": "Volver a planes"
+    },
+    "template": {
+      "petName": {
+        "dog": "Tu perro",
+        "cat": "Tu gato"
+      },
+      "single_adult_dog": {
+        "title": "Perro adulto único",
+        "tag": "Sous-vide del fin de semana, comidas simples",
+        "description": "Un perro adulto, proteínas fáciles de supermercado, sesión de cocción el fin de semana. Ideal para hogares ocupados que empiezan."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Hogar con perro y gato",
+        "tag": "Cocción compartida, tarjeta de taurina",
+        "description": "Ambos comen la misma proteína cocida que preparas una vez. El gato recibe una tarjeta diaria de taurina y aceite de hígado de bacalao para que el plan simple siga siendo seguro."
+      },
+      "single_indoor_cat": {
+        "title": "Gato de interior único",
+        "tag": "Fogón, carnívoro cocinado",
+        "description": "Un gato de interior con dieta cocinada carnívora. Tandas pequeñas, cocción al fogón entre semana, suplemento de taurina incluido."
+      },
+      "senior_dog_low_activity": {
+        "title": "Perro sénior, baja actividad",
+        "tag": "Olla lenta, amigable con las articulaciones",
+        "description": "Perro mayor con apoyo articular. Olla lenta para proteínas tiernas, plan quincenal para reducir los días de cocción."
       }
     }
   },

@@ -201,7 +201,9 @@
       "subtitle": "Wygeneruj plan tygodniowy, dwutygodniowy lub miesięczny i listę zakupów na sklep.",
       "create": "Utwórz plan",
       "emptyTitle": "Jeszcze nie ma planu.",
-      "emptyDescription": "Jeden plan na dom. Ugotuj raz, nakarm wszystkich, dawkuj resztę."
+      "emptyDescription": "Jeden plan na dom. Ugotuj raz, nakarm wszystkich, dawkuj resztę.",
+      "emptyNoPetsTitle": "Zacznij od szablonu",
+      "emptyNoPetsDescription": "Wybierz pakiet startowy, a my skonfigurujemy Twoje zwierzęta i pierwszy plan w kilka kliknięć."
     },
     "new": {
       "title": "Nowy plan",
@@ -452,6 +454,46 @@
       "done": "Gotowe",
       "progress": "{{n}} z {{total}}",
       "tipTape": "Wielorazowy woreczek silikonowy? Naklej kawałek taśmy malarskiej i pisz na niej."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Zacznij od szablonu"
+    },
+    "starter": {
+      "eyebrow": "Szybki start",
+      "title": "Wybierz pakiet startowy",
+      "subtitle": "Pomiń długi formularz. Wybierz dom pasujący do Twojego, a my przygotujemy zwierzęta i plan — wszystko możesz dostosować później.",
+      "manualTitle": "Wolisz wszystko skonfigurować samodzielnie?",
+      "manualDescription": "Dodaj zwierzę od zera i przejdź przez pełnego kreatora.",
+      "manualCta": "Dodaj zwierzę ręcznie",
+      "back": "Wróć do planów"
+    },
+    "template": {
+      "petName": {
+        "dog": "Twój pies",
+        "cat": "Twój kot"
+      },
+      "single_adult_dog": {
+        "title": "Pojedynczy dorosły pies",
+        "tag": "Sous-vide weekendowe, proste posiłki",
+        "description": "Jeden dorosły pies, łatwe białka ze sklepu, weekendowe gotowanie. Idealne dla zapracowanych domów na początek."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Dom z psem i kotem",
+        "tag": "Wspólne gotowanie, karta tauryny",
+        "description": "Oba zwierzęta jedzą to samo gotowane białko, które przygotowujesz raz. Kot dostaje codzienną kartę tauryny i tranu, żeby prosty plan pozostał bezpieczny."
+      },
+      "single_indoor_cat": {
+        "title": "Pojedynczy kot domowy",
+        "tag": "Kuchenka, gotowany mięsożerca",
+        "description": "Jeden kot domowy na gotowanej diecie mięsożernej. Małe porcje, gotowanie na kuchence w ciągu tygodnia, suplement tauryny w zestawie."
+      },
+      "senior_dog_low_activity": {
+        "title": "Pies senior, niska aktywność",
+        "tag": "Wolnowar, przyjazny stawom",
+        "description": "Starszy pies z wsparciem stawów. Wolnowar dla delikatnego białka, plan dwutygodniowy, by ograniczyć dni gotowania."
+      }
     }
   },
   "condition": {

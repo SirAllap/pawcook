@@ -201,7 +201,9 @@
       "subtitle": "Génère un plan hebdomadaire, bihebdomadaire ou mensuel et la liste de courses à emporter.",
       "create": "Créer un plan",
       "emptyTitle": "Pas encore de plan.",
-      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste."
+      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste.",
+      "emptyNoPetsTitle": "Démarrer avec un modèle",
+      "emptyNoPetsDescription": "Choisissez un pack de démarrage et nous configurons vos animaux et votre premier plan en quelques clics."
     },
     "new": {
       "title": "Nouveau plan",
@@ -452,6 +454,46 @@
       "done": "Terminé",
       "progress": "{{n}} sur {{total}}",
       "tipTape": "Sachet en silicone réutilisable ? Collez-y un morceau de ruban de masquage et écrivez dessus."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Démarrer avec un modèle"
+    },
+    "starter": {
+      "eyebrow": "Démarrage rapide",
+      "title": "Choisissez un pack de démarrage",
+      "subtitle": "Évitez le long formulaire. Choisissez le foyer qui correspond au vôtre et nous initialisons les animaux et le plan — vous pourrez tout ajuster ensuite.",
+      "manualTitle": "Vous préférez tout configurer vous-même ?",
+      "manualDescription": "Ajoutez un animal de zéro et parcourez l'assistant complet.",
+      "manualCta": "Ajouter un animal manuellement",
+      "back": "Retour aux plans"
+    },
+    "template": {
+      "petName": {
+        "dog": "Votre chien",
+        "cat": "Votre chat"
+      },
+      "single_adult_dog": {
+        "title": "Chien adulte unique",
+        "tag": "Sous-vide du week-end, repas simples",
+        "description": "Un chien adulte, des protéines faciles du supermarché, session de cuisson le week-end. Idéal pour les foyers occupés qui débutent."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Foyer chien et chat",
+        "tag": "Cuisson partagée, carte taurine",
+        "description": "Les deux animaux mangent la même protéine cuite que vous préparez une seule fois. Le chat reçoit une carte quotidienne de taurine et d'huile de foie de morue pour que le plan simple reste sûr."
+      },
+      "single_indoor_cat": {
+        "title": "Chat d'intérieur unique",
+        "tag": "Plaque, carnivore cuit",
+        "description": "Un chat d'intérieur sur un régime cuit carnivore. Petites portions, cuisson à la plaque en semaine, supplément de taurine inclus."
+      },
+      "senior_dog_low_activity": {
+        "title": "Chien sénior, faible activité",
+        "tag": "Mijoteuse, bon pour les articulations",
+        "description": "Chien âgé avec soutien articulaire. Préparation à la mijoteuse pour des protéines tendres, plan bimensuel pour limiter les jours de cuisson."
+      }
     }
   },
   "condition": {
