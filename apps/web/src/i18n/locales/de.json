@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · spart {{saved}} ggü. täglich",
       "simpleMeals": "Einfache Mahlzeiten",
       "simpleMealsHelp": "Ein Protein pro Mahlzeit — derselbe Beutel für den ganzen Haushalt. Katzen erhalten eine tägliche Empfehlung für Taurin + Lebertran, um die Lücke zu schließen. Deaktivieren für das vollständige Mehrkomponenten-Rezept (Innereien, Meeresfrüchte-Zusätze, Makros pro Tier).",
-      "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden."
+      "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden.",
+      "veggieDetail": "Jedes Gemüse einzeln garen",
+      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} Schale",
         "bunch": "{{qty}} Bund",
         "bottle": "{{qty}} Flasche"
-      }
+      },
+      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht."
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Niedrigere Verhältnisse (5:1 bis 10:1) reduzieren systemische Entzündungen"
         }
-      }
+      },
+      "sourceLine": "AAFCO Nährstoffprofil für Hunde — Trockensubstanz-Basis",
+      "sourceLine_cat": "AAFCO Nährstoffprofil für Katzen — Trockensubstanz-Basis"
     },
     "transition": {
       "title": "7-Tage-Umstellung von Trockenfutter auf Frischfutter",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/Woche",
           "calcium": "Calciumcitrat",
           "calciumDose": "287 mg/Tag",
-          "dayLabel": "Tag 1 · Mo 25. Mai",
+          "dayLabel": "Tag 1 · {{date}}",
           "beefDay": "Rindfleisch-Tag",
           "mainGrams": "{{g}}g Rind"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Datenschutzerklärung von GitHub",
     "eyebrow": "Über",
     "subtitle_cat": "Open-Source-Rechner für selbstgekochtes Hunde- und Katzenfutter, gebaut für Menschen, die für ihre Tiere kochen.",
-    "notVetAdvice_cat": "Dieses Tool ist kein tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten Standards (AAFCO, NRC, FEDIAF). Besonders bei Katzen sind die Spielräume für Taurin, Arachidonsäure und Vitamin A eng. Für langfristiges Selberkochen konsultieren Sie eine zertifizierte Tierernährungsfachkraft (ACVN-Diplomate)."
+    "notVetAdvice_cat": "Dieses Tool ist kein tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten Standards (AAFCO, NRC, FEDIAF). Besonders bei Katzen sind die Spielräume für Taurin, Arachidonsäure und Vitamin A eng. Für langfristiges Selberkochen konsultieren Sie eine zertifizierte Tierernährungsfachkraft (ACVN-Diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO Nährstoffprofile für Hunde",
+        "nrc": "NRC Nährstoffbedarf von Hunden und Katzen (2006)",
+        "fediaf": "FEDIAF Ernährungsrichtlinien",
+        "merck": "Merck Veterinärhandbuch",
+        "wsava": "WSAVA Globale Ernährungsrichtlinien",
+        "acvn": "ACVN Positionspapiere"
+      },
+      "cat": {
+        "aafco": "AAFCO Nährstoffprofile für Katzen",
+        "nrc": "NRC Nährstoffbedarf von Hunden und Katzen (2006)",
+        "aaha": "AAHA / AAFP 2021 Lebensphasen-Richtlinien für Katzen",
+        "zoran": "Zoran (2002) — Die Carnivoren-Verbindung in der Katzenernährung",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF Ernährungsrichtlinien",
+        "acvn": "ACVN Positionspapiere"
+      }
+    }
   },
   "meatData": {
     "beef": {

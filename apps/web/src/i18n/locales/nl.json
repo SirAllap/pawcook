@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks",
       "simpleMeals": "Eenvoudige maaltijden",
       "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier).",
-      "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden."
+      "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden.",
+      "veggieDetail": "Elke groente apart koken",
+      "veggieDetailHelp": "Uit (aanbevolen): één gemengde batch per kookdag — wortels, zoete aardappel en sperziebonen samen in één pan. Aan: elke groente krijgt zijn eigen kooksessie in het plan, met een eigen zakje-schema."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} bakje",
         "bunch": "{{qty}} bos",
         "bottle": "{{qty}} fles"
-      }
+      },
+      "yieldAdjustedHint": "Inkoop omvat kookkrimp — levert ~{{c}} g gaar op."
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Lagere verhoudingen (5:1 tot 10:1) verminderen systemische ontsteking"
         }
-      }
+      },
+      "sourceLine": "AAFCO-voedingsprofiel honden — droge stof",
+      "sourceLine_cat": "AAFCO-voedingsprofiel katten — droge stof"
     },
     "transition": {
       "title": "7-daagse overgang van brokken naar vers voer",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/week",
           "calcium": "Calciumcitraat",
           "calciumDose": "287 mg/dag",
-          "dayLabel": "Dag 1 · Ma 25 mei",
+          "dayLabel": "Dag 1 · {{date}}",
           "beefDay": "Rundvlees-dag",
           "mainGrams": "{{g}}g rundvlees"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Privacyverklaring van GitHub",
     "eyebrow": "Over",
     "subtitle_cat": "Open source calculator voor zelfgemaakte honden- en kattenvoeding, gebouwd voor mensen die voor hun dieren koken.",
-    "notVetAdvice_cat": "Deze tool vervangt geen diergeneeskundig advies. Ze geeft algemene richtlijnen op basis van gepubliceerde standaarden (AAFCO, NRC, FEDIAF). Katten hebben bijzonder krappe marges voor taurine, arachidonzuur en vitamine A. Voor langdurige zelfgemaakte voeding raadpleeg een gecertificeerd veterinair voedingsdeskundige (ACVN-diplomate)."
+    "notVetAdvice_cat": "Deze tool vervangt geen diergeneeskundig advies. Ze geeft algemene richtlijnen op basis van gepubliceerde standaarden (AAFCO, NRC, FEDIAF). Katten hebben bijzonder krappe marges voor taurine, arachidonzuur en vitamine A. Voor langdurige zelfgemaakte voeding raadpleeg een gecertificeerd veterinair voedingsdeskundige (ACVN-diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO-voedingsprofielen voor honden",
+        "nrc": "NRC voedingsbehoeften honden en katten (2006)",
+        "fediaf": "FEDIAF voedingsrichtlijnen",
+        "merck": "Merck veterinair handboek",
+        "wsava": "WSAVA wereldwijde voedingsrichtlijnen",
+        "acvn": "ACVN-standpunten"
+      },
+      "cat": {
+        "aafco": "AAFCO-voedingsprofielen voor katten",
+        "nrc": "NRC voedingsbehoeften honden en katten (2006)",
+        "aaha": "AAHA / AAFP 2021 richtlijnen levensfasen kat",
+        "zoran": "Zoran (2002) — De carnivore-verbinding in kattenvoeding",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF voedingsrichtlijnen",
+        "acvn": "ACVN-standpunten"
+      }
+    }
   },
   "meatData": {
     "beef": {

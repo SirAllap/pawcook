@@ -11,25 +11,25 @@ import { FadeIn } from '../components/motion/fade-in';
 import { useSpeciesT } from '../lib/use-species-t';
 import { useSpecies } from '../lib/species';
 
-type Source = { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; url: string };
+type Source = { id: string; defaultLabel: string; Icon: ComponentType<SVGProps<SVGSVGElement>>; url: string };
 
 const DOG_SOURCES: Source[] = [
-  { label: 'AAFCO Dog Food Nutrient Profiles',                  Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
-  { label: 'NRC Nutrient Requirements of Dogs and Cats (2006)', Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
-  { label: 'FEDIAF Nutritional Guidelines',                     Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
-  { label: 'Merck Veterinary Manual',                           Icon: BookOpen,     url: 'https://www.merckvetmanual.com/management-and-nutrition/nutrition-small-animals' },
-  { label: 'WSAVA Global Nutrition Guidelines',                 Icon: Building2,    url: 'https://wsava.org/global-guidelines/global-nutrition-guidelines/' },
-  { label: 'ACVN position statements',                          Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
+  { id: 'dog.aafco',  defaultLabel: 'AAFCO Dog Food Nutrient Profiles',                  Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
+  { id: 'dog.nrc',    defaultLabel: 'NRC Nutrient Requirements of Dogs and Cats (2006)', Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
+  { id: 'dog.fediaf', defaultLabel: 'FEDIAF Nutritional Guidelines',                     Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
+  { id: 'dog.merck',  defaultLabel: 'Merck Veterinary Manual',                           Icon: BookOpen,     url: 'https://www.merckvetmanual.com/management-and-nutrition/nutrition-small-animals' },
+  { id: 'dog.wsava',  defaultLabel: 'WSAVA Global Nutrition Guidelines',                 Icon: Building2,    url: 'https://wsava.org/global-guidelines/global-nutrition-guidelines/' },
+  { id: 'dog.acvn',   defaultLabel: 'ACVN position statements',                          Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
 ];
 
 const CAT_SOURCES: Source[] = [
-  { label: 'AAFCO Cat Food Nutrient Profiles',                  Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
-  { label: 'NRC Nutrient Requirements of Dogs and Cats (2006)', Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
-  { label: 'AAHA / AAFP 2021 Feline Life Stage Guidelines',     Icon: Building2,    url: 'https://www.aaha.org/resources/2021-aaha-aafp-feline-life-stage-guidelines/' },
-  { label: 'Zoran (2002) — The Carnivore Connection to Nutrition in Cats', Icon: FlaskConical, url: 'https://avmajournals.avma.org/view/journals/javma/221/11/javma.2002.221.1559.xml' },
-  { label: 'catinfo.org — Lisa A. Pierson, DVM',                Icon: BookOpen,     url: 'https://catinfo.org/making-cat-food/' },
-  { label: 'FEDIAF Nutritional Guidelines',                     Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
-  { label: 'ACVN position statements',                          Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
+  { id: 'cat.aafco',   defaultLabel: 'AAFCO Cat Food Nutrient Profiles',                                Icon: FileText,     url: 'https://www.aafco.org/resources/aafco-methods-for-substantiating-nutritional-adequacy-of-dog-and-cat-foods/' },
+  { id: 'cat.nrc',     defaultLabel: 'NRC Nutrient Requirements of Dogs and Cats (2006)',               Icon: FlaskConical, url: 'https://www.nap.edu/catalog/10668/nutrient-requirements-of-dogs-and-cats' },
+  { id: 'cat.aaha',    defaultLabel: 'AAHA / AAFP 2021 Feline Life Stage Guidelines',                   Icon: Building2,    url: 'https://www.aaha.org/resources/2021-aaha-aafp-feline-life-stage-guidelines/' },
+  { id: 'cat.zoran',   defaultLabel: 'Zoran (2002) — The Carnivore Connection to Nutrition in Cats',    Icon: FlaskConical, url: 'https://avmajournals.avma.org/view/journals/javma/221/11/javma.2002.221.1559.xml' },
+  { id: 'cat.catinfo', defaultLabel: 'catinfo.org — Lisa A. Pierson, DVM',                              Icon: BookOpen,     url: 'https://catinfo.org/making-cat-food/' },
+  { id: 'cat.fediaf',  defaultLabel: 'FEDIAF Nutritional Guidelines',                                   Icon: Globe,        url: 'https://www.fediaf.org/self-regulation/nutrition.html' },
+  { id: 'cat.acvn',    defaultLabel: 'ACVN position statements',                                        Icon: Stethoscope,  url: 'https://www.acvn.org/position-statements/' },
 ];
 
 export default function About() {
@@ -80,9 +80,9 @@ export default function About() {
             <h2 className="font-black">{t('about.methodology')}</h2>
           </header>
           <div className="p-4 space-y-2">
-            {sources.map(({ label, Icon, url }) => (
+            {sources.map(({ id, defaultLabel, Icon, url }) => (
               <a
-                key={label}
+                key={id}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -91,7 +91,9 @@ export default function About() {
                 <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-surface text-muted-fg group-hover:text-primary transition-colors">
                   <Icon className="h-4 w-4" />
                 </div>
-                <p className="text-sm font-medium flex-1">{label}</p>
+                <p className="text-sm font-medium flex-1">
+                  {t(`about.sources.${id}`, { defaultValue: defaultLabel })}
+                </p>
                 <ExternalLink className="h-3.5 w-3.5 text-muted-fg group-hover:text-primary transition-colors" />
               </a>
             ))}

@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera",
       "simpleMeals": "Pasti semplici",
       "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale).",
-      "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli."
+      "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli.",
+      "veggieDetail": "Cuocere ogni verdura separatamente",
+      "veggieDetailHelp": "Disattivato (consigliato): un lotto misto per giorno di cucina — carote, patata dolce e fagiolini nella stessa pentola. Attivato: ogni verdura ha la propria sessione di cottura nel piano, con il proprio calendario di sacchetti."
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} cestino",
         "bunch": "{{qty}} mazzo",
         "bottle": "{{qty}} bottiglia"
-      }
+      },
+      "yieldAdjustedHint": "L'acquisto include il calo di cottura — resa ~{{c}} g cotti."
     },
     "confirmDelete": "Eliminare il piano «{{name}}»? L'azione è irreversibile.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Rapporti più bassi (da 5:1 a 10:1) riducono l'infiammazione sistemica"
         }
-      }
+      },
+      "sourceLine": "Profilo nutrizionale AAFCO per cani — sostanza secca",
+      "sourceLine_cat": "Profilo nutrizionale AAFCO per gatti — sostanza secca"
     },
     "transition": {
       "title": "Transizione di 7 giorni da crocchette a cibo fresco",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/settimana",
           "calcium": "Citrato di calcio",
           "calciumDose": "287 mg/giorno",
-          "dayLabel": "Giorno 1 · Lun 25 mag",
+          "dayLabel": "Giorno 1 · {{date}}",
           "beefDay": "Giorno manzo",
           "mainGrams": "{{g}}g manzo"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Informativa sulla privacy di GitHub",
     "eyebrow": "Informazioni",
     "subtitle_cat": "Calcolatore open source di cibo casalingo per cani e gatti, costruito per chi cucina per i propri animali.",
-    "notVetAdvice_cat": "Questo strumento non è un parere veterinario. Fornisce linee guida generali basate su standard pubblicati (AAFCO, NRC, FEDIAF). I gatti hanno margini particolarmente stretti per taurina, acido arachidonico e vitamina A. Per alimentazione casalinga a lungo termine, consulta un nutrizionista veterinario certificato (diplomato ACVN)."
+    "notVetAdvice_cat": "Questo strumento non è un parere veterinario. Fornisce linee guida generali basate su standard pubblicati (AAFCO, NRC, FEDIAF). I gatti hanno margini particolarmente stretti per taurina, acido arachidonico e vitamina A. Per alimentazione casalinga a lungo termine, consulta un nutrizionista veterinario certificato (diplomato ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profili nutrizionali AAFCO per cani",
+        "nrc": "Fabbisogno nutritivo NRC per cani e gatti (2006)",
+        "fediaf": "Linee guida nutrizionali FEDIAF",
+        "merck": "Manuale veterinario Merck",
+        "wsava": "Linee guida globali di nutrizione WSAVA",
+        "acvn": "Posizioni ufficiali ACVN"
+      },
+      "cat": {
+        "aafco": "Profili nutrizionali AAFCO per gatti",
+        "nrc": "Fabbisogno nutritivo NRC per cani e gatti (2006)",
+        "aaha": "Linee guida AAHA / AAFP 2021 sulle fasi di vita felina",
+        "zoran": "Zoran (2002) — Il legame carnivoro nella nutrizione felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Linee guida nutrizionali FEDIAF",
+        "acvn": "Posizioni ufficiali ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

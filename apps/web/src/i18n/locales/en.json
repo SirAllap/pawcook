@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily",
       "simpleMeals": "Simple meals",
       "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).",
-      "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags."
+      "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags.",
+      "veggieDetail": "Cook each veggie separately",
+      "veggieDetailHelp": "Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule."
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -332,7 +334,8 @@
         "bottle": "{{qty}} bottle"
       },
       "cookShort": "Cook",
-      "emptyTitle": "Nothing to buy yet"
+      "emptyTitle": "Nothing to buy yet",
+      "yieldAdjustedHint": "Buy includes cooking shrinkage — yields ~{{c}} g cooked."
     },
     "cookingPlan": {
       "emptyTitle": "Bag schedule lives with sous-vide.",
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Lower ratios (5:1 to 10:1) reduce systemic inflammation"
         }
-      }
+      },
+      "sourceLine": "AAFCO Dog Food Nutrient Profile — dry matter basis",
+      "sourceLine_cat": "AAFCO Cat Food Nutrient Profile — dry matter basis"
     },
     "transition": {
       "title": "7-day transition from kibble to fresh food",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/week",
           "calcium": "Calcium citrate",
           "calciumDose": "287 mg/day",
-          "dayLabel": "Day 1 · Mon May 25",
+          "dayLabel": "Day 1 · {{date}}",
           "beefDay": "Beef day",
           "mainGrams": "{{g}}g beef"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "GitHub privacy statement",
     "eyebrow": "About",
     "subtitle_cat": "Open-source homemade cat and dog food calculator built for people who cook for their pets.",
-    "notVetAdvice_cat": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Cats in particular have tight margins for taurine, arachidonic acid and vitamin A. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate)."
+    "notVetAdvice_cat": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Cats in particular have tight margins for taurine, arachidonic acid and vitamin A. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO Dog Food Nutrient Profiles",
+        "nrc": "NRC Nutrient Requirements of Dogs and Cats (2006)",
+        "fediaf": "FEDIAF Nutritional Guidelines",
+        "merck": "Merck Veterinary Manual",
+        "wsava": "WSAVA Global Nutrition Guidelines",
+        "acvn": "ACVN position statements"
+      },
+      "cat": {
+        "aafco": "AAFCO Cat Food Nutrient Profiles",
+        "nrc": "NRC Nutrient Requirements of Dogs and Cats (2006)",
+        "aaha": "AAHA / AAFP 2021 Feline Life Stage Guidelines",
+        "zoran": "Zoran (2002) — The Carnivore Connection to Nutrition in Cats",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF Nutritional Guidelines",
+        "acvn": "ACVN position statements"
+      }
+    }
   },
   "meatData": {
     "beef": {

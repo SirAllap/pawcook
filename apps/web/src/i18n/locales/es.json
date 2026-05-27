@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria",
       "simpleMeals": "Comidas simples",
       "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota).",
-      "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas."
+      "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas.",
+      "veggieDetail": "Cocinar cada verdura por separado",
+      "veggieDetailHelp": "Desactivado (recomendado): un lote mixto por día de cocina — zanahorias, batata y judías verdes todo en la misma olla. Activado: cada verdura tiene su propia sesión de cocción en el plan, con su propio calendario de bolsas."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} cestita",
         "bunch": "{{qty}} manojo",
         "bottle": "{{qty}} botella"
-      }
+      },
+      "yieldAdjustedHint": "Compra incluye merma de cocción — rinde ~{{c}} g cocidos."
     },
     "confirmDelete": "¿Eliminar el plan «{{name}}»? Esta acción no se puede deshacer.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Ratios más bajos (5:1 a 10:1) reducen la inflamación sistémica"
         }
-      }
+      },
+      "sourceLine": "Perfil nutricional AAFCO para perros — base materia seca",
+      "sourceLine_cat": "Perfil nutricional AAFCO para gatos — base materia seca"
     },
     "transition": {
       "title": "Transición de 7 días de pienso a comida fresca",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semana",
           "calcium": "Citrato de calcio",
           "calciumDose": "287 mg/día",
-          "dayLabel": "Día 1 · Lun 25 may",
+          "dayLabel": "Día 1 · {{date}}",
           "beefDay": "Día de ternera",
           "mainGrams": "{{g}}g ternera"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Política de privacidad de GitHub",
     "eyebrow": "Acerca de",
     "subtitle_cat": "Calculadora open source de comida casera para gatos y perros, pensada para quienes cocinan para sus mascotas.",
-    "notVetAdvice_cat": "Esta herramienta no es consejo veterinario. Ofrece pautas generales basadas en estándares publicados (AAFCO, NRC, FEDIAF). Los gatos en particular tienen márgenes estrechos en taurina, ácido araquidónico y vitamina A. Para alimentación casera a largo plazo, consulta a un nutricionista veterinario certificado (diplomado ACVN)."
+    "notVetAdvice_cat": "Esta herramienta no es consejo veterinario. Ofrece pautas generales basadas en estándares publicados (AAFCO, NRC, FEDIAF). Los gatos en particular tienen márgenes estrechos en taurina, ácido araquidónico y vitamina A. Para alimentación casera a largo plazo, consulta a un nutricionista veterinario certificado (diplomado ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Perfiles nutricionales AAFCO para perros",
+        "nrc": "Requisitos nutricionales NRC para perros y gatos (2006)",
+        "fediaf": "Directrices nutricionales FEDIAF",
+        "merck": "Manual veterinario Merck",
+        "wsava": "Directrices globales de nutrición WSAVA",
+        "acvn": "Posicionamientos del ACVN"
+      },
+      "cat": {
+        "aafco": "Perfiles nutricionales AAFCO para gatos",
+        "nrc": "Requisitos nutricionales NRC para perros y gatos (2006)",
+        "aaha": "Directrices AAHA / AAFP 2021 para etapas de vida felinas",
+        "zoran": "Zoran (2002) — La conexión carnívora en la nutrición felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Directrices nutricionales FEDIAF",
+        "acvn": "Posicionamientos del ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

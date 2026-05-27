@@ -92,10 +92,11 @@ export default function SupplementGuide() {
             <h2 className="font-black text-base">
               {t('supplements.aafcoTable.title', { defaultValue: 'AAFCO Nutrient Profile' })}
             </h2>
-            {/* Source string comes from the per-species AAFCO JSON, not i18n,
-                so the cat table doesn't get tagged with "Dog Food Nutrient Profiles". */}
+            {/* Localized per species so non-English users don't see "AAFCO
+                Dog Food Nutrient Profiles" verbatim. The English data file
+                value is the defaultValue fallback. */}
             <p className="text-xs text-muted-fg mt-0.5">
-              {aafco.source}
+              {tS('supplements.aafcoTable.sourceLine', { defaultValue: aafco.source })}
             </p>
           </header>
           <div className="overflow-x-auto">

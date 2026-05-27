@@ -211,7 +211,7 @@ function DeviceFrame({ children }: { children: ReactNode }) {
    ────────────────────────────────────────────────────────────────── */
 
 function PlanMock() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="space-y-3">
       {/* Supplement card */}
@@ -244,7 +244,10 @@ function PlanMock() {
       <div className="rounded-2xl border border-border bg-surface-2 p-3 space-y-2">
         <div className="flex items-baseline justify-between">
           <span className="text-xs font-black tracking-tight">
-            {t('landing.preview.mock.plan.dayLabel', { defaultValue: 'Day 1 · Mon May 25' })}
+            {t('landing.preview.mock.plan.dayLabel', {
+              defaultValue: 'Day 1 · {{date}}',
+              date: fmtMockDate('2026-05-25', i18n.language, true),
+            })}
           </span>
           <span className="text-[10px] font-mono text-muted-fg">
             {t('landing.preview.mock.plan.beefDay', { defaultValue: 'Beef day' })}
@@ -291,7 +294,7 @@ function MealRow({ species, pet, grams, kcal, mainGrams }: { species: 'dog' | 'c
 }
 
 function CookingMock() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="space-y-3">
       {/* Summary card */}
@@ -321,8 +324,8 @@ function CookingMock() {
           </span>
         </div>
         <ul className="divide-y divide-border/50">
-          <BagRow n={1} total={2} dates="May 25 · 26" useBy="May 29" grams={1290} />
-          <BagRow n={2} total={2} dates="May 31 · Jun 1" useBy="Jun 4" grams={1290} />
+          <BagRow n={1} total={2} dateIsos={['2026-05-25', '2026-05-26']} useByIso="2026-05-29" grams={1290} />
+          <BagRow n={2} total={2} dateIsos={['2026-05-31', '2026-06-01']} useByIso="2026-06-04" grams={1290} />
         </ul>
       </div>
 
@@ -341,16 +344,18 @@ function CookingMock() {
           </span>
         </div>
         <ul className="divide-y divide-border/50">
-          <BagRow n={1} total={2} dates="May 27 · 28" useBy="May 31" grams={1270} />
-          <BagRow n={2} total={2} dates="Jun 2 · 3" useBy="Jun 6" grams={1270} />
+          <BagRow n={1} total={2} dateIsos={['2026-05-27', '2026-05-28']} useByIso="2026-05-31" grams={1270} />
+          <BagRow n={2} total={2} dateIsos={['2026-06-02', '2026-06-03']} useByIso="2026-06-06" grams={1270} />
         </ul>
       </div>
     </div>
   );
 }
 
-function BagRow({ n, total, dates, useBy, grams }: { n: number; total: number; dates: string; useBy: string; grams: number }) {
-  const { t } = useTranslation();
+function BagRow({ n, total, dateIsos, useByIso, grams }: { n: number; total: number; dateIsos: string[]; useByIso: string; grams: number }) {
+  const { t, i18n } = useTranslation();
+  const dates = dateIsos.map((d) => fmtMockDate(d, i18n.language)).join(' · ');
+  const useBy = fmtMockDate(useByIso, i18n.language);
   return (
     <li className="px-3 py-2 flex items-center justify-between gap-2 text-[11px]">
       <span className="font-bold">
@@ -369,8 +374,20 @@ function BagRow({ n, total, dates, useBy, grams }: { n: number; total: number; d
   );
 }
 
+/**
+ * Locale-format an ISO date for the landing mock cards. `withWeekday`
+ * adds the weekday name; mock dates are illustrative-only.
+ */
+function fmtMockDate(iso: string, locale: string, withWeekday = false): string {
+  return new Date(iso + 'T00:00:00Z').toLocaleDateString(locale, {
+    ...(withWeekday ? { weekday: 'short' } : {}),
+    day: 'numeric',
+    month: 'short',
+  });
+}
+
 function BagMock() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-primary/30 bg-primary/5 p-3 space-y-3">
@@ -415,9 +432,9 @@ function BagMock() {
 
         <ul className="rounded-lg border border-primary/20 bg-surface divide-y divide-border/50 text-[11px]">
           {[
-            { n: 1, dates: 'May 25', useBy: 'May 28' },
-            { n: 2, dates: 'May 28', useBy: 'May 31' },
-            { n: 3, dates: 'May 31', useBy: 'Jun 3' },
+            { n: 1, dateIso: '2026-05-25', useByIso: '2026-05-28' },
+            { n: 2, dateIso: '2026-05-28', useByIso: '2026-05-31' },
+            { n: 3, dateIso: '2026-05-31', useByIso: '2026-06-03' },
           ].map((b) => (
             <li key={b.n} className="flex items-center justify-between gap-2 px-3 py-1.5">
               <span className="font-bold">
@@ -426,8 +443,8 @@ function BagMock() {
               <span className="text-muted-fg text-right truncate">
                 {t('cooking.bagStrategy.bagRow', {
                   defaultValue: 'serves {{serveDates}} · use by {{useBy}}',
-                  serveDates: b.dates,
-                  useBy: b.useBy,
+                  serveDates: fmtMockDate(b.dateIso, i18n.language),
+                  useBy: fmtMockDate(b.useByIso, i18n.language),
                 })}
               </span>
               <span className="font-mono tabular-nums shrink-0">660 g</span>

@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne",
       "simpleMeals": "Repas simples",
       "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal).",
-      "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits."
+      "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits.",
+      "veggieDetail": "Cuire chaque légume séparément",
+      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets."
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} barquette",
         "bunch": "{{qty}} botte",
         "bottle": "{{qty}} bouteille"
-      }
+      },
+      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit."
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Oméga-6 : Oméga-3",
           "note": "Des ratios plus bas (5:1 à 10:1) réduisent l'inflammation systémique"
         }
-      }
+      },
+      "sourceLine": "Profil nutritionnel AAFCO chiens — base matière sèche",
+      "sourceLine_cat": "Profil nutritionnel AAFCO chats — base matière sèche"
     },
     "transition": {
       "title": "Transition 7 jours des croquettes vers le frais",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semaine",
           "calcium": "Citrate de calcium",
           "calciumDose": "287 mg/jour",
-          "dayLabel": "Jour 1 · lun. 25 mai",
+          "dayLabel": "Jour 1 · {{date}}",
           "beefDay": "Jour bœuf",
           "mainGrams": "{{g}}g bœuf"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Politique de confidentialité de GitHub",
     "eyebrow": "À propos",
     "subtitle_cat": "Calculateur open source de nourriture maison pour chiens et chats, conçu pour qui cuisine pour ses animaux.",
-    "notVetAdvice_cat": "Cet outil n'est pas un avis vétérinaire. Il fournit des recommandations générales basées sur des normes publiées (AAFCO, NRC, FEDIAF). Les chats ont en particulier des marges étroites pour la taurine, l'acide arachidonique et la vitamine A. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplômé ACVN)."
+    "notVetAdvice_cat": "Cet outil n'est pas un avis vétérinaire. Il fournit des recommandations générales basées sur des normes publiées (AAFCO, NRC, FEDIAF). Les chats ont en particulier des marges étroites pour la taurine, l'acide arachidonique et la vitamine A. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplômé ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profils nutritionnels AAFCO pour chiens",
+        "nrc": "Besoins nutritionnels NRC pour chiens et chats (2006)",
+        "fediaf": "Lignes directrices nutritionnelles FEDIAF",
+        "merck": "Manuel vétérinaire Merck",
+        "wsava": "Lignes directrices mondiales en nutrition WSAVA",
+        "acvn": "Prises de position de l'ACVN"
+      },
+      "cat": {
+        "aafco": "Profils nutritionnels AAFCO pour chats",
+        "nrc": "Besoins nutritionnels NRC pour chiens et chats (2006)",
+        "aaha": "Lignes directrices AAHA / AAFP 2021 sur les étapes de vie félines",
+        "zoran": "Zoran (2002) — Le lien carnivore dans la nutrition féline",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Lignes directrices nutritionnelles FEDIAF",
+        "acvn": "Prises de position de l'ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

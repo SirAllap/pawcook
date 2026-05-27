@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna",
       "simpleMeals": "Proste posiłki",
       "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet).",
-      "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków."
+      "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków.",
+      "veggieDetail": "Gotuj każde warzywo osobno",
+      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} łubianka",
         "bunch": "{{qty}} pęczek",
         "bottle": "{{qty}} butelka"
-      }
+      },
+      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu."
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Niższe stosunki (5:1 do 10:1) zmniejszają stan zapalny w organizmie"
         }
-      }
+      },
+      "sourceLine": "Profil odżywczy AAFCO dla psów — sucha masa",
+      "sourceLine_cat": "Profil odżywczy AAFCO dla kotów — sucha masa"
     },
     "transition": {
       "title": "7-dniowa zmiana z karmy suchej na świeżą",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/tydzień",
           "calcium": "Cytrynian wapnia",
           "calciumDose": "287 mg/dzień",
-          "dayLabel": "Dzień 1 · Pon 25 maj",
+          "dayLabel": "Dzień 1 · {{date}}",
           "beefDay": "Dzień wołowiny",
           "mainGrams": "{{g}}g wołowiny"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Polityka prywatności GitHuba",
     "eyebrow": "O nas",
     "subtitle_cat": "Open-source kalkulator domowej karmy dla psów i kotów, stworzony dla osób gotujących dla swoich zwierząt.",
-    "notVetAdvice_cat": "To narzędzie nie zastępuje porady weterynaryjnej. Dostarcza ogólne wytyczne oparte na opublikowanych standardach (AAFCO, NRC, FEDIAF). Koty mają szczególnie wąskie marginesy dla tauryny, kwasu arachidonowego i witaminy A. W przypadku długoterminowego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomata ACVN)."
+    "notVetAdvice_cat": "To narzędzie nie zastępuje porady weterynaryjnej. Dostarcza ogólne wytyczne oparte na opublikowanych standardach (AAFCO, NRC, FEDIAF). Koty mają szczególnie wąskie marginesy dla tauryny, kwasu arachidonowego i witaminy A. W przypadku długoterminowego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomata ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profile odżywcze AAFCO dla psów",
+        "nrc": "NRC zapotrzebowanie na składniki dla psów i kotów (2006)",
+        "fediaf": "Wytyczne żywieniowe FEDIAF",
+        "merck": "Podręcznik weterynaryjny Merck",
+        "wsava": "Globalne wytyczne żywieniowe WSAVA",
+        "acvn": "Stanowiska ACVN"
+      },
+      "cat": {
+        "aafco": "Profile odżywcze AAFCO dla kotów",
+        "nrc": "NRC zapotrzebowanie na składniki dla psów i kotów (2006)",
+        "aaha": "Wytyczne AAHA / AAFP 2021 dot. etapów życia kotów",
+        "zoran": "Zoran (2002) — Mięsożerny związek z żywieniem kotów",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Wytyczne żywieniowe FEDIAF",
+        "acvn": "Stanowiska ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

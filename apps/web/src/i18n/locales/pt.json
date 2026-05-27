@@ -281,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · economiza {{saved}} vs diária",
       "simpleMeals": "Refeições simples",
       "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet).",
-      "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais."
+      "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais.",
+      "veggieDetail": "Cozinhar cada legume em separado",
+      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -332,7 +334,8 @@
         "punnet": "{{qty}} cestinha",
         "bunch": "{{qty}} maço",
         "bottle": "{{qty}} garrafa"
-      }
+      },
+      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados."
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
@@ -1236,7 +1239,9 @@
           "label": "Ómega-6 : Ómega-3",
           "note": "Rácios mais baixos (5:1 a 10:1) reduzem a inflamação sistémica"
         }
-      }
+      },
+      "sourceLine": "Perfil nutricional AAFCO para cães — matéria seca",
+      "sourceLine_cat": "Perfil nutricional AAFCO para gatos — matéria seca"
     },
     "transition": {
       "title": "Transição de 7 dias de ração para comida fresca",
@@ -1435,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semana",
           "calcium": "Citrato de cálcio",
           "calciumDose": "287 mg/dia",
-          "dayLabel": "Dia 1 · Seg 25 mai",
+          "dayLabel": "Dia 1 · {{date}}",
           "beefDay": "Dia de carne",
           "mainGrams": "{{g}}g carne"
         },
@@ -1480,7 +1485,26 @@
     "privacyHostLink": "Política de privacidade do GitHub",
     "eyebrow": "Sobre",
     "subtitle_cat": "Calculadora open source de comida caseira para cães e gatos, feita para quem cozinha para os seus animais.",
-    "notVetAdvice_cat": "Esta ferramenta não substitui orientação veterinária. Fornece diretrizes gerais baseadas em padrões publicados (AAFCO, NRC, FEDIAF). Gatos têm margens estreitas para taurina, ácido araquidônico e vitamina A. Para alimentação caseira de longo prazo, consulte um nutricionista veterinário certificado (diplomado ACVN)."
+    "notVetAdvice_cat": "Esta ferramenta não substitui orientação veterinária. Fornece diretrizes gerais baseadas em padrões publicados (AAFCO, NRC, FEDIAF). Gatos têm margens estreitas para taurina, ácido araquidônico e vitamina A. Para alimentação caseira de longo prazo, consulte um nutricionista veterinário certificado (diplomado ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Perfis nutricionais AAFCO para cães",
+        "nrc": "Necessidades nutricionais NRC para cães e gatos (2006)",
+        "fediaf": "Diretrizes nutricionais FEDIAF",
+        "merck": "Manual veterinário Merck",
+        "wsava": "Diretrizes globais de nutrição WSAVA",
+        "acvn": "Tomadas de posição da ACVN"
+      },
+      "cat": {
+        "aafco": "Perfis nutricionais AAFCO para gatos",
+        "nrc": "Necessidades nutricionais NRC para cães e gatos (2006)",
+        "aaha": "Diretrizes AAHA / AAFP 2021 das fases de vida felinas",
+        "zoran": "Zoran (2002) — A ligação carnívora na nutrição felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Diretrizes nutricionais FEDIAF",
+        "acvn": "Tomadas de posição da ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {
