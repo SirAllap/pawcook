@@ -294,7 +294,7 @@ function MealRow({ species, pet, grams, kcal, mainGrams }: { species: 'dog' | 'c
 }
 
 function CookingMock() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       {/* Summary card */}
