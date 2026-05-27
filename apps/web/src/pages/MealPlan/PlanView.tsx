@@ -75,7 +75,7 @@ export default function PlanView() {
         title={<RenamablePlanTitle plan={plan} />}
         description={t('mealPlan.view.subtitle', { days: plan.durationDays, startDate })}
         actions={
-          <div className="flex flex-wrap gap-2 self-start">
+          <div className="flex flex-wrap gap-3 self-start">
             <Button
               asChild
               type="button"
