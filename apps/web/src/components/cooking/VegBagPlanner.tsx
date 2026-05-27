@@ -24,7 +24,6 @@ import {
 } from '@pawcook/shared';
 import {
   listVegCookingIds,
-  getVegCookingEntry,
   applicableCutsFor,
   defaultCutFor,
   selectCutMethodSpec,
@@ -119,7 +118,6 @@ export function VegBagPlanner({
   initialPrefBagDays,
 }: VegBagPlannerProps) {
   const { t } = useTranslation();
-  const translateIngredient = useTranslateIngredient();
   const saved = useMemo(() => loadDefaults(), []);
 
   const allVegIds = useMemo(() => listVegCookingIds().slice(), []);
@@ -407,9 +405,7 @@ function OnHandRow({
 }) {
   const { t } = useTranslation();
   const translateIngredient = useTranslateIngredient();
-  const entry = getVegCookingEntry(row.id);
   const cuts = applicableCutsFor(row.id);
-  const label = entry?.id ?? row.id;
 
   return (
     <li className="grid grid-cols-12 gap-2 items-start">
