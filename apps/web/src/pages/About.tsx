@@ -190,7 +190,7 @@ export default function About() {
               rel="noopener noreferrer"
             >
               <GithubIcon className="h-4 w-4" aria-hidden />
-              GitHub
+              {t('about.github')}
             </a>
           </Button>
         </Card>
