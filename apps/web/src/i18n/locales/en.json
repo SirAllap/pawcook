@@ -351,7 +351,6 @@
       "labelOne": "Label bag",
       "bagN": "Bag {{n}} of {{total}}",
       "bagSolo": "Single bag",
-      "thaw": "Thaw {{date}}",
       "thawEve": "Move to fridge: {{date}} evening",
       "readyAt": "Ready to serve: {{date}}",
       "useBy": "Use by {{date}}",
@@ -366,7 +365,18 @@
       },
       "frozenQualityGroup": "{{count}} bag(s) sit over 30 days frozen — safe, but flavour fades. Shorten the cook-ahead next plan.",
       "perPetSplit": "Split: {{breakdown}}",
-      "perPetSplitShort": "{{name}} {{g}} g"
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Daily top-ups",
+      "supplementCardsHelp": "Too small to bag — pinch into the bowl daily instead. Cooking these would mean opening 20 bags for 6 g of carrot.",
+      "perDay": "per day, household",
+      "veggieSessionsLabel": "Veggie cook sessions",
+      "veggieSessionsHelp": "Each card groups what to cook together on one day. Tap Plan bags for an exact bag-by-bag workflow.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g raw → {{c}} g cooked",
+      "fromFrozen": "from frozen",
+      "planBags": "Plan bags",
+      "startAt0": "start, {{m}} min",
+      "startAtN": "add at +{{at}} min, cooks {{m}} min"
     },
     "sharpie": {
       "title": "Label bag {{n}}/{{total}}",
@@ -377,7 +387,9 @@
       "prev": "Previous bag",
       "done": "Done",
       "progress": "{{n}} of {{total}}",
-      "tipTape": "Reusable silicone bag? Stick a strip of masking tape on it and write on that."
+      "tipTape": "Reusable silicone bag? Stick a strip of masking tape on it and write on that.",
+      "cookedShort": "Cooked",
+      "useByShort": "Use by"
     },
     "labels": {
       "title": "{{count}} bag labels — {{plan}}",

@@ -366,15 +366,14 @@
       "noBagsTitle": "Nada para ensacar",
       "noBagsHelp": "Este plano não tem ingredientes para lote — tudo será cozido fresco.",
       "summaryLabel": "Plano de cozimento",
-      "summary": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · uma proteína por saco",
-      "thawIcs": "Cronograma de descongelamento (.ics)",
-      "groupSummary": "{{bags}} sacos · {{grams}} g no total",
-      "printLabels": "Imprimir etiquetas",
+      "summary": "{{bags}} sacos · {{sessions}} dia(s) de cozinha · uma proteína por saco",
+      "thawIcs": "Lembretes para descongelar (.ics)",
+      "groupSummary": "{{bags}} saco(s) · {{grams}} g no total",
+      "printLabels": "Etiquetar sacos",
       "bagN": "Saco {{n}} de {{total}}",
-      "thaw": "Descongelar {{date}}",
-      "useBy": "Consumir até {{date}}",
-      "rotationNote": "As proteínas se alternam — as datas dos sacos podem não ser consecutivas.",
-      "freshLabel": "Cozinhar fresco (não em lote)",
+      "useBy": "Antes de {{date}}",
+      "rotationNote": "As proteínas rodam — as datas dos sacos podem não ser consecutivas.",
+      "freshLabel": "Cozinhar no dia (não em lote)",
       "freshHelp": "Estes não congelam bem em lote. Prepare diariamente ou por receita.",
       "freshReason": {
         "perishable": "perecível",
@@ -382,7 +381,29 @@
         "organ": "porções pequenas",
         "supplement-equiv": "adição diária"
       },
-      "frozenQuality": "Congelado ~{{days}} dias — seguro, mas o sabor começa a perder. Considere um cozimento antecipado menor no próximo plano."
+      "emptyCta": "Editar plano",
+      "nextCookTitle": "Próximo dia de cozinha",
+      "nextCookCountGrams": "{{bags}} saco(s) · {{grams}} g",
+      "nextCookAllDone": "Todos os sacos cozinhados.",
+      "nextCookDone": "Cozinha da semana feita. Próxima ronda: {{date}}.",
+      "labelOne": "Etiquetar saco",
+      "bagSolo": "Saco único",
+      "thawEve": "Para o frigorífico: {{date}} à noite",
+      "readyAt": "Pronto para servir: {{date}}",
+      "frozenQualityGroup": "{{count}} saco(s) ficam mais de 30 dias congelados — seguros, mas o sabor diminui. Reduza a cozedura antecipada no próximo plano.",
+      "perPetSplit": "Divisão: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Suplementos diários",
+      "supplementCardsHelp": "Demasiado pouco para ensacar — junta à tigela todos os dias. Cozinhá-los significaria abrir 20 sacos por 6 g de cenoura.",
+      "perDay": "por dia, agregado",
+      "veggieSessionsLabel": "Sessões de cozedura de legumes",
+      "veggieSessionsHelp": "Cada cartão agrupa o que se cozinha junto num dia. Toque em «Planear sacos» para o detalhe saco a saco.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g cru → {{c}} g cozinhado",
+      "fromFrozen": "do congelador",
+      "planBags": "Planear sacos",
+      "startAt0": "início, {{m}} min",
+      "startAtN": "adicionar em +{{at}} min, coze {{m}} min"
     },
     "labels": {
       "title": "{{count}} etiquetas de saco — {{plan}}",
@@ -414,6 +435,19 @@
         "dose": "{{mg}} mg por dia (~½ colher de chá de casca moída por ~454 g de carne)",
         "rationale": "Refeições cozidas são deficientes em cálcio sem osso — isso fecha a lacuna."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cozinhado",
+      "useByShort": "Antes de",
+      "title": "Etiquetar saco {{n}}/{{total}}",
+      "intro": "Copia isto no saco com um marcador permanente. Um saco de cada vez.",
+      "copy": "Copiar texto",
+      "copied": "Copiado",
+      "next": "Próximo saco",
+      "prev": "Saco anterior",
+      "done": "Concluído",
+      "progress": "{{n}} de {{total}}",
+      "tipTape": "Saco de silicone reutilizável? Cola um pedaço de fita-cola de pintor e escreve por cima."
     }
   },
   "condition": {

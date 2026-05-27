@@ -489,7 +489,7 @@ function VeggieSessionRow({
             {t('mealPlan.cookingPlan.veggieSessionHeader', {
               defaultValue: '{{date}} · {{method}} {{temp}} °C · {{m}} min',
               date: fmtDate(session.cookDate),
-              method: t(`cooking.method.${session.method}`, { defaultValue: session.method }),
+              method: t(`cooking.methods.${session.method}`, { defaultValue: session.method }),
               temp: session.tempC,
               m: session.totalMinutes,
             })}

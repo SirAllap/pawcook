@@ -378,7 +378,6 @@
       "labelOne": "Etiquetar bolsa",
       "bagN": "Bolsa {{n}} de {{total}}",
       "bagSolo": "Bolsa única",
-      "thaw": "Descongelar {{date}}",
       "thawEve": "Pasar al frigo: {{date}} por la tarde",
       "readyAt": "Lista para servir: {{date}}",
       "useBy": "Antes del {{date}}",
@@ -393,18 +392,31 @@
       },
       "frozenQualityGroup": "{{count}} bolsa(s) pasan más de 30 días congeladas — seguras, pero el sabor decae. En el próximo plan, recorta el cocinado por adelantado.",
       "perPetSplit": "Reparto: {{breakdown}}",
-      "perPetSplitShort": "{{name}} {{g}} g"
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Suplementos diarios",
+      "supplementCardsHelp": "Demasiado poco para embolsar — añádelos al cuenco a diario. Cocinarlos en bolsa significaría abrir 20 bolsas por 6 g de zanahoria.",
+      "perDay": "al día, hogar",
+      "veggieSessionsLabel": "Sesiones de verdura",
+      "veggieSessionsHelp": "Cada tarjeta agrupa lo que se cocina junto en un día. Toca «Planear bolsas» para el detalle bolsa a bolsa.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g en crudo → {{c}} g cocidos",
+      "fromFrozen": "desde congelado",
+      "planBags": "Planear bolsas",
+      "startAt0": "al inicio, {{m}} min",
+      "startAtN": "añadir en +{{at}} min, cuece {{m}} min"
     },
     "sharpie": {
       "title": "Etiquetar bolsa {{n}}/{{total}}",
-      "intro": "Cópialo en la bolsa con un rotulador permanente. Una bolsa al vez.",
+      "intro": "Cópialo en la bolsa con un rotulador permanente. Una bolsa a la vez.",
       "copy": "Copiar texto",
       "copied": "Copiado",
       "next": "Siguiente bolsa",
       "prev": "Bolsa anterior",
       "done": "Hecho",
       "progress": "{{n}} de {{total}}",
-      "tipTape": "¿Bolsa de silicona reutilizable? Pega un trozo de cinta de pintor y escribe encima."
+      "tipTape": "¿Bolsa de silicona reutilizable? Pega un trozo de cinta de pintor y escribe encima.",
+      "cookedShort": "Cocido",
+      "useByShort": "Antes del"
     },
     "labels": {
       "title": "{{count}} etiquetas de bolsa — {{plan}}",

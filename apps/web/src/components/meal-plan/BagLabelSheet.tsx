@@ -63,6 +63,8 @@ export function BagLabelSheet({
     useByDate: fmtDate(batch.useByDate, i18n.language),
     portions,
     pets,
+    cookedLabel: t('mealPlan.sharpie.cookedShort', { defaultValue: 'Cooked' }),
+    useByLabel: t('mealPlan.sharpie.useByShort', { defaultValue: 'Use by' }),
   });
 
   async function copyToClipboard() {
@@ -189,6 +191,8 @@ function buildLabelText({
   useByDate,
   portions,
   pets,
+  cookedLabel,
+  useByLabel,
 }: {
   ingredient: string;
   sequence: number;
@@ -198,13 +202,15 @@ function buildLabelText({
   useByDate: string;
   portions: { petId: string; grams: number }[];
   pets: PetProfile[];
+  cookedLabel: string;
+  useByLabel: string;
 }): string {
   const nameById = new Map(pets.map((p) => [p.id, p.name]));
   const bagLine = total > 1 ? `${ingredient.toUpperCase()}  ${sequence}/${total}` : ingredient.toUpperCase();
   const lines = [
     bagLine,
-    `${grams} g · Cocido ${cookDate}`,
-    `Antes del ${useByDate}`,
+    `${grams} g · ${cookedLabel} ${cookDate}`,
+    `${useByLabel} ${useByDate}`,
   ];
   if (portions.length > 0) {
     for (const p of portions) {

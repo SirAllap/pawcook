@@ -366,15 +366,14 @@
       "noBagsTitle": "Nichts zum Verpacken",
       "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
       "summaryLabel": "Kochplan",
-      "summary": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · ein Protein pro Beutel",
-      "thawIcs": "Auftauplan (.ics)",
+      "summary": "{{bags}} Beutel · {{sessions}} Kochtag(e) · ein Protein pro Beutel",
+      "thawIcs": "Auftau-Erinnerungen (.ics)",
       "groupSummary": "{{bags}} Beutel · {{grams}} g insgesamt",
-      "printLabels": "Etiketten drucken",
+      "printLabels": "Beutel beschriften",
       "bagN": "Beutel {{n}} von {{total}}",
-      "thaw": "Auftauen {{date}}",
       "useBy": "Verbrauchen bis {{date}}",
       "rotationNote": "Die Proteine rotieren — die Beuteldaten können nicht aufeinanderfolgen.",
-      "freshLabel": "Frisch kochen (nicht im Vorrat)",
+      "freshLabel": "Am Tag selbst kochen (nicht im Vorrat)",
       "freshHelp": "Diese lassen sich nicht gut im Vorrat einfrieren. Täglich oder pro Rezept zubereiten.",
       "freshReason": {
         "perishable": "verderblich",
@@ -382,7 +381,29 @@
         "organ": "kleine Portionen",
         "supplement-equiv": "tägliche Beigabe"
       },
-      "frozenQuality": "Tiefgefroren ~{{days}} Tage — sicher, aber das Aroma lässt nach. Beim nächsten Plan kürzer vorkochen."
+      "emptyCta": "Plan bearbeiten",
+      "nextCookTitle": "Nächster Kochtag",
+      "nextCookCountGrams": "{{bags}} Beutel · {{grams}} g",
+      "nextCookAllDone": "Alle Beutel gekocht.",
+      "nextCookDone": "Kochen für die Woche erledigt. Nächste Runde: {{date}}.",
+      "labelOne": "Beutel beschriften",
+      "bagSolo": "Einzelner Beutel",
+      "thawEve": "In den Kühlschrank: {{date}} abends",
+      "readyAt": "Servierbereit: {{date}}",
+      "frozenQualityGroup": "{{count}} Beutel liegen über 30 Tage gefroren — sicher, aber Aroma lässt nach. Beim nächsten Plan kürzer vorkochen.",
+      "perPetSplit": "Aufteilung: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Tägliche Zugaben",
+      "supplementCardsHelp": "Zu klein zum Verpacken — täglich direkt in den Napf geben. Sie zu garen würde bedeuten, 20 Beutel für 6 g Karotte zu öffnen.",
+      "perDay": "pro Tag, Haushalt",
+      "veggieSessionsLabel": "Gemüse-Kochsessions",
+      "veggieSessionsHelp": "Jede Karte fasst zusammen, was an einem Tag gemeinsam gekocht wird. Tippe auf «Beutel planen» für den Beutel-für-Beutel-Ablauf.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g roh → {{c}} g gekocht",
+      "fromFrozen": "aus dem Gefrierfach",
+      "planBags": "Beutel planen",
+      "startAt0": "Start, {{m}} min",
+      "startAtN": "bei +{{at}} min hinzufügen, kocht {{m}} min"
     },
     "labels": {
       "title": "{{count}} Beuteletiketten — {{plan}}",
@@ -414,6 +435,19 @@
         "dose": "{{mg}} mg pro Tag (~½ TL gemahlene Eierschale pro ~454 g Fleisch)",
         "rationale": "Gegarte Mahlzeiten sind ohne Knochen calciumdefizitär — das schließt die Lücke."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Gekocht",
+      "useByShort": "MHD",
+      "title": "Beutel {{n}}/{{total}} beschriften",
+      "intro": "Mit einem Permanentmarker auf den Beutel schreiben. Einen Beutel nach dem anderen.",
+      "copy": "Text kopieren",
+      "copied": "Kopiert",
+      "next": "Nächster Beutel",
+      "prev": "Vorheriger Beutel",
+      "done": "Fertig",
+      "progress": "{{n}} von {{total}}",
+      "tipTape": "Wiederverwendbarer Silikonbeutel? Klebe einen Streifen Malerkrepp darauf und schreibe darauf."
     }
   },
   "condition": {

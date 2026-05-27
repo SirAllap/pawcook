@@ -366,15 +366,14 @@
       "noBagsTitle": "Rien à mettre en sachet",
       "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
       "summaryLabel": "Plan de cuisson",
-      "summary": "{{bags}} sachets · {{sessions}} session(s) de cuisson · une protéine par sachet",
-      "thawIcs": "Calendrier de décongélation (.ics)",
-      "groupSummary": "{{bags}} sachets · {{grams}} g au total",
-      "printLabels": "Imprimer les étiquettes",
+      "summary": "{{bags}} sachets · {{sessions}} jour(s) de cuisine · une protéine par sachet",
+      "thawIcs": "Rappels de décongélation (.ics)",
+      "groupSummary": "{{bags}} sachet(s) · {{grams}} g au total",
+      "printLabels": "Étiqueter les sachets",
       "bagN": "Sachet {{n}} sur {{total}}",
-      "thaw": "Décongeler {{date}}",
-      "useBy": "À consommer avant le {{date}}",
-      "rotationNote": "Les protéines tournent — les dates des sachets peuvent ne pas être consécutives.",
-      "freshLabel": "Cuire frais (pas en lot)",
+      "useBy": "À cons. avant le {{date}}",
+      "rotationNote": "Les protéines tournent — les dates des sachets peuvent être non consécutives.",
+      "freshLabel": "Cuisiner le jour même (pas en lot)",
       "freshHelp": "Ces aliments ne se congèlent pas bien en lot. Traitez-les chaque jour ou par recette.",
       "freshReason": {
         "perishable": "périssable",
@@ -382,7 +381,29 @@
         "organ": "petites portions",
         "supplement-equiv": "ajout quotidien"
       },
-      "frozenQuality": "Congelé ~{{days}} jours — sûr, mais la saveur commence à s’altérer. Envisagez une cuisson anticipée plus courte au prochain plan."
+      "emptyCta": "Modifier le plan",
+      "nextCookTitle": "Prochain jour de cuisine",
+      "nextCookCountGrams": "{{bags}} sachet(s) · {{grams}} g",
+      "nextCookAllDone": "Tous les sachets sont cuits.",
+      "nextCookDone": "Cuisine de la semaine terminée. Prochain tour : {{date}}.",
+      "labelOne": "Étiqueter le sachet",
+      "bagSolo": "Sachet unique",
+      "thawEve": "Au frigo : {{date}} le soir",
+      "readyAt": "Prêt à servir : {{date}}",
+      "frozenQualityGroup": "{{count}} sachet(s) restent congelés plus de 30 jours — sûrs, mais le goût s'estompe. Réduisez la cuisson à l'avance au prochain plan.",
+      "perPetSplit": "Répartition : {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Compléments quotidiens",
+      "supplementCardsHelp": "Trop peu pour être ensaché — à ajouter dans la gamelle chaque jour. Les cuire reviendrait à ouvrir 20 sachets pour 6 g de carotte.",
+      "perDay": "par jour, foyer",
+      "veggieSessionsLabel": "Sessions de cuisson légumes",
+      "veggieSessionsHelp": "Chaque carte regroupe ce qui se cuit ensemble un même jour. Touchez «Planifier les sachets» pour le détail sachet par sachet.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g cru → {{c}} g cuit",
+      "fromFrozen": "depuis congelé",
+      "planBags": "Planifier les sachets",
+      "startAt0": "au départ, {{m}} min",
+      "startAtN": "ajouter à +{{at}} min, cuit {{m}} min"
     },
     "labels": {
       "title": "{{count}} étiquettes de sachet — {{plan}}",
@@ -414,6 +435,19 @@
         "dose": "{{mg}} mg par jour (~½ c. à café de coquille moulue par ~454 g de viande)",
         "rationale": "Les repas cuits manquent de calcium sans os — ceci comble l’écart."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cuit",
+      "useByShort": "À cons. avant",
+      "title": "Étiqueter le sachet {{n}}/{{total}}",
+      "intro": "Recopiez ceci sur le sachet au marqueur permanent. Un sachet à la fois.",
+      "copy": "Copier le texte",
+      "copied": "Copié",
+      "next": "Sachet suivant",
+      "prev": "Sachet précédent",
+      "done": "Terminé",
+      "progress": "{{n}} sur {{total}}",
+      "tipTape": "Sachet en silicone réutilisable ? Collez-y un morceau de ruban de masquage et écrivez dessus."
     }
   },
   "condition": {

@@ -269,11 +269,11 @@ export function VegBagPlanner({
           value={method}
           onChange={(e) => setMethod(e.target.value as CookingMethod)}
         >
-          <option value="sous_vide">{t('cooking.method.sous_vide', { defaultValue: 'Sous-vide' })}</option>
-          <option value="stovetop_low">{t('cooking.method.stovetop_low', { defaultValue: 'Stovetop / steam' })}</option>
-          <option value="oven">{t('cooking.method.oven', { defaultValue: 'Oven' })}</option>
-          <option value="pressure_cooker">{t('cooking.method.pressure_cooker', { defaultValue: 'Pressure cooker' })}</option>
-          <option value="slow_cooker">{t('cooking.method.slow_cooker', { defaultValue: 'Slow cooker' })}</option>
+          <option value="sous_vide">{t('cooking.methods.sous_vide', { defaultValue: 'Sous-vide' })}</option>
+          <option value="stovetop_low">{t('cooking.methods.stovetop_low', { defaultValue: 'Stovetop / steam' })}</option>
+          <option value="oven">{t('cooking.methods.oven', { defaultValue: 'Oven' })}</option>
+          <option value="pressure_cooker">{t('cooking.methods.pressure_cooker', { defaultValue: 'Pressure cooker' })}</option>
+          <option value="slow_cooker">{t('cooking.methods.slow_cooker', { defaultValue: 'Slow cooker' })}</option>
         </Select>
         <Select
           label={t('cooking.veg.bagPlanner.packagingLabel', { defaultValue: 'Packaging' })}
@@ -520,7 +520,7 @@ function MixedSessionCard({
       <p className="text-sm text-muted-fg">
         {t('cooking.veg.session.tempLine', {
           defaultValue: '{{method}} at {{t}} °C{{frozen}}',
-          method: t(`cooking.method.${session.method}`, { defaultValue: session.method }),
+          method: t(`cooking.methods.${session.method}`, { defaultValue: session.method }),
           t: session.tempC,
           frozen: fromFrozen ? t('cooking.veg.session.fromFrozenSuffix', { defaultValue: ' · from frozen' }) : '',
         })}
@@ -729,7 +729,7 @@ function PerVegCard({
             <li>
               {t('cooking.veg.bagPlanner.stepCook', {
                 defaultValue: 'Cook {{method}} at {{t}} °C, {{min}}–{{max}} min',
-                method: t(`cooking.method.${method}`, { defaultValue: method }),
+                method: t(`cooking.methods.${method}`, { defaultValue: method }),
                 t: spec.tempC,
                 min: cookMinutesMin,
                 max: cookMinutesMax,

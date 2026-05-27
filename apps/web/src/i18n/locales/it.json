@@ -366,15 +366,14 @@
       "noBagsTitle": "Niente da insacchettare",
       "noBagsHelp": "Questo piano non ha ingredienti adatti al lotto — tutto sarà cucinato fresco.",
       "summaryLabel": "Piano di cottura",
-      "summary": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · una proteina per sacchetto",
-      "thawIcs": "Calendario di scongelamento (.ics)",
-      "groupSummary": "{{bags}} sacchetti · {{grams}} g in totale",
-      "printLabels": "Stampa etichette",
+      "summary": "{{bags}} sacchetti · {{sessions}} giorno(i) di cucina · una proteina per sacchetto",
+      "thawIcs": "Promemoria di scongelamento (.ics)",
+      "groupSummary": "{{bags}} sacchetto(i) · {{grams}} g in totale",
+      "printLabels": "Etichetta sacchetti",
       "bagN": "Sacchetto {{n}} di {{total}}",
-      "thaw": "Scongelare {{date}}",
-      "useBy": "Consumare entro {{date}}",
+      "useBy": "Entro il {{date}}",
       "rotationNote": "Le proteine ruotano — le date dei sacchetti possono non essere consecutive.",
-      "freshLabel": "Cucinare fresco (non in lotto)",
+      "freshLabel": "Cucinare al momento (non in lotti)",
       "freshHelp": "Questi non si congelano bene in lotto. Gestiscili ogni giorno o per ricetta.",
       "freshReason": {
         "perishable": "deperibile",
@@ -382,7 +381,29 @@
         "organ": "piccole porzioni",
         "supplement-equiv": "aggiunta giornaliera"
       },
-      "frozenQuality": "Congelato ~{{days}} giorni — sicuro, ma il sapore inizia a calare. Valuta una finestra di precottura più corta nel prossimo piano."
+      "emptyCta": "Modifica il piano",
+      "nextCookTitle": "Prossimo giorno di cucina",
+      "nextCookCountGrams": "{{bags}} sacchetto(i) · {{grams}} g",
+      "nextCookAllDone": "Tutti i sacchetti sono cotti.",
+      "nextCookDone": "Cucina della settimana fatta. Prossimo turno: {{date}}.",
+      "labelOne": "Etichetta sacchetto",
+      "bagSolo": "Sacchetto singolo",
+      "thawEve": "In frigo: {{date}} sera",
+      "readyAt": "Pronto da servire: {{date}}",
+      "frozenQualityGroup": "{{count}} sacchetto(i) restano congelati oltre 30 giorni — sicuri, ma il sapore cala. Riduci la cottura anticipata nel prossimo piano.",
+      "perPetSplit": "Suddivisione: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Integratori giornalieri",
+      "supplementCardsHelp": "Troppo poco per insacchettare — aggiungili nella ciotola ogni giorno. Cucinarli significherebbe aprire 20 sacchetti per 6 g di carota.",
+      "perDay": "al giorno, famiglia",
+      "veggieSessionsLabel": "Sessioni di cottura verdure",
+      "veggieSessionsHelp": "Ogni scheda raggruppa ciò che si cuoce insieme in un giorno. Tocca «Pianifica sacchetti» per il dettaglio sacchetto per sacchetto.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g crudo → {{c}} g cotto",
+      "fromFrozen": "da congelato",
+      "planBags": "Pianifica sacchetti",
+      "startAt0": "all'inizio, {{m}} min",
+      "startAtN": "aggiungi a +{{at}} min, cuoce {{m}} min"
     },
     "labels": {
       "title": "{{count}} etichette per sacchetti — {{plan}}",
@@ -414,6 +435,19 @@
         "dose": "{{mg}} mg al giorno (~½ cucchiaino di guscio macinato per ~454 g di carne)",
         "rationale": "I pasti cucinati sono carenti di calcio senza osso — questo colma il divario."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cotto",
+      "useByShort": "Entro il",
+      "title": "Etichetta sacchetto {{n}}/{{total}}",
+      "intro": "Copialo sul sacchetto con un pennarello indelebile. Un sacchetto alla volta.",
+      "copy": "Copia testo",
+      "copied": "Copiato",
+      "next": "Sacchetto successivo",
+      "prev": "Sacchetto precedente",
+      "done": "Fatto",
+      "progress": "{{n}} di {{total}}",
+      "tipTape": "Sacchetto in silicone riutilizzabile? Attacca un pezzo di nastro di carta e scrivi sopra."
     }
   },
   "condition": {

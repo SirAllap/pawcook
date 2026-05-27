@@ -366,15 +366,14 @@
       "noBagsTitle": "Nic do pakowania",
       "noBagsHelp": "Ten plan nie zawiera składników do partii — wszystko będzie gotowane na świeżo.",
       "summaryLabel": "Plan gotowania",
-      "summary": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · jedno białko na woreczek",
-      "thawIcs": "Harmonogram rozmrażania (.ics)",
-      "groupSummary": "{{bags}} woreczków · łącznie {{grams}} g",
-      "printLabels": "Drukuj etykiety",
+      "summary": "{{bags}} woreczków · {{sessions}} dzień(-i) gotowania · jedno białko na woreczek",
+      "thawIcs": "Przypomnienia o rozmrażaniu (.ics)",
+      "groupSummary": "{{bags}} woreczek(-i) · {{grams}} g razem",
+      "printLabels": "Oznacz woreczki",
       "bagN": "Woreczek {{n}} z {{total}}",
-      "thaw": "Rozmroź {{date}}",
-      "useBy": "Zużyć do {{date}}",
-      "rotationNote": "Białka się zmieniają — daty woreczków mogą nie być kolejne.",
-      "freshLabel": "Gotuj na świeżo (nie partiami)",
+      "useBy": "Spożyć przed {{date}}",
+      "rotationNote": "Białka rotują — daty woreczków mogą nie być po kolei.",
+      "freshLabel": "Ugotuj na świeżo (nie w partii)",
       "freshHelp": "Te produkty źle znoszą mrożenie partiami. Przygotowuj codziennie lub według przepisu.",
       "freshReason": {
         "perishable": "nietrwałe",
@@ -382,7 +381,29 @@
         "organ": "małe porcje",
         "supplement-equiv": "codzienny dodatek"
       },
-      "frozenQuality": "Zamrożone ~{{days}} dni — bezpiecznie, ale smak zaczyna słabnąć. W kolejnym planie rozważ krótsze gotowanie z wyprzedzeniem."
+      "emptyCta": "Edytuj plan",
+      "nextCookTitle": "Następny dzień gotowania",
+      "nextCookCountGrams": "{{bags}} woreczek(-i) · {{grams}} g",
+      "nextCookAllDone": "Wszystkie woreczki ugotowane.",
+      "nextCookDone": "Gotowanie tygodniowe zrobione. Następna runda: {{date}}.",
+      "labelOne": "Oznacz woreczek",
+      "bagSolo": "Pojedynczy woreczek",
+      "thawEve": "Do lodówki: {{date}} wieczorem",
+      "readyAt": "Gotowe do podania: {{date}}",
+      "frozenQualityGroup": "{{count}} woreczek(-i) leżą zamrożone ponad 30 dni — bezpieczne, ale smak słabnie. Skróć przygotowywanie z wyprzedzeniem w następnym planie.",
+      "perPetSplit": "Podział: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Codzienne dodatki",
+      "supplementCardsHelp": "Za mało żeby pakować — dosyp do miski każdego dnia. Gotowanie oznaczałoby otwieranie 20 woreczków dla 6 g marchwi.",
+      "perDay": "dziennie, gospodarstwo",
+      "veggieSessionsLabel": "Sesje gotowania warzyw",
+      "veggieSessionsHelp": "Każda karta grupuje to, co gotuje się razem w jednym dniu. Dotknij «Planuj woreczki», aby zobaczyć krok po kroku.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g surowe → {{c}} g ugotowane",
+      "fromFrozen": "z zamrażarki",
+      "planBags": "Planuj woreczki",
+      "startAt0": "start, {{m}} min",
+      "startAtN": "dodaj w +{{at}} min, gotuje {{m}} min"
     },
     "labels": {
       "title": "{{count}} etykiet woreczków — {{plan}}",
@@ -414,6 +435,19 @@
         "dose": "{{mg}} mg dziennie (~½ łyżeczki mielonej skorupki na ~454 g mięsa)",
         "rationale": "Gotowane posiłki są ubogie w wapń bez kości — to wypełnia lukę."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Ugotowane",
+      "useByShort": "Spożyć przed",
+      "title": "Oznacz woreczek {{n}}/{{total}}",
+      "intro": "Przepisz to na woreczek markerem permanentnym. Jeden woreczek na raz.",
+      "copy": "Kopiuj tekst",
+      "copied": "Skopiowano",
+      "next": "Następny woreczek",
+      "prev": "Poprzedni woreczek",
+      "done": "Gotowe",
+      "progress": "{{n}} z {{total}}",
+      "tipTape": "Wielorazowy woreczek silikonowy? Naklej kawałek taśmy malarskiej i pisz na niej."
     }
   },
   "condition": {
