@@ -13,13 +13,14 @@ import { cn } from '../../lib/cn';
 
 const VARIETY_OPTIONS: VarietyTier[] = ['standard', 'diverse', 'novel'];
 const ACCESS_OPTIONS: AccessibilityTier[] = ['easy', 'specialty'];
-const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker'];
+const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker', 'raw'];
 const METHOD_EMOJI: Record<CookingMethod, string> = {
   sous_vide: '🛁',
   oven: '🍲',
   stovetop_low: '🫕',
   slow_cooker: '🥘',
   pressure_cooker: '⏲️',
+  raw: '🥩',
 };
 // User-facing options. "Whole plan" maps to bagDays=durationDays at
 // commit-time, but only when durationDays <= FRIDGE_SAFE_DAYS (3) — for
