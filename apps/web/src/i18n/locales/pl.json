@@ -43,7 +43,8 @@
     "cancel": "Anuluj",
     "dismiss": "Zamknij",
     "close": "Zamknij",
-    "confirm": "Potwierdź"
+    "confirm": "Potwierdź",
+    "remove": "Usuń"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · oszczędza {{saved}} vs codzienna",
       "simpleMeals": "Proste posiłki",
       "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet).",
-      "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków."
+      "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków.",
+      "veggieDetail": "Gotuj każde warzywo osobno",
+      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków."
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} łubianka",
         "bunch": "{{qty}} pęczek",
         "bottle": "{{qty}} butelka"
-      }
+      },
+      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu."
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Nic do pakowania",
       "noBagsHelp": "Ten plan nie zawiera składników do partii — wszystko będzie gotowane na świeżo.",
       "summaryLabel": "Plan gotowania",
-      "summary": "{{bags}} woreczków · {{sessions}} sesja/i gotowania · jedno białko na woreczek",
-      "thawIcs": "Harmonogram rozmrażania (.ics)",
-      "groupSummary": "{{bags}} woreczków · łącznie {{grams}} g",
-      "printLabels": "Drukuj etykiety",
+      "summary": "{{bags}} woreczków · {{sessions}} dzień(-i) gotowania · jedno białko na woreczek",
+      "thawIcs": "Przypomnienia o rozmrażaniu (.ics)",
+      "groupSummary": "{{bags}} woreczek(-i) · {{grams}} g razem",
+      "printLabels": "Oznacz woreczki",
       "bagN": "Woreczek {{n}} z {{total}}",
-      "thaw": "Rozmroź {{date}}",
-      "useBy": "Zużyć do {{date}}",
-      "rotationNote": "Białka się zmieniają — daty woreczków mogą nie być kolejne.",
-      "freshLabel": "Gotuj na świeżo (nie partiami)",
+      "useBy": "Spożyć przed {{date}}",
+      "rotationNote": "Białka rotują — daty woreczków mogą nie być po kolei.",
+      "freshLabel": "Ugotuj na świeżo (nie w partii)",
       "freshHelp": "Te produkty źle znoszą mrożenie partiami. Przygotowuj codziennie lub według przepisu.",
       "freshReason": {
         "perishable": "nietrwałe",
@@ -382,7 +385,29 @@
         "organ": "małe porcje",
         "supplement-equiv": "codzienny dodatek"
       },
-      "frozenQuality": "Zamrożone ~{{days}} dni — bezpiecznie, ale smak zaczyna słabnąć. W kolejnym planie rozważ krótsze gotowanie z wyprzedzeniem."
+      "emptyCta": "Edytuj plan",
+      "nextCookTitle": "Następny dzień gotowania",
+      "nextCookCountGrams": "{{bags}} woreczek(-i) · {{grams}} g",
+      "nextCookAllDone": "Wszystkie woreczki ugotowane.",
+      "nextCookDone": "Gotowanie tygodniowe zrobione. Następna runda: {{date}}.",
+      "labelOne": "Oznacz woreczek",
+      "bagSolo": "Pojedynczy woreczek",
+      "thawEve": "Do lodówki: {{date}} wieczorem",
+      "readyAt": "Gotowe do podania: {{date}}",
+      "frozenQualityGroup": "{{count}} woreczek(-i) leżą zamrożone ponad 30 dni — bezpieczne, ale smak słabnie. Skróć przygotowywanie z wyprzedzeniem w następnym planie.",
+      "perPetSplit": "Podział: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Codzienne dodatki",
+      "supplementCardsHelp": "Za mało żeby pakować — dosyp do miski każdego dnia. Gotowanie oznaczałoby otwieranie 20 woreczków dla 6 g marchwi.",
+      "perDay": "dziennie, gospodarstwo",
+      "veggieSessionsLabel": "Sesje gotowania warzyw",
+      "veggieSessionsHelp": "Każda karta grupuje to, co gotuje się razem w jednym dniu. Dotknij «Planuj woreczki», aby zobaczyć krok po kroku.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g surowe → {{c}} g ugotowane",
+      "fromFrozen": "z zamrażarki",
+      "planBags": "Planuj woreczki",
+      "startAt0": "start, {{m}} min",
+      "startAtN": "dodaj w +{{at}} min, gotuje {{m}} min"
     },
     "labels": {
       "title": "{{count}} etykiet woreczków — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg dziennie (~½ łyżeczki mielonej skorupki na ~454 g mięsa)",
         "rationale": "Gotowane posiłki są ubogie w wapń bez kości — to wypełnia lukę."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Ugotowane",
+      "useByShort": "Spożyć przed",
+      "title": "Oznacz woreczek {{n}}/{{total}}",
+      "intro": "Przepisz to na woreczek markerem permanentnym. Jeden woreczek na raz.",
+      "copy": "Kopiuj tekst",
+      "copied": "Skopiowano",
+      "next": "Następny woreczek",
+      "prev": "Poprzedni woreczek",
+      "done": "Gotowe",
+      "progress": "{{n}} z {{total}}",
+      "tipTape": "Wielorazowy woreczek silikonowy? Naklej kawałek taśmy malarskiej i pisz na niej."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planuj woreczki z warzywami",
+        "subtitle": "Wpisz, co masz pod ręką — wybierz krojenie i otrzymaj plan woreczek po woreczku, którego naprawdę dasz radę się trzymać.",
+        "onHandLabel": "Co masz pod ręką",
+        "totalOnHand": "{{kg}} kg surowych razem",
+        "methodLabel": "Metoda gotowania",
+        "packagingLabel": "Pakowanie",
+        "householdLabel": "Warzywa dziennie, gospodarstwo (g)",
+        "householdHelper": "Gramy łącznie na wszystkie zwierzęta dziennie. Służy do doboru woreczka.",
+        "daysLabel": "Dni na woreczek (preferowane)",
+        "roundingLabel": "Zaokrąglanie rozmiaru woreczka",
+        "modeLabel": "Tryb",
+        "fromFrozenLabel": "Gotuj z zamrażarki",
+        "fromFrozenHelper": "Dodaje minuty z zamrażarki dla krojenia (gdy zdefiniowane).",
+        "emptyHint": "Wpisz, ile gramów masz każdego warzywa, aby zobaczyć plan woreczków.",
+        "mixedNotPossible": "Te warzywa nie mogą gotować się razem w jednej sesji — przełącz na «Osobno» lub zmień krojenie/metodę.",
+        "yieldLabel": "Wydajność {{p}}%",
+        "cutLabel": "Sposób krojenia",
+        "gramsLabel": "Gramy (surowe)",
+        "addVeggie": "Dodaj warzywo",
+        "totalLine": "{{r}} g surowe → {{c}} g ugotowane",
+        "coversDaysShort": "~{{d}} dni",
+        "workflowLabel": "Przebieg",
+        "stepPortionSingle": "Podziel wszystkie {{raw}} g surowych ({{cooked}} g ugotowanych) na 1 woreczek (mieści ~{{size}} g).",
+        "stepPortionEven": "Podziel na {{n}} woreczków po {{cooked}} g ugotowanych (~{{raw}} g surowych każdy).",
+        "stepPortionUneven": "Podziel na {{n}} woreczków: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g ugotowanych (~{{raw}} g surowych na pełny, {{lastRaw}} g surowych na ostatni).",
+        "stepVacuumSeal": "Każdy woreczek zapakuj próżniowo na płasko w jednej warstwie; od razu zamroź.",
+        "stepSiliconeTray": "Wlej do silikonowych foremek; zamroź; kostki przełóż do woreczka do zamrażania na porcje.",
+        "stepFreezerBag": "Każdą porcję pakuj na płasko; zamroź; odłamuj porcje w miarę potrzeby.",
+        "stepRigid": "Włóż do pojemników; przechowuj w lodówce (bez zamrażania). Zużyj w 3–4 dni.",
+        "stepCook": "Gotuj {{method}} w {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(zawiera +{{x}} min z zamrażarki)",
+        "noSpec": "Ta metoda nie jest obsługiwana dla tego warzywa — zmień krojenie lub metodę.",
+        "stepCool": "Schłódź do ≤21 °C przed lodówką (w 2 h); kąpiel lodowa dla liściastych/kapustnych.",
+        "headroomNote": "Ostatni woreczek ma {{g}} g luzu — uzupełnij przy następnym gotowaniu lub zamroź tak jak jest."
+      },
+      "cut": {
+        "whole": "W całości",
+        "large_chunks": "Duże kawałki (3–4 cm)",
+        "cubed": "W kostkę (1–2 cm)",
+        "coins": "Plasterki (6–10 mm)",
+        "mandolin_thin": "Cienkie mandoliną (2–4 mm)",
+        "sticks": "Słupki",
+        "shredded": "Tarta",
+        "florets": "Różyczki",
+        "leaves_whole": "Całe liście",
+        "leaves_shredded": "Posiekane liście"
+      },
+      "packaging": {
+        "freezer_bag": "Woreczek do zamrażarki (płaski)",
+        "vacuum_seal": "Próżniowe (gotuj z zamrażarki)",
+        "silicone_tray": "Silikonowa forma (kostki porcji)",
+        "rigid_container": "Sztywny pojemnik (tylko lodówka)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Zaokrągl do 50 g",
+        "step100": "Zaokrągl do 100 g",
+        "halves": "Równe połowy (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Gotowanie mieszane",
+        "separate": "Osobno"
+      },
+      "session": {
+        "title": "Mieszana sesja gotowania · {{m}} min razem",
+        "tempLine": "{{method}} w {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · z zamrażarki",
+        "startNow": "Zacznij teraz · {{m}} min",
+        "addAt": "Dodaj w +{{at}} min · gotuj {{m}} min",
+        "rawCookedGrams": "{{r}} g surowe → {{c}} g ugotowane"
+      },
+      "bagOption": {
+        "recommended": "Zalecane",
+        "bigger": "Większe woreczki",
+        "smaller": "Mniejsze woreczki"
+      },
+      "fromFrozenChip": "Z zamrażarki"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Niższe stosunki (5:1 do 10:1) zmniejszają stan zapalny w organizmie"
         }
-      }
+      },
+      "sourceLine": "Profil odżywczy AAFCO dla psów — sucha masa",
+      "sourceLine_cat": "Profil odżywczy AAFCO dla kotów — sucha masa"
     },
     "transition": {
       "title": "7-dniowa zmiana z karmy suchej na świeżą",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/tydzień",
           "calcium": "Cytrynian wapnia",
           "calciumDose": "287 mg/dzień",
-          "dayLabel": "Dzień 1 · Pon 25 maj",
+          "dayLabel": "Dzień 1 · {{date}}",
           "beefDay": "Dzień wołowiny",
           "mainGrams": "{{g}}g wołowiny"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Polityka prywatności GitHuba",
     "eyebrow": "O nas",
     "subtitle_cat": "Open-source kalkulator domowej karmy dla psów i kotów, stworzony dla osób gotujących dla swoich zwierząt.",
-    "notVetAdvice_cat": "To narzędzie nie zastępuje porady weterynaryjnej. Dostarcza ogólne wytyczne oparte na opublikowanych standardach (AAFCO, NRC, FEDIAF). Koty mają szczególnie wąskie marginesy dla tauryny, kwasu arachidonowego i witaminy A. W przypadku długoterminowego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomata ACVN)."
+    "notVetAdvice_cat": "To narzędzie nie zastępuje porady weterynaryjnej. Dostarcza ogólne wytyczne oparte na opublikowanych standardach (AAFCO, NRC, FEDIAF). Koty mają szczególnie wąskie marginesy dla tauryny, kwasu arachidonowego i witaminy A. W przypadku długoterminowego karmienia domowego skonsultuj się z certyfikowanym dietetykiem weterynaryjnym (dyplomata ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profile odżywcze AAFCO dla psów",
+        "nrc": "NRC zapotrzebowanie na składniki dla psów i kotów (2006)",
+        "fediaf": "Wytyczne żywieniowe FEDIAF",
+        "merck": "Podręcznik weterynaryjny Merck",
+        "wsava": "Globalne wytyczne żywieniowe WSAVA",
+        "acvn": "Stanowiska ACVN"
+      },
+      "cat": {
+        "aafco": "Profile odżywcze AAFCO dla kotów",
+        "nrc": "NRC zapotrzebowanie na składniki dla psów i kotów (2006)",
+        "aaha": "Wytyczne AAHA / AAFP 2021 dot. etapów życia kotów",
+        "zoran": "Zoran (2002) — Mięsożerny związek z żywieniem kotów",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Wytyczne żywieniowe FEDIAF",
+        "acvn": "Stanowiska ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

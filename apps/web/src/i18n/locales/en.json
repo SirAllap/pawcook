@@ -43,7 +43,8 @@
     "catFoodCalc": "Cat Food Calculator",
     "dismiss": "Dismiss",
     "close": "Close",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "remove": "Remove"
   },
   "pets": {
     "eyebrow": "Pets",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} bags · {{sessions}} cook session(s) · saves {{saved}} vs daily",
       "simpleMeals": "Simple meals",
       "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).",
-      "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags."
+      "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags.",
+      "veggieDetail": "Cook each veggie separately",
+      "veggieDetailHelp": "Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule."
     },
     "coverage": {
       "passed": "Looks balanced",
@@ -331,7 +334,8 @@
         "bottle": "{{qty}} bottle"
       },
       "cookShort": "Cook",
-      "emptyTitle": "Nothing to buy yet"
+      "emptyTitle": "Nothing to buy yet",
+      "yieldAdjustedHint": "Buy includes cooking shrinkage — yields ~{{c}} g cooked."
     },
     "cookingPlan": {
       "emptyTitle": "Bag schedule lives with sous-vide.",
@@ -351,7 +355,6 @@
       "labelOne": "Label bag",
       "bagN": "Bag {{n}} of {{total}}",
       "bagSolo": "Single bag",
-      "thaw": "Thaw {{date}}",
       "thawEve": "Move to fridge: {{date}} evening",
       "readyAt": "Ready to serve: {{date}}",
       "useBy": "Use by {{date}}",
@@ -366,7 +369,18 @@
       },
       "frozenQualityGroup": "{{count}} bag(s) sit over 30 days frozen — safe, but flavour fades. Shorten the cook-ahead next plan.",
       "perPetSplit": "Split: {{breakdown}}",
-      "perPetSplitShort": "{{name}} {{g}} g"
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Daily top-ups",
+      "supplementCardsHelp": "Too small to bag — pinch into the bowl daily instead. Cooking these would mean opening 20 bags for 6 g of carrot.",
+      "perDay": "per day, household",
+      "veggieSessionsLabel": "Veggie cook sessions",
+      "veggieSessionsHelp": "Each card groups what to cook together on one day. Tap Plan bags for an exact bag-by-bag workflow.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g raw → {{c}} g cooked",
+      "fromFrozen": "from frozen",
+      "planBags": "Plan bags",
+      "startAt0": "start, {{m}} min",
+      "startAtN": "add at +{{at}} min, cooks {{m}} min"
     },
     "sharpie": {
       "title": "Label bag {{n}}/{{total}}",
@@ -377,7 +391,9 @@
       "prev": "Previous bag",
       "done": "Done",
       "progress": "{{n}} of {{total}}",
-      "tipTape": "Reusable silicone bag? Stick a strip of masking tape on it and write on that."
+      "tipTape": "Reusable silicone bag? Stick a strip of masking tape on it and write on that.",
+      "cookedShort": "Cooked",
+      "useByShort": "Use by"
     },
     "labels": {
       "title": "{{count}} bag labels — {{plan}}",
@@ -857,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Plan veggie bags",
+        "subtitle": "Type what you have on hand — pick a cut, get a bag-by-bag workflow you can actually follow.",
+        "onHandLabel": "What you have on hand",
+        "totalOnHand": "{{kg}} kg raw total",
+        "methodLabel": "Cook method",
+        "packagingLabel": "Packaging",
+        "householdLabel": "Household veg per day (g)",
+        "householdHelper": "Total grams across all pets per day. Used to size bags.",
+        "daysLabel": "Days per bag (preferred)",
+        "roundingLabel": "Bag size rounding",
+        "modeLabel": "Mode",
+        "fromFrozenLabel": "Cook from frozen",
+        "fromFrozenHelper": "Adds the from-frozen minutes per cut (when the spec defines them).",
+        "emptyHint": "Enter how many grams of each veggie you have to see your bag plan.",
+        "mixedNotPossible": "These veggies cannot co-cook in one session — switch to Separate, or change cuts/method so they can share the pot.",
+        "yieldLabel": "Yield {{p}}%",
+        "cutLabel": "Cut form",
+        "gramsLabel": "Grams (raw)",
+        "addVeggie": "Add veggie",
+        "totalLine": "{{r}} g raw → {{c}} g cooked",
+        "coversDaysShort": "~{{d}} days",
+        "workflowLabel": "Workflow",
+        "stepPortionSingle": "Portion all {{raw}} g raw ({{cooked}} g cooked) into 1 bag (fits ~{{size}} g container).",
+        "stepPortionEven": "Portion into {{n}} bags of {{cooked}} g cooked (~{{raw}} g raw each).",
+        "stepPortionUneven": "Portion into {{n}} bags: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cooked (~{{raw}} g raw per full bag, {{lastRaw}} g raw for the last).",
+        "stepVacuumSeal": "Vacuum-seal each bag flat in a single layer; freeze immediately.",
+        "stepSiliconeTray": "Pour into silicone trays; freeze; pop cubes into a freezer bag for portion-on-demand.",
+        "stepFreezerBag": "Bag each portion flat; freeze; snap-off portions as you go.",
+        "stepRigid": "Pack into containers; refrigerate (no freezing). Use within 3–4 days.",
+        "stepCook": "Cook {{method}} at {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(includes +{{x}} min from frozen)",
+        "noSpec": "This method is not supported for this veggie — change cut or method.",
+        "stepCool": "Cool to ≤21 °C before fridge (within 2 h); ice-bath leafy/cruciferous.",
+        "headroomNote": "Last bag has {{g}} g spare headroom — you can top up with the next cook or freeze as-is."
+      },
+      "cut": {
+        "whole": "Whole",
+        "large_chunks": "Large chunks (3–4 cm)",
+        "cubed": "Cubed (1–2 cm)",
+        "coins": "Coins (6–10 mm)",
+        "mandolin_thin": "Mandolin thin (2–4 mm)",
+        "sticks": "Sticks / batons",
+        "shredded": "Shredded / grated",
+        "florets": "Florets",
+        "leaves_whole": "Whole leaves",
+        "leaves_shredded": "Shredded leaves"
+      },
+      "packaging": {
+        "freezer_bag": "Freezer bag (flat-pack)",
+        "vacuum_seal": "Vacuum-seal (cook from frozen)",
+        "silicone_tray": "Silicone tray (portion cubes)",
+        "rigid_container": "Rigid container (fridge only)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Round to 50 g",
+        "step100": "Round to 100 g",
+        "halves": "Even halves (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Mixed cook",
+        "separate": "Separate"
+      },
+      "session": {
+        "title": "Mixed cook session · {{m}} min total",
+        "tempLine": "{{method}} at {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · from frozen",
+        "startNow": "Start now · {{m}} min",
+        "addAt": "Add at +{{at}} min · {{m}} min cook",
+        "rawCookedGrams": "{{r}} g raw → {{c}} g cooked"
+      },
+      "bagOption": {
+        "recommended": "Recommended",
+        "bigger": "Bigger bags",
+        "smaller": "Smaller bags"
+      },
+      "fromFrozenChip": "From frozen"
     }
   },
   "nutrition": {
@@ -1143,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Lower ratios (5:1 to 10:1) reduce systemic inflammation"
         }
-      }
+      },
+      "sourceLine": "AAFCO Dog Food Nutrient Profile — dry matter basis",
+      "sourceLine_cat": "AAFCO Cat Food Nutrient Profile — dry matter basis"
     },
     "transition": {
       "title": "7-day transition from kibble to fresh food",
@@ -1342,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/week",
           "calcium": "Calcium citrate",
           "calciumDose": "287 mg/day",
-          "dayLabel": "Day 1 · Mon May 25",
+          "dayLabel": "Day 1 · {{date}}",
           "beefDay": "Beef day",
           "mainGrams": "{{g}}g beef"
         },
@@ -1387,7 +1485,26 @@
     "privacyHostLink": "GitHub privacy statement",
     "eyebrow": "About",
     "subtitle_cat": "Open-source homemade cat and dog food calculator built for people who cook for their pets.",
-    "notVetAdvice_cat": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Cats in particular have tight margins for taurine, arachidonic acid and vitamin A. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate)."
+    "notVetAdvice_cat": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Cats in particular have tight margins for taurine, arachidonic acid and vitamin A. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO Dog Food Nutrient Profiles",
+        "nrc": "NRC Nutrient Requirements of Dogs and Cats (2006)",
+        "fediaf": "FEDIAF Nutritional Guidelines",
+        "merck": "Merck Veterinary Manual",
+        "wsava": "WSAVA Global Nutrition Guidelines",
+        "acvn": "ACVN position statements"
+      },
+      "cat": {
+        "aafco": "AAFCO Cat Food Nutrient Profiles",
+        "nrc": "NRC Nutrient Requirements of Dogs and Cats (2006)",
+        "aaha": "AAHA / AAFP 2021 Feline Life Stage Guidelines",
+        "zoran": "Zoran (2002) — The Carnivore Connection to Nutrition in Cats",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF Nutritional Guidelines",
+        "acvn": "ACVN position statements"
+      }
+    }
   },
   "meatData": {
     "beef": {

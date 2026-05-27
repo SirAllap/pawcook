@@ -43,7 +43,8 @@
     "cancel": "Annuler",
     "dismiss": "Fermer",
     "close": "Fermer",
-    "confirm": "Confirmer"
+    "confirm": "Confirmer",
+    "remove": "Retirer"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sachets · {{sessions}} session(s) de cuisson · économise {{saved}} vs quotidienne",
       "simpleMeals": "Repas simples",
       "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal).",
-      "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits."
+      "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits.",
+      "veggieDetail": "Cuire chaque légume séparément",
+      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets."
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} barquette",
         "bunch": "{{qty}} botte",
         "bottle": "{{qty}} bouteille"
-      }
+      },
+      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit."
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Rien à mettre en sachet",
       "noBagsHelp": "Ce plan n’a aucun ingrédient à préparer par lot — tout sera cuit frais.",
       "summaryLabel": "Plan de cuisson",
-      "summary": "{{bags}} sachets · {{sessions}} session(s) de cuisson · une protéine par sachet",
-      "thawIcs": "Calendrier de décongélation (.ics)",
-      "groupSummary": "{{bags}} sachets · {{grams}} g au total",
-      "printLabels": "Imprimer les étiquettes",
+      "summary": "{{bags}} sachets · {{sessions}} jour(s) de cuisine · une protéine par sachet",
+      "thawIcs": "Rappels de décongélation (.ics)",
+      "groupSummary": "{{bags}} sachet(s) · {{grams}} g au total",
+      "printLabels": "Étiqueter les sachets",
       "bagN": "Sachet {{n}} sur {{total}}",
-      "thaw": "Décongeler {{date}}",
-      "useBy": "À consommer avant le {{date}}",
-      "rotationNote": "Les protéines tournent — les dates des sachets peuvent ne pas être consécutives.",
-      "freshLabel": "Cuire frais (pas en lot)",
+      "useBy": "À cons. avant le {{date}}",
+      "rotationNote": "Les protéines tournent — les dates des sachets peuvent être non consécutives.",
+      "freshLabel": "Cuisiner le jour même (pas en lot)",
       "freshHelp": "Ces aliments ne se congèlent pas bien en lot. Traitez-les chaque jour ou par recette.",
       "freshReason": {
         "perishable": "périssable",
@@ -382,7 +385,29 @@
         "organ": "petites portions",
         "supplement-equiv": "ajout quotidien"
       },
-      "frozenQuality": "Congelé ~{{days}} jours — sûr, mais la saveur commence à s’altérer. Envisagez une cuisson anticipée plus courte au prochain plan."
+      "emptyCta": "Modifier le plan",
+      "nextCookTitle": "Prochain jour de cuisine",
+      "nextCookCountGrams": "{{bags}} sachet(s) · {{grams}} g",
+      "nextCookAllDone": "Tous les sachets sont cuits.",
+      "nextCookDone": "Cuisine de la semaine terminée. Prochain tour : {{date}}.",
+      "labelOne": "Étiqueter le sachet",
+      "bagSolo": "Sachet unique",
+      "thawEve": "Au frigo : {{date}} le soir",
+      "readyAt": "Prêt à servir : {{date}}",
+      "frozenQualityGroup": "{{count}} sachet(s) restent congelés plus de 30 jours — sûrs, mais le goût s'estompe. Réduisez la cuisson à l'avance au prochain plan.",
+      "perPetSplit": "Répartition : {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Compléments quotidiens",
+      "supplementCardsHelp": "Trop peu pour être ensaché — à ajouter dans la gamelle chaque jour. Les cuire reviendrait à ouvrir 20 sachets pour 6 g de carotte.",
+      "perDay": "par jour, foyer",
+      "veggieSessionsLabel": "Sessions de cuisson légumes",
+      "veggieSessionsHelp": "Chaque carte regroupe ce qui se cuit ensemble un même jour. Touchez «Planifier les sachets» pour le détail sachet par sachet.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g cru → {{c}} g cuit",
+      "fromFrozen": "depuis congelé",
+      "planBags": "Planifier les sachets",
+      "startAt0": "au départ, {{m}} min",
+      "startAtN": "ajouter à +{{at}} min, cuit {{m}} min"
     },
     "labels": {
       "title": "{{count}} étiquettes de sachet — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg par jour (~½ c. à café de coquille moulue par ~454 g de viande)",
         "rationale": "Les repas cuits manquent de calcium sans os — ceci comble l’écart."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cuit",
+      "useByShort": "À cons. avant",
+      "title": "Étiqueter le sachet {{n}}/{{total}}",
+      "intro": "Recopiez ceci sur le sachet au marqueur permanent. Un sachet à la fois.",
+      "copy": "Copier le texte",
+      "copied": "Copié",
+      "next": "Sachet suivant",
+      "prev": "Sachet précédent",
+      "done": "Terminé",
+      "progress": "{{n}} sur {{total}}",
+      "tipTape": "Sachet en silicone réutilisable ? Collez-y un morceau de ruban de masquage et écrivez dessus."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planifier les sachets de légumes",
+        "subtitle": "Tapez ce que vous avez sous la main — choisissez une coupe et obtenez un déroulé sachet par sachet vraiment suivable.",
+        "onHandLabel": "Ce que vous avez sous la main",
+        "totalOnHand": "{{kg}} kg cru au total",
+        "methodLabel": "Méthode de cuisson",
+        "packagingLabel": "Conditionnement",
+        "householdLabel": "Légumes par jour, foyer (g)",
+        "householdHelper": "Grammes par jour pour tous les animaux. Sert à dimensionner les sachets.",
+        "daysLabel": "Jours par sachet (préféré)",
+        "roundingLabel": "Arrondi de la taille des sachets",
+        "modeLabel": "Mode",
+        "fromFrozenLabel": "Cuire depuis congelé",
+        "fromFrozenHelper": "Ajoute les minutes « depuis congelé » par coupe (quand spécifiées).",
+        "emptyHint": "Saisissez combien de grammes vous avez de chaque légume pour voir le plan des sachets.",
+        "mixedNotPossible": "Ces légumes ne peuvent pas cuire ensemble en une session — passez en mode «Séparé» ou ajustez coupes/méthode.",
+        "yieldLabel": "Rendement {{p}} %",
+        "cutLabel": "Forme de coupe",
+        "gramsLabel": "Grammes (cru)",
+        "addVeggie": "Ajouter un légume",
+        "totalLine": "{{r}} g cru → {{c}} g cuit",
+        "coversDaysShort": "~{{d}} jours",
+        "workflowLabel": "Déroulé",
+        "stepPortionSingle": "Répartissez les {{raw}} g cru ({{cooked}} g cuit) dans 1 sachet (contenant ~{{size}} g).",
+        "stepPortionEven": "Répartissez en {{n}} sachets de {{cooked}} g cuit (~{{raw}} g cru chacun).",
+        "stepPortionUneven": "Répartissez en {{n}} sachets : {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cuit (~{{raw}} g cru par sachet plein, {{lastRaw}} g cru pour le dernier).",
+        "stepVacuumSeal": "Mettez chaque sachet sous vide à plat en une seule couche ; congelez immédiatement.",
+        "stepSiliconeTray": "Versez dans des moules en silicone ; congelez ; transférez les cubes dans un sachet congélation pour des portions à la demande.",
+        "stepFreezerBag": "Mettez chaque portion à plat en sachet ; congelez ; cassez des portions au fur et à mesure.",
+        "stepRigid": "Mettez en boîtes ; réfrigérez (pas de congélation). À consommer sous 3–4 jours.",
+        "stepCook": "Cuire {{method}} à {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclut +{{x}} min depuis congelé)",
+        "noSpec": "Cette méthode n'est pas prise en charge pour ce légume — changez la coupe ou la méthode.",
+        "stepCool": "Refroidissez à ≤21 °C avant le frigo (en 2 h) ; bain glacé pour les feuilles/crucifères.",
+        "headroomNote": "Le dernier sachet a {{g}} g d'espace libre — vous pouvez compléter à la prochaine cuisson ou congeler tel quel."
+      },
+      "cut": {
+        "whole": "Entier",
+        "large_chunks": "Gros morceaux (3–4 cm)",
+        "cubed": "En cubes (1–2 cm)",
+        "coins": "Rondelles (6–10 mm)",
+        "mandolin_thin": "Mandoline fine (2–4 mm)",
+        "sticks": "Bâtonnets",
+        "shredded": "Râpé",
+        "florets": "Bouquets",
+        "leaves_whole": "Feuilles entières",
+        "leaves_shredded": "Feuilles émincées"
+      },
+      "packaging": {
+        "freezer_bag": "Sachet congélation (plat)",
+        "vacuum_seal": "Sous vide (cuire depuis congelé)",
+        "silicone_tray": "Moule silicone (cubes-portions)",
+        "rigid_container": "Boîte rigide (frigo seulement)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Arrondir à 50 g",
+        "step100": "Arrondir à 100 g",
+        "halves": "Moitiés paires (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cuisson mixte",
+        "separate": "Séparé"
+      },
+      "session": {
+        "title": "Session de cuisson mixte · {{m}} min au total",
+        "tempLine": "{{method}} à {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · depuis congelé",
+        "startNow": "Démarrer · {{m}} min",
+        "addAt": "Ajouter à +{{at}} min · cuit {{m}} min",
+        "rawCookedGrams": "{{r}} g cru → {{c}} g cuit"
+      },
+      "bagOption": {
+        "recommended": "Recommandé",
+        "bigger": "Sachets plus grands",
+        "smaller": "Sachets plus petits"
+      },
+      "fromFrozenChip": "Depuis congelé"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Oméga-6 : Oméga-3",
           "note": "Des ratios plus bas (5:1 à 10:1) réduisent l'inflammation systémique"
         }
-      }
+      },
+      "sourceLine": "Profil nutritionnel AAFCO chiens — base matière sèche",
+      "sourceLine_cat": "Profil nutritionnel AAFCO chats — base matière sèche"
     },
     "transition": {
       "title": "Transition 7 jours des croquettes vers le frais",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semaine",
           "calcium": "Citrate de calcium",
           "calciumDose": "287 mg/jour",
-          "dayLabel": "Jour 1 · lun. 25 mai",
+          "dayLabel": "Jour 1 · {{date}}",
           "beefDay": "Jour bœuf",
           "mainGrams": "{{g}}g bœuf"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Politique de confidentialité de GitHub",
     "eyebrow": "À propos",
     "subtitle_cat": "Calculateur open source de nourriture maison pour chiens et chats, conçu pour qui cuisine pour ses animaux.",
-    "notVetAdvice_cat": "Cet outil n'est pas un avis vétérinaire. Il fournit des recommandations générales basées sur des normes publiées (AAFCO, NRC, FEDIAF). Les chats ont en particulier des marges étroites pour la taurine, l'acide arachidonique et la vitamine A. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplômé ACVN)."
+    "notVetAdvice_cat": "Cet outil n'est pas un avis vétérinaire. Il fournit des recommandations générales basées sur des normes publiées (AAFCO, NRC, FEDIAF). Les chats ont en particulier des marges étroites pour la taurine, l'acide arachidonique et la vitamine A. Pour une alimentation maison à long terme, consultez un nutritionniste vétérinaire certifié (diplômé ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profils nutritionnels AAFCO pour chiens",
+        "nrc": "Besoins nutritionnels NRC pour chiens et chats (2006)",
+        "fediaf": "Lignes directrices nutritionnelles FEDIAF",
+        "merck": "Manuel vétérinaire Merck",
+        "wsava": "Lignes directrices mondiales en nutrition WSAVA",
+        "acvn": "Prises de position de l'ACVN"
+      },
+      "cat": {
+        "aafco": "Profils nutritionnels AAFCO pour chats",
+        "nrc": "Besoins nutritionnels NRC pour chiens et chats (2006)",
+        "aaha": "Lignes directrices AAHA / AAFP 2021 sur les étapes de vie félines",
+        "zoran": "Zoran (2002) — Le lien carnivore dans la nutrition féline",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Lignes directrices nutritionnelles FEDIAF",
+        "acvn": "Prises de position de l'ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

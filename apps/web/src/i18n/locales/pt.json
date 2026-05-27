@@ -43,7 +43,8 @@
     "cancel": "Cancelar",
     "dismiss": "Dispensar",
     "close": "Fechar",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "remove": "Remover"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · economiza {{saved}} vs diária",
       "simpleMeals": "Refeições simples",
       "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet).",
-      "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais."
+      "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais.",
+      "veggieDetail": "Cozinhar cada legume em separado",
+      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} cestinha",
         "bunch": "{{qty}} maço",
         "bottle": "{{qty}} garrafa"
-      }
+      },
+      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados."
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Nada para ensacar",
       "noBagsHelp": "Este plano não tem ingredientes para lote — tudo será cozido fresco.",
       "summaryLabel": "Plano de cozimento",
-      "summary": "{{bags}} sacos · {{sessions}} sessão(ões) de cozimento · uma proteína por saco",
-      "thawIcs": "Cronograma de descongelamento (.ics)",
-      "groupSummary": "{{bags}} sacos · {{grams}} g no total",
-      "printLabels": "Imprimir etiquetas",
+      "summary": "{{bags}} sacos · {{sessions}} dia(s) de cozinha · uma proteína por saco",
+      "thawIcs": "Lembretes para descongelar (.ics)",
+      "groupSummary": "{{bags}} saco(s) · {{grams}} g no total",
+      "printLabels": "Etiquetar sacos",
       "bagN": "Saco {{n}} de {{total}}",
-      "thaw": "Descongelar {{date}}",
-      "useBy": "Consumir até {{date}}",
-      "rotationNote": "As proteínas se alternam — as datas dos sacos podem não ser consecutivas.",
-      "freshLabel": "Cozinhar fresco (não em lote)",
+      "useBy": "Antes de {{date}}",
+      "rotationNote": "As proteínas rodam — as datas dos sacos podem não ser consecutivas.",
+      "freshLabel": "Cozinhar no dia (não em lote)",
       "freshHelp": "Estes não congelam bem em lote. Prepare diariamente ou por receita.",
       "freshReason": {
         "perishable": "perecível",
@@ -382,7 +385,29 @@
         "organ": "porções pequenas",
         "supplement-equiv": "adição diária"
       },
-      "frozenQuality": "Congelado ~{{days}} dias — seguro, mas o sabor começa a perder. Considere um cozimento antecipado menor no próximo plano."
+      "emptyCta": "Editar plano",
+      "nextCookTitle": "Próximo dia de cozinha",
+      "nextCookCountGrams": "{{bags}} saco(s) · {{grams}} g",
+      "nextCookAllDone": "Todos os sacos cozinhados.",
+      "nextCookDone": "Cozinha da semana feita. Próxima ronda: {{date}}.",
+      "labelOne": "Etiquetar saco",
+      "bagSolo": "Saco único",
+      "thawEve": "Para o frigorífico: {{date}} à noite",
+      "readyAt": "Pronto para servir: {{date}}",
+      "frozenQualityGroup": "{{count}} saco(s) ficam mais de 30 dias congelados — seguros, mas o sabor diminui. Reduza a cozedura antecipada no próximo plano.",
+      "perPetSplit": "Divisão: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Suplementos diários",
+      "supplementCardsHelp": "Demasiado pouco para ensacar — junta à tigela todos os dias. Cozinhá-los significaria abrir 20 sacos por 6 g de cenoura.",
+      "perDay": "por dia, agregado",
+      "veggieSessionsLabel": "Sessões de cozedura de legumes",
+      "veggieSessionsHelp": "Cada cartão agrupa o que se cozinha junto num dia. Toque em «Planear sacos» para o detalhe saco a saco.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g cru → {{c}} g cozinhado",
+      "fromFrozen": "do congelador",
+      "planBags": "Planear sacos",
+      "startAt0": "início, {{m}} min",
+      "startAtN": "adicionar em +{{at}} min, coze {{m}} min"
     },
     "labels": {
       "title": "{{count}} etiquetas de saco — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg por dia (~½ colher de chá de casca moída por ~454 g de carne)",
         "rationale": "Refeições cozidas são deficientes em cálcio sem osso — isso fecha a lacuna."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cozinhado",
+      "useByShort": "Antes de",
+      "title": "Etiquetar saco {{n}}/{{total}}",
+      "intro": "Copia isto no saco com um marcador permanente. Um saco de cada vez.",
+      "copy": "Copiar texto",
+      "copied": "Copiado",
+      "next": "Próximo saco",
+      "prev": "Saco anterior",
+      "done": "Concluído",
+      "progress": "{{n}} de {{total}}",
+      "tipTape": "Saco de silicone reutilizável? Cola um pedaço de fita-cola de pintor e escreve por cima."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planear sacos de legumes",
+        "subtitle": "Escreve o que tens à mão — escolhe um corte e recebe um fluxo saco a saco que consegues mesmo seguir.",
+        "onHandLabel": "O que tens à mão",
+        "totalOnHand": "{{kg}} kg cru no total",
+        "methodLabel": "Método de cozedura",
+        "packagingLabel": "Embalagem",
+        "householdLabel": "Legumes por dia, agregado (g)",
+        "householdHelper": "Gramas por dia para todos os animais. Usado para dimensionar os sacos.",
+        "daysLabel": "Dias por saco (preferido)",
+        "roundingLabel": "Arredondamento do tamanho do saco",
+        "modeLabel": "Modo",
+        "fromFrozenLabel": "Cozinhar do congelador",
+        "fromFrozenHelper": "Adiciona os minutos do-congelador por corte (quando definidos).",
+        "emptyHint": "Introduz quantos gramas tens de cada legume para veres o teu plano de sacos.",
+        "mixedNotPossible": "Estes legumes não podem cozer juntos numa sessão — muda para «Separados» ou ajusta cortes/método.",
+        "yieldLabel": "Rendimento {{p}}%",
+        "cutLabel": "Forma de corte",
+        "gramsLabel": "Gramas (cru)",
+        "addVeggie": "Adicionar legume",
+        "totalLine": "{{r}} g cru → {{c}} g cozinhado",
+        "coversDaysShort": "~{{d}} dias",
+        "workflowLabel": "Fluxo",
+        "stepPortionSingle": "Divide os {{raw}} g crus ({{cooked}} g cozinhados) num saco (cabe num recipiente de ~{{size}} g).",
+        "stepPortionEven": "Divide em {{n}} sacos de {{cooked}} g cozinhados (~{{raw}} g crus cada um).",
+        "stepPortionUneven": "Divide em {{n}} sacos: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cozinhados (~{{raw}} g crus por saco cheio, {{lastRaw}} g crus para o último).",
+        "stepVacuumSeal": "Sela em vácuo cada saco plano numa só camada; congela já.",
+        "stepSiliconeTray": "Verte em formas de silicone; congela; passa os cubos para um saco de congelação para doses à medida.",
+        "stepFreezerBag": "Ensaca cada dose plana; congela; parte doses conforme precisares.",
+        "stepRigid": "Coloca em recipientes; refrigera (sem congelar). Consumir em 3–4 dias.",
+        "stepCook": "Coze {{method}} a {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclui +{{x}} min do congelador)",
+        "noSpec": "Este método não é suportado para este legume — muda o corte ou o método.",
+        "stepCool": "Arrefece a ≤21 °C antes do frigorífico (em 2 h); banho de gelo para folhas/crucíferas.",
+        "headroomNote": "O último saco tem {{g}} g de margem livre — completa na próxima cozedura ou congela como está."
+      },
+      "cut": {
+        "whole": "Inteiro",
+        "large_chunks": "Pedaços grandes (3–4 cm)",
+        "cubed": "Em cubos (1–2 cm)",
+        "coins": "Rodelas (6–10 mm)",
+        "mandolin_thin": "Mandolina fina (2–4 mm)",
+        "sticks": "Palitos",
+        "shredded": "Ralado",
+        "florets": "Floretes",
+        "leaves_whole": "Folhas inteiras",
+        "leaves_shredded": "Folhas cortadas"
+      },
+      "packaging": {
+        "freezer_bag": "Saco de congelação (plano)",
+        "vacuum_seal": "Vácuo (cozinhar do congelador)",
+        "silicone_tray": "Forma de silicone (cubos de dose)",
+        "rigid_container": "Recipiente rígido (só frigorífico)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Arredondar a 50 g",
+        "step100": "Arredondar a 100 g",
+        "halves": "Metades pares (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cozedura mista",
+        "separate": "Separadas"
+      },
+      "session": {
+        "title": "Sessão de cozedura mista · {{m}} min no total",
+        "tempLine": "{{method}} a {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · do congelador",
+        "startNow": "Começar agora · {{m}} min",
+        "addAt": "Adicionar em +{{at}} min · coze {{m}} min",
+        "rawCookedGrams": "{{r}} g cru → {{c}} g cozinhado"
+      },
+      "bagOption": {
+        "recommended": "Recomendado",
+        "bigger": "Sacos maiores",
+        "smaller": "Sacos mais pequenos"
+      },
+      "fromFrozenChip": "Do congelador"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Ómega-6 : Ómega-3",
           "note": "Rácios mais baixos (5:1 a 10:1) reduzem a inflamação sistémica"
         }
-      }
+      },
+      "sourceLine": "Perfil nutricional AAFCO para cães — matéria seca",
+      "sourceLine_cat": "Perfil nutricional AAFCO para gatos — matéria seca"
     },
     "transition": {
       "title": "Transição de 7 dias de ração para comida fresca",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semana",
           "calcium": "Citrato de cálcio",
           "calciumDose": "287 mg/dia",
-          "dayLabel": "Dia 1 · Seg 25 mai",
+          "dayLabel": "Dia 1 · {{date}}",
           "beefDay": "Dia de carne",
           "mainGrams": "{{g}}g carne"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Política de privacidade do GitHub",
     "eyebrow": "Sobre",
     "subtitle_cat": "Calculadora open source de comida caseira para cães e gatos, feita para quem cozinha para os seus animais.",
-    "notVetAdvice_cat": "Esta ferramenta não substitui orientação veterinária. Fornece diretrizes gerais baseadas em padrões publicados (AAFCO, NRC, FEDIAF). Gatos têm margens estreitas para taurina, ácido araquidônico e vitamina A. Para alimentação caseira de longo prazo, consulte um nutricionista veterinário certificado (diplomado ACVN)."
+    "notVetAdvice_cat": "Esta ferramenta não substitui orientação veterinária. Fornece diretrizes gerais baseadas em padrões publicados (AAFCO, NRC, FEDIAF). Gatos têm margens estreitas para taurina, ácido araquidônico e vitamina A. Para alimentação caseira de longo prazo, consulte um nutricionista veterinário certificado (diplomado ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Perfis nutricionais AAFCO para cães",
+        "nrc": "Necessidades nutricionais NRC para cães e gatos (2006)",
+        "fediaf": "Diretrizes nutricionais FEDIAF",
+        "merck": "Manual veterinário Merck",
+        "wsava": "Diretrizes globais de nutrição WSAVA",
+        "acvn": "Tomadas de posição da ACVN"
+      },
+      "cat": {
+        "aafco": "Perfis nutricionais AAFCO para gatos",
+        "nrc": "Necessidades nutricionais NRC para cães e gatos (2006)",
+        "aaha": "Diretrizes AAHA / AAFP 2021 das fases de vida felinas",
+        "zoran": "Zoran (2002) — A ligação carnívora na nutrição felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Diretrizes nutricionais FEDIAF",
+        "acvn": "Tomadas de posição da ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

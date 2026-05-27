@@ -43,7 +43,8 @@
     "cancel": "Annuleren",
     "dismiss": "Sluiten",
     "close": "Sluiten",
-    "confirm": "Bevestigen"
+    "confirm": "Bevestigen",
+    "remove": "Verwijderen"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} zakken · {{sessions}} kooksessie(s) · bespaart {{saved}} t.o.v. dagelijks",
       "simpleMeals": "Eenvoudige maaltijden",
       "simpleMealsHelp": "Eén eiwit per maaltijd — dezelfde zak voor het hele huishouden. Katten krijgen een dagelijkse aanbeveling voor taurine + levertraan om het verschil op te vullen. Schakel uit voor het volledige multi-componentrecept (orgaanvlees, vistoevoegingen, macro's per huisdier).",
-      "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden."
+      "tinyHouseholdHint": "Klein huishouden (~{{grams}} g/dag) — probeer Tot 3 dagen om mini-zakken te vermijden.",
+      "veggieDetail": "Elke groente apart koken",
+      "veggieDetailHelp": "Uit (aanbevolen): één gemengde batch per kookdag — wortels, zoete aardappel en sperziebonen samen in één pan. Aan: elke groente krijgt zijn eigen kooksessie in het plan, met een eigen zakje-schema."
     },
     "coverage": {
       "passed": "Ziet er evenwichtig uit",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} bakje",
         "bunch": "{{qty}} bos",
         "bottle": "{{qty}} fles"
-      }
+      },
+      "yieldAdjustedHint": "Inkoop omvat kookkrimp — levert ~{{c}} g gaar op."
     },
     "confirmDelete": "Plan \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Niets om in te pakken",
       "noBagsHelp": "Dit plan heeft geen batch-geschikte ingrediënten — alles wordt vers bereid.",
       "summaryLabel": "Kookplan",
-      "summary": "{{bags}} zakken · {{sessions}} kooksessie(s) · één eiwit per zak",
-      "thawIcs": "Ontdooischema (.ics)",
-      "groupSummary": "{{bags}} zakken · {{grams}} g totaal",
-      "printLabels": "Labels afdrukken",
-      "bagN": "Zak {{n}} van {{total}}",
-      "thaw": "Ontdooien {{date}}",
-      "useBy": "Te gebruiken vóór {{date}}",
-      "rotationNote": "Eiwitten wisselen — zakkendata zijn mogelijk niet opeenvolgend.",
-      "freshLabel": "Vers koken (geen batch)",
+      "summary": "{{bags}} zakjes · {{sessions}} kookdag(en) · één eiwit per zakje",
+      "thawIcs": "Ontdooi-herinneringen (.ics)",
+      "groupSummary": "{{bags}} zakje(s) · {{grams}} g totaal",
+      "printLabels": "Zakjes etiketteren",
+      "bagN": "Zakje {{n}} van {{total}}",
+      "useBy": "THT {{date}}",
+      "rotationNote": "Eiwitten rouleren — zakje-data hoeven niet opeenvolgend te zijn.",
+      "freshLabel": "Op de dag zelf koken (niet in voorraad)",
       "freshHelp": "Deze laten zich slecht in batch invriezen. Dagelijks of per recept verwerken.",
       "freshReason": {
         "perishable": "bederfelijk",
@@ -382,7 +385,29 @@
         "organ": "kleine porties",
         "supplement-equiv": "dagelijkse toevoeging"
       },
-      "frozenQuality": "Bevroren ~{{days}} dagen — veilig, maar de smaak vermindert. Overweeg een korter vooruitkoken in het volgende plan."
+      "emptyCta": "Plan bewerken",
+      "nextCookTitle": "Volgende kookdag",
+      "nextCookCountGrams": "{{bags}} zakje(s) · {{grams}} g",
+      "nextCookAllDone": "Alle zakjes gekookt.",
+      "nextCookDone": "Koken voor deze week klaar. Volgende ronde: {{date}}.",
+      "labelOne": "Zakje etiketteren",
+      "bagSolo": "Eén zakje",
+      "thawEve": "Naar koelkast: {{date}} 's avonds",
+      "readyAt": "Klaar om te serveren: {{date}}",
+      "frozenQualityGroup": "{{count}} zakje(s) liggen meer dan 30 dagen in de vriezer — veilig, maar smaak vermindert. Kook minder vooruit in het volgende plan.",
+      "perPetSplit": "Verdeling: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Dagelijkse aanvullingen",
+      "supplementCardsHelp": "Te weinig om in te zakken — dagelijks direct in de bak. Ze koken zou betekenen 20 zakjes openen voor 6 g wortel.",
+      "perDay": "per dag, huishouden",
+      "veggieSessionsLabel": "Groente-kookmomenten",
+      "veggieSessionsHelp": "Elke kaart bundelt wat op één dag samen gekookt wordt. Tik op «Plan zakjes» voor het zakje-per-zakje overzicht.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g rauw → {{c}} g gaar",
+      "fromFrozen": "uit de vriezer",
+      "planBags": "Plan zakjes",
+      "startAt0": "start, {{m}} min",
+      "startAtN": "toevoegen op +{{at}} min, kookt {{m}} min"
     },
     "labels": {
       "title": "{{count}} zaklabels — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg per dag (~½ tl gemalen eierschaal per ~454 g vlees)",
         "rationale": "Gekookte maaltijden zijn calciumarm zonder bot — dit vult het gat."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Gekookt",
+      "useByShort": "THT",
+      "title": "Zakje {{n}}/{{total}} etiketteren",
+      "intro": "Schrijf dit met een permanente marker op het zakje. Eén zakje per keer.",
+      "copy": "Tekst kopiëren",
+      "copied": "Gekopieerd",
+      "next": "Volgend zakje",
+      "prev": "Vorig zakje",
+      "done": "Klaar",
+      "progress": "{{n}} van {{total}}",
+      "tipTape": "Herbruikbaar siliconen zakje? Plak er een strookje schilderstape op en schrijf daarop."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Plan groente-zakjes",
+        "subtitle": "Typ in wat je in huis hebt — kies een snijwijze en krijg een zakje-voor-zakje-werkstroom die je echt kunt volgen.",
+        "onHandLabel": "Wat je in huis hebt",
+        "totalOnHand": "{{kg}} kg rauw totaal",
+        "methodLabel": "Kookmethode",
+        "packagingLabel": "Verpakking",
+        "householdLabel": "Groente per dag, huishouden (g)",
+        "householdHelper": "Totaal aantal gram per dag voor alle dieren. Gebruikt om zakjes te bemeten.",
+        "daysLabel": "Dagen per zakje (voorkeur)",
+        "roundingLabel": "Afronding zakje-grootte",
+        "modeLabel": "Modus",
+        "fromFrozenLabel": "Vanuit bevroren koken",
+        "fromFrozenHelper": "Voegt de bevroren-extra minuten per snijwijze toe (indien gedefinieerd).",
+        "emptyHint": "Voer in hoeveel gram je van elke groente hebt om je zakjesplan te zien.",
+        "mixedNotPossible": "Deze groenten kunnen niet samen in één sessie koken — schakel naar Apart, of pas snijwijze/methode aan.",
+        "yieldLabel": "Rendement {{p}}%",
+        "cutLabel": "Snijvorm",
+        "gramsLabel": "Gram (rauw)",
+        "addVeggie": "Groente toevoegen",
+        "totalLine": "{{r}} g rauw → {{c}} g gaar",
+        "coversDaysShort": "~{{d}} dagen",
+        "workflowLabel": "Werkstroom",
+        "stepPortionSingle": "Verdeel alle {{raw}} g rauw ({{cooked}} g gaar) in 1 zakje (past in ~{{size}} g bakje).",
+        "stepPortionEven": "Verdeel over {{n}} zakjes van {{cooked}} g gaar (~{{raw}} g rauw per stuk).",
+        "stepPortionUneven": "Verdeel over {{n}} zakjes: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g gaar (~{{raw}} g rauw per vol zakje, {{lastRaw}} g rauw voor het laatste).",
+        "stepVacuumSeal": "Vacumeer elk zakje plat in één laag; meteen invriezen.",
+        "stepSiliconeTray": "Giet in siliconenvormen; vries in; doe blokjes in een diepvrieszak voor portie-op-aanvraag.",
+        "stepFreezerBag": "Doe elke portie plat in een zakje; vries in; breek porties af als je nodig hebt.",
+        "stepRigid": "Doe in bakjes; koel (niet invriezen). Binnen 3–4 dagen gebruiken.",
+        "stepCook": "Kook {{method}} op {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclusief +{{x}} min vanuit bevroren)",
+        "noSpec": "Deze methode wordt voor deze groente niet ondersteund — wijzig snijwijze of methode.",
+        "stepCool": "Koel af tot ≤21 °C voor de koelkast (binnen 2 u); ijsbad voor blad/kruisbloemigen.",
+        "headroomNote": "Het laatste zakje heeft {{g}} g vrije ruimte — bijvullen bij volgende kookbeurt of zo invriezen."
+      },
+      "cut": {
+        "whole": "Heel",
+        "large_chunks": "Grote stukken (3–4 cm)",
+        "cubed": "In blokjes (1–2 cm)",
+        "coins": "Plakjes (6–10 mm)",
+        "mandolin_thin": "Mandoline dun (2–4 mm)",
+        "sticks": "Reepjes",
+        "shredded": "Geraspeld",
+        "florets": "Roosjes",
+        "leaves_whole": "Hele bladeren",
+        "leaves_shredded": "Gesneden bladeren"
+      },
+      "packaging": {
+        "freezer_bag": "Diepvrieszak (plat)",
+        "vacuum_seal": "Vacuüm (vanuit bevroren koken)",
+        "silicone_tray": "Siliconenvorm (portieblokjes)",
+        "rigid_container": "Hard bakje (alleen koelkast)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Afronden op 50 g",
+        "step100": "Afronden op 100 g",
+        "halves": "Even helften (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Gemengd koken",
+        "separate": "Apart"
+      },
+      "session": {
+        "title": "Gemengde kooksessie · {{m}} min totaal",
+        "tempLine": "{{method}} op {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · uit de vriezer",
+        "startNow": "Nu starten · {{m}} min",
+        "addAt": "Toevoegen op +{{at}} min · {{m}} min koken",
+        "rawCookedGrams": "{{r}} g rauw → {{c}} g gaar"
+      },
+      "bagOption": {
+        "recommended": "Aanbevolen",
+        "bigger": "Grotere zakjes",
+        "smaller": "Kleinere zakjes"
+      },
+      "fromFrozenChip": "Vanuit bevroren"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Lagere verhoudingen (5:1 tot 10:1) verminderen systemische ontsteking"
         }
-      }
+      },
+      "sourceLine": "AAFCO-voedingsprofiel honden — droge stof",
+      "sourceLine_cat": "AAFCO-voedingsprofiel katten — droge stof"
     },
     "transition": {
       "title": "7-daagse overgang van brokken naar vers voer",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/week",
           "calcium": "Calciumcitraat",
           "calciumDose": "287 mg/dag",
-          "dayLabel": "Dag 1 · Ma 25 mei",
+          "dayLabel": "Dag 1 · {{date}}",
           "beefDay": "Rundvlees-dag",
           "mainGrams": "{{g}}g rundvlees"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Privacyverklaring van GitHub",
     "eyebrow": "Over",
     "subtitle_cat": "Open source calculator voor zelfgemaakte honden- en kattenvoeding, gebouwd voor mensen die voor hun dieren koken.",
-    "notVetAdvice_cat": "Deze tool vervangt geen diergeneeskundig advies. Ze geeft algemene richtlijnen op basis van gepubliceerde standaarden (AAFCO, NRC, FEDIAF). Katten hebben bijzonder krappe marges voor taurine, arachidonzuur en vitamine A. Voor langdurige zelfgemaakte voeding raadpleeg een gecertificeerd veterinair voedingsdeskundige (ACVN-diplomate)."
+    "notVetAdvice_cat": "Deze tool vervangt geen diergeneeskundig advies. Ze geeft algemene richtlijnen op basis van gepubliceerde standaarden (AAFCO, NRC, FEDIAF). Katten hebben bijzonder krappe marges voor taurine, arachidonzuur en vitamine A. Voor langdurige zelfgemaakte voeding raadpleeg een gecertificeerd veterinair voedingsdeskundige (ACVN-diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO-voedingsprofielen voor honden",
+        "nrc": "NRC voedingsbehoeften honden en katten (2006)",
+        "fediaf": "FEDIAF voedingsrichtlijnen",
+        "merck": "Merck veterinair handboek",
+        "wsava": "WSAVA wereldwijde voedingsrichtlijnen",
+        "acvn": "ACVN-standpunten"
+      },
+      "cat": {
+        "aafco": "AAFCO-voedingsprofielen voor katten",
+        "nrc": "NRC voedingsbehoeften honden en katten (2006)",
+        "aaha": "AAHA / AAFP 2021 richtlijnen levensfasen kat",
+        "zoran": "Zoran (2002) — De carnivore-verbinding in kattenvoeding",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF voedingsrichtlijnen",
+        "acvn": "ACVN-standpunten"
+      }
+    }
   },
   "meatData": {
     "beef": {

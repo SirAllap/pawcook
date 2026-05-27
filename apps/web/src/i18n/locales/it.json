@@ -43,7 +43,8 @@
     "cancel": "Annulla",
     "dismiss": "Chiudi",
     "close": "Chiudi",
-    "confirm": "Conferma"
+    "confirm": "Conferma",
+    "remove": "Rimuovi"
   },
   "pets": {
     "eyebrow": "Animali",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · risparmia {{saved}} vs giornaliera",
       "simpleMeals": "Pasti semplici",
       "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale).",
-      "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli."
+      "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli.",
+      "veggieDetail": "Cuocere ogni verdura separatamente",
+      "veggieDetailHelp": "Disattivato (consigliato): un lotto misto per giorno di cucina — carote, patata dolce e fagiolini nella stessa pentola. Attivato: ogni verdura ha la propria sessione di cottura nel piano, con il proprio calendario di sacchetti."
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} cestino",
         "bunch": "{{qty}} mazzo",
         "bottle": "{{qty}} bottiglia"
-      }
+      },
+      "yieldAdjustedHint": "L'acquisto include il calo di cottura — resa ~{{c}} g cotti."
     },
     "confirmDelete": "Eliminare il piano «{{name}}»? L'azione è irreversibile.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Niente da insacchettare",
       "noBagsHelp": "Questo piano non ha ingredienti adatti al lotto — tutto sarà cucinato fresco.",
       "summaryLabel": "Piano di cottura",
-      "summary": "{{bags}} sacchetti · {{sessions}} sessione/i di cottura · una proteina per sacchetto",
-      "thawIcs": "Calendario di scongelamento (.ics)",
-      "groupSummary": "{{bags}} sacchetti · {{grams}} g in totale",
-      "printLabels": "Stampa etichette",
+      "summary": "{{bags}} sacchetti · {{sessions}} giorno(i) di cucina · una proteina per sacchetto",
+      "thawIcs": "Promemoria di scongelamento (.ics)",
+      "groupSummary": "{{bags}} sacchetto(i) · {{grams}} g in totale",
+      "printLabels": "Etichetta sacchetti",
       "bagN": "Sacchetto {{n}} di {{total}}",
-      "thaw": "Scongelare {{date}}",
-      "useBy": "Consumare entro {{date}}",
+      "useBy": "Entro il {{date}}",
       "rotationNote": "Le proteine ruotano — le date dei sacchetti possono non essere consecutive.",
-      "freshLabel": "Cucinare fresco (non in lotto)",
+      "freshLabel": "Cucinare al momento (non in lotti)",
       "freshHelp": "Questi non si congelano bene in lotto. Gestiscili ogni giorno o per ricetta.",
       "freshReason": {
         "perishable": "deperibile",
@@ -382,7 +385,29 @@
         "organ": "piccole porzioni",
         "supplement-equiv": "aggiunta giornaliera"
       },
-      "frozenQuality": "Congelato ~{{days}} giorni — sicuro, ma il sapore inizia a calare. Valuta una finestra di precottura più corta nel prossimo piano."
+      "emptyCta": "Modifica il piano",
+      "nextCookTitle": "Prossimo giorno di cucina",
+      "nextCookCountGrams": "{{bags}} sacchetto(i) · {{grams}} g",
+      "nextCookAllDone": "Tutti i sacchetti sono cotti.",
+      "nextCookDone": "Cucina della settimana fatta. Prossimo turno: {{date}}.",
+      "labelOne": "Etichetta sacchetto",
+      "bagSolo": "Sacchetto singolo",
+      "thawEve": "In frigo: {{date}} sera",
+      "readyAt": "Pronto da servire: {{date}}",
+      "frozenQualityGroup": "{{count}} sacchetto(i) restano congelati oltre 30 giorni — sicuri, ma il sapore cala. Riduci la cottura anticipata nel prossimo piano.",
+      "perPetSplit": "Suddivisione: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Integratori giornalieri",
+      "supplementCardsHelp": "Troppo poco per insacchettare — aggiungili nella ciotola ogni giorno. Cucinarli significherebbe aprire 20 sacchetti per 6 g di carota.",
+      "perDay": "al giorno, famiglia",
+      "veggieSessionsLabel": "Sessioni di cottura verdure",
+      "veggieSessionsHelp": "Ogni scheda raggruppa ciò che si cuoce insieme in un giorno. Tocca «Pianifica sacchetti» per il dettaglio sacchetto per sacchetto.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g crudo → {{c}} g cotto",
+      "fromFrozen": "da congelato",
+      "planBags": "Pianifica sacchetti",
+      "startAt0": "all'inizio, {{m}} min",
+      "startAtN": "aggiungi a +{{at}} min, cuoce {{m}} min"
     },
     "labels": {
       "title": "{{count}} etichette per sacchetti — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg al giorno (~½ cucchiaino di guscio macinato per ~454 g di carne)",
         "rationale": "I pasti cucinati sono carenti di calcio senza osso — questo colma il divario."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Cotto",
+      "useByShort": "Entro il",
+      "title": "Etichetta sacchetto {{n}}/{{total}}",
+      "intro": "Copialo sul sacchetto con un pennarello indelebile. Un sacchetto alla volta.",
+      "copy": "Copia testo",
+      "copied": "Copiato",
+      "next": "Sacchetto successivo",
+      "prev": "Sacchetto precedente",
+      "done": "Fatto",
+      "progress": "{{n}} di {{total}}",
+      "tipTape": "Sacchetto in silicone riutilizzabile? Attacca un pezzo di nastro di carta e scrivi sopra."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Pianifica i sacchetti di verdure",
+        "subtitle": "Scrivi ciò che hai a portata di mano — scegli un taglio e ottieni un flusso sacchetto per sacchetto davvero seguibile.",
+        "onHandLabel": "Ciò che hai a portata di mano",
+        "totalOnHand": "{{kg}} kg crudo in totale",
+        "methodLabel": "Metodo di cottura",
+        "packagingLabel": "Confezionamento",
+        "householdLabel": "Verdura per il nucleo al giorno (g)",
+        "householdHelper": "Grammi al giorno per tutti gli animali. Serve a dimensionare i sacchetti.",
+        "daysLabel": "Giorni per sacchetto (preferito)",
+        "roundingLabel": "Arrotondamento del sacchetto",
+        "modeLabel": "Modalità",
+        "fromFrozenLabel": "Cuocere da congelato",
+        "fromFrozenHelper": "Aggiunge i minuti da-congelato per taglio (quando definiti).",
+        "emptyHint": "Inserisci quanti grammi hai di ogni verdura per vedere il piano dei sacchetti.",
+        "mixedNotPossible": "Queste verdure non possono cuocere insieme in una sessione — passa a «Separate» o cambia tagli/metodo.",
+        "yieldLabel": "Resa {{p}}%",
+        "cutLabel": "Forma di taglio",
+        "gramsLabel": "Grammi (crudo)",
+        "addVeggie": "Aggiungi verdura",
+        "totalLine": "{{r}} g crudo → {{c}} g cotto",
+        "coversDaysShort": "~{{d}} giorni",
+        "workflowLabel": "Flusso",
+        "stepPortionSingle": "Distribuisci tutti i {{raw}} g crudi ({{cooked}} g cotti) in 1 sacchetto (contenitore ~{{size}} g).",
+        "stepPortionEven": "Distribuisci in {{n}} sacchetti da {{cooked}} g cotti (~{{raw}} g crudi ciascuno).",
+        "stepPortionUneven": "Distribuisci in {{n}} sacchetti: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cotti (~{{raw}} g crudi per sacchetto pieno, {{lastRaw}} g crudi per l'ultimo).",
+        "stepVacuumSeal": "Metti sottovuoto ogni sacchetto piatto in un singolo strato; congela subito.",
+        "stepSiliconeTray": "Versa in stampi di silicone; congela; sposta i cubetti in un sacchetto da freezer per porzioni al momento.",
+        "stepFreezerBag": "Insacchetta ogni porzione piatta; congela; spezza le porzioni man mano.",
+        "stepRigid": "Metti in contenitori; refrigera (non congelare). Da consumare entro 3–4 giorni.",
+        "stepCook": "Cuoci {{method}} a {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(include +{{x}} min da congelato)",
+        "noSpec": "Questo metodo non è supportato per questa verdura — cambia taglio o metodo.",
+        "stepCool": "Raffredda a ≤21 °C prima del frigo (entro 2 h); bagno di ghiaccio per foglie/crucifere.",
+        "headroomNote": "L'ultimo sacchetto ha {{g}} g di margine libero — rabbocca alla prossima cottura o congela così com'è."
+      },
+      "cut": {
+        "whole": "Intero",
+        "large_chunks": "Pezzi grandi (3–4 cm)",
+        "cubed": "A cubetti (1–2 cm)",
+        "coins": "Rondelle (6–10 mm)",
+        "mandolin_thin": "Mandolina sottile (2–4 mm)",
+        "sticks": "Bastoncini",
+        "shredded": "Grattugiata",
+        "florets": "Cimette",
+        "leaves_whole": "Foglie intere",
+        "leaves_shredded": "Foglie tagliuzzate"
+      },
+      "packaging": {
+        "freezer_bag": "Sacchetto da freezer (piatto)",
+        "vacuum_seal": "Sottovuoto (cuocere da congelato)",
+        "silicone_tray": "Stampo silicone (cubetti porzione)",
+        "rigid_container": "Contenitore rigido (solo frigo)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Arrotonda a 50 g",
+        "step100": "Arrotonda a 100 g",
+        "halves": "Metà pari (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cottura mista",
+        "separate": "Separate"
+      },
+      "session": {
+        "title": "Sessione di cottura mista · {{m}} min in totale",
+        "tempLine": "{{method}} a {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · da congelato",
+        "startNow": "Inizia ora · {{m}} min",
+        "addAt": "Aggiungi a +{{at}} min · cuoce {{m}} min",
+        "rawCookedGrams": "{{r}} g crudo → {{c}} g cotto"
+      },
+      "bagOption": {
+        "recommended": "Consigliato",
+        "bigger": "Sacchetti più grandi",
+        "smaller": "Sacchetti più piccoli"
+      },
+      "fromFrozenChip": "Da congelato"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Rapporti più bassi (da 5:1 a 10:1) riducono l'infiammazione sistemica"
         }
-      }
+      },
+      "sourceLine": "Profilo nutrizionale AAFCO per cani — sostanza secca",
+      "sourceLine_cat": "Profilo nutrizionale AAFCO per gatti — sostanza secca"
     },
     "transition": {
       "title": "Transizione di 7 giorni da crocchette a cibo fresco",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/settimana",
           "calcium": "Citrato di calcio",
           "calciumDose": "287 mg/giorno",
-          "dayLabel": "Giorno 1 · Lun 25 mag",
+          "dayLabel": "Giorno 1 · {{date}}",
           "beefDay": "Giorno manzo",
           "mainGrams": "{{g}}g manzo"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Informativa sulla privacy di GitHub",
     "eyebrow": "Informazioni",
     "subtitle_cat": "Calcolatore open source di cibo casalingo per cani e gatti, costruito per chi cucina per i propri animali.",
-    "notVetAdvice_cat": "Questo strumento non è un parere veterinario. Fornisce linee guida generali basate su standard pubblicati (AAFCO, NRC, FEDIAF). I gatti hanno margini particolarmente stretti per taurina, acido arachidonico e vitamina A. Per alimentazione casalinga a lungo termine, consulta un nutrizionista veterinario certificato (diplomato ACVN)."
+    "notVetAdvice_cat": "Questo strumento non è un parere veterinario. Fornisce linee guida generali basate su standard pubblicati (AAFCO, NRC, FEDIAF). I gatti hanno margini particolarmente stretti per taurina, acido arachidonico e vitamina A. Per alimentazione casalinga a lungo termine, consulta un nutrizionista veterinario certificato (diplomato ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Profili nutrizionali AAFCO per cani",
+        "nrc": "Fabbisogno nutritivo NRC per cani e gatti (2006)",
+        "fediaf": "Linee guida nutrizionali FEDIAF",
+        "merck": "Manuale veterinario Merck",
+        "wsava": "Linee guida globali di nutrizione WSAVA",
+        "acvn": "Posizioni ufficiali ACVN"
+      },
+      "cat": {
+        "aafco": "Profili nutrizionali AAFCO per gatti",
+        "nrc": "Fabbisogno nutritivo NRC per cani e gatti (2006)",
+        "aaha": "Linee guida AAHA / AAFP 2021 sulle fasi di vita felina",
+        "zoran": "Zoran (2002) — Il legame carnivoro nella nutrizione felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Linee guida nutrizionali FEDIAF",
+        "acvn": "Posizioni ufficiali ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {

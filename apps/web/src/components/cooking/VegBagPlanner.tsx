@@ -10,6 +10,7 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTranslateIngredient } from '../../lib/translate-ingredient';
 import {
   Sprout, Snowflake, Package, Sparkles, Plus, X, Info, ChevronDown,
 } from 'lucide-react';
@@ -118,6 +119,7 @@ export function VegBagPlanner({
   initialPrefBagDays,
 }: VegBagPlannerProps) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const saved = useMemo(() => loadDefaults(), []);
 
   const allVegIds = useMemo(() => listVegCookingIds().slice(), []);
@@ -269,11 +271,11 @@ export function VegBagPlanner({
           value={method}
           onChange={(e) => setMethod(e.target.value as CookingMethod)}
         >
-          <option value="sous_vide">{t('cooking.method.sous_vide', { defaultValue: 'Sous-vide' })}</option>
-          <option value="stovetop_low">{t('cooking.method.stovetop_low', { defaultValue: 'Stovetop / steam' })}</option>
-          <option value="oven">{t('cooking.method.oven', { defaultValue: 'Oven' })}</option>
-          <option value="pressure_cooker">{t('cooking.method.pressure_cooker', { defaultValue: 'Pressure cooker' })}</option>
-          <option value="slow_cooker">{t('cooking.method.slow_cooker', { defaultValue: 'Slow cooker' })}</option>
+          <option value="sous_vide">{t('cooking.methods.sous_vide', { defaultValue: 'Sous-vide' })}</option>
+          <option value="stovetop_low">{t('cooking.methods.stovetop_low', { defaultValue: 'Stovetop / steam' })}</option>
+          <option value="oven">{t('cooking.methods.oven', { defaultValue: 'Oven' })}</option>
+          <option value="pressure_cooker">{t('cooking.methods.pressure_cooker', { defaultValue: 'Pressure cooker' })}</option>
+          <option value="slow_cooker">{t('cooking.methods.slow_cooker', { defaultValue: 'Slow cooker' })}</option>
         </Select>
         <Select
           label={t('cooking.veg.bagPlanner.packagingLabel', { defaultValue: 'Packaging' })}
@@ -404,6 +406,7 @@ function OnHandRow({
   onRemove: () => void;
 }) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const entry = getVegCookingEntry(row.id);
   const cuts = applicableCutsFor(row.id);
   const label = entry?.id ?? row.id;
@@ -412,7 +415,7 @@ function OnHandRow({
     <li className="grid grid-cols-12 gap-2 items-start">
       <div className="col-span-5 sm:col-span-4">
         <p className="text-sm font-semibold text-foreground capitalize">
-          {t(`ingredient.${row.id}`, { defaultValue: label.replace(/_/g, ' ') })}
+          {translateIngredient(row.id)}
         </p>
         <p className="text-[11px] text-muted-fg">
           {t('cooking.veg.bagPlanner.yieldLabel', {
@@ -468,6 +471,7 @@ function AddVegPicker({
   onAdd: (id: string) => void;
 }) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const [open, setOpen] = useState(false);
   if (availableIds.length === 0) return null;
   return (
@@ -486,7 +490,7 @@ function AddVegPicker({
               className="block w-full text-left px-3 py-2 text-sm hover:bg-surface-2 capitalize"
               onClick={() => { onAdd(id); setOpen(false); }}
             >
-              {t(`ingredient.${id}`, { defaultValue: id.replace(/_/g, ' ') })}
+              {translateIngredient(id)}
             </button>
           ))}
         </div>
@@ -505,6 +509,7 @@ function MixedSessionCard({
   fromFrozen: boolean;
 }) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const orderedSteps = [...session.steps].sort((a, b) => a.addAtMinute - b.addAtMinute);
   return (
     <Card padding="md" className="border-primary/30 bg-primary/5 space-y-3">
@@ -520,7 +525,7 @@ function MixedSessionCard({
       <p className="text-sm text-muted-fg">
         {t('cooking.veg.session.tempLine', {
           defaultValue: '{{method}} at {{t}} °C{{frozen}}',
-          method: t(`cooking.method.${session.method}`, { defaultValue: session.method }),
+          method: t(`cooking.methods.${session.method}`, { defaultValue: session.method }),
           t: session.tempC,
           frozen: fromFrozen ? t('cooking.veg.session.fromFrozenSuffix', { defaultValue: ' · from frozen' }) : '',
         })}
@@ -533,7 +538,7 @@ function MixedSessionCard({
             </div>
             <div className="flex-1 text-sm">
               <p className="font-medium text-foreground capitalize">
-                {t(`ingredient.${step.ingredientId}`, { defaultValue: step.ingredientId.replace(/_/g, ' ') })}
+                {translateIngredient(step.ingredientId)}
                 {' · '}
                 <span className="text-muted-fg">{t(`cooking.veg.cut.${step.cut}`, { defaultValue: humanCut(step.cut) })}</span>
               </p>
@@ -584,6 +589,7 @@ function PerVegCard({
   alts: { recommended: BagPlan; bigger: BagPlan; smaller: BagPlan };
 }) {
   const { t } = useTranslation();
+  const translateIngredient = useTranslateIngredient();
   const [pick, setPick] = useState<'recommended' | 'bigger' | 'smaller'>('recommended');
   const chosen = alts[pick];
   const spec = selectCutMethodSpec(row.id, row.cut, method);
@@ -617,7 +623,7 @@ function PerVegCard({
     <Card padding="md" className="space-y-3">
       <header className="flex items-baseline justify-between gap-3">
         <h3 className="font-semibold text-foreground capitalize">
-          {t(`ingredient.${row.id}`, { defaultValue: row.id.replace(/_/g, ' ') })}
+          {translateIngredient(row.id)}
           {' · '}
           <span className="text-muted-fg font-normal">
             {t(`cooking.veg.cut.${row.cut}`, { defaultValue: humanCut(row.cut) })}
@@ -729,7 +735,7 @@ function PerVegCard({
             <li>
               {t('cooking.veg.bagPlanner.stepCook', {
                 defaultValue: 'Cook {{method}} at {{t}} °C, {{min}}–{{max}} min',
-                method: t(`cooking.method.${method}`, { defaultValue: method }),
+                method: t(`cooking.methods.${method}`, { defaultValue: method }),
                 t: spec.tempC,
                 min: cookMinutesMin,
                 max: cookMinutesMax,

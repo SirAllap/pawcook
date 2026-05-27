@@ -43,7 +43,8 @@
     "cancel": "Abbrechen",
     "dismiss": "Schließen",
     "close": "Schließen",
-    "confirm": "Bestätigen"
+    "confirm": "Bestätigen",
+    "remove": "Entfernen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · spart {{saved}} ggü. täglich",
       "simpleMeals": "Einfache Mahlzeiten",
       "simpleMealsHelp": "Ein Protein pro Mahlzeit — derselbe Beutel für den ganzen Haushalt. Katzen erhalten eine tägliche Empfehlung für Taurin + Lebertran, um die Lücke zu schließen. Deaktivieren für das vollständige Mehrkomponenten-Rezept (Innereien, Meeresfrüchte-Zusätze, Makros pro Tier).",
-      "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden."
+      "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden.",
+      "veggieDetail": "Jedes Gemüse einzeln garen",
+      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan."
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} Schale",
         "bunch": "{{qty}} Bund",
         "bottle": "{{qty}} Flasche"
-      }
+      },
+      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht."
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
@@ -366,15 +370,14 @@
       "noBagsTitle": "Nichts zum Verpacken",
       "noBagsHelp": "Dieser Plan enthält keine vorratstauglichen Zutaten — alles wird frisch zubereitet.",
       "summaryLabel": "Kochplan",
-      "summary": "{{bags}} Beutel · {{sessions}} Kochsitzung(en) · ein Protein pro Beutel",
-      "thawIcs": "Auftauplan (.ics)",
+      "summary": "{{bags}} Beutel · {{sessions}} Kochtag(e) · ein Protein pro Beutel",
+      "thawIcs": "Auftau-Erinnerungen (.ics)",
       "groupSummary": "{{bags}} Beutel · {{grams}} g insgesamt",
-      "printLabels": "Etiketten drucken",
+      "printLabels": "Beutel beschriften",
       "bagN": "Beutel {{n}} von {{total}}",
-      "thaw": "Auftauen {{date}}",
       "useBy": "Verbrauchen bis {{date}}",
       "rotationNote": "Die Proteine rotieren — die Beuteldaten können nicht aufeinanderfolgen.",
-      "freshLabel": "Frisch kochen (nicht im Vorrat)",
+      "freshLabel": "Am Tag selbst kochen (nicht im Vorrat)",
       "freshHelp": "Diese lassen sich nicht gut im Vorrat einfrieren. Täglich oder pro Rezept zubereiten.",
       "freshReason": {
         "perishable": "verderblich",
@@ -382,7 +385,29 @@
         "organ": "kleine Portionen",
         "supplement-equiv": "tägliche Beigabe"
       },
-      "frozenQuality": "Tiefgefroren ~{{days}} Tage — sicher, aber das Aroma lässt nach. Beim nächsten Plan kürzer vorkochen."
+      "emptyCta": "Plan bearbeiten",
+      "nextCookTitle": "Nächster Kochtag",
+      "nextCookCountGrams": "{{bags}} Beutel · {{grams}} g",
+      "nextCookAllDone": "Alle Beutel gekocht.",
+      "nextCookDone": "Kochen für die Woche erledigt. Nächste Runde: {{date}}.",
+      "labelOne": "Beutel beschriften",
+      "bagSolo": "Einzelner Beutel",
+      "thawEve": "In den Kühlschrank: {{date}} abends",
+      "readyAt": "Servierbereit: {{date}}",
+      "frozenQualityGroup": "{{count}} Beutel liegen über 30 Tage gefroren — sicher, aber Aroma lässt nach. Beim nächsten Plan kürzer vorkochen.",
+      "perPetSplit": "Aufteilung: {{breakdown}}",
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Tägliche Zugaben",
+      "supplementCardsHelp": "Zu klein zum Verpacken — täglich direkt in den Napf geben. Sie zu garen würde bedeuten, 20 Beutel für 6 g Karotte zu öffnen.",
+      "perDay": "pro Tag, Haushalt",
+      "veggieSessionsLabel": "Gemüse-Kochsessions",
+      "veggieSessionsHelp": "Jede Karte fasst zusammen, was an einem Tag gemeinsam gekocht wird. Tippe auf «Beutel planen» für den Beutel-für-Beutel-Ablauf.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g roh → {{c}} g gekocht",
+      "fromFrozen": "aus dem Gefrierfach",
+      "planBags": "Beutel planen",
+      "startAt0": "Start, {{m}} min",
+      "startAtN": "bei +{{at}} min hinzufügen, kocht {{m}} min"
     },
     "labels": {
       "title": "{{count}} Beuteletiketten — {{plan}}",
@@ -414,6 +439,19 @@
         "dose": "{{mg}} mg pro Tag (~½ TL gemahlene Eierschale pro ~454 g Fleisch)",
         "rationale": "Gegarte Mahlzeiten sind ohne Knochen calciumdefizitär — das schließt die Lücke."
       }
+    },
+    "sharpie": {
+      "cookedShort": "Gekocht",
+      "useByShort": "MHD",
+      "title": "Beutel {{n}}/{{total}} beschriften",
+      "intro": "Mit einem Permanentmarker auf den Beutel schreiben. Einen Beutel nach dem anderen.",
+      "copy": "Text kopieren",
+      "copied": "Kopiert",
+      "next": "Nächster Beutel",
+      "prev": "Vorheriger Beutel",
+      "done": "Fertig",
+      "progress": "{{n}} von {{total}}",
+      "tipTape": "Wiederverwendbarer Silikonbeutel? Klebe einen Streifen Malerkrepp darauf und schreibe darauf."
     }
   },
   "condition": {
@@ -835,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Gemüsebeutel planen",
+        "subtitle": "Tippe ein, was du da hast — wähle einen Schnitt und erhalte einen Beutel-für-Beutel-Ablauf, den du wirklich befolgen kannst.",
+        "onHandLabel": "Was du da hast",
+        "totalOnHand": "{{kg}} kg roh insgesamt",
+        "methodLabel": "Garmethode",
+        "packagingLabel": "Verpackung",
+        "householdLabel": "Gemüse pro Tag, Haushalt (g)",
+        "householdHelper": "Gramm pro Tag für alle Tiere zusammen. Wird zur Beutelgröße verwendet.",
+        "daysLabel": "Tage pro Beutel (bevorzugt)",
+        "roundingLabel": "Rundung der Beutelgröße",
+        "modeLabel": "Modus",
+        "fromFrozenLabel": "Aus dem Gefrierfach garen",
+        "fromFrozenHelper": "Fügt die Gefrier-Aufschlagsminuten pro Schnitt hinzu (wenn definiert).",
+        "emptyHint": "Trage ein, wie viele Gramm du von jedem Gemüse hast, um deinen Beutelplan zu sehen.",
+        "mixedNotPossible": "Diese Gemüse können nicht gemeinsam in einer Session garen — wechsle zu «Getrennt» oder ändere Schnitt/Methode, damit sie zusammenpassen.",
+        "yieldLabel": "Ausbeute {{p}}%",
+        "cutLabel": "Schnittart",
+        "gramsLabel": "Gramm (roh)",
+        "addVeggie": "Gemüse hinzufügen",
+        "totalLine": "{{r}} g roh → {{c}} g gekocht",
+        "coversDaysShort": "~{{d}} Tage",
+        "workflowLabel": "Ablauf",
+        "stepPortionSingle": "Verteile alle {{raw}} g roh ({{cooked}} g gekocht) auf 1 Beutel (~{{size}} g Behälter).",
+        "stepPortionEven": "Verteile auf {{n}} Beutel à {{cooked}} g gekocht (je ~{{raw}} g roh).",
+        "stepPortionUneven": "Verteile auf {{n}} Beutel: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g gekocht (~{{raw}} g roh pro vollem Beutel, {{lastRaw}} g roh für den letzten).",
+        "stepVacuumSeal": "Jeden Beutel flach in einer Lage vakuumieren; sofort einfrieren.",
+        "stepSiliconeTray": "In Silikonformen füllen; einfrieren; Würfel in einen Gefrierbeutel umfüllen, dann portionsweise entnehmen.",
+        "stepFreezerBag": "Jede Portion flach abpacken; einfrieren; nach Bedarf abbrechen.",
+        "stepRigid": "In Behälter füllen; kühlen (nicht einfrieren). Innerhalb von 3–4 Tagen verbrauchen.",
+        "stepCook": "{{method}} bei {{t}} °C, {{min}}–{{max}} min garen",
+        "fromFrozenAddendum": "(inkl. +{{x}} min aus dem Gefrierfach)",
+        "noSpec": "Diese Methode ist für dieses Gemüse nicht unterstützt — Schnitt oder Methode ändern.",
+        "stepCool": "Vor dem Kühlschrank auf ≤21 °C abkühlen (innerhalb 2 h); Eisbad für Blattgemüse/Kreuzblütler.",
+        "headroomNote": "Der letzte Beutel hat {{g}} g freien Spielraum — entweder nachfüllen oder so einfrieren."
+      },
+      "cut": {
+        "whole": "Ganz",
+        "large_chunks": "Große Stücke (3–4 cm)",
+        "cubed": "Gewürfelt (1–2 cm)",
+        "coins": "Münzen (6–10 mm)",
+        "mandolin_thin": "Hauchdünn (Mandoline, 2–4 mm)",
+        "sticks": "Stifte / Stäbchen",
+        "shredded": "Geraspelt",
+        "florets": "Röschen",
+        "leaves_whole": "Ganze Blätter",
+        "leaves_shredded": "Geschnittene Blätter"
+      },
+      "packaging": {
+        "freezer_bag": "Gefrierbeutel (flach)",
+        "vacuum_seal": "Vakuumiert (aus dem Gefrierfach garen)",
+        "silicone_tray": "Silikonform (Portionswürfel)",
+        "rigid_container": "Starre Box (nur Kühlschrank)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Auf 50 g runden",
+        "step100": "Auf 100 g runden",
+        "halves": "Gerade Hälften (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Mischkochen",
+        "separate": "Getrennt"
+      },
+      "session": {
+        "title": "Misch-Kochsession · {{m}} min insgesamt",
+        "tempLine": "{{method}} bei {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · aus dem Gefrierfach",
+        "startNow": "Jetzt starten · {{m}} min",
+        "addAt": "Bei +{{at}} min hinzufügen · {{m}} min garen",
+        "rawCookedGrams": "{{r}} g roh → {{c}} g gekocht"
+      },
+      "bagOption": {
+        "recommended": "Empfohlen",
+        "bigger": "Größere Beutel",
+        "smaller": "Kleinere Beutel"
+      },
+      "fromFrozenChip": "Aus dem Gefrierfach"
     }
   },
   "nutrition": {
@@ -1121,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Niedrigere Verhältnisse (5:1 bis 10:1) reduzieren systemische Entzündungen"
         }
-      }
+      },
+      "sourceLine": "AAFCO Nährstoffprofil für Hunde — Trockensubstanz-Basis",
+      "sourceLine_cat": "AAFCO Nährstoffprofil für Katzen — Trockensubstanz-Basis"
     },
     "transition": {
       "title": "7-Tage-Umstellung von Trockenfutter auf Frischfutter",
@@ -1320,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/Woche",
           "calcium": "Calciumcitrat",
           "calciumDose": "287 mg/Tag",
-          "dayLabel": "Tag 1 · Mo 25. Mai",
+          "dayLabel": "Tag 1 · {{date}}",
           "beefDay": "Rindfleisch-Tag",
           "mainGrams": "{{g}}g Rind"
         },
@@ -1365,7 +1485,26 @@
     "privacyHostLink": "Datenschutzerklärung von GitHub",
     "eyebrow": "Über",
     "subtitle_cat": "Open-Source-Rechner für selbstgekochtes Hunde- und Katzenfutter, gebaut für Menschen, die für ihre Tiere kochen.",
-    "notVetAdvice_cat": "Dieses Tool ist kein tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten Standards (AAFCO, NRC, FEDIAF). Besonders bei Katzen sind die Spielräume für Taurin, Arachidonsäure und Vitamin A eng. Für langfristiges Selberkochen konsultieren Sie eine zertifizierte Tierernährungsfachkraft (ACVN-Diplomate)."
+    "notVetAdvice_cat": "Dieses Tool ist kein tierärztlicher Rat. Es liefert allgemeine Richtlinien basierend auf veröffentlichten Standards (AAFCO, NRC, FEDIAF). Besonders bei Katzen sind die Spielräume für Taurin, Arachidonsäure und Vitamin A eng. Für langfristiges Selberkochen konsultieren Sie eine zertifizierte Tierernährungsfachkraft (ACVN-Diplomate).",
+    "sources": {
+      "dog": {
+        "aafco": "AAFCO Nährstoffprofile für Hunde",
+        "nrc": "NRC Nährstoffbedarf von Hunden und Katzen (2006)",
+        "fediaf": "FEDIAF Ernährungsrichtlinien",
+        "merck": "Merck Veterinärhandbuch",
+        "wsava": "WSAVA Globale Ernährungsrichtlinien",
+        "acvn": "ACVN Positionspapiere"
+      },
+      "cat": {
+        "aafco": "AAFCO Nährstoffprofile für Katzen",
+        "nrc": "NRC Nährstoffbedarf von Hunden und Katzen (2006)",
+        "aaha": "AAHA / AAFP 2021 Lebensphasen-Richtlinien für Katzen",
+        "zoran": "Zoran (2002) — Die Carnivoren-Verbindung in der Katzenernährung",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "FEDIAF Ernährungsrichtlinien",
+        "acvn": "ACVN Positionspapiere"
+      }
+    }
   },
   "meatData": {
     "beef": {

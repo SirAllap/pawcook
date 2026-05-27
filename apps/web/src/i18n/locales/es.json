@@ -43,7 +43,8 @@
     "cancel": "Cancelar",
     "dismiss": "Descartar",
     "close": "Cerrar",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "remove": "Quitar"
   },
   "pets": {
     "eyebrow": "Mascotas",
@@ -280,7 +281,9 @@
       "cookAheadStatsSaving": "{{bags}} bolsas · {{sessions}} sesión(es) de cocción · ahorra {{saved}} frente a diaria",
       "simpleMeals": "Comidas simples",
       "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota).",
-      "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas."
+      "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas.",
+      "veggieDetail": "Cocinar cada verdura por separado",
+      "veggieDetailHelp": "Desactivado (recomendado): un lote mixto por día de cocina — zanahorias, batata y judías verdes todo en la misma olla. Activado: cada verdura tiene su propia sesión de cocción en el plan, con su propio calendario de bolsas."
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -331,7 +334,8 @@
         "punnet": "{{qty}} cestita",
         "bunch": "{{qty}} manojo",
         "bottle": "{{qty}} botella"
-      }
+      },
+      "yieldAdjustedHint": "Compra incluye merma de cocción — rinde ~{{c}} g cocidos."
     },
     "confirmDelete": "¿Eliminar el plan «{{name}}»? Esta acción no se puede deshacer.",
     "toast": {
@@ -378,7 +382,6 @@
       "labelOne": "Etiquetar bolsa",
       "bagN": "Bolsa {{n}} de {{total}}",
       "bagSolo": "Bolsa única",
-      "thaw": "Descongelar {{date}}",
       "thawEve": "Pasar al frigo: {{date}} por la tarde",
       "readyAt": "Lista para servir: {{date}}",
       "useBy": "Antes del {{date}}",
@@ -393,18 +396,31 @@
       },
       "frozenQualityGroup": "{{count}} bolsa(s) pasan más de 30 días congeladas — seguras, pero el sabor decae. En el próximo plan, recorta el cocinado por adelantado.",
       "perPetSplit": "Reparto: {{breakdown}}",
-      "perPetSplitShort": "{{name}} {{g}} g"
+      "perPetSplitShort": "{{name}} {{g}} g",
+      "supplementCardsLabel": "Suplementos diarios",
+      "supplementCardsHelp": "Demasiado poco para embolsar — añádelos al cuenco a diario. Cocinarlos en bolsa significaría abrir 20 bolsas por 6 g de zanahoria.",
+      "perDay": "al día, hogar",
+      "veggieSessionsLabel": "Sesiones de verdura",
+      "veggieSessionsHelp": "Cada tarjeta agrupa lo que se cocina junto en un día. Toca «Planear bolsas» para el detalle bolsa a bolsa.",
+      "veggieSessionHeader": "{{date}} · {{method}} {{temp}} °C · {{m}} min",
+      "veggieSessionTotals": "{{r}} g en crudo → {{c}} g cocidos",
+      "fromFrozen": "desde congelado",
+      "planBags": "Planear bolsas",
+      "startAt0": "al inicio, {{m}} min",
+      "startAtN": "añadir en +{{at}} min, cuece {{m}} min"
     },
     "sharpie": {
       "title": "Etiquetar bolsa {{n}}/{{total}}",
-      "intro": "Cópialo en la bolsa con un rotulador permanente. Una bolsa al vez.",
+      "intro": "Cópialo en la bolsa con un rotulador permanente. Una bolsa a la vez.",
       "copy": "Copiar texto",
       "copied": "Copiado",
       "next": "Siguiente bolsa",
       "prev": "Bolsa anterior",
       "done": "Hecho",
       "progress": "{{n}} de {{total}}",
-      "tipTape": "¿Bolsa de silicona reutilizable? Pega un trozo de cinta de pintor y escribe encima."
+      "tipTape": "¿Bolsa de silicona reutilizable? Pega un trozo de cinta de pintor y escribe encima.",
+      "cookedShort": "Cocido",
+      "useByShort": "Antes del"
     },
     "labels": {
       "title": "{{count}} etiquetas de bolsa — {{plan}}",
@@ -857,6 +873,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planear bolsas de verdura",
+        "subtitle": "Escribe lo que tienes a mano — elige un corte y obtén un plan bolsa a bolsa que de verdad puedas seguir.",
+        "onHandLabel": "Lo que tienes a mano",
+        "totalOnHand": "{{kg}} kg en crudo en total",
+        "methodLabel": "Método de cocción",
+        "packagingLabel": "Envasado",
+        "householdLabel": "Verdura del hogar al día (g)",
+        "householdHelper": "Gramos totales para todas las mascotas al día. Sirve para dimensionar las bolsas.",
+        "daysLabel": "Días por bolsa (preferido)",
+        "roundingLabel": "Redondeo del tamaño de bolsa",
+        "modeLabel": "Modo",
+        "fromFrozenLabel": "Cocinar desde congelado",
+        "fromFrozenHelper": "Añade los minutos de congelado por corte (cuando la ficha los define).",
+        "emptyHint": "Introduce cuántos gramos tienes de cada verdura para ver tu plan de bolsas.",
+        "mixedNotPossible": "Estas verduras no se pueden cocinar juntas en una sesión — cambia a «Separadas» o ajusta cortes/método para que compartan olla.",
+        "yieldLabel": "Rendimiento {{p}}%",
+        "cutLabel": "Forma de corte",
+        "gramsLabel": "Gramos (en crudo)",
+        "addVeggie": "Añadir verdura",
+        "totalLine": "{{r}} g en crudo → {{c}} g cocidos",
+        "coversDaysShort": "~{{d}} días",
+        "workflowLabel": "Flujo de trabajo",
+        "stepPortionSingle": "Reparte los {{raw}} g en crudo ({{cooked}} g cocidos) en 1 bolsa (cabe en un recipiente de ~{{size}} g).",
+        "stepPortionEven": "Reparte en {{n}} bolsas de {{cooked}} g cocidos (~{{raw}} g en crudo cada una).",
+        "stepPortionUneven": "Reparte en {{n}} bolsas: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cocidos (~{{raw}} g en crudo por bolsa completa, {{lastRaw}} g en crudo para la última).",
+        "stepVacuumSeal": "Sella al vacío cada bolsa plana en una sola capa; congela enseguida.",
+        "stepSiliconeTray": "Vierte en bandejas de silicona; congela; pasa los cubitos a una bolsa de congelado para porciones al momento.",
+        "stepFreezerBag": "Embolsa cada porción plana; congela; ve partiendo porciones según las necesites.",
+        "stepRigid": "Guarda en recipientes; refrigera (sin congelar). Consumir en 3–4 días.",
+        "stepCook": "Cocina {{method}} a {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(incluye +{{x}} min desde congelado)",
+        "noSpec": "Este método no se admite para esta verdura — cambia el corte o el método.",
+        "stepCool": "Enfría a ≤21 °C antes de la nevera (en 2 h); baño de hielo para hojas y crucíferas.",
+        "headroomNote": "La última bolsa tiene {{g}} g de margen libre — puedes rellenar con la siguiente cocción o congelar tal cual."
+      },
+      "cut": {
+        "whole": "Entera",
+        "large_chunks": "Trozos grandes (3–4 cm)",
+        "cubed": "En cubos (1–2 cm)",
+        "coins": "Rodajas (6–10 mm)",
+        "mandolin_thin": "Mandolina fina (2–4 mm)",
+        "sticks": "Bastones",
+        "shredded": "Rallada",
+        "florets": "Ramilletes",
+        "leaves_whole": "Hojas enteras",
+        "leaves_shredded": "Hojas en juliana"
+      },
+      "packaging": {
+        "freezer_bag": "Bolsa de congelado (plana)",
+        "vacuum_seal": "Sellado al vacío (cocinar desde congelado)",
+        "silicone_tray": "Bandeja de silicona (cubos de porción)",
+        "rigid_container": "Recipiente rígido (solo nevera)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Redondear a 50 g",
+        "step100": "Redondear a 100 g",
+        "halves": "Mitades pares (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cocción mixta",
+        "separate": "Separadas"
+      },
+      "session": {
+        "title": "Sesión de cocción mixta · {{m}} min en total",
+        "tempLine": "{{method}} a {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · desde congelado",
+        "startNow": "Empieza ya · {{m}} min",
+        "addAt": "Añadir en +{{at}} min · cuece {{m}} min",
+        "rawCookedGrams": "{{r}} g en crudo → {{c}} g cocidos"
+      },
+      "bagOption": {
+        "recommended": "Recomendado",
+        "bigger": "Bolsas más grandes",
+        "smaller": "Bolsas más pequeñas"
+      },
+      "fromFrozenChip": "Desde congelado"
     }
   },
   "nutrition": {
@@ -1143,7 +1239,9 @@
           "label": "Omega-6 : Omega-3",
           "note": "Ratios más bajos (5:1 a 10:1) reducen la inflamación sistémica"
         }
-      }
+      },
+      "sourceLine": "Perfil nutricional AAFCO para perros — base materia seca",
+      "sourceLine_cat": "Perfil nutricional AAFCO para gatos — base materia seca"
     },
     "transition": {
       "title": "Transición de 7 días de pienso a comida fresca",
@@ -1342,7 +1440,7 @@
           "codLiverDose": "1 mL, 3×/semana",
           "calcium": "Citrato de calcio",
           "calciumDose": "287 mg/día",
-          "dayLabel": "Día 1 · Lun 25 may",
+          "dayLabel": "Día 1 · {{date}}",
           "beefDay": "Día de ternera",
           "mainGrams": "{{g}}g ternera"
         },
@@ -1387,7 +1485,26 @@
     "privacyHostLink": "Política de privacidad de GitHub",
     "eyebrow": "Acerca de",
     "subtitle_cat": "Calculadora open source de comida casera para gatos y perros, pensada para quienes cocinan para sus mascotas.",
-    "notVetAdvice_cat": "Esta herramienta no es consejo veterinario. Ofrece pautas generales basadas en estándares publicados (AAFCO, NRC, FEDIAF). Los gatos en particular tienen márgenes estrechos en taurina, ácido araquidónico y vitamina A. Para alimentación casera a largo plazo, consulta a un nutricionista veterinario certificado (diplomado ACVN)."
+    "notVetAdvice_cat": "Esta herramienta no es consejo veterinario. Ofrece pautas generales basadas en estándares publicados (AAFCO, NRC, FEDIAF). Los gatos en particular tienen márgenes estrechos en taurina, ácido araquidónico y vitamina A. Para alimentación casera a largo plazo, consulta a un nutricionista veterinario certificado (diplomado ACVN).",
+    "sources": {
+      "dog": {
+        "aafco": "Perfiles nutricionales AAFCO para perros",
+        "nrc": "Requisitos nutricionales NRC para perros y gatos (2006)",
+        "fediaf": "Directrices nutricionales FEDIAF",
+        "merck": "Manual veterinario Merck",
+        "wsava": "Directrices globales de nutrición WSAVA",
+        "acvn": "Posicionamientos del ACVN"
+      },
+      "cat": {
+        "aafco": "Perfiles nutricionales AAFCO para gatos",
+        "nrc": "Requisitos nutricionales NRC para perros y gatos (2006)",
+        "aaha": "Directrices AAHA / AAFP 2021 para etapas de vida felinas",
+        "zoran": "Zoran (2002) — La conexión carnívora en la nutrición felina",
+        "catinfo": "catinfo.org — Lisa A. Pierson, DVM",
+        "fediaf": "Directrices nutricionales FEDIAF",
+        "acvn": "Posicionamientos del ACVN"
+      }
+    }
   },
   "meatData": {
     "beef": {
