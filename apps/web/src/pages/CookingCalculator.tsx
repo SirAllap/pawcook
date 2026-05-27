@@ -44,7 +44,7 @@ const DEFAULT_VALUES: CookingInput = {
 const MEAT_KEYS = ['beef','chicken','turkey','lamb','pork','duck','rabbit','venison','salmon','mackerel','sardines','whitefish'] as const;
 
 const YIELD_PCT: Record<string, number> = {
-  sous_vide: 0.97, oven: 0.82, stovetop_low: 0.90, slow_cooker: 0.88, pressure_cooker: 0.91,
+  sous_vide: 0.97, oven: 0.82, stovetop_low: 0.90, slow_cooker: 0.88, pressure_cooker: 0.91, raw: 1.0,
 };
 
 function loadSaved(): CookingInput {
@@ -411,6 +411,7 @@ export default function CookingCalculator() {
             <option value="stovetop_low">🫕 {t('cooking.methods.stovetop_low')}</option>
             <option value="slow_cooker">🥘 {t('cooking.methods.slow_cooker')}</option>
             <option value="pressure_cooker">⏲️ {t('cooking.methods.pressure_cooker')}</option>
+            <option value="raw">🥩 {t('cooking.methods.raw', { defaultValue: 'raw' })}</option>
           </Select>
 
           <AnimatePresence mode="wait">
@@ -1216,6 +1217,7 @@ const VEG_METHOD_EMOJI: Record<CookingMethod, string> = {
   stovetop_low: '🫕',
   slow_cooker: '🥘',
   pressure_cooker: '⏲️',
+  raw: '🥩',
 };
 
 function isMethodSpec(v: MethodSpec | null | undefined): v is MethodSpec {
