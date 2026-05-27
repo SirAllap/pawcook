@@ -43,7 +43,8 @@
     "cancel": "Anuluj",
     "dismiss": "Zamknij",
     "close": "Zamknij",
-    "confirm": "Potwierdź"
+    "confirm": "Potwierdź",
+    "remove": "Usuń"
   },
   "pets": {
     "eyebrow": "Zwierzęta",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planuj woreczki z warzywami",
+        "subtitle": "Wpisz, co masz pod ręką — wybierz krojenie i otrzymaj plan woreczek po woreczku, którego naprawdę dasz radę się trzymać.",
+        "onHandLabel": "Co masz pod ręką",
+        "totalOnHand": "{{kg}} kg surowych razem",
+        "methodLabel": "Metoda gotowania",
+        "packagingLabel": "Pakowanie",
+        "householdLabel": "Warzywa dziennie, gospodarstwo (g)",
+        "householdHelper": "Gramy łącznie na wszystkie zwierzęta dziennie. Służy do doboru woreczka.",
+        "daysLabel": "Dni na woreczek (preferowane)",
+        "roundingLabel": "Zaokrąglanie rozmiaru woreczka",
+        "modeLabel": "Tryb",
+        "fromFrozenLabel": "Gotuj z zamrażarki",
+        "fromFrozenHelper": "Dodaje minuty z zamrażarki dla krojenia (gdy zdefiniowane).",
+        "emptyHint": "Wpisz, ile gramów masz każdego warzywa, aby zobaczyć plan woreczków.",
+        "mixedNotPossible": "Te warzywa nie mogą gotować się razem w jednej sesji — przełącz na «Osobno» lub zmień krojenie/metodę.",
+        "yieldLabel": "Wydajność {{p}}%",
+        "cutLabel": "Sposób krojenia",
+        "gramsLabel": "Gramy (surowe)",
+        "addVeggie": "Dodaj warzywo",
+        "totalLine": "{{r}} g surowe → {{c}} g ugotowane",
+        "coversDaysShort": "~{{d}} dni",
+        "workflowLabel": "Przebieg",
+        "stepPortionSingle": "Podziel wszystkie {{raw}} g surowych ({{cooked}} g ugotowanych) na 1 woreczek (mieści ~{{size}} g).",
+        "stepPortionEven": "Podziel na {{n}} woreczków po {{cooked}} g ugotowanych (~{{raw}} g surowych każdy).",
+        "stepPortionUneven": "Podziel na {{n}} woreczków: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g ugotowanych (~{{raw}} g surowych na pełny, {{lastRaw}} g surowych na ostatni).",
+        "stepVacuumSeal": "Każdy woreczek zapakuj próżniowo na płasko w jednej warstwie; od razu zamroź.",
+        "stepSiliconeTray": "Wlej do silikonowych foremek; zamroź; kostki przełóż do woreczka do zamrażania na porcje.",
+        "stepFreezerBag": "Każdą porcję pakuj na płasko; zamroź; odłamuj porcje w miarę potrzeby.",
+        "stepRigid": "Włóż do pojemników; przechowuj w lodówce (bez zamrażania). Zużyj w 3–4 dni.",
+        "stepCook": "Gotuj {{method}} w {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(zawiera +{{x}} min z zamrażarki)",
+        "noSpec": "Ta metoda nie jest obsługiwana dla tego warzywa — zmień krojenie lub metodę.",
+        "stepCool": "Schłódź do ≤21 °C przed lodówką (w 2 h); kąpiel lodowa dla liściastych/kapustnych.",
+        "headroomNote": "Ostatni woreczek ma {{g}} g luzu — uzupełnij przy następnym gotowaniu lub zamroź tak jak jest."
+      },
+      "cut": {
+        "whole": "W całości",
+        "large_chunks": "Duże kawałki (3–4 cm)",
+        "cubed": "W kostkę (1–2 cm)",
+        "coins": "Plasterki (6–10 mm)",
+        "mandolin_thin": "Cienkie mandoliną (2–4 mm)",
+        "sticks": "Słupki",
+        "shredded": "Tarta",
+        "florets": "Różyczki",
+        "leaves_whole": "Całe liście",
+        "leaves_shredded": "Posiekane liście"
+      },
+      "packaging": {
+        "freezer_bag": "Woreczek do zamrażarki (płaski)",
+        "vacuum_seal": "Próżniowe (gotuj z zamrażarki)",
+        "silicone_tray": "Silikonowa forma (kostki porcji)",
+        "rigid_container": "Sztywny pojemnik (tylko lodówka)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Zaokrągl do 50 g",
+        "step100": "Zaokrągl do 100 g",
+        "halves": "Równe połowy (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Gotowanie mieszane",
+        "separate": "Osobno"
+      },
+      "session": {
+        "title": "Mieszana sesja gotowania · {{m}} min razem",
+        "tempLine": "{{method}} w {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · z zamrażarki",
+        "startNow": "Zacznij teraz · {{m}} min",
+        "addAt": "Dodaj w +{{at}} min · gotuj {{m}} min",
+        "rawCookedGrams": "{{r}} g surowe → {{c}} g ugotowane"
+      },
+      "bagOption": {
+        "recommended": "Zalecane",
+        "bigger": "Większe woreczki",
+        "smaller": "Mniejsze woreczki"
+      },
+      "fromFrozenChip": "Z zamrażarki"
     }
   },
   "nutrition": {

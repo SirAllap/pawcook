@@ -43,7 +43,8 @@
     "cancel": "Abbrechen",
     "dismiss": "Schließen",
     "close": "Schließen",
-    "confirm": "Bestätigen"
+    "confirm": "Bestätigen",
+    "remove": "Entfernen"
   },
   "pets": {
     "eyebrow": "Tiere",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Gemüsebeutel planen",
+        "subtitle": "Tippe ein, was du da hast — wähle einen Schnitt und erhalte einen Beutel-für-Beutel-Ablauf, den du wirklich befolgen kannst.",
+        "onHandLabel": "Was du da hast",
+        "totalOnHand": "{{kg}} kg roh insgesamt",
+        "methodLabel": "Garmethode",
+        "packagingLabel": "Verpackung",
+        "householdLabel": "Gemüse pro Tag, Haushalt (g)",
+        "householdHelper": "Gramm pro Tag für alle Tiere zusammen. Wird zur Beutelgröße verwendet.",
+        "daysLabel": "Tage pro Beutel (bevorzugt)",
+        "roundingLabel": "Rundung der Beutelgröße",
+        "modeLabel": "Modus",
+        "fromFrozenLabel": "Aus dem Gefrierfach garen",
+        "fromFrozenHelper": "Fügt die Gefrier-Aufschlagsminuten pro Schnitt hinzu (wenn definiert).",
+        "emptyHint": "Trage ein, wie viele Gramm du von jedem Gemüse hast, um deinen Beutelplan zu sehen.",
+        "mixedNotPossible": "Diese Gemüse können nicht gemeinsam in einer Session garen — wechsle zu «Getrennt» oder ändere Schnitt/Methode, damit sie zusammenpassen.",
+        "yieldLabel": "Ausbeute {{p}}%",
+        "cutLabel": "Schnittart",
+        "gramsLabel": "Gramm (roh)",
+        "addVeggie": "Gemüse hinzufügen",
+        "totalLine": "{{r}} g roh → {{c}} g gekocht",
+        "coversDaysShort": "~{{d}} Tage",
+        "workflowLabel": "Ablauf",
+        "stepPortionSingle": "Verteile alle {{raw}} g roh ({{cooked}} g gekocht) auf 1 Beutel (~{{size}} g Behälter).",
+        "stepPortionEven": "Verteile auf {{n}} Beutel à {{cooked}} g gekocht (je ~{{raw}} g roh).",
+        "stepPortionUneven": "Verteile auf {{n}} Beutel: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g gekocht (~{{raw}} g roh pro vollem Beutel, {{lastRaw}} g roh für den letzten).",
+        "stepVacuumSeal": "Jeden Beutel flach in einer Lage vakuumieren; sofort einfrieren.",
+        "stepSiliconeTray": "In Silikonformen füllen; einfrieren; Würfel in einen Gefrierbeutel umfüllen, dann portionsweise entnehmen.",
+        "stepFreezerBag": "Jede Portion flach abpacken; einfrieren; nach Bedarf abbrechen.",
+        "stepRigid": "In Behälter füllen; kühlen (nicht einfrieren). Innerhalb von 3–4 Tagen verbrauchen.",
+        "stepCook": "{{method}} bei {{t}} °C, {{min}}–{{max}} min garen",
+        "fromFrozenAddendum": "(inkl. +{{x}} min aus dem Gefrierfach)",
+        "noSpec": "Diese Methode ist für dieses Gemüse nicht unterstützt — Schnitt oder Methode ändern.",
+        "stepCool": "Vor dem Kühlschrank auf ≤21 °C abkühlen (innerhalb 2 h); Eisbad für Blattgemüse/Kreuzblütler.",
+        "headroomNote": "Der letzte Beutel hat {{g}} g freien Spielraum — entweder nachfüllen oder so einfrieren."
+      },
+      "cut": {
+        "whole": "Ganz",
+        "large_chunks": "Große Stücke (3–4 cm)",
+        "cubed": "Gewürfelt (1–2 cm)",
+        "coins": "Münzen (6–10 mm)",
+        "mandolin_thin": "Hauchdünn (Mandoline, 2–4 mm)",
+        "sticks": "Stifte / Stäbchen",
+        "shredded": "Geraspelt",
+        "florets": "Röschen",
+        "leaves_whole": "Ganze Blätter",
+        "leaves_shredded": "Geschnittene Blätter"
+      },
+      "packaging": {
+        "freezer_bag": "Gefrierbeutel (flach)",
+        "vacuum_seal": "Vakuumiert (aus dem Gefrierfach garen)",
+        "silicone_tray": "Silikonform (Portionswürfel)",
+        "rigid_container": "Starre Box (nur Kühlschrank)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Auf 50 g runden",
+        "step100": "Auf 100 g runden",
+        "halves": "Gerade Hälften (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Mischkochen",
+        "separate": "Getrennt"
+      },
+      "session": {
+        "title": "Misch-Kochsession · {{m}} min insgesamt",
+        "tempLine": "{{method}} bei {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · aus dem Gefrierfach",
+        "startNow": "Jetzt starten · {{m}} min",
+        "addAt": "Bei +{{at}} min hinzufügen · {{m}} min garen",
+        "rawCookedGrams": "{{r}} g roh → {{c}} g gekocht"
+      },
+      "bagOption": {
+        "recommended": "Empfohlen",
+        "bigger": "Größere Beutel",
+        "smaller": "Kleinere Beutel"
+      },
+      "fromFrozenChip": "Aus dem Gefrierfach"
     }
   },
   "nutrition": {

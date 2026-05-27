@@ -43,7 +43,8 @@
     "cancel": "Cancelar",
     "dismiss": "Dispensar",
     "close": "Fechar",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "remove": "Remover"
   },
   "pets": {
     "eyebrow": "Animais",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planear sacos de legumes",
+        "subtitle": "Escreve o que tens à mão — escolhe um corte e recebe um fluxo saco a saco que consegues mesmo seguir.",
+        "onHandLabel": "O que tens à mão",
+        "totalOnHand": "{{kg}} kg cru no total",
+        "methodLabel": "Método de cozedura",
+        "packagingLabel": "Embalagem",
+        "householdLabel": "Legumes por dia, agregado (g)",
+        "householdHelper": "Gramas por dia para todos os animais. Usado para dimensionar os sacos.",
+        "daysLabel": "Dias por saco (preferido)",
+        "roundingLabel": "Arredondamento do tamanho do saco",
+        "modeLabel": "Modo",
+        "fromFrozenLabel": "Cozinhar do congelador",
+        "fromFrozenHelper": "Adiciona os minutos do-congelador por corte (quando definidos).",
+        "emptyHint": "Introduz quantos gramas tens de cada legume para veres o teu plano de sacos.",
+        "mixedNotPossible": "Estes legumes não podem cozer juntos numa sessão — muda para «Separados» ou ajusta cortes/método.",
+        "yieldLabel": "Rendimento {{p}}%",
+        "cutLabel": "Forma de corte",
+        "gramsLabel": "Gramas (cru)",
+        "addVeggie": "Adicionar legume",
+        "totalLine": "{{r}} g cru → {{c}} g cozinhado",
+        "coversDaysShort": "~{{d}} dias",
+        "workflowLabel": "Fluxo",
+        "stepPortionSingle": "Divide os {{raw}} g crus ({{cooked}} g cozinhados) num saco (cabe num recipiente de ~{{size}} g).",
+        "stepPortionEven": "Divide em {{n}} sacos de {{cooked}} g cozinhados (~{{raw}} g crus cada um).",
+        "stepPortionUneven": "Divide em {{n}} sacos: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cozinhados (~{{raw}} g crus por saco cheio, {{lastRaw}} g crus para o último).",
+        "stepVacuumSeal": "Sela em vácuo cada saco plano numa só camada; congela já.",
+        "stepSiliconeTray": "Verte em formas de silicone; congela; passa os cubos para um saco de congelação para doses à medida.",
+        "stepFreezerBag": "Ensaca cada dose plana; congela; parte doses conforme precisares.",
+        "stepRigid": "Coloca em recipientes; refrigera (sem congelar). Consumir em 3–4 dias.",
+        "stepCook": "Coze {{method}} a {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclui +{{x}} min do congelador)",
+        "noSpec": "Este método não é suportado para este legume — muda o corte ou o método.",
+        "stepCool": "Arrefece a ≤21 °C antes do frigorífico (em 2 h); banho de gelo para folhas/crucíferas.",
+        "headroomNote": "O último saco tem {{g}} g de margem livre — completa na próxima cozedura ou congela como está."
+      },
+      "cut": {
+        "whole": "Inteiro",
+        "large_chunks": "Pedaços grandes (3–4 cm)",
+        "cubed": "Em cubos (1–2 cm)",
+        "coins": "Rodelas (6–10 mm)",
+        "mandolin_thin": "Mandolina fina (2–4 mm)",
+        "sticks": "Palitos",
+        "shredded": "Ralado",
+        "florets": "Floretes",
+        "leaves_whole": "Folhas inteiras",
+        "leaves_shredded": "Folhas cortadas"
+      },
+      "packaging": {
+        "freezer_bag": "Saco de congelação (plano)",
+        "vacuum_seal": "Vácuo (cozinhar do congelador)",
+        "silicone_tray": "Forma de silicone (cubos de dose)",
+        "rigid_container": "Recipiente rígido (só frigorífico)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Arredondar a 50 g",
+        "step100": "Arredondar a 100 g",
+        "halves": "Metades pares (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cozedura mista",
+        "separate": "Separadas"
+      },
+      "session": {
+        "title": "Sessão de cozedura mista · {{m}} min no total",
+        "tempLine": "{{method}} a {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · do congelador",
+        "startNow": "Começar agora · {{m}} min",
+        "addAt": "Adicionar em +{{at}} min · coze {{m}} min",
+        "rawCookedGrams": "{{r}} g cru → {{c}} g cozinhado"
+      },
+      "bagOption": {
+        "recommended": "Recomendado",
+        "bigger": "Sacos maiores",
+        "smaller": "Sacos mais pequenos"
+      },
+      "fromFrozenChip": "Do congelador"
     }
   },
   "nutrition": {

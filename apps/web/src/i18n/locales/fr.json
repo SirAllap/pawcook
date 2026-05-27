@@ -43,7 +43,8 @@
     "cancel": "Annuler",
     "dismiss": "Fermer",
     "close": "Fermer",
-    "confirm": "Confirmer"
+    "confirm": "Confirmer",
+    "remove": "Retirer"
   },
   "pets": {
     "eyebrow": "Animaux",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planifier les sachets de légumes",
+        "subtitle": "Tapez ce que vous avez sous la main — choisissez une coupe et obtenez un déroulé sachet par sachet vraiment suivable.",
+        "onHandLabel": "Ce que vous avez sous la main",
+        "totalOnHand": "{{kg}} kg cru au total",
+        "methodLabel": "Méthode de cuisson",
+        "packagingLabel": "Conditionnement",
+        "householdLabel": "Légumes par jour, foyer (g)",
+        "householdHelper": "Grammes par jour pour tous les animaux. Sert à dimensionner les sachets.",
+        "daysLabel": "Jours par sachet (préféré)",
+        "roundingLabel": "Arrondi de la taille des sachets",
+        "modeLabel": "Mode",
+        "fromFrozenLabel": "Cuire depuis congelé",
+        "fromFrozenHelper": "Ajoute les minutes « depuis congelé » par coupe (quand spécifiées).",
+        "emptyHint": "Saisissez combien de grammes vous avez de chaque légume pour voir le plan des sachets.",
+        "mixedNotPossible": "Ces légumes ne peuvent pas cuire ensemble en une session — passez en mode «Séparé» ou ajustez coupes/méthode.",
+        "yieldLabel": "Rendement {{p}} %",
+        "cutLabel": "Forme de coupe",
+        "gramsLabel": "Grammes (cru)",
+        "addVeggie": "Ajouter un légume",
+        "totalLine": "{{r}} g cru → {{c}} g cuit",
+        "coversDaysShort": "~{{d}} jours",
+        "workflowLabel": "Déroulé",
+        "stepPortionSingle": "Répartissez les {{raw}} g cru ({{cooked}} g cuit) dans 1 sachet (contenant ~{{size}} g).",
+        "stepPortionEven": "Répartissez en {{n}} sachets de {{cooked}} g cuit (~{{raw}} g cru chacun).",
+        "stepPortionUneven": "Répartissez en {{n}} sachets : {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cuit (~{{raw}} g cru par sachet plein, {{lastRaw}} g cru pour le dernier).",
+        "stepVacuumSeal": "Mettez chaque sachet sous vide à plat en une seule couche ; congelez immédiatement.",
+        "stepSiliconeTray": "Versez dans des moules en silicone ; congelez ; transférez les cubes dans un sachet congélation pour des portions à la demande.",
+        "stepFreezerBag": "Mettez chaque portion à plat en sachet ; congelez ; cassez des portions au fur et à mesure.",
+        "stepRigid": "Mettez en boîtes ; réfrigérez (pas de congélation). À consommer sous 3–4 jours.",
+        "stepCook": "Cuire {{method}} à {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclut +{{x}} min depuis congelé)",
+        "noSpec": "Cette méthode n'est pas prise en charge pour ce légume — changez la coupe ou la méthode.",
+        "stepCool": "Refroidissez à ≤21 °C avant le frigo (en 2 h) ; bain glacé pour les feuilles/crucifères.",
+        "headroomNote": "Le dernier sachet a {{g}} g d'espace libre — vous pouvez compléter à la prochaine cuisson ou congeler tel quel."
+      },
+      "cut": {
+        "whole": "Entier",
+        "large_chunks": "Gros morceaux (3–4 cm)",
+        "cubed": "En cubes (1–2 cm)",
+        "coins": "Rondelles (6–10 mm)",
+        "mandolin_thin": "Mandoline fine (2–4 mm)",
+        "sticks": "Bâtonnets",
+        "shredded": "Râpé",
+        "florets": "Bouquets",
+        "leaves_whole": "Feuilles entières",
+        "leaves_shredded": "Feuilles émincées"
+      },
+      "packaging": {
+        "freezer_bag": "Sachet congélation (plat)",
+        "vacuum_seal": "Sous vide (cuire depuis congelé)",
+        "silicone_tray": "Moule silicone (cubes-portions)",
+        "rigid_container": "Boîte rigide (frigo seulement)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Arrondir à 50 g",
+        "step100": "Arrondir à 100 g",
+        "halves": "Moitiés paires (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cuisson mixte",
+        "separate": "Séparé"
+      },
+      "session": {
+        "title": "Session de cuisson mixte · {{m}} min au total",
+        "tempLine": "{{method}} à {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · depuis congelé",
+        "startNow": "Démarrer · {{m}} min",
+        "addAt": "Ajouter à +{{at}} min · cuit {{m}} min",
+        "rawCookedGrams": "{{r}} g cru → {{c}} g cuit"
+      },
+      "bagOption": {
+        "recommended": "Recommandé",
+        "bigger": "Sachets plus grands",
+        "smaller": "Sachets plus petits"
+      },
+      "fromFrozenChip": "Depuis congelé"
     }
   },
   "nutrition": {

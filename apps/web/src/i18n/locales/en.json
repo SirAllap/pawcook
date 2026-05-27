@@ -43,7 +43,8 @@
     "catFoodCalc": "Cat Food Calculator",
     "dismiss": "Dismiss",
     "close": "Close",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "remove": "Remove"
   },
   "pets": {
     "eyebrow": "Pets",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Plan veggie bags",
+        "subtitle": "Type what you have on hand — pick a cut, get a bag-by-bag workflow you can actually follow.",
+        "onHandLabel": "What you have on hand",
+        "totalOnHand": "{{kg}} kg raw total",
+        "methodLabel": "Cook method",
+        "packagingLabel": "Packaging",
+        "householdLabel": "Household veg per day (g)",
+        "householdHelper": "Total grams across all pets per day. Used to size bags.",
+        "daysLabel": "Days per bag (preferred)",
+        "roundingLabel": "Bag size rounding",
+        "modeLabel": "Mode",
+        "fromFrozenLabel": "Cook from frozen",
+        "fromFrozenHelper": "Adds the from-frozen minutes per cut (when the spec defines them).",
+        "emptyHint": "Enter how many grams of each veggie you have to see your bag plan.",
+        "mixedNotPossible": "These veggies cannot co-cook in one session — switch to Separate, or change cuts/method so they can share the pot.",
+        "yieldLabel": "Yield {{p}}%",
+        "cutLabel": "Cut form",
+        "gramsLabel": "Grams (raw)",
+        "addVeggie": "Add veggie",
+        "totalLine": "{{r}} g raw → {{c}} g cooked",
+        "coversDaysShort": "~{{d}} days",
+        "workflowLabel": "Workflow",
+        "stepPortionSingle": "Portion all {{raw}} g raw ({{cooked}} g cooked) into 1 bag (fits ~{{size}} g container).",
+        "stepPortionEven": "Portion into {{n}} bags of {{cooked}} g cooked (~{{raw}} g raw each).",
+        "stepPortionUneven": "Portion into {{n}} bags: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cooked (~{{raw}} g raw per full bag, {{lastRaw}} g raw for the last).",
+        "stepVacuumSeal": "Vacuum-seal each bag flat in a single layer; freeze immediately.",
+        "stepSiliconeTray": "Pour into silicone trays; freeze; pop cubes into a freezer bag for portion-on-demand.",
+        "stepFreezerBag": "Bag each portion flat; freeze; snap-off portions as you go.",
+        "stepRigid": "Pack into containers; refrigerate (no freezing). Use within 3–4 days.",
+        "stepCook": "Cook {{method}} at {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(includes +{{x}} min from frozen)",
+        "noSpec": "This method is not supported for this veggie — change cut or method.",
+        "stepCool": "Cool to ≤21 °C before fridge (within 2 h); ice-bath leafy/cruciferous.",
+        "headroomNote": "Last bag has {{g}} g spare headroom — you can top up with the next cook or freeze as-is."
+      },
+      "cut": {
+        "whole": "Whole",
+        "large_chunks": "Large chunks (3–4 cm)",
+        "cubed": "Cubed (1–2 cm)",
+        "coins": "Coins (6–10 mm)",
+        "mandolin_thin": "Mandolin thin (2–4 mm)",
+        "sticks": "Sticks / batons",
+        "shredded": "Shredded / grated",
+        "florets": "Florets",
+        "leaves_whole": "Whole leaves",
+        "leaves_shredded": "Shredded leaves"
+      },
+      "packaging": {
+        "freezer_bag": "Freezer bag (flat-pack)",
+        "vacuum_seal": "Vacuum-seal (cook from frozen)",
+        "silicone_tray": "Silicone tray (portion cubes)",
+        "rigid_container": "Rigid container (fridge only)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Round to 50 g",
+        "step100": "Round to 100 g",
+        "halves": "Even halves (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Mixed cook",
+        "separate": "Separate"
+      },
+      "session": {
+        "title": "Mixed cook session · {{m}} min total",
+        "tempLine": "{{method}} at {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · from frozen",
+        "startNow": "Start now · {{m}} min",
+        "addAt": "Add at +{{at}} min · {{m}} min cook",
+        "rawCookedGrams": "{{r}} g raw → {{c}} g cooked"
+      },
+      "bagOption": {
+        "recommended": "Recommended",
+        "bigger": "Bigger bags",
+        "smaller": "Smaller bags"
+      },
+      "fromFrozenChip": "From frozen"
     }
   },
   "nutrition": {

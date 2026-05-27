@@ -43,7 +43,8 @@
     "cancel": "Cancelar",
     "dismiss": "Descartar",
     "close": "Cerrar",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "remove": "Quitar"
   },
   "pets": {
     "eyebrow": "Mascotas",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Planear bolsas de verdura",
+        "subtitle": "Escribe lo que tienes a mano — elige un corte y obtén un plan bolsa a bolsa que de verdad puedas seguir.",
+        "onHandLabel": "Lo que tienes a mano",
+        "totalOnHand": "{{kg}} kg en crudo en total",
+        "methodLabel": "Método de cocción",
+        "packagingLabel": "Envasado",
+        "householdLabel": "Verdura del hogar al día (g)",
+        "householdHelper": "Gramos totales para todas las mascotas al día. Sirve para dimensionar las bolsas.",
+        "daysLabel": "Días por bolsa (preferido)",
+        "roundingLabel": "Redondeo del tamaño de bolsa",
+        "modeLabel": "Modo",
+        "fromFrozenLabel": "Cocinar desde congelado",
+        "fromFrozenHelper": "Añade los minutos de congelado por corte (cuando la ficha los define).",
+        "emptyHint": "Introduce cuántos gramos tienes de cada verdura para ver tu plan de bolsas.",
+        "mixedNotPossible": "Estas verduras no se pueden cocinar juntas en una sesión — cambia a «Separadas» o ajusta cortes/método para que compartan olla.",
+        "yieldLabel": "Rendimiento {{p}}%",
+        "cutLabel": "Forma de corte",
+        "gramsLabel": "Gramos (en crudo)",
+        "addVeggie": "Añadir verdura",
+        "totalLine": "{{r}} g en crudo → {{c}} g cocidos",
+        "coversDaysShort": "~{{d}} días",
+        "workflowLabel": "Flujo de trabajo",
+        "stepPortionSingle": "Reparte los {{raw}} g en crudo ({{cooked}} g cocidos) en 1 bolsa (cabe en un recipiente de ~{{size}} g).",
+        "stepPortionEven": "Reparte en {{n}} bolsas de {{cooked}} g cocidos (~{{raw}} g en crudo cada una).",
+        "stepPortionUneven": "Reparte en {{n}} bolsas: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g cocidos (~{{raw}} g en crudo por bolsa completa, {{lastRaw}} g en crudo para la última).",
+        "stepVacuumSeal": "Sella al vacío cada bolsa plana en una sola capa; congela enseguida.",
+        "stepSiliconeTray": "Vierte en bandejas de silicona; congela; pasa los cubitos a una bolsa de congelado para porciones al momento.",
+        "stepFreezerBag": "Embolsa cada porción plana; congela; ve partiendo porciones según las necesites.",
+        "stepRigid": "Guarda en recipientes; refrigera (sin congelar). Consumir en 3–4 días.",
+        "stepCook": "Cocina {{method}} a {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(incluye +{{x}} min desde congelado)",
+        "noSpec": "Este método no se admite para esta verdura — cambia el corte o el método.",
+        "stepCool": "Enfría a ≤21 °C antes de la nevera (en 2 h); baño de hielo para hojas y crucíferas.",
+        "headroomNote": "La última bolsa tiene {{g}} g de margen libre — puedes rellenar con la siguiente cocción o congelar tal cual."
+      },
+      "cut": {
+        "whole": "Entera",
+        "large_chunks": "Trozos grandes (3–4 cm)",
+        "cubed": "En cubos (1–2 cm)",
+        "coins": "Rodajas (6–10 mm)",
+        "mandolin_thin": "Mandolina fina (2–4 mm)",
+        "sticks": "Bastones",
+        "shredded": "Rallada",
+        "florets": "Ramilletes",
+        "leaves_whole": "Hojas enteras",
+        "leaves_shredded": "Hojas en juliana"
+      },
+      "packaging": {
+        "freezer_bag": "Bolsa de congelado (plana)",
+        "vacuum_seal": "Sellado al vacío (cocinar desde congelado)",
+        "silicone_tray": "Bandeja de silicona (cubos de porción)",
+        "rigid_container": "Recipiente rígido (solo nevera)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Redondear a 50 g",
+        "step100": "Redondear a 100 g",
+        "halves": "Mitades pares (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Cocción mixta",
+        "separate": "Separadas"
+      },
+      "session": {
+        "title": "Sesión de cocción mixta · {{m}} min en total",
+        "tempLine": "{{method}} a {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · desde congelado",
+        "startNow": "Empieza ya · {{m}} min",
+        "addAt": "Añadir en +{{at}} min · cuece {{m}} min",
+        "rawCookedGrams": "{{r}} g en crudo → {{c}} g cocidos"
+      },
+      "bagOption": {
+        "recommended": "Recomendado",
+        "bigger": "Bolsas más grandes",
+        "smaller": "Bolsas más pequeñas"
+      },
+      "fromFrozenChip": "Desde congelado"
     }
   },
   "nutrition": {

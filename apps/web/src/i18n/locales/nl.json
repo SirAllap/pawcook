@@ -43,7 +43,8 @@
     "cancel": "Annuleren",
     "dismiss": "Sluiten",
     "close": "Sluiten",
-    "confirm": "Bevestigen"
+    "confirm": "Bevestigen",
+    "remove": "Verwijderen"
   },
   "pets": {
     "eyebrow": "Huisdieren",
@@ -869,6 +870,86 @@
           }
         }
       }
+    },
+    "veg": {
+      "bagPlanner": {
+        "title": "Plan groente-zakjes",
+        "subtitle": "Typ in wat je in huis hebt — kies een snijwijze en krijg een zakje-voor-zakje-werkstroom die je echt kunt volgen.",
+        "onHandLabel": "Wat je in huis hebt",
+        "totalOnHand": "{{kg}} kg rauw totaal",
+        "methodLabel": "Kookmethode",
+        "packagingLabel": "Verpakking",
+        "householdLabel": "Groente per dag, huishouden (g)",
+        "householdHelper": "Totaal aantal gram per dag voor alle dieren. Gebruikt om zakjes te bemeten.",
+        "daysLabel": "Dagen per zakje (voorkeur)",
+        "roundingLabel": "Afronding zakje-grootte",
+        "modeLabel": "Modus",
+        "fromFrozenLabel": "Vanuit bevroren koken",
+        "fromFrozenHelper": "Voegt de bevroren-extra minuten per snijwijze toe (indien gedefinieerd).",
+        "emptyHint": "Voer in hoeveel gram je van elke groente hebt om je zakjesplan te zien.",
+        "mixedNotPossible": "Deze groenten kunnen niet samen in één sessie koken — schakel naar Apart, of pas snijwijze/methode aan.",
+        "yieldLabel": "Rendement {{p}}%",
+        "cutLabel": "Snijvorm",
+        "gramsLabel": "Gram (rauw)",
+        "addVeggie": "Groente toevoegen",
+        "totalLine": "{{r}} g rauw → {{c}} g gaar",
+        "coversDaysShort": "~{{d}} dagen",
+        "workflowLabel": "Werkstroom",
+        "stepPortionSingle": "Verdeel alle {{raw}} g rauw ({{cooked}} g gaar) in 1 zakje (past in ~{{size}} g bakje).",
+        "stepPortionEven": "Verdeel over {{n}} zakjes van {{cooked}} g gaar (~{{raw}} g rauw per stuk).",
+        "stepPortionUneven": "Verdeel over {{n}} zakjes: {{full}} × {{cooked}} g + 1 × {{lastCooked}} g gaar (~{{raw}} g rauw per vol zakje, {{lastRaw}} g rauw voor het laatste).",
+        "stepVacuumSeal": "Vacumeer elk zakje plat in één laag; meteen invriezen.",
+        "stepSiliconeTray": "Giet in siliconenvormen; vries in; doe blokjes in een diepvrieszak voor portie-op-aanvraag.",
+        "stepFreezerBag": "Doe elke portie plat in een zakje; vries in; breek porties af als je nodig hebt.",
+        "stepRigid": "Doe in bakjes; koel (niet invriezen). Binnen 3–4 dagen gebruiken.",
+        "stepCook": "Kook {{method}} op {{t}} °C, {{min}}–{{max}} min",
+        "fromFrozenAddendum": "(inclusief +{{x}} min vanuit bevroren)",
+        "noSpec": "Deze methode wordt voor deze groente niet ondersteund — wijzig snijwijze of methode.",
+        "stepCool": "Koel af tot ≤21 °C voor de koelkast (binnen 2 u); ijsbad voor blad/kruisbloemigen.",
+        "headroomNote": "Het laatste zakje heeft {{g}} g vrije ruimte — bijvullen bij volgende kookbeurt of zo invriezen."
+      },
+      "cut": {
+        "whole": "Heel",
+        "large_chunks": "Grote stukken (3–4 cm)",
+        "cubed": "In blokjes (1–2 cm)",
+        "coins": "Plakjes (6–10 mm)",
+        "mandolin_thin": "Mandoline dun (2–4 mm)",
+        "sticks": "Reepjes",
+        "shredded": "Geraspeld",
+        "florets": "Roosjes",
+        "leaves_whole": "Hele bladeren",
+        "leaves_shredded": "Gesneden bladeren"
+      },
+      "packaging": {
+        "freezer_bag": "Diepvrieszak (plat)",
+        "vacuum_seal": "Vacuüm (vanuit bevroren koken)",
+        "silicone_tray": "Siliconenvorm (portieblokjes)",
+        "rigid_container": "Hard bakje (alleen koelkast)"
+      },
+      "rounding": {
+        "auto": "Auto (50/100/200/250/300…)",
+        "step50": "Afronden op 50 g",
+        "step100": "Afronden op 100 g",
+        "halves": "Even helften (2 / 4 / 8)"
+      },
+      "mode": {
+        "mixed": "Gemengd koken",
+        "separate": "Apart"
+      },
+      "session": {
+        "title": "Gemengde kooksessie · {{m}} min totaal",
+        "tempLine": "{{method}} op {{t}} °C{{frozen}}",
+        "fromFrozenSuffix": " · uit de vriezer",
+        "startNow": "Nu starten · {{m}} min",
+        "addAt": "Toevoegen op +{{at}} min · {{m}} min koken",
+        "rawCookedGrams": "{{r}} g rauw → {{c}} g gaar"
+      },
+      "bagOption": {
+        "recommended": "Aanbevolen",
+        "bigger": "Grotere zakjes",
+        "smaller": "Kleinere zakjes"
+      },
+      "fromFrozenChip": "Vanuit bevroren"
     }
   },
   "nutrition": {
