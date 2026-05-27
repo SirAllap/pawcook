@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { Plus, ClipboardList, Calendar, ChevronRight } from 'lucide-react';
+import { Plus, ClipboardList, Calendar, ChevronRight, Sparkles } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -20,6 +20,11 @@ export default function PlanLanding() {
   const { pets, ready: petsReady } = usePets();
 
   if (!plansReady || !petsReady) return <PageFallback />;
+
+  // No-pets-yet branch: the regular "Create plan" CTA leads to a dead end
+  // (the wizard immediately shows another empty state). Route new users
+  // through the starter picker instead — one click to a working household.
+  const noPetsYet = pets.length === 0;
 
   return (
     <div className="space-y-6">
@@ -42,15 +47,23 @@ export default function PlanLanding() {
         <FadeIn>
           <EmptyState
             icon={<ClipboardList className="h-8 w-8" />}
-            title={t('mealPlan.landing.emptyTitle')}
-            description={t('mealPlan.landing.emptyDescription')}
+            title={noPetsYet ? t('mealPlan.landing.emptyNoPetsTitle') : t('mealPlan.landing.emptyTitle')}
+            description={noPetsYet ? t('mealPlan.landing.emptyNoPetsDescription') : t('mealPlan.landing.emptyDescription')}
             action={
-              <Button asChild variant="primary" size="md">
-                <Link to="/meal-plan/new">
-                  <Plus className="h-4 w-4" aria-hidden />
-                  {t('mealPlan.landing.create')}
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-center">
+                <Button asChild variant="primary" size="md">
+                  <Link to="/meal-plan/start">
+                    <Sparkles className="h-4 w-4" aria-hidden />
+                    {t('onboarding.cta.useTemplate')}
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary" size="md">
+                  <Link to={noPetsYet ? '/pets/new' : '/meal-plan/new'}>
+                    <Plus className="h-4 w-4" aria-hidden />
+                    {noPetsYet ? t('pets.list.addPet') : t('mealPlan.landing.create')}
+                  </Link>
+                </Button>
+              </div>
             }
           />
         </FadeIn>

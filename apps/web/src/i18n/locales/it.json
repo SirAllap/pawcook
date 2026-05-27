@@ -201,7 +201,9 @@
       "subtitle": "Genera un piano settimanale, quindicinale o mensile con la lista della spesa da portare al negozio.",
       "create": "Crea piano",
       "emptyTitle": "Nessun piano ancora.",
-      "emptyDescription": "Un piano per famiglia. Cuoci una volta, nutri tutti, dosa il resto."
+      "emptyDescription": "Un piano per famiglia. Cuoci una volta, nutri tutti, dosa il resto.",
+      "emptyNoPetsTitle": "Parti da un modello",
+      "emptyNoPetsDescription": "Scegli un pacchetto iniziale e configuriamo i tuoi animali e il primo piano in pochi clic."
     },
     "new": {
       "title": "Nuovo piano",
@@ -283,7 +285,11 @@
       "simpleMealsHelp": "Una proteina per pasto — stesso sacchetto per tutta la casa. I gatti ricevono una scheda giornaliera di taurina + olio di fegato di merluzzo per colmare il divario. Disattiva per la ricetta multi-componente completa (frattaglie, integratori di pesce, macro per animale).",
       "tinyHouseholdHint": "Famiglia piccola (~{{grams}} g/giorno) — prova Fino a 3 giorni per evitare sacchetti troppo piccoli.",
       "veggieDetail": "Cuocere ogni verdura separatamente",
-      "veggieDetailHelp": "Disattivato (consigliato): un lotto misto per giorno di cucina — carote, patata dolce e fagiolini nella stessa pentola. Attivato: ogni verdura ha la propria sessione di cottura nel piano, con il proprio calendario di sacchetti."
+      "veggieDetailHelp": "Disattivato (consigliato): un lotto misto per giorno di cucina — carote, patata dolce e fagiolini nella stessa pentola. Attivato: ogni verdura ha la propria sessione di cottura nel piano, con il proprio calendario di sacchetti.",
+      "advancedLabel": "Ingredienti avanzati",
+      "advancedSummaryMeats": "{{count}} carni",
+      "advancedSummaryVegs": "{{count}} verdure",
+      "advancedSummaryFlags": "{{count}} opzione(i)"
     },
     "coverage": {
       "passed": "Sembra bilanciato",
@@ -335,7 +341,8 @@
         "bunch": "{{qty}} mazzo",
         "bottle": "{{qty}} bottiglia"
       },
-      "yieldAdjustedHint": "L'acquisto include il calo di cottura — resa ~{{c}} g cotti."
+      "yieldAdjustedHint": "L'acquisto include il calo di cottura — resa ~{{c}} g cotti.",
+      "emptyHelp": "Questo piano non ha ancora bisogno di una lista della spesa. Modifica il piano per aggiungere ingredienti in lotti."
     },
     "confirmDelete": "Eliminare il piano «{{name}}»? L'azione è irreversibile.",
     "toast": {
@@ -452,6 +459,72 @@
       "done": "Fatto",
       "progress": "{{n}} di {{total}}",
       "tipTape": "Sacchetto in silicone riutilizzabile? Attacca un pezzo di nastro di carta e scrivi sopra."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Parti da un modello"
+    },
+    "starter": {
+      "eyebrow": "Avvio rapido",
+      "title": "Scegli un pacchetto iniziale",
+      "subtitle": "Salta il modulo lungo. Scegli la famiglia che corrisponde alla tua e prepariamo gli animali e il piano — puoi modificare tutto dopo.",
+      "manualTitle": "Preferisci configurare tutto da solo?",
+      "manualDescription": "Aggiungi un animale da zero e segui la procedura completa.",
+      "manualCta": "Aggiungi animale manualmente",
+      "back": "Torna ai piani"
+    },
+    "template": {
+      "petName": {
+        "dog": "Il tuo cane",
+        "cat": "Il tuo gatto"
+      },
+      "single_adult_dog": {
+        "title": "Cane adulto singolo",
+        "tag": "Sous-vide del weekend, pasti semplici",
+        "description": "Un cane adulto, proteine facili da supermercato, sessione di cottura nel weekend. Ideale per famiglie impegnate che iniziano."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Famiglia con cane e gatto",
+        "tag": "Cottura condivisa, scheda taurina",
+        "description": "Entrambi gli animali mangiano la stessa proteina cotta che prepari una volta. Il gatto riceve una scheda giornaliera di taurina e olio di fegato di merluzzo per mantenere il piano semplice sicuro."
+      },
+      "single_indoor_cat": {
+        "title": "Gatto da appartamento singolo",
+        "tag": "Fornello, carnivoro cotto",
+        "description": "Un gatto da appartamento con dieta carnivora cotta. Piccole porzioni, cottura sul fornello durante la settimana, integratore di taurina incluso."
+      },
+      "senior_dog_low_activity": {
+        "title": "Cane anziano, bassa attività",
+        "tag": "Pentola lenta, amica delle articolazioni",
+        "description": "Cane anziano con supporto articolare. Pentola lenta per proteine tenere, piano bisettimanale per ridurre i giorni di cottura."
+      }
+    },
+    "tour": {
+      "skip": "Salta tour",
+      "next": "Avanti",
+      "back": "Indietro",
+      "done": "Fatto",
+      "welcome": {
+        "title": "Benvenuto nel tuo piano",
+        "body": "Ecco un tour di 30 secondi di cosa c'è qui. Puoi saltare quando vuoi."
+      },
+      "meals": {
+        "title": "Pasti",
+        "body": "Porzioni giorno per giorno per animale — grammi, kcal e la proteina di ogni pasto."
+      },
+      "supplement": {
+        "title": "Integratore giornaliero",
+        "body": "Quando il piano semplifica i pasti, i nutrienti rimossi appaiono qui come dose quotidiana nominata — mai omessi in silenzio."
+      },
+      "shopping": {
+        "title": "Lista della spesa",
+        "body": "Raggruppata per reparto. Tocca un articolo per spuntarlo mentre fai la spesa."
+      },
+      "cooking": {
+        "title": "Piano di cottura",
+        "body": "Calendario di buste datato per il sous-vide. Cucina una volta, nutri per giorni."
+      }
     }
   },
   "condition": {

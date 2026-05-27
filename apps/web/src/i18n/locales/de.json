@@ -201,7 +201,9 @@
       "subtitle": "Erstelle einen Wochen-, Zweiwochen- oder Monatsplan mit der Einkaufsliste fürs Geschäft.",
       "create": "Plan erstellen",
       "emptyTitle": "Noch kein Plan.",
-      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren."
+      "emptyDescription": "Ein Plan pro Haushalt. Einmal kochen, alle füttern, den Rest dosieren.",
+      "emptyNoPetsTitle": "Mit Vorlage starten",
+      "emptyNoPetsDescription": "Wähle ein Starterpaket und wir richten deine Tiere und deinen ersten Plan in wenigen Klicks ein."
     },
     "new": {
       "title": "Neuer Plan",
@@ -283,7 +285,11 @@
       "simpleMealsHelp": "Ein Protein pro Mahlzeit — derselbe Beutel für den ganzen Haushalt. Katzen erhalten eine tägliche Empfehlung für Taurin + Lebertran, um die Lücke zu schließen. Deaktivieren für das vollständige Mehrkomponenten-Rezept (Innereien, Meeresfrüchte-Zusätze, Makros pro Tier).",
       "tinyHouseholdHint": "Kleiner Haushalt (~{{grams}} g/Tag) — versuche Bis 3 Tage, um zu kleine Beutel zu vermeiden.",
       "veggieDetail": "Jedes Gemüse einzeln garen",
-      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan."
+      "veggieDetailHelp": "Aus (empfohlen): ein gemischter Ansatz pro Kochtag — Karotten, Süßkartoffel und grüne Bohnen in einem Topf. An: jedes Gemüse bekommt seine eigene Kochsession im Plan mit eigenem Beutel-Zeitplan.",
+      "advancedLabel": "Zutaten (erweitert)",
+      "advancedSummaryMeats": "{{count}} Fleisch",
+      "advancedSummaryVegs": "{{count}} Gemüse",
+      "advancedSummaryFlags": "{{count}} Option(en)"
     },
     "coverage": {
       "passed": "Sieht ausgewogen aus",
@@ -335,7 +341,8 @@
         "bunch": "{{qty}} Bund",
         "bottle": "{{qty}} Flasche"
       },
-      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht."
+      "yieldAdjustedHint": "Einkauf inkl. Garverlust — ergibt ~{{c}} g gekocht.",
+      "emptyHelp": "Dieser Plan braucht noch keine Einkaufsliste. Bearbeite den Plan, um Zutaten zum Vorbereiten hinzuzufügen."
     },
     "confirmDelete": "Plan „{{name}}\" löschen? Das lässt sich nicht rückgängig machen.",
     "toast": {
@@ -452,6 +459,72 @@
       "done": "Fertig",
       "progress": "{{n}} von {{total}}",
       "tipTape": "Wiederverwendbarer Silikonbeutel? Klebe einen Streifen Malerkrepp darauf und schreibe darauf."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Mit Vorlage starten"
+    },
+    "starter": {
+      "eyebrow": "Schnellstart",
+      "title": "Wähle ein Starterpaket",
+      "subtitle": "Überspringe das lange Formular. Wähle den Haushalt, der zu deinem passt, und wir richten Tiere und Plan ein — alles lässt sich später anpassen.",
+      "manualTitle": "Lieber alles selbst einrichten?",
+      "manualDescription": "Lege ein Tier von Grund auf an und durchlaufe den vollständigen Assistenten.",
+      "manualCta": "Tier manuell hinzufügen",
+      "back": "Zurück zu Plänen"
+    },
+    "template": {
+      "petName": {
+        "dog": "Dein Hund",
+        "cat": "Deine Katze"
+      },
+      "single_adult_dog": {
+        "title": "Einzelner erwachsener Hund",
+        "tag": "Sous-vide am Wochenende, einfache Mahlzeiten",
+        "description": "Ein erwachsener Hund, einfache Supermarkt-Proteine, Wochenend-Kochsession. Ideal für vielbeschäftigte Haushalte am Anfang."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Haushalt mit Hund und Katze",
+        "tag": "Geteilte Kochsession, Taurin-Karte",
+        "description": "Beide Tiere essen dasselbe gekochte Protein, das du einmal vorbereitest. Die Katze erhält eine tägliche Karte mit Taurin und Lebertran, damit der einfache Plan sicher bleibt."
+      },
+      "single_indoor_cat": {
+        "title": "Einzelne Wohnungskatze",
+        "tag": "Herd, gekochter Karnivore",
+        "description": "Eine Wohnungskatze auf einer gekochten Fleischfresser-Diät. Kleine Portionen, Werktags-Kochen am Herd, Taurin-Supplement inklusive."
+      },
+      "senior_dog_low_activity": {
+        "title": "Seniorhund, geringe Aktivität",
+        "tag": "Slowcooker, gelenkschonend",
+        "description": "Älterer Hund mit Gelenkunterstützung. Slowcooker für zartes Protein, vierzehntägiger Plan, um Kochtage selten zu halten."
+      }
+    },
+    "tour": {
+      "skip": "Tour überspringen",
+      "next": "Weiter",
+      "back": "Zurück",
+      "done": "Fertig",
+      "welcome": {
+        "title": "Willkommen bei deinem Plan",
+        "body": "Hier ist ein 30-Sekunden-Rundgang. Du kannst jederzeit überspringen."
+      },
+      "meals": {
+        "title": "Mahlzeiten",
+        "body": "Tägliche Portionen pro Tier — Gramm, kcal und das Protein für jede Mahlzeit."
+      },
+      "supplement": {
+        "title": "Tägliches Supplement",
+        "body": "Wenn der Plan Mahlzeiten vereinfacht, erscheinen entfernte Nährstoffe hier als benannte tägliche Dosis — nie still weggelassen."
+      },
+      "shopping": {
+        "title": "Einkaufsliste",
+        "body": "Nach Ladenbereich gruppiert. Tippe auf einen Artikel, um ihn beim Einkaufen abzuhaken."
+      },
+      "cooking": {
+        "title": "Kochplan",
+        "body": "Datierter Beutel-Zeitplan für Sous-vide. Einmal kochen, mehrere Tage füttern."
+      }
     }
   },
   "condition": {

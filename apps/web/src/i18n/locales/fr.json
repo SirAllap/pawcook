@@ -201,7 +201,9 @@
       "subtitle": "Génère un plan hebdomadaire, bihebdomadaire ou mensuel et la liste de courses à emporter.",
       "create": "Créer un plan",
       "emptyTitle": "Pas encore de plan.",
-      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste."
+      "emptyDescription": "Un plan par foyer. Cuisinez une fois, nourrissez tout le monde, dosez le reste.",
+      "emptyNoPetsTitle": "Démarrer avec un modèle",
+      "emptyNoPetsDescription": "Choisissez un pack de démarrage et nous configurons vos animaux et votre premier plan en quelques clics."
     },
     "new": {
       "title": "Nouveau plan",
@@ -283,7 +285,11 @@
       "simpleMealsHelp": "Une protéine par repas — un seul sachet pour toute la maisonnée. Les chats reçoivent une recommandation quotidienne de taurine + huile de foie de morue pour combler le manque. Désactivez pour la recette multi-composants complète (abats, suppléments marins, macros par animal).",
       "tinyHouseholdHint": "Petit foyer (~{{grams}} g/jour) — essayez Jusqu’à 3 jours pour éviter des sachets trop petits.",
       "veggieDetail": "Cuire chaque légume séparément",
-      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets."
+      "veggieDetailHelp": "Désactivé (recommandé) : un lot mixte par jour de cuisine — carottes, patate douce, haricots verts dans la même casserole. Activé : chaque légume a sa propre session de cuisson dans le plan, avec son propre calendrier de sachets.",
+      "advancedLabel": "Ingrédients avancés",
+      "advancedSummaryMeats": "{{count}} viandes",
+      "advancedSummaryVegs": "{{count}} légumes",
+      "advancedSummaryFlags": "{{count}} option(s)"
     },
     "coverage": {
       "passed": "Semble équilibré",
@@ -335,7 +341,8 @@
         "bunch": "{{qty}} botte",
         "bottle": "{{qty}} bouteille"
       },
-      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit."
+      "yieldAdjustedHint": "L'achat inclut la perte à la cuisson — donne ~{{c}} g cuit.",
+      "emptyHelp": "Ce plan n'a pas encore besoin de liste de courses. Modifiez le plan pour ajouter des ingrédients en lots."
     },
     "confirmDelete": "Supprimer le plan « {{name}} » ? Cette action est irréversible.",
     "toast": {
@@ -452,6 +459,72 @@
       "done": "Terminé",
       "progress": "{{n}} sur {{total}}",
       "tipTape": "Sachet en silicone réutilisable ? Collez-y un morceau de ruban de masquage et écrivez dessus."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Démarrer avec un modèle"
+    },
+    "starter": {
+      "eyebrow": "Démarrage rapide",
+      "title": "Choisissez un pack de démarrage",
+      "subtitle": "Évitez le long formulaire. Choisissez le foyer qui correspond au vôtre et nous initialisons les animaux et le plan — vous pourrez tout ajuster ensuite.",
+      "manualTitle": "Vous préférez tout configurer vous-même ?",
+      "manualDescription": "Ajoutez un animal de zéro et parcourez l'assistant complet.",
+      "manualCta": "Ajouter un animal manuellement",
+      "back": "Retour aux plans"
+    },
+    "template": {
+      "petName": {
+        "dog": "Votre chien",
+        "cat": "Votre chat"
+      },
+      "single_adult_dog": {
+        "title": "Chien adulte unique",
+        "tag": "Sous-vide du week-end, repas simples",
+        "description": "Un chien adulte, des protéines faciles du supermarché, session de cuisson le week-end. Idéal pour les foyers occupés qui débutent."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Foyer chien et chat",
+        "tag": "Cuisson partagée, carte taurine",
+        "description": "Les deux animaux mangent la même protéine cuite que vous préparez une seule fois. Le chat reçoit une carte quotidienne de taurine et d'huile de foie de morue pour que le plan simple reste sûr."
+      },
+      "single_indoor_cat": {
+        "title": "Chat d'intérieur unique",
+        "tag": "Plaque, carnivore cuit",
+        "description": "Un chat d'intérieur sur un régime cuit carnivore. Petites portions, cuisson à la plaque en semaine, supplément de taurine inclus."
+      },
+      "senior_dog_low_activity": {
+        "title": "Chien sénior, faible activité",
+        "tag": "Mijoteuse, bon pour les articulations",
+        "description": "Chien âgé avec soutien articulaire. Préparation à la mijoteuse pour des protéines tendres, plan bimensuel pour limiter les jours de cuisson."
+      }
+    },
+    "tour": {
+      "skip": "Passer le tour",
+      "next": "Suivant",
+      "back": "Retour",
+      "done": "Terminé",
+      "welcome": {
+        "title": "Bienvenue dans votre plan",
+        "body": "Voici un tour de 30 secondes de ce qui se trouve ici. Vous pouvez passer à tout moment."
+      },
+      "meals": {
+        "title": "Repas",
+        "body": "Portions jour par jour pour chaque animal — grammes, kcal et la protéine de chaque repas."
+      },
+      "supplement": {
+        "title": "Supplément quotidien",
+        "body": "Quand le plan simplifie les repas, les nutriments retirés apparaissent ici sous forme de dose quotidienne nommée — jamais omis en silence."
+      },
+      "shopping": {
+        "title": "Liste de courses",
+        "body": "Groupée par rayon. Tapez un article pour le cocher pendant que vous faites les courses."
+      },
+      "cooking": {
+        "title": "Plan de cuisson",
+        "body": "Calendrier de sachets daté pour le sous-vide. Cuisez une fois, nourrissez pendant des jours."
+      }
     }
   },
   "condition": {

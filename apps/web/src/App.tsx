@@ -16,6 +16,7 @@ const PetDetail           = lazy(() => import('./pages/Pets/PetDetail'));
 const PetEdit             = lazy(() => import('./pages/Pets/PetEdit'));
 const PlanLanding         = lazy(() => import('./pages/MealPlan/PlanLanding'));
 const PlanWizard          = lazy(() => import('./pages/MealPlan/PlanWizard'));
+const StarterPicker       = lazy(() => import('./pages/MealPlan/StarterPicker'));
 const PlanView            = lazy(() => import('./pages/MealPlan/PlanView'));
 const NotFound            = lazy(() => import('./pages/NotFound'));
 
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/pets/:id"      element={<PetDetail />} />
             <Route path="/pets/:id/edit" element={<PetEdit />} />
             <Route path="/meal-plan"          element={<PlanLanding />} />
+            <Route path="/meal-plan/start"    element={<StarterPicker />} />
             <Route path="/meal-plan/new"      element={<PlanWizard />} />
             <Route path="/meal-plan/:id"      element={<PlanView />} />
             <Route path="/meal-plan/:id/edit" element={<PlanWizard />} />

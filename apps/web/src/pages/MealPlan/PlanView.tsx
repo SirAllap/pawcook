@@ -18,6 +18,9 @@ import { ShoppingListView } from './ShoppingListView';
 import { CookingPlanView } from './CookingPlanView';
 import { useMealPlans } from '../../contexts/MealPlansContext';
 import { usePets } from '../../contexts/PetProfilesContext';
+import { useOnboarding } from '../../contexts/OnboardingContext';
+import { TourOverlay } from '../../components/tour/TourOverlay';
+import { buildPlanTourSteps } from '../../components/tour/plan-tour-steps';
 
 export default function PlanView() {
   const { t, i18n } = useTranslation();
@@ -25,6 +28,7 @@ export default function PlanView() {
   const { id } = useParams<{ id: string }>();
   const { getPlan, removePlan, ready: plansReady } = useMealPlans();
   const { pets, ready: petsReady } = usePets();
+  const { hasStep, markStep, ready: onboardingReady } = useOnboarding();
   // Default to cooking when the plan has a bag schedule — users open a
   // saved plan to *do* something (cook, label, thaw), not re-read meals.
   // Fall back to meals for plans without a cookingPlan (raw / no-bag).
@@ -65,6 +69,7 @@ export default function PlanView() {
         {t('mealPlan.view.back')}
       </button>
 
+      <div data-tour="plan-title">
       <PageHeader
         eyebrow={t('mealPlan.eyebrow')}
         title={<RenamablePlanTitle plan={plan} />}
@@ -109,12 +114,14 @@ export default function PlanView() {
           ))}
         </div>
       )}
+      </div>{/* /data-tour="plan-title" */}
 
       <Tabs value={tab} onValueChange={setTab} className="space-y-5">
         <TabsList>
           <TabsTrigger
             value="meals"
             aria-label={t('mealPlan.view.tabMeals')}
+            data-tour="meals-tab"
           >
             <CalendarDays className="h-4 w-4" aria-hidden />
             {t('mealPlan.view.tabMeals')}
@@ -122,6 +129,7 @@ export default function PlanView() {
           <TabsTrigger
             value="shopping"
             aria-label={t('mealPlan.view.tabShopping')}
+            data-tour="shopping-tab"
           >
             <ShoppingBag className="h-4 w-4" aria-hidden />
             {t('mealPlan.view.tabShopping')}
@@ -130,6 +138,7 @@ export default function PlanView() {
             <TabsTrigger
               value="cooking"
               aria-label={t('mealPlan.view.tabCooking', { defaultValue: 'Cooking plan' })}
+              data-tour="cooking-tab"
             >
               <ChefHat className="h-4 w-4" aria-hidden />
               {t('mealPlan.view.tabCooking', { defaultValue: 'Cooking plan' })}
@@ -169,6 +178,13 @@ export default function PlanView() {
       >
         {t('common.disclaimer')}
       </Callout>
+
+      {onboardingReady && !hasStep('plan_tour') && (
+        <TourOverlay
+          steps={buildPlanTourSteps({ plan, pets: planPets, t })}
+          onClose={() => markStep('plan_tour')}
+        />
+      )}
 
       <Sheet
         open={confirmDelete}

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Check, Calendar, Sparkles, RotateCcw, Save, ShieldAlert } from 'lucide-react';
@@ -23,12 +23,15 @@ import { NutrientCoverageCard } from '../../components/meal-plan/NutrientCoverag
 import { usePets } from '../../contexts/PetProfilesContext';
 import { useMealPlans } from '../../contexts/MealPlansContext';
 import { cn } from '../../lib/cn';
+import { getTemplate } from '../../lib/starter-templates';
 
 const DURATIONS: PlanDuration[] = [7, 14, 30];
 
 export default function PlanWizard() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const { id: editId } = useParams<{ id?: string }>();
   const { pets, ready: petsReady } = usePets();
   const { addPlan, updatePlan, getPlan, ready: plansReady } = useMealPlans();
@@ -41,23 +44,36 @@ export default function PlanWizard() {
   const editingPlan = editId && plansReady ? getPlan(editId) : undefined;
   const isEditMode = Boolean(editId);
 
-  const [selectedPetIds, setSelectedPetIds] = useState<string[]>(
-    () => (editingPlan ? editingPlan.petIds : []),
-  );
-  const [duration, setDuration] = useState<PlanDuration>(
-    () => (editingPlan ? editingPlan.durationDays : 7),
-  );
-  const [sourcing, setSourcing] = useState<SourcingPrefs>(
-    () => (editingPlan
-      ? SourcingPrefsSchema.parse(editingPlan.sourcing)
-      : SourcingPrefsSchema.parse({})),
-  );
+  // Starter-template prefill: /meal-plan/new?template=<id> populates
+  // duration + sourcing from the picked template, and (when navigated
+  // from StarterPicker) pre-selects the just-created pets via location
+  // state. Edit mode wins over template — never let a query param clobber
+  // a saved plan being edited.
+  const template = isEditMode ? undefined : getTemplate(searchParams.get('template'));
+  const seedPetIds = (location.state as { seedPetIds?: string[] } | null)?.seedPetIds;
+
+  const [selectedPetIds, setSelectedPetIds] = useState<string[]>(() => {
+    if (editingPlan) return editingPlan.petIds;
+    if (seedPetIds && seedPetIds.length > 0) return seedPetIds;
+    return [];
+  });
+  const [duration, setDuration] = useState<PlanDuration>(() => {
+    if (editingPlan) return editingPlan.durationDays;
+    if (template) return template.duration;
+    return 7;
+  });
+  const [sourcing, setSourcing] = useState<SourcingPrefs>(() => {
+    if (editingPlan) return SourcingPrefsSchema.parse(editingPlan.sourcing);
+    if (template) return SourcingPrefsSchema.parse(template.sourcing);
+    return SourcingPrefsSchema.parse({});
+  });
   const [name, setName] = useState<string>(() => (editingPlan ? editingPlan.name : ''));
   const [preview, setPreview] = useState<MealPlan | null>(null);
   const [refusals, setRefusals] = useState<PlannerRefusal[]>([]);
   // In edit mode the user already picked a Cook-ahead value, so the
-  // tiny-household auto-adjust shouldn't fire. Mark as touched up front.
-  const userTouchedBagDaysRef = useRef(isEditMode);
+  // tiny-household auto-adjust shouldn't fire. Same for templates that
+  // explicitly set bagDays — the user's pick should stand.
+  const userTouchedBagDaysRef = useRef(isEditMode || Boolean(template?.sourcing.bagDays));
 
   // If a saved plan referenced pets that have since been deleted, drop
   // them from the prefill and tell the user once. Avoids a confusing
@@ -253,9 +269,14 @@ export default function PlanWizard() {
           title={t('mealPlan.needPet.title')}
           description={t('mealPlan.needPet.description')}
           action={
-            <Button asChild variant="primary">
-              <Link to="/pets/new">{t('mealPlan.needPet.cta')}</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-center">
+              <Button asChild variant="primary">
+                <Link to="/meal-plan/start">{t('onboarding.cta.useTemplate')}</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link to="/pets/new">{t('mealPlan.needPet.cta')}</Link>
+              </Button>
+            </div>
           }
         />
       </div>

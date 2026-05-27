@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, ChefHat, ShoppingBag } from 'lucide-react';
+import { Check, ChefHat, ShoppingBag, Pencil } from 'lucide-react';
 import {
   getStoreSection, MeatTypeSchema,
   type MealPlan, type PetProfile, type ShoppingItem,
 } from '@pawcook/shared';
 import { Card } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
+import { Button } from '../../components/ui/button';
 import { EmptyState } from '../../components/ui/empty-state';
 import { DownloadMenu } from '../../components/recipe/DownloadMenu';
 import { PetTag } from '../../components/meal-plan/PetTag';
@@ -62,7 +63,15 @@ export function ShoppingListView({ plan, pets }: { plan: MealPlan; pets: PetProf
       <EmptyState
         icon={<ShoppingBag className="h-8 w-8" />}
         title={t('mealPlan.shopping.emptyTitle', { defaultValue: 'Nothing to buy yet' })}
-        description={t('mealPlan.shopping.empty')}
+        description={t('mealPlan.shopping.emptyHelp')}
+        action={
+          <Button asChild variant="primary" size="sm">
+            <Link to={`/meal-plan/${plan.id}/edit`}>
+              <Pencil className="h-4 w-4" aria-hidden />
+              {t('mealPlan.cookingPlan.emptyCta', { defaultValue: 'Edit plan' })}
+            </Link>
+          </Button>
+        }
       />
     );
   }

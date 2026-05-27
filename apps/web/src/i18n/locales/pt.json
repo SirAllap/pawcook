@@ -201,7 +201,9 @@
       "subtitle": "Gera um plano semanal, quinzenal ou mensal e a lista de compras para a loja.",
       "create": "Criar plano",
       "emptyTitle": "Ainda sem plano.",
-      "emptyDescription": "Um plano por casa. Cozinhe uma vez, alimente todos, dose o resto."
+      "emptyDescription": "Um plano por casa. Cozinhe uma vez, alimente todos, dose o resto.",
+      "emptyNoPetsTitle": "Começar com um modelo",
+      "emptyNoPetsDescription": "Escolha um pacote inicial e nós configuramos seus pets e seu primeiro plano em poucos cliques."
     },
     "new": {
       "title": "Novo plano",
@@ -283,7 +285,11 @@
       "simpleMealsHelp": "Uma proteína por refeição — o mesmo saco para toda a casa. Os gatos recebem uma recomendação diária de taurina + óleo de fígado de bacalhau para preencher a lacuna. Desative para a receita multicomponente completa (vísceras, suplementos de peixe, macros por pet).",
       "tinyHouseholdHint": "Casa pequena (~{{grams}} g/dia) — tente Até 3 dias para evitar sacos pequenos demais.",
       "veggieDetail": "Cozinhar cada legume em separado",
-      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos."
+      "veggieDetailHelp": "Desligado (recomendado): um lote misto por dia de cozinha — cenouras, batata-doce e feijão verde tudo na mesma panela. Ligado: cada legume tem a sua própria sessão de cozedura no plano, com o próprio calendário de sacos.",
+      "advancedLabel": "Ingredientes avançados",
+      "advancedSummaryMeats": "{{count}} carnes",
+      "advancedSummaryVegs": "{{count}} vegetais",
+      "advancedSummaryFlags": "{{count}} opção(ões)"
     },
     "coverage": {
       "passed": "Parece equilibrado",
@@ -335,7 +341,8 @@
         "bunch": "{{qty}} maço",
         "bottle": "{{qty}} garrafa"
       },
-      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados."
+      "yieldAdjustedHint": "A compra inclui perda de cozedura — rende ~{{c}} g cozinhados.",
+      "emptyHelp": "Este plano ainda não precisa de uma lista de compras. Edite o plano para adicionar ingredientes em lotes."
     },
     "confirmDelete": "Eliminar o plano «{{name}}»? Esta ação é irreversível.",
     "toast": {
@@ -452,6 +459,72 @@
       "done": "Concluído",
       "progress": "{{n}} de {{total}}",
       "tipTape": "Saco de silicone reutilizável? Cola um pedaço de fita-cola de pintor e escreve por cima."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Começar com um modelo"
+    },
+    "starter": {
+      "eyebrow": "Início rápido",
+      "title": "Escolha um pacote inicial",
+      "subtitle": "Pule o formulário longo. Escolha o lar que combina com o seu e nós configuramos os pets e o plano — pode ajustar tudo depois.",
+      "manualTitle": "Prefere configurar tudo você mesmo?",
+      "manualDescription": "Adicione um pet do zero e percorra o assistente completo.",
+      "manualCta": "Adicionar pet manualmente",
+      "back": "Voltar aos planos"
+    },
+    "template": {
+      "petName": {
+        "dog": "Seu cão",
+        "cat": "Seu gato"
+      },
+      "single_adult_dog": {
+        "title": "Cão adulto único",
+        "tag": "Sous-vide de fim de semana, refeições simples",
+        "description": "Um cão adulto, proteínas fáceis de supermercado, sessão de cozimento no fim de semana. Ideal para lares ocupados começando."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Lar com cão e gato",
+        "tag": "Cozimento compartilhado, cartão de taurina",
+        "description": "Ambos os pets comem a mesma proteína cozida que você prepara uma vez. O gato recebe um cartão diário de taurina e óleo de fígado de bacalhau para manter o plano simples seguro."
+      },
+      "single_indoor_cat": {
+        "title": "Gato de interior único",
+        "tag": "Fogão, carnívoro cozido",
+        "description": "Um gato de interior em uma dieta carnívora cozida. Porções pequenas, cozimento no fogão durante a semana, suplemento de taurina incluído."
+      },
+      "senior_dog_low_activity": {
+        "title": "Cão idoso, baixa atividade",
+        "tag": "Panela elétrica, amiga das articulações",
+        "description": "Cão mais velho com suporte articular. Panela elétrica para proteínas macias, plano quinzenal para reduzir os dias de cozimento."
+      }
+    },
+    "tour": {
+      "skip": "Pular tour",
+      "next": "Próximo",
+      "back": "Voltar",
+      "done": "Concluído",
+      "welcome": {
+        "title": "Bem-vindo ao seu plano",
+        "body": "Aqui está um tour de 30 segundos do que há aqui. Pule quando quiser."
+      },
+      "meals": {
+        "title": "Refeições",
+        "body": "Porções diárias por pet — gramas, kcal e a proteína de cada refeição."
+      },
+      "supplement": {
+        "title": "Suplemento diário",
+        "body": "Quando o plano simplifica refeições, os nutrientes removidos aparecem aqui como dose diária nomeada — nunca omitidos em silêncio."
+      },
+      "shopping": {
+        "title": "Lista de compras",
+        "body": "Agrupada por seção da loja. Toque em um item para marcá-lo enquanto faz compras."
+      },
+      "cooking": {
+        "title": "Plano de cozimento",
+        "body": "Cronograma de sacos datado para sous-vide. Cozinhe uma vez, alimente por dias."
+      }
     }
   },
   "condition": {

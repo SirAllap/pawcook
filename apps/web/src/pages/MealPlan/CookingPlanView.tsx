@@ -113,6 +113,14 @@ export function CookingPlanView({ plan, pets }: { plan: MealPlan; pets: PetProfi
           defaultValue:
             'This plan has no batchable ingredients — everything will be cooked fresh.',
         })}
+        action={
+          <Button asChild type="button" variant="primary" size="sm">
+            <Link to={`/meal-plan/${plan.id}/edit`}>
+              <Pencil className="h-4 w-4" aria-hidden />
+              {t('mealPlan.cookingPlan.emptyCta', { defaultValue: 'Edit plan' })}
+            </Link>
+          </Button>
+        }
       />
     );
   }

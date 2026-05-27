@@ -201,7 +201,9 @@
       "subtitle": "Wygeneruj plan tygodniowy, dwutygodniowy lub miesięczny i listę zakupów na sklep.",
       "create": "Utwórz plan",
       "emptyTitle": "Jeszcze nie ma planu.",
-      "emptyDescription": "Jeden plan na dom. Ugotuj raz, nakarm wszystkich, dawkuj resztę."
+      "emptyDescription": "Jeden plan na dom. Ugotuj raz, nakarm wszystkich, dawkuj resztę.",
+      "emptyNoPetsTitle": "Zacznij od szablonu",
+      "emptyNoPetsDescription": "Wybierz pakiet startowy, a my skonfigurujemy Twoje zwierzęta i pierwszy plan w kilka kliknięć."
     },
     "new": {
       "title": "Nowy plan",
@@ -283,7 +285,11 @@
       "simpleMealsHelp": "Jedno białko na posiłek — ten sam woreczek dla całego domu. Koty otrzymują codzienną rekomendację tauryny + tranu z dorsza, aby uzupełnić niedobór. Wyłącz, aby uzyskać pełny wieloskładnikowy przepis (podroby, dodatki rybne, makro per pet).",
       "tinyHouseholdHint": "Mały dom (~{{grams}} g/dzień) — wybierz Do 3 dni, aby uniknąć zbyt małych woreczków.",
       "veggieDetail": "Gotuj każde warzywo osobno",
-      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków."
+      "veggieDetailHelp": "Wyłączone (zalecane): jedna mieszana partia na dzień gotowania — marchewki, słodki ziemniak i fasolka razem w jednym garnku. Włączone: każde warzywo ma własną sesję gotowania w planie i własny harmonogram woreczków.",
+      "advancedLabel": "Zaawansowane składniki",
+      "advancedSummaryMeats": "{{count}} mięsa",
+      "advancedSummaryVegs": "{{count}} warzywa",
+      "advancedSummaryFlags": "{{count}} opcja(e)"
     },
     "coverage": {
       "passed": "Wygląda na zbilansowany",
@@ -335,7 +341,8 @@
         "bunch": "{{qty}} pęczek",
         "bottle": "{{qty}} butelka"
       },
-      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu."
+      "yieldAdjustedHint": "Zakup uwzględnia ubytek przy gotowaniu — daje ~{{c}} g po ugotowaniu.",
+      "emptyHelp": "Ten plan nie potrzebuje jeszcze listy zakupów. Edytuj plan, aby dodać składniki na zapas."
     },
     "confirmDelete": "Usunąć plan „{{name}}\"? Tego nie da się cofnąć.",
     "toast": {
@@ -452,6 +459,72 @@
       "done": "Gotowe",
       "progress": "{{n}} z {{total}}",
       "tipTape": "Wielorazowy woreczek silikonowy? Naklej kawałek taśmy malarskiej i pisz na niej."
+    }
+  },
+  "onboarding": {
+    "cta": {
+      "useTemplate": "Zacznij od szablonu"
+    },
+    "starter": {
+      "eyebrow": "Szybki start",
+      "title": "Wybierz pakiet startowy",
+      "subtitle": "Pomiń długi formularz. Wybierz dom pasujący do Twojego, a my przygotujemy zwierzęta i plan — wszystko możesz dostosować później.",
+      "manualTitle": "Wolisz wszystko skonfigurować samodzielnie?",
+      "manualDescription": "Dodaj zwierzę od zera i przejdź przez pełnego kreatora.",
+      "manualCta": "Dodaj zwierzę ręcznie",
+      "back": "Wróć do planów"
+    },
+    "template": {
+      "petName": {
+        "dog": "Twój pies",
+        "cat": "Twój kot"
+      },
+      "single_adult_dog": {
+        "title": "Pojedynczy dorosły pies",
+        "tag": "Sous-vide weekendowe, proste posiłki",
+        "description": "Jeden dorosły pies, łatwe białka ze sklepu, weekendowe gotowanie. Idealne dla zapracowanych domów na początek."
+      },
+      "multi_pet_dog_cat": {
+        "title": "Dom z psem i kotem",
+        "tag": "Wspólne gotowanie, karta tauryny",
+        "description": "Oba zwierzęta jedzą to samo gotowane białko, które przygotowujesz raz. Kot dostaje codzienną kartę tauryny i tranu, żeby prosty plan pozostał bezpieczny."
+      },
+      "single_indoor_cat": {
+        "title": "Pojedynczy kot domowy",
+        "tag": "Kuchenka, gotowany mięsożerca",
+        "description": "Jeden kot domowy na gotowanej diecie mięsożernej. Małe porcje, gotowanie na kuchence w ciągu tygodnia, suplement tauryny w zestawie."
+      },
+      "senior_dog_low_activity": {
+        "title": "Pies senior, niska aktywność",
+        "tag": "Wolnowar, przyjazny stawom",
+        "description": "Starszy pies z wsparciem stawów. Wolnowar dla delikatnego białka, plan dwutygodniowy, by ograniczyć dni gotowania."
+      }
+    },
+    "tour": {
+      "skip": "Pomiń tour",
+      "next": "Dalej",
+      "back": "Wstecz",
+      "done": "Gotowe",
+      "welcome": {
+        "title": "Witaj w swoim planie",
+        "body": "Oto 30-sekundowy przegląd tego, co tu jest. Pomiń w dowolnym momencie."
+      },
+      "meals": {
+        "title": "Posiłki",
+        "body": "Codzienne porcje na zwierzę — gramy, kcal i białko każdego posiłku."
+      },
+      "supplement": {
+        "title": "Codzienny suplement",
+        "body": "Gdy plan upraszcza posiłki, pominięte składniki pojawiają się tu jako nazwana dzienna dawka — nigdy nie są usuwane po cichu."
+      },
+      "shopping": {
+        "title": "Lista zakupów",
+        "body": "Pogrupowana według działów sklepu. Stuknij artykuł, by odhaczyć podczas zakupów."
+      },
+      "cooking": {
+        "title": "Plan gotowania",
+        "body": "Datowany harmonogram woreczków do sous-vide. Gotuj raz, karm przez kilka dni."
+      }
     }
   },
   "condition": {
