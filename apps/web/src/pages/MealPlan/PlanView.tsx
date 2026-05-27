@@ -69,7 +69,7 @@ export default function PlanView() {
         {t('mealPlan.view.back')}
       </button>
 
-      <div data-tour="plan-title">
+      <div data-tour="plan-title" className="space-y-6">
       <PageHeader
         eyebrow={t('mealPlan.eyebrow')}
         title={<RenamablePlanTitle plan={plan} />}
