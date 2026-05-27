@@ -85,16 +85,16 @@ export function BagLabelSheet({
       className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      aria-label={t('sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
+      aria-label={t('mealPlan.sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
     >
       <div className="mx-auto max-w-md p-4 sm:p-6 space-y-4">
         <header className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-[10px] font-black uppercase tracking-wider text-muted-fg">
-              {t('sharpie.progress', { n: index + 1, total: sorted.length, defaultValue: '{{n}} of {{total}}' })}
+              {t('mealPlan.sharpie.progress', { n: index + 1, total: sorted.length, defaultValue: '{{n}} of {{total}}' })}
             </p>
             <p className="text-base font-black text-foreground">
-              {t('sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
+              {t('mealPlan.sharpie.title', { n: batch.sequence, total: batch.totalInSequence, defaultValue: 'Label bag {{n}}/{{total}}' })}
             </p>
           </div>
           <button
@@ -108,7 +108,7 @@ export function BagLabelSheet({
         </header>
 
         <p className="text-sm text-muted-fg">
-          {t('sharpie.intro', { defaultValue: 'Copy this onto the bag with a permanent marker. One bag at a time.' })}
+          {t('mealPlan.sharpie.intro', { defaultValue: 'Copy this onto the bag with a permanent marker. One bag at a time.' })}
         </p>
 
         {/* The label preview — big, monospace, mimics what the user writes
@@ -127,19 +127,19 @@ export function BagLabelSheet({
           {copied ? (
             <>
               <Check className="h-4 w-4" aria-hidden />
-              {t('sharpie.copied', { defaultValue: 'Copied' })}
+              {t('mealPlan.sharpie.copied', { defaultValue: 'Copied' })}
             </>
           ) : (
             <>
               <Copy className="h-4 w-4" aria-hidden />
-              {t('sharpie.copy', { defaultValue: 'Copy text' })}
+              {t('mealPlan.sharpie.copy', { defaultValue: 'Copy text' })}
             </>
           )}
         </Button>
 
         <p className="flex items-start gap-2 text-[11px] text-muted-fg">
           <Info className="h-3 w-3 mt-0.5 shrink-0" aria-hidden />
-          {t('sharpie.tipTape', {
+          {t('mealPlan.sharpie.tipTape', {
             defaultValue: "Reusable silicone bag? Stick a strip of masking tape on it and write on that.",
           })}
         </p>
@@ -152,12 +152,12 @@ export function BagLabelSheet({
             disabled={index === 0}
           >
             <ChevronLeft className="h-4 w-4" aria-hidden />
-            {t('sharpie.prev', { defaultValue: 'Previous bag' })}
+            {t('mealPlan.sharpie.prev', { defaultValue: 'Previous bag' })}
           </Button>
           {isLast ? (
             <Button type="button" variant="primary" onClick={onClose}>
               <Check className="h-4 w-4" aria-hidden />
-              {t('sharpie.done', { defaultValue: 'Done' })}
+              {t('mealPlan.sharpie.done', { defaultValue: 'Done' })}
             </Button>
           ) : (
             <Button
@@ -165,7 +165,7 @@ export function BagLabelSheet({
               variant="primary"
               onClick={() => setIndex((i) => Math.min(sorted.length - 1, i + 1))}
             >
-              {t('sharpie.next', { defaultValue: 'Next bag' })}
+              {t('mealPlan.sharpie.next', { defaultValue: 'Next bag' })}
               <ChevronRight className="h-4 w-4" aria-hidden />
             </Button>
           )}
