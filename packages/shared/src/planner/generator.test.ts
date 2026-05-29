@@ -416,6 +416,95 @@ describe('generateMealPlan', () => {
     expect(warningIds.has('lowTaurine')).toBe(true);
   });
 
+  it('balanceProteins distributes days evenly across the protein pool (5/5/4)', () => {
+    // 14 days / 3 proteins. Default alternating rotation leaves a 6/4/4
+    // remainder; balanced mode must tighten that to 5/5/4 (max-min ≤ 1 day),
+    // so the shopping list buys roughly equal weights of each protein.
+    const sourcing = SourcingPrefsSchema.parse({
+      meatIds: ['beef', 'chicken', 'salmon'],
+      balanceProteins: true,
+    });
+    const plan = generateMealPlan({
+      name: 'Balanced', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01', sourcing,
+    });
+    const proteinPerDay = plan.days.map((d) =>
+      d.petPlans[0].meals[0].components.find((c) => c.componentKey === 'protein')?.ingredientId,
+    );
+    const counts = new Map<string, number>();
+    for (const p of proteinPerDay) counts.set(p!, (counts.get(p!) ?? 0) + 1);
+    const dayCounts = Array.from(counts.values()).sort((a, b) => b - a);
+    // Exactly the 3 proteins used, split as evenly as integer division allows.
+    expect(counts.size).toBe(3);
+    expect(Math.max(...dayCounts) - Math.min(...dayCounts)).toBeLessThanOrEqual(1);
+    expect(dayCounts).toEqual([5, 5, 4]);
+  });
+
+  it('balanceProteins assigns each protein one consecutive run (cook-ahead friendly)', () => {
+    const sourcing = SourcingPrefsSchema.parse({
+      meatIds: ['beef', 'chicken', 'salmon'],
+      balanceProteins: true,
+    });
+    const plan = generateMealPlan({
+      name: 'Balanced runs', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01', sourcing,
+    });
+    const proteinPerDay = plan.days.map((d) =>
+      d.petPlans[0].meals[0].components.find((c) => c.componentKey === 'protein')?.ingredientId,
+    );
+    // Each protein appears in exactly one contiguous block — i.e. the number
+    // of transitions between distinct proteins equals (uniqueProteins - 1).
+    let transitions = 0;
+    for (let i = 1; i < proteinPerDay.length; i++) {
+      if (proteinPerDay[i] !== proteinPerDay[i - 1]) transitions++;
+    }
+    expect(transitions).toBe(new Set(proteinPerDay).size - 1);
+  });
+
+  it('balanceProteins keeps the household on the same protein each day', () => {
+    // Household-as-unit (CLAUDE.md sub-principle 2): pets sharing a pool must
+    // resolve to the same ingredient on the same day, just like the default
+    // rotation, so they still cook from one bag.
+    const sourcing = SourcingPrefsSchema.parse({
+      simpleMeals: true,
+      meatIds: ['beef', 'chicken', 'salmon'],
+      balanceProteins: true,
+    });
+    const plan = generateMealPlan({
+      name: 'Balanced household', pets: [dog, cat], durationDays: 14,
+      startDate: '2026-06-01', sourcing,
+    });
+    for (const day of plan.days) {
+      const dogProtein = day.petPlans[0].meals[0].components
+        .find((c) => c.componentKey === 'protein')?.ingredientId;
+      const catProtein = day.petPlans[1].meals[0].components
+        .find((c) => c.componentKey === 'protein')?.ingredientId;
+      expect(dogProtein).toBeDefined();
+      expect(dogProtein).toBe(catProtein);
+    }
+  });
+
+  it('balanceProteins tightens the shopping-list weight spread vs the default', () => {
+    const base = { meatIds: ['beef', 'chicken', 'salmon'] };
+    const spread = (balanceProteins: boolean) => {
+      const plan = generateMealPlan({
+        name: 'Spread', pets: [dog], durationDays: 14, startDate: '2026-06-01',
+        sourcing: SourcingPrefsSchema.parse({ ...base, balanceProteins }),
+      });
+      const proteins = ['beef', 'chicken', 'salmon'];
+      const grams = proteins.map((id) => {
+        let g = 0;
+        for (const day of plan.days)
+          for (const m of day.petPlans[0].meals)
+            for (const c of m.components) if (c.ingredientId === id) g += c.grams;
+        return g;
+      }).filter((g) => g > 0);
+      return Math.max(...grams) - Math.min(...grams);
+    };
+    // Balanced spread (5/5/4 days) must be no wider than the default (6/4/4).
+    expect(spread(true)).toBeLessThanOrEqual(spread(false));
+  });
+
   it('regenerating with the same name+pets+seed reproduces ingredient picks', () => {
     // Determinism is plan-id-seeded — same input, same plan id, same picks.
     // We assert the picks are stable across two generations *of the same

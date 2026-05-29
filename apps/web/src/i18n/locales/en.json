@@ -285,6 +285,8 @@
       "simpleMeals": "Simple meals",
       "simpleMealsHelp": "One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).",
       "tinyHouseholdHint": "Tiny household (~{{grams}} g/day) — try Up to 3 days to avoid runt-sized bags.",
+      "balanceProteins": "Balance proteins evenly",
+      "balanceProteinsHelp": "Splits the plan into even runs per protein (e.g. 5 days beef, 5 chicken, 4 salmon) so you buy roughly equal weights of each — instead of one protein dominating the shopping list. Slightly less day-to-day variety; cook-ahead bags are unchanged.",
       "veggieDetail": "Cook each veggie separately",
       "veggieDetailHelp": "Off (recommended): one mixed batch per cook day — carrots, sweet potato, green beans all in the same pot. On: each veggie gets its own cook session in the plan, with its own bag schedule.",
       "advancedLabel": "Advanced ingredients",

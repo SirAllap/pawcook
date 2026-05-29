@@ -243,8 +243,15 @@ function pickIngredientForComponent(
   // per bag is the companion rule to one protein per bag (see /CLAUDE.md
   // sub-principle 6: the cook flow drives the meal plan).
   const blockSize = sourcing.bagDays;
+  // Balanced mode (opt-in): assign even consecutive runs per ingredient so
+  // the plan's shopping list buys roughly equal weights of each protein/veg,
+  // instead of the alternating rotation's uneven remainder. See balancedIndex
+  // and SourcingPrefs.balanceProteins (CLAUDE.md sub-principle 7).
+  const poolIdx = sourcing.balanceProteins
+    ? balancedIndex(component.key, dayIndex, seed, pool.length, durationDays)
+    : rotationIndex(component.key, dayIndex, seed, pool.length, blockSize, durationDays);
   const pick = mustInclude
-    ?? pool[rotationIndex(component.key, dayIndex, seed, pool.length, blockSize, durationDays)]
+    ?? pool[poolIdx]
     // last-resort fallback so the type is always defined
     ?? { id: 'unknown', label: 'Unknown' } as Ingredient;
 
@@ -275,6 +282,48 @@ function rotationIndex(
   // Component-specific offset so different components rotate independently.
   const componentSeed = hashSeed(componentKey);
   return Math.abs((block * 31 + componentSeed + seed)) % poolLen;
+}
+
+/**
+ * Balanced allocation (opt-in via `SourcingPrefs.balanceProteins`). Splits
+ * the plan into one *consecutive run* per pool entry, sized as evenly as
+ * possible: `durationDays` divided by `poolLen`, with the first `rem` runs
+ * getting one extra day. Over 14 days with 3 proteins this yields 5/5/4
+ * days instead of the alternating rotation's 6/4/4 — so each ingredient's
+ * total weight in the shopping list comes out roughly equal.
+ *
+ * Determinism mirrors rotationIndex: the (componentKey + seed) offset
+ * rotates which pool entry leads, so different components stay independent
+ * and regenerate produces a different-but-reproducible plan. Because the
+ * mapping is a pure function of (componentKey, dayIndex, poolLen, seed),
+ * every pet sharing the same pool resolves to the same ingredient on the
+ * same day — household batching is preserved (CLAUDE.md sub-principle 2).
+ *
+ * Runs are consecutive, so batching.ts chunks each run into ≤bagDays bags
+ * (a 5-day run → 2 + 2 + 1), keeping the cook-ahead contract intact.
+ */
+function balancedIndex(
+  componentKey: string,
+  dayIndex: number,
+  seed: number,
+  poolLen: number,
+  durationDays: number,
+): number {
+  if (poolLen <= 0) return 0;
+  const base = Math.floor(durationDays / poolLen);
+  const rem = durationDays % poolLen;
+  // Walk run boundaries to find which run dayIndex lands in. The first
+  // `rem` runs are one day longer so the days distribute as evenly as
+  // integer division allows.
+  let start = 0;
+  let run = 0;
+  for (; run < poolLen; run++) {
+    const len = base + (run < rem ? 1 : 0);
+    if (dayIndex < start + len) break;
+    start += len;
+  }
+  const offset = hashSeed(componentKey) + seed;
+  return Math.abs(run + offset) % poolLen;
 }
 
 function splitIntoMeals(

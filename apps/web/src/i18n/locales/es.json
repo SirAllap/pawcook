@@ -284,6 +284,8 @@
       "simpleMeals": "Comidas simples",
       "simpleMealsHelp": "Una proteína por comida — la misma bolsa para todo el hogar. Los gatos reciben una recomendación diaria de taurina + aceite de hígado de bacalao para cubrir la diferencia. Desactiva para la receta multicomponente completa (vísceras, suplementos de pescado, macros por mascota).",
       "tinyHouseholdHint": "Hogar pequeño (~{{grams}} g/día) — prueba Hasta 3 días para evitar bolsas demasiado pequeñas.",
+      "balanceProteins": "Equilibrar las proteínas",
+      "balanceProteinsHelp": "Divide el plan en tramos iguales por proteína (p. ej. 5 días de ternera, 5 de pollo, 4 de salmón) para que compres cantidades parecidas de cada una — en lugar de que una proteína domine la lista de la compra. Algo menos de variedad diaria; las bolsas de cocción anticipada no cambian.",
       "veggieDetail": "Cocinar cada verdura por separado",
       "veggieDetailHelp": "Desactivado (recomendado): un lote mixto por día de cocina — zanahorias, batata y judías verdes todo en la misma olla. Activado: cada verdura tiene su propia sesión de cocción en el plan, con su propio calendario de bolsas.",
       "advancedLabel": "Ingredientes avanzados",
