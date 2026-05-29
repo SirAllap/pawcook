@@ -4,8 +4,11 @@ import type { HealthCondition } from '@pawcook/shared';
 import { SectionLabel } from '../ui/section-label';
 import { cn } from '../../lib/cn';
 
+// 'allergy' is intentionally omitted — per-ingredient food allergies are
+// captured by the AllergyPicker, so listing it here would double-enter the
+// same information through two different UIs.
 const ALL_CONDITIONS: HealthCondition[] = [
-  'allergy', 'kidney', 'pancreatitis', 'diabetes', 'joint', 'gi_sensitive', 'obese',
+  'kidney', 'pancreatitis', 'diabetes', 'joint', 'gi_sensitive', 'obese',
 ];
 
 export function ConditionPicker({

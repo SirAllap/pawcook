@@ -80,7 +80,7 @@
       "name": "Name",
       "namePlaceholderDog": "Rex",
       "namePlaceholderCat": "Whiskers",
-      "weight": "Weight (kg)",
+      "weight": "Weight",
       "lifestyleSection": "Lifestyle",
       "age": "Life stage",
       "activity": "Activity level",
@@ -94,7 +94,7 @@
       "create": "Create pet",
       "saveChanges": "Save changes",
       "delete": "Delete pet",
-      "noChanges": "Make a change to enable save"
+      "noChanges": "No changes to save yet"
     },
     "species": {
       "dog": "Dog",
@@ -107,10 +107,10 @@
       "senior": "Senior"
     },
     "activity": {
-      "sedentary": "Sedentary",
+      "sedentary": "Low",
       "moderate": "Moderate",
       "active": "Active",
-      "working": "Working"
+      "working": "Sport / working"
     },
     "bodyCondition": {
       "underweight": "Underweight",
