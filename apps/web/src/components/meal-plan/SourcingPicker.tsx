@@ -125,6 +125,25 @@ export function SourcingPicker({
 
   return (
     <div className="space-y-6">
+      {/* Simple meals leads — per CLAUDE.md it's the single toggle that most
+          defines what the household actually cooks each day. */}
+      <div className="space-y-2.5">
+        <SectionLabel>{t('mealPlan.sourcing.mealStyleLabel', { defaultValue: 'Meal style' })}</SectionLabel>
+        <SourcingFlag
+          label={t('mealPlan.sourcing.simpleMeals', { defaultValue: 'Simple meals' })}
+          help={t('mealPlan.sourcing.simpleMealsHelp', {
+            defaultValue:
+              'One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).',
+          })}
+          checked={value.simpleMeals}
+          onChange={(v) => onChange({
+            ...value,
+            simpleMeals: v,
+            includeOrgans: v ? false : true,
+          })}
+        />
+      </div>
+
       <div className="space-y-2">
         <SectionLabel>{t('mealPlan.sourcing.varietyLabel')}</SectionLabel>
         <p className="text-xs text-muted-fg leading-relaxed">
@@ -288,31 +307,6 @@ export function SourcingPicker({
           )}
         </div>
       )}
-
-      {/* Simple meals stays at the top level — it's the single toggle
-          that most defines what a user is cooking each day. The full
-          ingredient pickers and niche preference flags collapse below
-          per CLAUDE.md sub-principle 7 (rigor behind a switch). */}
-      <div className="space-y-2.5">
-        <SectionLabel>{t('mealPlan.sourcing.prefsLabel')}</SectionLabel>
-        <SourcingFlag
-          label={t('mealPlan.sourcing.simpleMeals', { defaultValue: 'Simple meals' })}
-          help={t('mealPlan.sourcing.simpleMealsHelp', {
-            defaultValue:
-              'One protein per meal — same bag for the whole household. Cats get a daily taurine + cod liver oil supplement card to fill the gap. Turn off for the full multi-component recipe (organs, seafood add-ins, per-pet macros).',
-          })}
-          checked={value.simpleMeals}
-          onChange={(v) => onChange({
-            ...value,
-            simpleMeals: v,
-            // Keep the legacy includeOrgans flag in sync so plans saved
-            // with the new schema still serialise sensibly for older
-            // tooling that reads it. When simpleMeals is ON, organs are
-            // already collapsed into protein, so includeOrgans is moot.
-            includeOrgans: v ? false : true,
-          })}
-        />
-      </div>
 
       <Accordion
         type="single"
