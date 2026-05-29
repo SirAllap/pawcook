@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, X, ShieldAlert, Beef, Carrot, Apple } from 'lucide-react';
+import { Search, X, ShieldAlert, Beef, Carrot, Apple, Phone, Thermometer } from 'lucide-react';
 import meatsData from '@pawcook/data/meats';
 import vegetablesData from '@pawcook/data/vegetables';
 import fruitsData from '@pawcook/data/fruits';
@@ -14,6 +14,7 @@ import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { EmptyState } from '../components/ui/empty-state';
+import { Callout } from '../components/ui/callout';
 import { cn } from '../lib/cn';
 
 type TabId = 'toxic' | 'meats' | 'vegetables' | 'fruits';
@@ -64,6 +65,29 @@ export default function FoodSafety() {
         title={t('foodSafety.title')}
         description={tS('foodSafety.subtitle')}
       />
+
+      {/* Emergency banner — always visible, never filtered or dismissible.
+          A panicked owner who just fed something toxic needs the hotline
+          before anything else on the page. */}
+      <a
+        href="tel:+18884264435"
+        className="flex items-start gap-3 rounded-2xl border border-danger/40 bg-danger/10 p-4 transition-colors hover:bg-danger/15"
+      >
+        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-danger text-danger-fg">
+          <Phone className="h-4 w-4" aria-hidden />
+        </span>
+        <span className="min-w-0">
+          <span className="block text-sm font-black text-danger">
+            {t('foodSafety.emergency.title', { defaultValue: 'Ate something toxic? Act now.' })}
+          </span>
+          <span className="block text-sm text-foreground/90">
+            {t('foodSafety.emergency.body', {
+              defaultValue:
+                'Call your vet, or ASPCA Animal Poison Control at (888) 426-4435 (US), right away.',
+            })}
+          </span>
+        </span>
+      </a>
 
       <div className="sticky top-14 sm:top-16 z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 bg-background/85 backdrop-blur-xl border-b border-border">
         <Input
@@ -119,7 +143,7 @@ export default function FoodSafety() {
 
         <TabsContent value="toxic">
           {fToxic.length === 0 ? (
-            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults', { term: search })} description={t('foodSafety.noResultsHint', { term: search })} />
           ) : (
             <ItemList>
               {fToxic.map((x, i) => (
@@ -149,9 +173,21 @@ export default function FoodSafety() {
           )}
         </TabsContent>
 
-        <TabsContent value="meats">
+        <TabsContent value="meats" className="space-y-4">
+          <Callout
+            tone="info"
+            icon={Thermometer}
+            eyebrow={t('foodSafety.cookTemps.title', { defaultValue: 'Safe internal temperatures' })}
+          >
+            <p>
+              {t('foodSafety.cookTemps.body', {
+                defaultValue:
+                  'Cook to these internal temperatures (use a meat thermometer): chicken & turkey 74°C / 165°F · pork 71°C / 160°F · ground meat 71°C / 160°F · fish 63°C / 145°F.',
+              })}
+            </p>
+          </Callout>
           {fMeats.length === 0 ? (
-            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults', { term: search })} description={t('foodSafety.noResultsHint', { term: search })} />
           ) : (
             <ItemList>
               {fMeats.map((x, i) => (
@@ -185,7 +221,7 @@ export default function FoodSafety() {
 
         <TabsContent value="vegetables">
           {fVeg.length === 0 ? (
-            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults', { term: search })} description={t('foodSafety.noResultsHint', { term: search })} />
           ) : (
             <GridList>
               {fVeg.map((x, i) => (
@@ -206,7 +242,7 @@ export default function FoodSafety() {
 
         <TabsContent value="fruits">
           {fFruit.length === 0 ? (
-            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults')} description={t('foodSafety.noResultsHint')} />
+            <EmptyState icon={<Search className="h-8 w-8" />} title={t('foodSafety.noResults', { term: search })} description={t('foodSafety.noResultsHint', { term: search })} />
           ) : (
             <GridList>
               {fFruit.map((x, i) => (
