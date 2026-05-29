@@ -98,7 +98,8 @@ export function SourcingPicker({
   // when any preference flag is on — otherwise the accordion would hide
   // the user's own prior choices behind a chevron.
   const advancedFlagCount =
-    (value.veggieDetail ? 1 : 0)
+    (value.balanceProteins ? 1 : 0)
+    + (value.veggieDetail ? 1 : 0)
     + (value.preferWildFish ? 1 : 0)
     + (value.preferGrassFed ? 1 : 0)
     + (value.preferOrganic ? 1 : 0);
@@ -363,6 +364,15 @@ export function SourcingPicker({
               />
 
               <div className="space-y-2.5">
+                <SourcingFlag
+                  label={t('mealPlan.sourcing.balanceProteins', { defaultValue: 'Balance proteins evenly' })}
+                  help={t('mealPlan.sourcing.balanceProteinsHelp', {
+                    defaultValue:
+                      'Splits the plan into even runs per protein (e.g. 5 days beef, 5 chicken, 4 salmon) so you buy roughly equal weights of each — instead of one protein dominating the shopping list. Slightly less day-to-day variety; cook-ahead bags are unchanged.',
+                  })}
+                  checked={value.balanceProteins ?? false}
+                  onChange={(v) => onChange({ ...value, balanceProteins: v })}
+                />
                 <SourcingFlag
                   label={t('mealPlan.sourcing.veggieDetail', { defaultValue: 'Cook each veggie separately' })}
                   help={t('mealPlan.sourcing.veggieDetailHelp', {

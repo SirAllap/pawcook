@@ -78,6 +78,18 @@ export const SourcingPrefsSchema = z.object({
    */
   bagDays: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).default(2),
   /**
+   * Balance ingredient weights evenly across the plan. Off (default) uses
+   * the 2-day alternating block rotation, which leaves an uneven remainder
+   * when the plan length doesn't divide evenly by the pool size (e.g. 14
+   * days / 3 proteins → 6/4/4 days, so one protein dominates the shopping
+   * list). On splits the plan into even *consecutive runs* per ingredient
+   * (14 / 3 → 5/5/4 days), so the household buys roughly equal weights of
+   * each protein. Each run is still chunked into ≤bagDays bags, so cook-
+   * ahead batching is preserved — the trade-off is slightly less day-to-day
+   * variety. Opt-in; rigor lives behind a switch (CLAUDE.md sub-principle 7).
+   */
+  balanceProteins: z.boolean().default(false),
+  /**
    * Off (default) = one mixed veggie batch per household per cook day.
    * On = per-veggie cook sessions with staggered schedule and per-cut
    * rotation. Rigor lives behind a switch (CLAUDE.md sub-principle 7).
