@@ -1128,6 +1128,13 @@ function FreestandingBagPanel({
         <div>
           <label htmlFor="bag-days" className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em] mb-1.5">
             {t('cooking.bagStrategy.cookAhead', { defaultValue: 'Cook ahead' })}
+            {' · '}
+            <span className="text-primary">
+              {daysPerBag}{' '}
+              {daysPerBag === 1
+                ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
+                : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
+            </span>
           </label>
           <input
             id="bag-days"
@@ -1143,14 +1150,31 @@ function FreestandingBagPanel({
               n: daysPerBag,
             })}
           />
-          <div className="flex justify-between text-[10px] font-mono text-muted-fg mt-1">
-            <span>1 {t('cooking.bagStrategy.day', { defaultValue: 'day' })}</span>
-            <span className="font-bold text-foreground">
-              {daysPerBag} {daysPerBag === 1
-                ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
-                : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
-            </span>
-            <span>{maxDays} {t('cooking.bagStrategy.days', { defaultValue: 'days' })}</span>
+          {/* One tappable label per real slider stop, so each maps to an
+              actual position. The old layout centred the current value
+              between the min/max ticks, so e.g. "1 day · 3 days · 3 days"
+              made the middle stop (really 2) look like 3. */}
+          <div className="flex justify-between text-[10px] font-mono mt-1">
+            {Array.from({ length: maxDays }, (_, i) => i + 1).map((d) => {
+              const selected = d === daysPerBag;
+              return (
+                <button
+                  key={d}
+                  type="button"
+                  onClick={() => setDaysPerBag(d)}
+                  aria-pressed={selected}
+                  className={cn(
+                    'tabular-nums rounded px-1 transition-colors',
+                    selected ? 'font-bold text-primary' : 'text-muted-fg hover:text-foreground',
+                  )}
+                >
+                  {d}{' '}
+                  {d === 1
+                    ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
+                    : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className="text-right shrink-0">
