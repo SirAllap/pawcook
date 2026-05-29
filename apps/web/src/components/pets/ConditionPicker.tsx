@@ -33,6 +33,8 @@ export function ConditionPicker({
             <button
               key={condition}
               type="button"
+              role="checkbox"
+              aria-checked={active}
               onClick={() => toggle(condition)}
               className={cn(
                 'flex items-start gap-3 p-3 rounded-2xl border text-left',
@@ -48,7 +50,7 @@ export function ConditionPicker({
                   active ? 'border-warning bg-warning text-warning-fg' : 'border-border bg-surface',
                 )}
               >
-                {active && <Check className="h-3 w-3" />}
+                {active && <Check className="h-3 w-3" aria-hidden="true" />}
               </span>
               <span className="flex-1">
                 <span className="block text-sm font-bold text-foreground">

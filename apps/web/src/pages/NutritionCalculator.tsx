@@ -231,6 +231,7 @@ export default function NutritionCalculator() {
                     type="single"
                     value={field.value}
                     onValueChange={(v) => v && field.onChange(v)}
+                    aria-label={t('nutrition.activity')}
                     className="grid grid-cols-2 sm:grid-cols-4 w-full"
                   >
                     <ToggleGroupItem value="sedentary">{t('nutrition.activities.sedentary')}</ToggleGroupItem>
@@ -253,6 +254,7 @@ export default function NutritionCalculator() {
                     type="single"
                     value={field.value}
                     onValueChange={(v) => v && field.onChange(v)}
+                    aria-label={t('nutrition.bodyCondition')}
                     className="grid grid-cols-3 w-full"
                   >
                     <ToggleGroupItem value="underweight">{t('nutrition.conditions.underweight')}</ToggleGroupItem>
@@ -286,7 +288,11 @@ export default function NutritionCalculator() {
             control={control}
             name="macroProfile"
             render={({ field }) => (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+              <div
+                role="radiogroup"
+                aria-label={t('nutrition.dietApproach')}
+                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2"
+              >
                 {dietKeys.map((key) => {
                   const meta = DIET_META[key];
                   const active = field.value === key;
@@ -294,6 +300,8 @@ export default function NutritionCalculator() {
                     <button
                       key={key}
                       type="button"
+                      role="radio"
+                      aria-checked={active}
                       onClick={() => field.onChange(key)}
                       className={cn(
                         'relative flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border text-center',
@@ -455,7 +463,7 @@ export default function NutritionCalculator() {
                     </p>
                     {result.warnings.map((w, i) => (
                       <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                        <span className="text-danger font-black shrink-0">!</span>
+                        <span className="text-danger font-black shrink-0" aria-hidden="true">!</span>
                         {t(`nutrition.warnings.${w.id}`, w.values)}
                       </p>
                     ))}
@@ -467,7 +475,7 @@ export default function NutritionCalculator() {
                 <Card variant="muted" padding="md">
                   {result.notes.map((n, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1 first:mt-0">
-                      <span className="text-primary font-black shrink-0">•</span>
+                      <span className="text-primary font-black shrink-0" aria-hidden="true">•</span>
                       {t(`nutrition.notes.${n.id}`, n.values)}
                     </p>
                   ))}
@@ -475,7 +483,7 @@ export default function NutritionCalculator() {
               </div>
 
               <p className="px-5 pb-5 text-xs text-muted-fg border-t border-border pt-4 leading-relaxed">
-                ⚠️ {t('nutrition.vetDisclaimer')}
+                <span aria-hidden>⚠️</span> {t('nutrition.vetDisclaimer')}
               </p>
             </Card>
           </motion.div>

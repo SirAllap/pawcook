@@ -589,7 +589,7 @@ export default function CookingCalculator() {
                   </p>
                   {(['refrigerated', 'frozen', 'cooling'] as const).map((k) => (
                     <p key={k} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                      <span className="text-success font-bold shrink-0">✓</span>
+                      <span className="text-success font-bold shrink-0" aria-hidden="true">✓</span>
                       {t(`cooking.store.${k}`)}
                     </p>
                   ))}
@@ -610,7 +610,7 @@ export default function CookingCalculator() {
                       : []),
                   ].map((w, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                      <span className="text-danger font-black shrink-0">!</span>{w}
+                      <span className="text-danger font-black shrink-0" aria-hidden="true">!</span>{w}
                     </p>
                   ))}
                 </Card>

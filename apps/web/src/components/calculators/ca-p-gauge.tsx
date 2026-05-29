@@ -38,7 +38,15 @@ export function CaPGauge({
         </span>
       </div>
 
-      <div className="relative h-4 rounded-full bg-surface-3 overflow-hidden border border-border">
+      <div
+        className="relative h-4 rounded-full bg-surface-3 overflow-hidden border border-border"
+        role="img"
+        aria-label={t('nutrition.result.caPGaugeLabel', {
+          defaultValue: 'Calcium to phosphorus ratio {{value}} to 1, {{state}} the safe range',
+          value: ratio.toFixed(2),
+          state: inRange ? 'within' : 'outside',
+        })}
+      >
         <div
           className="absolute inset-y-0 bg-success/20 border-x border-success/40"
           style={{ left: `${safeStart}%`, width: `${safeEnd - safeStart}%` }}

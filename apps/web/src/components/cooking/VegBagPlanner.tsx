@@ -320,10 +320,14 @@ export function VegBagPlanner({
         </Select>
         <div className="flex items-end gap-3">
           <div className="flex-1 space-y-1.5">
-            <label className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+            <div className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
               {t('cooking.veg.bagPlanner.modeLabel', { defaultValue: 'Mode' })}
-            </label>
-            <div className="flex gap-2">
+            </div>
+            <div
+              className="flex gap-2"
+              role="radiogroup"
+              aria-label={t('cooking.veg.bagPlanner.modeLabel', { defaultValue: 'Mode' })}
+            >
               <ModeChip active={mode === 'mixed'} onClick={() => setMode('mixed')}>
                 {t('cooking.veg.mode.mixed', { defaultValue: 'Mixed cook' })}
               </ModeChip>
@@ -450,7 +454,10 @@ function OnHandRow({
           type="button"
           onClick={onRemove}
           className="p-1 rounded hover:bg-surface-2 text-muted-fg hover:text-danger"
-          aria-label={t('common.remove', { defaultValue: 'Remove' })}
+          aria-label={t('cooking.veg.bagPlanner.removeVeg', {
+            name: translateIngredient(row.id),
+            defaultValue: 'Remove {{name}}',
+          })}
         >
           <X className="h-4 w-4" aria-hidden />
         </button>
@@ -472,17 +479,30 @@ function AddVegPicker({
   if (availableIds.length === 0) return null;
   return (
     <div className="relative inline-block">
-      <Button type="button" variant="ghost" size="sm" onClick={() => setOpen((o) => !o)}>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
         <Plus className="h-3.5 w-3.5 mr-1" aria-hidden />
         {t('cooking.veg.bagPlanner.addVeggie', { defaultValue: 'Add veggie' })}
         <ChevronDown className="h-3.5 w-3.5 ml-1" aria-hidden />
       </Button>
       {open && (
-        <div className="absolute z-10 mt-1 w-56 max-h-64 overflow-y-auto rounded-xl border border-border bg-surface shadow-lg">
+        <div
+          role="listbox"
+          onKeyDown={(e) => { if (e.key === 'Escape') setOpen(false); }}
+          className="absolute z-10 mt-1 w-56 max-h-64 overflow-y-auto rounded-xl border border-border bg-surface shadow-lg"
+        >
           {availableIds.map((id) => (
             <button
               key={id}
               type="button"
+              role="option"
+              aria-selected={false}
               className="block w-full text-left px-3 py-2 text-sm hover:bg-surface-2 capitalize"
               onClick={() => { onAdd(id); setOpen(false); }}
             >
@@ -651,6 +671,7 @@ function PerVegCard({
             <button
               key={key}
               type="button"
+              aria-pressed={active}
               onClick={() => setPick(key)}
               className={cn(
                 'rounded-xl border p-3 text-left transition-colors',
@@ -781,6 +802,8 @@ function ModeChip({
   return (
     <button
       type="button"
+      role="radio"
+      aria-checked={active}
       onClick={onClick}
       className={cn(
         'rounded-full border px-3 py-1.5 text-sm font-medium transition-colors',
