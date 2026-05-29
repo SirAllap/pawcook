@@ -1363,7 +1363,7 @@
       "headlineB_cat": "For your real cat.",
       "tagline_cat": "Feed your cat right.",
       "subtitle_cat": "Open-source tools for home-cooking cat owners — taurine-aware nutrition plans, safe cooking, food safety guides, and the supplement stack cats need.",
-      "subtitleHousehold": "Dogs and cats. One bag, one cook session, one plan you'll actually follow. We handle the macros, the safety temps, and the supplements.",
+      "subtitleHousehold": "Dogs and cats, one shared cook session. Tell us about your pets and we'll build a simple weekly plan — exact portions, safe cooking temperatures, and what to add on top.",
       "ctaPrimary": "Start a plan",
       "ctaSecondary": "How it works",
       "chipDogs": "Dogs",
@@ -1388,7 +1388,7 @@
       "text_cat": "MIT licensed. Built by people who cook for both dogs and cats.",
       "starsWithCount": "{{n}} stars"
     },
-    "trustedBy": "Methodology grounded in",
+    "trustedBy": "Grounded in veterinary nutrition standards",
     "stats": {
       "languages": "Languages",
       "diets": "Diet profiles",
@@ -1399,10 +1399,10 @@
       "eyebrow": "Everything you need",
       "heading": "One toolkit. Every meal.",
       "sub": "Six tools that turn home cooking from guesswork into a routine you trust.",
-      "nutrition": "Daily macros, calories and Ca:P balance, tuned to your dog.",
+      "nutrition": "Daily portions, calories and calcium balance, tuned to your pet's weight and age.",
       "cooking": "Safe time & temperature for every meat.",
       "foodSafety": "Toxic foods, safe meats, vegetables, fruits.",
-      "supplements": "AAFCO targets, balancers and a 7-day transition.",
+      "supplements": "Calcium, omega-3 and micronutrient guidance, plus a 7-day transition plan.",
       "dietsTitle": "5 diet profiles",
       "dietsDesc": "Lean cooked · BARF · PMR · High protein · Ancestral.",
       "langTitle": "8 languages",
@@ -1437,7 +1437,7 @@
       },
       "step3": {
         "title": "Cook one bag, dose the rest",
-        "desc": "Sous-vide a single household bag; follow the daily supplement card for what the bag doesn't cover.",
+        "desc": "Cook one batch for the week — oven, stovetop or sous-vide — then follow the daily supplement card for whatever the bag doesn't cover.",
         "title_cat": "Cook one bag, dose the rest",
         "desc_cat": "Sous-vide a single household bag; follow the daily supplement card (taurine + cod liver oil) for what the bag doesn't cover."
       },
