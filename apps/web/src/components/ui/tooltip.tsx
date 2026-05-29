@@ -23,10 +23,12 @@ export function Tooltip({
           side={side}
           sideOffset={6}
           className={cn(
-            'z-[80] max-w-xs rounded-lg border border-border bg-surface px-2.5 py-1.5',
+            // z-[100] keeps tooltips above the Sheet (overlay z-80 / content
+            // z-90) so help text inside a drawer isn't clipped behind it.
+            'z-[100] max-w-xs rounded-lg border border-border bg-surface px-2.5 py-1.5',
             'text-xs font-medium text-foreground shadow-lg',
-            'data-[state=delayed-open]:animate-in data-[state=closed]:animate-out',
-            'data-[state=delayed-open]:fade-in-0 data-[state=closed]:fade-out-0'
+            'origin-[var(--radix-tooltip-content-transform-origin)]',
+            'data-[state=delayed-open]:anim-pop-in data-[state=closed]:anim-pop-out'
           )}
         >
           {content}

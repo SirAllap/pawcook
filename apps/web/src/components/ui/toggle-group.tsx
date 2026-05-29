@@ -27,7 +27,7 @@ export const ToggleGroupItem = forwardRef<
       ref={ref}
       className={cn(
         'inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-1.5',
-        'text-sm font-semibold text-muted-fg transition-all duration-200 outline-none',
+        'text-sm font-semibold text-muted-fg transition-all duration-200',
         'data-[state=on]:bg-surface data-[state=on]:text-foreground data-[state=on]:shadow-sm',
         'hover:text-foreground active:scale-[0.96]',
         className

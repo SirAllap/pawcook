@@ -23,10 +23,8 @@ export function DropdownContent({
         sideOffset={sideOffset}
         className={cn(
           'z-[70] min-w-[10rem] overflow-hidden rounded-2xl border border-border bg-surface text-surface-fg shadow-xl',
-          'p-1 outline-none',
-          'data-[state=open]:animate-in data-[state=closed]:animate-out',
-          'data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-          'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+          'p-1 outline-none origin-[var(--radix-dropdown-menu-content-transform-origin)]',
+          'data-[state=open]:anim-pop-in data-[state=closed]:anim-pop-out',
           className
         )}
       >

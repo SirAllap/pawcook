@@ -104,11 +104,13 @@
     color: hsl(var(--foreground));
   }
 
+  /* A single keyboard-focus ring for the whole app. `outline` follows each
+     element's own border-radius automatically, so it stays flush on pills,
+     cards and rounded buttons alike — no per-component radius juggling.
+     Components must NOT set `outline-none`, or they'll suppress this. */
   :focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px hsl(var(--background)),
-                0 0 0 4px hsl(var(--ring) / 0.85);
-    border-radius: var(--radius-md);
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   /* Hide focus ring when not keyboard-driven on touch devices */
@@ -162,6 +164,29 @@
   .pt-safe { padding-top: env(safe-area-inset-top); }
   .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
   .pb-safe-nav { padding-bottom: calc(env(safe-area-inset-bottom) + 88px); }
+
+  /* ----------------------------------------------------------
+     Component entrance/exit animations.
+     Radix sets data-[state] on accordions, menus and tooltips
+     but ships no CSS — these utilities supply it. (Previously the
+     code referenced animate-in/zoom-in-* from a plugin that isn't
+     installed, so menus and the accordion snapped with no motion.)
+     ---------------------------------------------------------- */
+  @keyframes accordion-down {
+    from { height: 0; opacity: 0; }
+    to   { height: var(--radix-accordion-content-height); opacity: 1; }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); opacity: 1; }
+    to   { height: 0; opacity: 0; }
+  }
+  .animate-accordion-down { animation: accordion-down 220ms var(--ease-out); }
+  .animate-accordion-up   { animation: accordion-up 180ms var(--ease-in-out); }
+
+  @keyframes pop-in  { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+  @keyframes pop-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.96); } }
+  .anim-pop-in  { animation: pop-in 150ms var(--ease-out); }
+  .anim-pop-out { animation: pop-out 110ms var(--ease-in-out); }
 }
 
 /* ------------------------------------------------------------

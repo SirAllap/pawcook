@@ -10,7 +10,6 @@ const button = cva(
     'font-semibold tracking-tight select-none',
     'transition-[background,color,box-shadow,transform] duration-200',
     'active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50',
-    'focus-visible:outline-none',
   ],
   {
     variants: {
@@ -18,7 +17,10 @@ const button = cva(
         primary: [
           'bg-primary text-primary-fg shadow-md',
           'hover:bg-primary-hover hover:shadow-lg',
-          'shadow-primary/20',
+        ],
+        accent: [
+          'bg-accent text-accent-fg shadow-md',
+          'hover:bg-accent/90 hover:shadow-lg',
         ],
         secondary: [
           'bg-surface-2 text-foreground border border-border',
