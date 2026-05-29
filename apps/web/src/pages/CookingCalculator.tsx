@@ -30,6 +30,7 @@ import { VegBagPlanner } from '../components/cooking/VegBagPlanner';
 import { useRecipeExport } from '../hooks/useRecipeExport';
 import { useDebouncedEffect } from '../lib/use-debounced-effect';
 import { blockBadNumberKeys } from '../lib/number-input';
+import { computeBagSplit } from '../lib/bag-split';
 import { cn } from '../lib/cn';
 
 const STORAGE_KEY = 'pawcook_cooking_input';
@@ -1086,33 +1087,22 @@ function FreestandingBagPanel({
     Math.min(DEFAULT_DAYS_PER_BAG, Math.max(1, feedingDays)),
   );
 
-  const { bagCount, bagSizeKg, fullBagCount, remainderBagKg } = useMemo(() => {
-    const safeDays = Math.max(1, Math.min(feedingDays, daysPerBag));
-    // A bag that covers `safeDays` always holds the same amount of food —
-    // safeDays × the household's daily intake — no matter how long the whole
-    // plan runs. A longer plan just means MORE bags, not bigger ones. (The
-    // old code split the total evenly across ceil(days/safeDays) bags, so a
-    // 7-day / 2-day-bag plan diluted every bag because 7 isn't a clean
-    // multiple of 2.)
-    const dailyKg = totalWeightKg / Math.max(1, feedingDays);
-    const clampKg = (kg: number) => Math.round(Math.min(5, Math.max(0.1, kg)) * 100) / 100;
-    const rawBagCount = Math.max(1, Math.ceil(feedingDays / safeDays));
-    const count = Math.min(20, rawBagCount);
-    const full = Math.floor(feedingDays / safeDays);
-    const remDays = feedingDays - full * safeDays;
-    const standard = clampKg(safeDays * dailyKg);
-    return {
-      bagCount: count,
-      bagSizeKg: standard,
-      fullBagCount: Math.min(full, count),
-      remainderBagKg: remDays > 0 ? clampKg(remDays * dailyKg) : 0,
-    };
-  }, [feedingDays, daysPerBag, totalWeightKg]);
+  const split = useMemo(
+    () => computeBagSplit(totalWeightKg, feedingDays, daysPerBag),
+    [totalWeightKg, feedingDays, daysPerBag],
+  );
+  const { bagCount, fullBagKg, fullBagCount, remainderBagKg } = split;
 
   useEffect(() => {
-    onApply({ bagSizeKg, bagCount });
+    // Push the full-bag size to the form so cook-time/thickness reflect a
+    // real bag. The split guarantees weights sum to the true total, so this
+    // doesn't fabricate grams.
+    onApply({
+      bagSizeKg: Math.min(5, Math.max(0.1, fullBagKg)),
+      bagCount: Math.min(20, Math.max(1, bagCount)),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bagSizeKg, bagCount]);
+  }, [bagCount, fullBagKg]);
 
   const fmt = (n: number) => n.toLocaleString(i18n.language);
   const maxDays = Math.min(FRIDGE_SAFE_DAYS, feedingDays);
@@ -1198,8 +1188,8 @@ function FreestandingBagPanel({
           </p>
           <p className="font-mono text-lg font-black text-foreground tabular-nums">
             {remainderBagKg > 0
-              ? `${fmt(fullBagCount)} × ${fmt(bagSizeKg)} kg`
-              : `${fmt(bagCount)} × ${fmt(bagSizeKg)} kg`}
+              ? `${fmt(fullBagCount)} × ${fmt(fullBagKg)} kg`
+              : `${fmt(bagCount)} × ${fmt(fullBagKg)} kg`}
           </p>
           {remainderBagKg > 0 && (
             <p className="font-mono text-[11px] text-muted-fg tabular-nums">
@@ -1226,13 +1216,22 @@ function FreestandingBagPanel({
       )}
 
       <p className="text-xs text-foreground/90 leading-relaxed">
-        {t('cooking.bagStrategy.helpStandalone', {
-          defaultValue:
-            '{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use.',
-          bags: bagCount,
-          kg: fmt(bagSizeKg),
-          pets: petCount,
-        })}
+        {remainderBagKg > 0
+          ? t('cooking.bagStrategy.helpStandaloneRemainder', {
+              defaultValue:
+                '{{full}} bag(s) of {{kg}} kg plus one {{remKg}} kg bag, for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use.',
+              full: fullBagCount,
+              kg: fmt(fullBagKg),
+              remKg: fmt(remainderBagKg),
+              pets: petCount,
+            })
+          : t('cooking.bagStrategy.helpStandalone', {
+              defaultValue:
+                '{{bags}} bag(s) of {{kg}} kg for {{pets}} pet(s). Fridge 1, freeze the rest. Thaw each bag overnight before use.',
+              bags: bagCount,
+              kg: fmt(fullBagKg),
+              pets: petCount,
+            })}
       </p>
 
       {remainderBagKg > 0 && (
