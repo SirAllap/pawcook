@@ -53,15 +53,33 @@ export function NutrientCoverageCard({
           const pet = f.petId ? petById.get(f.petId) : undefined;
           return (
             <li key={i} className="flex items-start gap-2 text-sm text-foreground/90 leading-relaxed">
-              <span className="text-warning font-black shrink-0">!</span>
+              <span className="text-warning font-black shrink-0" aria-hidden="true">!</span>
               <span className="flex-1">
                 {pet && <PetTag pet={pet} className="mr-1 mb-0.5" />}
-                {t(f.id, { defaultValue: f.id, ...(f.values ?? {}) })}
+                {/* Never print a raw key: fall back to a humanized version of
+                    the finding id if a locale is missing the string. */}
+                {t(f.id, { defaultValue: humanizeFindingId(f.id), ...(f.values ?? {}) })}
               </span>
             </li>
           );
         })}
       </ul>
+      {findings.length > 8 && (
+        <p className="mt-2 text-xs text-muted-fg">
+          {t('mealPlan.coverage.more', {
+            defaultValue: '+{{n}} more — edit the plan to resolve.',
+            n: findings.length - 8,
+          })}
+        </p>
+      )}
     </Card>
   );
+}
+
+// Last-resort label when a warning id has no translation in the active
+// locale — turns "nutrition.warnings.lowTaurine" into "Low taurine".
+function humanizeFindingId(id: string): string {
+  const base = id.replace(/^nutrition\.warnings\./, '');
+  const words = base.replace(/([A-Z])/g, ' $1').replace(/[._]+/g, ' ').trim().toLowerCase();
+  return words.charAt(0).toUpperCase() + words.slice(1);
 }

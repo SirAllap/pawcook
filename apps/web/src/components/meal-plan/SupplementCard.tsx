@@ -133,16 +133,26 @@ export function SupplementCard({ plan, pets }: { plan: MealPlan; pets: PetProfil
   if (rows.length === 0) return null;
 
   if (dismissed) {
+    // Stay visible as an active reminder (not muted "resolved" chrome) and
+    // name the supplements, so a daily taurine/calcium routine isn't reduced
+    // to a forgettable grey line.
+    const names = Array.from(new Set(rows.map((r) => r.label))).join(' · ');
     return (
-      <Card padding="md" className="bg-surface-2 border-border flex items-center justify-between gap-3">
-        <span className="text-[11px] text-muted-fg flex items-center gap-2">
-          <Check className="h-3.5 w-3.5 text-success" aria-hidden />
-          {t('mealPlan.supplements.dismissedLabel', { defaultValue: 'Daily supplements acknowledged.' })}
+      <Card padding="md" className="bg-primary/5 border-primary/30 flex items-start justify-between gap-3">
+        <span className="flex min-w-0 items-start gap-2">
+          <Pill className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
+          <span className="min-w-0 text-xs leading-snug text-foreground/80">
+            <span className="font-bold">
+              {t('mealPlan.supplements.dismissedLabel', { defaultValue: 'Daily supplements' })}
+            </span>
+            {' — '}
+            {names}
+          </span>
         </span>
         <button
           type="button"
           onClick={onUndo}
-          className="text-[11px] font-bold text-primary underline-offset-2 hover:underline min-h-[28px] px-2"
+          className="shrink-0 text-[11px] font-bold text-primary underline-offset-2 hover:underline min-h-[28px] px-2"
         >
           {t('mealPlan.supplements.undo', { defaultValue: 'Show again' })}
         </button>
@@ -194,7 +204,7 @@ export function SupplementCard({ plan, pets }: { plan: MealPlan; pets: PetProfil
                       <span className="font-bold text-foreground">{r.label}</span>
                       <span className="font-mono text-[11px] tabular-nums text-primary">{r.dose}</span>
                     </div>
-                    <p className="text-[11px] text-muted-fg leading-snug mt-0.5">{r.rationale}</p>
+                    <p className="text-xs text-foreground/70 leading-snug mt-0.5">{r.rationale}</p>
                   </li>
                 ))}
               </ul>

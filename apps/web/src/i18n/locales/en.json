@@ -444,7 +444,7 @@
       "help": "What the simple-meals plan doesn't cover. Set these up once and dose with breakfast.",
       "dismiss": "I've set these up",
       "undo": "Show again",
-      "dismissedLabel": "Daily supplements acknowledged.",
+      "dismissedLabel": "Daily supplements",
       "taurine": {
         "label": "Taurine powder",
         "dose": "{{mg}} mg per day (about ¼ tsp)",
