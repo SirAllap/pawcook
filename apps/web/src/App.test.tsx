@@ -33,17 +33,18 @@ describe('App', () => {
     });
   });
 
-  it('renders the navigation links on an in-app route', async () => {
+  it('renders the primary navigation on an in-app route', async () => {
     // Landing intentionally hides the bottom nav (the bento grid is the
     // navigation there); pick a regular page so we exercise the nav.
+    // The mobile bar carries the four daily tools plus a "More" entry;
+    // Food Safety / Supplements / About live one tap away under More.
     setup('/about');
     await waitFor(() => {
       expect(screen.getAllByText('Pets').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Plan').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Calculator').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Nutrition').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Food Safety').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('Supplements').length).toBeGreaterThan(0);
-      expect(screen.getAllByText('About').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('More').length).toBeGreaterThan(0);
     });
   });
 });

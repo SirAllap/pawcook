@@ -73,8 +73,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    /* Clear the sticky TopBar (h-14 / h-16) when jumping to in-page anchors. */
-    scroll-padding-top: 80px;
+    /* Clear the sticky TopBar (h-14 / h-16) when jumping to in-page anchors,
+       plus any notch inset so the target doesn't land behind the header. */
+    scroll-padding-top: calc(80px + env(safe-area-inset-top));
     /* Prevent any decorative element that bleeds past the viewport
        (e.g. the hero ambient glow) from triggering horizontal scroll. */
     overflow-x: clip;

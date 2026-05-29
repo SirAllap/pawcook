@@ -60,7 +60,9 @@ class ErrorBoundaryBase extends Component<Props, State> {
                 'The page failed to load. Reload to try again, or reset locally-stored data if the problem persists.',
             })}
           </p>
-          {this.state.error?.message && (
+          {/* Raw error text is useful in dev but noise (and a minor info leak)
+              for end users — keep it collapsed and dev-only. */}
+          {import.meta.env.DEV && this.state.error?.message && (
             <pre className="text-[11px] font-mono text-muted-fg bg-surface-2 rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words">
               {this.state.error.message}
             </pre>
