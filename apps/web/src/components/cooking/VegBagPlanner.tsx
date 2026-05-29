@@ -295,7 +295,7 @@ export function VegBagPlanner({
           value={dailyHouseholdG || ''}
           onChange={(e) => setDailyHouseholdG(clampGrams(e.target.value, MAX_HOUSEHOLD_DAILY_G))}
           helper={t('cooking.veg.bagPlanner.householdHelper', {
-            defaultValue: 'Total grams across all pets per day. Used to size bags.',
+            defaultValue: 'Total grams across all pets per day. Used to size bags. e.g. 50 g for a small dog, 150 g for a large one — see your plan’s daily card.',
           })}
         />
         <Input
@@ -313,10 +313,10 @@ export function VegBagPlanner({
           value={rounding}
           onChange={(e) => setRounding(e.target.value as BagRoundingPref)}
         >
-          <option value="auto">{t('cooking.veg.rounding.auto', { defaultValue: 'Auto (50/100/200/250/300…)' })}</option>
+          <option value="auto">{t('cooking.veg.rounding.autoPlain', { defaultValue: 'Auto (nice round numbers)' })}</option>
           <option value="step50">{t('cooking.veg.rounding.step50', { defaultValue: 'Round to 50 g' })}</option>
           <option value="step100">{t('cooking.veg.rounding.step100', { defaultValue: 'Round to 100 g' })}</option>
-          <option value="halves">{t('cooking.veg.rounding.halves', { defaultValue: 'Even halves (2 / 4 / 8)' })}</option>
+          <option value="halves">{t('cooking.veg.rounding.halvesPlain', { defaultValue: 'Equal halves' })}</option>
         </Select>
         <div className="flex items-end gap-3">
           <div className="flex-1 space-y-1.5">
@@ -335,6 +335,11 @@ export function VegBagPlanner({
                 {t('cooking.veg.mode.separate', { defaultValue: 'Separate' })}
               </ModeChip>
             </div>
+            <p className="text-xs text-muted-fg leading-relaxed">
+              {t('cooking.veg.bagPlanner.modeHelper', {
+                defaultValue: 'Mixed: one pot, staged additions. Separate: each veggie cooked on its own.',
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -418,8 +423,8 @@ function OnHandRow({
           {translateIngredient(row.id)}
         </p>
         <p className="text-[11px] text-muted-fg">
-          {t('cooking.veg.bagPlanner.yieldLabel', {
-            defaultValue: 'Yield {{p}}%',
+          {t('cooking.veg.bagPlanner.yieldLabelPlain', {
+            defaultValue: 'Yields ~{{p}}% cooked',
             p: Math.round(yieldForCut(row.id, row.cut) * 100),
           })}
         </p>
