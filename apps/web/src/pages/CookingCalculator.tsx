@@ -35,7 +35,7 @@ import { cn } from '../lib/cn';
 const STORAGE_KEY = 'pawcook_cooking_input';
 
 const DEFAULT_VALUES: CookingInput = {
-  meatType: 'beef', form: 'minced', cookingMethod: 'sous_vide', fatContent: 'medium',
+  meatType: 'beef', form: 'minced', cookingMethod: 'stovetop_low', fatContent: 'medium',
   temperatureUnit: 'celsius',
   weightKg: 1, numberOfBags: 1, thicknessCm: 5,
   totalWeightKg: 1,
@@ -466,6 +466,9 @@ export default function CookingCalculator() {
                   onKeyDown={blockBadNumberKeys}
                   {...register('thicknessCm', { valueAsNumber: true })}
                   error={errors.thicknessCm?.message}
+                  helper={t('cooking.thicknessHelper', {
+                    defaultValue: 'Measure the thickest point of the meat (or the filled bag).',
+                  })}
                 />
               </motion.div>
             ) : (
@@ -488,11 +491,18 @@ export default function CookingCalculator() {
           </AnimatePresence>
 
           {totalKg > 0 && (
-            <div className="flex items-center gap-2.5 bg-primary/8 border border-primary/30 rounded-2xl px-4 py-3">
-              <Flame className="h-5 w-5 text-primary shrink-0" />
-              <p className="text-sm text-foreground/90 font-medium">
-                {t('cooking.total')}: <strong className="font-mono">{totalKg.toFixed(1)} kg</strong>
-                {' · '}{t('cooking.yield')} ≈ <strong className="font-mono">{(totalKg * yieldPct).toFixed(1)} kg</strong> {t('cooking.cooked')} ({Math.round(yieldPct * 100)}%)
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2.5 bg-primary/8 border border-primary/30 rounded-2xl px-4 py-3">
+                <Flame className="h-5 w-5 text-primary shrink-0" />
+                <p className="text-sm text-foreground/90 font-medium">
+                  {t('cooking.total')}: <strong className="font-mono">{totalKg.toFixed(1)} kg</strong>
+                  {' · '}{t('cooking.yield')} ≈ <strong className="font-mono">{(totalKg * yieldPct).toFixed(1)} kg</strong> {t('cooking.cooked')} ({Math.round(yieldPct * 100)}%)
+                </p>
+              </div>
+              <p className="text-xs text-muted-fg leading-relaxed px-1">
+                {t('cooking.yieldHelper', {
+                  defaultValue: 'Cooked weight is lower because moisture cooks off — portion bowls using the cooked weight.',
+                })}
               </p>
             </div>
           )}
@@ -551,12 +561,17 @@ export default function CookingCalculator() {
               </header>
 
               <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 items-center p-6 border-b border-border">
-                <div className="flex justify-center">
+                <div className="flex flex-col items-center gap-2">
                   <TempDial
                     tempC={result.safeInternalTempC}
                     tempF={result.safeInternalTempF}
                     unit={submittedData.temperatureUnit}
                   />
+                  <p className="text-xs text-muted-fg text-center leading-relaxed max-w-[12rem]">
+                    {t('cooking.tempDialCaption', {
+                      defaultValue: 'Target internal temperature — verify with a meat thermometer.',
+                    })}
+                  </p>
                 </div>
                 <div className="flex flex-col gap-3">
                   <div className="rounded-2xl border border-border bg-surface-2 p-5">
@@ -589,7 +604,7 @@ export default function CookingCalculator() {
                   </p>
                   {(['refrigerated', 'frozen', 'cooling'] as const).map((k) => (
                     <p key={k} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                      <span className="text-success font-bold shrink-0">✓</span>
+                      <span className="text-success font-bold shrink-0" aria-hidden="true">✓</span>
                       {t(`cooking.store.${k}`)}
                     </p>
                   ))}
@@ -610,7 +625,7 @@ export default function CookingCalculator() {
                       : []),
                   ].map((w, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                      <span className="text-danger font-black shrink-0">!</span>{w}
+                      <span className="text-danger font-black shrink-0" aria-hidden="true">!</span>{w}
                     </p>
                   ))}
                 </Card>
@@ -642,7 +657,12 @@ export default function CookingCalculator() {
 
       <VegBagPlanner />
 
-      <VegCookingGuide unit={values.temperatureUnit} meatMethod={values.cookingMethod} />
+      <details>
+        <summary className="cursor-pointer text-sm font-semibold py-2">
+          {t('cooking.vegGuideSummary', { defaultValue: 'Vegetable cooking times' })}
+        </summary>
+        <VegCookingGuide unit={values.temperatureUnit} meatMethod={values.cookingMethod} />
+      </details>
     </div>
   );
 }

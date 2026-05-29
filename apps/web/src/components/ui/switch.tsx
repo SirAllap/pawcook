@@ -10,10 +10,13 @@ export const Switch = forwardRef<
     <RS.Root
       ref={ref}
       className={cn(
-        'peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full',
-        'border border-transparent transition-colors outline-none',
+        // h-6 keeps the visual switch 24px tall; the before-pseudo extends the
+        // pointer/touch hit-area to a 44px-tall target (WCAG 2.5.5) without
+        // disturbing layout.
+        'peer relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full',
+        'border border-transparent transition-colors',
+        "before:absolute before:inset-x-0 before:-top-2.5 before:-bottom-2.5 before:content-['']",
         'data-[state=checked]:bg-primary data-[state=unchecked]:bg-surface-3',
-        'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         className
       )}
       {...rest}

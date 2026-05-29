@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import type { ReactNode } from 'react';
 import {
-  Dog, Flame, ShieldAlert, Pill, PawPrint, ClipboardList, ArrowUpRight,
+  Activity, Flame, ShieldAlert, Pill, PawPrint, ClipboardList, ArrowUpRight,
   type LucideIcon,
 } from 'lucide-react';
 import { FadeIn } from '../motion/fade-in';
@@ -139,8 +139,8 @@ export function BentoGrid() {
       titleKey: 'nav.nutrition',
       titleDefault: 'Nutrition',
       descKey: 'landing.bento.nutrition',
-      descDefault: 'Daily macros, kcal and Ca:P band. Five diet profiles per species behind a single toggle.',
-      Icon: Dog,
+      descDefault: 'Daily portions, calories and calcium balance. Five diet profiles per species behind a single toggle.',
+      Icon: Activity,
       accent: 'accent',
       className: 'sm:col-span-2 min-h-[200px]',
     },

@@ -295,7 +295,7 @@ export function VegBagPlanner({
           value={dailyHouseholdG || ''}
           onChange={(e) => setDailyHouseholdG(clampGrams(e.target.value, MAX_HOUSEHOLD_DAILY_G))}
           helper={t('cooking.veg.bagPlanner.householdHelper', {
-            defaultValue: 'Total grams across all pets per day. Used to size bags.',
+            defaultValue: 'Total grams across all pets per day. Used to size bags. e.g. 50 g for a small dog, 150 g for a large one — see your plan’s daily card.',
           })}
         />
         <Input
@@ -313,17 +313,21 @@ export function VegBagPlanner({
           value={rounding}
           onChange={(e) => setRounding(e.target.value as BagRoundingPref)}
         >
-          <option value="auto">{t('cooking.veg.rounding.auto', { defaultValue: 'Auto (50/100/200/250/300…)' })}</option>
+          <option value="auto">{t('cooking.veg.rounding.autoPlain', { defaultValue: 'Auto (nice round numbers)' })}</option>
           <option value="step50">{t('cooking.veg.rounding.step50', { defaultValue: 'Round to 50 g' })}</option>
           <option value="step100">{t('cooking.veg.rounding.step100', { defaultValue: 'Round to 100 g' })}</option>
-          <option value="halves">{t('cooking.veg.rounding.halves', { defaultValue: 'Even halves (2 / 4 / 8)' })}</option>
+          <option value="halves">{t('cooking.veg.rounding.halvesPlain', { defaultValue: 'Equal halves' })}</option>
         </Select>
         <div className="flex items-end gap-3">
           <div className="flex-1 space-y-1.5">
-            <label className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+            <div className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
               {t('cooking.veg.bagPlanner.modeLabel', { defaultValue: 'Mode' })}
-            </label>
-            <div className="flex gap-2">
+            </div>
+            <div
+              className="flex gap-2"
+              role="radiogroup"
+              aria-label={t('cooking.veg.bagPlanner.modeLabel', { defaultValue: 'Mode' })}
+            >
               <ModeChip active={mode === 'mixed'} onClick={() => setMode('mixed')}>
                 {t('cooking.veg.mode.mixed', { defaultValue: 'Mixed cook' })}
               </ModeChip>
@@ -331,6 +335,11 @@ export function VegBagPlanner({
                 {t('cooking.veg.mode.separate', { defaultValue: 'Separate' })}
               </ModeChip>
             </div>
+            <p className="text-xs text-muted-fg leading-relaxed">
+              {t('cooking.veg.bagPlanner.modeHelper', {
+                defaultValue: 'Mixed: one pot, staged additions. Separate: each veggie cooked on its own.',
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -414,8 +423,8 @@ function OnHandRow({
           {translateIngredient(row.id)}
         </p>
         <p className="text-[11px] text-muted-fg">
-          {t('cooking.veg.bagPlanner.yieldLabel', {
-            defaultValue: 'Yield {{p}}%',
+          {t('cooking.veg.bagPlanner.yieldLabelPlain', {
+            defaultValue: 'Yields ~{{p}}% cooked',
             p: Math.round(yieldForCut(row.id, row.cut) * 100),
           })}
         </p>
@@ -450,7 +459,10 @@ function OnHandRow({
           type="button"
           onClick={onRemove}
           className="p-1 rounded hover:bg-surface-2 text-muted-fg hover:text-danger"
-          aria-label={t('common.remove', { defaultValue: 'Remove' })}
+          aria-label={t('cooking.veg.bagPlanner.removeVeg', {
+            name: translateIngredient(row.id),
+            defaultValue: 'Remove {{name}}',
+          })}
         >
           <X className="h-4 w-4" aria-hidden />
         </button>
@@ -472,17 +484,30 @@ function AddVegPicker({
   if (availableIds.length === 0) return null;
   return (
     <div className="relative inline-block">
-      <Button type="button" variant="ghost" size="sm" onClick={() => setOpen((o) => !o)}>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
         <Plus className="h-3.5 w-3.5 mr-1" aria-hidden />
         {t('cooking.veg.bagPlanner.addVeggie', { defaultValue: 'Add veggie' })}
         <ChevronDown className="h-3.5 w-3.5 ml-1" aria-hidden />
       </Button>
       {open && (
-        <div className="absolute z-10 mt-1 w-56 max-h-64 overflow-y-auto rounded-xl border border-border bg-surface shadow-lg">
+        <div
+          role="listbox"
+          onKeyDown={(e) => { if (e.key === 'Escape') setOpen(false); }}
+          className="absolute z-10 mt-1 w-56 max-h-64 overflow-y-auto rounded-xl border border-border bg-surface shadow-lg"
+        >
           {availableIds.map((id) => (
             <button
               key={id}
               type="button"
+              role="option"
+              aria-selected={false}
               className="block w-full text-left px-3 py-2 text-sm hover:bg-surface-2 capitalize"
               onClick={() => { onAdd(id); setOpen(false); }}
             >
@@ -651,6 +676,7 @@ function PerVegCard({
             <button
               key={key}
               type="button"
+              aria-pressed={active}
               onClick={() => setPick(key)}
               className={cn(
                 'rounded-xl border p-3 text-left transition-colors',
@@ -781,6 +807,8 @@ function ModeChip({
   return (
     <button
       type="button"
+      role="radio"
+      aria-checked={active}
       onClick={onClick}
       className={cn(
         'rounded-full border px-3 py-1.5 text-sm font-medium transition-colors',

@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
 import { useDebouncedEffect } from '../lib/use-debounced-effect';
 import { blockBadNumberKeys } from '../lib/number-input';
-import { Sparkles, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet } from 'lucide-react';
+import { Sparkles, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet, Info } from 'lucide-react';
 import {
   NutritionInputSchema, calculateNutrition,
   type NutritionInput, type NutritionResult,
@@ -27,6 +27,7 @@ import { MacroBar } from '../components/calculators/macro-bar';
 import { CaPGauge } from '../components/calculators/ca-p-gauge';
 import { EmptyState } from '../components/ui/empty-state';
 import { DownloadMenu } from '../components/recipe/DownloadMenu';
+import { Tooltip } from '../components/ui/tooltip';
 import { useRecipeExport } from '../hooks/useRecipeExport';
 import { cn } from '../lib/cn';
 
@@ -231,6 +232,7 @@ export default function NutritionCalculator() {
                     type="single"
                     value={field.value}
                     onValueChange={(v) => v && field.onChange(v)}
+                    aria-label={t('nutrition.activity')}
                     className="grid grid-cols-2 sm:grid-cols-4 w-full"
                   >
                     <ToggleGroupItem value="sedentary">{t('nutrition.activities.sedentary')}</ToggleGroupItem>
@@ -253,6 +255,7 @@ export default function NutritionCalculator() {
                     type="single"
                     value={field.value}
                     onValueChange={(v) => v && field.onChange(v)}
+                    aria-label={t('nutrition.bodyCondition')}
                     className="grid grid-cols-3 w-full"
                   >
                     <ToggleGroupItem value="underweight">{t('nutrition.conditions.underweight')}</ToggleGroupItem>
@@ -286,7 +289,11 @@ export default function NutritionCalculator() {
             control={control}
             name="macroProfile"
             render={({ field }) => (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+              <div
+                role="radiogroup"
+                aria-label={t('nutrition.dietApproach')}
+                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2"
+              >
                 {dietKeys.map((key) => {
                   const meta = DIET_META[key];
                   const active = field.value === key;
@@ -294,6 +301,8 @@ export default function NutritionCalculator() {
                     <button
                       key={key}
                       type="button"
+                      role="radio"
+                      aria-checked={active}
                       onClick={() => field.onChange(key)}
                       className={cn(
                         'relative flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border text-center',
@@ -357,9 +366,25 @@ export default function NutritionCalculator() {
                     {' · '}
                     {t(`nutrition.dietSub.${result.dietProfile}`, { defaultValue: DIET_META[result.dietProfile].sub })}
                   </p>
+                  <p className="text-xs text-muted-fg mt-1.5 leading-relaxed">
+                    {t('nutrition.result.planCaption', {
+                      defaultValue: 'Here’s how much to feed each day and how the bowl breaks down. The badge shows whether it clears the standard minimums.',
+                    })}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <AafcoBadge status={result.aafcoStatus} />
+                  <Tooltip content={t('nutrition.result.aafcoTooltip', {
+                    defaultValue: "AAFCO = the US pet-nutrition standard. ‘Meets AAFCO’ means the plan clears the published minimums.",
+                  })}>
+                    <button
+                      type="button"
+                      aria-label={t('nutrition.result.aafcoTooltipLabel', { defaultValue: 'What does AAFCO mean?' })}
+                      className="inline-flex items-center justify-center text-muted-fg hover:text-foreground transition-colors"
+                    >
+                      <Info className="h-3.5 w-3.5" />
+                    </button>
+                  </Tooltip>
                   {exportConfig && (
                     <DownloadMenu
                       busy={busy}
@@ -430,6 +455,11 @@ export default function NutritionCalculator() {
               <div className="px-5 pb-5">
                 <Card variant="muted" padding="md">
                   <CaPGauge ratio={result.caPRatio} target={result.caPTarget} />
+                  <p className="text-xs text-muted-fg mt-3 leading-relaxed">
+                    {t('nutrition.result.caPExplain', {
+                      defaultValue: 'Calcium-to-phosphorus ratio. Outside the safe band can cause bone problems over time — add a calcium source if it’s low, more muscle meat if it’s high.',
+                    })}
+                  </p>
                   <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-border text-xs">
                     <div>
                       <span className="text-muted-fg">{t('nutrition.result.calcium', { defaultValue: 'Calcium' })}:</span>{' '}
@@ -440,34 +470,50 @@ export default function NutritionCalculator() {
                       <span className="font-mono font-bold">{result.phosphorusMg}mg</span>
                     </div>
                     <div>
-                      <span className="text-muted-fg">{t('nutrition.result.omegaTarget', { defaultValue: 'Ω-3 target' })}:</span>{' '}
+                      <span className="text-muted-fg">{t('nutrition.result.omegaTargetPlain', { defaultValue: 'Omega-3 target' })}:</span>{' '}
                       <span className="font-mono font-bold">{result.omega3Mg}mg</span>
                     </div>
                   </div>
+                  <p className="text-xs text-muted-fg mt-2 leading-relaxed">
+                    {t('nutrition.result.omegaHelper', {
+                      defaultValue: 'Aim for oily fish or a fish-oil supplement to hit this.',
+                    })}
+                  </p>
                 </Card>
               </div>
 
-              {result.warnings.length > 0 && (
-                <div className="px-5 pb-5">
-                  <Card padding="md" className="bg-danger/5 border-danger/30">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-danger mb-2">
-                      {t('nutrition.result.safetyGuardrails', { defaultValue: 'Safety guardrails' })}
-                    </p>
-                    {result.warnings.map((w, i) => (
-                      <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
-                        <span className="text-danger font-black shrink-0">!</span>
-                        {t(`nutrition.warnings.${w.id}`, w.values)}
+              {result.warnings.length > 0 && (() => {
+                // Reserve the alarming "Safety guardrails" red treatment for the
+                // hard-fail state. Caution-level notes get a softer "Worth noting"
+                // header so newcomers aren't alarmed by an informational nudge.
+                const isFail = result.aafcoStatus === 'fail';
+                return (
+                  <div className="px-5 pb-5">
+                    <Card padding="md" className={isFail ? 'bg-danger/5 border-danger/30' : 'bg-warning/5 border-warning/30'}>
+                      <p className={cn(
+                        'text-[10px] font-black uppercase tracking-wider mb-2',
+                        isFail ? 'text-danger' : 'text-warning',
+                      )}>
+                        {isFail
+                          ? t('nutrition.result.safetyGuardrails', { defaultValue: 'Safety guardrails' })
+                          : t('nutrition.result.worthNoting', { defaultValue: 'Worth noting' })}
                       </p>
-                    ))}
-                  </Card>
-                </div>
-              )}
+                      {result.warnings.map((w, i) => (
+                        <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1">
+                          <span className={cn('font-black shrink-0', isFail ? 'text-danger' : 'text-warning')} aria-hidden="true">!</span>
+                          {t(`nutrition.warnings.${w.id}`, w.values)}
+                        </p>
+                      ))}
+                    </Card>
+                  </div>
+                );
+              })()}
 
               <div className="px-5 pb-5">
                 <Card variant="muted" padding="md">
                   {result.notes.map((n, i) => (
                     <p key={i} className="text-sm text-foreground/90 flex gap-2 items-start leading-relaxed mt-1 first:mt-0">
-                      <span className="text-primary font-black shrink-0">•</span>
+                      <span className="text-primary font-black shrink-0" aria-hidden="true">•</span>
                       {t(`nutrition.notes.${n.id}`, n.values)}
                     </p>
                   ))}
@@ -475,7 +521,7 @@ export default function NutritionCalculator() {
               </div>
 
               <p className="px-5 pb-5 text-xs text-muted-fg border-t border-border pt-4 leading-relaxed">
-                ⚠️ {t('nutrition.vetDisclaimer')}
+                <span aria-hidden>⚠️</span> {t('nutrition.vetDisclaimer')}
               </p>
             </Card>
           </motion.div>

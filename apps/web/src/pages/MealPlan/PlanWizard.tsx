@@ -70,6 +70,11 @@ export default function PlanWizard() {
   const [name, setName] = useState<string>(() => (editingPlan ? editingPlan.name : ''));
   const [preview, setPreview] = useState<MealPlan | null>(null);
   const [refusals, setRefusals] = useState<PlannerRefusal[]>([]);
+  // Generate renders its result below the fold; scroll the user to it (or to
+  // the refusal card) so the tap visibly does something on a phone.
+  const previewRef = useRef<HTMLDivElement>(null);
+  const refusalRef = useRef<HTMLDivElement>(null);
+  const justGeneratedRef = useRef(false);
   // In edit mode the user already picked a Cook-ahead value, so the
   // tiny-household auto-adjust shouldn't fire. Same for templates that
   // explicitly set bagDays — the user's pick should stand.
@@ -177,8 +182,17 @@ export default function PlanWizard() {
     );
   }
 
+  // Smooth-scroll to whatever Generate produced (preview or refusal card).
+  useEffect(() => {
+    if (!justGeneratedRef.current) return;
+    justGeneratedRef.current = false;
+    const el = refusals.length > 0 ? refusalRef.current : previewRef.current;
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [preview, refusals]);
+
   function regenerate() {
     if (selectedPets.length === 0) return;
+    justGeneratedRef.current = true;
     // Clinical-safety backstop: refuse to materialize a plan if any pet's
     // diet violates the absolute or unmet-overridable rules. Form-level
     // warnings (CustomDietPicker) already help users avoid this at the
@@ -379,7 +393,7 @@ export default function PlanWizard() {
 
       {/* Step 3 — Sourcing */}
       <Card padding="md" className="space-y-4">
-        <StepHeader n={3} label={t('mealPlan.sourcing.prefsLabel', { defaultValue: 'Sourcing preferences' })} />
+        <StepHeader n={3} label={t('mealPlan.sourcing.prefsLabel', { defaultValue: 'How you cook' })} />
         <SourcingPicker
           value={sourcing}
           onChange={handleSourcingChange}
@@ -402,34 +416,48 @@ export default function PlanWizard() {
         />
       </Card>
 
-      {/* Actions */}
+      {/* Actions — the next step is always the single obvious button:
+          "Generate preview" before there's a plan, then "Save" (with a
+          shuffle alongside). No disabled-and-mysterious primary button. */}
       <div className="flex flex-col-reverse sm:flex-row gap-2">
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={regenerate}
-          disabled={selectedPets.length === 0}
-        >
-          <RotateCcw className="h-4 w-4" aria-hidden />
-          {preview ? t('mealPlan.wizard.regenerate') : t('mealPlan.wizard.generate')}
-        </Button>
-        <Button
-          type="submit"
-          variant="glow"
-          size="lg"
-          block
-          disabled={!preview}
-          title={!preview ? t('mealPlan.wizard.generateFirst', { defaultValue: 'Generate a plan first' }) : undefined}
-          className="sm:ml-auto sm:w-auto"
-        >
-          <Save className="h-4 w-4" aria-hidden />
-          {t('mealPlan.wizard.save')}
-        </Button>
+        {preview ? (
+          <>
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={regenerate}
+              disabled={selectedPets.length === 0}
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden />
+              {t('mealPlan.wizard.regenerate')}
+            </Button>
+            <Button type="submit" variant="glow" size="lg" block className="sm:ml-auto sm:w-auto">
+              <Save className="h-4 w-4" aria-hidden />
+              {t('mealPlan.wizard.save')}
+            </Button>
+          </>
+        ) : (
+          <Button
+            type="submit"
+            variant="glow"
+            size="lg"
+            block
+            disabled={selectedPets.length === 0}
+            title={
+              selectedPets.length === 0
+                ? t('mealPlan.wizard.pickPetFirst', { defaultValue: 'Pick at least one pet to continue' })
+                : undefined
+            }
+          >
+            <Sparkles className="h-4 w-4" aria-hidden />
+            {t('mealPlan.wizard.generate')}
+          </Button>
+        )}
       </div>
 
       {/* Refusal state — replaces the preview when safety checks block the plan. */}
       {refusals.length > 0 && (
-        <Card padding="md" className="space-y-4 border-danger/40 bg-danger/5">
+        <Card ref={refusalRef} padding="md" className="space-y-4 border-danger/40 bg-danger/5">
           <div className="flex items-start gap-3">
             <ShieldAlert className="h-6 w-6 shrink-0 text-danger mt-0.5" aria-hidden />
             <div className="space-y-1">
@@ -477,7 +505,7 @@ export default function PlanWizard() {
 
       {/* Preview */}
       {preview && (
-        <div className="space-y-4 pt-4 border-t border-border">
+        <div ref={previewRef} className="space-y-4 pt-4 border-t border-border">
           <PageHeader
             eyebrow={t('mealPlan.wizard.previewEyebrow')}
             title={preview.name}

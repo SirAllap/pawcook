@@ -29,7 +29,7 @@ export const TabsTrigger = forwardRef<
       ref={ref}
       className={cn(
         'inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-semibold',
-        'text-muted-fg transition-all duration-200 outline-none',
+        'text-muted-fg transition-all duration-200',
         'data-[state=active]:bg-surface data-[state=active]:text-foreground data-[state=active]:shadow-sm',
         'hover:text-foreground',
         className

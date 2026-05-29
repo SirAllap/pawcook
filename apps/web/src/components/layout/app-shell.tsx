@@ -54,7 +54,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         </main>
 
         <Footer />
-        <BottomNav />
+        {/* Only mount the bottom nav on non-desktop so it isn't a second
+            "Primary navigation" landmark in the DOM behind the desktop nav. */}
+        {!isDesktop && <BottomNav />}
         <SpeciesPickerSheet />
 
         <Toaster
@@ -62,7 +64,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           position={isDesktop ? 'top-center' : 'bottom-center'}
           richColors
           closeButton
-          offset={isDesktop ? 16 : 84}
+          offset={isDesktop ? 16 : 96}
           toastOptions={{
             classNames: {
               toast: 'rounded-2xl border border-border bg-surface text-foreground shadow-lg',

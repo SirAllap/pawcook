@@ -21,24 +21,29 @@
 
   --border:           220 13% 88%;
   --input:            220 13% 90%;
-  --ring:             35 92% 50%;
+  --ring:             35 92% 44%;
 
   /* Brand --------------------------------------------------- */
-  --primary:          35 92% 50%;            /* amber */
-  --primary-foreground: 30 35% 12%;
-  --primary-hover:    35 95% 45%;
+  /* Deepened from 50% L → 44% L so amber text/icons on light
+     surfaces clear WCAG UI-contrast; still unmistakably amber, and
+     the dark primary-foreground stays high-contrast on the fill. */
+  --primary:          35 92% 44%;            /* amber */
+  --primary-foreground: 30 40% 10%;
+  --primary-hover:    35 95% 39%;
 
-  --accent:           155 38% 38%;           /* sage */
+  --accent:           155 38% 34%;           /* sage */
   --accent-foreground: 0 0% 100%;
 
   /* Status -------------------------------------------------- */
-  --success:          150 60% 38%;
+  /* success/info deepened so `text-success` / `text-info` pass AA on
+     light surfaces; white-on-fill stays legible too. */
+  --success:          150 62% 30%;
   --success-foreground: 0 0% 100%;
   --warning:          38 92% 50%;
   --warning-foreground: 30 35% 12%;
-  --danger:           0 75% 52%;
+  --danger:           0 72% 47%;
   --danger-foreground: 0 0% 100%;
-  --info:             212 90% 52%;
+  --info:             212 90% 42%;
   --info-foreground:  0 0% 100%;
 
   /* Hero accents -------------------------------------------- */
@@ -93,9 +98,13 @@
   --accent-foreground: 230 25% 8%;
 
   --success:          150 60% 50%;
+  --success-foreground: 230 25% 8%;
   --warning:          38 92% 58%;
+  --warning-foreground: 30 40% 8%;
   --danger:           0 78% 62%;
+  --danger-foreground: 0 0% 100%;
   --info:             212 92% 62%;
+  --info-foreground:  230 25% 8%;
 
   --hero-glow-a:      35 92% 55%;
   --hero-glow-b:      14 90% 50%;
@@ -128,9 +137,13 @@
     --accent:           155 45% 55%;
     --accent-foreground: 230 25% 8%;
     --success:          150 60% 50%;
+    --success-foreground: 230 25% 8%;
     --warning:          38 92% 58%;
+    --warning-foreground: 30 40% 8%;
     --danger:           0 78% 62%;
+    --danger-foreground: 0 0% 100%;
     --info:             212 92% 62%;
+    --info-foreground:  230 25% 8%;
     --hero-glow-a:      35 92% 55%;
     --hero-glow-b:      14 90% 50%;
     --hero-glow-c:      215 80% 55%;

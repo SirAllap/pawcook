@@ -164,10 +164,14 @@ export function CustomDietPicker({
           // Easy: visualise the protein/veg/starch split as a single bar so
           // users see the food, not the math.
           <div className="space-y-1.5">
-            <div className="flex h-3 w-full overflow-hidden rounded-full bg-surface">
-              <div className="bg-rose-500" style={{ width: `${value.macros.protein}%` }} />
-              <div className="bg-success" style={{ width: `${value.macros.veg}%` }} />
-              <div className="bg-info"    style={{ width: `${value.macros.carb}%` }} />
+            <div
+              className="flex h-3 w-full overflow-hidden rounded-full bg-surface"
+              role="img"
+              aria-label={`${Math.round(value.macros.protein)}% ${t('nutrition.macroProtein')}, ${Math.round(value.macros.veg)}% ${t('nutrition.macroVeg')}, ${Math.round(value.macros.carb)}% ${t('nutrition.macroStarch')}`}
+            >
+              <div className="bg-rose-500" style={{ width: `${value.macros.protein}%` }} aria-hidden />
+              <div className="bg-success" style={{ width: `${value.macros.veg}%` }} aria-hidden />
+              <div className="bg-info"    style={{ width: `${value.macros.carb}%` }} aria-hidden />
             </div>
             <div className="flex justify-between text-[10px] text-muted-fg font-semibold">
               <span>{Math.round(value.macros.protein)}% {t('nutrition.macroProtein')}</span>
@@ -264,6 +268,8 @@ function ProteinCompositionSection({
     <div className="space-y-2">
       <button
         type="button"
+        role="checkbox"
+        aria-checked={enabled}
         onClick={toggle}
         className="flex items-center gap-2 text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]"
       >
@@ -386,6 +392,8 @@ function VetPrescriptionSection({
     <div className="space-y-2">
       <button
         type="button"
+        role="checkbox"
+        aria-checked={enabled}
         onClick={toggle}
         className="flex items-center gap-2 text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]"
       >

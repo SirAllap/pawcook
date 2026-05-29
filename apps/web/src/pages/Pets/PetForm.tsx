@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Save, Trash2, AlertTriangle, ChefHat } from 'lucide-react';
+import { Save, Trash2, AlertTriangle, ChefHat, ChevronDown } from 'lucide-react';
 import {
   PetProfileSchema, newPetId, getDietCookingDefaults,
   type PetProfile, type HealthCondition, type Species,
@@ -45,7 +45,9 @@ function defaultsForSpecies(species: Species): PetProfile {
       bodyCondition: 'ideal',
       reproductiveStatus: 'neutered',
       mealsPerDay: 2,
-      macroProfile: species === 'cat' ? 'cat_pmr' : 'balanced_cooked',
+      // Followability Mandate: a newcomer's cat defaults to a cooked
+      // (not raw PMR) profile — the simplest correct starting point.
+      macroProfile: species === 'cat' ? 'cat_cooked_carnivore' : 'balanced_cooked',
     },
     createdAt: now,
     updatedAt: now,
@@ -60,6 +62,20 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
   const isEdit = Boolean(existing);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [pmrCookedDialog, setPmrCookedDialog] = useState(false);
+  // Reveal the optional section up-front only when an existing pet already
+  // has non-default details in it — otherwise keep newcomers' forms short.
+  const [showMore, setShowMore] = useState(() => {
+    if (!existing) return false;
+    const n = existing.nutrition;
+    return (
+      n.bodyCondition !== 'ideal' ||
+      n.reproductiveStatus !== 'neutered' ||
+      n.mealsPerDay !== 2 ||
+      (existing.allergies?.length ?? 0) > 0 ||
+      (existing.conditions?.length ?? 0) > 0 ||
+      Boolean(existing.notes)
+    );
+  });
 
   const {
     register, control, handleSubmit, watch, reset, setValue,
@@ -188,22 +204,48 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
             />
             <Input
               label={t('pets.form.weight')}
-              type="number" step="0.1" min={0.1} max={100} inputMode="decimal"
+              type="number" step="0.1" min={0.1} max={120} inputMode="decimal"
+              trailing="kg"
+              helper={
+                errors.nutrition?.weightKg?.message
+                  ? undefined
+                  : species === 'cat'
+                    ? t('pets.form.weightHelperCat', { defaultValue: 'Typical: 3–6 kg' })
+                    : t('pets.form.weightHelperDog', { defaultValue: 'Typical: 2–60 kg' })
+              }
               onKeyDown={blockBadNumberKeys}
               {...register('nutrition.weightKg', { valueAsNumber: true })}
               error={errors.nutrition?.weightKg?.message}
             />
           </div>
 
-          {/* Body & lifestyle */}
+          {/* Body & lifestyle — essentials stay visible; finer details and
+              health info collapse into the optional section further down. */}
           <div>
             <SectionLabel>{t('pets.form.lifestyleSection')}</SectionLabel>
             <div className="space-y-4 mt-3">
-              <Select label={t('pets.form.age')} {...register('nutrition.age')}>
-                <option value={ageGrowthValue}>{ageGrowthLabel}</option>
-                <option value="adult">{t('pets.age.adult')}</option>
-                <option value="senior">{t('pets.age.senior')}</option>
-              </Select>
+              <div className="space-y-2">
+                <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                  {t('pets.form.age')}
+                </span>
+                <Controller
+                  control={control}
+                  name="nutrition.age"
+                  render={({ field }) => (
+                    <ToggleGroup
+                      type="single"
+                      value={field.value}
+                      onValueChange={(v) => v && field.onChange(v)}
+                      aria-label={t('pets.form.age')}
+                      className="grid grid-cols-3 w-full"
+                    >
+                      <ToggleGroupItem value={ageGrowthValue}>{ageGrowthLabel}</ToggleGroupItem>
+                      <ToggleGroupItem value="adult">{t('pets.age.adult')}</ToggleGroupItem>
+                      <ToggleGroupItem value="senior">{t('pets.age.senior')}</ToggleGroupItem>
+                    </ToggleGroup>
+                  )}
+                />
+              </div>
 
               <div className="space-y-2">
                 <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
@@ -226,45 +268,6 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
                       <ToggleGroupItem value="working">{t('pets.activity.working')}</ToggleGroupItem>
                     </ToggleGroup>
                   )}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
-                  {t('pets.form.bodyCondition')}
-                </span>
-                <Controller
-                  control={control}
-                  name="nutrition.bodyCondition"
-                  render={({ field }) => (
-                    <ToggleGroup
-                      type="single"
-                      value={field.value}
-                      onValueChange={(v) => v && field.onChange(v)}
-                      aria-label={t('pets.form.bodyCondition')}
-                      className="grid grid-cols-3 w-full"
-                    >
-                      <ToggleGroupItem value="underweight">{t('pets.bodyCondition.underweight')}</ToggleGroupItem>
-                      <ToggleGroupItem value="ideal">{t('pets.bodyCondition.ideal')}</ToggleGroupItem>
-                      <ToggleGroupItem value="overweight">{t('pets.bodyCondition.overweight')}</ToggleGroupItem>
-                    </ToggleGroup>
-                  )}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Select label={t('pets.form.reproStatus')} {...register('nutrition.reproductiveStatus')}>
-                  <option value="neutered">{t('pets.reproStatus.neutered')}</option>
-                  <option value="intact">{t('pets.reproStatus.intact')}</option>
-                  <option value="pregnant">{t('pets.reproStatus.pregnant')}</option>
-                  <option value="lactating">{t('pets.reproStatus.lactating')}</option>
-                </Select>
-                <Input
-                  label={t('pets.form.mealsPerDay')}
-                  type="number" min={1} max={4} step={1} inputMode="numeric"
-                  onKeyDown={blockBadNumberKeys}
-                  {...register('nutrition.mealsPerDay', { valueAsNumber: true })}
-                  error={errors.nutrition?.mealsPerDay?.message}
                 />
               </div>
             </div>
@@ -395,34 +398,128 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
             )}
           </div>
 
-          {/* Allergies */}
-          <Controller
-            control={control}
-            name="allergies"
-            render={({ field }) => (
-              <AllergyPicker value={field.value ?? []} onChange={field.onChange} />
-            )}
-          />
-
-          {/* Conditions */}
-          <Controller
-            control={control}
-            name="conditions"
-            render={({ field }) => (
-              <ConditionPicker
-                value={(field.value ?? []) as HealthCondition[]}
-                onChange={field.onChange}
+          {/* Optional refinements + health details — collapsed by default so
+              a newcomer can finish with just species/name/weight/age/diet.
+              Sensible defaults (ideal body, neutered, 2 meals/day) already
+              apply; this section is for tuning, not a requirement. */}
+          <div className="border-t border-border pt-5">
+            <button
+              type="button"
+              onClick={() => setShowMore((v) => !v)}
+              aria-expanded={showMore}
+              className="flex w-full items-center justify-between gap-3 text-left"
+            >
+              <span>
+                <span className="block text-sm font-black">
+                  {t('pets.form.moreTitle', { defaultValue: 'Fine-tune & health details' })}
+                </span>
+                <span className="block text-xs text-muted-fg">
+                  {t('pets.form.moreHelp', { defaultValue: 'Optional — body condition, meals, allergies, conditions, notes' })}
+                </span>
+              </span>
+              <ChevronDown
+                className={cn('h-5 w-5 shrink-0 text-muted-fg transition-transform', showMore && 'rotate-180')}
+                aria-hidden
               />
-            )}
-          />
+            </button>
 
-          {/* Notes */}
-          <Input
-            label={t('pets.form.notes')}
-            placeholder={t('pets.form.notesPlaceholder')}
-            autoComplete="off"
-            {...register('notes')}
-          />
+            {showMore && (
+              <div className="space-y-6 mt-5">
+                <div className="space-y-2">
+                  <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                    {t('pets.form.bodyCondition')}
+                  </span>
+                  <Controller
+                    control={control}
+                    name="nutrition.bodyCondition"
+                    render={({ field }) => (
+                      <ToggleGroup
+                        type="single"
+                        value={field.value}
+                        onValueChange={(v) => v && field.onChange(v)}
+                        aria-label={t('pets.form.bodyCondition')}
+                        className="grid grid-cols-3 w-full"
+                      >
+                        <ToggleGroupItem value="underweight">{t('pets.bodyCondition.underweight')}</ToggleGroupItem>
+                        <ToggleGroupItem value="ideal">{t('pets.bodyCondition.ideal')}</ToggleGroupItem>
+                        <ToggleGroupItem value="overweight">{t('pets.bodyCondition.overweight')}</ToggleGroupItem>
+                      </ToggleGroup>
+                    )}
+                  />
+                  <p className="text-xs text-muted-fg">
+                    {t('pets.form.bodyConditionHelp', { defaultValue: 'Ideal = ribs easy to feel but not see. Most pets: Ideal.' })}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                    {t('pets.form.reproStatus')}
+                  </span>
+                  <Select aria-label={t('pets.form.reproStatus')} {...register('nutrition.reproductiveStatus')}>
+                    <option value="neutered">{t('pets.reproStatus.neutered')}</option>
+                    <option value="intact">{t('pets.reproStatus.intact')}</option>
+                    <option value="pregnant">{t('pets.reproStatus.pregnant')}</option>
+                    <option value="lactating">{t('pets.reproStatus.lactating')}</option>
+                  </Select>
+                  <p className="text-xs text-muted-fg">
+                    {t('pets.form.reproHelp', { defaultValue: 'Affects the daily calorie target. Most pets: Neutered.' })}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <span className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em]">
+                    {t('pets.form.mealsPerDay')}
+                  </span>
+                  <Controller
+                    control={control}
+                    name="nutrition.mealsPerDay"
+                    render={({ field }) => (
+                      <ToggleGroup
+                        type="single"
+                        value={String(field.value)}
+                        onValueChange={(v) => v && field.onChange(Number(v))}
+                        aria-label={t('pets.form.mealsPerDay')}
+                        className="grid grid-cols-4 w-full"
+                      >
+                        {[1, 2, 3, 4].map((n) => (
+                          <ToggleGroupItem key={n} value={String(n)}>{n}</ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                    )}
+                  />
+                </div>
+
+                {/* Allergies */}
+                <Controller
+                  control={control}
+                  name="allergies"
+                  render={({ field }) => (
+                    <AllergyPicker value={field.value ?? []} onChange={field.onChange} />
+                  )}
+                />
+
+                {/* Conditions */}
+                <Controller
+                  control={control}
+                  name="conditions"
+                  render={({ field }) => (
+                    <ConditionPicker
+                      value={(field.value ?? []) as HealthCondition[]}
+                      onChange={field.onChange}
+                    />
+                  )}
+                />
+
+                {/* Notes */}
+                <Input
+                  label={t('pets.form.notes')}
+                  placeholder={t('pets.form.notesPlaceholder')}
+                  autoComplete="off"
+                  {...register('notes')}
+                />
+              </div>
+            )}
+          </div>
 
           {/* Actions */}
           <div className="flex flex-col-reverse sm:flex-row gap-2 pt-2">
@@ -445,7 +542,7 @@ export function PetForm({ existing }: { existing?: PetProfile }) {
               loading={isSubmitting}
               className="sm:ml-auto sm:w-auto"
               disabled={!isDirty && isEdit}
-              title={!isDirty && isEdit ? t('pets.form.noChanges', { defaultValue: 'Make a change to enable save' }) : undefined}
+              title={!isDirty && isEdit ? t('pets.form.noChanges', { defaultValue: 'No changes to save yet' }) : undefined}
             >
               {!isSubmitting && <Save className="h-4 w-4" aria-hidden />}
               {isEdit ? t('pets.form.saveChanges') : t('pets.form.create')}

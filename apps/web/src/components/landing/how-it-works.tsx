@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { FadeIn } from '../motion/fade-in';
-import { Home, ClipboardList, ChefHat } from 'lucide-react';
+import { Home, ClipboardList, ChefHat, ArrowRight } from 'lucide-react';
+import { Button } from '../ui/button';
 import { useSpeciesT } from '../../lib/use-species-t';
 import { cn } from '../../lib/cn';
 
@@ -78,6 +80,17 @@ export function HowItWorks() {
           </motion.li>
         ))}
       </ol>
+
+      {/* Convert at the moment of highest intent — right after the reader
+          understands the three steps. */}
+      <div className="flex justify-center">
+        <Button asChild variant="glow" size="lg">
+          <Link to="/meal-plan/new">
+            {t('landing.how.cta', { defaultValue: 'Start your plan' })}
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </Button>
+      </div>
     </FadeIn>
   );
 }

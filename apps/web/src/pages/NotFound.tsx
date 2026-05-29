@@ -64,6 +64,24 @@ export default function NotFound() {
             </Link>
           </Button>
         </div>
+
+        {/* Direct routes to the most-likely intended destinations, so a
+            mistyped deep link doesn't force a round-trip through home. */}
+        <div className="flex flex-wrap justify-center gap-2 pt-1">
+          {[
+            { to: '/pets', label: t('nav.pets') },
+            { to: '/meal-plan', label: t('nav.plan') },
+            { to: '/cooking', label: t('nav.cooking') },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-semibold text-muted-fg transition-colors hover:text-foreground hover:border-primary/40"
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
       </Card>
     </div>
   );

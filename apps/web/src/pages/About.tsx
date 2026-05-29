@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, ExternalLink, BookOpen, Heart, FileText, FlaskConical, Globe, Building2, Stethoscope, ShieldCheck, EyeOff, HardDrive, Trash2, Server } from 'lucide-react';
+import { AlertTriangle, ExternalLink, BookOpen, Heart, FileText, FlaskConical, Globe, Building2, Stethoscope, ShieldCheck, EyeOff, HardDrive, Trash2, Server, Bone, Thermometer } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 import { PageHeader } from '../components/ui/page-header';
 import { Card } from '../components/ui/card';
@@ -64,10 +64,16 @@ export default function About() {
           <div className="p-5 space-y-3">
             <p className="text-sm leading-relaxed text-foreground/90">{tS('about.notVetAdvice')}</p>
             <Card padding="md" className="bg-danger/5 border-danger/30">
-              <p className="text-sm font-bold leading-relaxed text-foreground/90">🦴 {t('about.noBones')}</p>
+              <p className="flex gap-2.5 text-sm font-bold leading-relaxed text-foreground/90">
+                <Bone className="mt-0.5 h-4 w-4 shrink-0 text-danger" aria-hidden />
+                <span>{t('about.noBones')}</span>
+              </p>
             </Card>
             <Card padding="md" className="bg-danger/5 border-danger/30">
-              <p className="text-sm font-bold leading-relaxed text-foreground/90">🌡️ {t('about.pathogen')}</p>
+              <p className="flex gap-2.5 text-sm font-bold leading-relaxed text-foreground/90">
+                <Thermometer className="mt-0.5 h-4 w-4 shrink-0 text-danger" aria-hidden />
+                <span>{t('about.pathogen')}</span>
+              </p>
             </Card>
           </div>
         </Card>

@@ -1,5 +1,6 @@
 {
   "nav": {
+    "more": "More",
     "pets": "Pets",
     "plan": "Plan",
     "cooking": "Calculator",
@@ -24,19 +25,19 @@
     "safe": "Safe",
     "no": "No",
     "toxic": "TOXIC",
-    "disclaimer": "Not veterinary advice. Consult an ACVN diplomate for long-term homemade feeding.",
+    "disclaimer": "Not veterinary advice. For long-term homemade feeding, consult a board-certified veterinary nutritionist.",
     "disclaimerLabel": "Note",
     "openSource": "Open source",
     "skipToContent": "Skip to content",
     "switchToLight": "Switch to light mode",
     "switchToDark": "Switch to dark mode",
     "unsavedChanges": "You have unsaved changes. Are you sure you want to leave?",
-    "calcFailed": "Could not calculate — please check inputs.",
+    "calcFailed": "Something went wrong with the calculation. Check your inputs and try again.",
     "cancel": "Cancel",
     "target": "Target",
     "dogFoodCalc": "Dog Food Calculator",
     "privacy": "Privacy",
-    "loading": "Loading",
+    "loading": "Loading…",
     "changeLanguage": "Choose language",
     "preferences": "Preferences",
     "brandHome": "PawCook home",
@@ -79,7 +80,7 @@
       "name": "Name",
       "namePlaceholderDog": "Rex",
       "namePlaceholderCat": "Whiskers",
-      "weight": "Weight (kg)",
+      "weight": "Weight",
       "lifestyleSection": "Lifestyle",
       "age": "Life stage",
       "activity": "Activity level",
@@ -93,7 +94,7 @@
       "create": "Create pet",
       "saveChanges": "Save changes",
       "delete": "Delete pet",
-      "noChanges": "Make a change to enable save"
+      "noChanges": "No changes to save yet"
     },
     "species": {
       "dog": "Dog",
@@ -106,10 +107,10 @@
       "senior": "Senior"
     },
     "activity": {
-      "sedentary": "Sedentary",
+      "sedentary": "Low",
       "moderate": "Moderate",
       "active": "Active",
-      "working": "Working"
+      "working": "Sport / working"
     },
     "bodyCondition": {
       "underweight": "Underweight",
@@ -201,7 +202,7 @@
       "subtitle": "Generate a weekly, biweekly, or monthly plan and the shopping list you can take to the store.",
       "create": "Create plan",
       "emptyTitle": "No plan yet.",
-      "emptyDescription": "One plan per household. Cook once, feed everyone, dose the rest.",
+      "emptyDescription": "Create a weekly plan and PawCook builds the shopping list and bag schedule for you automatically.",
       "emptyNoPetsTitle": "Start from a template",
       "emptyNoPetsDescription": "Pick a starter pack and we'll set up your pets and your first plan in a couple of clicks."
     },
@@ -211,7 +212,7 @@
     },
     "needPet": {
       "title": "Add a pet first.",
-      "description": "We need at least one mouth to feed.",
+      "description": "Add a pet profile first — the plan is built around your pet's weight, age, and diet.",
       "cta": "Add a pet"
     },
     "wizard": {
@@ -249,7 +250,7 @@
         "easy": "Supermarket-friendly",
         "specialty": "Butcher / specialty OK"
       },
-      "prefsLabel": "Sourcing preferences",
+      "prefsLabel": "How you cook",
       "preferWildFish": "Prefer wild-caught fish",
       "preferGrassFed": "Prefer grass-fed proteins",
       "preferOrganic": "Prefer organic vegetables",
@@ -344,14 +345,14 @@
       "cookShort": "Cook",
       "emptyTitle": "Nothing to buy yet",
       "yieldAdjustedHint": "Buy includes cooking shrinkage — yields ~{{c}} g cooked.",
-      "emptyHelp": "This plan doesn't need a shopping list yet. Edit the plan to add batchable ingredients."
+      "emptyHelp": "This plan has nothing to buy yet. Edit the plan to add proteins or vegetables."
     },
     "cookingPlan": {
-      "emptyTitle": "Bag schedule lives with sous-vide.",
+      "emptyTitle": "No bag schedule yet",
       "emptyHelp": "Switch the plan to sous-vide and we'll build a date-stamped bag schedule.",
       "emptyCta": "Edit plan",
       "noBagsTitle": "Nothing to bag",
-      "noBagsHelp": "This plan has no batchable ingredients — everything will be cooked fresh.",
+      "noBagsHelp": "Nothing to batch here — everything in this plan is cooked fresh on the day.",
       "summaryLabel": "Cooking plan",
       "summary": "{{bags}} bags · {{sessions}} cook day(s) · one protein per bag",
       "nextCookTitle": "Next cook day",
@@ -422,7 +423,7 @@
     },
     "refusal": {
       "title": "Plan not generated",
-      "subtitle": "Fix these issues, then try again. If a vet has prescribed this diet for a medical condition, open the pet and mark the diet vet-prescribed to relax overridable checks.",
+      "subtitle": "Fix the issues below, then try again. If this diet is vet-prescribed, open the pet's profile and enable vet-prescription mode to relax these checks.",
       "editPet": "Edit pet",
       "vetOverrideHint": "Can be relaxed with a matching vet prescription.",
       "severity": {
@@ -443,9 +444,9 @@
     "supplements": {
       "title": "Daily supplements",
       "help": "What the simple-meals plan doesn't cover. Set these up once and dose with breakfast.",
-      "dismiss": "Got it",
+      "dismiss": "I've set these up",
       "undo": "Show again",
-      "dismissedLabel": "Daily supplements acknowledged.",
+      "dismissedLabel": "Daily supplements",
       "taurine": {
         "label": "Taurine powder",
         "dose": "{{mg}} mg per day (about ¼ tsp)",
@@ -1048,8 +1049,8 @@
     "calciumNeeded": "Calcium needed",
     "omega3Target": "Omega-3 target",
     "notes": {
-      "rer": "RER (resting): {{kcal}} kcal/day",
-      "der": "DER (daily energy): {{kcal}} kcal/day (×{{multiplier}} multiplier)",
+      "rer": "Resting energy (at rest): {{kcal}} kcal/day",
+      "der": "Active daily energy: {{kcal}} kcal/day (activity factor ×{{multiplier}})",
       "rawDiet": "Advanced raw diet — bone content provides natural calcium; never substitute cooked bones.",
       "realAncestralOmega": "Whole seafood (sardines, mackerel) balances omega-3:6. Use small wild-caught fish to limit mercury.",
       "taurineHeartsNote": "Raw diet with hearts assumed — natural taurine source. Aim for ≥30% of muscle meat from hearts.",
@@ -1204,7 +1205,7 @@
     "result": {
       "breakdown": "Diet breakdown",
       "perDay": "per day",
-      "derEnergy": "DER (energy)",
+      "derEnergy": "Calories / day",
       "vetPdf": "Vet PDF",
       "calcium": "Calcium",
       "phosphorus": "Phosphorus",
@@ -1214,9 +1215,9 @@
       "safe": "safe"
     },
     "aafco": {
-      "pass": "AAFCO",
-      "caution": "AAFCO",
-      "fail": "AAFCO"
+      "pass": "Meets AAFCO",
+      "caution": "AAFCO — review",
+      "fail": "Below AAFCO"
     },
     "warnings": {
       "caPLow": "Ca:P ratio is {{ratio}}:1 — below the AAFCO safe minimum of 1:1. Add ~{{calcium}} mg supplemental calcium daily.",
@@ -1232,9 +1233,9 @@
     },
     "eyebrow": "Nutrition",
     "placeholderHint": "Enter your dog's profile and tap Calculate.",
-    "toastPass": "Daily plan ready — AAFCO compliant.",
-    "toastCaution": "Plan ready — review caution notes.",
-    "toastFail": "Plan needs adjustment to meet AAFCO targets.",
+    "toastPass": "Plan ready — all nutrition targets met.",
+    "toastCaution": "Plan ready — check the warnings below.",
+    "toastFail": "Plan is below targets — see the warnings below.",
     "subtitle_cat": "Calculate daily portions based on your cat's profile.",
     "weight_cat": "Cat weight (kg)",
     "profileSection_cat": "Cat profile",
@@ -1255,12 +1256,12 @@
     "raw": "Raw",
     "cooked": "Cooked",
     "ok": "OK",
-    "risky": "Risky",
+    "risky": "Cook first",
     "compound": "Compound",
     "effect": "Effect",
     "benefit": "Benefit",
-    "noResults": "No results for",
-    "noResultsHint": "Try a different search term",
+    "noResults": "No matches found",
+    "noResultsHint": "Nothing here matched \"{{term}}\". Check the spelling or try a shorter word — toxic foods are under their own tab.",
     "eyebrow": "Food safety",
     "subtitle_cat": "Search safe and toxic foods for cats. Cats are more sensitive than dogs to many compounds.",
     "clearSearch": "Clear search"
@@ -1364,7 +1365,7 @@
       "headlineB_cat": "For your real cat.",
       "tagline_cat": "Feed your cat right.",
       "subtitle_cat": "Open-source tools for home-cooking cat owners — taurine-aware nutrition plans, safe cooking, food safety guides, and the supplement stack cats need.",
-      "subtitleHousehold": "Dogs and cats. One bag, one cook session, one plan you'll actually follow. We handle the macros, the safety temps, and the supplements.",
+      "subtitleHousehold": "Dogs and cats, one shared cook session. Tell us about your pets and we'll build a simple weekly plan — exact portions, safe cooking temperatures, and what to add on top.",
       "ctaPrimary": "Start a plan",
       "ctaSecondary": "How it works",
       "chipDogs": "Dogs",
@@ -1389,7 +1390,7 @@
       "text_cat": "MIT licensed. Built by people who cook for both dogs and cats.",
       "starsWithCount": "{{n}} stars"
     },
-    "trustedBy": "Methodology grounded in",
+    "trustedBy": "Grounded in veterinary nutrition standards",
     "stats": {
       "languages": "Languages",
       "diets": "Diet profiles",
@@ -1400,10 +1401,10 @@
       "eyebrow": "Everything you need",
       "heading": "One toolkit. Every meal.",
       "sub": "Six tools that turn home cooking from guesswork into a routine you trust.",
-      "nutrition": "Daily macros, calories and Ca:P balance, tuned to your dog.",
+      "nutrition": "Daily portions, calories and calcium balance, tuned to your pet's weight and age.",
       "cooking": "Safe time & temperature for every meat.",
       "foodSafety": "Toxic foods, safe meats, vegetables, fruits.",
-      "supplements": "AAFCO targets, balancers and a 7-day transition.",
+      "supplements": "Calcium, omega-3 and micronutrient guidance, plus a 7-day transition plan.",
       "dietsTitle": "5 diet profiles",
       "dietsDesc": "Lean cooked · BARF · PMR · High protein · Ancestral.",
       "langTitle": "8 languages",
@@ -1438,7 +1439,7 @@
       },
       "step3": {
         "title": "Cook one bag, dose the rest",
-        "desc": "Sous-vide a single household bag; follow the daily supplement card for what the bag doesn't cover.",
+        "desc": "Cook one batch for the week — oven, stovetop or sous-vide — then follow the daily supplement card for whatever the bag doesn't cover.",
         "title_cat": "Cook one bag, dose the rest",
         "desc_cat": "Sous-vide a single household bag; follow the daily supplement card (taurine + cod liver oil) for what the bag doesn't cover."
       },
@@ -1541,7 +1542,7 @@
     "disclaimers": "Disclaimers",
     "notVetAdvice": "This tool is not veterinary advice. It provides general guidelines based on published veterinary nutrition standards (AAFCO, NRC, FEDIAF). Every dog is individual. For long-term homemade feeding, consult a board-certified veterinary nutritionist (ACVN diplomate).",
     "noBones": "Cooked bones are never safe. This tool will never recommend cooked bones in any recipe.",
-    "pathogen": "Pathogen safety: Cook to recommended internal temperatures verified with a meat thermometer. Cool cooked food promptly.",
+    "pathogen": "Pathogen safety: Cook to safe internal temperatures — chicken & turkey 74°C, pork 71°C, ground meat 71°C, fish 63°C — verified with a meat thermometer. Cool cooked food promptly.",
     "methodology": "Methodology & Sources",
     "openSource": "Open Source",
     "openSourceText": "PawCook is MIT licensed. Contributions, corrections, and feature requests welcome on",

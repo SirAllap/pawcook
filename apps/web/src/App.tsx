@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { MotionConfig } from 'motion/react';
 import { AppShell } from './components/layout/app-shell';
 import { PageTransition } from './components/motion/page-transition';
 import { PageFallback } from './components/ui/page-fallback';
@@ -22,10 +23,14 @@ const NotFound            = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
   return (
-    <AppShell>
-      <PageTransition>
-        <Suspense fallback={<PageFallback />}>
-          <Routes>
+    // reducedMotion="user" makes every Motion animation (page transitions,
+    // FadeIn, Stagger, NumberFlow) honour the OS "reduce motion" setting —
+    // Motion does not do this automatically for JS-driven variants.
+    <MotionConfig reducedMotion="user">
+      <AppShell>
+        <PageTransition>
+          <Suspense fallback={<PageFallback />}>
+            <Routes>
             <Route path="/"            element={<Landing />} />
             <Route path="/cooking"     element={<CookingCalculator />} />
             <Route path="/nutrition"   element={<NutritionCalculator />} />
@@ -41,10 +46,11 @@ export default function App() {
             <Route path="/meal-plan/:id"      element={<PlanView />} />
             <Route path="/meal-plan/:id/edit" element={<PlanWizard />} />
             <Route path="/about"       element={<About />} />
-            <Route path="*"            element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </PageTransition>
-    </AppShell>
+              <Route path="*"            element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </PageTransition>
+      </AppShell>
+    </MotionConfig>
   );
 }
