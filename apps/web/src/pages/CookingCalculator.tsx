@@ -1086,12 +1086,27 @@ function FreestandingBagPanel({
     Math.min(DEFAULT_DAYS_PER_BAG, Math.max(1, feedingDays)),
   );
 
-  const { bagCount, bagSizeKg } = useMemo(() => {
+  const { bagCount, bagSizeKg, fullBagCount, remainderBagKg } = useMemo(() => {
     const safeDays = Math.max(1, Math.min(feedingDays, daysPerBag));
+    // A bag that covers `safeDays` always holds the same amount of food —
+    // safeDays × the household's daily intake — no matter how long the whole
+    // plan runs. A longer plan just means MORE bags, not bigger ones. (The
+    // old code split the total evenly across ceil(days/safeDays) bags, so a
+    // 7-day / 2-day-bag plan diluted every bag because 7 isn't a clean
+    // multiple of 2.)
+    const dailyKg = totalWeightKg / Math.max(1, feedingDays);
+    const clampKg = (kg: number) => Math.round(Math.min(5, Math.max(0.1, kg)) * 100) / 100;
     const rawBagCount = Math.max(1, Math.ceil(feedingDays / safeDays));
     const count = Math.min(20, rawBagCount);
-    const size = Math.min(5, Math.max(0.1, totalWeightKg / count));
-    return { bagCount: count, bagSizeKg: Math.round(size * 100) / 100 };
+    const full = Math.floor(feedingDays / safeDays);
+    const remDays = feedingDays - full * safeDays;
+    const standard = clampKg(safeDays * dailyKg);
+    return {
+      bagCount: count,
+      bagSizeKg: standard,
+      fullBagCount: Math.min(full, count),
+      remainderBagKg: remDays > 0 ? clampKg(remDays * dailyKg) : 0,
+    };
   }, [feedingDays, daysPerBag, totalWeightKg]);
 
   useEffect(() => {
@@ -1128,6 +1143,13 @@ function FreestandingBagPanel({
         <div>
           <label htmlFor="bag-days" className="block text-[11px] font-bold text-muted-fg uppercase tracking-[0.1em] mb-1.5">
             {t('cooking.bagStrategy.cookAhead', { defaultValue: 'Cook ahead' })}
+            {' · '}
+            <span className="text-primary">
+              {daysPerBag}{' '}
+              {daysPerBag === 1
+                ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
+                : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
+            </span>
           </label>
           <input
             id="bag-days"
@@ -1143,14 +1165,31 @@ function FreestandingBagPanel({
               n: daysPerBag,
             })}
           />
-          <div className="flex justify-between text-[10px] font-mono text-muted-fg mt-1">
-            <span>1 {t('cooking.bagStrategy.day', { defaultValue: 'day' })}</span>
-            <span className="font-bold text-foreground">
-              {daysPerBag} {daysPerBag === 1
-                ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
-                : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
-            </span>
-            <span>{maxDays} {t('cooking.bagStrategy.days', { defaultValue: 'days' })}</span>
+          {/* One tappable label per real slider stop, so each maps to an
+              actual position. The old layout centred the current value
+              between the min/max ticks, so e.g. "1 day · 3 days · 3 days"
+              made the middle stop (really 2) look like 3. */}
+          <div className="flex justify-between text-[10px] font-mono mt-1">
+            {Array.from({ length: maxDays }, (_, i) => i + 1).map((d) => {
+              const selected = d === daysPerBag;
+              return (
+                <button
+                  key={d}
+                  type="button"
+                  onClick={() => setDaysPerBag(d)}
+                  aria-pressed={selected}
+                  className={cn(
+                    'tabular-nums rounded px-1 transition-colors',
+                    selected ? 'font-bold text-primary' : 'text-muted-fg hover:text-foreground',
+                  )}
+                >
+                  {d}{' '}
+                  {d === 1
+                    ? t('cooking.bagStrategy.day', { defaultValue: 'day' })
+                    : t('cooking.bagStrategy.days', { defaultValue: 'days' })}
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className="text-right shrink-0">
@@ -1158,8 +1197,15 @@ function FreestandingBagPanel({
             {t('cooking.bagStrategy.result', { defaultValue: 'Split' })}
           </p>
           <p className="font-mono text-lg font-black text-foreground tabular-nums">
-            {fmt(bagCount)} × {fmt(bagSizeKg)} kg
+            {remainderBagKg > 0
+              ? `${fmt(fullBagCount)} × ${fmt(bagSizeKg)} kg`
+              : `${fmt(bagCount)} × ${fmt(bagSizeKg)} kg`}
           </p>
+          {remainderBagKg > 0 && (
+            <p className="font-mono text-[11px] text-muted-fg tabular-nums">
+              + 1 × {fmt(remainderBagKg)} kg
+            </p>
+          )}
         </div>
       </div>
 
@@ -1188,6 +1234,16 @@ function FreestandingBagPanel({
           pets: petCount,
         })}
       </p>
+
+      {remainderBagKg > 0 && (
+        <p className="text-[11px] text-muted-fg leading-snug">
+          {t('cooking.bagStrategy.partialBag', {
+            defaultValue:
+              'Your last bag is smaller ({{kg}} kg) — it only needs to cover the leftover days. A full bag is always the same size; a longer plan just means more bags.',
+            kg: fmt(remainderBagKg),
+          })}
+        </p>
+      )}
 
       {atFloor && (
         <p className="text-[11px] text-muted-fg leading-snug">
