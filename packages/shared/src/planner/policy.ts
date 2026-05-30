@@ -158,8 +158,17 @@ function baseFor(ing: Ingredient): IngredientPolicy {
     };
   }
 
-  // Fish fillet (salmon, mackerel fillet, whitefish). Perishable — don't
-  // round up, don't batch beyond same-day cooking.
+  // Fish fillet (salmon, whitefish). Batched like muscle meat so a
+  // household cooking salmon ahead gets a real bag schedule (the dated
+  // bag table) instead of a freestanding day-per-bag slider — the plan
+  // they'll actually cook beats the perfectly-fresh plan they abandon.
+  // Treated as the *fatty* protein tier: oily fish oxidises faster than
+  // red meat even cooked-then-frozen, so the batch window (2 days) and
+  // post-thaw fridge life (36 h) are tighter than muscle meat's. Whole
+  // fish sold per-fish (sardines, mackerel) stays cook-fresh above. And
+  // sub-threshold seafood (the ~6 g/day cat omega-3 sprinkle) is still
+  // routed to cookFresh upstream by the SUPPLEMENT_GRAM_THRESHOLD gate in
+  // batching.ts, so it never lands in a bag.
   if (ing.componentRoles.includes('seafood')) {
     return {
       purchaseUnit: 'g',
@@ -167,12 +176,12 @@ function baseFor(ing: Ingredient): IngredientPolicy {
       roundingStepGrams: 50,
       roundDirection: 'nearest',
       edibleYield: 1,
-      maxBagDays: 0,
-      maxBagWeightG: 0,
-      maxFridgeHoursPostThaw: 0,
-      surplusBehavior: 'none',
-      surplusDisplayThresholdPct: 1,
-      allowCrossPetBatching: false,
+      maxBagDays: 2,
+      maxBagWeightG: 2000,
+      maxFridgeHoursPostThaw: 36,
+      surplusBehavior: 'freeze',
+      surplusDisplayThresholdPct: 0.1,
+      allowCrossPetBatching: true,
     };
   }
 

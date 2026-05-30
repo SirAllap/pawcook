@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { PetProfile } from '../pets.js';
+import { buildCookingPlan } from './batching.js';
 import { generateMealPlan } from './generator.js';
-import { SourcingPrefsSchema } from './schemas.js';
+import { SourcingPrefsSchema, type PlanDay } from './schemas.js';
 
 const dog: PetProfile = {
   id: 'pet_dog_1',
@@ -66,7 +67,7 @@ describe('cooking plan generation', () => {
     expect(ingredientsPerBag.length).toBeGreaterThan(0);
   });
 
-  it('routes organs and seafood to cookFresh, not batches', () => {
+  it('routes organs to cookFresh, not batches', () => {
     const plan = generateMealPlan({
       name: 'Fresh', pets: [dog], durationDays: 14,
       startDate: '2026-06-01', sourcing: sousVide,
@@ -78,6 +79,62 @@ describe('cooking plan generation', () => {
       expect(batchIngredients.has('chicken_liver')).toBe(false);
       expect(batchIngredients.has('beef_liver')).toBe(false);
     }
+  });
+
+  it('batches substantial fish (salmon) like other muscle proteins', () => {
+    // Salmon chosen as the protein slot is well above the supplement
+    // threshold, so it gets a real bag schedule (the dated bag table)
+    // instead of being dropped into the cook-fresh card.
+    const plan = generateMealPlan({
+      name: 'Salmon', pets: [dog, dog2, dog3], durationDays: 14,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({
+        preferredCookingMethod: 'sous_vide',
+        meatIds: ['salmon'],
+        bagDays: 2,
+      }),
+    });
+    const salmonBatches = plan.cookingPlan!.batches.filter((b) => b.ingredientId === 'salmon');
+    const freshIds = new Set(plan.cookingPlan!.cookFresh.map((c) => c.ingredientId));
+    expect(salmonBatches.length).toBeGreaterThan(0);
+    expect(freshIds.has('salmon')).toBe(false);
+    for (const bag of salmonBatches) {
+      expect(bag.kind).toBe('protein');
+      // Fish is the fatty tier: at most 2 usage-days per bag.
+      expect(bag.dates.length).toBeLessThanOrEqual(2);
+      const last = bag.dates[bag.dates.length - 1]!;
+      expect(bag.useByDate >= last).toBe(true);
+    }
+  });
+
+  it('keeps sub-threshold fish (omega-3 salmon sprinkle) out of bags', () => {
+    // Salmon dosed as a few grams a day is a fish-oil pill in a salmon
+    // costume. Even though the seafood class is now batchable, the
+    // SUPPLEMENT_GRAM_THRESHOLD gate must still route it to cookFresh, not
+    // a freezer bag. Drive buildCookingPlan directly with a synthetic
+    // plan so the per-pet-per-day grams are pinned below the 20 g gate.
+    const days: PlanDay[] = Array.from({ length: 6 }, (_, i) => ({
+      date: `2026-06-0${i + 1}`,
+      petPlans: [
+        {
+          petId: dog.id,
+          meals: [
+            {
+              components: [
+                { ingredientId: 'salmon', componentKey: 'seafood', grams: 10 },
+                { ingredientId: 'beef', componentKey: 'protein', grams: 200 },
+              ],
+            },
+          ],
+        },
+      ],
+    })) as unknown as PlanDay[];
+    const cp = buildCookingPlan(days, [dog], sousVide);
+    expect(cp.batches.some((b) => b.ingredientId === 'salmon')).toBe(false);
+    expect(cp.cookFresh.some((c) => c.ingredientId === 'salmon' && c.reason === 'perishable')).toBe(true);
+    // Substantial beef in the same plan still batches — the gate is
+    // grams-based, not a blanket seafood/meat split.
+    expect(cp.batches.some((b) => b.ingredientId === 'beef')).toBe(true);
   });
 
   it('bag dates are non-empty and useByDate >= last serving date', () => {
