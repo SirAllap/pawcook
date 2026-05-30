@@ -74,22 +74,29 @@ export function AppShell({ children }: { children: ReactNode }) {
           // safe-area inset so the toast drops in just below it. Sonner ignores
           // `offset` under 600px and reads `mobileOffset`, so set both.
           offset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
-          mobileOffset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
+          mobileOffset={{
+            top: 'calc(env(safe-area-inset-top) + 4.5rem)',
+            // Match the bottom nav's px-3 outer inset (0.75rem) so the toast
+            // width echoes the nav bar — they read as one app-shell dock.
+            left: '0.75rem',
+            right: '0.75rem',
+          }}
           toastOptions={{
             // Translated label for the close affordance (the rest of the app
             // is i18n'd; sonner's default is hard-coded English).
             closeButtonAriaLabel: t('common.close'),
             classNames: {
-              // Structural only, shared by every toast. Crucially we no longer
-              // force a bg/text here — that defeated `richColors` and left the
-              // colour as the lone status signal (WCAG 1.4.1).
-              toast: 'rounded-2xl shadow-lg',
-              // Our surface look applies ONLY to plain toasts; success / error /
-              // warning / info keep richColors' accessible tinted bg + fg pairs.
-              default: 'border border-border bg-surface text-foreground',
-              // Sonner's close button is a 20px circle — under the WCAG 2.2 AA
-              // target-size minimum (24px). Bump the tap target to 28px.
-              closeButton: 'h-7 w-7',
+              // Echo the nav's glass pill — same radius + shadow — so the toast
+              // reads as part of the same chrome family, not a stray card. No
+              // bg/text here: that would defeat `richColors` and leave colour as
+              // the lone status signal (WCAG 1.4.1).
+              toast: 'rounded-[26px] shadow-xl',
+              // The glass surface applies ONLY to plain toasts (matching the
+              // nav material); success / error / warning / info keep richColors'
+              // accessible tinted bg + fg pairs.
+              default: 'glass text-foreground',
+              // 44px touch target (iOS HIG / WCAG 2.5.5), up from sonner's 20px.
+              closeButton: 'h-11 w-11',
             },
           }}
         />

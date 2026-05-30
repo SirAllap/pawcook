@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import {
   Flame,
@@ -130,20 +130,25 @@ export function BottomNav() {
 }
 
 function ActivePill() {
+  // MotionConfig reducedMotion="user" doesn't reliably suppress layoutId
+  // (shared-layout) springs, so gate it explicitly: snap the pill into place
+  // with no spring when the user prefers reduced motion.
+  const reduced = useReducedMotion();
   return (
     <motion.span
       layoutId="bottom-nav-pill"
       className="absolute inset-x-1 inset-y-1.5 -z-10 rounded-2xl bg-primary/12"
-      transition={{ type: 'spring', stiffness: 360, damping: 30 }}
+      transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 360, damping: 30 }}
     />
   );
 }
 
 function NavIcon({ Icon, active }: { Icon: IconType; active: boolean }) {
+  const reduced = useReducedMotion();
   return (
     <motion.span
-      animate={{ scale: active ? 1.12 : 1 }}
-      transition={{ duration: 0.2 }}
+      animate={{ scale: reduced || !active ? 1 : 1.12 }}
+      transition={{ duration: reduced ? 0 : 0.2 }}
       className="inline-flex"
     >
       <Icon className="h-[22px] w-[22px]" strokeWidth={active ? 2.4 : 1.9} aria-hidden />

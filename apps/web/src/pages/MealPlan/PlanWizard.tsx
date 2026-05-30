@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'sonner';
+import { toast } from '../../lib/toast';
 import { Check, Calendar, Sparkles, RotateCcw, Save, ShieldAlert } from 'lucide-react';
 import {
   generateMealPlan, SourcingPrefsSchema, checkPlanSafety, hasBlockingRefusals,

@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { toast } from 'sonner';
+import { toast } from '../lib/toast';
 import { useDebouncedEffect } from '../lib/use-debounced-effect';
 import { blockBadNumberKeys } from '../lib/number-input';
 import { Sparkles, Beef, Drumstick, Carrot, Fish, Wheat, Bone, Heart, Apple, Wind, Droplet, Info } from 'lucide-react';
