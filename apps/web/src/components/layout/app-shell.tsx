@@ -61,17 +61,20 @@ export function AppShell({ children }: { children: ReactNode }) {
 
         <Toaster
           theme={resolvedTheme}
-          position={isDesktop ? 'top-center' : 'bottom-center'}
+          // Top-center on every breakpoint. These are passive confirmation
+          // toasts with no actions, so the thumb-zone rationale for bottom
+          // placement doesn't apply — and bottom placement collided with the
+          // floating bottom nav (a lingering error toast could cover all five
+          // nav targets). Anchoring to the top sidesteps the nav, the
+          // home-indicator gesture zone, and the nav-height coupling entirely.
+          position="top-center"
           richColors
           closeButton
-          offset={16}
-          // Sonner has a hard `@media (max-width:600px)` rule that ignores
-          // `offset` and uses `mobileOffset` instead — so the toast must clear
-          // the floating bottom nav HERE. The nav sits at bottom-0 with its own
-          // env(safe-area-inset-bottom) padding plus a 4rem (h-16) body; mirror
-          // that inset and add the bar height + a gap so the toast floats above
-          // it on home-indicator phones too.
-          mobileOffset={{ bottom: 'calc(env(safe-area-inset-bottom) + 5.5rem)' }}
+          // Clear the sticky TopBar (h-14 mobile / h-16 desktop) plus its
+          // safe-area inset so the toast drops in just below it. Sonner ignores
+          // `offset` under 600px and reads `mobileOffset`, so set both.
+          offset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
+          mobileOffset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
           toastOptions={{
             classNames: {
               toast: 'rounded-2xl border border-border bg-surface text-foreground shadow-lg',
