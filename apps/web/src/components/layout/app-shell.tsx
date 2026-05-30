@@ -76,8 +76,20 @@ export function AppShell({ children }: { children: ReactNode }) {
           offset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
           mobileOffset={{ top: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
           toastOptions={{
+            // Translated label for the close affordance (the rest of the app
+            // is i18n'd; sonner's default is hard-coded English).
+            closeButtonAriaLabel: t('common.close'),
             classNames: {
-              toast: 'rounded-2xl border border-border bg-surface text-foreground shadow-lg',
+              // Structural only, shared by every toast. Crucially we no longer
+              // force a bg/text here — that defeated `richColors` and left the
+              // colour as the lone status signal (WCAG 1.4.1).
+              toast: 'rounded-2xl shadow-lg',
+              // Our surface look applies ONLY to plain toasts; success / error /
+              // warning / info keep richColors' accessible tinted bg + fg pairs.
+              default: 'border border-border bg-surface text-foreground',
+              // Sonner's close button is a 20px circle — under the WCAG 2.2 AA
+              // target-size minimum (24px). Bump the tap target to 28px.
+              closeButton: 'h-7 w-7',
             },
           }}
         />
