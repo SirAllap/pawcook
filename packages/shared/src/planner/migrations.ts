@@ -49,6 +49,8 @@ function migrateV1toV2(plan: RawPlan): RawPlan {
     if (sourcing.veggieDetail === undefined) sourcing.veggieDetail = false;
     if (sourcing.packagingDefault === undefined) sourcing.packagingDefault = 'freezer_bag';
     if (!Array.isArray(sourcing.cutRotation)) sourcing.cutRotation = [];
+    // Every saved plan predates plan-focus, so it is a full diet.
+    if (sourcing.planFocus === undefined) sourcing.planFocus = 'complete';
   }
 
   // CookingPlan gains optional supplementCards / veggieSessions.

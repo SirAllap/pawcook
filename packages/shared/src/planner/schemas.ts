@@ -16,9 +16,36 @@ export type VarietyTier = z.infer<typeof VarietyTierSchema>;
 export const AccessibilityTierSchema = z.enum(['easy', 'specialty']);
 export type AccessibilityTier = z.infer<typeof AccessibilityTierSchema>;
 
+/**
+ * Plan focus — which ingredient class this plan is built around.
+ *
+ * 'complete' (default) is the historical behaviour: a full, balanced
+ * diet mixing meat, fish, organs and veg per the pet's profile.
+ *
+ * The single-class focuses ('meat' | 'fish' | 'veg') let an owner cook
+ * one shopping aisle at a time — "this week I'm only buying fish." A
+ * single-class plan portions the *full* daily food mass into that one
+ * class (no balancing, no scaling-down to a supplement-sized sliver):
+ * it is intentionally a partial diet meant to be paired with the
+ * owner's other plans + daily supplements. Because it is nutritionally
+ * incomplete on its own, the UI surfaces a loud-but-non-blocking notice
+ * (Followability Mandate, sub-principle #4 in /CLAUDE.md: surface
+ * deficits loudly; never block the owner's freedom to cook one class).
+ */
+export const PlanFocusSchema = z.enum(['complete', 'meat', 'fish', 'veg']);
+export type PlanFocus = z.infer<typeof PlanFocusSchema>;
+
 export const SourcingPrefsSchema = z.object({
   variety: VarietyTierSchema.default('standard'),
   accessibility: AccessibilityTierSchema.default('easy'),
+  /**
+   * Which ingredient class this plan is built around. Default 'complete'
+   * preserves the historical full-diet behaviour exactly. The single-
+   * class values collapse every meal to one class at the full daily
+   * gram target — see PlanFocusSchema above and buildPetDay in
+   * generator.ts.
+   */
+  planFocus: PlanFocusSchema.default('complete'),
   /**
    * How the user plans to cook this plan's meat. Stored with the plan so
    * that "Cook this" from the shopping list can pre-select the method

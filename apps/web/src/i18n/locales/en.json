@@ -237,6 +237,16 @@
       "petRemoved": "{{count}} pet(s) were removed from this plan because their profile no longer exists."
     },
     "sourcing": {
+      "focusLabel": "Plan focus",
+      "focusHelp": "Complete builds a full balanced diet. Meat, Fish or Veggies build a single-aisle plan — cook one class at a time and pair it with your other plans. Single-class plans aren’t a complete diet on their own.",
+      "focus": {
+        "complete": "Complete",
+        "meat": "Meat",
+        "fish": "Fish",
+        "veg": "Veggies"
+      },
+      "focusPartialHint": "Heads up: a single-class plan isn’t nutritionally complete on its own. We won’t stop you — just pair it with your other plans and the daily supplement card.",
+      "fishLabel": "Fish to include",
       "varietyLabel": "Variety",
       "varietyHelp": "How much rotation across proteins each week.",
       "variety": {
@@ -293,6 +303,15 @@
       "advancedSummaryMeats": "{{count}} meats",
       "advancedSummaryVegs": "{{count}} veggies",
       "advancedSummaryFlags": "{{count}} flag(s)"
+    },
+    "focusNotice": {
+      "eyebrow": "Single-class plan",
+      "body": "This plan only includes {{class}} — it isn’t a complete diet on its own. Pair it with your other plans and the daily supplement card to cover the gaps. We won’t stop you from cooking one class at a time.",
+      "class": {
+        "meat": "meat",
+        "fish": "fish",
+        "veg": "veggies"
+      }
     },
     "coverage": {
       "passed": "Looks balanced",

@@ -12,6 +12,7 @@ import { Sheet } from '../../components/ui/sheet';
 import { PageFallback } from '../../components/ui/page-fallback';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
 import { NutrientCoverageCard } from '../../components/meal-plan/NutrientCoverageCard';
+import { PlanFocusNotice } from '../../components/meal-plan/PlanFocusNotice';
 import { SupplementCard } from '../../components/meal-plan/SupplementCard';
 import { PetTag } from '../../components/meal-plan/PetTag';
 import { ShoppingListView } from './ShoppingListView';
@@ -115,6 +116,8 @@ export default function PlanView() {
         </div>
       )}
       </div>{/* /data-tour="plan-title" */}
+
+      <PlanFocusNotice plan={plan} />
 
       <Tabs value={tab} onValueChange={setTab} className="space-y-5">
         <TabsList>
