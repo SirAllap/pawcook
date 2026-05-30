@@ -20,6 +20,7 @@ import { PetAvatar } from '../../components/pets/PetAvatar';
 import { SourcingPicker } from '../../components/meal-plan/SourcingPicker';
 import { CalendarGrid } from '../../components/meal-plan/CalendarGrid';
 import { NutrientCoverageCard } from '../../components/meal-plan/NutrientCoverageCard';
+import { PlanFocusNotice } from '../../components/meal-plan/PlanFocusNotice';
 import { usePets } from '../../contexts/PetProfilesContext';
 import { useMealPlans } from '../../contexts/MealPlansContext';
 import { cn } from '../../lib/cn';
@@ -511,6 +512,7 @@ export default function PlanWizard() {
             title={preview.name}
             description={t('mealPlan.wizard.previewSubtitle', { days: preview.durationDays })}
           />
+          <PlanFocusNotice plan={preview} />
           <NutrientCoverageCard plan={preview} pets={selectedPets} />
           <CalendarGrid plan={preview} pets={selectedPets} />
         </div>

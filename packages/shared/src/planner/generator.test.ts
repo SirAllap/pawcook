@@ -3,6 +3,7 @@ import type { PetProfile } from '../pets.js';
 import { generateMealPlan } from './generator.js';
 import { swapIngredient } from './shopping.js';
 import { SourcingPrefsSchema } from './schemas.js';
+import { getIngredient, isMeatComponent } from './catalog.js';
 
 const dog: PetProfile = {
   id: 'pet_dog_1',
@@ -522,6 +523,118 @@ describe('generateMealPlan', () => {
     // internal consistency: same plan, same picks across days for any
     // given block.
     expect(new Set(ingredientsP1).size).toBeGreaterThan(0);
+  });
+});
+
+describe('plan focus (single-class plans)', () => {
+  // Helpers: pull every (ingredientId, componentKey) pair out of a plan
+  // for the first pet, so we can assert which classes ended up on the plate.
+  const allComponents = (plan: ReturnType<typeof generateMealPlan>) =>
+    plan.days.flatMap((d) =>
+      d.petPlans[0].meals.flatMap((m) => m.components),
+    );
+  const usedIngredientIds = (plan: ReturnType<typeof generateMealPlan>) =>
+    new Set(allComponents(plan).map((c) => c.ingredientId));
+  const FISH_IDS = new Set(['salmon', 'mackerel', 'sardines', 'whitefish']);
+  const dayGrams = (plan: ReturnType<typeof generateMealPlan>) =>
+    plan.days[0].petPlans[0].meals.reduce(
+      (s, m) => s + m.components.reduce((g, c) => g + c.grams, 0),
+      0,
+    );
+
+  it("default focus is 'complete' and leaves behaviour unchanged", () => {
+    // A plan parsed from {} must behave exactly like one with no focus
+    // field at all — proves backward compatibility for saved plans.
+    const a = generateMealPlan({
+      name: 'A', pets: [dog], durationDays: 7,
+      startDate: '2026-06-01', sourcing: SourcingPrefsSchema.parse({}),
+    });
+    expect(a.sourcing.planFocus).toBe('complete');
+  });
+
+  it("'meat' focus produces no fish and no veg-side ingredients", () => {
+    const plan = generateMealPlan({
+      name: 'Meat only', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'meat' }),
+    });
+    for (const id of usedIngredientIds(plan)) {
+      const ing = getIngredient(id);
+      expect(ing).toBeDefined();
+      // No seafood-role ingredient (salmon is dual-role and must be excluded).
+      expect(ing!.componentRoles.includes('seafood')).toBe(false);
+      // Every picked ingredient is meat-side (land meat / organ / bone),
+      // never a purely veg-side item.
+      expect(ing!.componentRoles.some((r) => isMeatComponent(r))).toBe(true);
+    }
+  });
+
+  it("'meat' focus never picks salmon for the protein slot", () => {
+    const plan = generateMealPlan({
+      name: 'Meat only', pets: [dog], durationDays: 30,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'meat' }),
+    });
+    expect(usedIngredientIds(plan).has('salmon')).toBe(false);
+  });
+
+  it("'fish' focus fills the meal with seafood ingredients only", () => {
+    const plan = generateMealPlan({
+      name: 'Fish only', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'fish' }),
+    });
+    const ids = usedIngredientIds(plan);
+    expect(ids.size).toBeGreaterThan(0);
+    for (const id of ids) {
+      expect(FISH_IDS.has(id)).toBe(true);
+    }
+  });
+
+  it("'veg' focus produces no meat or fish", () => {
+    const plan = generateMealPlan({
+      name: 'Veg only', pets: [dog], durationDays: 14,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'veg' }),
+    });
+    for (const id of usedIngredientIds(plan)) {
+      const ing = getIngredient(id);
+      expect(ing).toBeDefined();
+      expect(ing!.componentRoles.some((r) => isMeatComponent(r))).toBe(false);
+    }
+  });
+
+  it('single-class plan carries the full daily gram target (not a sliver)', () => {
+    // The focused plan should portion roughly the same daily mass as the
+    // complete plan — the owner is cooking a real meal of one class, not
+    // a 6 g garnish.
+    const complete = generateMealPlan({
+      name: 'Complete', pets: [dog], durationDays: 7,
+      startDate: '2026-06-01', sourcing: SourcingPrefsSchema.parse({}),
+    });
+    const meat = generateMealPlan({
+      name: 'Meat', pets: [dog], durationDays: 7,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'meat' }),
+    });
+    // Within 5% of the complete plan's daily mass.
+    expect(dayGrams(meat)).toBeGreaterThan(dayGrams(complete) * 0.95);
+    expect(dayGrams(meat)).toBeLessThan(dayGrams(complete) * 1.05);
+  });
+
+  it("veg focus on an obligate-carnivore cat still produces a non-empty plan", () => {
+    // The cat PMR profile has no veg component; the focus must synthesize
+    // the class so the plan isn't empty.
+    const plan = generateMealPlan({
+      name: 'Cat veg', pets: [cat], durationDays: 7,
+      startDate: '2026-06-01',
+      sourcing: SourcingPrefsSchema.parse({ planFocus: 'veg' }),
+    });
+    expect(dayGrams(plan)).toBeGreaterThan(0);
+    for (const id of usedIngredientIds(plan)) {
+      const ing = getIngredient(id);
+      expect(ing!.componentRoles.some((r) => isMeatComponent(r))).toBe(false);
+    }
   });
 });
 

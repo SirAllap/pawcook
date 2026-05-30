@@ -1,5 +1,5 @@
 import { calculateNutrition } from '../nutrition.js';
-import type { DietComponent, NutritionResult, NutritionWarning } from '../nutrition.js';
+import type { ComponentKey, DietComponent, NutritionResult, NutritionWarning } from '../nutrition.js';
 import type { PetProfile } from '../pets.js';
 import {
   filterBySourcing,
@@ -16,6 +16,7 @@ import {
   type PlannedMeal,
   type PetDayPlan,
   type SourcingPrefs,
+  type PlanFocus,
   type PlanDuration,
 } from './schemas.js';
 import { buildShoppingList } from './shopping.js';
@@ -91,6 +92,13 @@ function buildPetDay(
   const dislikedSet = new Set(sourcing.dislikedIngredientIds);
 
   // Component reshape order matters:
+  //  0. planFocus (single-class plans, /CLAUDE.md sub-#4): when the
+  //     owner is cooking one aisle at a time ('meat' | 'fish' | 'veg'),
+  //     collapse the whole day onto that one class at the full daily
+  //     gram target. This bypasses simpleMeals/includeOrgans entirely —
+  //     a focused plan is intentionally a partial diet, not a balanced
+  //     one. The deficit is surfaced loudly (but never blocked) in the
+  //     UI. 'complete' falls through to the historical behaviour below.
   //  1. simpleMeals (Followability Mandate, /CLAUDE.md): drop every
   //     add-in component (organ, liver, seafood, fiber) — these are
   //     daily supplement-sized portions the owner won't realistically
@@ -102,7 +110,12 @@ function buildPetDay(
   //     user explicitly excluded organs, drop liver + organ slots and
   //     redistribute that mass to protein.
   let componentsForAllocation = nutrition.components;
-  if (sourcing.simpleMeals) {
+  if (sourcing.planFocus && sourcing.planFocus !== 'complete') {
+    componentsForAllocation = collapseToFocusClass(
+      componentsForAllocation,
+      sourcing.planFocus,
+    );
+  } else if (sourcing.simpleMeals) {
     componentsForAllocation = collapseToSimpleMeal(componentsForAllocation);
   } else if (!sourcing.includeOrgans) {
     componentsForAllocation = redistributeOrganMass(componentsForAllocation);
@@ -187,6 +200,37 @@ function collapseToSimpleMeal(components: DietComponent[]): DietComponent[] {
   return merged.map((c) => (c === target ? { ...c, grams: c.grams + dropped } : c));
 }
 
+/**
+ * Single-class focus (planFocus !== 'complete'). Collapse the entire
+ * day onto one ingredient class, carrying the *full* daily gram total
+ * (sum of every component) so the bowl is a normal-sized meal — the
+ * owner picked "cook only fish this week," not "cook a 6 g fish
+ * garnish." This is deliberately a partial diet; the UI flags it.
+ *
+ * The canonical slot key per focus is chosen so downstream picking and
+ * household batching behave:
+ *   - 'meat' → 'protein'  (land meat; pickIngredientForComponent excludes seafood)
+ *   - 'fish' → 'seafood'  (pickIngredientForComponent restricts to seafood)
+ *   - 'veg'  → 'veg'
+ *
+ * We synthesize the slot even when the pet's profile has no component
+ * of that class (e.g. an obligate-carnivore cat's PMR profile carries
+ * no veg) — a focused plan is owner-driven, not profile-derived.
+ */
+const FOCUS_CANONICAL_KEY: Record<Exclude<PlanFocus, 'complete'>, ComponentKey> = {
+  meat: 'protein',
+  fish: 'seafood',
+  veg: 'veg',
+};
+function collapseToFocusClass(
+  components: DietComponent[],
+  focus: Exclude<PlanFocus, 'complete'>,
+): DietComponent[] {
+  const totalGrams = components.reduce((s, c) => s + c.grams, 0);
+  const key = FOCUS_CANONICAL_KEY[focus];
+  return [{ key, pct: 100, grams: totalGrams }];
+}
+
 function pickIngredientForComponent(
   pet: PetProfile,
   component: DietComponent,
@@ -202,12 +246,31 @@ function pickIngredientForComponent(
   // ingredient via the shared rotation.
   const excludeForPet = new Set(dislikedSet);
   for (const a of pet.allergies) excludeForPet.add(a);
-  const candidates = findIngredientsForComponent(
+  let candidates = findIngredientsForComponent(
     component.key,
     species,
     excludeForPet,
     pet.conditions,
   );
+
+  // Single-class focus: keep the protein slot honest to the chosen
+  // class. 'meat' = land meat only (drop seafood-role ingredients so a
+  // dual-role fish like salmon can't fill a meat plan's protein slot);
+  // 'fish' = seafood-role ingredients only (so the slot is a real fish
+  // meal, not chicken). We fall back to the unfiltered candidates if the
+  // class filter would empty the pool (e.g. a species with no cat-safe
+  // fish) so the slot is never left blank — the focus notice already
+  // tells the owner the plan is partial.
+  const focus = sourcing.planFocus ?? 'complete';
+  if (focus === 'meat') {
+    const landOnly = candidates.filter(
+      (i) => !i.componentRoles.includes('seafood'),
+    );
+    if (landOnly.length > 0) candidates = landOnly;
+  } else if (focus === 'fish') {
+    const fishOnly = candidates.filter((i) => i.componentRoles.includes('seafood'));
+    if (fishOnly.length > 0) candidates = fishOnly;
+  }
 
   // If the user picked an explicit set of meats/veggies, restrict the pool
   // to those for the matching component family before tier filtering. We

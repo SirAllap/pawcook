@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Beef, Carrot, Settings2 } from 'lucide-react';
 import {
   getMeatIngredients, getVegIngredients,
-  type AccessibilityTier, type CookingMethod, type Species, type SourcingPrefs, type VarietyTier,
+  type AccessibilityTier, type CookingMethod, type PlanFocus, type Species, type SourcingPrefs, type VarietyTier,
 } from '@pawcook/shared';
 import { SectionLabel } from '../ui/section-label';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
@@ -12,6 +12,13 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '..
 import { useTranslateIngredient } from '../../lib/translate-ingredient';
 import { cn } from '../../lib/cn';
 
+const FOCUS_OPTIONS: PlanFocus[] = ['complete', 'meat', 'fish', 'veg'];
+const FOCUS_EMOJI: Record<PlanFocus, string> = {
+  complete: '🍽️',
+  meat: '🥩',
+  fish: '🐟',
+  veg: '🥦',
+};
 const VARIETY_OPTIONS: VarietyTier[] = ['standard', 'diverse', 'novel'];
 const ACCESS_OPTIONS: AccessibilityTier[] = ['easy', 'specialty'];
 const METHOD_OPTIONS: CookingMethod[] = ['sous_vide', 'oven', 'stovetop_low', 'slow_cooker', 'pressure_cooker'];
@@ -90,6 +97,13 @@ export function SourcingPicker({
   const meatSet = useMemo(() => new Set(value.meatIds), [value.meatIds]);
   const vegSet = useMemo(() => new Set(value.vegIds), [value.vegIds]);
 
+  // Plan focus drives which ingredient pickers are relevant. A veg-only
+  // plan has no meat picker; a meat/fish-only plan has no veg picker.
+  // 'complete' (default) shows both, exactly as before.
+  const focus = value.planFocus ?? 'complete';
+  const showMeatPicker = focus === 'complete' || focus === 'meat' || focus === 'fish';
+  const showVegPicker = focus === 'complete' || focus === 'veg';
+
   // Progressive disclosure: meat/veg pickers + niche preference flags
   // collapse into an "Advanced ingredients" accordion. New users see ~5
   // controls; power users (edit mode, ingredient-customised templates,
@@ -126,6 +140,52 @@ export function SourcingPicker({
 
   return (
     <div className="space-y-6">
+      {/* Plan focus leads the whole picker: it decides whether this is a
+          full balanced diet or a single-aisle "just fish this week" plan.
+          Default 'complete' keeps the historical full-diet behaviour. */}
+      <div className="space-y-2">
+        <SectionLabel>{t('mealPlan.sourcing.focusLabel', { defaultValue: 'Plan focus' })}</SectionLabel>
+        <p className="text-xs text-muted-fg leading-relaxed">
+          {t('mealPlan.sourcing.focusHelp', {
+            defaultValue:
+              'Complete builds a full balanced diet. Meat, Fish or Veggies build a single-aisle plan — cook one class at a time and pair it with your other plans. Single-class plans aren’t a complete diet on their own.',
+          })}
+        </p>
+        <ToggleGroup
+          type="single"
+          value={focus}
+          onValueChange={(v) => {
+            if (!v) return;
+            onChange({ ...value, planFocus: v as PlanFocus });
+          }}
+          aria-label={t('mealPlan.sourcing.focusLabel', { defaultValue: 'Plan focus' })}
+          className="grid grid-cols-4 w-full"
+        >
+          {FOCUS_OPTIONS.map((opt) => (
+            <ToggleGroupItem key={opt} value={opt} aria-label={t(`mealPlan.sourcing.focus.${opt}`, { defaultValue: opt })}>
+              <span aria-hidden>{FOCUS_EMOJI[opt]}</span>
+              <span className="truncate">
+                {t(`mealPlan.sourcing.focus.${opt}`, {
+                  defaultValue:
+                    opt === 'complete' ? 'Complete'
+                    : opt === 'meat' ? 'Meat'
+                    : opt === 'fish' ? 'Fish'
+                    : 'Veggies',
+                })}
+              </span>
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+        {focus !== 'complete' && (
+          <p className="text-[11px] text-warning leading-relaxed">
+            {t('mealPlan.sourcing.focusPartialHint', {
+              defaultValue:
+                'Heads up: a single-class plan isn’t nutritionally complete on its own. We won’t stop you — just pair it with your other plans and the daily supplement card.',
+            })}
+          </p>
+        )}
+      </div>
+
       {/* Simple meals leads — per CLAUDE.md it's the single toggle that most
           defines what the household actually cooks each day. */}
       <div className="space-y-2.5">
@@ -331,31 +391,37 @@ export function SourcingPicker({
           </AccordionTrigger>
           <AccordionContent className="text-foreground">
             <div className="space-y-5 pt-1">
-              <IngredientChips
-                eyebrow={<Beef className="h-3.5 w-3.5" aria-hidden />}
-                label={t('mealPlan.sourcing.meatsLabel', { defaultValue: 'Meats to include' })}
-                help={t('mealPlan.sourcing.meatsHelp', {
-                  defaultValue: 'Pick the proteins you want — leave empty to let the planner choose any.',
-                })}
-                emptyHint={t('mealPlan.sourcing.anyMeats', { defaultValue: 'Any · planner picks' })}
-                ingredients={meats}
-                selected={meatSet}
-                onToggle={toggleMeat}
-                translate={translateIngredient}
-              />
+              {showMeatPicker && (
+                <IngredientChips
+                  eyebrow={<Beef className="h-3.5 w-3.5" aria-hidden />}
+                  label={focus === 'fish'
+                    ? t('mealPlan.sourcing.fishLabel', { defaultValue: 'Fish to include' })
+                    : t('mealPlan.sourcing.meatsLabel', { defaultValue: 'Meats to include' })}
+                  help={t('mealPlan.sourcing.meatsHelp', {
+                    defaultValue: 'Pick the proteins you want — leave empty to let the planner choose any.',
+                  })}
+                  emptyHint={t('mealPlan.sourcing.anyMeats', { defaultValue: 'Any · planner picks' })}
+                  ingredients={meats}
+                  selected={meatSet}
+                  onToggle={toggleMeat}
+                  translate={translateIngredient}
+                />
+              )}
 
-              <IngredientChips
-                eyebrow={<Carrot className="h-3.5 w-3.5" aria-hidden />}
-                label={t('mealPlan.sourcing.veggiesLabel', { defaultValue: 'Veggies to include' })}
-                help={t('mealPlan.sourcing.veggiesHelp', {
-                  defaultValue: 'Pick the produce you want — leave empty to let the planner choose any.',
-                })}
-                emptyHint={t('mealPlan.sourcing.anyVeggies', { defaultValue: 'Any · planner picks' })}
-                ingredients={veggies}
-                selected={vegSet}
-                onToggle={toggleVeg}
-                translate={translateIngredient}
-              />
+              {showVegPicker && (
+                <IngredientChips
+                  eyebrow={<Carrot className="h-3.5 w-3.5" aria-hidden />}
+                  label={t('mealPlan.sourcing.veggiesLabel', { defaultValue: 'Veggies to include' })}
+                  help={t('mealPlan.sourcing.veggiesHelp', {
+                    defaultValue: 'Pick the produce you want — leave empty to let the planner choose any.',
+                  })}
+                  emptyHint={t('mealPlan.sourcing.anyVeggies', { defaultValue: 'Any · planner picks' })}
+                  ingredients={veggies}
+                  selected={vegSet}
+                  onToggle={toggleVeg}
+                  translate={translateIngredient}
+                />
+              )}
 
               <div className="space-y-2.5">
                 <SourcingFlag
