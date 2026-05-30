@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Witte vis (kabeljauw, schelvis)",
       "notes": "Mager, mild"
+    },
+    "chicken_liver": {
+      "label": "Kippenlever"
+    },
+    "beef_liver": {
+      "label": "Runderlever"
+    },
+    "beef_kidney": {
+      "label": "Rundernier"
+    },
+    "beef_spleen": {
+      "label": "Rundermilt"
+    },
+    "chicken_hearts": {
+      "label": "Kippenharten"
+    },
+    "beef_hearts": {
+      "label": "Runderharten"
+    },
+    "raw_meaty_bones": {
+      "label": "Rauwe vleesbotten (kippennekken, -vleugels)"
     }
   },
   "vegData": {

@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Peixe branco (bacalhau, arinca)",
       "notes": "Magro, suave"
+    },
+    "chicken_liver": {
+      "label": "Fígado de frango"
+    },
+    "beef_liver": {
+      "label": "Fígado bovino"
+    },
+    "beef_kidney": {
+      "label": "Rim bovino"
+    },
+    "beef_spleen": {
+      "label": "Baço bovino"
+    },
+    "chicken_hearts": {
+      "label": "Corações de frango"
+    },
+    "beef_hearts": {
+      "label": "Corações bovinos"
+    },
+    "raw_meaty_bones": {
+      "label": "Ossos carnudos crus (pescoços e asas de frango)"
     }
   },
   "vegData": {

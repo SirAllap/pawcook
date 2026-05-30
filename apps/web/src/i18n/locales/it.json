@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Pesce bianco (merluzzo, eglefino)",
       "notes": "Magro, delicato"
+    },
+    "chicken_liver": {
+      "label": "Fegato di pollo"
+    },
+    "beef_liver": {
+      "label": "Fegato di manzo"
+    },
+    "beef_kidney": {
+      "label": "Rene di manzo"
+    },
+    "beef_spleen": {
+      "label": "Milza di manzo"
+    },
+    "chicken_hearts": {
+      "label": "Cuori di pollo"
+    },
+    "beef_hearts": {
+      "label": "Cuori di manzo"
+    },
+    "raw_meaty_bones": {
+      "label": "Ossa carnose crude (colli e ali di pollo)"
     }
   },
   "vegData": {

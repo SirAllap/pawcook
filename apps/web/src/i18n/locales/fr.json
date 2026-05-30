@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Poisson blanc (cabillaud, aiglefin)",
       "notes": "Maigre, léger"
+    },
+    "chicken_liver": {
+      "label": "Foie de poulet"
+    },
+    "beef_liver": {
+      "label": "Foie de bœuf"
+    },
+    "beef_kidney": {
+      "label": "Rognon de bœuf"
+    },
+    "beef_spleen": {
+      "label": "Rate de bœuf"
+    },
+    "chicken_hearts": {
+      "label": "Cœurs de poulet"
+    },
+    "beef_hearts": {
+      "label": "Cœurs de bœuf"
+    },
+    "raw_meaty_bones": {
+      "label": "Os charnus crus (cous, ailes de poulet)"
     }
   },
   "vegData": {

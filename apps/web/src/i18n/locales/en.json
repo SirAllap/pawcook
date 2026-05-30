@@ -1630,6 +1630,27 @@
     "whitefish": {
       "label": "Whitefish (cod, haddock)",
       "notes": "Lean, mild"
+    },
+    "chicken_liver": {
+      "label": "Chicken liver"
+    },
+    "beef_liver": {
+      "label": "Beef liver"
+    },
+    "beef_kidney": {
+      "label": "Beef kidney"
+    },
+    "beef_spleen": {
+      "label": "Beef spleen"
+    },
+    "chicken_hearts": {
+      "label": "Chicken hearts"
+    },
+    "beef_hearts": {
+      "label": "Beef hearts"
+    },
+    "raw_meaty_bones": {
+      "label": "Raw meaty bones (chicken necks, wings)"
     }
   },
   "vegData": {
