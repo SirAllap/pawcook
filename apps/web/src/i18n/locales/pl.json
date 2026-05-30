@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Biała ryba (dorsz, plamiak)",
       "notes": "Chude, delikatne"
+    },
+    "chicken_liver": {
+      "label": "Wątróbka z kurczaka"
+    },
+    "beef_liver": {
+      "label": "Wątroba wołowa"
+    },
+    "beef_kidney": {
+      "label": "Nerka wołowa"
+    },
+    "beef_spleen": {
+      "label": "Śledziona wołowa"
+    },
+    "chicken_hearts": {
+      "label": "Serca z kurczaka"
+    },
+    "beef_hearts": {
+      "label": "Serca wołowe"
+    },
+    "raw_meaty_bones": {
+      "label": "Surowe kości mięsne (szyje, skrzydła kurczaka)"
     }
   },
   "vegData": {

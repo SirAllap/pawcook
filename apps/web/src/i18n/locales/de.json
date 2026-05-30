@@ -1627,6 +1627,27 @@
     "whitefish": {
       "label": "Weißfisch (Kabeljau, Schellfisch)",
       "notes": "Mager, mild"
+    },
+    "chicken_liver": {
+      "label": "Hühnerleber"
+    },
+    "beef_liver": {
+      "label": "Rinderleber"
+    },
+    "beef_kidney": {
+      "label": "Rinderniere"
+    },
+    "beef_spleen": {
+      "label": "Rindermilz"
+    },
+    "chicken_hearts": {
+      "label": "Hühnerherzen"
+    },
+    "beef_hearts": {
+      "label": "Rinderherzen"
+    },
+    "raw_meaty_bones": {
+      "label": "Rohe fleischige Knochen (Hühnerhälse, -flügel)"
     }
   },
   "vegData": {

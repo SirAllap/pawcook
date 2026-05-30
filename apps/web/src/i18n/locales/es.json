@@ -1629,6 +1629,27 @@
     "whitefish": {
       "label": "Pescado blanco (bacalao, eglefino)",
       "notes": "Magro, suave"
+    },
+    "chicken_liver": {
+      "label": "Hígado de pollo"
+    },
+    "beef_liver": {
+      "label": "Hígado de ternera"
+    },
+    "beef_kidney": {
+      "label": "Riñón de ternera"
+    },
+    "beef_spleen": {
+      "label": "Bazo de ternera"
+    },
+    "chicken_hearts": {
+      "label": "Corazones de pollo"
+    },
+    "beef_hearts": {
+      "label": "Corazones de ternera"
+    },
+    "raw_meaty_bones": {
+      "label": "Huesos carnosos crudos (cuellos y alas de pollo)"
     }
   },
   "vegData": {
