@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { toast } from 'sonner';
+import { toast } from '../../lib/toast';
 import { Save, Trash2, AlertTriangle, ChefHat, ChevronDown } from 'lucide-react';
 import {
   PetProfileSchema, newPetId, getDietCookingDefaults,

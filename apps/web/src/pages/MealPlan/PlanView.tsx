@@ -1,7 +1,7 @@
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'sonner';
+import { toast } from '../../lib/toast';
 import { ArrowLeft, ShoppingBag, CalendarDays, ChefHat, Trash2, Pencil, AlertTriangle, Check, X } from 'lucide-react';
 import { PageHeader } from '../../components/ui/page-header';
 import { Button } from '../../components/ui/button';
