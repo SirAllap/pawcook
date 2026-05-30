@@ -64,12 +64,14 @@ export function AppShell({ children }: { children: ReactNode }) {
           position={isDesktop ? 'top-center' : 'bottom-center'}
           richColors
           closeButton
-          // On mobile the toast must clear the floating bottom nav. The nav
-          // sits at bottom-0 with its OWN safe-area-inset-bottom padding and a
-          // 4rem (h-16) body, so a flat px offset collides on home-indicator
-          // phones where the inset can be ~34px. Mirror the nav's inset and add
-          // the bar height + a gap so the toast always floats above it.
-          offset={isDesktop ? 16 : 'calc(env(safe-area-inset-bottom) + 5.5rem)'}
+          offset={16}
+          // Sonner has a hard `@media (max-width:600px)` rule that ignores
+          // `offset` and uses `mobileOffset` instead — so the toast must clear
+          // the floating bottom nav HERE. The nav sits at bottom-0 with its own
+          // env(safe-area-inset-bottom) padding plus a 4rem (h-16) body; mirror
+          // that inset and add the bar height + a gap so the toast floats above
+          // it on home-indicator phones too.
+          mobileOffset={{ bottom: 'calc(env(safe-area-inset-bottom) + 5.5rem)' }}
           toastOptions={{
             classNames: {
               toast: 'rounded-2xl border border-border bg-surface text-foreground shadow-lg',
